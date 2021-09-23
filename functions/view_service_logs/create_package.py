@@ -3,7 +3,7 @@ import dtlpy as dl
 dl.setenv('prod')
 
 package_name = 'logs-function'
-project_name = 'COCO ors'
+project_name = 'My Project'
 
 project = dl.projects.get(project_name=project_name)
 
@@ -33,9 +33,10 @@ service = package.services.deploy(service_name=package.name,
                                   module_name='default'
                                   )
 print('Service deployed successfully!')
-service = package.services.get(service_name=package.name)
-service.package_revision = package.version
-service.update()
+# # Updating existing service
+# service = package.services.get(service_name=package.name)
+# service.package_revision = package.version
+# service.update()
 
 ######################
 # execute a Function #

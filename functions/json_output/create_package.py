@@ -1,8 +1,9 @@
 import dtlpy as dl
 
 package_name = 'json-as-output'
-project_name = 'COCO ors'
+project_name = 'My Project'
 src_path = 'functions/json_output'
+
 project = dl.projects.get(project_name=project_name)
 ################
 # push package #
