@@ -38,7 +38,7 @@
 ### step 2: build a sync dataset for your bucket
 
 * [DOCS](https://dataloop.ai/docs/sdk-sync-storage?highlight=extrna)
-* [CODE](C:\Users\97250\work\sdk_examples\sdk_examples\integrations\s3_lambda\sync_dataset.py)
+* [CODE](\sdk_examples\integrations\s3_lambda\sync_dataset.py)
 
 ### step 3: builds the code and the environment 
 **use linux os**
@@ -59,7 +59,7 @@
 * replace the numpy package with numpy package for aws  
 [numpy for aws lambda](https://github.com/0xpetersatoshi/aws-lambda-py3.6-pandas-numpy)  
   
-* add a file [CODE](C:\Users\97250\work\sdk_examples\sdk_examples\integrations\s3_lambda\lambda_function.py) to the same folder of all the packages   
+* add a file [CODE](\sdk_examples\integrations\s3_lambda\lambda_function.py) to the same folder of all the packages   
 
 * compress all the packages and code in one zip file
 
