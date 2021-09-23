@@ -1,0 +1,103 @@
+{
+  "_id": "6110d2731467de4356c29f34",
+  "filename": "/train/orange_56.jpg",
+  "annotations": [
+    {
+      "id": "6110d273ac5cac1cfc3d811a",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d273ac5cac1cfc3d811a",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T07:00:03.658Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T07:00:03.658Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "773eef8292c3e9657cd0e80dc51e1ff60ee6ae00",
+      "itemId": "6110d2731467de4356c29f34",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d2731467de4356c29f34",
+      "label": "orange",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 580.0,
+          "y": 21.0,
+          "z": 0
+        },
+        {
+          "x": 1273.0,
+          "y": 753.0,
+          "z": 0
+        }
+      ]
+    },
+    {
+      "id": "6110d273ac5cacc4553d8119",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d273ac5cacc4553d8119",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T07:00:03.657Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T07:00:03.657Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "bbc957f9f36f2f0a3a1bbd9a4d052a719553e98b",
+      "itemId": "6110d2731467de4356c29f34",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d2731467de4356c29f34",
+      "label": "orange",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 8.0,
+          "y": 58.0,
+          "z": 0
+        },
+        {
+          "x": 741.0,
+          "y": 833.0,
+          "z": 0
+        }
+      ]
+    }
+  ],
+  "itemMetadata": {
+    "system": {
+      "originalname": "orange_56.jpg",
+      "size": 129308,
+      "encoding": "7bit",
+      "mimetype": "image/jpeg",
+      "annotationStatus": [],
+      "refs": [],
+      "isBinary": true,
+      "executionLogs": {
+        "image-preprocess": {
+          "default_module": {
+            "on_create": {
+              "6110d273b3d43948a547cce7": {
+                "progress": 100,
+                "status": "success"
+              }
+            }
+          }
+        }
+      },
+      "channels": 3,
+      "exif": {
+        "Orientation": 1
+      },
+      "height": 1088,
+      "thumbnailAnnotationsId": "6110d2764a42b3188c5ab0b9",
+      "thumbnailId": "6110d2769a1c541927b7ad39",
+      "width": 1292
+    }
+  }
+}

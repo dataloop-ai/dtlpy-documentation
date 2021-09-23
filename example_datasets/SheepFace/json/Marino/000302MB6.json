@@ -1,0 +1,57 @@
+{
+  "_id": "61151cbdb8cf83dbf5c2324a",
+  "filename": "/Marino/000302MB6.jpg",
+  "annotations": [
+    {
+      "id": "61151e4842c9f9767dc2fcb2",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/61151e4842c9f9767dc2fcb2",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-12T13:12:40.087Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-12T13:12:40.087Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "313f4d98a344e41067ecf85c6d2ef2c06fdb95bd",
+      "itemId": "61151cbdb8cf83dbf5c2324a",
+      "item": "https://gate.dataloop.ai/api/v1/items/61151cbdb8cf83dbf5c2324a",
+      "label": "Marino",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/61151cb9e5759208912b4e8e",
+      "datasetId": "61151cb9e5759208912b4e8e",
+      "type": "class",
+      "coordinates": []
+    }
+  ],
+  "itemMetadata": {
+    "system": {
+      "originalname": "000302MB6.jpg",
+      "size": 5796,
+      "encoding": "7bit",
+      "mimetype": "image/jpeg",
+      "annotationStatus": [],
+      "refs": [],
+      "isBinary": true,
+      "executionLogs": {
+        "image-preprocess": {
+          "default_module": {
+            "on_create": {
+              "61151cbd3570f900c36cc8ea": {
+                "progress": 100,
+                "status": "success"
+              }
+            }
+          }
+        }
+      },
+      "channels": 3,
+      "exif": {},
+      "height": 181,
+      "thumbnailAnnotationsId": "61151cc18516494bfc934785",
+      "thumbnailId": "61151cbf379ab25546ecf252",
+      "width": 156
+    }
+  }
+}

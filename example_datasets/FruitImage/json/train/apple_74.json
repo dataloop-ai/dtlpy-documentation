@@ -1,0 +1,101 @@
+{
+  "_id": "6110d21f1467de4190c29eae",
+  "filename": "/train/apple_74.jpg",
+  "annotations": [
+    {
+      "id": "6110d21fac5cacba2b3d7f5e",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d21fac5cacba2b3d7f5e",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T06:58:39.253Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T06:58:39.253Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "ecfb370a1c936700dd0623bf0c4ac97513360487",
+      "itemId": "6110d21f1467de4190c29eae",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d21f1467de4190c29eae",
+      "label": "apple",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 197.0,
+          "y": 144.0,
+          "z": 0
+        },
+        {
+          "x": 363.0,
+          "y": 328.0,
+          "z": 0
+        }
+      ]
+    },
+    {
+      "id": "6110d21fac5cac197f3d7f5d",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d21fac5cac197f3d7f5d",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T06:58:39.252Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T06:58:39.252Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "b71025a7750e189f5fd37c0a0ecb1d8dd4692131",
+      "itemId": "6110d21f1467de4190c29eae",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d21f1467de4190c29eae",
+      "label": "apple",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 125.0,
+          "y": 196.0,
+          "z": 0
+        },
+        {
+          "x": 295.0,
+          "y": 374.0,
+          "z": 0
+        }
+      ]
+    }
+  ],
+  "itemMetadata": {
+    "system": {
+      "originalname": "apple_74.jpg",
+      "size": 4691,
+      "encoding": "7bit",
+      "mimetype": "image/jpeg",
+      "annotationStatus": [],
+      "refs": [],
+      "isBinary": true,
+      "executionLogs": {
+        "image-preprocess": {
+          "default_module": {
+            "on_create": {
+              "6110d21fb3d4399f8747cc60": {
+                "progress": 100,
+                "status": "success"
+              }
+            }
+          }
+        }
+      },
+      "channels": 3,
+      "exif": {},
+      "height": 500,
+      "thumbnailAnnotationsId": "6110d21fd996e54f34c1d672",
+      "thumbnailId": "6110d21fd996e5a6b9c1d66f",
+      "width": 500
+    }
+  }
+}

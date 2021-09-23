@@ -1,0 +1,57 @@
+{
+  "_id": "61151cc6a4c37740e581ff9d",
+  "filename": "/White Suffolk/009210WD4.jpg",
+  "annotations": [
+    {
+      "id": "61151d5a28919b9db0455f3b",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/61151d5a28919b9db0455f3b",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-12T13:08:42.821Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-12T13:08:42.821Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "1c74884e491a7cb1c870a4abfd278fe90b7eb7b2",
+      "itemId": "61151cc6a4c37740e581ff9d",
+      "item": "https://gate.dataloop.ai/api/v1/items/61151cc6a4c37740e581ff9d",
+      "label": "White Suffolk",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/61151cb9e5759208912b4e8e",
+      "datasetId": "61151cb9e5759208912b4e8e",
+      "type": "class",
+      "coordinates": []
+    }
+  ],
+  "itemMetadata": {
+    "system": {
+      "originalname": "009210WD4.jpg",
+      "size": 8022,
+      "encoding": "7bit",
+      "mimetype": "image/jpeg",
+      "annotationStatus": [],
+      "refs": [],
+      "isBinary": true,
+      "executionLogs": {
+        "image-preprocess": {
+          "default_module": {
+            "on_create": {
+              "61151cc63570f991c66ccd9e": {
+                "progress": 100,
+                "status": "success"
+              }
+            }
+          }
+        }
+      },
+      "channels": 3,
+      "exif": {},
+      "height": 181,
+      "thumbnailAnnotationsId": "61151d0770b56d57c5421219",
+      "thumbnailId": "61151d06a4c377e1898202f8",
+      "width": 156
+    }
+  }
+}

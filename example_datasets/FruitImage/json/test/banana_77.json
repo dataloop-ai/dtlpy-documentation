@@ -1,0 +1,68 @@
+{
+  "_id": "6110d4a96e80763b6c59bd1b",
+  "filename": "/test/banana_77.jpg",
+  "annotations": [
+    {
+      "id": "6110d4aa2d6e6f09263c6d8f",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d4aa2d6e6f09263c6d8f",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T07:09:30.105Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T07:09:30.105Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "e87e2d546e0ab930205263123bca151469d1b433",
+      "itemId": "6110d4a96e80763b6c59bd1b",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d4a96e80763b6c59bd1b",
+      "label": "banana",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 29.0,
+          "y": 11.0,
+          "z": 0
+        },
+        {
+          "x": 246.0,
+          "y": 348.0,
+          "z": 0
+        }
+      ]
+    }
+  ],
+  "itemMetadata": {
+    "system": {
+      "originalname": "banana_77.jpg",
+      "size": 16094,
+      "encoding": "7bit",
+      "mimetype": "image/jpeg",
+      "annotationStatus": [],
+      "refs": [],
+      "isBinary": true,
+      "executionLogs": {
+        "image-preprocess": {
+          "default_module": {
+            "on_create": {
+              "6110d4aab53a09245e6f6b17": {
+                "progress": 100,
+                "status": "success"
+              }
+            }
+          }
+        }
+      },
+      "channels": 3,
+      "exif": {},
+      "height": 360,
+      "thumbnailAnnotationsId": "6110d4aa59362abfcd86fae7",
+      "thumbnailId": "6110d4aa9a1c544d84b7affe",
+      "width": 300
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "_id": "6110d25b1467de4876c29f10",
+  "filename": "/train/orange_19.jpg",
+  "annotations": [
+    {
+      "id": "6110d25bcdfa5c53d73cef60",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d25bcdfa5c53d73cef60",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T06:59:39.916Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T06:59:39.916Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "331a22aa3abdde10abd49013e98cae3536ddce40",
+      "itemId": "6110d25b1467de4876c29f10",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d25b1467de4876c29f10",
+      "label": "orange",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 260.0,
+          "y": 99.0,
+          "z": 0
+        },
+        {
+          "x": 465.0,
+          "y": 351.0,
+          "z": 0
+        }
+      ]
+    },
+    {
+      "id": "6110d25bcdfa5cd5293cef5f",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d25bcdfa5cd5293cef5f",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T06:59:39.915Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T06:59:39.915Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "ed53de344c5b63a19daa53b8ec78e646b7a2f02c",
+      "itemId": "6110d25b1467de4876c29f10",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d25b1467de4876c29f10",
+      "label": "orange",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 136.0,
+          "y": 1.0,
+          "z": 0
+        },
+        {
+          "x": 355.0,
+          "y": 171.0,
+          "z": 0
+        }
+      ]
+    },
+    {
+      "id": "6110d25bcdfa5cf2663cef5e",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d25bcdfa5cf2663cef5e",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T06:59:39.914Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T06:59:39.914Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "c07417207ac67a062468a972fc866e5a8ce84f23",
+      "itemId": "6110d25b1467de4876c29f10",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d25b1467de4876c29f10",
+      "label": "orange",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 58.0,
+          "y": 137.0,
+          "z": 0
+        },
+        {
+          "x": 267.0,
+          "y": 358.0,
+          "z": 0
+        }
+      ]
+    }
+  ],
+  "itemMetadata": {
+    "system": {
+      "originalname": "orange_19.jpg",
+      "size": 34096,
+      "encoding": "7bit",
+      "mimetype": "image/jpeg",
+      "annotationStatus": [],
+      "refs": [],
+      "isBinary": true,
+      "executionLogs": {
+        "image-preprocess": {
+          "default_module": {
+            "on_create": {
+              "6110d25be8224e778705218d": {
+                "progress": 100,
+                "status": "success"
+              }
+            }
+          }
+        }
+      },
+      "channels": 3,
+      "exif": {},
+      "height": 375,
+      "thumbnailAnnotationsId": "6110d25cd996e52e6ec1d6f8",
+      "thumbnailId": "6110d25cb6b8431fca79d666",
+      "width": 500
+    }
+  }
+}

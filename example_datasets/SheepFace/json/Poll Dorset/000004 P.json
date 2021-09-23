@@ -1,0 +1,57 @@
+{
+  "_id": "61151cbf379ab20e08ecf242",
+  "filename": "/Poll Dorset/000004 P.jpg",
+  "annotations": [
+    {
+      "id": "61151e2d28919b3f92456245",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/61151e2d28919b3f92456245",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-12T13:12:13.171Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-12T13:12:13.171Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "ce0eeac4dee4508fd8be6ce2b136cdf2408dd8ad",
+      "itemId": "61151cbf379ab20e08ecf242",
+      "item": "https://gate.dataloop.ai/api/v1/items/61151cbf379ab20e08ecf242",
+      "label": "Poll Dorset",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/61151cb9e5759208912b4e8e",
+      "datasetId": "61151cb9e5759208912b4e8e",
+      "type": "class",
+      "coordinates": []
+    }
+  ],
+  "itemMetadata": {
+    "system": {
+      "originalname": "000004 P.jpg",
+      "size": 7045,
+      "encoding": "7bit",
+      "mimetype": "image/jpeg",
+      "annotationStatus": [],
+      "refs": [],
+      "isBinary": true,
+      "executionLogs": {
+        "image-preprocess": {
+          "default_module": {
+            "on_create": {
+              "61151cbf3570f92b626cca37": {
+                "progress": 100,
+                "status": "success"
+              }
+            }
+          }
+        }
+      },
+      "channels": 3,
+      "exif": {},
+      "height": 181,
+      "thumbnailAnnotationsId": "61151cea70b56d3758420f8a",
+      "thumbnailId": "61151ce9a4c37708b28200a3",
+      "width": 156
+    }
+  }
+}

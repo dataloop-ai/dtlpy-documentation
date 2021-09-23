@@ -1,0 +1,134 @@
+{
+  "_id": "6110d2545f41371d8ebba772",
+  "filename": "/train/mixed_6.jpg",
+  "annotations": [
+    {
+      "id": "6110d254ac5cac46433d8065",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d254ac5cac46433d8065",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T06:59:32.485Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T06:59:32.485Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "01c77f565f7ca816f6e1ae980fa296ea8cce9d19",
+      "itemId": "6110d2545f41371d8ebba772",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d2545f41371d8ebba772",
+      "label": "apple",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 188.0,
+          "y": 4.0,
+          "z": 0
+        },
+        {
+          "x": 325.0,
+          "y": 149.0,
+          "z": 0
+        }
+      ]
+    },
+    {
+      "id": "6110d254ac5cac43653d8064",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d254ac5cac43653d8064",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T06:59:32.484Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T06:59:32.484Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "badef1d0673f62971ad147892e8e0df32f44aec1",
+      "itemId": "6110d2545f41371d8ebba772",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d2545f41371d8ebba772",
+      "label": "banana",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 27.0,
+          "y": 151.0,
+          "z": 0
+        },
+        {
+          "x": 333.0,
+          "y": 233.0,
+          "z": 0
+        }
+      ]
+    },
+    {
+      "id": "6110d254ac5cac44213d8063",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d254ac5cac44213d8063",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T06:59:32.483Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T06:59:32.483Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "4e09456126f920749ed84f4ea2aa0427f076e727",
+      "itemId": "6110d2545f41371d8ebba772",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d2545f41371d8ebba772",
+      "label": "orange",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 38.0,
+          "y": 9.0,
+          "z": 0
+        },
+        {
+          "x": 184.0,
+          "y": 152.0,
+          "z": 0
+        }
+      ]
+    }
+  ],
+  "itemMetadata": {
+    "system": {
+      "originalname": "mixed_6.jpg",
+      "size": 29742,
+      "encoding": "7bit",
+      "mimetype": "image/jpeg",
+      "annotationStatus": [],
+      "refs": [],
+      "isBinary": true,
+      "executionLogs": {
+        "image-preprocess": {
+          "default_module": {
+            "on_create": {
+              "6110d254b3d439e5ad47ccbf": {
+                "progress": 100,
+                "status": "success"
+              }
+            }
+          }
+        }
+      },
+      "channels": 3,
+      "exif": {},
+      "height": 233,
+      "thumbnailAnnotationsId": "6110d2541467de6a33c29f08",
+      "thumbnailId": "6110d2544a42b384e25ab07b",
+      "width": 350
+    }
+  }
+}

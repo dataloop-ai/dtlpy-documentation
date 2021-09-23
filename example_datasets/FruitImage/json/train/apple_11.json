@@ -1,0 +1,136 @@
+{
+  "_id": "6110d1ead0940fc24a4c4e3c",
+  "filename": "/train/apple_11.jpg",
+  "annotations": [
+    {
+      "id": "6110d1eb2e4102003dbe048e",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d1eb2e4102003dbe048e",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T06:57:47.092Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T06:57:47.092Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "65fc14f10d958b55b87c06895d29edae59d7cb0b",
+      "itemId": "6110d1ead0940fc24a4c4e3c",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d1ead0940fc24a4c4e3c",
+      "label": "apple",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 116.0,
+          "y": 5.0,
+          "z": 0
+        },
+        {
+          "x": 337.0,
+          "y": 220.0,
+          "z": 0
+        }
+      ]
+    },
+    {
+      "id": "6110d1eb2e410230e5be048d",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d1eb2e410230e5be048d",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T06:57:47.092Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T06:57:47.092Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "8eb56f9d5f2497a4f78ec106c73563d6649ac0ce",
+      "itemId": "6110d1ead0940fc24a4c4e3c",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d1ead0940fc24a4c4e3c",
+      "label": "apple",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 1.0,
+          "y": 30.0,
+          "z": 0
+        },
+        {
+          "x": 188.0,
+          "y": 280.0,
+          "z": 0
+        }
+      ]
+    },
+    {
+      "id": "6110d1eb2e4102c742be048c",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/6110d1eb2e4102c742be048c",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-09T06:57:47.091Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-09T06:57:47.091Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "217e63c46e9ff6efe1eb80169160f69fb9fda35a",
+      "itemId": "6110d1ead0940fc24a4c4e3c",
+      "item": "https://gate.dataloop.ai/api/v1/items/6110d1ead0940fc24a4c4e3c",
+      "label": "apple",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/6110d173f2428d3b2ae2dafc",
+      "datasetId": "6110d173f2428d3b2ae2dafc",
+      "type": "box",
+      "coordinates": [
+        {
+          "x": 213.0,
+          "y": 33.0,
+          "z": 0
+        },
+        {
+          "x": 459.0,
+          "y": 258.0,
+          "z": 0
+        }
+      ]
+    }
+  ],
+  "itemMetadata": {
+    "system": {
+      "originalname": "apple_11.jpg",
+      "size": 68922,
+      "encoding": "7bit",
+      "mimetype": "image/jpeg",
+      "annotationStatus": [],
+      "refs": [],
+      "isBinary": true,
+      "executionLogs": {
+        "image-preprocess": {
+          "default_module": {
+            "on_create": {
+              "6110d1eb3b988e0e101183bf": {
+                "progress": 100,
+                "status": "success"
+              }
+            }
+          }
+        }
+      },
+      "channels": 3,
+      "exif": {
+        "Orientation": 1
+      },
+      "height": 436,
+      "thumbnailAnnotationsId": "6110d1eb4a42b31a255aafd1",
+      "thumbnailId": "6110d1ebd996e54e68c1d61b",
+      "width": 652
+    }
+  }
+}

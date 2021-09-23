@@ -1,0 +1,57 @@
+{
+  "_id": "61151cc2a4c37779ec81fec9",
+  "filename": "/Suffolk/000523BA5.jpg",
+  "annotations": [
+    {
+      "id": "61151dc242c9f9060bc2f927",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/61151dc242c9f9060bc2f927",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-12T13:10:26.121Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-12T13:10:26.121Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "182cb016bdbd050ff9db888962ab686edb2255cf",
+      "itemId": "61151cc2a4c37779ec81fec9",
+      "item": "https://gate.dataloop.ai/api/v1/items/61151cc2a4c37779ec81fec9",
+      "label": "Suffolk",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/61151cb9e5759208912b4e8e",
+      "datasetId": "61151cb9e5759208912b4e8e",
+      "type": "class",
+      "coordinates": []
+    }
+  ],
+  "itemMetadata": {
+    "system": {
+      "originalname": "000523BA5.jpg",
+      "size": 7713,
+      "encoding": "7bit",
+      "mimetype": "image/jpeg",
+      "annotationStatus": [],
+      "refs": [],
+      "isBinary": true,
+      "executionLogs": {
+        "image-preprocess": {
+          "default_module": {
+            "on_create": {
+              "61151cc29fb8e27e35b83f37": {
+                "progress": 100,
+                "status": "success"
+              }
+            }
+          }
+        }
+      },
+      "channels": 3,
+      "exif": {},
+      "height": 181,
+      "thumbnailAnnotationsId": "61151cf78516499eda934ad5",
+      "thumbnailId": "61151cf44b37d51e6fbfa1c3",
+      "width": 156
+    }
+  }
+}
