@@ -1,15 +1,15 @@
 import dtlpy as dl
 
 package_name = 'pdf2jpg'
-project_name = 'My Project'
+project_name = 'COCO ors'
 src_path = 'functions/pdf2jpg'
 input_directory = '/incoming'
 
 project = dl.projects.get(project_name=project_name)
 
-###############
-# push plugin #
-###############
+####################
+# Push the Package #
+####################
 
 modules = [dl.PackageModule(name='pdf2jpg',
                             class_name='ServiceRunner',
@@ -32,7 +32,8 @@ package.print()
 # Create the Service #
 ######################
 service = package.services.deploy(service_name=package.name,
-                                  runtime=dl.KubernetesRuntime(concurrency=32),
+                                  runtime=dl.KubernetesRuntime(concurrency=32,
+                                                               runner_image='gcr.io/viewo-g/piper/agent/cpu/pdf2jpg:1'),
                                   module_name='pdf2jpg')
 
 print('Service deployed successfully!')
@@ -48,3 +49,4 @@ trigger = service.triggers.create(name=package.name,
                                   resource=dl.TriggerResource.ITEM,
                                   actions=dl.TriggerAction.CREATED,
                                   filters=dl.Filters(field='dir', values=input_directory))
+print('Trigger was created successfully!')
