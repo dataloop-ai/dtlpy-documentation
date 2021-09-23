@@ -47,10 +47,10 @@
   sudo apt-get update
   ```   
   
-*  create a venv ,activate it and install dtlpy package
+*  create a virtaul venv ,activate it and install dtlpy package
 
   ```
-   python3 -m virtaul venv env
+   python3 -m venv env
    source env/bin/activate
    pip3 install dtlpy
    deactivate
