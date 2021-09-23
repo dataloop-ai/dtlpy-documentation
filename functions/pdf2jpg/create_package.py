@@ -1,7 +1,7 @@
 import dtlpy as dl
 
 package_name = 'pdf2jpg'
-project_name = 'COCO ors'
+project_name = 'MY Project'
 src_path = 'functions/pdf2jpg'
 input_directory = '/incoming'
 

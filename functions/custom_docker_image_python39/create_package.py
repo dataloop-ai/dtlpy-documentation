@@ -3,7 +3,7 @@ import time
 
 # Set project name and service name
 service_name = 'custom-python'
-project_name = 'COCO ors'
+project_name = 'My Project'
 
 project = dl.projects.get(project_name=project_name)
 
