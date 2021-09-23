@@ -1,12 +1,14 @@
 import dtlpy as dl
 
 package_name = 'json-as-output'
-project_name = 'COCO ors'
+project_name = 'My Project'
 src_path = 'functions/json_output'
+
 project = dl.projects.get(project_name=project_name)
-################
-# push package #
-################
+
+####################
+# Push the Package #
+####################
 module = dl.PackageModule(functions=[dl.PackageFunction(name='item_to_json',
                                                         inputs=dl.FunctionIO(type='Item', name='item'),
                                                         outputs=dl.FunctionIO(type='Json', name='item_id_obj')),
@@ -18,10 +20,8 @@ package = project.packages.push(package_name=package_name,
                                 modules=module,
                                 src_path=src_path)
 
-# package = project.packages.get(package_name=package_name)
-
 ##################
-# create service #
+# Create service #
 ##################
 service = package.services.deploy(service_name=package.name,
                                   runtime=dl.KubernetesRuntime(pod_type=dl.InstanceCatalog.REGULAR_XS))

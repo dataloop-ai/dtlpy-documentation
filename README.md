@@ -1,3 +1,4 @@
+![Alt text](assets/logo.svg)
 # SDK Examples for DTLPY SDK
 
 The following repository will gather Dataloop's SDK examples and best practices.
@@ -27,7 +28,7 @@ The following repository will gather Dataloop's SDK examples and best practices.
 # Resources
 
 * [Dataloop Docs](https://dataloop.ai/docs)
-* [SDK Cheat Sheet](https://dataloop.ai/docs)
+* [SDK Cheat Sheet](https://dataloop.ai/docs/sdk-cheatsheet?highlight=cheat)
 * [DTLPY source code](https://github.com/dataloop-ai/dtlpy)
 * [Platform](https://console.dataloop.ai/)
 

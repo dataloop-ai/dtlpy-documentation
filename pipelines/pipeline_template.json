@@ -1,0 +1,158 @@
+{
+  "name": "for-sdk",
+  "projectId": "project-id",
+  "nodes": [
+    {
+      "id": "3b0ac22a-0c59-430f-994f-036bae84a96f",
+      "inputs": [
+        {
+          "portId": "c2d9fb31-c816-4edb-82fa-bbf2f1bfb335",
+          "type": "Item",
+          "name": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "portId": "bfce5072-973b-4fb6-a20c-2c056a178b05",
+          "type": "Item",
+          "name": "item"
+        }
+      ],
+      "metadata": {
+        "position": {
+          "x": 65.328125,
+          "y": 130.3125,
+          "z": 0
+        }
+      },
+      "name": "automate",
+      "type": "function",
+      "namespace": {
+        "functionName": "automate",
+        "moduleName": "default_module",
+        "serviceName": "pipeline-utils",
+        "packageName": "pipeline-utils",
+        "projectName": "DataloopTasks"
+      },
+      "projectId": "f8a4b8ce-5ff3-4386-84dc-1bda3a5bc92a"
+    },
+    {
+      "id": "d901a9ad-9d83-4f62-be58-99fc9a9b87e4",
+      "inputs": [
+        {
+          "portId": "a9f70c03-cf7b-481f-8f7b-c2eb676e70a0",
+          "type": "Item",
+          "name": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "portId": "d89d811b-29ad-4c60-b193-62adb87b5c08",
+          "type": "Item",
+          "name": "item",
+          "action": "complete"
+        },
+        {
+          "portId": "e7f17dd6-ea19-4fd4-869d-45eb3d4728b1",
+          "type": "Item",
+          "name": "item",
+          "action": "discard"
+        }
+      ],
+      "metadata": {
+        "position": {
+          "x": 445.328125,
+          "y": 130.3125,
+          "z": 0
+        },
+        "name": "My Task",
+        "recipeTitle": "gfv Default Recipe",
+        "recipeId": "60ec733cd23142248824d0f4"
+      },
+      "name": "My Task",
+      "type": "task",
+      "namespace": {
+        "functionName": "move_to_task",
+        "serviceName": "pipeline-utils",
+        "projectName": "DataloopTasks"
+      }
+    },
+    {
+      "id": "977bc75d-441c-4b17-8876-1180b9afefb8",
+      "inputs": [
+        {
+          "portId": "506d53e4-603b-4213-a021-ac9dce71c60d",
+          "type": "Item",
+          "name": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "portId": "b25d2a71-bfd5-4ff6-aba8-74fc3affcbf8",
+          "type": "Item",
+          "name": "item"
+        }
+      ],
+      "config": {
+        "package": {
+          "code": "import dtlpy as dl\n\nclass ServiceRunner:\n\n    def run(self, item):\n        item.metadata['user'] = {'Hello': 'World'}\n        item.update()\n        return item\n"
+        }
+      },
+      "metadata": {
+        "position": {
+          "x": 848.328125,
+          "y": 115.3125,
+          "z": 0
+        },
+        "name": "My Function"
+      },
+      "name": "My Function",
+      "type": "code",
+      "namespace": {
+        "functionName": "run",
+        "projectName": "aaron-test-trigger-updated"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "src": {
+        "nodeId": "3b0ac22a-0c59-430f-994f-036bae84a96f",
+        "portId": "bfce5072-973b-4fb6-a20c-2c056a178b05"
+      },
+      "tgt": {
+        "nodeId": "d901a9ad-9d83-4f62-be58-99fc9a9b87e4",
+        "portId": "a9f70c03-cf7b-481f-8f7b-c2eb676e70a0"
+      },
+      "condition": "{}"
+    },
+    {
+      "src": {
+        "nodeId": "d901a9ad-9d83-4f62-be58-99fc9a9b87e4",
+        "portId": "d89d811b-29ad-4c60-b193-62adb87b5c08"
+      },
+      "tgt": {
+        "nodeId": "977bc75d-441c-4b17-8876-1180b9afefb8",
+        "portId": "506d53e4-603b-4213-a021-ac9dce71c60d"
+      },
+      "condition": "{\"metadata.system.workflowStatus\":\"complete\"}"
+    }
+  ],
+  "startNodes": [
+    {
+      "nodeId": "3b0ac22a-0c59-430f-994f-036bae84a96f",
+      "type": "root",
+      "trigger": {
+        "type": "Event",
+        "spec": {
+          "resource": "Item",
+          "actions": [
+            "Created"
+          ],
+          "executionMode": "Once",
+          "filter": {}
+        }
+      }
+    }
+  ]
+}
