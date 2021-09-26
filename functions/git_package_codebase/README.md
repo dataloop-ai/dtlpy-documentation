@@ -8,7 +8,7 @@ this support in dtlpy>=1.35.13
 
 
 2. create a package and service from the git repository  
-   use the file [create package](functions/git_package_codebase/create_package.py)
+   use the file [create package](create_package.py)
    that build the package and service using push and deploy functions to set your own git repo set it in the
    package.push() in codebase filed  
    git_url: the url that use to clone  
