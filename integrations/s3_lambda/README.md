@@ -78,3 +78,9 @@
 configuration → General configuration → Edit → Timeout
 
 ![set code](https://i.imgur.com/mlqSUCd.png)
+
+* It is recommended to connect the Lambda to a logger in order to track any errors
+
+* to monitor your actions insert to lambda monitor 
+
+![monitor](https://i.imgur.com/1Ce4xKm.png)

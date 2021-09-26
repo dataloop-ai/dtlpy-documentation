@@ -38,6 +38,7 @@ def lambda_handler(event, context):
                 # upload the file
                 size = record['s3']['object']['size']
                 path = 'external://' + key
+                # dataset.items.upload(local_path=path, overwrite=True) # if overwrite is required
                 dataset.items.upload(local_path=path)
 
             except Exception as e:
