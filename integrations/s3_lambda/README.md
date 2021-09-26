@@ -59,7 +59,8 @@
 * replace the numpy and pandas packages with numpy and pandas packages for aws  
 [numpy, pandas for aws lambda](https://github.com/0xpetersatoshi/aws-lambda-py3.6-pandas-numpy)  
   
-* add a file [CODE](lambda_function.py) to the same folder of all the packages   
+* add a file [CODE](lambda_function.py) to the same folder of all the packages     
+  (env/lib/python3.X/site-packages)
 
 * compress all the packages and code in one zip file
 
