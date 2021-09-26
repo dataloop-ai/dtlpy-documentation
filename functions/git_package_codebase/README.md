@@ -3,12 +3,12 @@
 this support in dtlpy>=1.35.13
 
 1. create a public package in github  
-   Simple example for it is [git repo](https://dataloop.ai/docs/sdk-sync-storage?highlight=extrna)  
+   Simple example for it is [git repo](https://github.com/dataloop-ai/package_git_example)  
    main.py - for the running code
 
 
 2. create a package and service from the git repository  
-   use the file [create package](sdk_examples/functions/git_package_codebase/create_package.py)
+   use the file [create package](functions/git_package_codebase/create_package.py)
    that build the package and service using push and deploy functions to set your own git repo set it in the
    package.push() in codebase filed  
    git_url: the url that use to clone  
