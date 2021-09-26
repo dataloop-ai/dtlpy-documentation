@@ -56,8 +56,8 @@
    deactivate
   ``` 
   
-* replace the numpy package with numpy package for aws  
-[numpy for aws lambda](https://github.com/0xpetersatoshi/aws-lambda-py3.6-pandas-numpy)  
+* replace the numpy and pandas packages with numpy and pandas packages for aws  
+[numpy, pandas for aws lambda](https://github.com/0xpetersatoshi/aws-lambda-py3.6-pandas-numpy)  
   
 * add a file [CODE](\sdk_examples\integrations\s3_lambda\lambda_function.py) to the same folder of all the packages   
 
@@ -72,5 +72,8 @@
 * go to lambda 
 
 * code → upload from → Amazon S3 location
+
+* update the timeout of the lambda (default is 3 sec and it not enough) it have to be 15min >= timeout >= 1min  
+configuration → General configuration → Edit → Timeout
 
 ![set code](https://i.imgur.com/mlqSUCd.png)
