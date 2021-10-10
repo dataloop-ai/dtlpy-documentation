@@ -27,7 +27,8 @@ def lambda_handler(event, context):
 
         if 'ObjectRemoved' in record['eventName']:
             try:
-                filter = dl.Filters(field='filename', values=key)
+                key_name = '/' + key
+                filter = dl.Filters(field='filename', values=key_name)
                 dataset.items.delete(filters=filter)
 
             except Exception as e:
@@ -36,7 +37,6 @@ def lambda_handler(event, context):
         elif 'ObjectCreated' in record['eventName']:
             try:
                 # upload the file
-                size = record['s3']['object']['size']
                 path = 'external://' + key
                 # dataset.items.upload(local_path=path, overwrite=True) # if overwrite is required
                 dataset.items.upload(local_path=path)

@@ -9,7 +9,7 @@
 
     * write your function name
 
-    * Runtime choose python
+    * Runtime choose python 3.6
 
     * in Permissions → Change default execution role → Create a new role from AWS policy templates
 
