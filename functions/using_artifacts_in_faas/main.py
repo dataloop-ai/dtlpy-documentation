@@ -13,7 +13,7 @@ class ServiceRunner(dl.BaseServiceRunner):
     """
 
     def __init__(self, weight_path=None):
-        self.package = dl.packages.get(package_name='artifacts-example')
+        self.package = dl.packages.get(package_name='using_artifacts_in_faas-example')
         print('This print is from the init of the service.')
         logger.warning('We can also use logger for different debug levels')
         # this to download the file to the package
