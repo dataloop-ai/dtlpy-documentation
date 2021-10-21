@@ -3,8 +3,8 @@ import os.path
 import dtlpy as dl
 
 project_name = 'project_name'
-package_name = 'using_artifacts_in_faas-example'
-
+package_name = 'artifacts-package'
+dl.setenv('rc')
 module = dl.PackageModule(
     entry_point='main.py',
     class_name='ServiceRunner',
@@ -24,9 +24,9 @@ project = dl.projects.get(project_name=project_name)
 package = project.packages.push(
     package_name=package_name,
     modules=[module],
-    src_path=os.path.join(os.getcwd(), 'using_artifacts_in_faas'))
+    src_path=os.path.join(os.getcwd(), 'functions', 'using_artifacts_in_faas'))
 
-package.artifacts.upload(filepath=os.path.join(os.getcwd(), 'using_artifacts_in_faas', 'external_file.py'),
+package.artifacts.upload(filepath=os.path.join(os.getcwd(), 'functions', 'using_artifacts_in_faas', 'external_file.py'),
                          package=package,
                          package_name=package.name)
 
