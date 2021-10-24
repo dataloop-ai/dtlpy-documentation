@@ -13,15 +13,19 @@ class ServiceRunner(dl.BaseServiceRunner):
 
     def __init__(self, weight_path=None):
         self.package = dl.packages.get(package_name='artifacts-package')
-        print('This print is from the init of the service.')
-        # this to download the file to the package
+
         if weight_path is None:
             weight_path = r'external_file.py'
-        if not os.path.isfile(os.path.join(os.getcwd(), weight_path)):
+        full_weight_path = os.path.join(os.getcwd(), weight_path)
+        # this to download the file from the package
+        if not os.path.isfile(full_weight_path):
+            # here the file still not exist
             print("external_file dose not exist")
+            # here we download it
             self.package.artifacts.download(artifact_name=weight_path,
-                                            local_path=os.path.join(os.getcwd(), weight_path))
-        if os.path.isfile(os.path.join(os.getcwd(), weight_path)):
+                                            local_path=full_weight_path)
+        #  here the file is exist
+        if os.path.isfile(full_weight_path):
             print("external_file is exist")
 
     def run(self, item):
