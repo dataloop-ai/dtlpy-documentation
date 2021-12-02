@@ -16,7 +16,7 @@ region = ''
 
 organization = dl.organizations.get(organization_name=organization_name)
 # Create an secret integrations
-integrations = organization.integrations.create(name=integrations_name, integrations_type='s3',
+integrations = organization.integrations.create(name=integrations_name, integrations_type=dl.ExternalStorage.S3,
                                                 options={'key': aws_key, 'secret': aws_secret_key})
 
 project = dl.projects.get(project_name=project_name)

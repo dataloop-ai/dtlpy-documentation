@@ -8,4 +8,4 @@
 * [Play a video from platform with annotations in the Dataloop python player](play_video_annotation.py)
 * [Annotate a batch of images using a model and upload to platform](annotate_items_using_model.py)  
 * [Detect and track (using model and some tracker) and upload annotation to platform](annotate_video_using_model_and_tracker.py)
-
+* [Upload annotations to a dataset](upload_annotation_to_dataset.py)
