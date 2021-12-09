@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def main():
     """
     Convert annotation types
@@ -45,7 +48,7 @@ def main():
     plt.imshow(builder.show())
     # plot annotation on the image
     plt.figure()
-    plt.imshow(builder.show(image=img))
+    plt.imshow(builder.show(image=np.array(img)))
 
     # upload annotation to platform
-    item.annotations.update(builder)
+    item.annotations.upload(builder)
