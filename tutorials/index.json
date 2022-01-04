@@ -1,0 +1,23 @@
+{
+  "name": "dataloop-tutorials",
+  "title": "Dataloop Tutorials",
+  "description": "All of Dataloop's tutorials!",
+  "content": [
+    {
+      "displayName": "Data Management Tutorial",
+      "description": "Tutorials for data management",
+      "location": "data_management/index.json"
+    },
+    {
+      "displayName": "FaaS Tutorial",
+      "description": "Tutorials for FaaS",
+      "location": "faas/index.json"
+    },
+    {
+      "displayName": "Pipelines and Data Flows",
+      "description": "Tutorials for ",
+      "location": "pipelines/index.json"
+    }
+  ]
+}
+

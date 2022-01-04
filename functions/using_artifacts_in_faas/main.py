@@ -26,7 +26,7 @@ class ServiceRunner(dl.BaseServiceRunner):
                                             local_path=full_weight_path)
         #  here the file is exist
         if os.path.isfile(full_weight_path):
-            print("external_file is exist")
+            print("external_file exists")
 
     def run(self, item):
         """

@@ -14,11 +14,11 @@ The following repository will gather Dataloop's SDK examples and best practices.
 
 ### Pipelines
 
-* [create and install pipeline](pipelines/README.md)
+* [create and install pipeline](examples/pipelines/README.md)
 
 ### Integrations
 
-* [s3 continuous sync](integrations/s3_lambda/README.md)
+* [s3 continuous sync](examples/integrations/s3_lambda/README.md)
 
 ### Model Management
 
