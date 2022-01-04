@@ -24,6 +24,7 @@ The following repository will gather Dataloop's SDK examples and best practices.
 
 * [YOLO v5 adapter](https://github.com/dataloop-ai/yolov5)
 * [YOLOX training and inference notebook](model_management/object_detection/yolox_training.ipynb)
+* [UNet training and inference notebook](model_management/segmentation/training_instance_segmentation_unet.ipynb) 
 
 # Resources
 
