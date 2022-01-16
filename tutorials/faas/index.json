@@ -6,12 +6,12 @@
     {
       "displayName": "Run Your First Function",
       "description": "Create and run your first FaaS in the Dataloop platform",
-      "location": "single_function_rgb_to_gray/chapter.md"
+      "location": "faas/single_function_rgb_to_gray/chapter.md"
     },
     {
       "displayName": "Multiple Function",
       "description": "Create a Package with multiple functions and modules",
-      "location": "multiple_functions/chapter.md"
+      "location": "faas/multiple_functions/chapter.md"
     }
   ]
 }
