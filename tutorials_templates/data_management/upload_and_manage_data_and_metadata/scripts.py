@@ -40,17 +40,17 @@ def section5():
     dataset = dl.datasets.get(dataset_id='id')  # Get dataset
     to_upload = list()
     # First item and info attached:
-    to_upload.append({'local_path': r"E:\TypesExamples\000000000064.jpg",  # item file path
-                      'local_annotations_path': r"E:\TypesExamples\000000000776.json",  # annotations file path
-                      'remote_path': "/first",  # dataset folder to upload the item to
-                      'remote_name': 'f.jpg',  # dataset folder name
-                      'item_metadata': {'user': {'dummy': 'fir'}}})  # added user metadata
+    to_upload.append({'local_path': r"E:\TypesExamples\000000000064.jpg",  # Item file path
+                      'local_annotations_path': r"E:\TypesExamples\000000000776.json",  # Annotations file path
+                      'remote_path': "/first",  # Dataset folder to upload the item to
+                      'remote_name': 'f.jpg',  # Dataset folder name
+                      'item_metadata': {'user': {'dummy': 'fir'}}})  # Added user metadata
     # Second item and info attached:
-    to_upload.append({'local_path': r"E:\TypesExamples\000000000776.jpg",  # item file path
-                      'local_annotations_path': r"E:\TypesExamples\000000000776.json",  # annotations file path
-                      'remote_path': "/second",  # dataset folder to upload the item to
-                      'remote_name': 's.jpg',  # dataset folder name
-                      'item_metadata': {'user': {'dummy': 'sec'}}})  # added user metadata
-    df = pandas.DataFrame(to_upload)  # make data into table
+    to_upload.append({'local_path': r"E:\TypesExamples\000000000776.jpg",  # Item file path
+                      'local_annotations_path': r"E:\TypesExamples\000000000776.json",  # Annotations file path
+                      'remote_path': "/second",  # Dataset folder to upload the item to
+                      'remote_name': 's.jpg',  # Dataset folder name
+                      'item_metadata': {'user': {'dummy': 'sec'}}})  # Added user metadata
+    df = pandas.DataFrame(to_upload)  # Make data into table
     items = dataset.items.upload(local_path=df,
-                                 overwrite=True)  # upload table to platform
+                                 overwrite=True)  # Upload table to platform

@@ -6,16 +6,27 @@
     {
       "displayName": "Connect Cloud Storage",
       "description": "Setup integration with GCS/S3/Azure ",
-      "location": "cloud_storage_integrations/cloud_storage_integrations.md"
+      "location": "connect_cloud_storage/chapter.md"
+    },
+    {
+      "displayName": "Manage Datasets",
+      "description": "Create and manage Datasets and connect them with your cloud storage",
+      "location": "manage_datasets/chapter.md"
     },
     {
       "displayName": "Data Versioning",
       "description": "How to manage versions",
-      "location": "data_versioning/data_versioning.md"
+      "location": "data_versioning/chapter.md"
     },
     {
-      "displayName": "",
-      "location": "faas/version.md"
+      "displayName": "Upload and Manage Data and Metadata",
+      "description": "Upload data items and metadata",
+      "location": "upload_and_manage_data_and_metadata/chapter.md"
+    },
+    {
+      "displayName": "Upload and Manage Annotations",
+      "description": "Upload annotations into data items",
+      "location": "upload_and_manage_annotations/chapter.md"
     }
   ]
 }

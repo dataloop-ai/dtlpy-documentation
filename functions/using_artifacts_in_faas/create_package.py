@@ -4,7 +4,7 @@ import dtlpy as dl
 
 project_name = 'project_name'
 package_name = 'artifacts-package'
-
+dl.setenv('rc')
 module = dl.PackageModule(
     entry_point='main.py',
     class_name='ServiceRunner',
