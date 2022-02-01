@@ -1,0 +1,5 @@
+dtlpy
+jupyter
+jupyter_contrib_nbextensions
+google-cloud-storage
+google-cloud-core

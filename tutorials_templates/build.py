@@ -86,6 +86,7 @@ def build_notebook(skeleton_filepath):
 
     notebook_filepath = os.path.dirname(skeleton_filepath).replace(TEMPLATES_PATH, TUTORIALS_PATH)
     notebook_filepath = os.path.join(notebook_filepath, 'chapter.ipynb')
+    os.makedirs(os.path.dirname(notebook_filepath), exist_ok=True)
     with open(notebook_filepath, 'w') as f:
         json.dump(NOTEBOOK_TEMPLATE, f)
 
@@ -120,7 +121,7 @@ def build_md_file(skeleton_filepath):
             func_string, _ = inspect.getsourcelines(func)
             lines.append('```\n')
             # ignore 0 def line and the """
-            for line in func_string[1:-1]:
+            for line in func_string[1:]:
                 lines.append(line[4:])  # remove spaces at the beginning
             lines.append('```\n')
         else:
@@ -128,6 +129,7 @@ def build_md_file(skeleton_filepath):
 
     md_filepath = os.path.dirname(skeleton_filepath).replace(TEMPLATES_PATH, TUTORIALS_PATH)
     md_filepath = os.path.join(md_filepath, 'chapter.md')
+    os.makedirs(os.path.dirname(md_filepath), exist_ok=True)
     with open(md_filepath, 'w') as f:
         f.writelines(lines)
 
@@ -136,7 +138,13 @@ def main():
     for path, subdirs, files in os.walk(TEMPLATES_PATH):
         for filename in files:
             if filename == 'skeleton.json':
-                # skeleton_filepath = r"E:\Shabtay\github\sdk_examples\tutorials\faas\single_function_rgb_to_gray\skeleton.json"
+                print('Preparing {!r} ...'.format(path))
+                # skeleton_filepath = "tutorials_templates/faas/multiple_functions/skeleton.json"
                 skeleton_filepath = os.path.join(path, filename)
                 build_notebook(skeleton_filepath=skeleton_filepath)
                 build_md_file(skeleton_filepath=skeleton_filepath)
+                print('Done!')
+
+
+if __name__ == "__main__":
+    main()

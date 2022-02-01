@@ -6,17 +6,18 @@ utilize that with Dataloop, and not upload the binaries and create duplicates.
 
 ## Cloud Storage Integration
 
-Access & Permissions Creating an integration with GCS/S2/Azure cloud requires adding a key/secret with the following
+Access & Permissions - Creating an integration with GCS/S2/Azure cloud requires adding a key/secret with the following
 permissions:
 
-List (Mandatory) - allowing Dataloop to list all of the items in the storage. Get (Mandatory) - get the items and
-perform pre-process functionalities like thumbnails, item info etc. Put / Write (Mandatory) - lets you upload your items
-directly to the external storage from the Dataloop platform. Delete - lets you delete your items directly from the
-external storage using the Dataloop platform.
+List (Mandatory) - allowing Dataloop to list all of the items in the storage.
+Get (Mandatory) - get the items and perform pre-process functionalities like thumbnails, item info etc.
+Put / Write (Mandatory) - lets you upload your items
+directly to the external storage from the Dataloop platform.
+Delete - lets you delete your items directly from the external storage using the Dataloop platform.
 
 ## Create Integration With GCS
 
-### Creating an integration GCS requires having JSON file with GCS configuration
+### Creating an integration GCS requires having JSON file with GCS configuration.
 ```
 import dtlpy as dl
 if dl.token_expired():
@@ -29,6 +30,7 @@ organization.integrations.create(name='gcsintegration',
                                  integrations_type=dl.ExternalStorage.GCS,
                                  options={'key': '',
                                           'secret': '',
+                                          'content': gcs_to_string})
 ```
 ### Create Integration With S3
 ```
@@ -37,6 +39,7 @@ if dl.token_expired():
     dl.login()
 organization = dl.organizations.get(organization_name='my-org')
 organization.integrations.create(name='S3integration', integrations_type=dl.ExternalStorage.S3,
+                                 options={'key': "my_key", 'secret': "my_secret"})
 ```
 ### Create Integration With Azure
 ```
@@ -49,6 +52,7 @@ organization.integrations.create(name='azureintegration',
                                  options={'key': 'my_key',
                                           'secret': 'my_secret',
                                           'clientId': 'my_clientId',
+                                          'tenantId': 'my_tenantId'})
 ```
 ## Storage Driver
 
@@ -65,10 +69,11 @@ path/folder) as a storage resource.
 # param allow_external_delete:
 # param region: relevant only for s3 - the bucket region
 # param storage_class: relevant only for s3
-# param path: Optional. By default path is the root folder. Path is case sensitive
+# param path: Optional. By default, path is the root folder. Path is case sensitive.
 # return: driver object
 import dtlpy as dl
 driver = dl.drivers.create(name='driver_name', driver_type=dl.ExternalStorage.S3, integration_id='integration_id',
                            bucket_name='bucket_name', project_id='project_id',
                            allow_external_delete=True,
+                           region='eu-west-1', storage_class="", path="")
 ```

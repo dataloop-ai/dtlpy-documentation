@@ -8,17 +8,18 @@ def section1():
 
     ## Cloud Storage Integration
 
-    Access & Permissions Creating an integration with GCS/S2/Azure cloud requires adding a key/secret with the following
+    Access & Permissions - Creating an integration with GCS/S2/Azure cloud requires adding a key/secret with the following
     permissions:
 
-    List (Mandatory) - allowing Dataloop to list all of the items in the storage. Get (Mandatory) - get the items and
-    perform pre-process functionalities like thumbnails, item info etc. Put / Write (Mandatory) - lets you upload your items
-    directly to the external storage from the Dataloop platform. Delete - lets you delete your items directly from the
-    external storage using the Dataloop platform.
+    List (Mandatory) - allowing Dataloop to list all of the items in the storage. 
+    Get (Mandatory) - get the items and perform pre-process functionalities like thumbnails, item info etc. 
+    Put / Write (Mandatory) - lets you upload your items
+    directly to the external storage from the Dataloop platform. 
+    Delete - lets you delete your items directly from the external storage using the Dataloop platform.
 
     ## Create Integration With GCS
 
-    ### Creating an integration GCS requires having JSON file with GCS configuration
+    ### Creating an integration GCS requires having JSON file with GCS configuration.
     """
 
 

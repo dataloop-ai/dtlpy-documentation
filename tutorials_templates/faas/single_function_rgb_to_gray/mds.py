@@ -1,30 +1,34 @@
 def func1():
     """
-    # Create and Deploy a Sample Function
-    Below is an image-manipulation function in Python that runs a Greyscale method over an item (image). The function receives an item, which later can be used as a trigger:
+    Create and Deploy a Sample Function
+    Below is an image-manipulation function in Python to use for converting an RGB image to a grayscale image. The function receives a single item, which later can be used as a trigger to invoke the function:
     """
 
 
 def func2():
     """
-    Deploy the function using Dataloop SDK:
+    You can now deploy the function as a service using Dataloop SDK. Once the service is ready, one may execute the available function on any input:
     """
 
 
 def func3():
     """
-    ## Execute the function
-    Now when the service is up, we can either execute it manually (on-demand) or have it executed automatically, when a trigger we set (time/criteria) is met.
+    Execute the function
+    An execution is a run of the function on a service with specific inputs (arguments). The execution input will be provided to the function that the execution runs.
 
-    We will now execute the function manually, to transform a given picture into greyscales.
+    Now when the service is up, it can be executed manually (on demand) or automatically, based on a set trigger (time/criteria). As part of this chapter, we will demonstrate how to manually run the Grayscale function.
+
     Click here to see the picture before the transformation:
+     Button
 
-    Let’s execute the function and watch the results (view the pic & navigate to the dataset?):
+    Let’s execute the function and watch the results (display the image):
+
     """
 
 
 def func4():
     """
-    The transformed picture will be saved in your dataset (?)
-    Please note that when invoking the function to run it over items from your dataset, you should pass the ID of the resource (in this case image).
+    The transformed image will be saved in your dataset (?).
+    Please note that when invoking the function to run over items from your dataset, you should pass the ID of the resource (itemID).
     """
+

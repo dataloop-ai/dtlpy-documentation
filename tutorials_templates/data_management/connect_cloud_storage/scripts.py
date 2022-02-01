@@ -44,7 +44,7 @@ def section4():
     # param allow_external_delete:
     # param region: relevant only for s3 - the bucket region
     # param storage_class: relevant only for s3
-    # param path: Optional. By default path is the root folder. Path is case sensitive
+    # param path: Optional. By default, path is the root folder. Path is case sensitive.
     # return: driver object
     import dtlpy as dl
     driver = dl.drivers.create(name='driver_name', driver_type=dl.ExternalStorage.S3, integration_id='integration_id',
