@@ -1,24 +1,24 @@
-# Connect Cloud Storage
-
-
-If you already have your data managed and organized on a cloud storage service, such as GCS/S3/Azure, you may want to
-utilize that with Dataloop, and not upload the binaries and create duplicates.
-
-## Cloud Storage Integration
-
-Access & Permissions - Creating an integration with GCS/S2/Azure cloud requires adding a key/secret with the following
-permissions:
-
-List (Mandatory) - allowing Dataloop to list all of the items in the storage.
-Get (Mandatory) - get the items and perform pre-process functionalities like thumbnails, item info etc.
-Put / Write (Mandatory) - lets you upload your items
-directly to the external storage from the Dataloop platform.
-Delete - lets you delete your items directly from the external storage using the Dataloop platform.
-
-## Create Integration With GCS
-
-### Creating an integration GCS requires having JSON file with GCS configuration.
-```
+# Connect Cloud Storage  
+  
+  
+If you already have your data managed and organized on a cloud storage service, such as GCS/S3/Azure, you may want to  
+utilize that with Dataloop, and not upload the binaries and create duplicates.  
+  
+## Cloud Storage Integration  
+  
+Access & Permissions - Creating an integration with GCS/S2/Azure cloud requires adding a key/secret with the following  
+permissions:  
+  
+List (Mandatory) - allowing Dataloop to list all of the items in the storage.  
+Get (Mandatory) - get the items and perform pre-process functionalities like thumbnails, item info etc.  
+Put / Write (Mandatory) - lets you upload your items  
+directly to the external storage from the Dataloop platform.  
+Delete - lets you delete your items directly from the external storage using the Dataloop platform.  
+  
+## Create Integration With GCS  
+  
+### Creating an integration GCS requires having JSON file with GCS configuration.  
+```python
 import dtlpy as dl
 if dl.token_expired():
     dl.login()
@@ -32,8 +32,8 @@ organization.integrations.create(name='gcsintegration',
                                           'secret': '',
                                           'content': gcs_to_string})
 ```
-### Create Integration With S3
-```
+### Create Integration With S3  
+```python
 import dtlpy as dl
 if dl.token_expired():
     dl.login()
@@ -41,8 +41,8 @@ organization = dl.organizations.get(organization_name='my-org')
 organization.integrations.create(name='S3integration', integrations_type=dl.ExternalStorage.S3,
                                  options={'key': "my_key", 'secret': "my_secret"})
 ```
-### Create Integration With Azure
-```
+### Create Integration With Azure  
+```python
 import dtlpy as dl
 if dl.token_expired():
     dl.login()
@@ -54,13 +54,13 @@ organization.integrations.create(name='azureintegration',
                                           'clientId': 'my_clientId',
                                           'tenantId': 'my_tenantId'})
 ```
-## Storage Driver
-
-Once you have an integration, you can set up a driver, which adds a specific bucket (and optionally with a specific
-path/folder) as a storage resource.
-
-## Create Drivers in the Platform (browser)
-```
+## Storage Driver  
+  
+Once you have an integration, you can set up a driver, which adds a specific bucket (and optionally with a specific  
+path/folder) as a storage resource.  
+  
+## Create Drivers in the Platform (browser)  
+```python
 # param name: the driver name
 # param driver_type: ExternalStorage.S3, ExternalStorage.GCS , ExternalStorage.AZUREBLOB
 # param integration_id: the integration id

@@ -4,6 +4,7 @@ Feature: Download annotations one by one example
         Given Platform Interface is initialized as dlp and Environment is set according to git branch
         And There is a project by the name of "my-project"
 
+    @testrail-C4525172
     @tests_assets.delete
     Scenario: Run "download one by one"
         When I prepared download one by one example

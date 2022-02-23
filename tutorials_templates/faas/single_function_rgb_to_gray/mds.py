@@ -1,34 +1,35 @@
 def func1():
     """
-    Create and Deploy a Sample Function
+    # Basic Use Case: Single Function
+    ## Create and Deploy a Sample Function
     Below is an image-manipulation function in Python to use for converting an RGB image to a grayscale image. The function receives a single item, which later can be used as a trigger to invoke the function:
     """
 
 
 def func2():
     """
-    You can now deploy the function as a service using Dataloop SDK. Once the service is ready, one may execute the available function on any input:
+    You can now deploy the function as a service using Dataloop SDK. Once the service is ready, you may execute the available function on any input:
     """
 
 
 def func3():
     """
-    Execute the function
-    An execution is a run of the function on a service with specific inputs (arguments). The execution input will be provided to the function that the execution runs.
+    ## Execute the function
+    An execution means running the function on a service with specific inputs (arguments). The execution input will be provided to the function that the execution runs.
 
-    Now when the service is up, it can be executed manually (on demand) or automatically, based on a set trigger (time/criteria). As part of this chapter, we will demonstrate how to manually run the Grayscale function.
+    Now that the service is up, it can be executed manually (on-demand) or automatically, based on a set trigger (time/event). As part of this tutorial, we will demonstrate how to manually run the “RGB to Gray” function. 
 
-    Click here to see the picture before the transformation:
-     Button
-
-    Let’s execute the function and watch the results (display the image):
-
+    To see the item we uploaded, run the following code:
     """
 
 
 def func4():
     """
-    The transformed image will be saved in your dataset (?).
-    Please note that when invoking the function to run over items from your dataset, you should pass the ID of the resource (itemID).
+    Let’s convert the item from RGB to grayscale, using the service we created:
     """
 
+def func5():
+    """
+    The transformed image will be saved in your dataset in the folder specified. 
+	You may now open the item received upon execution:
+    """

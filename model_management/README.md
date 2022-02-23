@@ -17,7 +17,7 @@ project
 │   │   └─── items
 │   │   └─── json
 │
-└─── classificartion
+└─── classification
 │   │   inception_keras_training.ipynb
 │   │   resnet50_training.ipynb
 │

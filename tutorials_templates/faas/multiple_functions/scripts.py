@@ -1,7 +1,22 @@
 def func1():
     import dtlpy as dl
-    import cv2
+    if dl.token_expired():
+        dl.login()
 
+
+def func2():
+    project = dl.projects.create(project_name='project-sdk-tutorial')
+    project.datasets.create(dataset_name='dataset-sdk-tutorial')
+
+
+def func3():
+    project = dl.projects.get(project_name='project-sdk-tutorial')
+    dataset = project.datasets.get(dataset_name='dataset-sdk-tutorial')
+
+
+def func4():
+    import dtlpy as dl
+    import cv2
     import numpy as np
 
     class ImageProcess(dl.BaseServiceRunner):
@@ -51,14 +66,12 @@ def func1():
             item.update(system_metadata=True)
 
 
-def func2():
-    import dtlpy as dl
-
+def func5():
     modules = [dl.PackageModule(name='image-processing-module',
                                 entry_point='main.py',
                                 class_name='ImageProcess',
                                 functions=[dl.PackageFunction(name='rgb2gray',
-                                                              description='Converting RGN to gray',
+                                                              description='Converting RGB to gray',
                                                               inputs=[dl.FunctionIO(type=dl.PackageInputType.ITEM,
                                                                                     name='item')]),
                                            dl.PackageFunction(name='clahe_equalization',
@@ -68,8 +81,7 @@ def func2():
                                            ])]
 
 
-def func3():
-    project_name = 'MyProject'
+def func6():
     src_path = 'functions/opencv_functions'
     project = dl.projects.get(project_name=project_name)
     package = project.packages.push(package_name='image-processing',
@@ -77,48 +89,46 @@ def func3():
                                     src_path=src_path)
 
 
-def func4():
+def func7():
     service = package.services.deploy(service_name='image-processing',
                                       runtime=dl.KubernetesRuntime(concurrency=32),
                                       module_name='image-processing-module')
 
 
-def func5():
-    trigger = service.triggers.create(name='image-processing',
+def func8():
+    filters = dl.Filters()
+    filters.add(field='datasetId', values=dataset.id)
+
+    trigger = service.triggers.create(name='image-processing2',
+                                      function_name='clahe_equalization',
                                       execution_mode=dl.TriggerExecutionMode.ONCE,
                                       resource=dl.TriggerResource.ITEM,
                                       actions=dl.TriggerAction.CREATED,
-                                      filters=dl.Filters(field='dir', values='/incoming'))
+                                      filters=filters)
 
 
-def func6():
-    execution = service.execute(execution_input=[dl.FunctionIO(type=dl.PackageInputType.ITEM,
-                                                               name='item',
-                                                               value='<item_id>')])
-    execution = execution.wait()
-    print(execution.status)
+def func9():
+    trigger = service.triggers.create(name='image-processing-rgb',
+                                      function_name='rgb2gray',
+                                      execution_mode=dl.TriggerExecutionMode.ALWAYS,
+                                      resource=dl.TriggerResource.ITEM,
+                                      actions=dl.TriggerAction.UPDATED,
+                                      filters=filters)
 
 
-def func7():
-    execution.logs()
+def func10():
+    item = dataset.items.upload(
+        local_path=['https://raw.githubusercontent.com/dataloop-ai/tiny_coco/master/images/train2017/000000463730.jpg'])
+    # Remote path is optional, images will go to the main directory by default
 
 
-def func8():
-    slots = [
-        dl.PackageSlot(
-            module_name='image-processing',
-            function_name='rgb2gray',
-            display_name='RGB2GRAY',
-            post_action=dl.SlotPostAction(type=dl.SlotPostActionType.NO_ACTION),
-            display_scopes=[
-                dl.SlotDisplayScope(
-                    resource=dl.SlotDisplayScopeResource.ITEM,
-                    filters={}
-                )
-            ]
-        ),
-    ]
-    package.slots = slots
-    package.update()
-    service.package_revision = package.version
-    service.update()
+def func11():
+    service.log()
+
+
+def func12():
+    item.open_in_web()
+
+
+def func13():
+    service.pause()

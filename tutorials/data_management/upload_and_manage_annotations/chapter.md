@@ -1,16 +1,16 @@
-
-# Upload & Manage Annotations
-
-```
+  
+# Upload & Manage Annotations  
+  
+```python
 item = dl.items.get(item_id="")
 annotation = item.annotations.get(annotation_id="")
 annotation.metadata["user"] = True
 annotation.update()
 ```
-
-## Convert Annotations To COCO Format
-
-```
+  
+## Convert Annotations To COCO Format  
+  
+```python
 import dtlpy as dl
 dataset = project.datasets.get(dataset_name='dataset_name')
 converter = dl.Converter()
@@ -21,10 +21,10 @@ converter.upload_local_dataset(
     local_annotations_path=r'C:/path/to/annotations/file/coco.json'
 )
 ```
-
-## Upload Entire Directory and their Corresponding  Dataloop JSON Annotations
-
-```
+  
+## Upload Entire Directory and their Corresponding  Dataloop JSON Annotations  
+  
+```python
 import dtlpy as dl
 if dl.token_expired():
     dl.login()
@@ -38,14 +38,14 @@ local_annotations_path = r'C:/home/project/annotations_folder'
 dataset.items.upload(local_path=local_items_path,
                         local_annotations_path=local_annotations_path)
 ```
-
-## Upload Annotations To Video Item
-Uploading annotations to video items needs to consider spanning between frames, and toggling visibility (occlusion). In this example, we will use the following CSV file.
-In this file there is a single 'person' box annotation that begins on frame number 20, disappears on frame number 41, reappears on frame number 51 and ends on frame number 90.
-
-[Video_annotations_example.CSV](https://cdn.document360.io/53f32fe9-1937-4652-8526-90c1bc78d3f8/Images/Documentation/video_annotation_example.csv)
-
-```
+  
+## Upload Annotations To Video Item  
+Uploading annotations to video items needs to consider spanning between frames, and toggling visibility (occlusion). In this example, we will use the following CSV file.  
+In this file there is a single 'person' box annotation that begins on frame number 20, disappears on frame number 41, reappears on frame number 51 and ends on frame number 90.  
+  
+[Video_annotations_example.CSV](https://cdn.document360.io/53f32fe9-1937-4652-8526-90c1bc78d3f8/Images/Documentation/video_annotation_example.csv)  
+  
+```python
 import dtlpy as dl
 import pandas as pd
 project = dl.projects.get(project_name='my_project')
@@ -69,35 +69,35 @@ for i_row, row in df.iterrows():
 # Upload all created annotations
 item.annotations.upload(annotations=builder)
 ```
-
-# Show Annotations Over Image
-After uploading items and annotations with their metadata, you might want to see some of them and perform visual validation.
-
-To see only the annotations, use the annotation type *show* option.
-
-```
+  
+# Show Annotations Over Image  
+After uploading items and annotations with their metadata, you might want to see some of them and perform visual validation.  
+  
+To see only the annotations, use the annotation type *show* option.  
+  
+```python
 # Use the show function for all annotation types
 box = dl.Box()
 # Must provide all inputs
 box.show(image='', thickness='', with_text='', height='', width='', annotation_format='', color='')
 ```
-
-To see the item itself with all annotations, use the Annotations option.
-
-```
+  
+To see the item itself with all annotations, use the Annotations option.  
+  
+```python
 # Must input an image or height and width
 annotation.show(image='', height='', width='', annotation_format='dl.ViewAnnotationOptions.*', thickness='', with_text='')
 ```
-
-# Download Data, Annotations & Metadata
-The item ID for a specific file can be found in the platform UI - Click BROWSE for a dataset, click on the selected file, and the file information will be displayed in the right-side panel. The item ID is detailed, and can be copied in a single click.
-
-## Download Items and Annotations
-Download dataset items and annotations to your computer folder in two separate folders.
-See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotation-options).
-
-
-```
+  
+# Download Data, Annotations & Metadata  
+The item ID for a specific file can be found in the platform UI - Click BROWSE for a dataset, click on the selected file, and the file information will be displayed in the right-side panel. The item ID is detailed, and can be copied in a single click.  
+  
+## Download Items and Annotations  
+Download dataset items and annotations to your computer folder in two separate folders.  
+See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotation-options).  
+  
+  
+```python
 import dtlpy as dl
 if dl.token_expired():
     dl.login()
@@ -106,12 +106,12 @@ dataset = project.datasets.get(dataset_name='dataset_name')
 dataset.download(local_path=r'C:/home/project/images', # The default value is ".dataloop" folder
                 annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON) 
 ```
-
-## Multiple Annotation Options
-See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotation-options).
-
-
-```
+  
+## Multiple Annotation Options  
+See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotation-options).  
+  
+  
+```python
 import dtlpy as dl
 if dl.token_expired():
     dl.login()
@@ -120,16 +120,16 @@ dataset = project.datasets.get(dataset_name='dataset_name')
 dataset.download(local_path=r'C:/home/project/images', # The default value is ".dataloop" folder
                 annotation_options=[dl.VIEW_ANNOTATION_OPTIONS_MASK, dl.VIEW_ANNOTATION_OPTIONS_JSON, dl.ViewAnnotationOptions.INSTANCE])
 ```
-
-## Filter by Item and/or Annotation
-* **Items filter** - download filtered items based on multiple parameters, like their directory.
-You can also download items based on different filters. Learn all about item filters [here](https://dataloop.ai/docs/sdk-sort-filter).
-* **Annotation filter** - download filtered annotations based on multiple parameters like their label.
-You can also download items annotations based on different filters, learn all about annotation filters [here](https://dataloop.ai/docs/sdk-sort-filter-annotation).
-This example will download items and JSONS from a dog folder of the label 'dog'.
-
-
-```
+  
+## Filter by Item and/or Annotation  
+* **Items filter** - download filtered items based on multiple parameters, like their directory.  
+You can also download items based on different filters. Learn all about item filters [here](https://dataloop.ai/docs/sdk-sort-filter).  
+* **Annotation filter** - download filtered annotations based on multiple parameters like their label.  
+You can also download items annotations based on different filters, learn all about annotation filters [here](https://dataloop.ai/docs/sdk-sort-filter-annotation).  
+This example will download items and JSONS from a dog folder of the label 'dog'.  
+  
+  
+```python
 import dtlpy as dl
 if dl.token_expired():
     dl.login()
@@ -145,12 +145,12 @@ dataset.download( # The default value is ".dataloop" folder
                 annotation_filters=annotation_filters,
                 annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 ```
-
-## Filter by Annotations
-* **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://dataloop.ai/docs/sdk-sort-filter-annotation).
-
-
-```
+  
+## Filter by Annotations  
+* **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://dataloop.ai/docs/sdk-sort-filter-annotation).  
+  
+  
+```python
 import dtlpy as dl
 if dl.token_expired():
     dl.login()
@@ -164,16 +164,16 @@ item.download( # the default value is ".dataloop" folder
                 annotation_filters=annotation_filters,
                 annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 ```
-
-## Download Annotations in COCO Format
-
-* **Items filter** - download filtered items based on multiple parameters like their directory. You can also download items based on different filters, learn all about item filters [here](https://dataloop.ai/docs/sdk-sort-filter).
-* **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://dataloop.ai/docs/sdk-sort-filter-annotation).
-
-This example will download COCO from a dog items folder of the label 'dog'.
-
-
-```
+  
+## Download Annotations in COCO Format  
+  
+* **Items filter** - download filtered items based on multiple parameters like their directory. You can also download items based on different filters, learn all about item filters [here](https://dataloop.ai/docs/sdk-sort-filter).  
+* **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://dataloop.ai/docs/sdk-sort-filter-annotation).  
+  
+This example will download COCO from a dog items folder of the label 'dog'.  
+  
+  
+```python
 import dtlpy as dl
 if dl.token_expired():
     dl.login()

@@ -44,6 +44,21 @@ CODE_CELL_TEMPLATE = {
 }
 
 
+def _build_md_block(func_string):
+    # ignore 0 def line and the """
+    source = list()
+    for line in func_string[2:-1]:
+        source.append(line.strip() + '  \n')  # remove spaces at the beginning
+    #
+    # # remove the "def" line
+    # func_string = func_string[1:]
+    # source = list()
+    # for line in func_string:
+    #     source.append(line)  # remove
+    # source = source[1:-1]  # remove first and last line (triple quotes)
+    return source
+
+
 def build_notebook(skeleton_filepath):
     mds_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'mds.py')
     scripts_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'scripts.py')
@@ -56,7 +71,7 @@ def build_notebook(skeleton_filepath):
     scripts_module = importlib.util.module_from_spec(scripts_spec)
     scripts_spec.loader.exec_module(scripts_module)
 
-    with open(skeleton_filepath) as f:
+    with open(skeleton_filepath, 'r') as f:
         skeleton = json.load(f)
 
     cells = list()
@@ -66,10 +81,10 @@ def build_notebook(skeleton_filepath):
             func_name = cell_def['name']
             func = getattr(mds_module, func_name)
             func_string, _ = inspect.getsourcelines(func)
-            # remove the "def" line
-            func_string = func_string[1:]
-            source = [l[4:] for l in func_string]
-            cell['source'] = source[1:-1]  # remove trtiple
+            source = _build_md_block(func_string)
+            # source = source# adding double space for new line
+            cell['source'] = source
+
         elif cell_def['type'] == 'code':
             cell = CODE_CELL_TEMPLATE.copy()
             func_name = cell_def['name']
@@ -87,7 +102,7 @@ def build_notebook(skeleton_filepath):
     notebook_filepath = os.path.dirname(skeleton_filepath).replace(TEMPLATES_PATH, TUTORIALS_PATH)
     notebook_filepath = os.path.join(notebook_filepath, 'chapter.ipynb')
     os.makedirs(os.path.dirname(notebook_filepath), exist_ok=True)
-    with open(notebook_filepath, 'w') as f:
+    with open(notebook_filepath, 'w', encoding='UTF-8') as f:
         json.dump(NOTEBOOK_TEMPLATE, f)
 
 
@@ -103,7 +118,7 @@ def build_md_file(skeleton_filepath):
     scripts_module = importlib.util.module_from_spec(scripts_spec)
     scripts_spec.loader.exec_module(scripts_module)
 
-    with open(skeleton_filepath) as f:
+    with open(skeleton_filepath, 'r') as f:
         skeleton = json.load(f)
 
     lines = list()
@@ -112,14 +127,12 @@ def build_md_file(skeleton_filepath):
             func_name = cell_def['name']
             func = getattr(mds_module, func_name)
             func_string, _ = inspect.getsourcelines(func)
-            # ignore 0 def line and the """
-            for line in func_string[2:-1]:
-                lines.append(line.strip() + '\n')  # remove spaces at the beginning
+            lines.extend(_build_md_block(func_string))
         elif cell_def['type'] == 'code':
             func_name = cell_def['name']
             func = getattr(scripts_module, func_name)
             func_string, _ = inspect.getsourcelines(func)
-            lines.append('```\n')
+            lines.append('```python\n')
             # ignore 0 def line and the """
             for line in func_string[1:]:
                 lines.append(line[4:])  # remove spaces at the beginning
@@ -130,7 +143,7 @@ def build_md_file(skeleton_filepath):
     md_filepath = os.path.dirname(skeleton_filepath).replace(TEMPLATES_PATH, TUTORIALS_PATH)
     md_filepath = os.path.join(md_filepath, 'chapter.md')
     os.makedirs(os.path.dirname(md_filepath), exist_ok=True)
-    with open(md_filepath, 'w') as f:
+    with open(md_filepath, 'w', encoding='UTF-8') as f:
         f.writelines(lines)
 
 
