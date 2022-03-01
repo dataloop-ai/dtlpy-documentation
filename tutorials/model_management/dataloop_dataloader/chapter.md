@@ -4,12 +4,12 @@ A dl.Dataset image and annotation generator for training and for items visualiza
 We can visualize the data with augmentation for debug and exploration.  
 After that, we will use the Data Generator as an input to the training functions  
 ```python
-from dtlpy.ml.dataset_generators.torch_dataset_generator import DataGenerator
+from dtlpy.utilities import DatasetGenerator
 import dtlpy as dl
 dataset = dl.datasets.get(dataset_id='611b86e647fe2f865323007a')
-dataloader = DataGenerator(data_path='train',
-                           dataset_entity=dataset,
-                           annotation_type=dl.AnnotationType.BOX)
+dataloader = DatasetGenerator(data_path='train',
+                              dataset_entity=dataset,
+                              annotation_type=dl.AnnotationType.BOX)
 ```
 ## Object Detection Examples  
 We can visualize a random item from the dataset:  
@@ -38,10 +38,10 @@ tfs = [
     np.copy,
     # transforms.ToTensor()
 ]
-dataloader = DataGenerator(data_path='train',
-                           dataset_entity=dataset,
-                           annotation_type=dl.AnnotationType.BOX,
-                           transforms=tfs)
+dataloader = DatasetGenerator(data_path='train',
+                              dataset_entity=dataset,
+                              annotation_type=dl.AnnotationType.BOX,
+                              transforms=tfs)
 dataloader.visualize()
 dataloader.visualize(10)
 ```
@@ -72,11 +72,12 @@ We'll add the flag to return the origin items to understand better how the augme
 Let's set the flag and we can plot:  
 ```python
 import matplotlib.pyplot as plt
-dataloader = DataGenerator(data_path='train',
-                           dataset_entity=dataset,
-                           annotation_type=dl.AnnotationType.BOX,
-                           return_originals=True,
-                           transforms=tfs)
+dataloader = DatasetGenerator(data_path='train',
+                              dataset_entity=dataset,
+                              annotation_type=dl.AnnotationType.BOX,
+                              return_originals=True,
+                              shuffle=False,
+                              transforms=tfs)
 fig, ax = plt.subplots(2, 2)
 for i in range(2):
     item_element = dataloader[np.random.randint(len(dataloader))]
@@ -90,11 +91,11 @@ First we'll load a semantic dataset and view some images and the output structur
   
 ```python
 dataset = dl.datasets.get(dataset_id='6197985a104eb81cb728e4ac')
-dataloader = DataGenerator(data_path='semantic',
-                           dataset_entity=dataset,
-                           transforms=tfs,
-                           return_originals=True,
-                           annotation_type=dl.AnnotationType.SEGMENTATION)
+dataloader = DatasetGenerator(data_path='semantic',
+                              dataset_entity=dataset,
+                              transforms=tfs,
+                              return_originals=True,
+                              annotation_type=dl.AnnotationType.SEGMENTATION)
 for i in range(5):
     dataloader.visualize()
 ```
@@ -112,19 +113,19 @@ for i in range(2):
     ax[i, 3].imshow(item_element['annotations'])
     ax[i, 3].set_title('Augmented Annotations')
 ```
-Converting to 3d one-hot to visualize the binary mask per label:  
+Converting to 3d one-hot to visualize the binary mask per label. We will plot only 8 label (there might be more on the item):  
 ```python
 item_element = dataloader[np.random.randint(len(dataloader))]
-unique_labels = np.unique(item_element['annotations'])
-one_hot_annotations = np.arange(annotations.max()) == annotations[..., None]
-print('unique labels in the item: {}'.format(unique_labels))
-count = 0
-fig, ax = plt.subplots(2, 4, figsize=(18, 28))
-for x in range(4):
-    for y in range(2):
-        label_ind = unique_labels[count]
-        label = dataloader.id_to_label_map[label_ind]
-        ax[y, x].imshow(one_hot_annotations[:, :, label_ind])
-        ax[y, x].set_title(label)
-        count += 1
+annotations = item_element['annotations']
+unique_labels = np.unique(annotations)
+one_hot_annotations = np.arange(len(dataloader.id_to_label_map)) == annotations[..., None]
+print('unique label indices in the item: {}'.format(unique_labels))
+print('unique labels in the item: {}'.format([dataloader.id_to_label_map[i] for i in unique_labels]))
+plt.figure()
+plt.imshow(item_element['image'])
+fig = plt.figure()
+for i_label_ind, label_ind in enumerate(unique_labels[:8]):
+    ax = fig.add_subplot(2, 4, i_label_ind + 1)
+    ax.imshow(one_hot_annotations[:, :, label_ind])
+    ax.set_title(dataloader.id_to_label_map[label_ind])
 ```

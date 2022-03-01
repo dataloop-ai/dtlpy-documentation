@@ -1,10 +1,10 @@
 def func1():
-    from dtlpy.ml.dataset_generators.torch_dataset_generator import DataGenerator
+    from dtlpy.utilities import DatasetGenerator
     import dtlpy as dl
     dataset = dl.datasets.get(dataset_id='611b86e647fe2f865323007a')
-    dataloader = DataGenerator(data_path='train',
-                               dataset_entity=dataset,
-                               annotation_type=dl.AnnotationType.BOX)
+    dataloader = DatasetGenerator(data_path='train',
+                                  dataset_entity=dataset,
+                                  annotation_type=dl.AnnotationType.BOX)
 
 
 def func2():
@@ -34,10 +34,10 @@ def func4():
         # transforms.ToTensor()
     ]
 
-    dataloader = DataGenerator(data_path='train',
-                               dataset_entity=dataset,
-                               annotation_type=dl.AnnotationType.BOX,
-                               transforms=tfs)
+    dataloader = DatasetGenerator(data_path='train',
+                                  dataset_entity=dataset,
+                                  annotation_type=dl.AnnotationType.BOX,
+                                  transforms=tfs)
     dataloader.visualize()
     dataloader.visualize(10)
 
@@ -48,12 +48,12 @@ def func5():
 
 def func6():
     import matplotlib.pyplot as plt
-    dataloader = DataGenerator(data_path='train',
-                               dataset_entity=dataset,
-                               annotation_type=dl.AnnotationType.BOX,
-                               return_originals=True,
-                               shuffle=False,
-                               transforms=tfs)
+    dataloader = DatasetGenerator(data_path='train',
+                                  dataset_entity=dataset,
+                                  annotation_type=dl.AnnotationType.BOX,
+                                  return_originals=True,
+                                  shuffle=False,
+                                  transforms=tfs)
     fig, ax = plt.subplots(2, 2)
 
     for i in range(2):
@@ -66,11 +66,11 @@ def func6():
 
 def func7():
     dataset = dl.datasets.get(dataset_id='6197985a104eb81cb728e4ac')
-    dataloader = DataGenerator(data_path='semantic',
-                               dataset_entity=dataset,
-                               transforms=tfs,
-                               return_originals=True,
-                               annotation_type=dl.AnnotationType.SEGMENTATION)
+    dataloader = DatasetGenerator(data_path='semantic',
+                                  dataset_entity=dataset,
+                                  transforms=tfs,
+                                  return_originals=True,
+                                  annotation_type=dl.AnnotationType.SEGMENTATION)
     for i in range(5):
         dataloader.visualize()
 
@@ -103,3 +103,23 @@ def func9():
         ax = fig.add_subplot(2, 4, i_label_ind + 1)
         ax.imshow(one_hot_annotations[:, :, label_ind])
         ax.set_title(dataloader.id_to_label_map[label_ind])
+
+
+def func10():
+    # batchsize and collate
+    ...
+
+
+def func11():
+    dataset = dl.datasets.get(dataset_id='6197985a104eb81cb728e4ac')
+    label_to_id_map = {'cat': 1,
+                       'dog': 1,
+                       '$default': 0}
+    dataloader = DatasetGenerator(data_path='semantic',
+                                  dataset_entity=dataset,
+                                  transforms=tfs,
+                                  return_originals=True,
+                                  label_to_id_map=label_to_id_map,
+                                  annotation_type=dl.AnnotationType.SEGMENTATION)
+    for i in range(5):
+        dataloader.visualize()

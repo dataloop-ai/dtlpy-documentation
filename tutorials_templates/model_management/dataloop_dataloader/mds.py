@@ -77,3 +77,13 @@ def func9():
     """
     Converting to 3d one-hot to visualize the binary mask per label. We will plot only 8 label (there might be more on the item):
     """
+
+def func10():
+    """
+    batch_size and collate_fn
+    """
+
+def func11():
+    """
+    label mapping and default background
+    """

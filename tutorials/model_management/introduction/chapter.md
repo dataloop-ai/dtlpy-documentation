@@ -46,7 +46,6 @@ a snapshot can be used as a parent to another snapshot - to start for that point
 ### The Model Adapter  
   
 The Model Adapter is a python class to create a single API between Dataloop's platform and your Model  
-Use the dl.models.generate function in order to create a new template for the adapter.py.
   
 1. Train  
 2. Predict  
