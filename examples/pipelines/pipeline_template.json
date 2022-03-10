@@ -34,7 +34,7 @@
         "packageName": "pipeline-utils",
         "projectName": "DataloopTasks"
       },
-      "projectId": "f8a4b8ce-5ff3-4386-84dc-1bda3a5bc92a"
+      "projectId": ""
     },
     {
       "id": "d901a9ad-9d83-4f62-be58-99fc9a9b87e4",
@@ -60,6 +60,7 @@
         }
       ],
       "metadata": {
+        "datasetId": "",
         "position": {
           "x": 445.328125,
           "y": 130.3125,
@@ -67,7 +68,14 @@
         },
         "name": "My Task",
         "recipeTitle": "gfv Default Recipe",
-        "recipeId": "60ec733cd23142248824d0f4"
+        "recipeId": "",
+        "taskOwner": "user@dataloop.ai",
+        "workload": [
+          {
+            "assigneeId": "user@dataloop.ai",
+            "load": 100
+          }
+        ]
       },
       "name": "My Task",
       "type": "task",
@@ -95,7 +103,9 @@
       ],
       "config": {
         "package": {
-          "code": "import dtlpy as dl\n\nclass ServiceRunner:\n\n    def run(self, item):\n        item.metadata['user'] = {'Hello': 'World'}\n        item.update()\n        return item\n"
+          "code": "import dtlpy as dl\n\nclass ServiceRunner:\n\n    def run(self, item):\n        item.metadata['user'] = {'Hello': 'World'}\n        item.update()\n        return item\n",
+          "name": "run",
+          "type": "code"
         }
       },
       "metadata": {
@@ -135,7 +145,7 @@
         "nodeId": "977bc75d-441c-4b17-8876-1180b9afefb8",
         "portId": "506d53e4-603b-4213-a021-ac9dce71c60d"
       },
-      "condition": "{\"metadata.system.workflowStatus\":\"complete\"}"
+      "condition": "{}"
     }
   ],
   "startNodes": [
