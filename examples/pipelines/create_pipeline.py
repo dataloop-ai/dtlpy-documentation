@@ -13,7 +13,7 @@ def metadata_function_second(item: dl.Item):
     return item
 
 
-def create_pipeline(project_name, dataset_name, service_name=None, function_name='run'):
+def create_pipeline(project_name, dataset_name, service_name=None, function_name=None):
     project = dl.projects.get(project_name=project_name)
     dataset = project.datasets.get(dataset_name=dataset_name)
     print('Initialized params project_name:{}, dataset_name:{}'.format(project.name, dataset.name))
@@ -24,9 +24,9 @@ def create_pipeline(project_name, dataset_name, service_name=None, function_name
         service = project.services.get(service_name=service_name)
         print('Using existing service name: {}'.format(service.name))
     else:
+        function_name = 'metadata_function_second'
         service = project.services.deploy(func=metadata_function_second,
                                           service_name='metadata-function-second')
-        function_name = 'metadata_function_second'
         print('Service was created service_name:{}'.format(service.name))
     ##########################################
     # Generate pipeline with relevant params #
@@ -84,6 +84,8 @@ if __name__ == "__main__":
     project_name = 'My Project pipeline example'
     dataset_name = 'pipeline-faas-example-dataset'
     service_name = None  # or existing service name in the project
+    function_name = 'run'  # when using existing service
     create_pipeline(project_name=project_name,
                     service_name=service_name,
-                    dataset_name=dataset_name)
+                    dataset_name=dataset_name,
+                    function_name=function_name)
