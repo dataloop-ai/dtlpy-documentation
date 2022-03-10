@@ -25,14 +25,14 @@ def create_pipeline(project_name, dataset_name, service_name=None, function_name
         print('Using existing service name: {}'.format(service.name))
     else:
         service = project.services.deploy(func=metadata_function_second,
-                                          service_name='grayscale-item-service')
+                                          service_name='metadata-function-second')
         function_name = 'metadata_function_second'
         print('Service was created service_name:{}'.format(service.name))
     ##########################################
     # Generate pipeline with relevant params #
     ##########################################
     recipe = dataset.recipes.list()[0]
-    pipeline = project.pipelines.create(pipeline_name='pipeline-faas-example-dataset')
+    pipeline = project.pipelines.create(name='pipeline-faas-example-dataset')
 
     code_node = dl.CodeNode(
         name='My Function',
@@ -48,14 +48,14 @@ def create_pipeline(project_name, dataset_name, service_name=None, function_name
         recipe_title=recipe.title,
         task_owner='owner',
         workload=[dl.WorkloadUnit(assignee_id='assignee_id', load=100)],
-        position=(2, 2),
+        position=(2, 1),
         project_id=project.id,
         dataset_id=dataset.id,
     )
 
     function_node = dl.FunctionNode(
         name=service.name,
-        position=(3, 3),
+        position=(3, 1),
         service=service,
         function_name=function_name
     )
@@ -81,7 +81,6 @@ def create_pipeline(project_name, dataset_name, service_name=None, function_name
 
 
 if __name__ == "__main__":
-    dl.setenv('rc')
     project_name = 'My Project pipeline example'
     dataset_name = 'pipeline-faas-example-dataset'
     service_name = None  # or existing service name in the project

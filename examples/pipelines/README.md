@@ -26,10 +26,13 @@ service_name = 'existing-service-name'
 ## Pipeline
 
 Our pipeline will be consisted of the following components:  
-* A 'code-block' FaaS - that you can change its code from the UI.
-* '*automate*' FaaS - that will be triggered on any new item created in the dataset. 
-* A Task - will be generated upon the first item in the pipeline. 
+* A 'code-block' FaaS - that will be triggered on any new item created in the dataset (you can change its code from the UI).
+* A Task - will be created when the first item in the pipeline.
+* Service Function - run after item exists from the Task with a status.
 
-Once an item was created, the pipeline would trigger, the code block will be called with the item, it will set `item.metadata['user']['first'] = 'Hello''`, the item will assigned to your user, enter the task/assignment item, upon pressing 'Done' a complete event will be triggered, and the item will continue to the automate function that will add `item.metadata['user']['first'] = 'World''` and exit the pipeline.
+Once an item is uploaded, the pipeline will trigger, the code block will be called with the item, and it will set `item.metadata['user']['first'] = 'Hello'`.
+After the first node is finished, the item will be added to a task and will be assigned to your user.
+Enter the task/assignment item, and press 'Done' to continue with the pipeline.
+After status is set on the item, it will continue to the last function that will add `item.metadata['user']['second'] = 'World'` and exit the pipeline.
 
 ![Alt text](../../assets/pipeline_example.png)
