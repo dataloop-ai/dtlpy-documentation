@@ -5,7 +5,8 @@ import datetime
 import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'distillator-obsolete/dtlpy')) #HACK: remove
+sys.path.insert(0, '/home/shira/workspace/distillator-obsolete/dtlpy') #HACK: local hack, remove
+sys.path.insert(1, '/home/shira/workspace')
 
 import dtlpy as dl
 from dtlpy.ml import train_utils
@@ -20,21 +21,15 @@ def get_globals():
     model.snapshots.list().to_df()
     return model, snapshot
 
-def create_sample_dataset(project_name):
-    project = dl.projects.get(project_name)
+def create_sample_dataset():
+    project = dl.projects.get(args.project)
     dataset = project.datasets.create('Sheep Face')
     dataset.to_df()
     _ = dataset.items.upload(local_path='../../assets/sample_datasets/SheepFace/items/*',
                          local_annotations_path='../../assets/sample_datasets/SheepFace/json')
 
-def create_model_and_snapshot(project_name):
-    inception_adapter.model_and_snapshot_creation(project_name)
-
-project = dl.projects.get('distillator')
-
-
-dataset = project.datasets.get(None, '61680bfa82e9a80fc61262e9') # gtsrb
-# dataset.to_df()
+def create_model_and_snapshot():
+    inception_adapter.model_and_snapshot_creation(args.project)
 
 
 
@@ -74,30 +69,29 @@ def train_on_new_dataset(model, snapshot):
     new_snapshot.update()
 
 
+    adapter = model.build()
+    adapter.load_from_snapshot(snapshot=new_snapshot,
+                            configuration=new_snapshot.configuration)
 
-adapter = model.build()
-adapter.load_from_snapshot(snapshot=new_snapshot,
-                           configuration=new_snapshot.configuration)
-
-root_path, data_path, output_path = adapter.prepare_training(root_path=os.path.join('tmp', new_snapshot.id))
+    root_path, data_path, output_path = adapter.prepare_training(root_path=os.path.join('tmp', new_snapshot.id))
 
 
-# Start the Train
-print("Training {!r} with snapshot {!r} on data {!r}".format(model.name, new_snapshot.id, data_path))
-adapter.train(data_path=data_path,
-              output_path=output_path)
+    # Start the Train
+    print("Training {!r} with snapshot {!r} on data {!r}".format(model.name, new_snapshot.id, data_path))
+    adapter.train(data_path=data_path,
+                output_path=output_path)
 
-adapter.snapshot.bucket.list_content()
+    adapter.snapshot.bucket.list_content()
 
-adapter.save_to_snapshot(local_path=output_path,
-                         replace=True,
-                         weights_filename='model.hdf5')
-#%%
-adapter.snapshot.bucket.list_content()
+    adapter.save_to_snapshot(local_path=output_path,
+                            replace=True,
+                            weights_filename='model.hdf5')
+    #%%
+    adapter.snapshot.bucket.list_content()
 
 
 def main(dataset: dl.Dataset, project: dl.Project):
-
+    model, snapshot = get_globals()
     pass
 
 
@@ -107,13 +101,17 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='local runner for model management testing',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--env', '-e', default='prod', help='dtlpy env')
-    parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name')
+    parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name', required=True)
     parser.add_argument('--dataset', '-d', default='', help='dtlpy dataset id')
     parser.add_argument('--item', '-i', default='', help='dtlpy single item id')
 
     args = parser.parse_args()
 
-    project = dl.projects.get(args.project)
-    dataset = project.datasets.get(args.dataset)
+    # project = dl.projects.get(args.project)
+    # dataset = project.datasets.get(args.dataset)
+
+    project = dl.projects.get('distillator')
+    dataset = project.datasets.get(None, '61680bfa82e9a80fc61262e9') # gtsrb
+    dataset.to_df()
 
     main(project=project, item_id='6205097d8ea6ad0abe7b90ba')

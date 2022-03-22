@@ -5,7 +5,8 @@ import datetime
 import os
 import sys
 
-# sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'distillator-obsolete/dtlpy'))
+sys.path.insert(0, '/home/shira/workspace/distillator-obsolete/dtlpy') #HACK: local hack, remove
+sys.path.insert(1, '/home/shira/workspace')
 
 import dtlpy as dl
 from dtlpy.ml import train_utils
