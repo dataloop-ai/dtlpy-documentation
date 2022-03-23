@@ -1,7 +1,8 @@
-import os
+import os.path
+
 import dtlpy as dl
 
-project_name = 'project_name'
+project_name = 'COCO ors'
 package_name = 'artifacts-package'
 
 module = dl.PackageModule(

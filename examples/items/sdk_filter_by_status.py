@@ -3,12 +3,13 @@ import datetime
 import dtlpy as dl
 
 
-def filter_by_status(project_name:str,
-                     dataset_name:str,
-                     task_id:str,
-                     status:str,
-                     email:str,
-                     timestamp:str):
+def filter_by_status(project_name: str,
+                     dataset_name: str,
+                     task_id: str,
+                     status: list,
+                     email: str,
+                     greater_than: str,
+                     less_than: str):
     """
     Function to filter items per task by status, works for all statuses (e.g., approved, completed, discard)
     We show how to create a filter object by creator, status or timestamp.
@@ -16,9 +17,10 @@ def filter_by_status(project_name:str,
     :param project_name: dl.Project name
     :param dataset_name: dl.Dataset name
     :param task_id: dl.Task id of the task to filter by
-    :param status: filter option - filter by the status of the item: 'completed', 'approved', 'discarded', or any custom status created by the task creator (e.g., 'expert review').
+    :param status: filter option (list)- filter by the status of the item: 'completed', 'approved', 'discarded', or any custom status created by the task creator (e.g., 'expert review').
     :param email: filter option - email of person who created the status
-    :param timestamp: filter option - ISO format time to filter by. operators: dl.FiltersOperations.GREATER_THAN, dl.FiltersOperations.LESS_THAN
+    :param greater_than: filter option - ISO format time to filter by. operators: dl.FiltersOperations.GREATER_THAN
+    :param less_than: filter option - ISO format time to filter by. operators: dl.FiltersOperations.LESS_THAN
     :return:
     """
 
@@ -27,17 +29,20 @@ def filter_by_status(project_name:str,
     dataset = project.datasets.get(dataset_name=dataset_name)
     # Create filters instance
     filters = dl.Filters()
-    # Filter all approved items per task, values can be any status - "completed", "approved", "discard"
+    # Add filter options for tasks and assignments
     filters.add(
         field='metadata.system.refs',
         values={
-            "id": task_id,
-            "type": "task",
+            "id": task_id,  # Task id key can be omitted (and will return all tasks), or can be a list of tasks
+            "type": "task", # Type can be "task" or "assignment"
             "metadata":
                 {
-                    "status": {'${}'.format(dl.FiltersOperations.EQUAL): status},
+                    "status": {'${}'.format(dl.FiltersOperations.IN): status},
+                    # Status can also be used with dl.FiltersOperations.EXISTS to get any status or if there is no status at all
+                    # "status": {'${}'.format(dl.FiltersOperations.EXISTS): True},
                     "creator": email,
-                    "timestamp": {'${}'.format(dl.FiltersOperations.GREATER_THAN): timestamp}
+                    "timestamp": {'${}'.format(dl.FiltersOperations.GREATER_THAN): greater_than,
+                                  '${}'.format(dl.FiltersOperations.LESS_THAN): less_than}
                 }
         },
         operator=dl.FiltersOperations.MATCH
@@ -65,13 +70,15 @@ if __name__ == "__main__":
     project_name = "My Project"
     dataset_name = "My Dataset"
     task_id = "Task Id"
-    status = "approved"
+    status = ["completed", "approved"]
     email = "pinky@looneytunes.ai"
-    timestamp = datetime.datetime(year=2022, month=1, day=1).isoformat()
+    greater_than = datetime.datetime(year=2022, month=1, day=1).isoformat()
+    less_than = datetime.datetime(year=2022, month=2, day=28).isoformat()
 
     filter_by_status(project_name=project_name,
                      dataset_name=dataset_name,
                      task_id=task_id,
                      status=status,
                      email=email,
-                     timestamp=timestamp)
+                     greater_than=greater_than,
+                     less_than=less_than)

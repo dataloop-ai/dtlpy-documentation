@@ -1,0 +1,8 @@
+base_url: https://dataloopm.testrail.io
+projects:
+  - name: 'Automation tests on branch {branch}'
+    id: 9
+    suite_id: 1592
+    # note: this will allow any branch to push test case results to Testrail.
+    allowed_branch_pattern: '.*'
+
