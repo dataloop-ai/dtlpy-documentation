@@ -55,14 +55,13 @@ def train_on_new_dataset(model, snapshot, dataset):
                   dl.SnapshotPartitionType.VALIDATION: 0.1,
                   dl.SnapshotPartitionType.TEST: 0.1}
 
-    cloned_dataset = train_utils.prepare_dataset(dataset,
-                                                 filters=None,
-                                                 partitions=partitions)
-
     snapshot_name = f'trained-{dataset.name}'
     try:
         new_snapshot = model.snapshots.get(snapshot_name=snapshot_name)
     except dl.exceptions.NotFound:
+        cloned_dataset = train_utils.prepare_dataset(dataset,
+                                                filters=None,
+                                                partitions=partitions)
         new_snapshot = snapshot.clone(snapshot_name=snapshot_name,
                                       dataset_id=cloned_dataset.id)
 
@@ -120,6 +119,6 @@ if __name__ == '__main__':
     parser.add_argument('--mode', '-m', default='inference', help='inference or training')
 
     args = parser.parse_args()
-    args.mode = 'train'
+
     main(args)
     print('Done!')
