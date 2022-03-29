@@ -8,19 +8,15 @@ import os
 import sys
 import inspect
 
-sys.path.insert(0, '/home/shira/workspace/distillator-obsolete/dtlpy')  # HACK: local hack, remove
-sys.path.insert(1, '/home/shira/workspace')
 
 from yolov5 import model_adapter as yol
 from dtlpy.ml import train_utils
 import dtlpy as dl
 
 
-
-
 def get_globals():
     model = dl.models.get(model_name='yolo-v5')
-    snapshot = model.snapshots.get('pretrained-yolo-v5-small')
+    snapshot = model.snapshots.get('pretrained-yolo-v5-s')
     model.snapshots.list().to_df()
     return model, snapshot
 
@@ -44,19 +40,16 @@ def create_sample_dataset(project):
 
 
 def create_model_and_snapshot(project):
-    model = yol.model_creation(project_name=project.name)
+    try:
+        model = yol.model_creation(project_name=project.name)
+    except dl.exceptions.Conflict:
+        model = dl.models.get('yolo-v5')
     snapshot = yol.snapshot_creation(model, yolo_size='small')
-
     return model, snapshot
 
-def pretrained_inference(item_id, model, snapshot):
-    ###
-    project = dl.projects.get('distillator')
-    dataset = project.datasets.get(dataset_name='FruitImage')
-    snapshot.configuration['id_to_label_map'] = {}
-    ###
 
-    adapter = model.build()  # local_path='/home/shira/workspace/pytorch_adapters', from_local=True
+def pretrained_inference(item_id, model, snapshot):
+    adapter = model.build()
     adapter.load_from_snapshot(snapshot=snapshot)  # local_path=snapshot.bucket.local_path
     item = dl.items.get(item_id=item_id)
     image = np.asarray(Image.open(item.download()))
@@ -92,7 +85,11 @@ def train_on_new_dataset(model, project, snapshot, dataset):
     new_snapshot.configuration.update({'batch_size': 16,
                                        'start_epoch': 0,
                                        'max_epoch': 5,
-                                       })
+                                       'data_yaml_fname': 'data.yaml',
+                                       'hyp_yaml_fname': 'hyp.finetune.yaml',
+                                       'id_to_label_map': {ind: label for ind, label in
+                                                                         enumerate(dataset.instance_map)}
+                                         })
 
     adapter = model.build()
     adapter.load_from_snapshot(snapshot=new_snapshot,
@@ -114,7 +111,9 @@ def train_on_new_dataset(model, project, snapshot, dataset):
 
 def main(args, **kwargs):
     project = dl.projects.get(args.project)
+
     model, snapshot = get_globals()
+    # model, snapshot = create_model_and_snapshot(project)
 
     if args.mode == 'train':
         if not args.dataset:
@@ -138,12 +137,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='local runner for model management testing')
 
     parser.add_argument('--env', '-e', default='prod', help='dtlpy env')
-    parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name',)  # required=True) #TODO: remove comment
+    parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name', required=True)
     parser.add_argument('--dataset', '-d', default='', help='dtlpy dataset id')
     parser.add_argument('--item', '-i', default='6205097d8ea6ad0abe7b90ba', help='dtlpy single item id')
     parser.add_argument('--mode', '-m', default='inference', help='inference or training')
 
     args = parser.parse_args()
-    # args.mode = 'train'  # TODO: remove
+
     main(args)
     print('Done!')
