@@ -8,7 +8,7 @@ table = Table(title="table example3",
 
 doughnut = Doughnut(title="doughnut example (id = 22)",
                     title_href=None,
-                    plot_id=22,
+                    plot_id='22',
                     labels=["red", "green", "blue"],
                     data=[20, 30, 150],
                     options=FigOptions(colors=["red", "green", "blue"]))
@@ -90,7 +90,7 @@ table = Table(
           [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3],
           [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3],
           [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]],
-    options=FigOptions(rowsPerPage=1000)
+    options=FigOptions(rows_per_page=1000)
 )
 
 # using hrefs for platform and external links
@@ -113,7 +113,7 @@ table = Table(title="table example",
                     [1, 2, 3],
                     [1, 2, 3]
                     ],
-              options=FigOptions(rowsPerPage=1000)
+              options=FigOptions(rows_per_page=1000)
               )
 
 # confusion matrix with href links and color pallet
@@ -135,7 +135,7 @@ confusion = ConfusionMatrix(title="confusion example, threshold > 0.5",
                             data=data,
                             color_map=color_map,
                             href_map=href_map,
-                            options=FigOptions(rowsPerPage=100,
+                            options=FigOptions(rows_per_page=100,
                                                x_title="true",
                                                y_title="pred"))
 
