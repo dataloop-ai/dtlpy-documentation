@@ -1,3 +1,6 @@
+from keras_adapters import inception_adapter
+import dtlpy as dl
+from dtlpy.ml import train_utils
 from re import A
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -5,13 +8,6 @@ import numpy as np
 import datetime
 import os
 import sys
-
-sys.path.insert(0, '/home/shira/workspace/distillator-obsolete/dtlpy')  # HACK: local hack, remove
-sys.path.insert(1, '/home/shira/workspace')
-
-from dtlpy.ml import train_utils
-import dtlpy as dl
-from keras_adapters import inception_adapter
 
 
 def get_globals():
@@ -27,7 +23,7 @@ def create_sample_dataset(project):
     except dl.exceptions.NotFound:
         dataset = project.datasets.create('Sheep Face')
         _ = dataset.items.upload(local_path='../../assets/sample_datasets/SheepFace/items/*',
-                            local_annotations_path='../../dtlpy-documentation/assets/sample_datasets/SheepFace/json')
+                                 local_annotations_path='../../dtlpy-documentation/assets/sample_datasets/SheepFace/json')
     dataset.to_df()
 
     return dataset
@@ -60,15 +56,15 @@ def train_on_new_dataset(model, snapshot, dataset):
         new_snapshot = model.snapshots.get(snapshot_name=snapshot_name)
     except dl.exceptions.NotFound:
         cloned_dataset = train_utils.prepare_dataset(dataset,
-                                                filters=None,
-                                                partitions=partitions)
+                                                     filters=None,
+                                                     partitions=partitions)
         new_snapshot = snapshot.clone(snapshot_name=snapshot_name,
                                       dataset_id=cloned_dataset.id)
 
     new_snapshot.configuration.update({'batch_size': 16,
-                                    'start_epoch': 0,
-                                    'num_epochs': 1,
-                                    'input_size': (299, 299)})
+                                       'start_epoch': 0,
+                                       'num_epochs': 1,
+                                       'input_size': (299, 299)})
 
     adapter = model.build()
     adapter.load_from_snapshot(snapshot=new_snapshot,
@@ -99,12 +95,12 @@ def main(args, **kwargs):
             dataset = project.datasets.get(None, args.dataset)
         dataset.to_df()
         train_on_new_dataset(model=model,
-                            snapshot=snapshot,
-                            dataset=dataset)
+                             snapshot=snapshot,
+                             dataset=dataset)
     elif args.mode == 'inference':
         pretrained_inference(item_id=args.item,
-                            model=model,
-                            snapshot=snapshot)
+                             model=model,
+                             snapshot=snapshot)
 
 
 if __name__ == '__main__':
@@ -113,7 +109,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='local runner for model management testing')
 
     parser.add_argument('--env', '-e', default='prod', help='dtlpy env')
-    parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name',) #required=True)
+    parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name',)  # required=True)
     parser.add_argument('--dataset', '-d', default='', help='dtlpy dataset id')
     parser.add_argument('--item', '-i', default='6205097d8ea6ad0abe7b90ba', help='dtlpy single item id')
     parser.add_argument('--mode', '-m', default='inference', help='inference or training')
