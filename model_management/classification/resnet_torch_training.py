@@ -1,4 +1,7 @@
 
+import dtlpy as dl
+from dtlpy.ml import train_utils
+from pytorch_adapters import resnet_adapter as res
 import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
@@ -6,17 +9,8 @@ import datetime
 import os
 import sys
 
-sys.path.insert(0, '/home/shira/workspace/distillator-obsolete/dtlpy')  # HACK: local hack, remove
-sys.path.insert(1, '/home/shira/workspace')
-
-from pytorch_adapters import resnet_adapter as res
-from dtlpy.ml import train_utils
-import dtlpy as dl
-
-
-
 def get_globals():
-    model = dl.models.get(model_name='Resnet')
+    model = dl.models.get(model_name='ResNet')
     snapshot = model.snapshots.get('pretrained-resnet50')
     model.snapshots.list().to_df()
     return model, snapshot
@@ -57,17 +51,15 @@ def train_on_new_dataset(model, snapshot, dataset):
                   dl.SnapshotPartitionType.VALIDATION: 0.1,
                   dl.SnapshotPartitionType.TEST: 0.1}
 
-    cloned_dataset = train_utils.prepare_dataset(dataset,
-                                                 filters=None,
-                                                 partitions=partitions)
-
     snapshot_name = f'trained-{dataset.name}'
     try:
-      new_snapshot = model.snapshots.get(snapshot_name=snapshot_name)
+        new_snapshot = model.snapshots.get(snapshot_name=snapshot_name)
     except dl.exceptions.NotFound:
-          new_snapshot = snapshot.clone(snapshot_name=snapshot_name,
-                                        dataset_id=cloned_dataset.id)
-
+        cloned_dataset = train_utils.prepare_dataset(dataset,
+                                                     filters=None,
+                                                     partitions=partitions)
+        new_snapshot = snapshot.clone(snapshot_name=snapshot_name,
+                                      dataset_id=cloned_dataset.id)
 
     new_snapshot.configuration.update({'batch_size': 16,
                                       'start_epoch': 0,
@@ -120,12 +112,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='local runner for model management testing')
 
     parser.add_argument('--env', '-e', default='prod', help='dtlpy env')
-    parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name',)  # required=True)
+    parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name', required=True) 
     parser.add_argument('--dataset', '-d', default='', help='dtlpy dataset id')
     parser.add_argument('--item', '-i', default='6205097d8ea6ad0abe7b90ba', help='dtlpy single item id')
     parser.add_argument('--mode', '-m', default='inference', help='inference or training')
 
     args = parser.parse_args()
-    args.mode = 'train'
     main(args)
     print('Done!')
