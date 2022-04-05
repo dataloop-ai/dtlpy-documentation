@@ -5,6 +5,12 @@ def section1():
 
     """
 
+def section12():
+    """
+    ## Upload User Metadata
+    To upload annotations from JSON and include the user metadata, add the parameter local_annotation_path to the dataset.items.upload function, like so: 
+    """
+
 
 def section2():
     """

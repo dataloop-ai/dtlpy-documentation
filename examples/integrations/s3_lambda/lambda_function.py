@@ -1,11 +1,9 @@
-from __future__ import print_function
 import os
-
-os.environ["DATALOOP_PATH"] = "/tmp"
-import json
 import urllib.parse
-import boto3
-import uuid
+
+# set dataloop path to tmp
+os.environ["DATALOOP_PATH"] = "/tmp"
+
 import dtlpy as dl
 
 project_name = 'your project'
@@ -13,7 +11,7 @@ dataset_name = 'your async dataset'
 
 
 def lambda_handler(event, context):
-    dl.login_m2m(email='username', password='pass', force=True)
+    dl.login_m2m(email='username', password='pass')
 
     project = dl.projects.get(project_name=project_name)
     dataset = project.datasets.get(dataset_name=dataset_name)
@@ -28,8 +26,8 @@ def lambda_handler(event, context):
         if 'ObjectRemoved' in record['eventName']:
             try:
                 key_name = '/' + key
-                filter = dl.Filters(field='filename', values=key_name)
-                dataset.items.delete(filters=filter)
+                filters = dl.Filters(field='filename', values=key_name)
+                dataset.items.delete(filters=filters)
 
             except Exception as e:
                 raise e

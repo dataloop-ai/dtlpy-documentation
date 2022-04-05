@@ -9,14 +9,6 @@
   },
   {
     "type": "md",
-    "name": "section12"
-  },
-  {
-    "type": "code",
-    "name": "section12"
-  },
-  {
-    "type": "md",
     "name": "section2"
   },
   {
@@ -46,6 +38,14 @@
   {
     "type": "code",
     "name": "section5"
+  },
+  {
+    "type": "md",
+    "name": "section11"
+  },
+  {
+    "type": "code",
+    "name": "section11"
   },
   {
     "type": "md",
@@ -86,13 +86,5 @@
   {
     "type": "code",
     "name": "section10"
-  },
-  {
-    "type": "md",
-    "name": "section11"
-  },
-  {
-    "type": "code",
-    "name": "section11"
   }
 ]

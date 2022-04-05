@@ -52,7 +52,7 @@ def filter_by_status(project_name: str,
     # As a result, you will get approved items with 'box' annotations
     filters.add_join(field='type', values='box')
     # Return results sorted by descending creation date
-    filters.sort_by(field=dl.FILTERS_KNOWN_FIELDS_CREATED_AT, value=dl.FILTERS_ORDERBY_DIRECTION_DESCENDING)
+    filters.sort_by(field='createdAt', value=dl.FILTERS_ORDERBY_DIRECTION_DESCENDING)
 
     # Get filtered item list in a page object
     pages = dataset.items.list(filters=filters)
