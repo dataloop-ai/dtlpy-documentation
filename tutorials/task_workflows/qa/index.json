@@ -11,7 +11,7 @@
     {
       "displayName": "Create QA Assignment",
       "description": "Getting started with QA Assignment.",
-      "location": "task_workflows/qa/qa_assignment/chapter.md"
+      "location": "task_workflows/qa/qa_assignment/index.json"
     },
     {
       "displayName": "Redistribute and Reassign",
