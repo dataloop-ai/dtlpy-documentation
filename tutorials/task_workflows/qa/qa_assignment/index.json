@@ -6,7 +6,7 @@
     {
       "displayName": "Note Annotation",
       "description": "Create Note annotation on items",
-      "location": "task_workflows/qa/create_a_new_qa_task/note_annotation/chapter.md"
+      "location": "task_workflows/qa/qa_assignment/note_annotation/chapter.md"
     },
     {
       "displayName": "QA on Annotation Level",
