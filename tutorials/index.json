@@ -14,6 +14,11 @@
       "location": "faas/index.json"
     },
     {
+      "displayName": "Task Workflows",
+      "description": "Tutorials for workforce management",
+      "location": "task_workflows/index.json"
+    },
+    {
       "displayName": "Model Management",
       "description": "Tutorials for creating and managing model and snapshots",
       "location": "model_management/index.json"

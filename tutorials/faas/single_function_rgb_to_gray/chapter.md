@@ -24,6 +24,7 @@ def rgb2gray(item: dl.Item):
 ```
 You can now deploy the function as a service using Dataloop SDK. Once the service is ready, you may execute the available function on any input:  
 ```python
+project = dl.projects.get(project_name='project-sdk-tutorial')
 service = project.services.deploy(func=rgb2gray,
                                   service_name='grayscale-item-service')
 ```

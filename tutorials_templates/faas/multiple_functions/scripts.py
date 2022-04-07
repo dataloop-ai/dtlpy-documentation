@@ -83,7 +83,7 @@ def func5():
 
 def func6():
     src_path = 'functions/opencv_functions'
-    project = dl.projects.get(project_name=project_name)
+    project = dl.projects.get(project_name='project-sdk-tutorial')
     package = project.packages.push(package_name='image-processing',
                                     modules=modules,
                                     src_path=src_path)

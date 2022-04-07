@@ -11,7 +11,7 @@ def func2():
 
 def func3():
     # Use an existing project
-    project = dl.projects.get(project_name='project_name')
+    project = dl.projects.get(project_name='project-sdk-tutorial')
 
 
 def func4():

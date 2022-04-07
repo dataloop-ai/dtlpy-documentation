@@ -27,7 +27,18 @@
       "displayName": "Upload and Manage Annotations",
       "description": "Upload annotations into data items",
       "location": "data_management/upload_and_manage_annotations/chapter.md"
+    },
+    {
+      "displayName": "Sort and Filters",
+      "description": "DQL Filters a Pagination",
+      "location": "data_management/sort_and_filter/index.json"
+    },
+    {
+      "displayName": "Working with Metadata",
+      "description": "Working with Item's metadata",
+      "location": "data_management/working_with_metadata/chapter.md"
     }
+
   ]
 }
 

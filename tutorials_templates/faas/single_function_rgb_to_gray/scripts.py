@@ -26,6 +26,7 @@ def func1():
 
 
 def func2():
+    project = dl.projects.get(project_name='project-sdk-tutorial')
     service = project.services.deploy(func=rgb2gray,
                                       service_name='grayscale-item-service')
 

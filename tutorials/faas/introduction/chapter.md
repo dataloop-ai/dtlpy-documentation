@@ -25,7 +25,7 @@ project = dl.projects.create(project_name='project-sdk-tutorial')
 ```
 ```python
 # Use an existing project
-project = dl.projects.get(project_name='project_name')
+project = dl.projects.get(project_name='project-sdk-tutorial')
 ```
 Let’s create a dataset to work with and upload a sample item to it:  
 ```python

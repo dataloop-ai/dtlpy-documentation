@@ -96,7 +96,7 @@ When you deployed the service in the previous tutorial (“Single Function”), 
 Now we will explicitly create and push the module as a package in the Dataloop FaaS library (application hub). For that, please specify the source path (src_path) of the “main.py” file you downloaded, and then run the following code:  
 ```python
 src_path = 'functions/opencv_functions'
-project = dl.projects.get(project_name=project_name)
+project = dl.projects.get(project_name='project-sdk-tutorial')
 package = project.packages.push(package_name='image-processing',
                                 modules=modules,
                                 src_path=src_path)
