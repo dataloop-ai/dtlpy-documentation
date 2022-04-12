@@ -3,8 +3,8 @@ def func1():
     # Dataloop Dataloader
     A dl.Dataset image and annotation generator for training and for items visualization
 
-    We can visualize the data with augmentation for debug and exploration.
-    After that, we will use the Data Generator as an input to the training functions
+    We can visualize the data with augmentation for debugging and exploration.
+    After that, we will use the Data Generator as an input to the training functions.
     """
 
 
@@ -17,7 +17,7 @@ def func2():
 
 def func3():
     """
-    Or get the same item using it's index:
+    Or get the same item using its index:
     """
 
 
@@ -47,7 +47,7 @@ def func5():
     :param ignore_empty: bool - If True, generator will NOT collect items without annotations
 
 
-    The output of a single element is a dictionary holding all the relevant informtaion.
+    The output of a single element is a dictionary holding all the relevant information.
     the keys for the DataGen above are: ['image_filepath', 'item_id', 'box', 'class', 'labels', 'annotation_filepath', 'image', 'annotations', 'orig_image', 'orig_annotations']
     """
 
@@ -75,17 +75,30 @@ def func8():
 
 def func9():
     """
-    Converting to 3d one-hot to visualize the binary mask per label. We will plot only 8 label (there might be more on the item):
+    Converting to 3d one-hot encoding to visualize the binary mask per label. We will plot only 8 labels (there might be more on the item):
     """
 
 
 def func10():
     """
-    batch_size and collate_fn
+    ## Setting a Label Map
+    One of the inputs to the DatasetGenerator is 'label_to_id_map'. This variable can be used to change the label mapping for the annotations
+    and allow using the dataset ontology in a greater variety of cases.
+    For example, you can map multiple labels so a single id or add a default value for all the unlabeled pixels in segmentation annotations.
+    This is what the annotation looks like without any mapping:
     """
 
 
 def func11():
     """
-    label mapping and default background
+    Now, we'll map both the 'eye' label and the background to 2 and the 'fur' to 1:
+    """
+
+
+def func12():
+    """
+    ## Batch size and batch_size and collate_fn
+    If batch_size is not None, the returned structure will be a list with batch_size data items.
+    Setting a collate function will convert the returned structure to a tensor of any kind.
+    The default collate will convert everything to ndarrays. We also have tensorflow and torch collate to convert to the corresponding tensors.
     """
