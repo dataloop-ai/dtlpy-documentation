@@ -32,6 +32,7 @@ In this example, you will get all annotated items in a dataset sorted by the fil
 <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>  
 See all of the items iterator options on the <a href="https://dataloop.ai/docs/sdk-item-iterator" target="_blank">Iterator of Items</a> page.</div>  
   
+
 ```python
 import dtlpy as dl
 # Get project and dataset
@@ -53,6 +54,7 @@ print('Number of items in dataset: {}'.format(pages.items_count))
 <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>  
 See all of the items iterator options on the <a href="https://dataloop.ai/docs/sdk-item-iterator" target="_blank">Iterator of Items</a> page.</div>  
   
+
 ```python
 filters = dl.Filters()
 # Filter all approved items
@@ -77,6 +79,7 @@ If you wish to filter annotations with the "and" logical operator, you can do so
 AND is the default value and can be used without specifying the method.</b></div>  
 In this example, you will get a list of annotated items with <a href="https://dataloop.ai/docs/metadata#user-metadata" target="_blank">user metadata</a> of the field "is_automated" and value True.  
   
+
 ```python
 filters = dl.Filters()  # filters with and
 filters.add(field='annotated', values=True, method=dl.FiltersMethod.AND)
@@ -92,6 +95,7 @@ print('Number of items in dataset: {}'.format(pages.items_count))
 If you wish to filter annotations with the "or" logical operator, you can do so by specifying which filters will be checked with "or".  
 In this example, you will get a list of items that are either on "folder1" or "folder2" directories.  
   
+
 ```python
 filters = dl.Filters()
 # filters with or
@@ -110,6 +114,7 @@ The dictionary will only update user metadata.
 Understand more about user metadata <a href=https://dataloop.ai/docs/metadata#user-metadata" target="_blank">here</a>.  
 In this example, you will update/add user metadata (with the field "BlackDogs" and value True), to items in a specific folder 'dogs' with an attribute 'black'.  
   
+
 ```python
 filters = dl.Filters()
 # For example -  filter only items in a specific folder - like 'dogs'
@@ -126,6 +131,7 @@ pages = dataset.items.update(filters=filters, update_values=update_values)
 ### Delete Filtered Items  
 In this example, you will delete items that were created on 30/8/2020 at 8:17 AM.  
   
+
 ```python
 filters = dl.Filters()
 # For example -  filter only annotated items
@@ -138,6 +144,7 @@ dataset.items.delete(filters=filters)
 Use a dot to access parameters within curly brackets.  
 For example use field='metadata.system.originalname' to filter by the item's original name.</div>  
   
+
 ```python
 {
     "id": "5f4b60848ced1d50c3df114a",
@@ -205,6 +212,7 @@ For example use field='metadata.system.originalname' to filter by the item's ori
 ### Full Examples  
 #### How to filter items by their annotations label?  
   
+
 ```python
 filters = dl.Filters()
 filters.add_join(field='label', values='your_label_value')
@@ -213,6 +221,7 @@ pages = dataset.items.list(filters=filters)
 print('Number of filtered items in dataset: {}'.format(pages.items_count))
 ```
 #### How to filter items by completed and approved status?  
+
 ```python
 filters = dl.Filters()
 filters.add(field='metadata.system.annotationStatus', values=["completed", "approved"])
@@ -221,6 +230,7 @@ pages = dataset.items.list(filters=filters)
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
 #### How to filter items by completed status (with items who are approved as well)?  
+
 ```python
 filters = dl.Filters()
 # set resource
@@ -230,6 +240,7 @@ pages = dataset.items.list(filters=filters)
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
 #### How to filter items by only completed status?  
+
 ```python
 filters = dl.Filters()
 filters.add(field='metadata.system.annotationStatus', values=["completed"])
@@ -238,6 +249,7 @@ pages = dataset.items.list(filters=filters)
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
 #### How to filter unassigned items?  
+
 ```python
 filters = dl.Filters()
 filters.add(field='metadata.system.refs', values=[])
@@ -246,6 +258,7 @@ pages = dataset.items.list(filters=filters)
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
 #### How to filter items by a specific folder?  
+
 ```python
 filters = dl.Filters()
 filters.add(field='dir', values="/folderName")
@@ -254,6 +267,7 @@ pages = dataset.items.list(filters=filters)
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
 #### Get all items named foo.bar  
+
 ```python
 filters = dl.Filters()
 filters.add(field='name', values='foo.bar.*')
@@ -263,6 +277,7 @@ pages = dataset.items.list(filters=filters)
 print('Number of filtered items in dataset: {}'.format(pages.items_count))
 ```
 #### Sort files of size 0-5 MB by name, in ascending order  
+
 ```python
 filters = dl.Filters()
 filters.add(field='metadata.system.size', values='0', operator='gt')
@@ -274,6 +289,7 @@ pages = dataset.items.list(filters=filters)
 print('Number of filtered items in dataset: {}'.format(pages.items_count))
 ```
 #### Sort with multiple fields: Sort Items by labels ascending and createdAt descending  
+
 ```python
 filters = dl.Filters()
 # set annotation resource
@@ -291,6 +307,7 @@ Explore advanced filtering options on <a href="https://dataloop.ai/docs/sdk-adva
   
 ### Response to DQL Query  
 A typical response to a DQL query will look like the following:  
+
 ```python
 {
     "totalItemsCount": number,

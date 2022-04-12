@@ -3,6 +3,7 @@
 ## Upload specific files  
   
 When you have specific files you want to upload, you can upload them all into a dataset using this script:  
+
 ```python
 import dtlpy as dl
 if dl.token_expired():
@@ -21,6 +22,7 @@ dataset.items.upload(local_path=[r'C:/home/project/images/John Morris.jpg',
   
 If you want to upload all files from a folder, you can do that by just specifying the folder name:  
   
+
 ```python
 import dtlpy as dl
 if dl.token_expired():
@@ -33,6 +35,7 @@ dataset.items.upload(local_path=r'C:/home/project/images',
   
 ## Upload items from URL link  
 You can provide Dataloop with the link to the item, and not necessarily the item itself.  
+
 ```python
 dataset = project.datasets.get(dataset_name='dataset_name')
 url_path = 'http://ww.some_website/beautiful_flower.jpg'
@@ -43,6 +46,7 @@ item = dataset.items.upload(local_path=link)
 ```
   
 You can open an item uploaded to Dataloop by opening it in a viewer.  
+
 ```python
 show
 item.open_in_web()
@@ -55,6 +59,7 @@ Additional upload options include using buffer, pillow, openCV, and NdArray - se
   
 ## Upload Items and Annotations Metadata  
 You can upload items as a table using a pandas data frame that will let you upload items with info (annotations, metadata such as confidence, filename, etc.) attached to it.  
+
 ```python
 import pandas
 import dtlpy as dl

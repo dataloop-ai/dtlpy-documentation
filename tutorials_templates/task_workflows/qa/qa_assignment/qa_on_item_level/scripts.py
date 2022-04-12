@@ -17,6 +17,7 @@ def func2():
     item.update_status(status=dl.ItemStatus.APPROVED)
     item.update_status(status=dl.ItemStatus.DISCARDED)
 
+
 def func3():
     # Clear status for completed/approved/discarded
     item.update_status(dl.ITEM_STATUS_COMPLETED, clear=True)
@@ -33,6 +34,7 @@ def func4():
     # With list of item ids
     item_ids = ['id1', 'id2', 'id3']
     dataset.items.update_status(status=dl.ItemStatus.COMPLETED, item_ids=item_ids)
+
 
 def func5():
     task = dataset.tasks.get(task_name='my-task-name')

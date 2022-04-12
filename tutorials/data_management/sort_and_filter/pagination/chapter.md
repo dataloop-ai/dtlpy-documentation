@@ -12,6 +12,7 @@ When we go over the items we use nested loops to first go to the pages and then 
 ### Iterator of Items  
 You can create a generator of items with different filters.  
   
+
 ```python
 import dtlpy as dl
 # Get the project    
@@ -32,6 +33,7 @@ for i_page, page in enumerate(pages):
 ```
 A Page entity iterator also allows reverse iteration for cases in which you want to change items during the iteration:  
   
+
 ```python
 # Go over all item and print the properties
 for i_page, page in enumerate(reversed(pages)):
@@ -39,6 +41,7 @@ for i_page, page in enumerate(reversed(pages)):
 ```
 If you want to iterate through all items within your filter, you can also do so without going through them page by page:  
   
+
 ```python
 for item in pages.all():
     print(item.name)
@@ -46,6 +49,7 @@ for item in pages.all():
 If you are planning to do some process on each item, it's faster to use multi-threads (or multi-process) for parallel computation.  
 The following uses ThreadPoolExecutor with 32 workers to process parallel batches of 32 items:  
   
+
 ```python
 from concurrent.futures import ThreadPoolExecutor
 def single_item(item):
@@ -57,6 +61,7 @@ with ThreadPoolExecutor(max_workers=32) as executor:
 ```
 Lets compare the runtime to see that now the process is faster:  
   
+
 ```python
 from concurrent.futures import ThreadPoolExecutor
 import time
@@ -75,6 +80,7 @@ with ThreadPoolExecutor(max_workers=32) as executor:
 print('Using threads took {:.2f}[s]'.format(time.time() - tic))
 ```
 Visualizing the progress with tqdm progress bar:  
+
 ```python
 import tqdm
 pbar = tqdm.tqdm(total=pages.items_count)
@@ -88,6 +94,7 @@ with ThreadPoolExecutor(max_workers=32) as executor:
 ```
 ### Set page_size  
 The following example sets the page_size to 50:  
+
 ```python
 # Create filters instance
 filters = dl.Filters()

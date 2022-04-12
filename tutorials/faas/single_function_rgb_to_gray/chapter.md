@@ -1,6 +1,7 @@
 # Basic Use Case: Single Function  
 ## Create and Deploy a Sample Function  
 Below is an image-manipulation function in Python to use for converting an RGB image to a grayscale image. The function receives a single item, which later can be used as a trigger to invoke the function:  
+
 ```python
 def rgb2gray(item: dl.Item):
     """
@@ -23,6 +24,7 @@ def rgb2gray(item: dl.Item):
     item.update(system_metadata=True)
 ```
 You can now deploy the function as a service using Dataloop SDK. Once the service is ready, you may execute the available function on any input:  
+
 ```python
 project = dl.projects.get(project_name='project-sdk-tutorial')
 service = project.services.deploy(func=rgb2gray,
@@ -34,6 +36,7 @@ An execution means running the function on a service with specific inputs (argum
 Now that the service is up, it can be executed manually (on-demand) or automatically, based on a set trigger (time/event). As part of this tutorial, we will demonstrate how to manually run the “RGB to Gray” function.  
   
 To see the item we uploaded, run the following code:  
+
 ```python
 item.open_in_web()
 ```

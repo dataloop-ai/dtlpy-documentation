@@ -1,6 +1,7 @@
   
 # Upload & Manage Annotations  
   
+
 ```python
 import dtlpy as dl
 item = dl.items.get(item_id="")
@@ -10,6 +11,7 @@ annotation.update()
 ```
 ## Upload User Metadata  
 To upload annotations from JSON and include the user metadata, add the parameter local_annotation_path to the dataset.items.upload function, like so:  
+
 ```python
 project = dl.projects.get(project_name='project_name')
 dataset = project.datasets.get(dataset_name='dataset_name')
@@ -21,6 +23,7 @@ dataset.items.upload(local_path=r'<items path>',
   
 ## Convert Annotations To COCO Format  
   
+
 ```python
 converter = dl.Converter()
 converter.upload_local_dataset(
@@ -34,6 +37,7 @@ converter.upload_local_dataset(
   
 ## Upload Entire Directory and their Corresponding  Dataloop JSON Annotations  
   
+
 ```python
 # Local path to the items folder
 # If you wish to upload items with your directory tree use : r'C:/home/project/images_folder' 
@@ -50,6 +54,7 @@ In this file there is a single 'person' box annotation that begins on frame numb
   
 [Video_annotations_example.CSV](https://cdn.document360.io/53f32fe9-1937-4652-8526-90c1bc78d3f8/Images/Documentation/video_annotation_example.csv)  
   
+
 ```python
 import pandas as pd
 # Read CSV file
@@ -77,6 +82,7 @@ After uploading items and annotations with their metadata, you might want to see
   
 To see only the annotations, use the annotation type *show* option.  
   
+
 ```python
 # Use the show function for all annotation types
 box = dl.Box()
@@ -92,6 +98,7 @@ box.show(image='',
   
 To see the item itself with all annotations, use the Annotations option.  
   
+
 ```python
 # Must input an image or height and width
 annotation.show(image='',
@@ -109,6 +116,7 @@ Download dataset items and annotations to your computer folder in two separate f
 See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotation-options).  
   
   
+
 ```python
 dataset.download(local_path=r'C:/home/project/images',  # The default value is ".dataloop" folder
                  annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
@@ -118,6 +126,7 @@ dataset.download(local_path=r'C:/home/project/images',  # The default value is "
 See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotation-options).  
   
   
+
 ```python
 dataset.download(local_path=r'C:/home/project/images',  # The default value is ".dataloop" folder
                  annotation_options=[dl.VIEW_ANNOTATION_OPTIONS_MASK,
@@ -133,6 +142,7 @@ You can also download items annotations based on different filters, learn all ab
 This example will download items and JSONS from a dog folder of the label 'dog'.  
   
   
+
 ```python
 # Filter items from "folder_name" directory
 item_filters = dl.Filters(resource='items', field='dir', values='/dog_name')
@@ -148,6 +158,7 @@ dataset.download(local_path=r'C:/home/project/images',  # The default value is "
 * **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://dataloop.ai/docs/sdk-sort-filter-annotation).  
   
   
+
 ```python
 item = dataset.items.get(item_id="item_id")  # Get item from dataset to be able to view the dataset colors on Mask
 # Filter items with dog annotations
@@ -165,6 +176,7 @@ item.download(local_path=r'C:/home/project/images',  # the default value is ".da
 This example will download COCO from a dog items folder of the label 'dog'.  
   
   
+
 ```python
 # Filter items from "folder_name" directory
 item_filters = dl.Filters(resource='items', field='dir', values='/dog_name')

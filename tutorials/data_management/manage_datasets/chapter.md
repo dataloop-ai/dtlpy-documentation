@@ -7,6 +7,7 @@ storage location (on Dataloop storage or external cloud storage).
   
 You can create datasets within a project. There are no limits to the number of dataset a project can have, which  
 correlates with data versioning where datasets can be cloned and merged.  
+
 ```python
 dataset = project.datasets.create_and_shlomi(dataset_name='my-dataset-name')
 ```
@@ -16,6 +17,7 @@ If you’ve created an integration and driver to your cloud storage, you can cre
 single integration (for example: S3) can have multiple drivers (per bucket or even per folder), so you need to specify  
 that.  
   
+
 ```python
 project = dl.projects.get(project_name='my-project-name')
 # Get your drivers list
@@ -28,6 +30,7 @@ dataset = project.datasets.create(driver='my_driver_name', dataset_name="my_data
   
 You can read all datasets that exist in a project, and then access the datasets by their ID (or name).  
   
+
 ```python
 datasets = project.datasets.list()
 dataset = project.datasets.get(dataset_id='my-dataset-id')
@@ -37,6 +40,7 @@ dataset = project.datasets.get(dataset_id='my-dataset-id')
   
 A dataset can have multiple directories, allowing you to manage files by context, such as upload time, working batch,  
 source, etc.  
+
 ```python
 dataset.items.make_dir(directory="/directory/name")
 ```
@@ -45,6 +49,7 @@ dataset.items.make_dir(directory="/directory/name")
 You can create a clone of a folder into a new dataset, but if you want to actually move between datasets a folder with  
 files that are stored in the Dataloop system, you’ll need to download the files and upload again to the destination dataset.  
   
+
 ```python
 copy_annotations = True
 flat_copy = False  # if true, it copies all dir files and sub dir files to the destination folder without sub directories

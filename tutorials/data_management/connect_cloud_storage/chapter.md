@@ -18,6 +18,7 @@ Delete - lets you delete your items directly from the external storage using the
 ## Create Integration With GCS  
   
 ### Creating an integration GCS requires having JSON file with GCS configuration.  
+
 ```python
 import dtlpy as dl
 if dl.token_expired():
@@ -33,6 +34,7 @@ organization.integrations.create(name='gcsintegration',
                                           'content': gcs_to_string})
 ```
 ### Create Integration With S3  
+
 ```python
 import dtlpy as dl
 if dl.token_expired():
@@ -42,6 +44,7 @@ organization.integrations.create(name='S3integration', integrations_type=dl.Exte
                                  options={'key': "my_key", 'secret': "my_secret"})
 ```
 ### Create Integration With Azure  
+
 ```python
 import dtlpy as dl
 if dl.token_expired():
@@ -60,6 +63,7 @@ Once you have an integration, you can set up a driver, which adds a specific buc
 path/folder) as a storage resource.  
   
 ## Create Drivers in the Platform (browser)  
+
 ```python
 # param name: the driver name
 # param driver_type: ExternalStorage.S3, ExternalStorage.GCS , ExternalStorage.AZUREBLOB

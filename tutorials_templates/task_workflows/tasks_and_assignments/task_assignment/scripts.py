@@ -17,9 +17,11 @@ def func2():
     item.update_status(status=dl.ItemStatus.APPROVED)
     item.update_status(status=dl.ItemStatus.DISCARDED)
 
+
 def func3():
     # Clear status for completed/approved/discarded
     item.update_status(dl.ITEM_STATUS_COMPLETED, clear=True)
+
 
 def func4():
     # With items list

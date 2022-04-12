@@ -1,6 +1,7 @@
 # Advanced Use Case: Multiple Functions  
 ## Create and Deploy a Package of Several Functions  
 First, login to the Dataloop platform:  
+
 ```python
 import dtlpy as dl
 if dl.token_expired():
@@ -8,11 +9,13 @@ if dl.token_expired():
 ```
 Let’s define the project and dataset you will work with in this tutorial.  
 To create a new project and dataset:  
+
 ```python
 project = dl.projects.create(project_name='project-sdk-tutorial')
 project.datasets.create(dataset_name='dataset-sdk-tutorial')
 ```
 To use an existing project and dataset:  
+
 ```python
 project = dl.projects.get(project_name='project-sdk-tutorial')
 dataset = project.datasets.get(dataset_name='dataset-sdk-tutorial')
@@ -23,6 +26,7 @@ The following code consists of two image-manipulation methods:
 * CLAHE Histogram Equalization over an image - Contrast Limited Adaptive Histogram Equalization (CLAHE) to equalize images  
   
 To proceed with this tutorial, copy the following code and save it as a main.py file.  
+
 ```python
 import dtlpy as dl
 import cv2
@@ -76,6 +80,7 @@ class ImageProcess(dl.BaseServiceRunner):
 Multiple functions may be defined in a single package under a “module” entity. This way you will be able to use a single codebase for various services.  
   
 Here, we will create a module containing the two functions we discussed. The “main.py” file you downloaded is defined as the module entry point. Later, you will specify its directory file path.  
+
 ```python
 modules = [dl.PackageModule(name='image-processing-module',
                             entry_point='main.py',
@@ -94,6 +99,7 @@ modules = [dl.PackageModule(name='image-processing-module',
 When you deployed the service in the previous tutorial (“Single Function”), a module and a package were automatically generated.  
   
 Now we will explicitly create and push the module as a package in the Dataloop FaaS library (application hub). For that, please specify the source path (src_path) of the “main.py” file you downloaded, and then run the following code:  
+
 ```python
 src_path = 'functions/opencv_functions'
 project = dl.projects.get(project_name='project-sdk-tutorial')
@@ -108,6 +114,7 @@ To create a service from a package, you need to define which module the service 
 Multiple services can be deployed from a single package. Each service can get its own configuration: a different module and settings (computing resources, triggers, UI slots, etc.).  
   
 In our example, there is only one module in the package. Let’s deploy the service:  
+
 ```python
 service = package.services.deploy(service_name='image-processing',
                                   runtime=dl.KubernetesRuntime(concurrency=32),
@@ -122,6 +129,7 @@ Event based trigger is related to a combination of resource and action. A resour
 The resource object that triggered the function will be passed as the function's parameter (input).  
   
 Let’s set a trigger in the event a new item is created:  
+
 ```python
 filters = dl.Filters()
 filters.add(field='datasetId', values=dataset.id)
@@ -136,6 +144,7 @@ In the defined filters we specified a dataset. Once a new item is uploaded (crea
   
 A separate trigger must be set for each function in your service.  
 Now, we will define a trigger for the second function in the module rgb2gray. Each time an item is updated, invoke the rgb2gray function:  
+
 ```python
 trigger = service.triggers.create(name='image-processing-rgb',
                                   function_name='rgb2gray',
@@ -148,6 +157,7 @@ To trigger the function only once (only on the first item update), set TriggerEx
   
 ## Execute the function  
 Now we can upload (“create”) an image to our dataset to trigger the service. The function clahe_equalization will be invoked:  
+
 ```python
 item = dataset.items.upload(
     local_path=['https://raw.githubusercontent.com/dataloop-ai/tiny_coco/master/images/train2017/000000463730.jpg'])
@@ -156,16 +166,19 @@ To see the original item, please click [here](https://raw.githubusercontent.com/
   
 ## Review the function's logs  
 You can review the execution log history to check that your execution succeeded:  
+
 ```python
 service.log()
 ```
 The transformed image will be saved in your dataset.  
 Once you see in the log that the execution succeeded, you may open the item to see its transformation:  
+
 ```python
 item.open_in_web()
 ```
 ## Pause the service:  
 We recommend pausing the service you created for this tutorial so it will not be triggered:  
+
 ```python
 service.pause()
 ```

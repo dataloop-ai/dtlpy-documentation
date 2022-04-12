@@ -132,7 +132,7 @@ def build_md_file(skeleton_filepath):
             func_name = cell_def['name']
             func = getattr(scripts_module, func_name)
             func_string, _ = inspect.getsourcelines(func)
-            lines.append('```python\n')
+            lines.append('\n```python\n')
             # ignore 0 def line and the """
             for line in func_string[1:]:
                 lines.append(line[4:])  # remove spaces at the beginning

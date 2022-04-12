@@ -3,6 +3,7 @@ A dl.Dataset image and annotation generator for training and for items visualiza
   
 We can visualize the data with augmentation for debug and exploration.  
 After that, we will use the Data Generator as an input to the training functions  
+
 ```python
 from dtlpy.utilities import DatasetGenerator
 import dtlpy as dl
@@ -13,16 +14,19 @@ dataloader = DatasetGenerator(data_path='train',
 ```
 ## Object Detection Examples  
 We can visualize a random item from the dataset:  
+
 ```python
 for i in range(5):
     dataloader.visualize()
 ```
 Or get the same item using it's index:  
+
 ```python
 for i in range(5):
     dataloader.visualize(10)
 ```
 Adding augmentations using imgaug repository:  
+
 ```python
 from imgaug import augmenters as iaa
 import numpy as np
@@ -65,11 +69,13 @@ All of the Data Generator options (from the function docstring):
   
 The output of a single element is a dictionary holding all the relevant informtaion.  
 the keys for the DataGen above are: ['image_filepath', 'item_id', 'box', 'class', 'labels', 'annotation_filepath', 'image', 'annotations', 'orig_image', 'orig_annotations']  
+
 ```python
 print(list(dataloader[0].keys()))
 ```
 We'll add the flag to return the origin items to understand better how the augmentations look like.  
 Let's set the flag and we can plot:  
+
 ```python
 import matplotlib.pyplot as plt
 dataloader = DatasetGenerator(data_path='train',
@@ -89,6 +95,7 @@ for i in range(2):
 ## Segmentation Examples  
 First we'll load a semantic dataset and view some images and the output structure  
   
+
 ```python
 dataset = dl.datasets.get(dataset_id='6197985a104eb81cb728e4ac')
 dataloader = DatasetGenerator(data_path='semantic',
@@ -100,6 +107,7 @@ for i in range(5):
     dataloader.visualize()
 ```
 Visualize original vs augmented image and annotations mask:  
+
 ```python
 fig, ax = plt.subplots(2, 4)
 for i in range(2):
@@ -114,6 +122,7 @@ for i in range(2):
     ax[i, 3].set_title('Augmented Annotations')
 ```
 Converting to 3d one-hot to visualize the binary mask per label. We will plot only 8 label (there might be more on the item):  
+
 ```python
 item_element = dataloader[np.random.randint(len(dataloader))]
 annotations = item_element['annotations']

@@ -5,6 +5,7 @@ NOTE: This is an example for a torch model adapter. This example will NOT run as
   
 The following class inherits from the dl.BaseModelAdapter, which have all the Dataloop methods for interacting with the Model and Snapshot  
 There are four methods that are model-related that the creator must implement for the adapter to have the API with Dataloop  
+
 ```python
 import dtlpy as dl
 import torch
@@ -25,6 +26,7 @@ class SimpleModelAdapter(dl.BaseModelAdapter):
 ```
   
 Now we can create our Model entity with an Item codebase.  
+
 ```python
 project = dl.projects.get('MyProject')
 codebase: dl.ItemCodebase = project.codebases.pack(directory='/path/to/codebase')
@@ -38,6 +40,7 @@ model = project.models.create(model_name='first-git-model',
 ```
 For creating a Model with a Git code, simply change the codebase to be a Git one:  
   
+
 ```python
 project = dl.projects.get('MyProject')
 codebase: dl.GitCodebase = dl.GitCodebase(git_url='github.com/mygit', git_tag='v25.6.93')
@@ -50,6 +53,7 @@ model = project.models.create(model_name='first-model',
                               )
 ```
 Creating a local snapshot:  
+
 ```python
 bucket = dl.buckets.create(dl.BucketType.ITEM)
 bucket.upload('/path/to/weights')
@@ -66,6 +70,7 @@ snapshot = model.snapshots.create(snapshot_name='tutorial-snapshot',
 ```
 Building to model adapter and calling one of the adapter's methods:  
   
+
 ```python
 adapter = model.build()
 adapter.load_from_snapshot(snapshot=snapshot)

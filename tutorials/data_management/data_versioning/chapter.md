@@ -8,6 +8,7 @@ Data Version "Snapshot" - Use our versioning feature as a way to save data (item
   
 ## Clone Datasets  
 Cloning a dataset creates a new dataset with the same files as the original. Files are actually a reference to the original binary and not a new copy of the original, so your cloud data remains safe and protected. When cloning a dataset, you can add a destination dataset, remote file path, and more...  
+
 ```python
 dataset = project.datasets.get(dataset_id='my-dataset-id')
 dataset.clone(clone_name='clone-name',
@@ -21,6 +22,7 @@ Dataset merging outcome depends on how similar or different the datasets are.
 * Cloned Datasets - items, annotations, and metadata will be merged. This means that you will see annotations from different datasets on the same item.  
 * Different datasets (not clones) with similar recipes - items will be summed up, which will cause duplication of similar items.  
 * Datasets with different recipes - Datasets with different default recipes cannot be merged. Use the 'Switch recipe' option on dataset level (3-dots action button) to match recipes between datasets and be able to merge them.  
+
 ```python
 dataset_ids = ["dataset-1-id", "dataset-2-id"]
 project_ids = ["dataset-1-project-id", "dataset-2-project-id"]

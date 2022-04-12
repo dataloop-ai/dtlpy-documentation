@@ -34,6 +34,7 @@ In this example, you will get all of the note annotations in the dataset sorted 
   
 See all of the items iterator options on the <a href="https://dataloop.ai/docs/sdk-item-iterator" target="_blank">Iterator of Items</a> page.</div>  
   
+
 ```python
 import dtlpy as dl
 # Get project and dataset
@@ -59,6 +60,7 @@ for page in pages:
 <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>  
 See all of the items iterator options on the <a href="https://dataloop.ai/docs/sdk-item-iterator" target="_blank">Iterator of Items</a> page.</div>  
   
+
 ```python
 # Create filters instance
 filters = dl.Filters(resource=dl.FiltersResource.ANNOTATION)
@@ -84,6 +86,7 @@ If you wish to filter annotations with the "and" logical operator, you can do so
 AND is the default value and can be used without specifying the method.</b></div>  
 In this example, you will get a list of annotations in the dataset of the type <b>box</b> and label <b>car</b>.  
   
+
 ```python
 filters = dl.Filters(resource=dl.FiltersResource.ANNOTATION)
 # set annotation resource
@@ -100,6 +103,7 @@ print('Number of filtered annotations in dataset: {}'.format(pages.items_count))
 If you wish to filter annotations with the "or" logical operator, you can do so by specifying which filters will be checked with "or".  
 In this example, you will get a list of the dataset's annotations that are either a 'box' or a 'point' type.  
   
+
 ```python
 filters = dl.Filters(resource=dl.FiltersResource.ANNOTATION)
 # filters with or
@@ -115,6 +119,7 @@ print('Number of filtered annotations in dataset: {}'.format(pages.items_count))
 ### Delete Filtered Items  
 In this example, you will delete annotations that were created on 30/8/2020 at 8:17 AM.  
   
+
 ```python
 filters = dl.Filters()
 # set annotation resource
@@ -129,6 +134,7 @@ dataset.annotations.delete(filters=filters)
 Use a dot to access parameters within curly brackets.  
 For example use field='metadata.system.status' to filter by the annotation's status.</div>  
   
+
 ```python
 {
     "id": "5f576f660bb2fb455d79ffdf",
@@ -213,6 +219,7 @@ For example use field='metadata.system.status' to filter by the annotation's sta
 ### Full Examples  
 #### How to filter annotations by their label?  
   
+
 ```python
 filters = dl.Filters()
 # set resource
