@@ -112,9 +112,9 @@ def func10():
 
 def func11():
     dataset = dl.datasets.get(dataset_id='6197985a104eb81cb728e4ac')
-    label_to_id_map = {'cat': 1,
-                       'dog': 1,
-                       '$default': 0}
+    label_to_id_map = {1: 'cat',
+                       1: 'dog',
+                       0: '$default'}
     dataloader = DatasetGenerator(data_path='semantic',
                                   dataset_entity=dataset,
                                   transforms=tfs,
