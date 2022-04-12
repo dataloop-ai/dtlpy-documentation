@@ -70,5 +70,21 @@
   {
     "type": "code",
     "name": "func9"
+  },
+  {
+    "type": "md",
+    "name": "func10"
+  },
+  {
+    "type": "code",
+    "name": "func10"
+  },
+  {
+    "type": "md",
+    "name": "func11"
+  },
+  {
+    "type": "code",
+    "name": "func11"
   }
 ]

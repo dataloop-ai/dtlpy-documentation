@@ -138,3 +138,25 @@ for i_label_ind, label_ind in enumerate(unique_labels[:8]):
     ax.imshow(one_hot_annotations[:, :, label_ind])
     ax.set_title(dataloader.id_to_label_map[label_ind])
 ```
+batch_size and collate_fn  
+
+```python
+# batchsize and collate
+...
+```
+label mapping and default background  
+
+```python
+dataset = dl.datasets.get(dataset_id='6197985a104eb81cb728e4ac')
+label_to_id_map = {'cat': 1,
+                   'dog': 1,
+                   '$default': 0}
+dataloader = DatasetGenerator(data_path='semantic',
+                              dataset_entity=dataset,
+                              transforms=tfs,
+                              return_originals=True,
+                              label_to_id_map=label_to_id_map,
+                              annotation_type=dl.AnnotationType.SEGMENTATION)
+for i in range(5):
+    dataloader.visualize()
+```
