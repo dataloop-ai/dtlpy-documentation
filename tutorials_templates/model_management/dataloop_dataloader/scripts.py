@@ -112,14 +112,14 @@ def func10():
 
 def func11():
     dataset = dl.datasets.get(dataset_id='6197985a104eb81cb728e4ac')
-    id_to_label_map = {1: 'cat',
-                       1: 'dog',
-                       0: '$default'}
+    label_to_id_map = {'cat': 1,
+                       'dog': 1,
+                       '$default': 0}
     dataloader = DatasetGenerator(data_path='semantic',
                                   dataset_entity=dataset,
                                   transforms=tfs,
                                   return_originals=True,
-                                  id_to_label_map=id_to_label_map,
+                                  label_to_id_map=label_to_id_map,
                                   annotation_type=dl.AnnotationType.SEGMENTATION)
     for i in range(5):
         dataloader.visualize()
