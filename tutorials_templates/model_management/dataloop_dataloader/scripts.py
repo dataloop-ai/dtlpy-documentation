@@ -1,10 +1,6 @@
 def func1():
-    # matplotlib notebook
-    import matplotlib.pyplot as plt
-    import logging
     from dtlpy.utilities import DatasetGenerator
     import dtlpy as dl
-    logging.basicConfig(level='INFO')
     dataset = dl.datasets.get(dataset_id='611b86e647fe2f865323007a')
     datagen = DatasetGenerator(data_path='train',
                                dataset_entity=dataset,
