@@ -123,19 +123,18 @@ def func10():
 
 
 def func11():
-    label_to_id_map = {'fur': 1,
-                       'eye': 2,
-                       '$default': 2}
-    datagen = DatasetGenerator(data_path='semantic',
-                               dataset_entity=dataset,
-                               return_originals=True,
-                               overwrite=True,
-                               label_to_id_map=label_to_id_map,
-                               annotation_type=dl.AnnotationType.SEGMENTATION)
-    datagen.visualize()
-    data_item = datagen[0]
-    plt.imshow(data_item['annotations'])
-    print('BG value: {}'.format(data_item['annotations'][0, 0]))
+    dataset = dl.datasets.get(dataset_id='6197985a104eb81cb728e4ac')
+    label_to_id_map = {'cat': 1,
+                       'dog': 1,
+                       '$default': 0}
+    dataloader = DatasetGenerator(data_path='semantic',
+                                  dataset_entity=dataset,
+                                  transforms=tfs,
+                                  return_originals=True,
+                                  label_to_id_map=label_to_id_map,
+                                  annotation_type=dl.AnnotationType.SEGMENTATION)
+    for i in range(5):
+        dataloader.visualize()
 
 
 def func12():
