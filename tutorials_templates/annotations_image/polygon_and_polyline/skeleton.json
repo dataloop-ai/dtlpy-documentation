@@ -1,0 +1,34 @@
+[
+  {
+    "type": "md",
+    "name": "section1"
+  },
+  {
+    "type": "code",
+    "name": "section1"
+  },
+  {
+    "type": "md",
+    "name": "section2"
+  },
+  {
+    "type": "code",
+    "name": "section2"
+  },
+  {
+    "type": "md",
+    "name": "section3"
+  },
+  {
+    "type": "code",
+    "name": "section3"
+  },
+  {
+    "type": "md",
+    "name": "section4"
+  },
+  {
+    "type": "code",
+    "name": "section4"
+  }
+]

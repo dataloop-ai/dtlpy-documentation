@@ -99,15 +99,13 @@ assignment = task.assignments.get(assignment_name='<my-assignment-name>')
 
 ```python
 # load is the workload percentage for each annotator
-assignment.redistribute(dl.Workload([dl.WorkloadUnit(assignee_id='<annotator1@dataloop.ai>', load=50),
-                                     dl.WorkloadUnit(assignee_id='<annotator2@dataloop.ai>', load=50)]))
+assignment.redistribute(dl.Workload([dl.WorkloadUnit(assignee_id='<annotator1@dataloop.ai>', load=50), dl.WorkloadUnit(assignee_id='<annotator2@dataloop.ai>', load=50)]))
 ```
 #### Reassign  
 
 ```python
 assignment.reassign(
-    assignee_ids['<annotator1@dataloop.ai>']
-)
+ignee_ids['<annotator1@dataloop.ai>']
 ```
 ### Delete Task and Assignments  
 #### Delete Task  

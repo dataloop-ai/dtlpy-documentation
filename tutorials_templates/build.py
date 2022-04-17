@@ -48,7 +48,7 @@ def _build_md_block(func_string):
     # ignore 0 def line and the """
     source = list()
     for line in func_string[2:-1]:
-        source.append(line.strip() + '  \n')  # remove spaces at the beginning
+        source.append(line[4:].rstrip() + '  \n')  # remove 4 spaces at the beginning
     #
     # # remove the "def" line
     # func_string = func_string[1:]
