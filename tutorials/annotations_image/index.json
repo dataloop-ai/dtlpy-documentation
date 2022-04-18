@@ -31,7 +31,7 @@
     {
       "displayName": "Advance Tutorials",
       "description": "Copy, count, show and annotation parenting.",
-      "location": "annotations_image/advance_tutorials/index.json"
+      "location": "annotations_image/advance_tutorials/chapter.md"
     }
   ]
 }
