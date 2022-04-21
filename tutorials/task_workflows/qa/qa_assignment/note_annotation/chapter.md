@@ -18,7 +18,7 @@ Using the annotations definitions classes you can create, edit, view and
 upload platform annotations.  
 
 ```python
-annotation_definition=dl.Note(top=10,left=10, bottom=100, right=100,label='my-label')
+annotation_definition = dl.Note(top=10, left=10, bottom=100, right=100, label='my-label')
 annotation_definition.assignee = "user@dataloop.ai"
 annotation_definition.add_message("this is a message 1")
 annotation_definition.add_message("this is a message 2")
@@ -43,8 +43,8 @@ builder = item.annotations.builder()
 #### 4. Add a note  
 
 ```python
-annotation_definition=dl.Note(top=10,left=10, bottom=100, right=100,label='my-label')
-annotation_definition.assignee = "user@dataloop.ai" 
+annotation_definition = dl.Note(top=10, left=10, bottom=100, right=100, label='my-label')
+annotation_definition.assignee = "user@dataloop.ai"
 annotation_definition.add_message("this is a message 1")
 annotation_definition.add_message("this is a message 2")
 builder.add(annotation_definition=annotation_definition)

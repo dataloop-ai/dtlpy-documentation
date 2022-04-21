@@ -5,12 +5,8 @@ We can visualize the data with augmentation for debugging and exploration.
 After that, we will use the Data Generator as an input to the training functions.  
 
 ```python
-# matplotlib notebook
-import matplotlib.pyplot as plt
-import logging
 from dtlpy.utilities import DatasetGenerator
 import dtlpy as dl
-logging.basicConfig(level='INFO')
 dataset = dl.datasets.get(dataset_id='611b86e647fe2f865323007a')
 datagen = DatasetGenerator(data_path='train',
                            dataset_entity=dataset,
@@ -167,19 +163,18 @@ print('BG value: {}'.format(data_item['annotations'][0, 0]))
 Now, we'll map both the 'eye' label and the background to 2 and the 'fur' to 1:  
 
 ```python
-label_to_id_map = {'fur': 1,
-                   'eye': 2,
-                   '$default': 2}
-datagen = DatasetGenerator(data_path='semantic',
-                           dataset_entity=dataset,
-                           return_originals=True,
-                           overwrite=True,
-                           label_to_id_map=label_to_id_map,
-                           annotation_type=dl.AnnotationType.SEGMENTATION)
-datagen.visualize()
-data_item = datagen[0]
-plt.imshow(data_item['annotations'])
-print('BG value: {}'.format(data_item['annotations'][0, 0]))
+dataset = dl.datasets.get(dataset_id='6197985a104eb81cb728e4ac')
+label_to_id_map = {'cat': 1,
+                   'dog': 1,
+                   '$default': 0}
+dataloader = DatasetGenerator(data_path='semantic',
+                              dataset_entity=dataset,
+                              transforms=tfs,
+                              return_originals=True,
+                              label_to_id_map=label_to_id_map,
+                              annotation_type=dl.AnnotationType.SEGMENTATION)
+for i in range(5):
+    dataloader.visualize()
 ```
 ## Batch size and batch_size and collate_fn  
 If batch_size is not None, the returned structure will be a list with batch_size data items.  
