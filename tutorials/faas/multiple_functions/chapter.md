@@ -8,7 +8,7 @@ if dl.token_expired():
     dl.login()
 ```
 Let’s define the project and dataset you will work with in this tutorial.  
-To create a new project and dataset:  
+create a new project and dataset:  
 
 ```python
 project = dl.projects.create(project_name='project-sdk-tutorial')

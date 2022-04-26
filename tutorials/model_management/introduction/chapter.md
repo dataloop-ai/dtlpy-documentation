@@ -19,7 +19,6 @@ In the online mode, you can train and deploy your models easily anywhere on the 
 All you need to do is create a Model Adapter class and expose some functions to build an API between Dataloop and your model.  
 After that, you can easily add model blocks to pipelines, add UI slots in the studio, one-button-training etc  
   
-TODO: add more documentation in the Adapter function and maybe some example  
   
 ### Model and Snapshot entities  
   
@@ -28,7 +27,6 @@ TODO: add more documentation in the Adapter function and maybe some example
 The model entity is basically the algorithm, the architecture of the model, e.g Yolov5, Inception, SVM, etc.  
 - In online it should contain the Model Adapter to create a Dataloop API  
   
-TODO: add the module attributes  
   
 #### Snapshot  
   

@@ -1,0 +1,38 @@
+{
+  "name": "annotations-image",
+  "title": "Image Annotations",
+  "description": "Use Dataloop's Python SDK to create and annotate images with all of our image annotations.",
+  "content": [
+    {
+      "displayName": "Setup",
+      "description": "Setup environment before starting",
+      "location": "annotations_image/setup/chapter.md"
+    },
+    {
+      "displayName": "Classification, Point and Pose",
+      "description": "Classification, Point and Pose annotations types",
+      "location": "annotations_image/classification_point_and_pose/chapter.md"
+    },
+    {
+      "displayName": "Bounding Box and Cuboid",
+      "description": "Bounding Box and Cuboid annotations types",
+      "location": "annotations_image/bounding_box_and_cuboid/chapter.md"
+    },
+    {
+      "displayName": "Polygon and Polyline",
+      "description": "Polygon and Polyline annotations types",
+      "location": "annotations_image/polygon_and_polyline/chapter.md"
+    },
+    {
+      "displayName": "Ellipse and Item Description",
+      "description": "Ellipse and Item Description annotations types",
+      "location": "annotations_image/ellipse_and_item_description/chapter.md"
+    },
+    {
+      "displayName": "Advance Tutorials",
+      "description": "Copy, count, show and annotation parenting.",
+      "location": "annotations_image/advance_tutorials/chapter.md"
+    }
+  ]
+}
+
