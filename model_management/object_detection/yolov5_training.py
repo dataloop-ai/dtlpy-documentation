@@ -41,10 +41,10 @@ def create_sample_dataset(project):
 
 def create_model_and_snapshot(project):
     try:
-        model = yol.model_creation(project_name=project.name)
-    except dl.exceptions.Conflict:
-        model = dl.models.get('yolo-v5')
-    snapshot = yol.snapshot_creation(model, yolo_size='small')
+        model = yol.model_creation(project_name=project.name, env=args.env)
+    except dl.exceptions.BadRequest:
+        model = project.models.get('yolo-v5')
+    snapshot = yol.snapshot_creation(model, yolo_size='small', env=args.env)
     return model, snapshot
 
 
