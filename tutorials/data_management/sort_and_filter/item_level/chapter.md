@@ -128,7 +128,7 @@ update_values = {'BlackDogs': True}
 # update
 pages = dataset.items.update(filters=filters, update_values=update_values)
 ```
-### Delete Filtered Items  
+### Delete Filtered Items (bulk delete)  
 In this example, you will delete items that were created on 30/8/2020 at 8:17 AM.  
   
 
