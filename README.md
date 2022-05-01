@@ -4,6 +4,26 @@
 The following repository will gather Dataloop's SDK examples and best practices.
 
 ## Installation
+If you have a Python environment ready, all you really need is our SDK:
+```
+pip install dtlpy
+```
+
+Otherwise, install python (we recommend python<3.10) and follow the next steps for creating a virtual env:
+Clone this
+
+```
+git clone https://github.com/dataloop-ai/dtlpy-documentation.git
+cd dtlpy-documentation
+python -m venv venv
+venv/Scripts/activate
+pip install -r requirements.txt
+```
+
+To run out Tutorial Notebooks:
+```
+jupyter notebook tutorials
+```
 
 ## Table of Content
 

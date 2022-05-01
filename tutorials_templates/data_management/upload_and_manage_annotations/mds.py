@@ -5,6 +5,7 @@ def section1():
 
     """
 
+
 def section12():
     """
     ## Upload User Metadata
@@ -27,6 +28,7 @@ def section3():
 
     """
 
+
 def section4():
     """
 
@@ -38,6 +40,7 @@ def section4():
 
     """
 
+
 def section5():
     """
 
@@ -48,12 +51,14 @@ def section5():
 
     """
 
+
 def section6():
     """
 
     To see the item itself with all annotations, use the Annotations option.
 
     """
+
 
 def section7():
     """
@@ -68,6 +73,7 @@ def section7():
 
     """
 
+
 def section8():
     """
 
@@ -76,6 +82,7 @@ def section8():
 
 
     """
+
 
 def section9():
     """
@@ -90,6 +97,7 @@ def section9():
 
     """
 
+
 def section10():
     """
 
@@ -98,6 +106,7 @@ def section10():
 
 
     """
+
 
 def section11():
     """
