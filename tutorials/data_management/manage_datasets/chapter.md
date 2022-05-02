@@ -9,7 +9,7 @@ You can create datasets within a project. There are no limits to the number of d
 correlates with data versioning where datasets can be cloned and merged.  
 
 ```python
-dataset = project.datasets.create_and_shlomi(dataset_name='my-dataset-name')
+dataset = project.datasets.create(dataset_name='my-dataset-name')
 ```
 ## Create Dataset With Cloud Storage Driver  
   

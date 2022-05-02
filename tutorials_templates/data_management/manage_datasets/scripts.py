@@ -1,5 +1,5 @@
 def section1():
-    dataset = project.datasets.create_and_shlomi(dataset_name='my-dataset-name')
+    dataset = project.datasets.create(dataset_name='my-dataset-name')
 
 
 def section2():
