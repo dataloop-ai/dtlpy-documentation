@@ -21,7 +21,7 @@ def func3():
     dataset.to_df()
     _ = dataset.items.upload(local_path='../../assets/sample_datasets/SheepFace/items/*',
                              local_annotations_path='../../assets/sample_datasets/SheepFace/json')
-    dataset.add_labels(labels_list=['Marino', 'Poll Dorset', 'Suffolk', 'White Suffolk'])
+    dataset.add_labels(label_list=['Marino', 'Poll Dorset', 'Suffolk', 'White Suffolk'])
 
 
 def func4():
@@ -48,6 +48,7 @@ def func6():
     cloned_dataset = train_utils.prepare_dataset(dataset,
                                                  filters=None,
                                                  partitions=partitions)
+    cloned_dataset.add_labels(label_list=list(dataset.instance_map.keys()))
 
     snapshot_name = 'sheep-soft-augmentations'
     # create an Item Bucket to save snapshot in your project
