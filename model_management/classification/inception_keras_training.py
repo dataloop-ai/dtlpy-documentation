@@ -7,11 +7,11 @@ from PIL import Image
 import numpy as np
 import datetime
 import os
-import sys
 
 
-def get_globals():
-    model = dl.models.get(model_name='InceptionV3')
+
+def get_globals(project):
+    model = project.models.get(model_name='InceptionV3')
     snapshot = model.snapshots.get('pretrained-inception')
     model.snapshots.list().to_df()
     return model, snapshot
@@ -87,7 +87,7 @@ def train_on_new_dataset(model, snapshot, dataset):
 
 def main(args, **kwargs):
     project = dl.projects.get(args.project)
-    model, snapshot = get_globals()
+    model, snapshot = get_globals(project)
     if args.mode == 'train':
         if not args.dataset:
             dataset = create_sample_dataset(project)
