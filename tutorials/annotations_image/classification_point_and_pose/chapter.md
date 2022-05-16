@@ -13,7 +13,7 @@ builder.add(annotation_definition=dl.Classification(label=label))
 # Upload classification to the item
 item.annotations.upload(builder)
 ```
-## Classify Multiple Items  
+# Classify Multiple Items  
   
 Classifying multiple items requires using an Items entity with a filter.  
 
@@ -21,7 +21,7 @@ Classifying multiple items requires using an Items entity with a filter.
 # mutiple items classification using filter
 ...
 ```
-## Create a Point Annotation  
+# Create a Point Annotation  
 
 ```python
 # Get item from the platform
@@ -36,7 +36,7 @@ builder.add(annotation_definition=dl.Point(x=100,
 # Upload point to the item
 item.annotations.upload(builder)
 ```
-## Pose Annotation  
+# Pose Annotation  
 
 ```python
 # Pose annotation is based on pose template. Create the pose template from the platform UI and use it in the script by its ID
