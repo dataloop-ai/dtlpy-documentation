@@ -1,10 +1,5 @@
-# Training a classification model with ResNet  
+# Training an obejct detection model with Yolov5  
 In this tutorial we will use the Resnet Model Adapter to inference and train on custom data.  
-If you don't have the following packages, you'll need to install. The Torch Model Adapter will use them later:  
-torch  
-torchvision  
-imgaug  
-scikit-image<0.18  
   
 
 ```python
@@ -18,8 +13,14 @@ from dtlpy.ml import train_utils
 We start by creating the entities in our project. The model codebase is in our public github.  
 
 ```python
-model = dl.models.get(model_name='ResNet')
-snapshot = model.snapshots.get('pretrained-resnet18')
+import dtlpy as dl
+filters = dl.Filters(resource=dl.FiltersResource.MODEL)
+filters.add(field='name', values='yolo-v5')
+filters.add(field='scope', values='public')
+models = dl.models.list(filters=filters)
+models.to_df()
+model = models.items[0]
+snapshot = model.snapshots.get('pretrained-yolo-v5-small')
 model.snapshots.list().to_df()
 ```
 ### Run Pretrained Model  
@@ -39,19 +40,19 @@ annotations = adapter.predict_items([item], with_upload=True)
 image = np.asarray(Image.open(item.download()))
 plt.imshow(item.annotations.show(image,
                                  thickness=5))
-print('Classification: {}'.format(annotations[0][0].label))
+print('Classes found: {}'.format([ann.label for ann in annotations[0]]))
 ```
 ## Train on new dataset  
-We will use a public sheep face dataset. We create a project and a dataset and upload the data with 4 labels of sheep.  
+We will use a public fruits dataset. We create a project and a dataset and upload the data with 3 labels of fruit.  
 NOTE: You might need to change the location of the items (should point to the root of the documentation repository)  
 
 ```python
-project = dl.projects.create('Sheep Face - Model Mgmt')
-dataset = project.datasets.create('Sheep Face')
+project = dl.projects.create('Fruit - Model Mgmt')
+dataset = project.datasets.create('Fruit')
 dataset.to_df()
-_ = dataset.items.upload(local_path='../../../../assets/sample_datasets/SheepFace/items/*',
-                         local_annotations_path='../../../../assets/sample_datasets/SheepFace/json')
-dataset.add_labels(label_list=['Marino', 'Poll Dorset', 'Suffolk', 'White Suffolk'])
+_ = dataset.items.upload(local_path='../../../../assets/sample_datasets/FruitImage/items/*',
+                         local_annotations_path='../../../../assets/sample_datasets/FruitImage/json')
+dataset.add_labels(label_list=['orange', 'banana', 'apple'])
 ```
 Now we'll run the "prepare_dataset" method. This will clone and freeze the dataset (so that we'll be able to reproduce the training and keep a snapshot of the data).  
 The cloned dataset will be split into subsets (using DQL or percentage). In this examples, we'll use a 80/20 train validation split.  
@@ -64,7 +65,7 @@ partitions = {dl.SnapshotPartitionType.TRAIN: 0.8,
 cloned_dataset = train_utils.prepare_dataset(dataset,
                                              filters=None,
                                              partitions=partitions)
-snapshot_name = 'sheep-soft-augmentations'
+snapshot_name = 'fruits'
 # create an Item Bucket to save snapshot in your project
 bucket = project.buckets.create(bucket_type=dl.BucketType.ITEM,
                                 model_name=model.name,
