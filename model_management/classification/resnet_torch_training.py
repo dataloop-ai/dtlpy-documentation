@@ -1,7 +1,6 @@
-
 import dtlpy as dl
 from dtlpy.ml import train_utils
-from pytorch_adapters import resnet_adapter as res
+import resnet_adapter as res
 import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
@@ -9,8 +8,8 @@ import datetime
 import os
 import sys
 
-def get_globals():
-    model = dl.models.get(model_name='ResNet')
+def get_globals(project):
+    model = project.models.get(model_name='ResNet')
     snapshot = model.snapshots.get('pretrained-resnet50')
     model.snapshots.list().to_df()
     return model, snapshot
@@ -28,7 +27,7 @@ def create_sample_dataset(project):
     return dataset
 
 
-def create_snapshot(model):
+def create_snapshot(model, project):
     res.snapshot_creation(project.name, model=model, resnet_ver='50')
 
 
@@ -58,8 +57,12 @@ def train_on_new_dataset(model, snapshot, dataset):
         cloned_dataset = train_utils.prepare_dataset(dataset,
                                                      filters=None,
                                                      partitions=partitions)
+        bucket = model.project.buckets.create(bucket_type=dl.BucketType.ITEM,
+                                            model_name=model.name,
+                                            snapshot_name=snapshot_name)
         new_snapshot = snapshot.clone(snapshot_name=snapshot_name,
-                                      dataset_id=cloned_dataset.id)
+                                      dataset_id=cloned_dataset.id,
+                                      bucket=bucket)
 
     new_snapshot.configuration.update({'batch_size': 16,
                                       'start_epoch': 0,
@@ -82,14 +85,14 @@ def train_on_new_dataset(model, snapshot, dataset):
 
     adapter.save_to_snapshot(local_path=output_path,
                              replace=True,
-                             weights_filename='model.hdf5')
+                             weights_filename='model.pth')
 
     adapter.snapshot.bucket.list_content()
 
 
 def main(args, **kwargs):
     project = dl.projects.get(args.project)
-    model, snapshot = get_globals()
+    model, snapshot = get_globals(project)
 
     if args.mode == 'train':
         if not args.dataset:
@@ -112,10 +115,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='local runner for model management testing')
 
     parser.add_argument('--env', '-e', default='prod', help='dtlpy env')
-    parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name', required=True) 
+    parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name')
     parser.add_argument('--dataset', '-d', default='', help='dtlpy dataset id')
     parser.add_argument('--item', '-i', default='6205097d8ea6ad0abe7b90ba', help='dtlpy single item id')
-    parser.add_argument('--mode', '-m', default='inference', help='inference or training')
+    parser.add_argument('--mode', '-m', default='inference', help='inference or train')
 
     args = parser.parse_args()
     main(args)

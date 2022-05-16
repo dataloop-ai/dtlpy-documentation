@@ -7,11 +7,11 @@ from PIL import Image
 import numpy as np
 import datetime
 import os
-import sys
 
 
-def get_globals():
-    model = dl.models.get(model_name='InceptionV3')
+
+def get_globals(project):
+    model = project.models.get(model_name='InceptionV3')
     snapshot = model.snapshots.get('pretrained-inception')
     model.snapshots.list().to_df()
     return model, snapshot
@@ -58,8 +58,12 @@ def train_on_new_dataset(model, snapshot, dataset):
         cloned_dataset = train_utils.prepare_dataset(dataset,
                                                      filters=None,
                                                      partitions=partitions)
+        bucket = model.project.buckets.create(bucket_type=dl.BucketType.ITEM,
+                                            model_name=model.name,
+                                            snapshot_name=snapshot_name)
         new_snapshot = snapshot.clone(snapshot_name=snapshot_name,
-                                      dataset_id=cloned_dataset.id)
+                                      dataset_id=cloned_dataset.id,
+                                      bucket=bucket)
 
     new_snapshot.configuration.update({'batch_size': 16,
                                        'start_epoch': 0,
@@ -87,7 +91,7 @@ def train_on_new_dataset(model, snapshot, dataset):
 
 def main(args, **kwargs):
     project = dl.projects.get(args.project)
-    model, snapshot = get_globals()
+    model, snapshot = get_globals(project)
     if args.mode == 'train':
         if not args.dataset:
             dataset = create_sample_dataset(project)
@@ -112,7 +116,7 @@ if __name__ == '__main__':
     parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name',)  # required=True)
     parser.add_argument('--dataset', '-d', default='', help='dtlpy dataset id')
     parser.add_argument('--item', '-i', default='6205097d8ea6ad0abe7b90ba', help='dtlpy single item id')
-    parser.add_argument('--mode', '-m', default='inference', help='inference or training')
+    parser.add_argument('--mode', '-m', default='inference', help='inference or train')
 
     args = parser.parse_args()
 
