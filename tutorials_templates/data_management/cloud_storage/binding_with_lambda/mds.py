@@ -18,19 +18,21 @@ def section1():
 def section2():
     """
     ## Add a Layer to the Lambda
-    We have created an AWS Layer with the Dataloop SDK ready.
+    We have created an AWS Layer with the Dataloop SDK ready. Click [here](https://storage.googleapis.com/dtlpy/aws-python3.8-lambda-layer/layer.zip) to download the zip file.
     Because the layer's size is larger than 50MB you cannot use it directly (AWS restrictions), but need to upload it to a bucket first.
     Once uploaded, create a new layer for the dtlpy env:
-    1. Go to the layers screen and "click Add Layer"
+    1. Go to the layers screen and "click Add Layer".
     ![add_layer](../../../../assets/aws-lambda-screenshots/create_layer.png)
-    2. Choose a name (dtlpy-env)
-    3. Use the link to the bucket layer.zip
-    4. Select the env (x86_64, python3.8)
-    5. Click "Create" and the buttom
+    2. Choose a name (dtlpy-env).
+    3. Use the link to the bucket layer.zip.
+    4. Select the env (x86_64, python3.8).
+    5. Click "Create" and the bottom on the page.
 
-    Go back to your lambda, select the "Add Layer" and upload the zip file downloaded from [here](https://storage.googleapis.com/dtlpy/aws-python3.8-lambda-layer/layer.zip)
-
+    Go back to your lambda and add the layer:
+    1. Select the "Add Layer".
     ![add_layer](../../../../assets/aws-lambda-screenshots/add_layer.png)
+    2. Choose "Custom layer" and select the Layer you've added and the version.
+    3. click "Add" at the bottom.
 
     ## Create the Bucket Events
     Go to the bucket you are using, and create the event:
