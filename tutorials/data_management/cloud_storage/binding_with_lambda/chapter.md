@@ -8,8 +8,10 @@ We have prepared an environment zip file with our SDK for python3.8 so you don't
 NOTE: For any other custom use (e.g other python version or more packages) try creating your own layer (We used [this](https://www.geeksforgeeks.org/how-to-install-python-packages-for-aws-lambda-layers) tutorial and the python:3.8 docker image).  
   
 # Create the Lambda  
-Create a new Lambda and copy the following code:  
-  
+1. Create a new Lambda  
+2. The default timeout is 3[s] so we'll need to change to 1[m]:  
+    Configuration → General configuration → Edit → Timeout  
+3. Copy the following code:  
 
 ```python
 import os
