@@ -44,3 +44,9 @@ def section4():
 
     ## Create Drivers in the Platform (browser)
     """
+
+
+def section5():
+    """
+    Once the integration and drivers are ready, you can create a Dataloop Datsaset and sync all the data:
+    """
