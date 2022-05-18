@@ -52,7 +52,7 @@ def lambda_handler(event, context):
 We have created an AWS Layer with the Dataloop SDK ready.  
 After creating the lambda, select the "Add Layer" and upload the zip file downloaded from [here](https://storage.googleapis.com/dtlpy/aws-python3.8-lambda-layer/layer.zip)  
   
-![add_layer](assets/aws-lambda-screenshots/add_layer.png)  
+![add_layer](../../../../assets/aws-lambda-screenshots/add_layer.png)  
   
 ## Create the Bucket Events  
 Go to the bucket you are using, and create the event:  
