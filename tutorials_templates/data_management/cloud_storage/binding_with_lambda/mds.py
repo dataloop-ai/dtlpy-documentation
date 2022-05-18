@@ -5,11 +5,11 @@ def section1():
     If you want to catch events from the AWS bucket and update the Dataloop Dataset you need to set up a Lambda.
     The Lambda will catch the AWS bucket events and will reflect them into the Dataloop Platform.
 
-    We created the environment zip file with our SDK for python3.8. For other version or more packages try creating your own layer.
-    (We used [this](https://www.geeksforgeeks.org/how-to-install-python-packages-for-aws-lambda-layers) tutorial and the python:3.8 docker image)
+    We have prepared an environment zip file with our SDK for python3.8 so you don't need to create anything else to use dtlpy in the lambda.
+
+    NOTE: For any other custom use (e.g other python version or more packages) try creating your own layer (We used [this](https://www.geeksforgeeks.org/how-to-install-python-packages-for-aws-lambda-layers) tutorial and the python:3.8 docker image).
 
     # Create the Lambda
-
     Create a new Lambda and copy the following code:
 
     """
