@@ -19,7 +19,16 @@ def section2():
     """
     ## Add a Layer to the Lambda
     We have created an AWS Layer with the Dataloop SDK ready.
-    After creating the lambda, select the "Add Layer" and upload the zip file downloaded from [here](https://storage.googleapis.com/dtlpy/aws-python3.8-lambda-layer/layer.zip)
+    Because the layer's size is larger than 50MB you cannot use it directly (AWS restrictions), but need to upload it to a bucket first.
+    Once uploaded, create a new layer for the dtlpy env:
+    1. Go to the layers screen and "click Add Layer"
+    ![add_layer](../../../../assets/aws-lambda-screenshots/add_layer.png)
+    2. Choose a name (dtlpy-env)
+    3. Use the link to the bucket layer.zip
+    4. Select the env (x86_64, python3.8)
+    5. Click "Create" and the buttom
+
+    Go back to your lambda, select the "Add Layer" and upload the zip file downloaded from [here](https://storage.googleapis.com/dtlpy/aws-python3.8-lambda-layer/layer.zip)
 
     ![add_layer](../../../../assets/aws-lambda-screenshots/add_layer.png)
 
