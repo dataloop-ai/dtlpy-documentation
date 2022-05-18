@@ -22,7 +22,7 @@ def section2():
     Because the layer's size is larger than 50MB you cannot use it directly (AWS restrictions), but need to upload it to a bucket first.
     Once uploaded, create a new layer for the dtlpy env:
     1. Go to the layers screen and "click Add Layer"
-    ![add_layer](../../../../assets/aws-lambda-screenshots/add_layer.png)
+    ![add_layer](../../../../assets/aws-lambda-screenshots/create_layer.png)
     2. Choose a name (dtlpy-env)
     3. Use the link to the bucket layer.zip
     4. Select the env (x86_64, python3.8)
