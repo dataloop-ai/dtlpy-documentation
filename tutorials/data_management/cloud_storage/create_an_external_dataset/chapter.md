@@ -86,3 +86,13 @@ driver = project.drivers.create(name='driver_name',
                                 storage_class="",
                                 path="")
 ```
+Once the integration and drivers are ready, you can create a Dataloop Datsaset and sync all the data:  
+
+```python
+# create a dataset from a driver name, you can also create by the driver ID
+import dtlpy as dl
+project: dl.Project
+dataset = project.datasets.create(dataset_name=dataset_name,
+                                  driver=driver)
+dataset.sync()
+```
