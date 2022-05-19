@@ -47,8 +47,8 @@ def step_impl(context, status):
 @behave.then(u'I run test sdk filter by status "{status}"')
 def step_impl(context, status):
     try:
-        context.pages = filter_by_status(project_name=context.project.name, dataset_name=context.dataset.name, task_id=context.task_id, status=status, email=context.creator,
-                                         timestamp=context.timestamp)
+        context.pages = filter_by_status(project_name=context.project.name, dataset_name=context.dataset.name, task_id=context.task_id, status=[status], email=context.creator,
+                                         greater_than=context.timestamp[0], less_than=context.timestamp[1])
     except Exception as e:
         assert False, "Failed to run example : {}".format(e)
 

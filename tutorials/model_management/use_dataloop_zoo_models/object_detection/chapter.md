@@ -79,6 +79,8 @@ new_snapshot = snapshot.clone(snapshot_name=snapshot_name,
                                              'start_epoch': 0,
                                              'num_epochs': 2,
                                              'input_size': 256,
+                                             'data_yaml_fname': 'data.yaml',
+                                             'hyp_yaml_fname': 'hyp.finetune.yaml',
                                              'id_to_label_map': {(v - 1): k for k, v in
                                                                  dataset.instance_map.items()}
                                              })

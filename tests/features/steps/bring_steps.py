@@ -9,3 +9,5 @@ from tests.features.steps.annotations import test_download_one_by_one
 from tests.features.steps.items import test_pdf_viewer_modality
 from tests.features.steps.items import test_sdk_filter_by_status
 from tests.features.steps.tasks import test_recipe_per_task
+from tests.features.steps.tutorials.faas import test_faas_introduction
+from tests.features.steps.tutorials.faas import test_faas_single_function

@@ -35,6 +35,8 @@ Let’s create a dataset to work with and upload a sample item to it:
 ```python
 dataset = project.datasets.create(dataset_name='dataset-sdk-tutorial')
 item = dataset.items.upload(
-    local_path=['https://raw.githubusercontent.com/dataloop-ai/tiny_coco/master/images/train2017/000000184321.jpg'],
+    local_path=[
+        'https://raw.githubusercontent.com/dataloop-ai/tiny_coco/master/images/train2017/000000184321.jpg'],
     remote_path='/folder_name')
+# Remote path is optional, images will go to the main directory by default
 ```

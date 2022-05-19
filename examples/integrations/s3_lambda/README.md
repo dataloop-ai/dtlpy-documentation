@@ -74,7 +74,7 @@
 
 * code → upload from → Amazon S3 location
 
-* update the timeout of the lambda (default is 3 sec and it not enough) it have to be 15min >= timeout >= 1min  
+* update the timeout of the lambda (default is 3 sec, and it not enough) it has to be 15min >= timeout >= 1min  
 configuration → General configuration → Edit → Timeout
 
 ![set code](https://i.imgur.com/mlqSUCd.png)

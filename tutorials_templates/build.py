@@ -49,31 +49,42 @@ def _build_md_block(func_string):
     source = list()
     for line in func_string[2:-1]:
         source.append(line[4:].rstrip() + '  \n')  # remove 4 spaces at the beginning
-    #
-    # # remove the "def" line
-    # func_string = func_string[1:]
-    # source = list()
-    # for line in func_string:
-    #     source.append(line)  # remove
-    # source = source[1:-1]  # remove first and last line (triple quotes)
     return source
 
 
-def build_notebook(skeleton_filepath):
-    mds_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'mds.py')
-    scripts_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'scripts.py')
-    ####
+def load_templates(skeleton_filepath, mds_filepath, scripts_filepath):
+    ####################
+    # Load md function #
+    ####################
     mds_spec = importlib.util.spec_from_file_location('mds', mds_filepath)
     mds_module = importlib.util.module_from_spec(mds_spec)
     mds_spec.loader.exec_module(mds_module)
-    ####
+
+    #######################
+    # Load python scripts #
+    #######################
     scripts_spec = importlib.util.spec_from_file_location('scripts', scripts_filepath)
     scripts_module = importlib.util.module_from_spec(scripts_spec)
     scripts_spec.loader.exec_module(scripts_module)
+    indent_factor = 4
+    # added support for class methods
+    model_adapter_cls = getattr(scripts_module, 'Scripts', None)
+    if model_adapter_cls is not None:
+        scripts_module = model_adapter_cls()
+        indent_factor = 8
 
+    ######################
+    # Load Skeleton file #
+    ######################
     with open(skeleton_filepath, 'r') as f:
         skeleton = json.load(f)
+    return skeleton, mds_module, scripts_module, indent_factor
 
+
+def build_notebook(skeleton_filepath, mds_filepath, scripts_filepath):
+    skeleton, mds_module, scripts_module, indent_factor = load_templates(skeleton_filepath=skeleton_filepath,
+                                                                         mds_filepath=mds_filepath,
+                                                                         scripts_filepath=scripts_filepath)
     cells = list()
     for cell_def in skeleton:
         if cell_def['type'] == 'md':
@@ -92,7 +103,7 @@ def build_notebook(skeleton_filepath):
             func_string, _ = inspect.getsourcelines(func)
             # remove the "def" line
             func_string = func_string[1:]
-            source = [l[4:] for l in func_string]
+            source = [ln[4:] for ln in func_string]
             cell['source'] = source
         else:
             raise ValueError('unknown cell type {!r}'.format(cell_def['type']))
@@ -106,21 +117,10 @@ def build_notebook(skeleton_filepath):
         json.dump(NOTEBOOK_TEMPLATE, f)
 
 
-def build_md_file(skeleton_filepath):
-    mds_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'mds.py')
-    scripts_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'scripts.py')
-    ####
-    mds_spec = importlib.util.spec_from_file_location('mds', mds_filepath)
-    mds_module = importlib.util.module_from_spec(mds_spec)
-    mds_spec.loader.exec_module(mds_module)
-    ####
-    scripts_spec = importlib.util.spec_from_file_location('scripts', scripts_filepath)
-    scripts_module = importlib.util.module_from_spec(scripts_spec)
-    scripts_spec.loader.exec_module(scripts_module)
-
-    with open(skeleton_filepath, 'r') as f:
-        skeleton = json.load(f)
-
+def build_md_file(skeleton_filepath, mds_filepath, scripts_filepath):
+    skeleton, mds_module, scripts_module, indent_factor = load_templates(skeleton_filepath=skeleton_filepath,
+                                                                         mds_filepath=mds_filepath,
+                                                                         scripts_filepath=scripts_filepath)
     lines = list()
     for cell_def in skeleton:
         if cell_def['type'] == 'md':
@@ -134,8 +134,17 @@ def build_md_file(skeleton_filepath):
             func_string, _ = inspect.getsourcelines(func)
             lines.append('\n```python\n')
             # ignore 0 def line and the """
+            write_state = True
             for line in func_string[1:]:
-                lines.append(line[4:])  # remove spaces at the beginning
+                if line.strip().startswith('# DTLPY-STOP'):
+                    write_state = False
+                    continue
+                if line.strip().startswith('# DTLPY-START'):
+                    write_state = True
+                    continue
+                if write_state is False:
+                    continue
+                lines.append(line[indent_factor:])  # remove spaces at the beginning
             lines.append('```\n')
         else:
             raise ValueError('unknown cell type {!r}'.format(cell_def['type']))
@@ -154,10 +163,27 @@ def main():
                 print('Preparing {!r} ...'.format(path))
                 # skeleton_filepath = "tutorials_templates/faas/multiple_functions/skeleton.json"
                 skeleton_filepath = os.path.join(path, filename)
-                build_notebook(skeleton_filepath=skeleton_filepath)
-                build_md_file(skeleton_filepath=skeleton_filepath)
+                mds_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'mds.py')
+                scripts_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'scripts.py')
+
+                build_notebook(skeleton_filepath=skeleton_filepath,
+                               mds_filepath=mds_filepath,
+                               scripts_filepath=scripts_filepath)
+                build_md_file(skeleton_filepath=skeleton_filepath,
+                              mds_filepath=mds_filepath,
+                              scripts_filepath=scripts_filepath)
                 print('Done!')
 
 
 if __name__ == "__main__":
+    """
+    Building MD files and Jupyter notebook from templates.
+    loading skeleton.json file for the interleaving between code and text.
+    
+    Running build.py will OVERWRITE the "tutorials" folder with the new templates
+    
+    Ignoring code lines:
+    you can use "# DTLPY-STOP" and "# DTLPY-START" to mark if you dont want some code to go in to the output file
+    
+    """
     main()

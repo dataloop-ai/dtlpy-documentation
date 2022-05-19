@@ -2,7 +2,7 @@
 
 this support in dtlpy>=1.35.13
 
-1. create a public package in github  
+1. create a public package in GitHub  
    Simple example for it is [git repo](https://github.com/dataloop-ai/package_git_example)  
    main.py - for the running code
 
@@ -11,7 +11,7 @@ this support in dtlpy>=1.35.13
    use the file [create package](create_package.py)
    that build the package and service using push and deploy functions to set your own git repo set it in the
    package.push() in codebase filed  
-   git_url: the url that use to clone  
+   git_url: the url that used to clone  
    git_tag: tag is the branch
 
 ![Imgur](https://i.imgur.com/AO6ZZOC.png)

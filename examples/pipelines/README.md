@@ -4,9 +4,9 @@
 
 This example will include a simple pipeline flow generation from the SDK and json template.
 
-The example have the following files:
+The example has the following files:
 
-* [Create & Deploy new pipeline ](create_pipeline.py) - example entry point file (i.e main)
+* [Create & Deploy new pipeline ](create_pipeline.py) - example entry point file (e.g. main)
 * [Pipeline template](pipeline_template.json) - the basic template scheme
 
 To run the example, you will need to create a project and a dataset and change the `project_name` and `dataset_name` to those you want to use.

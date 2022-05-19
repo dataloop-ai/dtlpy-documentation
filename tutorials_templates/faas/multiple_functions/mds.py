@@ -5,16 +5,19 @@ def func1():
     First, login to the Dataloop platform:
     """
 
+
 def func2():
     """
     Let’s define the project and dataset you will work with in this tutorial. 
 	To create a new project and dataset:
     """
 
+
 def func3():
     """
     To use an existing project and dataset:
     """
+
 
 def func4():
     """
@@ -26,6 +29,7 @@ def func4():
     To proceed with this tutorial, copy the following code and save it as a main.py file. 
     """
 
+
 def func5():
     """
     ## Define the module
@@ -34,6 +38,7 @@ def func5():
     Here, we will create a module containing the two functions we discussed. The “main.py” file you downloaded is defined as the module entry point. Later, you will specify its directory file path.
     """
 
+
 def func6():
     """
     ## Push the package
@@ -41,6 +46,7 @@ def func6():
 
     Now we will explicitly create and push the module as a package in the Dataloop FaaS library (application hub). For that, please specify the source path (src_path) of the “main.py” file you downloaded, and then run the following code:
     """
+
 
 def func7():
     """
@@ -52,6 +58,7 @@ def func7():
 
     In our example, there is only one module in the package. Let’s deploy the service:
     """
+
 
 def func8():
     """
@@ -66,6 +73,7 @@ def func8():
     Let’s set a trigger in the event a new item is created:
     """
 
+
 def func9():
     """
     In the defined filters we specified a dataset. Once a new item is uploaded (created) in this dataset, the CLAHE function will be executed for this item. You can also add filters to specify the item type (image, video, JSON, directory, etc.) or a certain format (jpeg, jpg, WebM, etc.).
@@ -73,6 +81,7 @@ def func9():
     A separate trigger must be set for each function in your service.
     Now, we will define a trigger for the second function in the module rgb2gray. Each time an item is updated, invoke the rgb2gray function:
     """
+
 
 def func10():
     """
@@ -82,6 +91,7 @@ def func10():
     Now we can upload (“create”) an image to our dataset to trigger the service. The function clahe_equalization will be invoked:
     """
 
+
 def func11():
     """
     To see the original item, please click [here](https://raw.githubusercontent.com/dataloop-ai/tiny_coco/master/images/train2017/000000463730.jpg).
@@ -90,11 +100,13 @@ def func11():
     You can review the execution log history to check that your execution succeeded:
     """
 
+
 def func12():
     """
     The transformed image will be saved in your dataset. 
     Once you see in the log that the execution succeeded, you may open the item to see its transformation:
     """
+
 
 def func13():
     """
@@ -102,8 +114,8 @@ def func13():
     We recommend pausing the service you created for this tutorial so it will not be triggered:
     """
 
+
 def func14():
     """
     Congratulations! You have successfully created, deployed, and tested Dataloop functions!
     """
-

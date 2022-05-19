@@ -6,6 +6,7 @@ Feature: PDF Viewer modality
     And There is a dataset by the name of "filter-by-status"
     And There are "10" items
     When convert "yesterday" to timestamp
+    And convert "tomorrow" to timestamp
 
   @testrail-C4525503
   Scenario: Run "test_sdk_filter_by_status" completed items

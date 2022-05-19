@@ -60,6 +60,11 @@ def after_tag(context, tag):
             use_fixture(delete_bots, context)
         except Exception:
             logging.exception('Failed to delete bots')
+    elif tag == 'project.delete':
+        try:
+            use_fixture(delete_project, context)
+        except Exception:
+            logging.exception('Failed to delete project')
     elif tag == 'second_project.delete':
         try:
             use_fixture(delete_second_project, context)
@@ -84,9 +89,21 @@ def after_tag(context, tag):
 
 
 @fixture
+def delete_project(context):
+    if hasattr(context, 'project'):
+        try:
+            context.project.delete(True, True)
+        except Exception:
+            logging.exception('Failed to delete project {}'.format(context.project.name))
+
+
+@fixture
 def delete_second_project(context):
     if hasattr(context, 'second_project'):
-        context.second_project.delete(True, True)
+        try:
+            context.second_project.delete(True, True)
+        except Exception:
+            logging.exception('Failed to delete project {}'.format(context.second_project.name))
 
 
 @fixture
@@ -207,6 +224,7 @@ def delete_services(context):
             all_deleted = False
             logging.exception('Failed deleting service: ')
     assert all_deleted
+
 
 @fixture
 def delete_tests_assets(context):

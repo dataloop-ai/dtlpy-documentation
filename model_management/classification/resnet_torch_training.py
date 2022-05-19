@@ -8,6 +8,7 @@ import datetime
 import os
 import sys
 
+
 def get_globals(project):
     model = project.models.get(model_name='ResNet')
     snapshot = model.snapshots.get('pretrained-resnet50')
@@ -45,7 +46,6 @@ def pretrained_inference(item_id, model, snapshot):
 
 
 def train_on_new_dataset(model, snapshot, dataset):
-
     partitions = {dl.SnapshotPartitionType.TRAIN: 0.8,
                   dl.SnapshotPartitionType.VALIDATION: 0.1,
                   dl.SnapshotPartitionType.TEST: 0.1}
@@ -58,17 +58,17 @@ def train_on_new_dataset(model, snapshot, dataset):
                                                      filters=None,
                                                      partitions=partitions)
         bucket = model.project.buckets.create(bucket_type=dl.BucketType.ITEM,
-                                            model_name=model.name,
-                                            snapshot_name=snapshot_name)
+                                              model_name=model.name,
+                                              snapshot_name=snapshot_name)
         new_snapshot = snapshot.clone(snapshot_name=snapshot_name,
                                       dataset_id=cloned_dataset.id,
                                       bucket=bucket)
 
     new_snapshot.configuration.update({'batch_size': 16,
-                                      'start_epoch': 0,
+                                       'start_epoch': 0,
                                        'num_epochs': 1,
                                        'input_size': 256,
-                                       'id_to_label_map': {(v-1): k for k, v in dataset.instance_map.items()}
+                                       'id_to_label_map': {(v - 1): k for k, v in dataset.instance_map.items()}
                                        })
 
     adapter = model.build()
@@ -111,6 +111,7 @@ def main(args, **kwargs):
 
 if __name__ == '__main__':
     import argparse
+
     dl.setenv('prod')
     parser = argparse.ArgumentParser(description='local runner for model management testing')
 

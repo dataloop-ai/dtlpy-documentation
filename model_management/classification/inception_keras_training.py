@@ -9,7 +9,6 @@ import datetime
 import os
 
 
-
 def get_globals(project):
     model = project.models.get(model_name='InceptionV3')
     snapshot = model.snapshots.get('pretrained-inception')
@@ -59,8 +58,8 @@ def train_on_new_dataset(model, snapshot, dataset):
                                                      filters=None,
                                                      partitions=partitions)
         bucket = model.project.buckets.create(bucket_type=dl.BucketType.ITEM,
-                                            model_name=model.name,
-                                            snapshot_name=snapshot_name)
+                                              model_name=model.name,
+                                              snapshot_name=snapshot_name)
         new_snapshot = snapshot.clone(snapshot_name=snapshot_name,
                                       dataset_id=cloned_dataset.id,
                                       bucket=bucket)
@@ -109,11 +108,12 @@ def main(args, **kwargs):
 
 if __name__ == '__main__':
     import argparse
+
     dl.setenv('prod')
     parser = argparse.ArgumentParser(description='local runner for model management testing')
 
     parser.add_argument('--env', '-e', default='prod', help='dtlpy env')
-    parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name',)  # required=True)
+    parser.add_argument('--project', '-p', default='distillator', help='dtlpy project name', )  # required=True)
     parser.add_argument('--dataset', '-d', default='', help='dtlpy dataset id')
     parser.add_argument('--item', '-i', default='6205097d8ea6ad0abe7b90ba', help='dtlpy single item id')
     parser.add_argument('--mode', '-m', default='inference', help='inference or train')

@@ -17,7 +17,7 @@ def rgb2gray(item: dl.Item):
     gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
     bgr_equalized_item = item.dataset.items.upload(local_path=gray,
                                                    remote_path='/gray' + item.dir,
-                                                   remote_name=item.filename)
+                                                   remote_name=item.name)
     # add modality
     item.modalities.create(name='gray',
                            ref=bgr_equalized_item.id)

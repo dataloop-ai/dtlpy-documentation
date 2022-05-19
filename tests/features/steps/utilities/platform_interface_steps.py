@@ -27,6 +27,8 @@ def before_all(context):
         context.to_delete_feature_ids = list()
     if not hasattr(context, 'to_delete_test_assets_dir'):
         context.to_delete_test_assets_dir = list()
+    if not hasattr(context, 'timestamp'):
+        context.timestamp = list()
 
     if hasattr(context.feature, 'dataloop_feature_dl'):
         context.dl = context.feature.dataloop_feature_dl
@@ -143,11 +145,12 @@ def step_impl(_, seconds):
 
 @behave.when(u'convert "{date}" to timestamp')
 def step_impl(context, date):
+    """context.timestamp Will hold the dates in a list"""
     if date == "today":
-        context.timestamp = datetime.datetime.now().replace(microsecond=0).isoformat()
+        context.timestamp.append(datetime.datetime.now().replace(microsecond=0).isoformat())
     elif date == "yesterday":
-        context.timestamp = (datetime.datetime.now() - datetime.timedelta(days=1)).replace(microsecond=0).isoformat()
+        context.timestamp.append((datetime.datetime.now() - datetime.timedelta(days=1)).replace(microsecond=0).isoformat())
     elif date == "tomorrow":
-        context.timestamp = (datetime.datetime.now() + datetime.timedelta(days=1)).replace(microsecond=0).isoformat()
+        context.timestamp.append((datetime.datetime.now() + datetime.timedelta(days=1)).replace(microsecond=0).isoformat())
     else:
         assert False, "Please provide one of the options : today , yesterday, tomorrow"
