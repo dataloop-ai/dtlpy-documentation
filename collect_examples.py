@@ -28,7 +28,7 @@ def add_line(md_lines, content, root, level):
             filename, ext = os.path.splitext(file)
             caption = filename.replace("_", " ").capitalize()
             filepath = f'{root}/{file}'
-            md_lines.append('  ' * level + f'*  [{caption}](#{filepath})')
+            md_lines.append('  ' * level + f'*  [{caption}]({filepath})')
     else:
         raise ValueError()
 

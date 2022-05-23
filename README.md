@@ -47,41 +47,41 @@ jupyter notebook tutorials
 ## Code Examples
 
 * Annotations
-  *  [Annotate items using model](#examples/annotations/annotate_items_using_model.py)
-  *  [Annotate video using model and tracker](#examples/annotations/annotate_video_using_model_and_tracker.py)
-  *  [Copy annotations](#examples/annotations/copy_annotations.py)
-  *  [Create annotations](#examples/annotations/create_annotations.py)
-  *  [Create video annotations](#examples/annotations/create_video_annotations.py)
-  *  [Delete annotations](#examples/annotations/delete_annotations.py)
-  *  [Download one by one](#examples/annotations/download_one_by_one.py)
-  *  [Play video annotation](#examples/annotations/play_video_annotation.py)
-  *  [Show item and mask](#examples/annotations/show_item_and_mask.py)
-  *  [Upload annotation to dataset](#examples/annotations/upload_annotation_to_dataset.py)
+  *  [Annotate items using model](examples/annotations/annotate_items_using_model.py)
+  *  [Annotate video using model and tracker](examples/annotations/annotate_video_using_model_and_tracker.py)
+  *  [Copy annotations](examples/annotations/copy_annotations.py)
+  *  [Create annotations](examples/annotations/create_annotations.py)
+  *  [Create video annotations](examples/annotations/create_video_annotations.py)
+  *  [Delete annotations](examples/annotations/delete_annotations.py)
+  *  [Download one by one](examples/annotations/download_one_by_one.py)
+  *  [Play video annotation](examples/annotations/play_video_annotation.py)
+  *  [Show item and mask](examples/annotations/show_item_and_mask.py)
+  *  [Upload annotation to dataset](examples/annotations/upload_annotation_to_dataset.py)
 * Converters
-  *  [Annotations convert to voc](#examples/converters/annotations_convert_to_voc.py)
-  *  [Annotations convert to yolo](#examples/converters/annotations_convert_to_yolo.py)
-  *  [Converter](#examples/converters/converter.py)
-  *  [Convert annotation types](#examples/converters/convert_annotation_types.py)
+  *  [Annotations convert to voc](examples/converters/annotations_convert_to_voc.py)
+  *  [Annotations convert to yolo](examples/converters/annotations_convert_to_yolo.py)
+  *  [Converter](examples/converters/converter.py)
+  *  [Convert annotation types](examples/converters/convert_annotation_types.py)
 * Datasets
-  *  [Add labels](#examples/datasets/add_labels.py)
-  *  [Copy folder](#examples/datasets/copy_folder.py)
+  *  [Add labels](examples/datasets/add_labels.py)
+  *  [Copy folder](examples/datasets/copy_folder.py)
 * Integrations
 * Items
-  *  [Add metadata to item](#examples/items/add_metadata_to_item.py)
-  *  [Move item](#examples/items/move_item.py)
-  *  [Sdk filter by status](#examples/items/sdk_filter_by_status.py)
+  *  [Add metadata to item](examples/items/add_metadata_to_item.py)
+  *  [Move item](examples/items/move_item.py)
+  *  [Sdk filter by status](examples/items/sdk_filter_by_status.py)
 * Pipelines
-  *  [Create pipeline](#examples/pipelines/create_pipeline.py)
+  *  [Create pipeline](examples/pipelines/create_pipeline.py)
 * Reports
-  *  [Create reports examples](#examples/reports/create_reports_examples.py)
+  *  [Create reports examples](examples/reports/create_reports_examples.py)
 * Tasks
-  *  [Recipe per task](#examples/tasks/recipe_per_task.py)
+  *  [Recipe per task](examples/tasks/recipe_per_task.py)
 * Uploads
-  *  [Upload batch of items](#examples/uploads/upload_batch_of_items.py)
-  *  [Upload items and custom format annotations](#examples/uploads/upload_items_and_custom_format_annotations.py)
-  *  [Upload items with modalities](#examples/uploads/upload_items_with_modalities.py)
-  *  [Upload segmentation annotations from mask image](#examples/uploads/upload_segmentation_annotations_from_mask_image.py)
-  *  [Upload yolo format annotations](#examples/uploads/upload_yolo_format_annotations.py)
+  *  [Upload batch of items](examples/uploads/upload_batch_of_items.py)
+  *  [Upload items and custom format annotations](examples/uploads/upload_items_and_custom_format_annotations.py)
+  *  [Upload items with modalities](examples/uploads/upload_items_with_modalities.py)
+  *  [Upload segmentation annotations from mask image](examples/uploads/upload_segmentation_annotations_from_mask_image.py)
+  *  [Upload yolo format annotations](examples/uploads/upload_yolo_format_annotations.py)
 
 ## Resources
 
