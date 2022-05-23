@@ -76,7 +76,41 @@ for i_row, row in df.iterrows():
 # Upload all created annotations
 item.annotations.upload(annotations=builder)
 ```
-  
+# Set Attributes On Annotations
+
+You can set attributes on annotations in hte platform using the SDK. Since Dataloop deprecated a legacy attributes mechanism, attributes are refered to as '2.0' version and need to be set as such first.
+
+## Free Text Attribute
+```python
+dl.use_attributes_2(True)
+annotation.attributes.update({"ID of the attribute": "value of the attribute"})
+annotation = annotation.update(True)
+```
+
+## Range Attributes (Slider in UI)
+```python
+copydl.use_attributes_2(True)
+annotation.attributes.update({"ID of the attribute": numberOnRange})
+annotation = annotation.update(system_metadata=True)
+```
+## CheckBox Attribute (Multiple choice)
+```python
+copydl.use_attributes_2(True)
+annotation.attributes.update({"ID of the attribute": ["selection","selection"]})
+annotation = annotation.update(system_metadata=True)
+```
+## Radio Button Attribute (Single Choice)
+```python
+copydl.use_attributes_2(True)
+annotation.attributes.update({"ID of the attribute": "selection"})
+annotation = annotation.update(system_metadata=True)
+```
+## Yes/No Attribute
+```python
+copydl.use_attributes_2(True)
+annotation.attributes.update({"ID of the attribute": True/False})
+annotation = annotation.update(system_metadata=True)
+```
 # Show Annotations Over Image  
 After uploading items and annotations with their metadata, you might want to see some of them and perform visual validation.  
   
