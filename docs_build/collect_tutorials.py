@@ -5,7 +5,7 @@ import os
 
 LINE_HEADER = '<func:'
 
-TEMPLATES_PATH = 'tutorials_templates'
+TEMPLATES_PATH = 'docs_build/tutorials_templates'
 TUTORIALS_PATH = 'tutorials'
 NOTEBOOK_TEMPLATE = {"cells": [],
                      "metadata": {
@@ -184,6 +184,10 @@ if __name__ == "__main__":
     
     Ignoring code lines:
     you can use "# DTLPY-STOP" and "# DTLPY-START" to mark if you dont want some code to go in to the output file
+    
+    Run:
+    Need to run this file from the root
+    python docs_build/collect_tutorials.py
     
     """
     main()
