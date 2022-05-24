@@ -44,6 +44,57 @@ jupyter notebook tutorials
 
 ## Tutorials
 
+* Annotations image
+  *  [Advance tutorials](tutorials/annotations_image/advance_tutorials/chapter.ipynb)
+  *  [Bounding box and cuboid](tutorials/annotations_image/bounding_box_and_cuboid/chapter.ipynb)
+  *  [Classification point and pose](tutorials/annotations_image/classification_point_and_pose/chapter.ipynb)
+  *  [Ellipse and item description](tutorials/annotations_image/ellipse_and_item_description/chapter.ipynb)
+  *  [Polygon and polyline](tutorials/annotations_image/polygon_and_polyline/chapter.ipynb)
+  *  [Setup](tutorials/annotations_image/setup/chapter.ipynb)
+* Annotations video
+  *  [Video annotations](tutorials/annotations_video/video_annotations/chapter.ipynb)
+* Data management
+  *  [Connect cloud storage](tutorials/data_management/connect_cloud_storage/chapter.ipynb)
+  *  [Data versioning](tutorials/data_management/data_versioning/chapter.ipynb)
+  *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
+  *  [Modalities](tutorials/data_management/modalities/chapter.ipynb)
+  * Sort and filter
+    *  [Advanced sdk filters](tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.ipynb)
+    *  [Annotation level](tutorials/data_management/sort_and_filter/annotation_level/chapter.ipynb)
+    *  [Item level](tutorials/data_management/sort_and_filter/item_level/chapter.ipynb)
+    *  [Pagination](tutorials/data_management/sort_and_filter/pagination/chapter.ipynb)
+  *  [Upload and manage annotations](tutorials/data_management/upload_and_manage_annotations/chapter.ipynb)
+  *  [Upload and manage data and metadata](tutorials/data_management/upload_and_manage_data_and_metadata/chapter.ipynb)
+  *  [Working with metadata](tutorials/data_management/working_with_metadata/chapter.ipynb)
+* Faas
+  *  [Concept](tutorials/faas/concept/chapter.ipynb)
+  *  [Introduction](tutorials/faas/introduction/chapter.ipynb)
+  *  [Multiple functions](tutorials/faas/multiple_functions/chapter.ipynb)
+  *  [Single function rgb to gray](tutorials/faas/single_function_rgb_to_gray/chapter.ipynb)
+* Model management
+  *  [Create new model](tutorials/model_management/create_new_model/chapter.ipynb)
+  *  [Dataloop dataloader](tutorials/model_management/dataloop_dataloader/chapter.ipynb)
+  *  [Introduction](tutorials/model_management/introduction/chapter.ipynb)
+  * Use dataloop zoo models
+    *  [Classification](tutorials/model_management/use_dataloop_zoo_models/classification/chapter.ipynb)
+    *  [Object detection](tutorials/model_management/use_dataloop_zoo_models/object_detection/chapter.ipynb)
+* Recipe and ontology
+  *  [Concepts](tutorials/recipe_and_ontology/concepts/chapter.ipynb)
+  *  [Ontology](tutorials/recipe_and_ontology/ontology/chapter.ipynb)
+  *  [Recipe](tutorials/recipe_and_ontology/recipe/chapter.ipynb)
+* Task workflows
+  * Qa
+    *  [Create a new qa task](tutorials/task_workflows/qa/create_a_new_qa_task/chapter.ipynb)
+    * Qa assignment
+      *  [Note annotation](tutorials/task_workflows/qa/qa_assignment/note_annotation/chapter.ipynb)
+      *  [Qa on annotation level](tutorials/task_workflows/qa/qa_assignment/qa_on_annotation_level/chapter.ipynb)
+      *  [Qa on item level](tutorials/task_workflows/qa/qa_assignment/qa_on_item_level/chapter.ipynb)
+    *  [Redistributing and reassigning a qa task](tutorials/task_workflows/qa/redistributing_and_reassigning_a_qa_task/chapter.ipynb)
+  * Tasks and assignments
+    *  [Create a task](tutorials/task_workflows/tasks_and_assignments/create_a_task/chapter.ipynb)
+    *  [Redistributing and reassigning a task](tutorials/task_workflows/tasks_and_assignments/redistributing_and_reassigning_a_task/chapter.ipynb)
+    *  [Task assignment](tutorials/task_workflows/tasks_and_assignments/task_assignment/chapter.ipynb)
+
 ## Code Examples
 
 * Annotations
@@ -66,10 +117,14 @@ jupyter notebook tutorials
   *  [Add labels](examples/datasets/add_labels.py)
   *  [Copy folder](examples/datasets/copy_folder.py)
 * Integrations
+  * S3 lambda
+    *  [Lambda function](examples/integrations/s3_lambda/lambda_function.py)
+    *  [Sync dataset](examples/integrations/s3_lambda/sync_dataset.py)
 * Items
   *  [Add metadata to item](examples/items/add_metadata_to_item.py)
+  *  [Add pdf viewer modality](examples/items/add_pdf_viewer_modality.py)
+  *  [Filter by task status](examples/items/filter_by_task_status.py)
   *  [Move item](examples/items/move_item.py)
-  *  [Sdk filter by status](examples/items/sdk_filter_by_status.py)
 * Pipelines
   *  [Create pipeline](examples/pipelines/create_pipeline.py)
 * Reports

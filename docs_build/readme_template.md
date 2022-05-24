@@ -44,9 +44,11 @@ jupyter notebook tutorials
 
 ## Tutorials
 
+$tutorials_examples
+
 ## Code Examples
 
-$code_examples
+$examples
 
 ## Resources
 
