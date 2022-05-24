@@ -6,32 +6,29 @@ def section1():
     """
 
 
-def section12():
+def section2():
     """
     ## Upload User Metadata
     To upload annotations from JSON and include the user metadata, add the parameter local_annotation_path to the dataset.items.upload function, like so: 
     """
 
 
-def section2():
-    """
-
-    ## Convert Annotations To COCO Format
-
-    """
-
-
 def section3():
     """
-
-    ## Upload Entire Directory and their Corresponding  Dataloop JSON Annotations
+    ## Convert Annotations To COCO Format
 
     """
 
 
 def section4():
     """
+    ## Upload Entire Directory and their Corresponding  Dataloop JSON Annotations
 
+    """
+
+
+def section5():
+    """
     ## Upload Annotations To Video Item
     Uploading annotations to video items needs to consider spanning between frames, and toggling visibility (occlusion). In this example, we will use the following CSV file.
     In this file there is a single 'person' box annotation that begins on frame number 20, disappears on frame number 41, reappears on frame number 51 and ends on frame number 90.
@@ -41,9 +38,43 @@ def section4():
     """
 
 
-def section5():
+def section6():
+    """
+    # Set Attributes On Annotations
+    
+    You can set attributes on annotations in hte platform using the SDK. Since Dataloop deprecated a legacy attributes mechanism, attributes are refered to as '2.0' version and need to be set as such first.
+    
+    ## Free Text Attribute
     """
 
+
+def section7():
+    """
+    ## Range Attributes (Slider in UI)
+
+    """
+
+
+def section8():
+    """
+    ## CheckBox Attribute (Multiple choice)
+    """
+
+
+def section9():
+    """
+    ## Radio Button Attribute (Single Choice)
+    """
+
+
+def section10():
+    """
+    ## Yes/No Attribute
+    """
+
+
+def section11():
+    """
     # Show Annotations Over Image
     After uploading items and annotations with their metadata, you might want to see some of them and perform visual validation. 
     
@@ -52,7 +83,7 @@ def section5():
     """
 
 
-def section6():
+def section12():
     """
 
     To see the item itself with all annotations, use the Annotations option.
@@ -60,7 +91,7 @@ def section6():
     """
 
 
-def section7():
+def section13():
     """
 
     # Download Data, Annotations & Metadata
@@ -74,17 +105,15 @@ def section7():
     """
 
 
-def section8():
+def section14():
     """
-
     ## Multiple Annotation Options
     See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotation-options).
 
-
     """
 
 
-def section9():
+def section15():
     """
 
     ## Filter by Item and/or Annotation
@@ -98,7 +127,7 @@ def section9():
     """
 
 
-def section10():
+def section16():
     """
 
     ## Filter by Annotations
@@ -108,7 +137,7 @@ def section10():
     """
 
 
-def section11():
+def section17():
     """
 
     ## Download Annotations in COCO Format

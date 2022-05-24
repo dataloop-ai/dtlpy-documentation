@@ -20,7 +20,6 @@ dataset.items.upload(local_path=r'<items path>',
                      item_metadata=dl.ExportMetadata.FROM_JSON,
                      overwrite=True)
 ```
-  
 ## Convert Annotations To COCO Format  
   
 
@@ -34,7 +33,6 @@ converter.upload_local_dataset(
     local_annotations_path=r'C:/path/to/annotations/file/coco.json'
 )
 ```
-  
 ## Upload Entire Directory and their Corresponding  Dataloop JSON Annotations  
   
 
@@ -47,7 +45,6 @@ local_annotations_path = r'C:/home/project/annotations_folder'
 dataset.items.upload(local_path=local_items_path,
                      local_annotations_path=local_annotations_path)
 ```
-  
 ## Upload Annotations To Video Item  
 Uploading annotations to video items needs to consider spanning between frames, and toggling visibility (occlusion). In this example, we will use the following CSV file.  
 In this file there is a single 'person' box annotation that begins on frame number 20, disappears on frame number 41, reappears on frame number 51 and ends on frame number 90.  
@@ -76,39 +73,44 @@ for i_row, row in df.iterrows():
 # Upload all created annotations
 item.annotations.upload(annotations=builder)
 ```
-# Set Attributes On Annotations
+# Set Attributes On Annotations  
+  
+You can set attributes on annotations in hte platform using the SDK. Since Dataloop deprecated a legacy attributes mechanism, attributes are refered to as '2.0' version and need to be set as such first.  
+  
+## Free Text Attribute  
 
-You can set attributes on annotations in hte platform using the SDK. Since Dataloop deprecated a legacy attributes mechanism, attributes are refered to as '2.0' version and need to be set as such first.
-
-## Free Text Attribute
 ```python
 dl.use_attributes_2(True)
 annotation.attributes.update({"ID of the attribute": "value of the attribute"})
 annotation = annotation.update(True)
 ```
+## Range Attributes (Slider in UI)  
+  
 
-## Range Attributes (Slider in UI)
 ```python
-copydl.use_attributes_2(True)
-annotation.attributes.update({"ID of the attribute": numberOnRange})
+dl.use_attributes_2(True)
+annotation.attributes.update({"<attribute-id>": number_on_range})
 annotation = annotation.update(system_metadata=True)
 ```
-## CheckBox Attribute (Multiple choice)
+## CheckBox Attribute (Multiple choice)  
+
 ```python
-copydl.use_attributes_2(True)
-annotation.attributes.update({"ID of the attribute": ["selection","selection"]})
+dl.use_attributes_2(True)
+annotation.attributes.update({"<attribute-id>": ["selection", "selection"]})
 annotation = annotation.update(system_metadata=True)
 ```
-## Radio Button Attribute (Single Choice)
+## Radio Button Attribute (Single Choice)  
+
 ```python
-copydl.use_attributes_2(True)
-annotation.attributes.update({"ID of the attribute": "selection"})
+dl.use_attributes_2(True)
+annotation.attributes.update({"<attribute-id>": "selection"})
 annotation = annotation.update(system_metadata=True)
 ```
-## Yes/No Attribute
+## Yes/No Attribute  
+
 ```python
-copydl.use_attributes_2(True)
-annotation.attributes.update({"ID of the attribute": True/False})
+dl.use_attributes_2(True)
+annotation.attributes.update({"<attribute-id>": True / False})
 annotation = annotation.update(system_metadata=True)
 ```
 # Show Annotations Over Image  
@@ -155,10 +157,8 @@ See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotati
 dataset.download(local_path=r'C:/home/project/images',  # The default value is ".dataloop" folder
                  annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 ```
-  
 ## Multiple Annotation Options  
 See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotation-options).  
-  
   
 
 ```python

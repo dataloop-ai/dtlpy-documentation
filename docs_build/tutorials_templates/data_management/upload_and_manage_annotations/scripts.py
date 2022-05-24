@@ -6,7 +6,7 @@ def section1():
     annotation.update()
 
 
-def section12():
+def section2():
     project = dl.projects.get(project_name='project_name')
     dataset = project.datasets.get(dataset_name='dataset_name')
     dataset.items.upload(local_path=r'<items path>',
@@ -15,7 +15,7 @@ def section12():
                          overwrite=True)
 
 
-def section2():
+def section3():
     converter = dl.Converter()
     converter.upload_local_dataset(
         from_format=dl.AnnotationFormat.COCO,
@@ -26,7 +26,7 @@ def section2():
     )
 
 
-def section3():
+def section4():
     # Local path to the items folder
     # If you wish to upload items with your directory tree use : r'C:/home/project/images_folder' 
     local_items_path = r'C:/home/project/images_folder/*'
@@ -36,7 +36,7 @@ def section3():
                          local_annotations_path=local_annotations_path)
 
 
-def section4():
+def section5():
     import pandas as pd
     # Read CSV file
     df = pd.read_csv(r'C:/file.csv')
@@ -58,7 +58,37 @@ def section4():
     item.annotations.upload(annotations=builder)
 
 
-def section5():
+def section6():
+    dl.use_attributes_2(True)
+    annotation.attributes.update({"ID of the attribute": "value of the attribute"})
+    annotation = annotation.update(True)
+
+
+def section7():
+    dl.use_attributes_2(True)
+    annotation.attributes.update({"<attribute-id>": number_on_range})
+    annotation = annotation.update(system_metadata=True)
+
+
+def section8():
+    dl.use_attributes_2(True)
+    annotation.attributes.update({"<attribute-id>": ["selection", "selection"]})
+    annotation = annotation.update(system_metadata=True)
+
+
+def section9():
+    dl.use_attributes_2(True)
+    annotation.attributes.update({"<attribute-id>": "selection"})
+    annotation = annotation.update(system_metadata=True)
+
+
+def section10():
+    dl.use_attributes_2(True)
+    annotation.attributes.update({"<attribute-id>": True / False})
+    annotation = annotation.update(system_metadata=True)
+
+
+def section11():
     # Use the show function for all annotation types
     box = dl.Box()
     # Must provide all inputs
@@ -71,7 +101,7 @@ def section5():
              color='')
 
 
-def section6():
+def section12():
     # Must input an image or height and width
     annotation.show(image='',
                     height='', width='',
@@ -80,19 +110,19 @@ def section6():
                     with_text='')
 
 
-def section7():
+def section13():
     dataset.download(local_path=r'C:/home/project/images',  # The default value is ".dataloop" folder
                      annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 
 
-def section8():
+def section14():
     dataset.download(local_path=r'C:/home/project/images',  # The default value is ".dataloop" folder
                      annotation_options=[dl.VIEW_ANNOTATION_OPTIONS_MASK,
                                          dl.VIEW_ANNOTATION_OPTIONS_JSON,
                                          dl.ViewAnnotationOptions.INSTANCE])
 
 
-def section9():
+def section15():
     # Filter items from "folder_name" directory
     item_filters = dl.Filters(resource='items', field='dir', values='/dog_name')
     # Filter items with dog annotations
@@ -103,7 +133,7 @@ def section9():
                      annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 
 
-def section10():
+def section16():
     item = dataset.items.get(item_id="item_id")  # Get item from dataset to be able to view the dataset colors on Mask
     # Filter items with dog annotations
     annotation_filters = dl.Filters(resource='annotations', field='label', values='dog')
@@ -112,7 +142,7 @@ def section10():
                   annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 
 
-def section11():
+def section17():
     # Filter items from "folder_name" directory
     item_filters = dl.Filters(resource='items', field='dir', values='/dog_name')
     # Filter items with dog annotations
