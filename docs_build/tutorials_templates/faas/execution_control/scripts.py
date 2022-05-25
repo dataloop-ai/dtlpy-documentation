@@ -24,7 +24,6 @@ class Scripts:
         execution.terminate()
 
     def func3(self):
-
         service.execution_timeout = 60  # 1 minute
 
     def func4(self):
