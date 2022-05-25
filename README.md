@@ -57,7 +57,6 @@ jupyter notebook tutorials
   * Cloud storage
     *  [Binding with lambda](tutorials/data_management/cloud_storage/binding_with_lambda/chapter.ipynb)
     *  [Create an external dataset](tutorials/data_management/cloud_storage/create_an_external_dataset/chapter.ipynb)
-  *  [Connect cloud storage](tutorials/data_management/connect_cloud_storage/chapter.ipynb)
   *  [Data versioning](tutorials/data_management/data_versioning/chapter.ipynb)
   *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
   *  [Modalities](tutorials/data_management/modalities/chapter.ipynb)
@@ -71,6 +70,7 @@ jupyter notebook tutorials
   *  [Working with metadata](tutorials/data_management/working_with_metadata/chapter.ipynb)
 * Faas
   *  [Concept](tutorials/faas/concept/chapter.ipynb)
+  *  [Execution control](tutorials/faas/execution_control/chapter.ipynb)
   *  [Introduction](tutorials/faas/introduction/chapter.ipynb)
   *  [Multiple functions and modules](tutorials/faas/multiple_functions_and_modules/chapter.ipynb)
   *  [Single function rgb to gray](tutorials/faas/single_function_rgb_to_gray/chapter.ipynb)
