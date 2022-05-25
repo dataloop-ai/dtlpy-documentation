@@ -106,5 +106,26 @@
   {
     "type": "md",
     "name": "func14"
+  },
+  {
+    "type": "code",
+    "name": "func14"
+  },
+  {
+    "type": "md",
+    "name": "func15"
+  },
+  {
+    "type": "code",
+    "name": "func15"
+  },
+  {
+    "type": "md",
+    "name": "func16"
+  },
+  {
+    "type": "code",
+    "name": "func16"
   }
+
 ]

@@ -1,6 +1,6 @@
 def func1():
     """
-    # Advanced Use Case: Multiple Functions
+    # Multiple Functions
     ## Create and Deploy a Package of Several Functions
     First, login to the Dataloop platform:
     """
@@ -118,4 +118,25 @@ def func13():
 def func14():
     """
     Congratulations! You have successfully created, deployed, and tested Dataloop functions!
+
+    # Multiple Modules
+    You can define multiple different modules in a package. A typical use-case for multiple-modules is to have a single code base that can be used by a number of services (for different applications). For example, having a single YoloV4 codebase, but creating different modules for training, inference, etc.
+
+    When creating a service from that package, you will need to define which module the service will serve (a service can only serve a single module with all its functions). For example, to push a 2 module package, you will need to have 2 entry points, one for each module, and this is how you define the modules:
+
+    """
+
+
+def func15():
+    """
+    Create the package with your modules
+    """
+
+
+def func16():
+    """
+    You will pass these modules as a param to packages.push()
+    After that, when you deploy the package, you will need to specify the module name:
+    Note: A service can only implement one module.
+
     """

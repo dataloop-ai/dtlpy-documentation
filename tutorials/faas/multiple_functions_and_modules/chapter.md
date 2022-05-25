@@ -1,4 +1,4 @@
-# Advanced Use Case: Multiple Functions  
+# Multiple Functions  
 ## Create and Deploy a Package of Several Functions  
 First, login to the Dataloop platform:  
 
@@ -183,3 +183,55 @@ We recommend pausing the service you created for this tutorial so it will not be
 service.pause()
 ```
 Congratulations! You have successfully created, deployed, and tested Dataloop functions!  
+  
+# Multiple Modules  
+You can define multiple different modules in a package. A typical use-case for multiple-modules is to have a single code base that can be used by a number of services (for different applications). For example, having a single YoloV4 codebase, but creating different modules for training, inference, etc.  
+  
+When creating a service from that package, you will need to define which module the service will serve (a service can only serve a single module with all its functions). For example, to push a 2 module package, you will need to have 2 entry points, one for each module, and this is how you define the modules:  
+  
+
+```python
+modules = [
+    dl.PackageModule(
+        name='first-module',
+        entry_point='first_module_main.py',
+        functions=[
+            dl.PackageFunction(
+                name='run',
+                inputs=[dl.FunctionIO(name='item',
+                                      type=dl.PackageInputType.ITEM)]
+            )
+        ]
+    ),
+    dl.PackageModule(
+        name='second-module',
+        entry_point='second_module_main.py',
+        functions=[
+            dl.PackageFunction(
+                name='run',
+                inputs=[dl.FunctionIO(name='item',
+                                      type=dl.PackageInputType.ITEM)]
+            )
+        ]
+    )
+]
+```
+Create the package with your modules  
+
+```python
+package = project.packages.push(package_name='two-modules-test',
+                                modules=modules,
+                                src_path='<path to where the entry point is located>'
+                                )
+```
+You will pass these modules as a param to packages.push()  
+After that, when you deploy the package, you will need to specify the module name:  
+Note: A service can only implement one module.  
+  
+
+```python
+service = package.deploy(
+    module_name='first-module',
+    service_name='first-module-test-service'
+)
+```

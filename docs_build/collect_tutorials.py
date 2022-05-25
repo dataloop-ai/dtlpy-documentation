@@ -161,7 +161,6 @@ def main():
         for filename in files:
             if filename == 'skeleton.json':
                 print('Preparing {!r} ...'.format(path))
-                # skeleton_filepath = "tutorials_templates/faas/multiple_functions/skeleton.json"
                 skeleton_filepath = os.path.join(path, filename)
                 mds_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'mds.py')
                 scripts_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'scripts.py')

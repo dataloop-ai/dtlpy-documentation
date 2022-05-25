@@ -54,6 +54,9 @@ jupyter notebook tutorials
 * Annotations video
   *  [Video annotations](tutorials/annotations_video/video_annotations/chapter.ipynb)
 * Data management
+  * Cloud storage
+    *  [Binding with lambda](tutorials/data_management/cloud_storage/binding_with_lambda/chapter.ipynb)
+    *  [Create an external dataset](tutorials/data_management/cloud_storage/create_an_external_dataset/chapter.ipynb)
   *  [Connect cloud storage](tutorials/data_management/connect_cloud_storage/chapter.ipynb)
   *  [Data versioning](tutorials/data_management/data_versioning/chapter.ipynb)
   *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
@@ -69,7 +72,7 @@ jupyter notebook tutorials
 * Faas
   *  [Concept](tutorials/faas/concept/chapter.ipynb)
   *  [Introduction](tutorials/faas/introduction/chapter.ipynb)
-  *  [Multiple functions](tutorials/faas/multiple_functions/chapter.ipynb)
+  *  [Multiple functions and modules](tutorials/faas/multiple_functions_and_modules/chapter.ipynb)
   *  [Single function rgb to gray](tutorials/faas/single_function_rgb_to_gray/chapter.ipynb)
 * Model management
   *  [Create new model](tutorials/model_management/create_new_model/chapter.ipynb)
@@ -119,12 +122,15 @@ jupyter notebook tutorials
 * Integrations
   * S3 lambda
     *  [Lambda function](examples/integrations/s3_lambda/lambda_function.py)
-    *  [Sync dataset](examples/integrations/s3_lambda/sync_dataset.py)
 * Items
   *  [Add metadata to item](examples/items/add_metadata_to_item.py)
   *  [Add pdf viewer modality](examples/items/add_pdf_viewer_modality.py)
   *  [Filter by task status](examples/items/filter_by_task_status.py)
   *  [Move item](examples/items/move_item.py)
+* Model mgmt
+  *  [Inception keras training](examples/model_mgmt/inception_keras_training.py)
+  *  [Resnet torch training](examples/model_mgmt/resnet_torch_training.py)
+  *  [Yolov5 training](examples/model_mgmt/yolov5_training.py)
 * Pipelines
   *  [Create pipeline](examples/pipelines/create_pipeline.py)
 * Reports

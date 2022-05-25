@@ -132,3 +132,44 @@ def func12():
 
 def func13():
     service.pause()
+
+
+def func14():
+    modules = [
+        dl.PackageModule(
+            name='first-module',
+            entry_point='first_module_main.py',
+            functions=[
+                dl.PackageFunction(
+                    name='run',
+                    inputs=[dl.FunctionIO(name='item',
+                                          type=dl.PackageInputType.ITEM)]
+                )
+            ]
+        ),
+        dl.PackageModule(
+            name='second-module',
+            entry_point='second_module_main.py',
+            functions=[
+                dl.PackageFunction(
+                    name='run',
+                    inputs=[dl.FunctionIO(name='item',
+                                          type=dl.PackageInputType.ITEM)]
+                )
+            ]
+        )
+    ]
+
+
+def func15():
+    package = project.packages.push(package_name='two-modules-test',
+                                    modules=modules,
+                                    src_path='<path to where the entry point is located>'
+                                    )
+
+
+def func16():
+    service = package.deploy(
+        module_name='first-module',
+        service_name='first-module-test-service'
+    )
