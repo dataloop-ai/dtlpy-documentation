@@ -6,7 +6,7 @@
     {
       "displayName": "Connect Cloud Storage",
       "description": "Setup integration with GCS/S3/Azure ",
-      "location": "data_management/connect_cloud_storage/chapter.md"
+      "location": "data_management/cloud_storage/index.json"
     },
     {
       "displayName": "Manage Datasets",
