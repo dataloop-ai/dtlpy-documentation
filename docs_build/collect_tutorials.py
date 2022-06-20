@@ -103,7 +103,18 @@ def build_notebook(skeleton_filepath, mds_filepath, scripts_filepath):
             func_string, _ = inspect.getsourcelines(func)
             # remove the "def" line
             func_string = func_string[1:]
-            source = [ln[4:] for ln in func_string]
+            write_state = True
+            source = list()
+            for line in func_string[1:]:
+                if line.strip().startswith('# DTLPY-STOP'):
+                    write_state = False
+                    continue
+                if line.strip().startswith('# DTLPY-START'):
+                    write_state = True
+                    continue
+                if write_state is False:
+                    continue
+                source.append(line[indent_factor:])
             cell['source'] = source
         else:
             raise ValueError('unknown cell type {!r}'.format(cell_def['type']))
