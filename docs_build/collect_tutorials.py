@@ -102,7 +102,6 @@ def build_notebook(skeleton_filepath, mds_filepath, scripts_filepath):
             func = getattr(scripts_module, func_name)
             func_string, _ = inspect.getsourcelines(func)
             # remove the "def" line
-            func_string = func_string[1:]
             write_state = True
             source = list()
             for line in func_string[1:]:
