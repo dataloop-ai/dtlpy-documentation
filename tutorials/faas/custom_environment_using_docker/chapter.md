@@ -35,15 +35,8 @@ For example, using `docker.io/python:3.9.13` will run the function with Python 3
   
 ## Build Your Own Docker Image  
   
-If you want other environment or need to add some apt-get installation, you can create any docker image Dockerfile  
-example need to public (for now)  
-make sure to install everything with  
-  
-RUN pip3 install --user asynctest==0.13.0 boto3==1.21.45 dtlpy \  
-  
-1. USER 1000  
-2. HOME /tmp  
-  
+If you want other environment or need to add some apt-get installation, you can create any docker image and use it directly.  
+You will to set the HOME directory to `/tmp` and install the python packages with --user (or as user 1000).  
 For instance:  
 ```  
 FROM docker pull dockerhub.io/dataloopai/dtlpy-agent:latest.gpu.cuda11.5.py3.8.opencv  
@@ -61,9 +54,11 @@ RUN pip3 install --user \
     scikit-image==0.17.2  
 ```  
   
-Note: Currently we support only public images  
-  
 ## Using Private Docker Registry  
+<div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>  
+Using private images is NOT supported yet!  
+</div>  
+  
 To connect a private registry, you'll need to add the credentials as Organization Secrets and use the secret in the runtime configuration:  
   
 
