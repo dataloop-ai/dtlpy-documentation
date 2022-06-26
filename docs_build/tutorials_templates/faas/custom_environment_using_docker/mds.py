@@ -55,8 +55,7 @@ def func3():
 
     ## Using Private Docker Registry
     <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>
-    Using private images is NOT supported yet!
-    </div>
+    Using private images is NOT supported yet!</div>
 
     To connect a private registry, you'll need to add the credentials as Organization Secrets and use the secret in the runtime configuration:
 
