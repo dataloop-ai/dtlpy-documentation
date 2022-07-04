@@ -5,7 +5,7 @@ DTLPY_USERNAME = ''
 DTLPY_PASSWORD = ''
 
 
-def create_gcs(event, context):
+def delete_gcs(event, context):
     """Triggered by a change to a Cloud Storage bucket.
     Args:
          event (dict): Event payload.
