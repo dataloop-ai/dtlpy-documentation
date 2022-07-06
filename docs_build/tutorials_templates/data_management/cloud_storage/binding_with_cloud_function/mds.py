@@ -6,8 +6,9 @@ def section1():
     The function will catch the GCS bucket events and will reflect them into the Dataloop Platform.
 
     # Create the cloud function
-    1. Create a cloud function for create event
+    1. Create a cloud function for create event (must add the environment variables DATASET_ID, DTLPY_USERNAME and DTLPY_PASSWORD)
     ![add_layer](../../../../assets/gcs_screenshots/createfunction.PNG)
+    ![add_layer](../../../../assets/gcs_screenshots/Capture.PNG)
 
     2. add dtlpy to the requirements.txt
     3. Copy the following code to the main file:
