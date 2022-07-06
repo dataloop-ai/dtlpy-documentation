@@ -6,7 +6,7 @@ utilize that with Dataloop, and not upload the binaries and create duplicates.
   
 ## Cloud Storage Integration  
   
-Access & Permissions - Creating an integration with GCS/S3/Azure cloud requires adding a key/secret with the following  
+Access & Permissions - Creating an integration with GCS/S2/Azure cloud requires adding a key/secret with the following  
 permissions:  
   
 List (Mandatory) - allowing Dataloop to list all of the items in the storage.  
