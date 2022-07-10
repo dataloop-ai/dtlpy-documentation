@@ -24,7 +24,7 @@ def func3():
 
     ## Public Docker Images
 
-    You can use any public docker image! On runtime, our agent will install:
+    You can use any public docker image, and on runtime, the Dataloop agent will install:
 
     1. Package requirements
     2. dtlpy package (version as defined on the service)
@@ -35,7 +35,7 @@ def func3():
     ## Build Your Own Docker Image
 
     If you want other environment or need to add some apt-get installation, you can create any docker image and use it directly.
-    You will to set the HOME directory to `/tmp` and install the python packages with --user (or as user 1000).
+    You will need to set the HOME directory to `/tmp` and install the python packages with --user (or as USER 1000).
     For instance:
     ```
     FROM docker pull dockerhub.io/dataloopai/dtlpy-agent:latest.gpu.cuda11.5.py3.8.opencv
@@ -57,6 +57,6 @@ def func3():
     <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>
     Using private images is NOT supported yet!</div>
 
-    To connect a private registry, you'll need to add the credentials as Organization Secrets and use the secret in the runtime configuration:
+    To connect a private registry, you'll need to add the credentials as an Organization Secret and use the secret in the runtime configuration:
 
     """
