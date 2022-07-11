@@ -1,9 +1,11 @@
 # Using Custom AI Tracker
+
 Based on [this](https://learnopencv.com/object-tracking-using-opencv-cpp-python) OpenCV example.
 
 This is an example for using your own tracker on video.  
-The tracker is a Dataloop FaaS that receives the frame and bounding box from the UI when a user enables the AI tracker.
-The returned results is taken by the UI and shows the annotations oin the Annotation Studio.
+The tracker is a Dataloop FaaS that receives the frame and bounding box from the UI when a user enables the AI
+tracker.  
+The returned results is taken by the UI and shows the annotations in the Annotation Studio.
 
 NOTE you need to have opencv version (4.5.2.54 or similar) in order to read the video stream directly
 
@@ -23,12 +25,6 @@ A dictionary with the following format:
 ```
 {annotation_id: {frame_num: bb_coordinated}}
 ```
-
-## Open Issues:
-
-1. need to change the name of the tracker (not the default Ai Tracker)
-1. need to add the tracker slot to WOZ (not in the recipe)
-1. "dl" is a required input (shouldn't be) and is None in the run (why?)
 
 ## Deploying the function
 
