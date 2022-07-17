@@ -37,6 +37,12 @@ def section5():
 
     """
 
+def section5a():
+    """
+    ## Upload Annotations In VTT Format
+    The Dataloop builder support VTT files, for uploading Web Text Tracks for video transcriptin. 
+
+    """    
 
 def section6():
     """
