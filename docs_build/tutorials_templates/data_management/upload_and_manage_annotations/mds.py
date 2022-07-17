@@ -155,3 +155,14 @@ def section17():
 
 
     """
+
+def section18():
+    """
+
+    ## Exporting Files with File Extension as Part of the Filename
+
+    Files can be exported from a dataset with their file extension as part of the exported filename. The export_version param in dataset.download can be set to ExportVersion.V1 or ExportVersion.V2 to avoid duplication of files with different extensions. This allows items with the same filename and different extensions in the dataset to be saved as different items.
+    * **Old functionality (V1)** – abc.jpg → annotations are saved as abc.png and the JSON is saved as abc.json 
+    * **New functionality (V2)** – abc.jpg → annotations are saved as abc.jpg.png and JSON is saved as abc.jpg.json
+
+    """
