@@ -149,6 +149,9 @@ def section17():
     annotation_filters = dl.Filters(resource='annotations', field='label', values='dog')
     converter = dl.Converter()
     converter.convert_dataset(dataset=dataset,
+                              # Use the converter of choice
+                              # to_format='yolo',
+                              # to_format='voc',
                               to_format='coco',
                               local_path=r'C:/home/coco_annotations',
                               filters=item_filters,
