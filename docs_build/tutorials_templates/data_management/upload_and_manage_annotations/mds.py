@@ -140,12 +140,12 @@ def section16():
 def section17():
     """
 
-    ## Download Annotations in COCO Format
+    ## Download Annotations in COCO/YOLO/VOC Format
 
     * **Items filter** - download filtered items based on multiple parameters like their directory. You can also download items based on different filters, learn all about item filters [here](https://dataloop.ai/docs/sdk-sort-filter).
     * **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://dataloop.ai/docs/sdk-sort-filter-annotation).
  
-    This example will download COCO from a dog items folder of the label 'dog'.
+    This example will download COCO from a dog items folder of the label 'dog' (edit the script to change to YOLO/VOC).
 
 
     """
