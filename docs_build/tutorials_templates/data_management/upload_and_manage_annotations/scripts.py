@@ -170,3 +170,17 @@ def section17():
                               local_path=r'C:/home/coco_annotations',
                               filters=item_filters,
                               annotation_filters=annotation_filters)
+
+def section18():
+    #Param export_version will be set to ExportVersion.V1 by default.
+    dataset.download(local_path=r<'path'>, annotation_options='json',
+    export_version=dl.ExportVersion.V2)
+    
+def section19():
+    from PIL import Image
+    import numpy
+    item = dl.items.get(item_id='my-item-id')
+    array= item.download(save_locally=False,to_array=True)
+    # Check out the downloaded Ndarray with these commands - optional
+    image = Image.fromarray(array)
+    image.save(r'C:/home/project/images.jpg')
