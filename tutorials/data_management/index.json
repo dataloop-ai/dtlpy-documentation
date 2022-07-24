@@ -19,26 +19,25 @@
       "location": "data_management/data_versioning/chapter.md"
     },
     {
-      "displayName": "Upload and Manage Data and Metadata",
+      "displayName": "Upload Items (Data)",
       "description": "Upload data items and metadata",
       "location": "data_management/upload_and_manage_data_and_metadata/chapter.md"
     },
     {
-      "displayName": "Upload and Manage Annotations",
+      "displayName": "Upload Annotations",
       "description": "Upload annotations into data items",
       "location": "data_management/upload_and_manage_annotations/chapter.md"
+    },
+    {
+      "displayName": "Metadata",
+      "description": "Upload metadata into items and annotations",
+      "location": "data_management/uItem & User Metadata/chapter.md"
     },
     {
       "displayName": "Sort and Filters",
       "description": "DQL Filters a Pagination",
       "location": "data_management/sort_and_filter/index.json"
-    },
-    {
-      "displayName": "Working with Metadata",
-      "description": "Working with Item's metadata",
-      "location": "data_management/working_with_metadata/chapter.md"
     }
-
   ]
 }
 

@@ -16,16 +16,12 @@
     "name": "func2"
   },
   {
-    "type": "md",
-    "name": "func3"
-  },
-  {
     "type": "code",
     "name": "func3"
   },
   {
     "type": "md",
-    "name": "func4"
+    "name": "func3"
   },
   {
     "type": "code",
@@ -33,7 +29,7 @@
   },
   {
     "type": "md",
-    "name": "func5"
+    "name": "func4"
   },
   {
     "type": "code",
@@ -41,7 +37,7 @@
   },
   {
     "type": "md",
-    "name": "func6"
+    "name": "func5"
   },
   {
     "type": "code",
@@ -49,7 +45,7 @@
   },
   {
     "type": "md",
-    "name": "func7"
+    "name": "func6"
   },
   {
     "type": "code",
@@ -57,10 +53,6 @@
   },
   {
     "type": "md",
-    "name": "func8"
-  },
-  {
-    "type": "code",
-    "name": "func8"
+    "name": "func7"
   }
 ]

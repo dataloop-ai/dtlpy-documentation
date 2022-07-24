@@ -4,14 +4,19 @@
   "description": "Use Dataloop Python SDK to create Tasks and Assignments, manage annotators and annotations jobs",
   "content": [
     {
-      "displayName": "Tasks and Assignment",
-      "description": "Getting started with Task and Assignments.",
-      "location": "task_workflows/tasks_and_assignments/index.json"
+      "displayName": "Create Workflow Tasks",
+      "description": "Create annotations and QA tasks",
+      "location": "task_workflows/tasks_and_assignments/create_a_task/chapter.md"
     },
     {
-      "displayName": "QA Tasks Management",
-      "description": "Create QA tasks and annotation-qa flows",
-      "location": "task_workflows/qa/index.json"
+      "displayName": "Manage Tasks & Assignments",
+      "description": "Get tasks & assignment, delete, redistribute and reassign",
+      "location": "task_workflows/tasks_and_assignments/redistributing_and_reassigning_a_task/chapter.md"
+    },
+    {
+      "displayName": "Item Status In Tasks",
+      "description": "Set item status in tasks ,clear and update task statuses",
+      "location": "task_workflows/item_statuses_in_task/item_status/chapter.md"
     }
   ]
 }

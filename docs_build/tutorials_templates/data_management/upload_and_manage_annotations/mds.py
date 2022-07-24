@@ -37,12 +37,21 @@ def section5():
 
     """
 
+
 def section5a():
     """
     ## Upload Annotations In VTT Format
-    The Dataloop builder support VTT files, for uploading Web Text Tracks for video transcriptin. 
+    The Dataloop builder support VTT files, for uploading Web Text Tracks for video transcription.
 
-    """    
+    """
+
+
+def section5b():
+    """
+    ## Upload Audio annotation to an Audio file
+
+    """
+
 
 def section6():
     """
@@ -156,6 +165,7 @@ def section17():
 
     """
 
+
 def section18():
     """
 
@@ -166,7 +176,8 @@ def section18():
     * **New functionality (V2)** – abc.jpg → annotations are saved as abc.jpg.png and JSON is saved as abc.jpg.json
 
     """
-    
+
+
 def section19():
     """
 
