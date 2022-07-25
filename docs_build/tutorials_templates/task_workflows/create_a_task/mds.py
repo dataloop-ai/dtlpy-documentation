@@ -1,45 +1,46 @@
 def func1():
     """
-    ## Creating Tasks
+    # Creating Tasks
     Tasks are created in the Dataloop platform to initiate annotation or QA work.
     It requires defining the data items to be included, the assignees working on the task, and various options such as work-load, custom-statuses and more.
 
-    #### 1. Create A Task (Annotation task or QA task) Using Filter
+    ## Create A Task (Annotation task or QA task) Using Filter
     The following example demonstrates creating a task from an items filter.
     The script includes 2 example, for filtering an entire folder/directory, and for filtering by item annotation status.
 
     """
 
+
 def func2():
     """
-    #### 2. List of Items
+    ## List of Items
     Create a task from a list of items. The items will be divided equally between annotator's assignments:
     """
 
 
 def func3():
     """
-    #### 3. Entire Dataset
+    ## Entire Dataset
     Create a task from all items in a dataset. The items will be divided equally between annotator's assignments:
     """
 
 
 def func4():
     """
-    ## Add items to an existing task
+    # Add items to an existing task
     Adding items to an existing task will create new assignments (for new assignee/s).
 
-    ### 1. By Filters
+    ## By Filters
     """
 
 
 def func5():
     """
-    ### 2. Single Item
+    ## Single Item
     """
 
 
 def func6():
     """
-    ### 3. List of Items
+    ## List of Items
     """
