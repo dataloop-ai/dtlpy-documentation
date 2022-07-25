@@ -51,33 +51,3 @@ You can open an item uploaded to Dataloop by opening it in a viewer.
 show
 item.open_in_web()
 ```
-  
-  
-### Additional upload options  
-  
-Additional upload options include using buffer, pillow, openCV, and NdArray - see our complete documentation for code examples.  
-  
-## Upload Items and Annotations Metadata  
-You can upload items as a table using a pandas data frame that will let you upload items with info (annotations, metadata such as confidence, filename, etc.) attached to it.  
-
-```python
-import pandas
-import dtlpy as dl
-dataset = dl.datasets.get(dataset_id='id')  # Get dataset
-to_upload = list()
-# First item and info attached:
-to_upload.append({'local_path': r"E:\TypesExamples\000000000064.jpg",  # Item file path
-                  'local_annotations_path': r"E:\TypesExamples\000000000776.json",  # Annotations file path
-                  'remote_path': "/first",  # Dataset folder to upload the item to
-                  'remote_name': 'f.jpg',  # Dataset folder name
-                  'item_metadata': {'user': {'dummy': 'fir'}}})  # Added user metadata
-# Second item and info attached:
-to_upload.append({'local_path': r"E:\TypesExamples\000000000776.jpg",  # Item file path
-                  'local_annotations_path': r"E:\TypesExamples\000000000776.json",  # Annotations file path
-                  'remote_path': "/second",  # Dataset folder to upload the item to
-                  'remote_name': 's.jpg',  # Dataset folder name
-                  'item_metadata': {'user': {'dummy': 'sec'}}})  # Added user metadata
-df = pandas.DataFrame(to_upload)  # Make data into table
-items = dataset.items.upload(local_path=df,
-                             overwrite=True)  # Upload table to platform
-```

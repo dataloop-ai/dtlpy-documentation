@@ -74,7 +74,7 @@ for i_row, row in df.iterrows():
 item.annotations.upload(annotations=builder)
 ```
 ## Upload Annotations In VTT Format  
-The Dataloop builder support VTT files, for uploading Web Text Tracks for video transcriptin.  
+The Dataloop builder support VTT files, for uploading Web Text Tracks for video transcription.  
   
 
 ```python
@@ -90,6 +90,21 @@ item = dataset.items.upload(local_path=local_item_path)
 builder = item.annotations.builder()
 builder.from_vtt_file(filepath=local_vtt_path)
 item.annotations.upload(builder)
+```
+## Upload Audio annotation to an Audio file  
+  
+
+```python
+project = dl.projects.get(project_name='project_name')
+dataset = project.datasets.get(dataset_name='dataset_name')
+item = dataset.items.get(filepath='/my_item.mp4')
+# Using annotation builder
+builder = item.annotations.builder()
+builder.add(annotation_definition=dl.Subtitle(label='--Label--',
+                                              text='--text--'),
+            start_time='--start-',
+            end_time='--end--')
+# While everything in between --*-- is a variable
 ```
 # Set Attributes On Annotations  
   
@@ -247,8 +262,7 @@ converter.convert_dataset(dataset=dataset,
 
 ```python
 # Param export_version will be set to ExportVersion.V1 by default.
-dataset.download(local_path='/path',
-                 annotation_options='json',
+dataset.download(local_path='path', annotation_options='json',
                  export_version=dl.ExportVersion.V2)
 ```
 

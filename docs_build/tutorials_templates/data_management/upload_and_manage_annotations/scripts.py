@@ -74,6 +74,19 @@ def section5a():
     item.annotations.upload(builder)
 
 
+def section5b():
+    project = dl.projects.get(project_name='project_name')
+    dataset = project.datasets.get(dataset_name='dataset_name')
+    item = dataset.items.get(filepath='/my_item.mp4')
+    # Using annotation builder
+    builder = item.annotations.builder()
+    builder.add(annotation_definition=dl.Subtitle(label='--Label--',
+                                                  text='--text--'),
+                start_time='--start-',
+                end_time='--end--')
+    # While everything in between --*-- is a variable
+
+
 def section6():
     dl.use_attributes_2(True)
     annotation.attributes.update({"ID of the attribute": "value of the attribute"})

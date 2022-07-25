@@ -77,8 +77,12 @@ def load_templates(skeleton_filepath, mds_filepath, scripts_filepath):
     ######################
     # Load Skeleton file #
     ######################
-    with open(skeleton_filepath, 'r') as f:
-        skeleton = json.load(f)
+    try:
+        with open(skeleton_filepath, 'r') as f:
+            skeleton = json.load(f)
+    except json.decoder.JSONDecodeError:
+        print('FAILED opening {}'.format(skeleton_filepath))
+        raise
     return skeleton, mds_module, scripts_module, indent_factor
 
 

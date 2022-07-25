@@ -1,69 +1,55 @@
-import dtlpy as dl
-
-
 def func1():
+    import dtlpy as dl
+
+    # Get task by ID
     task = dl.tasks.get(task_id='<my-task-id>')
 
-
-def func2():
+    # Get task by name - in a project
     project = dl.projects.get(project_name='<project_name>')
     task = project.tasks.get(task_name='<my-task-name>')
 
-
-def func3():
+    # Get task by name - in a Dataset
     dataset = project.datasets.get(dataset_name='<dataset_name>')
     task = project.tasks.get(task_name='<my-task-name>')
 
-
-def func4():
-    dataset = project.datasets.get(dataset_name='<dataset_name>')
-    task = project.tasks.get(task_name='<my-task-name>')
-
-
-def func5():
+    # Get all tasks (list) in a project
     tasks = project.tasks.list()
 
-
-def func6():
+    # Get all tasks (list( in a dataset
     tasks = dataset.tasks.list()
 
 
-def func7():
+def func2():
+    # Get assignment by assignment ID
     assignment = dl.assignments.get(assignment_id='<my-assignment-id>')
 
-
-def func8():
+    # Get assignment by name – in a project
     project = dl.projects.get(project_name='<project_name>')
     assignment = project.assignments.get(assignment_name='<my-assignment-name>')
 
-
-def func9():
+    # Get assignment by name – in a dataset
     dataset = project.datasets.get(dataset_name='<dataset_name>')
     assignment = dataset.assignments.get(assignment_name='<my-assignment-name>')
 
-
-def func10():
+    # Get assignment by name – in a task
     task = project.tasks.get(task_name='<my-task-name>')
     assignment = task.assignments.get(assignment_name='<my-assignment-name>')
 
-
-def func11():
+    # Get assignments list - in a project
     assignments = project.assignments.list()
 
-
-def func12():
+    # Get assignments list - in a dataset
     assignments = dataset.assignments.list()
 
-
-def func13():
+    # Get assignments list - in a task
     assignments = task.assignments.list()
 
 
-def func14():
+def func3():
     assignment_items = assignment.get_items()
 
 
-def func15():
+def func4():
     import dtlpy as dl
     import datetime
     if dl.token_expired():
@@ -74,19 +60,19 @@ def func15():
     assignment = task.assignments.get(assignment_name='<my-assignment-name>')
 
 
-def func16():
+def func5():
     # load is the workload percentage for each annotator
     assignment.redistribute(dl.Workload([dl.WorkloadUnit(assignee_id='<annotator1@dataloop.ai>', load=50),
                                          dl.WorkloadUnit(assignee_id='<annotator2@dataloop.ai>', load=50)]))
 
 
-def func17():
+def func6():
     assignment.reassign(assignee_ids['<annotator1@dataloop.ai>'])
 
 
-def func18():
+def func7():
     task.delete()
 
 
-def func19():
+def func8():
     assignment.delete()

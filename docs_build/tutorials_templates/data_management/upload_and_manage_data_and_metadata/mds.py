@@ -35,14 +35,3 @@ def section4():
     """
 
 
-def section5():
-    """
-
-
-    ### Additional upload options
-
-    Additional upload options include using buffer, pillow, openCV, and NdArray - see our complete documentation for code examples.
-
-    ## Upload Items and Annotations Metadata
-    You can upload items as a table using a pandas data frame that will let you upload items with info (annotations, metadata such as confidence, filename, etc.) attached to it.
-    """
