@@ -1,18 +1,18 @@
 {
-  "name": "task-workflows",
-  "title": "Task Workflows Tutorial",
-  "description": "Use Dataloop Python SDK to create Tasks and Assignments, manage annotators and annotations jobs",
-  "content": [
-    {
-      "displayName": "Tasks and Assignment",
-      "description": "Getting started with Task and Assignments.",
-      "location": "task_workflows/tasks_and_assignments/index.json"
-    },
-    {
-      "displayName": "QA Tasks Management",
-      "description": "Create QA tasks and annotation-qa flows",
-      "location": "task_workflows/qa/index.json"
-    }
-  ]
+    "name": "task-workflows",
+    "title": "Task Workflows Tutorial",
+    "description": "Use Dataloop Python SDK to create Tasks and Assignments, manage annotators and annotations jobs",
+    "content": [
+        {
+            "displayName": "Create Tasks and Assignment",
+            "description": "Getting started with Task and Assignments.",
+            "location": "task_workflows/create_a_task/chapter.md"
+        },
+        {
+            "displayName": "Managing Tasks and Assignments",
+            "description": "Managing Tasks and Assignments",
+            "location": "task_workflows/redistribute_and_reassigning_a_task/chapter.md"
+        }
+    ]
 }
 
