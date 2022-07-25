@@ -111,11 +111,6 @@ To get these files please download them here.
 
 ```python
 ...
-# numpy == 1.18
-# .1
-# opencv - python == 3.4
-# .2
-# .17
 ```
 ### Package Requirements  
   

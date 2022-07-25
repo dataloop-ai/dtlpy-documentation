@@ -189,7 +189,8 @@ def section17():
 
 def section18():
     # Param export_version will be set to ExportVersion.V1 by default.
-    dataset.download(local_path='path', annotation_options='json',
+    dataset.download(local_path='/path',
+                     annotation_options='json',
                      export_version=dl.ExportVersion.V2)
 
 

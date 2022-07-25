@@ -1,11 +1,12 @@
-import json
 import importlib.util
 import inspect
+import shutil
+import json
 import os
 
 LINE_HEADER = '<func:'
 
-TEMPLATES_PATH = 'docs_build/tutorials_templates'
+TEMPLATES_PATH = os.path.join('docs_build', 'tutorials_templates')
 TUTORIALS_PATH = 'tutorials'
 NOTEBOOK_TEMPLATE = {"cells": [],
                      "metadata": {
@@ -174,6 +175,9 @@ def main():
     for path, subdirs, files in os.walk(TEMPLATES_PATH):
         for filename in files:
             if filename == 'skeleton.json':
+                """
+                build tutorials according to the skeleton file (interleave text and scripts) 
+                """
                 print('Preparing {!r} ...'.format(path))
                 skeleton_filepath = os.path.join(path, filename)
                 mds_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'mds.py')
@@ -186,21 +190,28 @@ def main():
                               mds_filepath=mds_filepath,
                               scripts_filepath=scripts_filepath)
                 print('Done!')
+            elif filename == 'index.json':
+                """
+                copy index file to the output tutorials to create the tutorials flow
+                """
+                src_index_filepath = os.path.join(path, filename)
+                dst_index_filepath = src_index_filepath.replace(TEMPLATES_PATH, TUTORIALS_PATH)
+                shutil.copy(src=src_index_filepath, dst=dst_index_filepath)
 
 
 if __name__ == "__main__":
     """
     Building MD files and Jupyter notebook from templates.
     loading skeleton.json file for the interleaving between code and text.
-    
+
     Running build.py will OVERWRITE the "tutorials" folder with the new templates
-    
+
     Ignoring code lines:
     you can use "# DTLPY-STOP" and "# DTLPY-START" to mark if you dont want some code to go in to the output file
-    
+
     Run:
     Need to run this file from the root
     python docs_build/collect_tutorials.py
-    
+
     """
     main()
