@@ -57,6 +57,7 @@ def section5():
     # Upload all created annotations
     item.annotations.upload(annotations=builder)
 
+
 def section5a():
     project = dl.projects.get(project_name='project_name')
     dataset = project.datasets.get(dataset_name='dataset_name')
@@ -66,11 +67,12 @@ def section5a():
     local_vtt_path = r'/Users/local/path/to/subtitles.vtt'
     # upload item
     item = dataset.items.upload(local_path=local_item_path)
-    
-    #upload VTT file - wait until the item finishs uploading
+
+    # upload VTT file - wait until the item finishs uploading
     builder = item.annotations.builder()
     builder.from_vtt_file(filepath=local_vtt_path)
     item.annotations.upload(builder)
+
 
 def section6():
     dl.use_attributes_2(True)
@@ -171,16 +173,19 @@ def section17():
                               filters=item_filters,
                               annotation_filters=annotation_filters)
 
+
 def section18():
-    #Param export_version will be set to ExportVersion.V1 by default.
-    dataset.download(local_path=r<'path'>, annotation_options='json',
-    export_version=dl.ExportVersion.V2)
-    
+    # Param export_version will be set to ExportVersion.V1 by default.
+    dataset.download(local_path='/path',
+                     annotation_options='json',
+                     export_version=dl.ExportVersion.V2)
+
+
 def section19():
     from PIL import Image
     import numpy
     item = dl.items.get(item_id='my-item-id')
-    array= item.download(save_locally=False,to_array=True)
+    array = item.download(save_locally=False, to_array=True)
     # Check out the downloaded Ndarray with these commands - optional
     image = Image.fromarray(array)
     image.save(r'C:/home/project/images.jpg')

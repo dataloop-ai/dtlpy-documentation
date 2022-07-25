@@ -1,0 +1,23 @@
+{
+  "name": "qa-tasks",
+  "title": "QA Workflows Tutorial",
+  "description": "Work with QA Tasks for Annotation Tasks validation",
+  "content": [
+    {
+      "displayName": "Create QA Task",
+      "description": "Getting started with QA Tasks.",
+      "location": "task_workflows/qa/create_a_new_qa_task/chapter.md"
+    },
+    {
+      "displayName": "Create QA Assignment",
+      "description": "Getting started with QA Assignment.",
+      "location": "task_workflows/qa/qa_assignment/index.json"
+    },
+    {
+      "displayName": "Redistribute and Reassign",
+      "description": "Redistribute and reassign items from tasks and assignments",
+      "location": "task_workflows/qa/redistributing_and_reassigning_a_qa_task/chapter.md"
+    }
+  ]
+}
+
