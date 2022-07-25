@@ -104,7 +104,6 @@ builder.add(annotation_definition=dl.Subtitle(label='--Label--',
                                               text='--text--'),
             start_time='--start-',
             end_time='--end--')
-# While everything in between --*-- is a variable
 ```
 # Set Attributes On Annotations  
   
@@ -262,7 +261,8 @@ converter.convert_dataset(dataset=dataset,
 
 ```python
 # Param export_version will be set to ExportVersion.V1 by default.
-dataset.download(local_path='path', annotation_options='json',
+dataset.download(local_path='/path',
+                 annotation_options='json',
                  export_version=dl.ExportVersion.V2)
 ```
 
