@@ -73,6 +73,38 @@ for i_row, row in df.iterrows():
 # Upload all created annotations
 item.annotations.upload(annotations=builder)
 ```
+## Upload Annotations In VTT Format  
+The Dataloop builder support VTT files, for uploading Web Text Tracks for video transcription.  
+  
+
+```python
+project = dl.projects.get(project_name='project_name')
+dataset = project.datasets.get(dataset_name='dataset_name')
+# local path to item
+local_item_path = r'/Users/local/path/to/item.png'
+# local path to vtt
+local_vtt_path = r'/Users/local/path/to/subtitles.vtt'
+# upload item
+item = dataset.items.upload(local_path=local_item_path)
+# upload VTT file - wait until the item finishs uploading
+builder = item.annotations.builder()
+builder.from_vtt_file(filepath=local_vtt_path)
+item.annotations.upload(builder)
+```
+## Upload Audio annotation to an Audio file  
+  
+
+```python
+project = dl.projects.get(project_name='project_name')
+dataset = project.datasets.get(dataset_name='dataset_name')
+item = dataset.items.get(filepath='/my_item.mp4')
+# Using annotation builder
+builder = item.annotations.builder()
+builder.add(annotation_definition=dl.Subtitle(label='--Label--',
+                                              text='--text--'),
+            start_time='--start-',
+            end_time='--end--')
+```
 # Set Attributes On Annotations  
   
 You can set attributes on annotations in hte platform using the SDK. Since Dataloop deprecated a legacy attributes mechanism, attributes are refered to as '2.0' version and need to be set as such first.  
@@ -202,12 +234,12 @@ item.download(local_path=r'C:/home/project/images',  # the default value is ".da
               annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 ```
   
-## Download Annotations in COCO Format  
+## Download Annotations in COCO/YOLO/VOC Format  
   
 * **Items filter** - download filtered items based on multiple parameters like their directory. You can also download items based on different filters, learn all about item filters [here](https://dataloop.ai/docs/sdk-sort-filter).  
 * **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://dataloop.ai/docs/sdk-sort-filter-annotation).  
   
-This example will download COCO from a dog items folder of the label 'dog'.  
+This example will download COCO from a dog items folder of the label 'dog' (edit the script to change to YOLO/VOC).  
   
   
 
@@ -218,8 +250,28 @@ item_filters = dl.Filters(resource='items', field='dir', values='/dog_name')
 annotation_filters = dl.Filters(resource='annotations', field='label', values='dog')
 converter = dl.Converter()
 converter.convert_dataset(dataset=dataset,
+                          # Use the converter of choice
+                          # to_format='yolo',
+                          # to_format='voc',
                           to_format='coco',
                           local_path=r'C:/home/coco_annotations',
                           filters=item_filters,
                           annotation_filters=annotation_filters)
+```
+
+```python
+# Param export_version will be set to ExportVersion.V1 by default.
+dataset.download(local_path='/path',
+                 annotation_options='json',
+                 export_version=dl.ExportVersion.V2)
+```
+
+```python
+from PIL import Image
+import numpy
+item = dl.items.get(item_id='my-item-id')
+array = item.download(save_locally=False, to_array=True)
+# Check out the downloaded Ndarray with these commands - optional
+image = Image.fromarray(array)
+image.save(r'C:/home/project/images.jpg')
 ```

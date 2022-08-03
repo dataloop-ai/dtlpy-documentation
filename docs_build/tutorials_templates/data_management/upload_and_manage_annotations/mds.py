@@ -38,6 +38,21 @@ def section5():
     """
 
 
+def section5a():
+    """
+    ## Upload Annotations In VTT Format
+    The Dataloop builder support VTT files, for uploading Web Text Tracks for video transcription.
+
+    """
+
+
+def section5b():
+    """
+    ## Upload Audio annotation to an Audio file
+
+    """
+
+
 def section6():
     """
     # Set Attributes On Annotations
@@ -140,12 +155,36 @@ def section16():
 def section17():
     """
 
-    ## Download Annotations in COCO Format
+    ## Download Annotations in COCO/YOLO/VOC Format
 
     * **Items filter** - download filtered items based on multiple parameters like their directory. You can also download items based on different filters, learn all about item filters [here](https://dataloop.ai/docs/sdk-sort-filter).
     * **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://dataloop.ai/docs/sdk-sort-filter-annotation).
  
-    This example will download COCO from a dog items folder of the label 'dog'.
+    This example will download COCO from a dog items folder of the label 'dog' (edit the script to change to YOLO/VOC).
 
+
+    """
+
+
+def section18():
+    """
+
+    ## Exporting Files with File Extension as Part of the Filename
+
+    Files can be exported from a dataset with their file extension as part of the exported filename. The export_version param in dataset.download can be set to ExportVersion.V1 or ExportVersion.V2 to avoid duplication of files with different extensions. This allows items with the same filename and different extensions in the dataset to be saved as different items.
+    * **Old functionality (V1)** – abc.jpg → annotations are saved as abc.png and the JSON is saved as abc.json 
+    * **New functionality (V2)** – abc.jpg → annotations are saved as abc.jpg.png and JSON is saved as abc.jpg.json
+
+    """
+
+
+def section19():
+    """
+
+    ## Download NdArray with Numpy
+
+    - only images that have .jpg or .png formats are supported
+    - save_localy=False means it returns a buffer
+    - to_arraymeans it returns the buffer as an array
 
     """

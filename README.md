@@ -55,9 +55,11 @@ jupyter notebook tutorials
   *  [Video annotations](tutorials/annotations_video/video_annotations/chapter.ipynb)
 * Data management
   * Cloud storage
+    *  [Binding with cloud function](tutorials/data_management/cloud_storage/binding_with_cloud_function/chapter.ipynb)
     *  [Binding with lambda](tutorials/data_management/cloud_storage/binding_with_lambda/chapter.ipynb)
     *  [Create an external dataset](tutorials/data_management/cloud_storage/create_an_external_dataset/chapter.ipynb)
   *  [Data versioning](tutorials/data_management/data_versioning/chapter.ipynb)
+  *  [Item & user metadata](tutorials/data_management/Item & User Metadata/chapter.ipynb)
   *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
   *  [Modalities](tutorials/data_management/modalities/chapter.ipynb)
   * Sort and filter
@@ -69,11 +71,13 @@ jupyter notebook tutorials
   *  [Upload and manage data and metadata](tutorials/data_management/upload_and_manage_data_and_metadata/chapter.ipynb)
   *  [Working with metadata](tutorials/data_management/working_with_metadata/chapter.ipynb)
 * Faas
+  *  [Auto annotate](tutorials/faas/auto_annotate/chapter.ipynb)
   *  [Concept](tutorials/faas/concept/chapter.ipynb)
   *  [Execution control](tutorials/faas/execution_control/chapter.ipynb)
   *  [Introduction](tutorials/faas/introduction/chapter.ipynb)
   *  [Multiple functions and modules](tutorials/faas/multiple_functions_and_modules/chapter.ipynb)
   *  [Single function rgb to gray](tutorials/faas/single_function_rgb_to_gray/chapter.ipynb)
+  *  [Ui slots](tutorials/faas/ui_slots/chapter.ipynb)
 * Model management
   *  [Create new model](tutorials/model_management/create_new_model/chapter.ipynb)
   *  [Dataloop dataloader](tutorials/model_management/dataloop_dataloader/chapter.ipynb)
@@ -85,18 +89,17 @@ jupyter notebook tutorials
   *  [Concepts](tutorials/recipe_and_ontology/concepts/chapter.ipynb)
   *  [Ontology](tutorials/recipe_and_ontology/ontology/chapter.ipynb)
   *  [Recipe](tutorials/recipe_and_ontology/recipe/chapter.ipynb)
+* Sdk 101 tutorial
+  *  [Advance tutorials](tutorials/sdk_101_tutorial/advance_tutorials/chapter.ipynb)
+  *  [Bounding box and cuboid](tutorials/sdk_101_tutorial/bounding_box_and_cuboid/chapter.ipynb)
+  *  [Classification point and pose](tutorials/sdk_101_tutorial/classification_point_and_pose/chapter.ipynb)
+  *  [Ellipse and item description](tutorials/sdk_101_tutorial/ellipse_and_item_description/chapter.ipynb)
+  *  [Polygon and polyline](tutorials/sdk_101_tutorial/polygon_and_polyline/chapter.ipynb)
+  *  [Setup](tutorials/sdk_101_tutorial/setup/chapter.ipynb)
 * Task workflows
-  * Qa
-    *  [Create a new qa task](tutorials/task_workflows/qa/create_a_new_qa_task/chapter.ipynb)
-    * Qa assignment
-      *  [Note annotation](tutorials/task_workflows/qa/qa_assignment/note_annotation/chapter.ipynb)
-      *  [Qa on annotation level](tutorials/task_workflows/qa/qa_assignment/qa_on_annotation_level/chapter.ipynb)
-      *  [Qa on item level](tutorials/task_workflows/qa/qa_assignment/qa_on_item_level/chapter.ipynb)
-    *  [Redistributing and reassigning a qa task](tutorials/task_workflows/qa/redistributing_and_reassigning_a_qa_task/chapter.ipynb)
-  * Tasks and assignments
-    *  [Create a task](tutorials/task_workflows/tasks_and_assignments/create_a_task/chapter.ipynb)
-    *  [Redistributing and reassigning a task](tutorials/task_workflows/tasks_and_assignments/redistributing_and_reassigning_a_task/chapter.ipynb)
-    *  [Task assignment](tutorials/task_workflows/tasks_and_assignments/task_assignment/chapter.ipynb)
+  *  [Create a task](tutorials/task_workflows/create_a_task/chapter.ipynb)
+  *  [Item status](tutorials/task_workflows/item_status/chapter.ipynb)
+  *  [Redistributing and reassigning a task](tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.ipynb)
 
 ## Code Examples
 
@@ -120,6 +123,9 @@ jupyter notebook tutorials
   *  [Add labels](examples/datasets/add_labels.py)
   *  [Copy folder](examples/datasets/copy_folder.py)
 * Integrations
+  * Gcs cloud function
+    *  [Create function](examples/integrations/gcs_cloud_function/create_function.py)
+    *  [Delete function](examples/integrations/gcs_cloud_function/delete_function.py)
   * S3 lambda
     *  [Lambda function](examples/integrations/s3_lambda/lambda_function.py)
 * Items

@@ -1,8 +1,8 @@
 import tensorflow as tf
 import dtlpy as dl
 import os
-from keras.applications.inception_v3 import preprocess_input
-from keras.applications.imagenet_utils import decode_predictions
+from tensorflow.keras.applications.inception_v3 import preprocess_input
+from tensorflow.keras.applications.imagenet_utils import decode_predictions
 from PIL import Image
 import numpy as np
 
@@ -19,6 +19,11 @@ class ModelRunner(dl.BaseServiceRunner):
             classifier_activation="softmax",
         )
 
+    def inference_and_upload(self, item: dl.Item):
+        annotations = self.inference(item=item)
+        item.annotations.upload(annotations=annotations)
+        return item
+
     def inference(self, item: dl.Item):
         filepath = ''
         try:
@@ -29,17 +34,16 @@ class ModelRunner(dl.BaseServiceRunner):
             label = labels[0][1]
             prob = labels[0][2]
             builder = item.annotations.builder()
-            builder.add(dl.Classification(label=label),
+            builder.add(annotation_definition=dl.Classification(label=label),
                         model_info={'name': 'inceptionv3',
                                     'confidence': '{:.2f}'.format(prob)})
-            item.annotations.upload(annotations=builder)
         finally:
             if os.path.isfile(filepath):
                 os.remove(filepath)
-        return item
+        return builder.to_json()['annotations']
 
 
 def test():
-    self = ModelRunner()
-    item = dl.items.get(item_id='61eac3aa6c58a66411a416f4')
-    self.inference(item)
+    runner = ModelRunner()
+    item = dl.items.get(item_id='62c67eef41c7db024a2d7198')
+    runner.inference_and_upload(item)

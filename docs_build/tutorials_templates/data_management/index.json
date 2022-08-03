@@ -1,0 +1,44 @@
+{
+  "name": "management-tutorial",
+  "title": "Management Tutorial",
+  "description": "Use Dataloop's Python SDK to integrate your data with your cloud-storage (GCS/S3/Azure), create datasets, upload/link your data items, manage your datasets, and download data.\n\nSee our SDK Getting Started guide at https://dataloop.ai/docs/sdk-register.\n",
+  "content": [
+    {
+      "displayName": "Cloud Storage",
+      "description": "Setup integration with GCS/S3/Azure ",
+      "location": "data_management/cloud_storage/index.json"
+    },
+    {
+      "displayName": "Manage Datasets",
+      "description": "Create and manage Datasets and connect them with your cloud storage",
+      "location": "data_management/manage_datasets/chapter.md"
+    },
+    {
+      "displayName": "Data Versioning",
+      "description": "How to manage versions",
+      "location": "data_management/data_versioning/chapter.md"
+    },
+    {
+      "displayName": "Upload and Manage Data and Metadata",
+      "description": "Upload data items and metadata",
+      "location": "data_management/upload_and_manage_data_and_metadata/chapter.md"
+    },
+    {
+      "displayName": "Upload and Manage Annotations",
+      "description": "Upload annotations into data items",
+      "location": "data_management/upload_and_manage_annotations/chapter.md"
+    },
+    {
+      "displayName": "Sort and Filters",
+      "description": "DQL Filters a Pagination",
+      "location": "data_management/sort_and_filter/index.json"
+    },
+    {
+      "displayName": "Working with Metadata",
+      "description": "Working with Item's metadata",
+      "location": "data_management/working_with_metadata/chapter.md"
+    }
+
+  ]
+}
+
