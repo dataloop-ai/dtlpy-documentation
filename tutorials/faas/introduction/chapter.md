@@ -1,4 +1,4 @@
-## Introduction  
+# Introduction  
 This tutorial will help you get started with FaaS.  
 1. Prerequisites  
 2. Basic use case:  Single function  

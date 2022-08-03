@@ -1,8 +1,8 @@
-## Creating Tasks  
+# Creating Tasks  
 Tasks are created in the Dataloop platform to initiate annotation or QA work.  
 It requires defining the data items to be included, the assignees working on the task, and various options such as work-load, custom-statuses and more.  
   
-#### 1. Create A Task (Annotation task or QA task) Using Filter  
+## Create A Task (Annotation task or QA task) Using Filter  
 The following example demonstrates creating a task from an items filter.  
 The script includes 2 example, for filtering an entire folder/directory, and for filtering by item annotation status.  
   
@@ -33,7 +33,7 @@ qa_task = dataset.tasks.create_qa_task(task=task,
                                        filters=filters  # this filter is for "completed items"
                                        )
 ```
-#### 2. List of Items  
+## List of Items  
 Create a task from a list of items. The items will be divided equally between annotator's assignments:  
 
 ```python
@@ -53,7 +53,7 @@ task = dataset.tasks.create(
     items=items_list
 )
 ```
-#### 3. Entire Dataset  
+## Entire Dataset  
 Create a task from all items in a dataset. The items will be divided equally between annotator's assignments:  
 
 ```python
@@ -71,10 +71,10 @@ task = dataset.tasks.create(
     # The items will be divided equally between assignments
 )
 ```
-## Add items to an existing task  
+# Add items to an existing task  
 Adding items to an existing task will create new assignments (for new assignee/s).  
   
-### 1. By Filters  
+## By Filters  
 
 ```python
 import dtlpy as dl
@@ -89,7 +89,7 @@ task.add_items(
     filters=filters,  # filter by folder directory or use other filters
     assignee_ids=['<annotator1@dataloop.ai>', '<annotator2@dataloop.ai>'])
 ```
-### 2. Single Item  
+## Single Item  
 
 ```python
 import dtlpy as dl
@@ -103,7 +103,7 @@ task.add_items(
     items=[item],
     assignee_ids=['<annotator1@dataloop.ai>', '<annotator2@dataloop.ai>'])
 ```
-### 3. List of Items  
+## List of Items  
 
 ```python
 import dtlpy as dl
