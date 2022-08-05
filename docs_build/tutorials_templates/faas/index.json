@@ -27,6 +27,11 @@
       "displayName": "Execution Control",
       "description": "Kill and Timeout on an Execution",
       "location": "faas/execution_control/chapter.md"
+    },
+    {
+      "displayName": "Example - Auto/Pre Annotation service",
+      "description": "Create and deploy a service with a trigger",
+      "location": "faas/auto_annotate/chapter.md"
     }
 
   ]
