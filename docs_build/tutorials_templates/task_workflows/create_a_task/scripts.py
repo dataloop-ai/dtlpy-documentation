@@ -76,30 +76,3 @@ def func4():
         filters=filters,  # filter by folder directory or use other filters
         assignee_ids=['<annotator1@dataloop.ai>', '<annotator2@dataloop.ai>'])
 
-
-def func5():
-    import dtlpy as dl
-    import datetime
-    if dl.token_expired():
-        dl.login()
-    project = dl.projects.get(project_name='<project_name>')
-    dataset = project.datasets.get(dataset_name='<dataset_name>')
-    item = dataset.items.get(item_id='<my-item-id>')
-    task.add_items(
-        items=[item],
-        assignee_ids=['<annotator1@dataloop.ai>', '<annotator2@dataloop.ai>'])
-
-
-def func6():
-    import dtlpy as dl
-    import datetime
-    if dl.token_expired():
-        dl.login()
-    project = dl.projects.get(project_name='<project_name>')
-    dataset = project.datasets.get(dataset_name='<dataset_name>')
-    items = dataset.items.list()
-    items_list = [item for item in items.all()]
-    task.add_items(
-        items=items_list,
-        assignee_ids=['<annotator1@dataloop.ai>', '<annotator2@dataloop.ai>']
-    )

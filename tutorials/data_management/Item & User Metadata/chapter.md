@@ -24,6 +24,7 @@ item.metadata['user']['MyListKey'] = ["A", 2, False]
 item.metadata['user']['MyListKey'].append(3)
 # update and reclaim item
 item = item.update()
+# Look at an items' metadata section (in platform or download the item's JSON) and review the USER section to see the values
 ```
 ## Upload Items and Annotations Metadata  
 You can upload items as a table using a pandas data frame that will let you upload items with info (annotations, metadata such as confidence, filename, etc.) attached to it.  
@@ -71,4 +72,5 @@ item.metadata['user']['Params'] = ["A", 2, False]
 annotation.metadata['user']['Params'].append(3)
 # update and reclaim annotation
 annotation = annotation.update()
+# annotation in platform should have section 'user' in metadata with field 'red' and value True
 ```

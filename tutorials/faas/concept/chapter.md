@@ -11,7 +11,7 @@ You can configure the compute settings according to your preferences (machine ty
   
   
   
-# Use Cases  
+## Use Cases  
   
 **Pre annotation processing**: Resize, video assembler, video dissembler  
   

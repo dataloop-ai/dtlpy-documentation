@@ -4,6 +4,11 @@
   "description": "All of Dataloop's tutorials!",
   "content": [
     {
+      "displayName": "Getting Started With Dataloop SDK",
+      "description": "Getting started with Dataloop SDK",
+      "location": "getting_started_tutorial/index.json"
+    },
+    {
       "displayName": "Data Management Tutorial",
       "description": "Tutorials for data management",
       "location": "data_management/index.json"

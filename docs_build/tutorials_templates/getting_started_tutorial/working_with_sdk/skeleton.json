@@ -1,34 +1,34 @@
 [
   {
     "type": "md",
-    "name": "section1"
+    "name": "func1"
   },
   {
     "type": "code",
-    "name": "section1"
+    "name": "func1"
   },
   {
     "type": "md",
-    "name": "section2"
+    "name": "func2"
   },
   {
     "type": "code",
-    "name": "section2"
+    "name": "func2"
   },
   {
     "type": "md",
-    "name": "section3"
+    "name": "func3"
   },
   {
     "type": "code",
-    "name": "section3"
+    "name": "func3"
   },
   {
     "type": "md",
-    "name": "section4"
+    "name": "func4"
   },
   {
     "type": "code",
-    "name": "section4"
+    "name": "func4"
   }
 ]
