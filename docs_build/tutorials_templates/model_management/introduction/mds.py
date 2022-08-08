@@ -3,24 +3,33 @@ def func1():
     # Model Management
 
     ## Introduction
-    Dataloop's Model Management is here to provide Machine Learning engineers the ability to manage their research and production process.
+    Dataloop's model management gives machine learning engineers the ability to manage their research and production processes.
 
-    We want to introduce Dataloop entities to create, manage, view, compare, restore, and deploy training sessions.
+    In this tutorial we will cover the Dataloop entities required to create, compare, restore, manage, and deploy training sessions and trained models.
 
-    Our Model Management gives a separation between Model code, weights and configuration, and the data.
+    The Model Management module separates between model code, model parameters, and the dataset used for training.
+    This allows for fully reproducible model training in the future.
 
-    in Offline mode, there is no need to do any code integration with Dataloop - just create a model and snapshots entities and you can start managing your work on the platform create reproducible training:
-    - same configurations and dataset to reproduce the training
-    - view project/org models and snapshots in the platform
-    - view training metrics and results
-    - compare experiments
-    NOTE: all functions from the codebase can be used in FaaS and pipelines only with custom functions! User must create a FaaS and expose those functions any way he’d like
+    Model code can be imported from ready-to-go model algorithms available in the AI Library, or uploaded from a bucket/other external codebase.
+    All existing user models can be viewed in one place, and models can be compared and evaluated with user-selected metrics.
 
-    Online Mode:
-    In the online mode, you can train and deploy your models easily anywhere on the platform.
-    All you need to do is create a Model Adapter class and expose some functions to build an API between Dataloop and your model.
-    After that, you can easily add model blocks to pipelines, add UI slots in the studio, one-button-training etc
+    Pre-trained models can be created directly with the trained model weights, without any training information (come as-is).
 
+    The dataset used to train the model is cloned and stored in the model params. This allows data versioning within the model managment.
+
+    Models can be evaluated with new data, and individual data items and their predictions can be explored directly within the Model Management page.
+
+    Model management can be used in two modes:
+    online (for integration into the Dataloop platform), and offline (for local machine use only).
+
+    In "online" mode, models can be easily trained and deployed anywhere on the platform,
+    once the user creates a ModelAdapter class and implements some functions to build an API between Dataloop and the model.
+    This includes all the platform features mentioned above.
+
+    In "offline" mode, users can run and train models on their local machine using local data, and can compare model
+    configurations and metrics on the platform, once a dl.Model and a dl.Snapshot entity are created on the platform.
+    This includes only the visualizations of the metrics exported from the (local) model training session.
+    In this mode, code and weights are not saved anywhere in the Dataloop platform.
 
     ### Model and Snapshot entities
 
