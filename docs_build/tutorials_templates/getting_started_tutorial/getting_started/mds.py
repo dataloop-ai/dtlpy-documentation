@@ -1,5 +1,3 @@
-
-
 def func1():
     """
     # Getting Started
@@ -19,7 +17,7 @@ def func1():
 
 def func3():
     """
-    ##Login
+    ## Login
     To log in, type the command below :
 
     """
@@ -36,7 +34,7 @@ def func5():
     Once your browser opens the Login  screen, type the credentials below or login with Google.
     Please wait for the "Login Successful" tab to appear, then close the tab.
 
-    ##M2M Login
+    ## M2M Login
     Long-running SDK jobs require API authentication.
     The M2M flow allows machines to obtain valid, signed JWT (authentication token) and automatically refresh it, without the need for a real user account UI login.
 
@@ -51,84 +49,99 @@ def func5():
 
     """
 
+
 def func6():
     """
-    Now make  sure to save the bot's email and password for future logins:
+    Now make sure to save the bot's email and password for future logins:
     """
+
 
 def func7():
     """
     2. Log in to the SDK with your new bot:
     """
 
+
 def func8():
     """
-    ##Create & Get a Project
+    ## Create & Get a Project
     """
+
 
 def func9():
     """
-    ##Create & Get a Dataset
+    ## Create & Get a Dataset
     """
+
 
 def func10():
     """
-    ##Upload items
+    ## Upload items
     """
+
 
 def func11():
     """
-    ##Get Item / items-list
+    ## Get Item / items-list
     """
+
 
 def func12():
     """
-    ##Filters includes join and all operations
+    ## Filters includes join and all operations
 
     """
+
 
 def func13():
     """
-    ##Add metadata to the item
+    ## Add metadata to the item
     """
+
 
 def func14():
     """
-    ##Upload annotations (with Dataloop Builder)
+    ## Upload annotations (with Dataloop Builder)
 
     """
+
 
 def func15():
     """
-    ##Upload segmentation annotation
+    ## Upload segmentation annotation
     """
+
 
 def func16():
     """
-    ##Get annotations + list (pages)
+    ## Get annotations + list (pages)
 
     """
+
 
 def func17():
     """
-    ##Uannotation update includes metadata
+    ## Annotation update includes metadata
     """
+
 
 def func18():
     """
-    ##load annotations from JSON file
+    ## load annotations from JSON file
     ### Loading a COCO json :
 
     """
 
+
 def func19():
     """
-    ###Loading it based on your json format:
+    ### Loading it based on your json format:
     In this example we iterate over the json file,filter the item from the platform based on it’s name,then update it’s metadata and upload annotations.
 
     """
 
+
 def func20():
     """
-    ##Creating an annotation task and adding items to it
+    ## Creating an annotation task and adding items to it
     """

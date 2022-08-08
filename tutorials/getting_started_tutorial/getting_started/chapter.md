@@ -10,7 +10,7 @@ pip install dtlpy
   
 Alternatively, install pip from the source by cloning the GitHub repo, then run the following command:  
 python setup.py install  
-##Login  
+## Login  
 To log in, type the command below :  
   
 
@@ -26,7 +26,7 @@ if dl.token_expired():
 Once your browser opens the Login  screen, type the credentials below or login with Google.  
 Please wait for the "Login Successful" tab to appear, then close the tab.  
   
-##M2M Login  
+## M2M Login  
 Long-running SDK jobs require API authentication.  
 The M2M flow allows machines to obtain valid, signed JWT (authentication token) and automatically refresh it, without the need for a real user account UI login.  
   
@@ -45,13 +45,13 @@ import dtlpy as dl
 # use browser login to create the bot
 dl.login()
 project = dl.projects.get(project_name='myProject')  # get your project
-myBot = project.bots.create(name='my-unique-name', return_credentials=True)
+my_bot = project.bots.create(name='my-unique-name', return_credentials=True)
 ```
-Now make  sure to save the bot's email and password for future logins:  
+Now make sure to save the bot's email and password for future logins:  
 
 ```python
-print("the bot email is " + myBot.email)
-print("the bot password is " + myBot.password)
+print("the bot email is " + my_bot.email)
+print("the bot password is " + my_bot.password)
 ```
 2. Log in to the SDK with your new bot:  
 
@@ -60,26 +60,26 @@ import dtlpy as dl
 # Login to Dataloop platform
 dl.login_m2m(email=email, password=password)
 ```
-##Create & Get a Project  
+## Create & Get a Project  
 
 ```python
 project = dl.projects.create(project_name='my-new-project')
 project = dl.projects.get(project_name='my-project')
 ```
-##Create & Get a Dataset  
+## Create & Get a Dataset  
 
 ```python
 project.datasets.create(dataset_name='my-dataset-name')
 dataset = project.datasets.get(dataset_name='my-dataset-name')
 ```
-##Upload items  
+## Upload items  
 
 ```python
 dataset.items.upload(local_path="/path/to/image.jpg")
 # Upload items to a specific folder in the dataset
 dataset.items.upload(local_path="/path/to/image.jpg", remote_path="/path/to/dataset/folder")
 ```
-##Get Item / items-list  
+## Get Item / items-list  
 
 ```python
 # Get a single item
@@ -91,7 +91,7 @@ for page in pages:
     for item in page:
         item.print()
 ```
-##Filters includes join and all operations  
+## Filters includes join and all operations  
   
 
 ```python
@@ -106,14 +106,14 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-##Add metadata to the item  
+## Add metadata to the item  
 
 ```python
 item.metadata['user'] = dict()
 item.metadata['user']['MyKey'] = 'MyValue'
 item.update()
 ```
-##Upload annotations (with Dataloop Builder)  
+## Upload annotations (with Dataloop Builder)  
   
 
 ```python
@@ -121,13 +121,13 @@ item.update()
 builder.add(annotation_definition=dl.Box(top=10, left=10, bottom=100, right=100, label='labelName'))
 item.annotations.upload(builder)
 ```
-##Upload segmentation annotation  
+## Upload segmentation annotation  
 
 ```python
 mask = np.zeros(shape=(item.height, item.width), dtype=np.uint8)
 mask[50:100, 200:250] = builder.add(annotation_definition=dl.Segmentation(geo=mask, label='label1'))
 ```
-##Get annotations + list (pages)  
+## Get annotations + list (pages)  
   
 
 ```python
@@ -151,14 +151,14 @@ for page in pages:
         for ann in item.annotations.list(annotation_filter):
             print(ann)
 ```
-##Uannotation update includes metadata  
+## Annotation update includes metadata  
 
 ```python
 annotation.metadata['user'] = dict()
 annotation.metadata['user']['MyKey'] = 'MyValue'
 annotation.update()
 ```
-##load annotations from JSON file  
+## load annotations from JSON file  
 ### Loading a COCO json :  
   
 
@@ -170,7 +170,7 @@ converter.upload_local_dataset(
     dataset=dataset,
     local_annotations_path=path)
 ```
-###Loading it based on your json format:  
+### Loading it based on your json format:  
 In this example we iterate over the json file,filter the item from the platform based on it’s name,then update it’s metadata and upload annotations.  
   
 
@@ -208,7 +208,7 @@ with open(json_path, 'r', encoding="utf8") as f:
                                                  angle=angle))
                 item.annotations.upload(builder)
 ```
-##Creating an annotation task and adding items to it  
+## Creating an annotation task and adding items to it  
 
 ```python
 task = dataset.tasks.create(

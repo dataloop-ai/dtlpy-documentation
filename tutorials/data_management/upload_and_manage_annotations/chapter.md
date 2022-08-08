@@ -104,7 +104,6 @@ builder.add(annotation_definition=dl.Subtitle(label='--Label--',
                                               text='--text--'),
             start_time='--start-',
             end_time='--end--')
-# While everything in between --*-- is a variable
 ```
 # Set Attributes On Annotations  
   

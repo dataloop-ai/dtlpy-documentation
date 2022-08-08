@@ -1,5 +1,3 @@
-
-
 def func1():
     """
     # FaaS Example: Auto-Annotate / Pre-Annotate Service
@@ -26,7 +24,7 @@ def func2():
 
 def func3():
     """
-    ##Model and weights files
+    ## Model and weights files
     The function uses 2 files containing the model and its weights for inferencing detections. We need to have these files at the same folder as the entry point.
     To get these files please download them here.
     https://storage.googleapis.com/dtlpy/model_assets/faas-tutorial/model_weights.zip
@@ -39,7 +37,7 @@ def func3():
 
 def func4():
     """
-    ##Push the Package
+    ## Push the Package
     Make sure you have the following files in one directory:
     - main.py
     - requirements.txt
@@ -49,9 +47,10 @@ def func4():
     Run this to push your package:
     """
 
+
 def func5():
     """
-    ##Deploy The  Service
+    ## Deploy The  Service
     The package is now ready to be deployed as a service in the Dataloop Platform.
     Whenever executed, your package will run as a service on default instance type. Review the service configuration to configure it to your needs, for example
     - Change instance-type to use stronger instances with more memory, CPU and GPU
@@ -61,9 +60,10 @@ def func5():
 
     """
 
+
 def func6():
     """
-    ##Trigger the Service
+    ## Trigger the Service
     Once the service is deployed, we can create a trigger to run it automatically when a certain event occurs.
     In our example we trigger the face-detection service whenever an item is uploaded to the platform.
     Consider using other triggers or different ways to run you service:
@@ -72,9 +72,10 @@ def func6():
     - Run the service when an item is updated
     """
 
+
 def func7():
     """
-    ##Uploading Model Weights as Artifacts
+    ## Uploading Model Weights as Artifacts
     Large data files such as ML model weights can be too big to include in a package. These and other large files can be uploaded as artifact.
 
     """

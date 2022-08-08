@@ -1,10 +1,12 @@
 import dtlpy as dl
 
+
 def func1():
     import numpy as np
     import os
     import cv2
     import dtlpy as dl
+
     class ServiceRunner:
         def __init__(self,
                      model_filename: str,
@@ -70,6 +72,7 @@ def func1():
             finally:
                 os.remove(filename)
 
+
 def func2():
     module = dl.PackageModule(
         init_inputs=[
@@ -88,9 +91,11 @@ def func2():
         ]
     )
 
+
 def func3():
     numpy == 1.18
     opencv - python == 3.4
+
 
 def func4():
     package = project.packages.push(
@@ -98,6 +103,7 @@ def func4():
         package_name='face-detector',
         modules=[module]
     )
+
 
 def func5():
     service = package.deploy(
@@ -117,6 +123,7 @@ def func5():
         # The runtime argument Concurrency=1 means that only one execution can run at a time (no parallel executions).
     )
 
+
 def func6():
     filters = dl.Filters(resource=dl.FiltersResource.ITEM)
     filters.add(field='metadata.system.mimetype', values='image*')
@@ -128,7 +135,7 @@ def func6():
         filters=filters
     )
 
+
 def func7():
     self.package.artifacts.download(artifact_name=artifact_filename,
                                     local_path=full_weight_path)
-

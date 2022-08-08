@@ -75,4 +75,3 @@ def func4():
     task.add_items(
         filters=filters,  # filter by folder directory or use other filters
         assignee_ids=['<annotator1@dataloop.ai>', '<annotator2@dataloop.ai>'])
-

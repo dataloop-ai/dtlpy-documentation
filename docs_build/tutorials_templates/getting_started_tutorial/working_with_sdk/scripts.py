@@ -1,5 +1,6 @@
 import dtlpy as dl
 
+
 def func1():
     import dtlpy as dl
     if dl.token_expired():
@@ -21,7 +22,7 @@ def func1():
 
 
 def func2():
-    for page in reverse(pages):
+    for page in reversed(pages):
         for item in page:
             item.print()
 
@@ -38,4 +39,3 @@ def func4():
     for page in pages:
         for annotation in page:
             print(annotation)
-

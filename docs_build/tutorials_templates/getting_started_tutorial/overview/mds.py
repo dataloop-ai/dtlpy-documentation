@@ -53,6 +53,8 @@ def func6():
     Through SDK you can upload and deploy packages, invoke executions or terminate them, assign to UI-slots, and control various aspects of the service.
 
     """
+
+
 def func7():
     """
     ## Automation - Pipelines
@@ -60,4 +62,3 @@ def func7():
     Dataloop pipelines are designed for scale and production grade, starting from its ‘build’ mode with access to logs, execution history and pipeline cycle runs information, and with its ‘Production’ mode that can process high loads. Through SDK, you can create pipelines and control their various aspects.
 
     """
-

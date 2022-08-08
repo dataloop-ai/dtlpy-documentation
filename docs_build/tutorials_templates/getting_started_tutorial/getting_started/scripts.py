@@ -1,41 +1,48 @@
 import dtlpy as dl
 
+
 def func3():
     dl.login()
+
 
 def func4():
     if dl.token_expired():
         dl.login()
+
 
 def func5():
     import dtlpy as dl
     # use browser login to create the bot
     dl.login()
     project = dl.projects.get(project_name='myProject')  # get your project
-    myBot = project.bots.create(name='my-unique-name', return_credentials=True)
+    my_bot = project.bots.create(name='my-unique-name', return_credentials=True)
+
 
 def func6():
-    print("the bot email is " + myBot.email)
-    print("the bot password is " + myBot.password)
+    print("the bot email is " + my_bot.email)
+    print("the bot password is " + my_bot.password)
+
 
 def func7():
     import dtlpy as dl
     # Login to Dataloop platform
     dl.login_m2m(email=email, password=password)
 
+
 def func8():
     project = dl.projects.create(project_name='my-new-project')
     project = dl.projects.get(project_name='my-project')
+
 
 def func9():
     project.datasets.create(dataset_name='my-dataset-name')
     dataset = project.datasets.get(dataset_name='my-dataset-name')
 
+
 def func10():
     dataset.items.upload(local_path="/path/to/image.jpg")
     # Upload items to a specific folder in the dataset
     dataset.items.upload(local_path="/path/to/image.jpg", remote_path="/path/to/dataset/folder")
-
 
 
 def func11():
@@ -48,6 +55,8 @@ def func11():
     for page in pages:
         for item in page:
             item.print()
+
+
 def func12():
     # Filter all items with an annotation that has a label in the list
     filters = dl.Filters()
@@ -60,19 +69,23 @@ def func12():
     # Count the items
     print('Number of items in dataset: {}'.format(pages.items_count))
 
+
 def func13():
     item.metadata['user'] = dict()
     item.metadata['user']['MyKey'] = 'MyValue'
     item.update()
+
 
 def func14():
     # Upload box annotation
     builder.add(annotation_definition=dl.Box(top=10, left=10, bottom=100, right=100, label='labelName'))
     item.annotations.upload(builder)
 
+
 def func15():
     mask = np.zeros(shape=(item.height, item.width), dtype=np.uint8)
     mask[50:100, 200:250] = builder.add(annotation_definition=dl.Segmentation(geo=mask, label='label1'))
+
 
 def func16():
     # getting the item
@@ -146,6 +159,7 @@ def func19():
                                                      angle=angle))
                     item.annotations.upload(builder)
 
+
 def func20():
     task = dataset.tasks.create(
         task_name='task_name',
@@ -154,5 +168,3 @@ def func20():
     filters = dl.Filters(field='dir', values='/my/folder/directory')
     task.add_items(
         filters=filters, assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai'])
-
-
