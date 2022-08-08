@@ -37,6 +37,8 @@ builder.add(annotation_definition=dl.Point(x=100,
 item.annotations.upload(builder)
 ```
 # Pose Annotation  
+Pose annotations are a collection of points that follows a certain template, for example a 'skeleton' for tracking key-point on people showing in image or video items.  
+Templates are created in the Dataloop platform, at the instructions settings of a recipe.  
 
 ```python
 # Pose annotation is based on pose template. Create the pose template from the platform UI and use it in the script by its ID
