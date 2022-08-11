@@ -1,3 +1,4 @@
+# Advance Tutorials  
 ## Copy Annotations Between Items  
 By setting annotations entity from one item, and uploading it into another, we can copy annotations between items. Running through all items in a filter allows us to copy from one item into multiple items, for example video snapshots with the same object.  
   

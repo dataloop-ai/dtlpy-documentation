@@ -29,6 +29,11 @@
       "location": "annotations_image/ellipse_and_item_description/chapter.md"
     },
     {
+      "displayName": "Segmentation",
+      "description": "Segmentation annotation type",
+      "location": "annotations_image/segmentation/chapter.md"
+    },
+    {
       "displayName": "Advance Tutorials",
       "description": "Copy, count, show and annotation parenting.",
       "location": "annotations_image/advance_tutorials/chapter.md"
