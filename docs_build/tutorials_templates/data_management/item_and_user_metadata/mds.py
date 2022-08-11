@@ -6,14 +6,16 @@ def section1():
     ##  Add metadata to Item's user metadata
     """
 
+
 def section2():
     """
     ## Upload Items and Annotations Metadata
-    You can upload items as a table using a pandas data frame that will let you upload items with info (annotations, metadata such as confidence, filename, etc.) attached to it.
+    You can upload items as a table using a Pandas DataFrame that will let you upload items with info (annotations, metadata such as confidence, filename, etc.) attached to it.
     """
+
 
 def section3():
     """
-    ## UAnnotations Metadata
+    ## Annotations Metadata
     Annotations, like any Dataloop entity, has a User metadata section where you can store your custom information, and relate to it when managing and filtering items and annotations
     """

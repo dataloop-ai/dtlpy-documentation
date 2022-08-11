@@ -21,9 +21,9 @@ def section2():
     (or dl.FiltersOperation.NOT_EQUAL)
 
     In this example, you will get all items that do not have ONLY a 'cat' label.
-    <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>
+    **Note**
     This Operator is a better fit for filters of a single value because, for example, this filter will return items that have both 'cat' and 'dog' labels.
-    View an example of a solution for the issue in the <a href="https://docs.dataloop.ai/docs/sdk-advanced-filter#full-examples" target="_blank">full example section</a> at the bottom of the page.</div>
+    View an example of the solution [here](#how-to-filter-items-that-dont-have-a-specific-label).
     """
 
 

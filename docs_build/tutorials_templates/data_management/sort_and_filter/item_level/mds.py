@@ -32,7 +32,7 @@ def section1():
     Filter items by the item's JSON fields.
     In this example, you will get all annotated items in a dataset sorted by the filename.
     <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>
-    See all of the items iterator options on the <a href="https://dataloop.ai/docs/sdk-item-iterator" target="_blank">Iterator of Items</a> page.</div>
+    See all of the items iterator options on the <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/pagination/chapter.md#iterator-of-items" target="_blank">Iterator of Items</a> page.</div>
 
     """
 
@@ -42,7 +42,7 @@ def section2():
     ### Filter Items by the Items' Annotations
     <code>add_join</code> - filter items by the items' annotations JSON fields. For example, filter only items with 'box' annotations.
     <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>
-    See all of the items iterator options on the <a href="https://dataloop.ai/docs/sdk-item-iterator" target="_blank">Iterator of Items</a> page.</div>
+    See all of the items iterator options on the <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/pagination/chapter.md#iterator-of-items" target="_blank">Iterator of Items</a> page.</div>
 
     """
 
@@ -51,13 +51,13 @@ def section3():
     """
     ### Filters Method - "Or" and "And"
     <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Filters Operators</b><br>
-    For more advanced filters operators visit the <a href="https://dataloop.ai/docs/sdk-advanced-filter#filter-operators" target="_blank">Advanced SDK Filters</a> page.</div>
+    For more advanced filters operators visit the <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md" target="_blank">Advanced SDK Filters</a> page.</div>
     
     #### And
     If you wish to filter annotations with the "and" logical operator, you can do so by specifying which filters will be checked with "and".
     <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>
     AND is the default value and can be used without specifying the method.</b></div>
-    In this example, you will get a list of annotated items with <a href="https://dataloop.ai/docs/metadata#user-metadata" target="_blank">user metadata</a> of the field "is_automated" and value True.
+    In this example, you will get a list of annotated items with <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/item_and_user_metadata/chapter.md" target="_blank">user metadata</a> of the field "is_automated" and value True.
 
     """
 
@@ -76,7 +76,7 @@ def section5():
     ### Update User Metadata of Filtered Items
     <b>Update Filtered Items</b> - The 'update_value' must be a dictionary.
     The dictionary will only update user metadata.
-    Understand more about user metadata <a href=https://dataloop.ai/docs/metadata#user-metadata" target="_blank">here</a>.
+    Understand more about user metadata <a href=https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/item_and_user_metadata/chapter.md" target="_blank">here</a>.
     In this example, you will update/add user metadata (with the field "BlackDogs" and value True), to items in a specific folder 'dogs' with an attribute 'black'.
 
     """
@@ -160,7 +160,7 @@ def section16():
 def section17():
     """
     ### Advanced Filtering Operators
-    Explore advanced filtering options on <a href="https://dataloop.ai/docs/sdk-advanced-filter" target="_blank">this page</a>.
+    Explore advanced filtering options on <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md" target="_blank">this page</a>.
 
     ### Response to DQL Query
     A typical response to a DQL query will look like the following:

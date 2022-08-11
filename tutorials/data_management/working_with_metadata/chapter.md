@@ -100,7 +100,7 @@ project = dl.projects.get(project_name='project_name')
 dataset = project.datasets.get(dataset_name='dataset_name')
 ```
 #### 2. Add metadata to an item  
-You can also <a href="https://dataloop.ai/docs/sdk-sort-filter#create-filters" target="_blank">add metadata to filtered items</a>  
+You can also <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md" target="_blank">add metadata to filtered items</a>  
 
 ```python
 # upload and claim item

@@ -26,7 +26,7 @@ item.metadata['user']['MyListKey'].append(3)
 item = item.update()
 ```
 ## Upload Items and Annotations Metadata  
-You can upload items as a table using a pandas data frame that will let you upload items with info (annotations, metadata such as confidence, filename, etc.) attached to it.  
+You can upload items as a table using a Pandas DataFrame that will let you upload items with info (annotations, metadata such as confidence, filename, etc.) attached to it.  
 
 ```python
 import pandas
@@ -49,7 +49,7 @@ df = pandas.DataFrame(to_upload)  # Make data into table
 items = dataset.items.upload(local_path=df,
                              overwrite=True)  # Upload table to platform
 ```
-## UAnnotations Metadata  
+## Annotations Metadata  
 Annotations, like any Dataloop entity, has a User metadata section where you can store your custom information, and relate to it when managing and filtering items and annotations  
 
 ```python

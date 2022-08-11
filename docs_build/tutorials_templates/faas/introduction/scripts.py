@@ -26,7 +26,7 @@ class Scripts:
         dataset = project.datasets.create(dataset_name='dataset-sdk-tutorial')
         item = dataset.items.upload(
             local_path=[
-                'https://raw.githubusercontent.com/dataloop-ai/tiny_coco/master/images/train2017/000000184321.jpg'],
+                'https://raw.githubusercontent.com/dataloop-ai/dtlpy-documentation/main/assets/images/hamster.jpg'],
             remote_path='/folder_name')
         # Remote path is optional, images will go to the main directory by default
 
