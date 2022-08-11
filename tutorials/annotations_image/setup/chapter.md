@@ -1,3 +1,5 @@
+# Setup  
+  
 This tutorial guides you through the process using the Dataloop SDK to create and upload annotations into items.  
 The tutorial includes chapters with different tools, and the last chapter includes various more advanced scripts  
 - [Classification Point & Pose](../classification_point_and_pose/chapter.md)  
@@ -12,7 +14,7 @@ The tutorial includes chapters with different tools, and the last chapter includ
     - [Parenting Annotations](../advance_tutorials/chapter.md#parenting-annotations)  
     - [Change Annotation's Label to a New Label](../advance_tutorials/chapter.md#change-annotations-label)  
   
-## Setup  
+  
   
 
 ```python

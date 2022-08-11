@@ -1,4 +1,5 @@
-# Classification  
+# Classification Point and Pose  
+## Classification  
   
 Classify a single item  
   
@@ -13,7 +14,7 @@ builder.add(annotation_definition=dl.Classification(label=label))
 # Upload classification to the item
 item.annotations.upload(builder)
 ```
-# Classify Multiple Items  
+## Classify Multiple Items  
   
 Classifying multiple items requires using an Items entity with a filter.  
 
@@ -21,7 +22,7 @@ Classifying multiple items requires using an Items entity with a filter.
 # mutiple items classification using filter
 ...
 ```
-# Create a Point Annotation  
+## Create a Point Annotation  
 
 ```python
 # Get item from the platform
@@ -36,7 +37,7 @@ builder.add(annotation_definition=dl.Point(x=100,
 # Upload point to the item
 item.annotations.upload(builder)
 ```
-# Pose Annotation  
+## Pose Annotation  
 Pose annotations are a collection of points that follows a certain template, for example a 'skeleton' for tracking key-point on people showing in image or video items.  
 Templates are created in the Dataloop platform, at the instructions settings of a recipe.  
 
