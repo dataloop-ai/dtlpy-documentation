@@ -6,17 +6,17 @@
         {
             "displayName": "Overview",
             "description": "An overview of Dataloop ",
-            "location": "Getting_started_tutorial/overview/chapter.md"
+            "location": "getting_started_tutorial/overview/chapter.md"
         },
         {
             "displayName": "Dataloop SDK - essentials",
             "description": "Dataloop SDK",
-            "location": "Getting_started_tutorial/working_with_sdk/chapter.md"
+            "location": "getting_started_tutorial/working_with_sdk/chapter.md"
         },
         {
             "displayName": "Working with the SDK - Basics",
             "description": "Basic work with Dataloop Python SDK",
-            "location": "Getting_started_tutorial/getting_started/chapter.md"
+            "location": "getting_started_tutorial/getting_started/chapter.md"
         }
     ]
 }
