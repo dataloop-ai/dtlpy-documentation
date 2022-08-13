@@ -1,4 +1,4 @@
-## Connect Cloud Storage  
+# Connect Cloud Storage  
   
   
 If you already have your data managed and organized on a cloud storage service, such as GCS/S3/Azure, you may want to  
