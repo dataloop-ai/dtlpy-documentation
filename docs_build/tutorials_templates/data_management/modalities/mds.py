@@ -1,5 +1,6 @@
 def section1():
     """
+    # Modalities
     Modalities are multiple layers representing the same reality/scene. For example multiple sensors for the same image/object. In the Dataloop system there’s the main item, and other items relating to it are set as modality layers, saved in its metadata.
     ## Setup
     """

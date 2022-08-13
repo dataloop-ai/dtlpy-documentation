@@ -1,6 +1,6 @@
 def section1():
     """
-    # Create an AWS Lambda to Continuously Sync a Bucket with Dataloop's Dataset
+    ## Create an AWS Lambda to Continuously Sync a Bucket with Dataloop's Dataset
 
     If you want to catch events from the AWS bucket and update the Dataloop Dataset you need to set up a Lambda.
     The Lambda will catch the AWS bucket events and will reflect them into the Dataloop Platform.
@@ -9,7 +9,7 @@ def section1():
 
     NOTE: For any other custom use (e.g other python version or more packages) try creating your own layer (We used [this](https://www.geeksforgeeks.org/how-to-install-python-packages-for-aws-lambda-layers) tutorial and the python:3.8 docker image).
 
-    # Create the Lambda
+    ### Create the Lambda
     1. Create a new Lambda
     2. The default timeout is 3[s] so we'll need to change to 1[m]:
         Configuration → General configuration → Edit → Timeout
@@ -19,7 +19,7 @@ def section1():
 
 def section2():
     """
-    ## Add a Layer to the Lambda
+    ### Add a Layer to the Lambda
     We have created an AWS Layer with the Dataloop SDK ready. Click [here](https://storage.googleapis.com/dtlpy/aws-python3.8-lambda-layer/layer.zip) to download the zip file.
     Because the layer's size is larger than 50MB you cannot use it directly (AWS restrictions), but need to upload it to a bucket first.
     Once uploaded, create a new layer for the dtlpy env:
@@ -36,7 +36,7 @@ def section2():
     2. Choose "Custom layer" and select the Layer you've added and the version.
     3. click "Add" at the bottom.
 
-    ## Create the Bucket Events
+    ### Create the Bucket Events
     Go to the bucket you are using, and create the event:
     1. Go to Properties → Event notifications → Create event notification
     1. Choose a name for the Event

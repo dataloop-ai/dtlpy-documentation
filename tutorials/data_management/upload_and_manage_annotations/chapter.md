@@ -1,6 +1,4 @@
-  
 # Upload & Manage Annotations  
-  
 
 ```python
 import dtlpy as dl
@@ -105,7 +103,7 @@ builder.add(annotation_definition=dl.Subtitle(label='--Label--',
             start_time='--start-',
             end_time='--end--')
 ```
-# Set Attributes On Annotations  
+## Set Attributes On Annotations  
   
 You can set attributes on annotations in hte platform using the SDK. Since Dataloop deprecated a legacy attributes mechanism, attributes are refered to as '2.0' version and need to be set as such first.  
   
@@ -145,7 +143,7 @@ dl.use_attributes_2(True)
 annotation.attributes.update({"<attribute-id>": True / False})
 annotation = annotation.update(system_metadata=True)
 ```
-# Show Annotations Over Image  
+## Show Annotations Over Image  
 After uploading items and annotations with their metadata, you might want to see some of them and perform visual validation.  
   
 To see only the annotations, use the annotation type *show* option.  
@@ -176,7 +174,7 @@ annotation.show(image='',
                 with_text='')
 ```
   
-# Download Data, Annotations & Metadata  
+## Download Data, Annotations & Metadata  
 The item ID for a specific file can be found in the platform UI - Click BROWSE for a dataset, click on the selected file, and the file information will be displayed in the right-side panel. The item ID is detailed, and can be copied in a single click.  
   
 ## Download Items and Annotations  

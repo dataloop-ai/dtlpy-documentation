@@ -1,3 +1,4 @@
+# Item and User Metadata  
 Entities in the Dataloop platform (items, annotations, Datasets, Recipes etc) all have metadata. The System area is used by Dataloop, and the User metadata area allows you to save your information  
 You can then use these User-Metadata fields when filtering and sorting, for example when fitlering items and annotations from the Dataset browser, or when using DQL.  
   
