@@ -77,7 +77,7 @@ For more advanced filters operators visit the <a href="https://github.com/datalo
 If you wish to filter annotations with the "and" logical operator, you can do so by specifying which filters will be checked with "and".  
 <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>  
 AND is the default value and can be used without specifying the method.</b></div>  
-In this example, you will get a list of annotated items with <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/item_and_user_metadata/chapter.md" target="_blank">user metadata</a> of the field "is_automated" and value True.  
+In this example, you will get a list of annotated items with <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/working_with_metadata/chapter.md" target="_blank">user metadata</a> of the field "is_automated" and value True.  
   
 
 ```python
@@ -111,7 +111,7 @@ print('Number of items in dataset: {}'.format(pages.items_count))
 ### Update User Metadata of Filtered Items  
 <b>Update Filtered Items</b> - The 'update_value' must be a dictionary.  
 The dictionary will only update user metadata.  
-Understand more about user metadata <a href=https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/item_and_user_metadata/chapter.md" target="_blank">here</a>.  
+Understand more about user metadata <a href=https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/working_with_metadata/chapter.md" target="_blank">here</a>.  
 In this example, you will update/add user metadata (with the field "BlackDogs" and value True), to items in a specific folder 'dogs' with an attribute 'black'.  
   
 
