@@ -46,7 +46,7 @@ def section5a():
 
 def section5b():
     """
-    ## Upload Audio annotation to an Audio file
+    ## Upload Audio Annotation to an Audio File
 
     """
 
@@ -112,16 +112,20 @@ def section13():
 
     ## Download Items and Annotations
     Download dataset items and annotations to your computer folder in two separate folders.
-    See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotation-options).
-
+    To list the download annotation option use `dl.ViewAnnotationOptions`:
+    1. JSON: Download json files with the Dataloop annotation format.
+    2. MASK: Save a PNG image file with the RGB annotation drawn.
+    3. INSTANCE: Saves a PNG with the annotation label ID as the pixel value.
+    4. ANNOTATION_ON_IMAGE: Saves a PNG with the annotation drawn on top of the image.
+    5. VTT: Save `subtitle` annotation type in a VTT format.
+    6. OBJECT_ID: Save a PNG with the object ID as the pixel value.
 
     """
 
 
 def section14():
     """
-    ## Multiple Annotation Options
-    See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotation-options).
+    NOTE: The annotation option can also be a list to download multiple options:
 
     """
 

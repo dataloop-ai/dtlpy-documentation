@@ -89,7 +89,7 @@ builder = item.annotations.builder()
 builder.from_vtt_file(filepath=local_vtt_path)
 item.annotations.upload(builder)
 ```
-## Upload Audio annotation to an Audio file  
+## Upload Audio Annotation to an Audio File  
   
 
 ```python
@@ -179,16 +179,20 @@ The item ID for a specific file can be found in the platform UI - Click BROWSE f
   
 ## Download Items and Annotations  
 Download dataset items and annotations to your computer folder in two separate folders.  
-See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotation-options).  
-  
+To list the download annotation option use `dl.ViewAnnotationOptions`:  
+1. JSON: Download json files with the Dataloop annotation format.  
+2. MASK: Save a PNG image file with the RGB annotation drawn.  
+3. INSTANCE: Saves a PNG with the annotation label ID as the pixel value.  
+4. ANNOTATION_ON_IMAGE: Saves a PNG with the annotation drawn on top of the image.  
+5. VTT: Save `subtitle` annotation type in a VTT format.  
+6. OBJECT_ID: Save a PNG with the object ID as the pixel value.  
   
 
 ```python
 dataset.download(local_path=r'C:/home/project/images',  # The default value is ".dataloop" folder
                  annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 ```
-## Multiple Annotation Options  
-See all annotation options [here](https://dataloop.ai/docs/sdk-download#annotation-options).  
+NOTE: The annotation option can also be a list to download multiple options:  
   
 
 ```python
@@ -266,7 +270,6 @@ dataset.download(local_path='/path',
 
 ```python
 from PIL import Image
-import numpy
 item = dl.items.get(item_id='my-item-id')
 array = item.download(save_locally=False, to_array=True)
 # Check out the downloaded Ndarray with these commands - optional

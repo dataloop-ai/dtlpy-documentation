@@ -9,8 +9,8 @@ def section2():
     ## User Metadata
     As a powerful tool to manage data based on your categories and information, you can add any keys and values to both the item’s and annotations’ user-metadata sections using the Dataloop SDK. Then, you can use your user-metadata for data filtering, sorting, etc.
     
-    <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>
-    When adding  metadata to the same item, the new metadata overwrites existing metadata. To avoid overwriting existing metadata, use the <a href="https://dataloop.ai/docs/sdk-add-item-metadata#list" target="_blank">"list"</a> data type and add to the list the new metadata.</div>
+    Note
+    When adding metadata to the same item, the new metadata might overwrite existing metadata. To avoid overwriting a field or the entire metadata, use the [list](#list) data type.
 
     ### Metadata Data Types
     Metadata is a dictionary attribute used with items, annotations, and other entities of the Dataloop system (task, recipe, and more). As such, it can be used with string, number, boolean, list or null types.

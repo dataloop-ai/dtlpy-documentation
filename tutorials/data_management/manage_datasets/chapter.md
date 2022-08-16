@@ -44,7 +44,7 @@ source, etc.
 ```python
 dataset.items.make_dir(directory="/directory/name")
 ```
-## Hard-copy a Folder to Another Dataset  
+## Deep Copy a Folder to Another Dataset  
   
 You can create a clone of a folder into a new dataset, but if you want to actually move between datasets a folder with  
 files that are stored in the Dataloop system, you’ll need to download the files and upload again to the destination dataset.  

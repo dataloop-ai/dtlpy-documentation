@@ -196,7 +196,6 @@ def section18():
 
 def section19():
     from PIL import Image
-    import numpy
     item = dl.items.get(item_id='my-item-id')
     array = item.download(save_locally=False, to_array=True)
     # Check out the downloaded Ndarray with these commands - optional
