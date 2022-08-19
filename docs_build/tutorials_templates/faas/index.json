@@ -1,39 +1,48 @@
 {
-  "name": "faas-tutorial",
-  "title": "FaaS Tutorial",
-  "description": "Use Dataloop Python SDK to create, deploy, and execute cloud functions.\n\nSee our SDK Getting Started guide at https://dataloop.ai/docs/sdk-register.\n",
-  "content": [
-    {
-      "displayName": "FaaS Interactive Tutorial – Using Python & Dataloop SDK",
-      "description": "FaaS Interactive Tutorial",
-      "location": "faas/concept/chapter.md"
-    },
-    {
-      "displayName": "Introduction",
-      "description": "Getting started with FaaS.",
-      "location": "faas/introduction/chapter.md"
-    },
-    {
-      "displayName": "Run Your First Function",
-      "description": "Create and run your first FaaS in the Dataloop platform",
-      "location": "faas/single_function_rgb_to_gray/chapter.md"
-    },
-    {
-      "displayName": "Multiple Functions and Modules",
-      "description": "Create a Package with multiple functions and modules",
-      "location": "faas/multiple_functions_and_modules/chapter.md"
-    },
-    {
-      "displayName": "Execution Control",
-      "description": "Kill and Timeout on an Execution",
-      "location": "faas/execution_control/chapter.md"
-    },
-    {
-      "displayName": "Example - Auto/Pre Annotation service",
-      "description": "Create and deploy a service with a trigger",
-      "location": "faas/auto_annotate/chapter.md"
-    }
-
-  ]
+    "name": "faas-tutorial",
+    "title": "FaaS Tutorial",
+    "description": "Use Dataloop Python SDK to create, deploy, and execute cloud functions.\n\nSee our SDK Getting Started guide at https://dataloop.ai/docs/sdk-register.\n",
+    "content": [
+        {
+            "displayName": "FaaS Interactive Tutorial",
+            "description": "FaaS Interactive Tutorial – Using Python & Dataloop SDK",
+            "location": "faas/concept/chapter.md"
+        },
+        {
+            "displayName": "Introduction",
+            "description": "Getting started with FaaS.",
+            "location": "faas/introduction/chapter.md"
+        },
+        {
+            "displayName": "Run Your First Function",
+            "description": "Create and run your first FaaS in the Dataloop platform",
+            "location": "faas/single_function_rgb_to_gray/chapter.md"
+        },
+        {
+            "displayName": "Multiple Functions and Modules",
+            "description": "Create a Package with multiple functions and modules",
+            "location": "faas/multiple_functions_and_modules/chapter.md"
+        },
+        {
+            "displayName": "Execution Control",
+            "description": "Kill and Timeout on an Execution",
+            "location": "faas/execution_control/chapter.md"
+        },
+        {
+            "displayName": "UI Slots",
+            "description": "Create dynamic buttons to run functions in the platform",
+            "location": "faas/ui_slots/chapter.md"
+        },
+        {
+            "displayName": "Custom Environment",
+            "description": "Create a docker to run your service",
+            "location": "faas/custom_environment_using_docker/chapter.md"
+        },
+        {
+            "displayName": "Example - Auto/Pre Annotation service",
+            "description": "Create and deploy a service with a trigger",
+            "location": "faas/auto_annotate/chapter.md"
+        }
+    ]
 }
 

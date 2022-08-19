@@ -1,7 +1,7 @@
 def func1():
     """
-    # FaaS Example: Auto-Annotate / Pre-Annotate Service
-    This tutorials demonstrates creating and deploying a service that pre-annotates an items before manual annotation work is performed, as part of active-learning process.
+    # Example: Model Annotations Service
+    This tutorial demonstrates creating and deploying a service that pre-annotates an items before manual annotation work is performed, as part of active-learning process.
 
     ## Service Code
     Your code can perform any action you need toe execute as part of pre-annotating items for example:

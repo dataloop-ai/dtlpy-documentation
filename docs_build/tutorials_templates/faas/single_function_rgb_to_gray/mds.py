@@ -28,8 +28,9 @@ def func4():
     Let’s convert the item from RGB to grayscale, using the service we created:
     """
 
+
 def func5():
     """
-    The transformed image will be saved in your dataset in the folder specified. 
-	You may now open the item received upon execution:
+    The transformed image will be saved in your dataset in the folder specified.
+    You may now open the item received upon execution:
     """
