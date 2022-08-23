@@ -39,7 +39,7 @@ If you want other environment or need to add some apt-get installation, you can 
 You will need to set the HOME directory to `/tmp` and install the python packages with --user (or as USER 1000).  
 For instance:  
 ```  
-FROM docker pull dockerhub.io/dataloopai/dtlpy-agent:latest.gpu.cuda11.5.py3.8.opencv  
+FROM dockerhub.io/dataloopai/dtlpy-agent:latest.gpu.cuda11.5.py3.8.opencv  
   
 RUN apt update && apt install -y zip ffmpeg  
   
