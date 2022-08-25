@@ -43,7 +43,7 @@ def func3():
     """
     ## Activate the UI slot
 
-    To make the UI slot visible to users in the platform, be sure to activate the slots:
+    To make the UI slot visible to users in the platform, you need to activate the slots:
 
     """
 
