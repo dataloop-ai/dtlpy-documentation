@@ -7,7 +7,7 @@ def section1():
     dataset.items.upload(local_path=[r'C:/home/project/images/John Morris.jpg',
                                      r'C:/home/project/images/John Benton.jpg',
                                      r'C:/home/project/images/Liu Jinli.jpg'],
-                         remote_path='/folder_name')  # Remote path is optional, images will go to the main directory by default
+                         remote_path='/folder_name')  # Remote path is optional, images will go to the root directory by default
 
 
 def section2():
@@ -17,7 +17,7 @@ def section2():
     project = dl.projects.get(project_name='project_name')
     dataset = project.datasets.get(dataset_name='dataset_name')
     dataset.items.upload(local_path=r'C:/home/project/images',
-                         remote_path='/folder_name')  # Remote path is optional, images will go to the main directory by default
+                         remote_path='/folder_name')  # Remote path is optional, images will go to the root directory by default
 
 
 def section3():
@@ -30,7 +30,6 @@ def section3():
 
 
 def section4():
-    show
     item.open_in_web()
 
 
@@ -40,17 +39,17 @@ def section5():
     dataset = dl.datasets.get(dataset_id='id')  # Get dataset
     to_upload = list()
     # First item and info attached:
-    to_upload.append({'local_path': r"E:\TypesExamples\000000000064.jpg",  # Item file path
-                      'local_annotations_path': r"E:\TypesExamples\000000000776.json",  # Annotations file path
-                      'remote_path': "/first",  # Dataset folder to upload the item to
-                      'remote_name': 'f.jpg',  # Dataset folder name
-                      'item_metadata': {'user': {'dummy': 'fir'}}})  # Added user metadata
+    to_upload.append({'local_path': r"E:\TypesExamples\000000000064.jpg",  # Local path to image
+                      'local_annotations_path': r"E:\TypesExamples\000000000776.json",  # Local path to annotation file
+                      'remote_path': "/first",  # Remote directory of uploaded image
+                      'remote_name': 'f.jpg',  # Remote name of image
+                      'item_metadata': {'user': {'dummy': 'fir'}}})  # Metadata for the created item
     # Second item and info attached:
-    to_upload.append({'local_path': r"E:\TypesExamples\000000000776.jpg",  # Item file path
-                      'local_annotations_path': r"E:\TypesExamples\000000000776.json",  # Annotations file path
-                      'remote_path': "/second",  # Dataset folder to upload the item to
-                      'remote_name': 's.jpg',  # Dataset folder name
-                      'item_metadata': {'user': {'dummy': 'sec'}}})  # Added user metadata
-    df = pandas.DataFrame(to_upload)  # Make data into table
+    to_upload.append({'local_path': r"E:\TypesExamples\000000000776.jpg",  # Local path to image
+                      'local_annotations_path': r"E:\TypesExamples\000000000776.json",  # Local path to annotation file
+                      'remote_path': "/second",  # Remote directory of uploaded image
+                      'remote_name': 's.jpg',  # Remote name of image
+                      'item_metadata': {'user': {'dummy': 'sec'}}})  # Metadata for the created item
+    df = pandas.DataFrame(to_upload)  # Make data into DF table
     items = dataset.items.upload(local_path=df,
-                                 overwrite=True)  # Upload table to platform
+                                 overwrite=True)  # Upload DF to platform
