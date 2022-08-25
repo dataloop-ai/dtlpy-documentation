@@ -15,7 +15,7 @@ def func1():
         1. Tasks browser
 
     Let’s define a UI button for the “RGB to Gray” function.
-    For that, we should create a slot entity in the SDK, that can be later activated from the UI to quickly invokes functions.
+    For that, we should create a slot entity in the SDK, that can be later activated from the UI to quickly invoke functions.
 
     Considering that the RGB function input is an item, the slot resource should be item as well ( SlotDisplayScopeResource.ITEM).
     As a result, the function will be accessible in the annotations studio under "Applications" dropdown:
