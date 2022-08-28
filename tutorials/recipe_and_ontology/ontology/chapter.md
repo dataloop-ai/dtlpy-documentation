@@ -58,8 +58,19 @@ The following example adds 1 attribute of every type, all as a mandatory attribu
 * Free text attribute  
 
 ```python
-# This option is not available yet
-...
+# Create CHECKBOX att
+ontology.update_attributes(key='1', title='CHECKBOX', attribute_type=dl.AttributesTypes.CHECKBOX,
+                           values=['1', '2', '3'], scope=['ontology name'])
+# Create RADIO_BUTTON att
+ontology.update_attributes(key='2', title='RADIO_BUTTON', attribute_type=dl.AttributesTypes.RADIO_BUTTON,
+                           values=['1', '2', '3'], scope=['*'])
+# Create SLIDER att
+ontology.update_attributes(key='3', title='SLIDER', attribute_type=dl.AttributesTypes.SLIDER,
+                           attribute_range=dl.AttributesRange(0, 1, 0.1), scope=['*'])
+# Create YES_NO att
+ontology.update_attributes(key='4', title='YES_NO', attribute_type=dl.AttributesTypes.YES_NO, scope=['*'])
+# Create FREE_TEXT att
+ontology.update_attributes(key='5', title='FREE_TEXT', attribute_type=dl.AttributesTypes.FREE_TEXT, scope=['*'])
 ```
 ## Read Ontology Attributes  
 Read & print the all the ontology attributes:  
