@@ -33,23 +33,38 @@ def section4():
 
 
 def section5():
-    # Create CHECKBOX att
-    ontology.update_attributes(key='1', title='CHECKBOX', attribute_type=dl.AttributesTypes.CHECKBOX,
-                               values=['1', '2', '3'], scope=['ontology name'])
+    # checkbox attribute
+    ontology.update_attributes(key='color',
+                               title='Choose a color',
+                               attribute_type=dl.AttributesTypes.CHECKBOX,
+                               values=['red', 'blue', 'green'],
+                               scope=['<label1>', '<label2>'])
 
-    # Create RADIO_BUTTON att
-    ontology.update_attributes(key='2', title='RADIO_BUTTON', attribute_type=dl.AttributesTypes.RADIO_BUTTON,
-                               values=['1', '2', '3'], scope=['*'])
+    # radio button attribute
+    ontology.update_attributes(key='occluded',
+                               title='Level of occlusion',
+                               attribute_type=dl.AttributesTypes.RADIO_BUTTON,
+                               values=['no', 'mid', 'high'],
+                               scope=['*'])
 
-    # Create SLIDER att
-    ontology.update_attributes(key='3', title='SLIDER', attribute_type=dl.AttributesTypes.SLIDER,
-                               attribute_range=dl.AttributesRange(0, 1, 0.1), scope=['*'])
+    # slider attribute
+    ontology.update_attributes(key='height',
+                               title='Persons height[cm]',
+                               attribute_type=dl.AttributesTypes.SLIDER,
+                               attribute_range=dl.AttributesRange(0, 200, 10),
+                               scope=['*'])
 
-    # Create YES_NO att
-    ontology.update_attributes(key='4', title='YES_NO', attribute_type=dl.AttributesTypes.YES_NO, scope=['*'])
+    # yes/no attribute
+    ontology.update_attributes(key='female',
+                               title='Is mosquito female?',
+                               attribute_type=dl.AttributesTypes.YES_NO,
+                               scope=['*'])
 
-    # Create FREE_TEXT att
-    ontology.update_attributes(key='5', title='FREE_TEXT', attribute_type=dl.AttributesTypes.FREE_TEXT, scope=['*'])
+    # free text attribute
+    ontology.update_attributes(key='age',
+                               title='How old is the person',
+                               attribute_type=dl.AttributesTypes.FREE_TEXT,
+                               scope=['*'])
 
 
 def section6():
