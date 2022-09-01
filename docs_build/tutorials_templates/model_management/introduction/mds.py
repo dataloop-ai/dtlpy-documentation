@@ -15,8 +15,6 @@ def func1():
 
     Pre-trained models can be created directly with the trained model weights, without any training information (come as-is).
 
-    The dataset used to train the model is cloned and stored in the model params. This allows data versioning within the model managment.
-
     Models can be evaluated with new data, and individual data items and their predictions can be explored directly within the Model Management page.
 
     Model management can be used in two modes:
@@ -27,42 +25,41 @@ def func1():
     This includes all the platform features mentioned above.
 
     In "offline" mode, users can run and train models on their local machine using local data, and can compare model
-    configurations and metrics on the platform, once a dl.Model and a dl.Snapshot entity are created on the platform.
+    configurations and metrics on the platform, once a dl.Package and a dl.Model entity are created on the platform.
     This includes only the visualizations of the metrics exported from the (local) model training session.
-    In this mode, code and weights are not saved anywhere in the Dataloop platform.
+    In this mode, code and weights are *not* saved anywhere in the Dataloop platform.
 
-    ### Model and Snapshot entities
+    ### Package and Model Entities
 
-    #### Model
+    #### Package
 
-    The model entity is basically the algorithm, the architecture of the model, e.g Yolov5, Inception, SVM, etc.
+    We use the Package entity to save the code of the algorithm, the architecture of the model, e.g Yolov5, Inception, SVM, etc.
     - In online it should contain the Model Adapter to create a Dataloop API
 
 
-    #### Snapshot
+    #### Model
 
-    Using the Model (architecture), Dataset and Ontology (data and labels) and configuration (a dictionary) we can create a Snapshot of a training process.
-    The Snapshot contains the weights and any other artifact needed to load the trained model
+    Using the Package (code), Dataset and Ontology (data and labels) and configuration (a dictionary) we can create a Model.
+    The Model contains the weights and any other artifact needed to load the trained model and inference.
+    A model can be cloned to create a new model - to start for that point (fine-tune and transfer learning)
 
-    a snapshot can be used as a parent to another snapshot - to start for that point (fine-tune and transfer learning)
-
-    #### Buckets and Codebase
+    #### Artifacts and Codebase
     1. local
     2. item
     3. git
-    4. GCS
+    4. link
 
     ### The Model Adapter
 
-    The Model Adapter is a python class to create a single API between Dataloop's platform and your Model
+    The Model Adapter is a python class to create a single API between Dataloop's platform and your model.
 
-    1. Train
-    2. Predict
+    1. train
+    2. predict
     3. load/save model weights
     4. annotation conversion if needed
 
     We enable two modes of work:
-    in Offline mode, everything is local, you don't have to upload any model code or any weights to platform, which causes the platform integration to be minimal.
-    For example, you cannot use the Model Management components in a pipeline, can easily create a button interface with your model's inference and more.
-    In Online mode - once you build an Adapter, our platform can interact with your model and trained snapshots and you can connect buttons and slots inside the platform to create, train, inference etc and connect the model and any train snapshot to the UI or to add to a pipeline
+    In offline mode, everything is local, you don't have to upload any code or weights to the platform, which causes the platform integration to be minimal.
+    For example, you cannot use the Model Management components in a pipeline, cannot easily create a button interface with your model's inference and more.
+    In Online mode - once you build an Adapter, our platform can interact with your trained model, and you can connect buttons and slots inside the platform and use it directly in pipelines.
     """
