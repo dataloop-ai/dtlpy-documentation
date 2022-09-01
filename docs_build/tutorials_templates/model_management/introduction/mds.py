@@ -34,14 +34,14 @@ def func1():
     #### Package
 
     We use the Package entity to save the code of the algorithm, the architecture of the model, e.g Yolov5, Inception, SVM, etc.
-    - In online it should contain the Model Adapter to create a Dataloop API
+    - In "online" mode it should contain the Model Adapter to create a Dataloop API
 
 
     #### Model
 
     Using the Package (code), Dataset and Ontology (data and labels) and configuration (a dictionary) we can create a Model.
-    The Model contains the weights and any other artifact needed to load the trained model and inference.
-    A model can be cloned to create a new model - to start for that point (fine-tune and transfer learning)
+    The Model contains the weights and any other artifacts needed to load the trained model and inference.
+    A model can be cloned to create a new model, to become a starting point for fine-tuning and transfer learning.
 
     #### Artifacts and Codebase
     1. local
@@ -59,7 +59,7 @@ def func1():
     4. annotation conversion if needed
 
     We enable two modes of work:
-    In offline mode, everything is local, you don't have to upload any code or weights to the platform, which causes the platform integration to be minimal.
-    For example, you cannot use the Model Management components in a pipeline, cannot easily create a button interface with your model's inference and more.
-    In Online mode - once you build an Adapter, our platform can interact with your trained model, and you can connect buttons and slots inside the platform and use it directly in pipelines.
+    In "offline" mode, everything is local. You don't need to upload any code or weights to the platform, resulting in minimal platform integration.
+    For example, you cannot use the Model Management components in a pipeline, and you cannot easily create a button interface with your model's inference.
+    In "online" mode, after you build an Adapter, our platform can interact with your trained model. You will then be able to connect buttons and slots inside the platform and use it directly in pipelines.
     """
