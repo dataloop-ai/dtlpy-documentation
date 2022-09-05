@@ -71,6 +71,8 @@ def func1():
 
     In “offline” mode, code and weights are not saved anywhere in the Dataloop platform. Only model metrics are saved and viewable at a later time.
 
+    ![An example of model metrics](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt_3/assets/images/model_management/metrics_example.png)
+
     In "online" mode, models can be trained to be deployed anywhere on the platform. For example, you can easily create a button interface to use your model to inference on a new data item and view it on the platform.
 
     To do this, you need to create a ModelAdapter class and implement the required functions to build the Dataloop API.
