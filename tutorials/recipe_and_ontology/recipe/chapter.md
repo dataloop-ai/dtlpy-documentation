@@ -21,6 +21,7 @@ shallow: If True, link to existing ontology,
 dataset = project.datasets.get(dataset_name="myDataSet")
 recipe = dataset.recipes.get(recipe_id="recipe_id")
 recipe2 = recipe.clone(shallow=False)
+# dataset or dataset id, if the function is given dataset or dataset id parameters, the recipe will be linked to the given dataset
 ```
 ## View Dataset Labels  
   

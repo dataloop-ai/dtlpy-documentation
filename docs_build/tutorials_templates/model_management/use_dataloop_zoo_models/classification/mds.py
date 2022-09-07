@@ -16,7 +16,7 @@ def func1():
 
 def func2():
     """
-    ## Create the Package and Pretrained Model in Your Project
+    ## Create the Package and pretrained Model in your project
     First, we create the entities for our project. The package codebase is available in the public Dataloop Github.
     """
 
@@ -62,7 +62,7 @@ def func7():
 
 def func8():
     """
-    ## Start the Training
+    ## Start the training
     The package, model, and data are now prepared. We are ready to train!
     """
 
