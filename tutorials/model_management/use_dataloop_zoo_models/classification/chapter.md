@@ -18,7 +18,7 @@ import numpy as np
 import dtlpy as dl
 from dtlpy.ml import train_utils
 ```
-## Create the Package and Pretrained Model in Your Project  
+## Create the Package and pretrained Model in your project  
 First, we create the entities for our project. The package codebase is available in the public Dataloop Github.  
 
 ```python
@@ -94,7 +94,7 @@ We'll load the new, un-trained model into the adapter and prepare the training l
 adapter.load_from_model(model=new_model)
 root_path, data_path, output_path = adapter.prepare_training()
 ```
-## Start the Training  
+## Start the training  
 The package, model, and data are now prepared. We are ready to train!  
 
 ```python

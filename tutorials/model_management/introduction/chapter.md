@@ -7,7 +7,7 @@ Models are pushed to the cloud via packages. A package is a bundle of code that 
   
 ![Components of a Model Package](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt_3/assets/images/model_management/package_diagram.png)  
   
-Models can be built from ready-to-go packages from open source algorithms. Models can also be created from pre-trained models for fine-tuning or transfer learning.  
+Models can be built from ready-to-go packages from open source algorithms (e.g. ResNet, Yolo). Models can also be created from pre-trained models for fine-tuning or transfer learning.  
   
 You can also upload your own models and compare model performance by viewing training metrics.  
   
