@@ -1,10 +1,8 @@
-## Create Your own Model and Snapshot  
+## Create your own Package and Model  
   
-We will create a dummy model adapter in order to build our model and snapshot entities  
-NOTE: This is an example for a torch model adapter. This example will NOT run as-is. For working examples please refer to our models on github <add links>  
+You can use your own model on the platform by creating package and model entities, and using a model adapter to create an API with Dataloop.  
   
-The following class inherits from the dl.BaseModelAdapter, which have all the Dataloop methods for interacting with the Model and Snapshot  
-There are four methods that are model-related that the creator must implement for the adapter to have the API with Dataloop  
+The first thing a model adapter does is create a model adapter class. The example here inherits from dl.BaseModelAdapter, which contains all the Dataloop methods required to interact with the Package and Model. You must implement these methods in the model adapter class in order for them to work: load, save, train, predict.  
 
 ```python
 import dtlpy as dl
@@ -24,55 +22,47 @@ class SimpleModelAdapter(dl.BaseModelAdapter):
         preds = self.model(batch)
         return preds
 ```
+NOTE: The code above is an example for a torch model adapter. This example will NOT run if copied as-is. For working examples please refer to the examples in the Dataloop Github.  
   
-Now we can create our Model entity with an Item codebase.  
+To create our Package entity, we first need to pack our package code to a dl.ItemCodebase.  
 
 ```python
 project = dl.projects.get('MyProject')
 codebase: dl.ItemCodebase = project.codebases.pack(directory='/path/to/codebase')
-model = project.models.create(model_name='first-git-model',
-                              description='Example from model creation tutorial',
-                              output_type=dl.AnnotationType.CLASSIFICATION,
-                              tags=['torch', 'inception', 'classification'],
-                              codebase=codebase,
-                              entry_point='dataloop_adapter.py',
-                              )
+package = project.packages.push(package_name='first-custom-model',
+                                description='Example from model creation tutorial',
+                                output_type=dl.AnnotationType.CLASSIFICATION,
+                                tags=['torch', 'inception', 'classification'],
+                                codebase=codebase,
+                                entry_point='dataloop_adapter.py',
+                                )
 ```
-For creating a Model with a Git code, simply change the codebase to be a Git one:  
+If you’re creating a Package with code from Git, change the codebase type to be dl.GitCodebase.  
   
 
 ```python
-project = dl.projects.get('MyProject')
 codebase: dl.GitCodebase = dl.GitCodebase(git_url='github.com/mygit', git_tag='v25.6.93')
-model = project.models.create(model_name='first-model',
-                              description='Example from model creation tutorial',
-                              output_type=dl.AnnotationType.CLASSIFICATION,
-                              tags=['torch', 'inception', 'classification'],
-                              codebase=codebase,
-                              entry_point='dataloop_adapter.py',
-                              )
 ```
-Creating a local snapshot:  
+Now you can create a model and upload pretrained model weights with dl.Artifacts.  
 
 ```python
-bucket = dl.buckets.create(dl.BucketType.ITEM)
-bucket.upload('/path/to/weights')
-snapshot = model.snapshots.create(snapshot_name='tutorial-snapshot',
-                                  description='first snapshot we uploaded',
+artifact = project.artifacts.upload(filepath='/path/to/weights')
+model = package.models.create(model_name='tutorial-model',
+                                  description='first model we uploaded',
                                   tags=['pretrained', 'tutorial'],
                                   dataset_id=None,
                                   configuration={'weights_filename': 'model.pth'
                                                  },
-                                  project_id=model.project.id,
-                                  bucket=bucket,
+                                  # project_id=package.project.id,
+                                  model_artifacts=[artifact],
                                   labels=['car', 'fish', 'pizza']
                                   )
 ```
-Building to model adapter and calling one of the adapter's methods:  
-  
+Finally, build to the model adapter and call one of the adapter’s methods to see that your custom model works.  
 
 ```python
-adapter = model.build()
-adapter.load_from_snapshot(snapshot=snapshot)
+adapter = package.build()
+adapter.model = model
+# adapter.load_from_model(model=model)
 adapter.train()
 ```
