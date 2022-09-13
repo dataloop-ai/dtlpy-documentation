@@ -17,8 +17,10 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
+      TEST_USERNAME: ${{secrets.TEST_USERNAME}}
+      TEST_PASSWORD: ${{secrets.TEST_PASSWORD}}
       TESTRAIL_USERNAME: ${{secrets.TESTRAIL_USER}}
-      TESTRAIL_PASSWORD: ${{secrets.TESTRAIL_PASS}}
+      TESTRAIL_PASSWORD: ${{secrets.TESTRAIL_KEY}}
       TESTRAIL_PROJECT_ID: ${{secrets.TESTRAIL_PROJECT_ID}}
       TESTRAIL_SUITE_ID: ${{secrets.TESTRAIL_SUITE_ID}}
       TESTRAIL_URL: ${{secrets.TESTRAIL_URL}}
@@ -37,6 +39,8 @@ jobs:
         pip install https://storage.googleapis.com/dtlpy/dev/dtlpy-1.65.11-py3-none-any.whl --upgrade
         pip install -r requirements.txt
         pip install -r tests/requirements.txt
+    - name: SDK Tests with Behave
+      run: |    
         python tests/test_login.py
         python tests/test_runner.py
 #
