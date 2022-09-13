@@ -1,37 +1,35 @@
 def func1():
     """
-    ## Create Your own Model and Snapshot
+    ## Create your own Package and Model
 
-    We will create a dummy model adapter in order to build our model and snapshot entities
-    NOTE: This is an example for a torch model adapter. This example will NOT run as-is. For working examples please refer to our models on github <add links>
+    You can use your own model on the platform by creating package and model entities, and using a model adapter to create an API with Dataloop.
 
-    The following class inherits from the dl.BaseModelAdapter, which have all the Dataloop methods for interacting with the Model and Snapshot
-    There are four methods that are model-related that the creator must implement for the adapter to have the API with Dataloop
+    The first thing a model adapter does is create a model adapter class. The example here inherits from dl.BaseModelAdapter, which contains all the Dataloop methods required to interact with the Package and Model. You must implement these methods in the model adapter class in order for them to work: load, save, train, predict.
     """
 
 
 def func2():
     """
+    NOTE: The code above is an example for a torch model adapter. This example will NOT run if copied as-is. For working examples please refer to the examples in the Dataloop Github.
 
-    Now we can create our Model entity with an Item codebase.
+    To create our Package entity, we first need to pack our package code to a dl.ItemCodebase.
     """
 
 
 def func3():
     """
-    For creating a Model with a Git code, simply change the codebase to be a Git one:
+    If you’re creating a Package with code from Git, change the codebase type to be dl.GitCodebase.
 
     """
 
 
 def func4():
     """
-    Creating a local snapshot:
+    Now you can create a model and upload pretrained model weights with dl.Artifacts.
     """
 
 
 def func5():
     """
-    Building to model adapter and calling one of the adapter's methods:
-
+    Finally, build to the model adapter and call one of the adapter’s methods to see that your custom model works.
     """

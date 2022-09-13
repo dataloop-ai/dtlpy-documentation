@@ -1,23 +1,23 @@
 def func1():
     """
-    # Training an obejct detection model with Yolov5
-    In this tutorial we will use the Resnet Model Adapter to inference and train on custom data.
+    # Training an object detection model with YOLOv5
+    In this tutorial we will use the YOLOv5 Model Adapter to train and inference on custom data.
 
     """
 
 
 def func2():
     """
-    ## Create the Model and Pretrained Snapshot in Your Project
+    ## Create the Package and pretrained model in your project
     We start by creating the entities in our project. The model codebase is in our public github.
     """
 
 
 def func3():
     """
-    ### Run Pretrained Model
-    We will "build" to model adapter to get the model code locally and the create an instance of the ModelAdapter class.
-    After that, we load the pretrained snapshot into the model adapter.
+    ### Run the pretrained Model
+    We will "build" to the model adapter to get the model code locally and then create an instance of the ModelAdapter class.
+    After that, we load the pretrained model into the model adapter.
     """
 
 
@@ -39,41 +39,41 @@ def func5():
 def func6():
     """
     Now we'll run the "prepare_dataset" method. This will clone and freeze the dataset (so that we'll be able to reproduce the training and keep a snapshot of the data).
-    The cloned dataset will be split into subsets (using DQL or percentage). In this examples, we'll use a 80/20 train validation split.
-    After that we clone the pretrained snapshot to have a starting point for the fine-tuning.
-    The snapshot's configuration will determine some runtime configurations, for instance, we will train for only 2 epochs.
+    The cloned dataset will be split into subsets (using DQL or percentage). In this example, we'll use a 80/20 train validation split.
+    After that we clone the pretrained model to have a starting point for the fine-tuning.
+    The model's configuration will determine some runtime configurations, for instance, we will train for only 2 epochs.
     """
 
 
 def func7():
     """
-    We'll load the new un-trained snapshot to the adapter and prepare the training local dataset
+    We'll load the new un-trained model to the adapter and prepare the training local dataset
     """
 
 
 def func8():
     """
-    ## Start The Train
-    Now We have the model, the snapshot, and the data ready. We are ready to train.
+    ## Start the training
+    Now we have the package, model, and data ready. We are ready to train!
     """
 
 
 def func9():
     """
-    ## Save the Snapshot
-    We will save the locally-trained snapshot and upload the trained weights to the Item Bucket.
-    This will ensure we have everything in the Dataloop platform and everyone can use our trained snapshot.
+    ## Save the model
+    We will save the locally-trained model and upload the trained weights to the Item Bucket.
+    This will ensure we have everything in the Dataloop platform and everyone can use our trained model.
     """
 
 
 def func10():
     """
-    We can also list our bucket's content, and add more files that are needed for loading/running the snapshot
+    We can also list our bucket's content, and add more files that are needed for loading/running the model
     """
 
 
 def func11():
     """
-    ## Predict On Our New Trained Snapshot
-    We will load our snapshot and visualize some items' predictions
+    ## Predict with on newly trained model
+    We will load our model and view the predictions for some items.
     """

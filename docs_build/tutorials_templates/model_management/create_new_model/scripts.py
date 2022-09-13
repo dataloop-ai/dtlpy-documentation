@@ -27,43 +27,34 @@ def func1():
 def func2():
     project = dl.projects.get('MyProject')
     codebase: dl.ItemCodebase = project.codebases.pack(directory='/path/to/codebase')
-    model = project.models.create(model_name='first-git-model',
-                                  description='Example from model creation tutorial',
-                                  output_type=dl.AnnotationType.CLASSIFICATION,
-                                  tags=['torch', 'inception', 'classification'],
-                                  codebase=codebase,
-                                  entry_point='dataloop_adapter.py',
-                                  )
+    package = project.packages.push(package_name='first-custom-model',
+                                    description='Example from model creation tutorial',
+                                    output_type=dl.AnnotationType.CLASSIFICATION,
+                                    tags=['torch', 'inception', 'classification'],
+                                    codebase=codebase,
+                                    entry_point='dataloop_adapter.py',
+                                    )
 
 
 def func3():
-    project = dl.projects.get('MyProject')
     codebase: dl.GitCodebase = dl.GitCodebase(git_url='github.com/mygit', git_tag='v25.6.93')
-    model = project.models.create(model_name='first-model',
-                                  description='Example from model creation tutorial',
-                                  output_type=dl.AnnotationType.CLASSIFICATION,
-                                  tags=['torch', 'inception', 'classification'],
-                                  codebase=codebase,
-                                  entry_point='dataloop_adapter.py',
-                                  )
-
 
 def func4():
-    bucket = dl.buckets.create(dl.BucketType.ITEM)
-    bucket.upload('/path/to/weights')
-    snapshot = model.snapshots.create(snapshot_name='tutorial-snapshot',
-                                      description='first snapshot we uploaded',
+    artifact = project.artifacts.upload(filepath='/path/to/weights')
+    model = package.models.create(model_name='tutorial-model',
+                                      description='first model we uploaded',
                                       tags=['pretrained', 'tutorial'],
                                       dataset_id=None,
                                       configuration={'weights_filename': 'model.pth'
                                                      },
-                                      project_id=model.project.id,
-                                      bucket=bucket,
+                                      # project_id=package.project.id,
+                                      model_artifacts=[artifact],
                                       labels=['car', 'fish', 'pizza']
                                       )
 
 
 def func5():
-    adapter = model.build()
-    adapter.load_from_snapshot(snapshot=snapshot)
+    adapter = package.build()
+    adapter.model = model
+    # adapter.load_from_model(model=model)
     adapter.train()
