@@ -19,8 +19,8 @@ jobs:
     env:
       TEST_USERNAME: ${{secrets.TEST_USERNAME}}
       TEST_PASSWORD: ${{secrets.TEST_PASSWORD}}
-      TESTRAIL_USERNAME: ${{secrets.TESTRAIL_USER}}
-      TESTRAIL_PASSWORD: ${{secrets.TESTRAIL_KEY}}
+      TESTRAIL_USER: ${{secrets.TESTRAIL_USER}}
+      TESTRAIL_KEY: ${{secrets.TESTRAIL_KEY}}
       TESTRAIL_PROJECT_ID: ${{secrets.TESTRAIL_PROJECT_ID}}
       TESTRAIL_SUITE_ID: ${{secrets.TESTRAIL_SUITE_ID}}
       TESTRAIL_URL: ${{secrets.TESTRAIL_URL}}
