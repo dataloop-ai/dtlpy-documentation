@@ -1,0 +1,57 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python application
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      TESTRAIL_USERNAME: ${{secrets.TESTRAIL_USER}}
+      TESTRAIL_PASSWORD: ${{secrets.TESTRAIL_PASS}}
+      TESTRAIL_PROJECT_ID: ${{secrets.TESTRAIL_PROJECT_ID}}
+      TESTRAIL_SUITE_ID: ${{secrets.TESTRAIL_SUITE_ID}}
+      TESTRAIL_URL: ${{secrets.TESTRAIL_URL}}
+      AVOID_TESTRAIL: ${{secrets.AVOID_TESTRAIL}}
+      GITHUB_RUN_NUMBER : ${{github.run_number}}
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install https://storage.googleapis.com/dtlpy/dev/dtlpy-1.65.11-py3-none-any.whl --upgrade
+        pip install -r requirements.txt
+        pip install -r tests/requirements.txt
+        python tests/test_login.py
+        python tests/test_runner.py
+#
+#    - name: Create TestRail testrun for PR
+#      uses: luzlab/testrail-createTestrun-action@2
+#      with:
+#        # Testrail API token
+#        testrail_token:
+#        # Testrail user (ie. email account)
+#        testrail_user:
+#        # Github token for the repoistory with permissions to add comments to a PR
+#        github_token:
+#        # ID of the Testrail project the test run should be added to
+#        testrail_project:
+#        # ID of the Test Suite for the test run
+#        testrail_suite:
+#        # URL of the Testrail API. No trailing slash is necessary. For example "https://gs3.testrail.io"
+#        testrail_URL: # optional, default is https://gs3.testrail.io

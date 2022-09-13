@@ -73,7 +73,7 @@ def before_all(context):
         avoid_testrail = os.environ.get('AVOID_TESTRAIL', 'false') == 'true'
 
         if not avoid_testrail and len(context.config.reporters) == 1:
-            build_number = os.environ.get('BITBUCKET_BUILD_NUMBER')
+            build_number = os.environ.get('GITHUB_RUN_NUMBER')
             current_branch = "rc - #" + str(build_number)  # Get the current build branch
             testrail_reporter = TestrailReporter(current_branch)
             context.config.reporters.append(testrail_reporter)

@@ -1,5 +1,5 @@
 import behave
-from tutorials_templates.faas.introduction.scripts import Scripts
+from docs_build.tutorials_templates.faas.introduction.scripts import Scripts
 
 
 @behave.when(u'I prepared test faas introduction')
