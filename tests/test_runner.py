@@ -129,7 +129,7 @@ if __name__ == '__main__':
 
     # run tests
     pool = ThreadPool(processes=4)
-    features_path = os.path.join(TEST_DIR, 'features')
+    features_path = os.path.join(TEST_DIR, 'features/items')
 
     results = dict()
     # go over all file and run ".feature" files

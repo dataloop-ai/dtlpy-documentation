@@ -1,4 +1,4 @@
-base_url: ${{secrets.TESTRAIL_URL}}
+base_url: $TESTRAIL_URL
 projects:
   - name: 'Automation tests on branch {branch}'
     id: 9
