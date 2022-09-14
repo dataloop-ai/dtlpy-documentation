@@ -162,8 +162,9 @@ Now we can upload (“create”) an image to our dataset to trigger the service.
 ```python
 item = dataset.items.upload(
     local_path=['https://github.com/dataloop-ai/dtlpy-documentation/raw/main/assets/images/hamster.jpg'])
-# Remote path is optional, images will go to the main directory by default
 ```
+Remote path is optional, images will go to the main directory by default.  
+  
 To see the original item, please click [here](https://raw.githubusercontent.com/dataloop-ai/dtlpy-documentation/main/assets/images/hamster.jpg).  
   
 ### Review the function's logs  

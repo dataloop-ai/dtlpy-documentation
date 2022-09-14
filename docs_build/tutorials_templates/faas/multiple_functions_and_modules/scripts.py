@@ -119,7 +119,6 @@ def func9():
 def func10():
     item = dataset.items.upload(
         local_path=['https://github.com/dataloop-ai/dtlpy-documentation/raw/main/assets/images/hamster.jpg'])
-    # Remote path is optional, images will go to the main directory by default
 
 
 def func11():

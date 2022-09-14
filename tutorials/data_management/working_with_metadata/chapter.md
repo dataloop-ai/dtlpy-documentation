@@ -65,7 +65,6 @@ item.metadata['user'] = dict()
 item.metadata['user']['MyKey'] = 'MyValue'
 # update and reclaim item
 item = item.update()
-# item in platform should have section 'user' in metadata with field 'MyKey' and value 'MyValue'
 ```
   
 ### Modify an existing user metadata field  
@@ -82,6 +81,8 @@ item.metadata['user']['MyKey'] = 'MyValue'
 # update and reclaim item
 item = item.update()
 ```
+Item in platform should have section 'user' in metadata with field 'MyKey' and value 'MyValue'.  
+  
 ### Add metadata to annotations' user metadata  
 
 ```python
@@ -92,8 +93,9 @@ annotation.metadata['user'] = dict()
 item.metadata['user']['red'] = True
 # update and reclaim annotation
 annotation = annotation.update()
-# annotation in platform should have section 'user' in metadata with field 'red' and value True
 ```
+annotation in platform should have section 'user' in metadata with field 'red' and value True  
+  
 ### Filter items by user metadata  
 #### 1. Get your dataset  
 

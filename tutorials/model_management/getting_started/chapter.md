@@ -11,13 +11,13 @@ To export metrics for tracking model performance, you need to create a dummy pac
 ```python
 import dtlpy as dl
 import os
-project = dl.projects.get(project_name='My Project')
+project = dl.projects.get(project_name='<project_id>')
 package = project.packages.push(package_name='dummy-model-package',
                                 codebase=dl.entities.LocalCodebase(os.getcwd()),
                                 modules=[])
 model = package.models.create(model_name='My Model',
                               description='model for offline model logging',
-                              dataset_id='My Dataset',
+                              dataset_id='<dataset_id>',
                               labels=[])
 ```
   
@@ -25,15 +25,17 @@ Once you’ve created these two entities, metrics can be sent to the platform wi
 Here is an example:  
 
 ```python
-for x_metric, y_metric in zip(some_metric):
-    model.add_log_samples(samples=dl.LogSample(figure='test metrics',
+epoch = np.linspace(0, 9, 10)
+epoch_metric = np.linspace(0, 9, 10)
+for x_metric, y_metric in zip(epoch, epoch_metric):
+    model.add_log_samples(samples=dl.LogSample(figure='tutorial metric',
                                                legend='metric1',
                                                x=x_metric,
                                                y=y_metric),
                           dataset_id=model.dataset_id)
 ```
 Metrics plots will appear under the “metrics” tab of your chosen model:  
-ADD IMAgE  
+![Screenshot of model metrics plot](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt_3/assets/images/model_management/metrics_example.png)  
   
 ### Using pretrained models from the AI library  
   
@@ -49,18 +51,37 @@ dl.packages.list(filters=filters).print()
 ```
 Public models can be downloaded to be used on your machine for local training and inference, or can be trained and deployed on the cloud for integration into the Dataloop platform.  
   
+### Dataset Subsets  
+Our public models use a train/validation split of the dataset for the training session. To avoid data leakage between training sessions and to make each training reproducible,  
+we will determine the data subsets and save the split type to the dataset entity (using a DQL). Using DQL filters you can subset the data however you like.  
+  
+For example, if your dataset is split between folders, you can use this DQL:  
+
+```python
+dataset.metadata['system']['subsets'] = {
+    'train': json.dumps(dl.Filters(field='dir', values='/train').prepare()),
+    'validation': json.dumps(dl.Filters(field='dir', values='/validation').prepare()),
+}
+dataset.update()
+```
+  
+This way, when the training starts, the sets will be downloaded using the DQL and any future training session on this dataset will have the same subsets of data.  
+  
+NOTE: In the future, this mechanism will be expanded using an item tagging system. This will allow more flexible data subsets and random data allocation.  
+  
+  
 ### Training and inferencing models locally  
-Download the codebase package and model you want to clone to your project  [[ maybe a screenshot of the AI Library screen, and copying the id? or the SDK list ]]  
+  
+Download the codebase package and model you want to clone to your project.  
   
 
 ```python
-global_yolo_package = dl.packages.get(package_id="package_id")
-global_yolo_model = global_yolo_package.models.get(model_id="model_id")
-model = project.models.clone(from_model=global_yolo_model,
+public_yolo_model = dl.models.get(model_id="<model_id>")
+model = project.models.clone(from_model=public_yolo_model,
                              model_name='yolov5_remote',
                              project_id=project.id)
 ```
-To run the model, you need the adapter for the training and inference methods.  
+To run the model, you need the model adapter for the train and inference methods.  
   
 ### Deploying models in the cloud  
   
@@ -68,8 +89,8 @@ Get the package and model you want to clone to your project
   
 
 ```python
-global_yolo_model = global_yolo_package.models.get(model_id="model_id")
-model = dl.models.clone(from_model=global_yolo_model,
+public_yolo_model = dl.models.get(model_id="<model_id>")
+model = dl.models.clone(from_model=public_yolo_model,
                         model_name='yolov5_remote',
                         project_id=project.id)
 ```
