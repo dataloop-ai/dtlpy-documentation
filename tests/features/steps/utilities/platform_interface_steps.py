@@ -76,6 +76,7 @@ def before_all(context):
             build_number = os.environ.get('GITHUB_RUN_NUMBER')
             current_branch = "rc - #" + str(build_number)  # Get the current build branch
             testrail_reporter = TestrailReporter(current_branch)
+            testrail_reporter.config['base_url'] = os.environ.get('TESTRAIL_URL')
             context.config.reporters.append(testrail_reporter)
 
 
