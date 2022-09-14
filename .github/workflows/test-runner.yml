@@ -43,19 +43,4 @@ jobs:
       run: |    
         python tests/test_login.py
         python tests/test_runner.py
-#
-#    - name: Create TestRail testrun for PR
-#      uses: luzlab/testrail-createTestrun-action@2
-#      with:
-#        # Testrail API token
-#        testrail_token:
-#        # Testrail user (ie. email account)
-#        testrail_user:
-#        # Github token for the repoistory with permissions to add comments to a PR
-#        github_token:
-#        # ID of the Testrail project the test run should be added to
-#        testrail_project:
-#        # ID of the Test Suite for the test run
-#        testrail_suite:
-#        # URL of the Testrail API. No trailing slash is necessary. For example "https://gs3.testrail.io"
-#        testrail_URL: # optional, default is https://gs3.testrail.io
+        
