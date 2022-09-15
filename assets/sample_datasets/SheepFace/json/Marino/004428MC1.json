@@ -1,6 +1,6 @@
 {
   "_id": "61151cbd51ab37b2491e1353",
-  "filename": "/Marino/004428MC1.jpg",
+  "filename": "/Merino/004428MC1.jpg",
   "annotations": [
     {
       "id": "61151f17cba1374ba69502d2",
@@ -17,7 +17,7 @@
       "hash": "9020981670fc2dacc7c4f31218be7ec52b4c7400",
       "itemId": "61151cbd51ab37b2491e1353",
       "item": "https://gate.dataloop.ai/api/v1/items/61151cbd51ab37b2491e1353",
-      "label": "Marino",
+      "label": "Merino",
       "attributes": [],
       "dataset": "https://gate.dataloop.ai/api/v1/datasets/61151cb9e5759208912b4e8e",
       "datasetId": "61151cb9e5759208912b4e8e",
