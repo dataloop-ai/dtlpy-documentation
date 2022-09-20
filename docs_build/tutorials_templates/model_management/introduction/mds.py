@@ -5,11 +5,11 @@ def func1():
     ## Quick Overview
     Dataloop's model management allows machine learning engineers to manage their research and production processes in one centralized place.
 
-    Models are pushed to the cloud via packages. A package is a bundle of code that contains the model algorithm and model parameters, and also indicates which dataset is being used for training.
+    Models are run using a combination of Packagess, Datasets, and Artifacts.
 
-    ![Components of a Model Package](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt_3/assets/images/model_management/package_diagram.png)
+    Model architectures are pushed to the cloud via Packages. Packages are bundles of code that contain the codebase required for the model to run. Datasets will include the images being used for training or inference, and they also indicate which images are included within a dataset subset (e.g. train/validation/test, or dividing your datset in other ways to achieve specific model training objectives).
 
-    Models can be built from ready-to-go packages from open source algorithms (e.g. ResNet, Yolo). Models can also be created from pre-trained models for fine-tuning or transfer learning.
+    Models can come from ready-to-go packages of open source algorithms (e.g. ResNet, Yolo). Models can also be created from pre-trained models for fine-tuning or transfer learning.
 
     You can also upload your own models and compare model performance by viewing training metrics.
 
@@ -20,6 +20,8 @@ def func1():
 
     In this tutorial we will cover the required Dataloop entities to create, compare, restore, manage, and deploy model training sessions and trained models.
 
+    ![Components of a Model](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt_3/assets/images/model_management/model_diagram.png)
+
     ### Package and Model Entities
 
     #### Package
@@ -28,7 +30,7 @@ def func1():
 
     - In “online” mode (see “Model Comparison” below), Packages should include a Model Adapter to create the Dataloop API
 
-    Come-as-is model algorithms can be found in the AI Library. All packages listed in the AI Library are untrained and include only the model algorithm code and default configurations. Users can download the codebase of any packages pushed to the cloud.
+    Model algorithms that come as-is can be found in the AI Library. All public packages listed in the AI Library are pretrained and include the model algorithm code and default configurations. Users can download the codebase of any packages pushed to the cloud.
 
     #### Model
 
@@ -36,7 +38,7 @@ def func1():
 
     The Model contains the weights and any other artifacts needed to load the trained model and inference.
 
-    A model can be cloned to be a starting point for a new model (for fine-tuning or transfer learning).
+    A model can also be cloned to be a starting point for a new model (for fine-tuning or transfer learning).
 
     ### Additional Package components
 
@@ -53,7 +55,7 @@ def func1():
 
     #### The Model Adapter
 
-    The Model Adapter is a python class that creates a single API between Dataloop's platform and your model. Model Adapters allow the following model functions:
+    The Model Adapter is a python class that creates a single API between Dataloop's platform and your model. The Model Adapter class contains standardized methods that make it possible to integrate models into other parts of the Dataloop platform. Model Adapters allow the following model functions:
     1. train
     2. predict
     3. load/save model weights

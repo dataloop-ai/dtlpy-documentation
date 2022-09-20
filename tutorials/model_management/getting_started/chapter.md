@@ -2,7 +2,7 @@
   
 This tutorial will help you get started with the basics of model management:  
 * logging metrics only (aka “offline mode”)  
-* using pretrained models from the Dataloop model zoo for inference and training  
+* deploying pretrained models from the AI library for inference and training on the Dataloop platform  
   
 ### Logging metrics  
 To export metrics for tracking model performance, you need to create a dummy package (with a dummy codebase reference) and model (including a valid dataset ID). Remember to replace <project_name> and <dataset_id> with the appropriate strings to reference your project and dataset.  
@@ -28,8 +28,8 @@ Here is an example:
 epoch = np.linspace(0, 9, 10)
 epoch_metric = np.linspace(0, 9, 10)
 for x_metric, y_metric in zip(epoch, epoch_metric):
-    model.add_log_samples(samples=dl.LogSample(figure='tutorial metric',
-                                               legend='metric1',
+    model.add_log_samples(samples=dl.LogSample(figure='tutorial plot',
+                                               legend='some metric',
                                                x=x_metric,
                                                y=y_metric),
                           dataset_id=model.dataset_id)
@@ -49,13 +49,13 @@ filters = dl.Filters(resource=dl.FiltersResource.PACKAGE, use_defaults=False)
 filters.add(field='scope', values='public')
 dl.packages.list(filters=filters).print()
 ```
-Public models can be downloaded to be used on your machine for local training and inference, or can be trained and deployed on the cloud for integration into the Dataloop platform.  
+Public models can be downloaded to your machine for local training and inference, or they can be trained and deployed on the cloud for integration into the Dataloop platform.  
   
 ### Dataset Subsets  
 Our public models use a train/validation split of the dataset for the training session. To avoid data leakage between training sessions and to make each training reproducible,  
 we will determine the data subsets and save the split type to the dataset entity (using a DQL). Using DQL filters you can subset the data however you like.  
   
-For example, if your dataset is split between folders, you can use this DQL:  
+For example, if your dataset is split between folders, you can use this DQL to add metadata for all items in the dataset  
 
 ```python
 dataset.metadata['system']['subsets'] = {
@@ -64,41 +64,35 @@ dataset.metadata['system']['subsets'] = {
 }
 dataset.update()
 ```
-  
 This way, when the training starts, the sets will be downloaded using the DQL and any future training session on this dataset will have the same subsets of data.  
   
-NOTE: In the future, this mechanism will be expanded using an item tagging system. This will allow more flexible data subsets and random data allocation.  
+NOTE: In the future, this mechanism will be expanded to use a tagging system on items. This will allow more flexible data subsets and random data allocation.  
   
   
-### Training and inferencing models locally  
+### Deploying a model remotely  
   
-Download the codebase package and model you want to clone to your project.  
+Download the model and package you want to copy it to your project. Since the public model is pretrained, it can be deployed without any further action.  
   
 
 ```python
-public_yolo_model = dl.models.get(model_id="<model_id>")
-model = project.models.clone(from_model=public_yolo_model,
-                             model_name='yolov5_remote',
+public_model = dl.models.get(model_id="<model_id>")
+model = project.models.clone(from_model=public_model,
+                             model_name='remote_model',
                              project_id=project.id)
+model.deploy()
 ```
-To run the model, you need the model adapter for the train and inference methods.  
-  
-### Deploying models in the cloud  
-  
-Get the package and model you want to clone to your project  
+If you want to customize the public model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels for model training.  
   
 
 ```python
-public_yolo_model = dl.models.get(model_id="<model_id>")
-model = dl.models.clone(from_model=public_yolo_model,
-                        model_name='yolov5_remote',
-                        project_id=project.id)
+custom_model = dl.models.clone(from_model=public_model,
+                               model_name='remote_custom_model',
+                               dataset=dataset,
+                               project_id=project.id,
+                               labels=['label1', 'label2'])
 ```
-If the model is not yet trained, train on a dataset with:  
-`model.train()`  
+If the model is to be trained on a new dataset, you can train it with `model.train()`.  
   
-Once the model is trained, you can deploy it. This call automatically creates a bot and service for the trained model.  
-`model.deploy()`  
+Once the model is trained, you can deploy it. `model.deploy()` automatically creates a bot and service for the trained model.  
   
 Now the model is deployed, you can create a UI slot to inference on individual data items on the platform, or call the model to inference in a FaaS.  
-  

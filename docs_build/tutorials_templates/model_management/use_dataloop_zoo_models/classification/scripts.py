@@ -8,24 +8,27 @@ def func1():
 
 
 def func2():
-    package = dl.packages.get(package_name='resnet')
-    model = package.models.get(model_name='pretrained-resnet50')
-    package.models.list().to_df()
+    filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
+    filters.add(field='scope', values='public')
+    dl.models.list(filters=filters).print()
+    # get the public model
+    model = dl.models.get(model_name='pretrained-resnet50')
 
 
 def func3():
-    adapter = package.build()
-    adapter.load_from_model(model=model)
+    package = dl.packages.get(package_id=model.package_id)
+    adapter = package.build(module_name='model-adapter')
+    adapter.load_from_model(model_entity=model)
 
 
 def func4():
     item = dl.items.get(item_id='611e174e4c09acc3c5bb81d3')
     annotations = adapter.predict_items([item], with_upload=True)
-
     image = np.asarray(Image.open(item.download()))
     plt.imshow(item.annotations.show(image,
                                      thickness=5))
     print('Classification: {}'.format(annotations[0][0].label))
+    item.open_in_web()
 
 
 def func5():
@@ -38,13 +41,16 @@ def func5():
 
 
 def func6():
-    partitions = {dl.DatasetSubsetType.TRAIN: 0.8,
-                  dl.DatasetSubsetType.VALIDATION: 0.2}
+    dataset.metadata['system']['subsets'] = {
+        'train': json.dumps(dl.Filters(field='dir', values='/train').prepare()),
+        'validation': json.dumps(dl.Filters(field='dir', values='/validation').prepare()),
+    }
+    dataset.update()
+
     cloned_dataset = train_utils.prepare_dataset(dataset,
-                                                 filters=None,
-                                                 partitions=partitions)
+                                                 filters=None)
     model_name = 'sheep-soft-augmentations'
-    # create an Item Artifact to save the model to your project
+    # create an Item Artifact to save the pre-trained model to your project
     artifact = project.artifacts.create(artifact_type=dl.ArtifactType.ITEM,
                                         package_name=package.name,
                                         model_name=model_name)

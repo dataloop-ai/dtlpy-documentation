@@ -2,9 +2,9 @@ def func1():
     """
     # Training a classification model with ResNet
     In this tutorial we will use a publicly available model from the AI library to inference and train on custom data.
-    Here we will use the resnet model.
+    Here we will use a ResNet50 model.
 
-    Start by installing the following packages if you don't have them installed already (the Torch Model Adapter will use them later):
+    Start by installing the following packages if you don't have them installed already. The model adapter will use them later.
 
     torch
     torchvision
@@ -17,14 +17,17 @@ def func1():
 def func2():
     """
     ## Create the Package and pretrained Model in your project
-    First, we create the entities for our project. The package codebase is available in the public Dataloop Github.
+
+    First, we create the Model entity for our project. You can view the public models in the public Dataloop Github.
+    You can view all publicly available models by using a Filter. Here we will use a ResNet50 model pretrained on the ImageNET dataset.
     """
 
 
 def func3():
     """
     ### Run a pretrained model
-    We will "build" to model adapter to get the package code locally and create an instance of the ModelAdapter class.
+
+    We will "build" a model adapter to get the package code locally and create an instance of the ModelAdapter class.
     Then we will load the pretrained model into the model adapter.
     """
 
@@ -32,7 +35,7 @@ def func3():
 def func4():
     """
     ### Predict on an item
-    Now you can get an item and inference on it with predict with upload.
+    Now you can get an item and inference on it with the predict method and then upload the annotations.
     If you would like to see the item and predictions, you can open the item on the platform and edit there.
     """
 
@@ -41,7 +44,7 @@ def func5():
     """
     ## Train on new dataset
     Here we will use a public dataset of sheep faces. We create a project and a dataset and upload the data with 4 labels of sheep.
-    NOTE: You might need to change the location of the items (should point to the root of the documentation repository)
+    NOTE: You might need to change the location of the items, which currently points to the root of the documentation repository. If you downloaded the documentation repo to your local machine, this should work as-is.
     """
 
 
@@ -71,13 +74,13 @@ def func9():
     """
     ## Save the Model
     We will save the locally-trained model and upload the trained weights to the Item Artifact.
-    This will ensure that everything is in the Dataloop platform and everyone can use our trained model.
+    This will ensure that everything is in the Dataloop platform and other developers can use our trained model.
     """
 
 
 def func10():
     """
-    We can also list all our artifacts associated with this package, and add more files that are needed to load or run the model.
+    We can also list all Artifacts associated with this Package, and add more files that are needed to load or run the model.
     """
 
 
