@@ -1,13 +1,13 @@
 # Training a classification model with ResNet  
-In this tutorial we will use a publicly available model from the AI library to inference and train on custom data.  
+In this tutorial we will download a public model from the AI library to inference and train on custom data locally.  
 Here we will use a ResNet50 model.  
   
 Start by installing the following packages if you don't have them installed already. The model adapter will use them later.  
   
-torch  
-torchvision  
-imgaug  
-scikit-image<0.18  
+'torch'  
+'torchvision'  
+'imgaug'  
+'scikit-image<0.18'  
   
 
 ```python

@@ -4,7 +4,8 @@ def func1():
 
     This tutorial will help you get started with the basics of model management:
     * logging metrics only (aka “offline mode”)
-    * deploying pretrained models from the AI library for inference and training on the Dataloop platform
+    * downloading pretrained model for local training and inference
+    * deploying pretrained models from the AI library onto the Dataloop platform
 
     ### Logging metrics
     To export metrics for tracking model performance, you need to create a dummy package (with a dummy codebase reference) and model (including a valid dataset ID). Remember to replace <project_name> and <dataset_id> with the appropriate strings to reference your project and dataset.
@@ -22,7 +23,7 @@ def func2():
 
 def func3():
     """
-    Metrics plots will appear under the “metrics” tab of your chosen model:
+    Metrics plots will appear under the “metrics” tab of your chosen model, and will look something like this:
     ![Screenshot of model metrics plot](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt_3/assets/images/model_management/metrics_example.png)
 
     ### Using pretrained models from the AI library
@@ -52,7 +53,6 @@ def func5():
 
     NOTE: In the future, this mechanism will be expanded to use a tagging system on items. This will allow more flexible data subsets and random data allocation.
 
-
     ### Deploying a model remotely
 
     Download the model and package you want to copy it to your project. Since the public model is pretrained, it can be deployed without any further action.
@@ -67,9 +67,20 @@ def func6():
 
 def func7():
     """
-    If the model is to be trained on a new dataset, you can train it with `model.train()`.
+    A model can be trained with a new dataset with `model.train()`.
 
-    Once the model is trained, you can deploy it. `model.deploy()` automatically creates a bot and service for the trained model.
+    A model can only be deployed after it's been trained. `model.deploy()` automatically creates a bot and service for the trained model.
 
     Now the model is deployed, you can create a UI slot to inference on individual data items on the platform, or call the model to inference in a FaaS.
+
+    ### Downloading a model for local training and inferencing
+
+    For local training and inferecing, you need to download the package codebase to get build the model adapter that you need to run the train and predict methods. Follow the same steps as above to copy the public model to your project. Then download the model's package codebase to build and load the model adapter.
+
     """
+
+def func8():
+    """
+    Now that the pretrained model is loaded locally, you can inference on a data item and view the image and prediction:
+    """
+

@@ -56,3 +56,22 @@ def func6():
                                    dataset=dataset,
                                    project_id=project.id,
                                    labels=['label1', 'label2'])
+    model.train()
+    model.deploy()
+
+
+def func7():
+    package = dl.packages.get(package_id=model.package_id)
+
+    # build model
+    adapter = package.build(module_name='model-adapter') # module name varies by model
+    adapter.load_from_model(model_entity=model)
+
+
+def func8():
+    item = dl.items.get(item_id='631ef21d240440c5455788b7')
+    annotations = adapter.predict_items([item], with_upload=True)
+    image = np.asarray(Image.open(item.download()))
+    plt.imshow(item.annotations.show(image,
+                                     thickness=5))
+    print('Prediction: {}'.format(annotations[0][0].label))

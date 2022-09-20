@@ -1,15 +1,23 @@
 def func1():
     """
     # Training an object detection model with YOLOv5
-    In this tutorial we will use the YOLOv5 Model Adapter to train and inference on custom data.
+    In this tutorial we will download a public model from the AI library to inference and train on custom data locally.
+    Here we will use a YOLOv5 model.
 
+    Start by installing the following packages if you don't have them installed already. The model adapter will use them later.
+    torch
+    torchvision
+    imgaug
+    scikit-image<0.18
     """
 
 
 def func2():
     """
     ## Create the Package and pretrained model in your project
-    We start by creating the entities in our project. The model codebase is in our public github.
+        First, we create the Model entity for our project. You can view the public models in the public Dataloop Github.
+    You can view all publicly available models by using a Filter. Here we will use a YOLOv5 model pretrained on the COCO dataset.
+
     """
 
 
@@ -23,8 +31,8 @@ def func3():
 
 def func4():
     """
-    Get an item and predict with upload.
-    You can also open the item in the platform to view and edit annotations easily.
+    ### Predict on an item
+    Now we can get an item and inference on it with the predict method and upload the annotations. If you would like to see the item and predictions, you can open the item on the platform and edit it directly there.
     """
 
 
@@ -32,7 +40,7 @@ def func5():
     """
     ## Train on new dataset
     We will use a public fruits dataset. We create a project and a dataset and upload the data with 3 labels of fruit.
-    NOTE: You might need to change the location of the items (should point to the root of the documentation repository)
+    NOTE: You might need to change the location of the items, which currently points to the root of the documentation repository. If you downloaded the dtlpy documentation repo locally, this should work as-is.
     """
 
 
@@ -54,26 +62,26 @@ def func7():
 def func8():
     """
     ## Start the training
-    Now we have the package, model, and data ready. We are ready to train!
+    The package, model, and data are now prepared. We are ready to train!
     """
 
 
 def func9():
     """
     ## Save the model
-    We will save the locally-trained model and upload the trained weights to the Item Bucket.
-    This will ensure we have everything in the Dataloop platform and everyone can use our trained model.
+    We will save the locally-trained model and upload the trained weights to the Item Artifact.
+    This will ensure that everything is in the Dataloop platform and other developers can use our trained model.
     """
 
 
 def func10():
     """
-    We can also list our bucket's content, and add more files that are needed for loading/running the model
+    We can also list all Artifacts associated with this Package, and add more files that are needed to load or run the model.
     """
 
 
 def func11():
     """
-    ## Predict with on newly trained model
-    We will load our model and view the predictions for some items.
+    ## Predict on our newly trained model
+    With everything in place, we will load our model and view the item's prediction.
     """
