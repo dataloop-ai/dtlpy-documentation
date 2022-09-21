@@ -1,6 +1,6 @@
 ## Create your own Package and Model  
   
-You can use your own model on the platform by creating package and model entities, and using a model adapter to create an API with Dataloop.  
+You can use your own model on the platform by creating Package and Model entities, and then using a model adapter to create an API with Dataloop.  
   
 The first thing a model adapter does is create a model adapter class. The example here inherits from dl.BaseModelAdapter, which contains all the Dataloop methods required to interact with the Package and Model. You must implement these methods in the model adapter class in order for them to work: load, save, train, predict.  
 
@@ -24,41 +24,58 @@ class SimpleModelAdapter(dl.BaseModelAdapter):
 ```
 NOTE: The code above is an example for a torch model adapter. This example will NOT run if copied as-is. For working examples please refer to the examples in the Dataloop Github.  
   
-To create our Package entity, we first need to pack our package code to a dl.ItemCodebase.  
-
-```python
-project = dl.projects.get('MyProject')
-codebase: dl.ItemCodebase = project.codebases.pack(directory='/path/to/codebase')
-package = project.packages.push(package_name='first-custom-model',
-                                description='Example from model creation tutorial',
-                                output_type=dl.AnnotationType.CLASSIFICATION,
-                                tags=['torch', 'inception', 'classification'],
-                                codebase=codebase,
-                                entry_point='dataloop_adapter.py',
-                                )
-```
-If you’re creating a Package with code from Git, change the codebase type to be dl.GitCodebase.  
+To create our Package entity, we first need to pack our package code to a dl.ItemCodebase, retrieve the metadata, and indicate where the entry point to the package is. If you’re creating a Package with code from Git, change the codebase type to be dl.GitCodebase.  
   
 
 ```python
-codebase: dl.GitCodebase = dl.GitCodebase(git_url='github.com/mygit', git_tag='v25.6.93')
+import dtlpy as dl
+from adapter_script import SimpleModelAdapter
+project = dl.projects.get(project_name='<project_name>')
+dataset = project.datasets.get(dataset_name='<dataset_name')
+codebase = project.codebases.pack(directory='<path to local dir>')
+# codebase: dl.GitCodebase = dl.GitCodebase(git_url='github.com/mygit', git_tag='v25.6.93')
+metadata = dl.Package.get_ml_metadata(cls=SimpleModelAdapter,  # it's fine to do this
+                                      default_configuration={'weights_filename': 'model.pth',
+                                                             'input_size': 256},
+                                      output_type=dl.AnnotationType.CLASSIFICATION
+                                      )
+module = dl.PackageModule.from_entry_point(entry_point='adapter_script.py')
+```
+Then we can push the package and all its parts to the cloud. To change the computing configurations, see the Dataloop docs for the Instance Catalog.  
+  
+
+```python
+package = project.packages.push(package_name='My-Package',
+                                src_path=os.getcwd(),
+                                package_type='ml',
+                                codebase=codebase,
+                                modules=[module],
+                                is_global=False,
+                                service_config={
+                                    'runtime': dl.KubernetesRuntime(pod_type=dl.INSTANCE_CATALOG_GPU_K80_S,
+                                                                    runner_image='gcr.io/viewo-g/modelmgmt/resnet:0.0.6',
+                                                                    autoscaler=dl.KubernetesRabbitmqAutoscaler(
+                                                                        min_replicas=0,
+                                                                        max_replicas=1),
+                                                                    concurrency=1).to_json()},
+                                metadata=metadata)
 ```
 Now you can create a model and upload pretrained model weights with dl.Artifacts.  
 
 ```python
-artifact = project.artifacts.upload(filepath='/path/to/weights')
+artifact = dl.LocalArtifact(filepath='<path to weights>')
 model = package.models.create(model_name='tutorial-model',
-                                  description='first model we uploaded',
-                                  tags=['pretrained', 'tutorial'],
-                                  dataset_id=None,
-                                  configuration={'weights_filename': 'model.pth'
-                                                 },
-                                  # project_id=package.project.id,
-                                  model_artifacts=[artifact],
-                                  labels=['car', 'fish', 'pizza']
-                                  )
+                              description='first model we are uploading',
+                              tags=['pretrained', 'tutorial'],
+                              dataset_id=None,
+                              configuration={'weights_filename': 'model.pth'
+                                             },
+                              project_id=package.project.id,
+                              model_artifacts=[artifact],
+                              labels=['car', 'fish', 'pizza']
+                              )
 ```
-Finally, build to the model adapter and call one of the adapter’s methods to see that your custom model works.  
+Finally, build the model adapter and call one of the adapter’s methods to see that your custom model works.  
 
 ```python
 adapter = package.build()

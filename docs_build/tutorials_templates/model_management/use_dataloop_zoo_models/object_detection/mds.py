@@ -9,6 +9,8 @@ def func1():
     torchvision
     imgaug
     scikit-image<0.18
+
+    Then, import the modules required for the scripts in this tutorial.
     """
 
 
@@ -24,15 +26,14 @@ def func2():
 def func3():
     """
     ### Run the pretrained Model
-    We will "build" to the model adapter to get the model code locally and then create an instance of the ModelAdapter class.
-    After that, we load the pretrained model into the model adapter.
+    We will then "build" a model adapter to get the package code locally and create an instance of the ModelAdapter class. Then we will load the pretrained model and weights into the model adapter.
     """
 
 
 def func4():
     """
     ### Predict on an item
-    Now we can get an item and inference on it with the predict method and upload the annotations. If you would like to see the item and predictions, you can open the item on the platform and edit it directly there.
+    Now we can get an item and inference on it with the predict method and upload the annotations. If you would like to see the item and predictions, you can view it locally or you can open the item on the platform and edit it directly there.
     """
 
 
@@ -46,42 +47,43 @@ def func5():
 
 def func6():
     """
-    Now we'll run the "prepare_dataset" method. This will clone and freeze the dataset (so that we'll be able to reproduce the training and keep a snapshot of the data).
-    The cloned dataset will be split into subsets (using DQL or percentage). In this example, we'll use a 80/20 train validation split.
-    After that we clone the pretrained model to have a starting point for the fine-tuning.
-    The model's configuration will determine some runtime configurations, for instance, we will train for only 2 epochs.
+    Now we'll run the "prepare_dataset" method. This will clone and freeze the dataset so that we'll be able to reproduce the training with the same copy of the data. The cloned dataset will be split into subsets, either filtered using DQL or as percentages. In this example, we'll use an 80/20 train validation split.
     """
 
 
 def func7():
     """
-    We'll load the new un-trained model to the adapter and prepare the training local dataset
+    After partitioning and cloning the data, we will clone the pretrained model to have a starting point for the fine-tuning. We create an artifact where we can save the model weights. We will also indicate the model's configuration will determine some runtime configurations, such as number of epochs. In this tutorial we will train for only 2 epochs.
     """
 
 
 def func8():
+    """
+    We'll load the new, untrained model into the adapter and prepare the local dataset to be used for training.
+    """
+
+
+def func9():
     """
     ## Start the training
     The package, model, and data are now prepared. We are ready to train!
     """
 
 
-def func9():
-    """
-    ## Save the model
-    We will save the locally-trained model and upload the trained weights to the Item Artifact.
-    This will ensure that everything is in the Dataloop platform and other developers can use our trained model.
-    """
-
-
 def func10():
     """
-    We can also list all Artifacts associated with this Package, and add more files that are needed to load or run the model.
+    ## Save the Model
+    We will save the locally-trained model and upload the trained weights to the Artifact Item. This ensures that everything is on the Dataloop platform and allows other developers to use our trained model.
     """
 
 
 def func11():
     """
+    We can also list all Artifacts associated with this Package, and add more files that are needed to load or run the model.
+    """
+
+def func12():
+    """
     ## Predict on our newly trained model
-    With everything in place, we will load our model and view the item's prediction.
+    With everything in place, we will load our model and view an item's prediction.
     """
