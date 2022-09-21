@@ -110,7 +110,7 @@ def create():
     md_string = "# Glossary\n"
     md_string += "\n"
     letters = list(string.ascii_uppercase)
-    headers = [f"[{letter.upper()}](##{letter.lower()})" for letter in letters]
+    headers = [f"[{letter.upper()}](#{letter.lower()})" for letter in letters]
     md_string += " | ".join(headers)
     md_string += "\n"
     md_string += "\n"
