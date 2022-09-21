@@ -33,7 +33,7 @@ def func2():
 
     codebase = project.codebases.pack(directory='<path to local dir>')
     # codebase: dl.GitCodebase = dl.GitCodebase(git_url='github.com/mygit', git_tag='v25.6.93')
-    metadata = dl.Package.get_ml_metadata(cls=SimpleModelAdapter,  # it's fine to do this
+    metadata = dl.Package.get_ml_metadata(cls=SimpleModelAdapter,
                                           default_configuration={'weights_filename': 'model.pth',
                                                                  'input_size': 256},
                                           output_type=dl.AnnotationType.CLASSIFICATION
@@ -50,7 +50,6 @@ def func3():
                                     is_global=False,
                                     service_config={
                                         'runtime': dl.KubernetesRuntime(pod_type=dl.INSTANCE_CATALOG_GPU_K80_S,
-                                                                        runner_image='gcr.io/viewo-g/modelmgmt/resnet:0.0.6',
                                                                         autoscaler=dl.KubernetesRabbitmqAutoscaler(
                                                                             min_replicas=0,
                                                                             max_replicas=1),
@@ -59,7 +58,7 @@ def func3():
 
 
 def func4():
-    artifact = dl.LocalArtifact(filepath='<path to weights>')
+    artifact = dl.LocalArtifact(path='<path to weights>')
     model = package.models.create(model_name='tutorial-model',
                                   description='first model we are uploading',
                                   tags=['pretrained', 'tutorial'],
@@ -75,5 +74,5 @@ def func4():
 def func5():
     adapter = package.build()
     adapter.model = model
-    # adapter.load_from_model(model=model)
-    adapter.train()
+    adapter.load_from_model(model=model)
+    # adapter.train()
