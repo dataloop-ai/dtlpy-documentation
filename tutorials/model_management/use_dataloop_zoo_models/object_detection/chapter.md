@@ -19,7 +19,7 @@ import dtlpy as dl
 from dtlpy.ml import train_utils
 ```
 ## Create the Package and pretrained model in your project  
-    First, we create the Model entity for our project. You can view the public models in the public Dataloop Github.  
+First, we create the Model entity for our project. You can view the public models in the public Dataloop Github.  
 You can view all publicly available models by using a Filter. Here we will use a YOLOv5 model pretrained on the COCO dataset.  
   
 
