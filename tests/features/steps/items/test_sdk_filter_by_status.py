@@ -1,5 +1,5 @@
 import behave
-from examples.items.sdk_filter_by_status import filter_by_status
+from examples.items.filter_by_task_status import filter_by_status
 import random
 
 

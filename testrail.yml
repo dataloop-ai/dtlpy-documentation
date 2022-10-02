@@ -1,4 +1,4 @@
-base_url: https://dataloopm.testrail.io
+base_url: ""
 projects:
   - name: 'Automation tests on branch {branch}'
     id: 9

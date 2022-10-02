@@ -1,5 +1,5 @@
 import behave
-from tutorials_templates.faas.single_function_rgb_to_gray.scripts import Scripts
+from docs_build.tutorials_templates.faas.single_function_rgb_to_gray.scripts import Scripts
 import random
 
 

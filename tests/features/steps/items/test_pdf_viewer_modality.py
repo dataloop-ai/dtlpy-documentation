@@ -1,6 +1,6 @@
 import behave
 import os
-from examples.items.modalities.pdf_viewer_modality import example
+from examples.items.add_pdf_viewer_modality import example
 import random
 
 
