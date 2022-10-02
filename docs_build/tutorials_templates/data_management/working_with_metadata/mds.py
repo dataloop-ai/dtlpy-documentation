@@ -56,12 +56,16 @@ def section8():
 
 def section9():
     """
+    Item in platform should have section 'user' in metadata with field 'MyKey' and value 'MyValue'.
+
     ### Add metadata to annotations' user metadata
     """
 
 
 def section10():
     """
+    annotation in platform should have section 'user' in metadata with field 'red' and value True
+
     ### Filter items by user metadata
     #### 1. Get your dataset
     """

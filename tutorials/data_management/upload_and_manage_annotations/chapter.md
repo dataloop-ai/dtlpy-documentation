@@ -98,10 +98,10 @@ dataset = project.datasets.get(dataset_name='dataset_name')
 item = dataset.items.get(filepath='/my_item.mp4')
 # Using annotation builder
 builder = item.annotations.builder()
-builder.add(annotation_definition=dl.Subtitle(label='--Label--',
-                                              text='--text--'),
-            start_time='--start-',
-            end_time='--end--')
+builder.add(annotation_definition=dl.Subtitle(label='<label>',
+                                              text='<text>'),
+            start_time='<start>',
+            end_time='<end>')
 ```
 ## Set Attributes On Annotations  
   

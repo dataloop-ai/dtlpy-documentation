@@ -1,38 +1,45 @@
-# Training an obejct detection model with Yolov5  
-In this tutorial we will use the Resnet Model Adapter to inference and train on custom data.  
+# Training an object detection model with YOLOv5  
+In this tutorial we will download a public model from the AI library to inference and train on custom data locally.  
+Here we will use a YOLOv5 model.  
   
+Start by installing the following packages if you don't have them installed already. The model adapter will use them later.  
+torch  
+torchvision  
+imgaug  
+scikit-image<0.18  
+  
+Then, import the modules required for the scripts in this tutorial.  
 
 ```python
+# !pip install torch torchvision imgaug "scikit-image<0.18"
 import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
 import dtlpy as dl
 from dtlpy.ml import train_utils
 ```
-## Create the Model and Pretrained Snapshot in Your Project  
-We start by creating the entities in our project. The model codebase is in our public github.  
+## Create the Package and pretrained model in your project  
+First, we create the Model entity for our project. You can view the public models in the public Dataloop Github.  
+You can view all publicly available models by using a Filter. Here we will use a YOLOv5 model pretrained on the COCO dataset.  
+  
 
 ```python
-import dtlpy as dl
-filters = dl.Filters(resource=dl.FiltersResource.MODEL)
-filters.add(field='name', values='yolo-v5')
+filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
 filters.add(field='scope', values='public')
-models = dl.models.list(filters=filters)
-models.to_df()
-model = models.items[0]
-snapshot = model.snapshots.get('pretrained-yolo-v5-small')
-model.snapshots.list().to_df()
+dl.models.list(filters=filters).print()
+# get the public model
+model = dl.models.get(model_name='pretrained-yolo-v5-small')
 ```
-### Run Pretrained Model  
-We will "build" to model adapter to get the model code locally and the create an instance of the ModelAdapter class.  
-After that, we load the pretrained snapshot into the model adapter.  
+### Run the pretrained Model  
+We will then "build" a model adapter to get the package code locally and create an instance of the ModelAdapter class. Then we will load the pretrained model and weights into the model adapter.  
 
 ```python
-adapter = model.build()
-adapter.load_from_snapshot(snapshot=snapshot)
+package = dl.packages.get(package_id=model.package_id)
+adapter = package.build(module_name='model-adapter')
+adapter.load_from_model(model_entity=model)
 ```
-Get an item and predict with upload.  
-You can also open the item in the platform to view and edit annotations easily.  
+### Predict on an item  
+Now we can get an item and inference on it with the predict method and upload the annotations. If you would like to see the item and predictions, you can view it locally or you can open the item on the platform and edit it directly there.  
 
 ```python
 item = dl.items.get(item_id='611e174e4c09acc3c5bb81d3')
@@ -44,7 +51,7 @@ print('Classes found: {}'.format([ann.label for ann in annotations[0]]))
 ```
 ## Train on new dataset  
 We will use a public fruits dataset. We create a project and a dataset and upload the data with 3 labels of fruit.  
-NOTE: You might need to change the location of the items (should point to the root of the documentation repository)  
+NOTE: You might need to change the location of the items, which currently points to the root of the documentation repository. If you downloaded the dtlpy documentation repo locally, this should work as-is.  
 
 ```python
 project = dl.projects.create('Fruit - Model Mgmt')
@@ -54,73 +61,89 @@ _ = dataset.items.upload(local_path='../../../../assets/sample_datasets/FruitIma
                          local_annotations_path='../../../../assets/sample_datasets/FruitImage/json')
 dataset.add_labels(label_list=['orange', 'banana', 'apple'])
 ```
-Now we'll run the "prepare_dataset" method. This will clone and freeze the dataset (so that we'll be able to reproduce the training and keep a snapshot of the data).  
-The cloned dataset will be split into subsets (using DQL or percentage). In this examples, we'll use a 80/20 train validation split.  
-After that we clone the pretrained snapshot to have a starting point for the fine-tuning.  
-The snapshot's configuration will determine some runtime configurations, for instance, we will train for only 2 epochs.  
+Now we'll run the "prepare_dataset" method. This will clone and freeze the dataset so that we'll be able to reproduce the training with the same copy of the data. The cloned dataset will be split into subsets, either filtered using DQL or as percentages. In this example, we'll use an 80/20 train validation split.  
 
 ```python
-partitions = {dl.SnapshotPartitionType.TRAIN: 0.8,
-              dl.SnapshotPartitionType.VALIDATION: 0.2}
-cloned_dataset = train_utils.prepare_dataset(dataset,
+pages = dataset.items.list()
+num_items = pages.items_count
+train_proportion = 0.8
+val_proportion = 0.2
+train_partitions = [0] * round(train_proportion * num_items)
+val_partitions = [1] * round(val_proportion * num_items)
+partitions = train_partitions + val_partitions
+random.shuffle(partitions)
+dataset.items.make_dir(directory='/train')
+dataset.items.make_dir(directory='/val')
+item_count = 0
+for item in pages.all():
+    if partitions[item_count] == 0:
+        item.move(new_path='/train')
+    elif partitions[item_count] == 1:
+        item.move(new_path='/val')
+    item_count += 1
+subsets = {'train': dl.Filters(field='dir', values='/train'),
+           'validation': dl.Filters(field='dir', values='/val')}
+dataset.metadata['system']['subsets'] = {
+    'train': json.dumps(dl.Filters(field='dir', values='/train').prepare()),
+    'validation': json.dumps(dl.Filters(field='dir', values='/validation').prepare()),
+}
+dataset.update()
+cloned_dataset = train_utils.prepare_dataset(dataset=dataset,
                                              filters=None,
-                                             partitions=partitions)
-snapshot_name = 'fruits'
-# create an Item Bucket to save snapshot in your project
-bucket = project.buckets.create(bucket_type=dl.BucketType.ITEM,
-                                model_name=model.name,
-                                snapshot_name=snapshot_name)
-new_snapshot = snapshot.clone(snapshot_name=snapshot_name,
-                              dataset_id=cloned_dataset.id,
-                              project_id=project.id,
-                              bucket=bucket,
-                              labels=list(dataset.instance_map.keys()),
-                              configuration={'batch_size': 16,
-                                             'start_epoch': 0,
-                                             'num_epochs': 2,
-                                             'input_size': 256,
-                                             'data_yaml_fname': 'data.yaml',
-                                             'hyp_yaml_fname': 'hyp.finetune.yaml',
-                                             'id_to_label_map': {(v - 1): k for k, v in
-                                                                 dataset.instance_map.items()}
-                                             })
-new_snapshot = model.snapshots.get(snapshot_name=snapshot_name)
+                                             subsets=subsets)
 ```
-We'll load the new un-trained snapshot to the adapter and prepare the training local dataset  
+After partitioning and cloning the data, we will clone the pretrained model to have a starting point for the fine-tuning. We create an artifact where we can save the model weights. We will also indicate the model's configuration will determine some runtime configurations, such as number of epochs. In this tutorial we will train for only 2 epochs.  
+
+```python
+new_model = model.clone(model_name='fruits-model',
+                        dataset=cloned_dataset,
+                        project_id=project.id)
+# create an Item Artifact to save snapshot in your project
+artifact = dl.LocalArtifact(filepath='<dummy filepath>',
+                            package_name=package.name,
+                            model_name=model_name)
+new_model.configuration = {'weights_filename': 'model.pth',
+                           'batch_size': 16,
+                           'start_epoch': 0,
+                           'num_epochs': 2,
+                           'input_size': 256,
+                           'id_to_label_map': {(v - 1): k for k, v in cloned_dataset.instance_map.items()}
+                           }
+```
+We'll load the new, untrained model into the adapter and prepare the local dataset to be used for training.  
 
 ```python
 adapter.load_from_snapshot(snapshot=new_snapshot)
 root_path, data_path, output_path = adapter.prepare_training()
 ```
-## Start The Train  
-Now We have the model, the snapshot, and the data ready. We are ready to train.  
+## Start the training  
+The package, model, and data are now prepared. We are ready to train!  
 
 ```python
 print("Training {!r} with snapshot {!r} on data {!r}".format(model.name, new_snapshot.id, data_path))
 adapter.train(data_path=data_path,
               output_path=output_path)
 ```
-## Save the Snapshot  
-We will save the locally-trained snapshot and upload the trained weights to the Item Bucket.  
-This will ensure we have everything in the Dataloop platform and everyone can use our trained snapshot.  
+## Save the Model  
+We will save the locally-trained model and upload the trained weights to the Artifact Item. This ensures that everything is on the Dataloop platform and allows other developers to use our trained model.  
 
 ```python
-adapter.save_to_snapshot(local_path=output_path,
-                         replace=True)
+adapter.save_to_model(local_path=output_path,
+                      replace=True)
 ```
-We can also list our bucket's content, and add more files that are needed for loading/running the snapshot  
+We can also list all Artifacts associated with this Package, and add more files that are needed to load or run the model.  
 
 ```python
-adapter.snapshot.bucket.list_content()
+adapter.model.artifacts.list_content()
 ```
-## Predict On Our New Trained Snapshot  
-We will load our snapshot and visualize some items' predictions  
+## Predict on our newly trained model  
+With everything in place, we will load our model and view an item's prediction.  
 
 ```python
-item = dl.items.get(item_id='611e174e4c09acc3c5bb81d3')
+item = dl.items.get(item_id='6110d4a41467ded7a8c2a23d')
 annotations = adapter.predict_items([item], with_upload=True)
 image = Image.open(item.download())
-plt.imshow(item.annotations.show(np.asarray(image),
+plt.imshow(item.annotations.show(image,
                                  thickness=5))
-print('Classification: {}'.format(annotations[0][0].label))
+print('Classes found: {}'.format([ann.label for ann in annotations[0]]))
 ```
