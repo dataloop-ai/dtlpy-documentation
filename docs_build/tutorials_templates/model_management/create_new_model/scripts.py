@@ -6,6 +6,9 @@ def func1():
     import torch
     import os
 
+    @dl.Package.decorators.module(name='model-adapter',
+                                  description='Model Adapter for my model',
+                                  init_inputs={'model_entity': dl.Model})
     class SimpleModelAdapter(dl.BaseModelAdapter):
         def load(self, local_path, **kwargs):
             print('loading a model')
@@ -58,7 +61,7 @@ def func3():
 
 
 def func4():
-    artifact = dl.LocalArtifact(path='<path to weights>')
+    artifact = dl.LocalArtifact(local_path='<path to weights>')
     model = package.models.create(model_name='tutorial-model',
                                   description='first model we are uploading',
                                   tags=['pretrained', 'tutorial'],
@@ -73,6 +76,5 @@ def func4():
 
 def func5():
     adapter = package.build()
-    adapter.model = model
-    adapter.load_from_model(model=model)
+    adapter.load_from_model(model_entity=model)
     # adapter.train()

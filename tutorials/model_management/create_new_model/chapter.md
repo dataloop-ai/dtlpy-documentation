@@ -11,6 +11,9 @@ The first thing a model adapter does is create a model adapter class. The exampl
 import dtlpy as dl
 import torch
 import os
+@dl.Package.decorators.module(name='model-adapter',
+                              description='Model Adapter for my model',
+                              init_inputs={'model_entity': dl.Model})
 class SimpleModelAdapter(dl.BaseModelAdapter):
     def load(self, local_path, **kwargs):
         print('loading a model')
@@ -65,7 +68,7 @@ package = project.packages.push(package_name='My-Package',
 Now you can create a model and upload pretrained model weights with an Artifact Item. Here, the Artfiact item is where the saved model weights are. You can upload any weights file here and name it according to the 'weights_filename' in the configuration.  
 
 ```python
-artifact = dl.LocalArtifact(path='<path to weights>')
+artifact = dl.LocalArtifact(local_path='<path to weights>')
 model = package.models.create(model_name='tutorial-model',
                               description='first model we are uploading',
                               tags=['pretrained', 'tutorial'],
@@ -81,7 +84,5 @@ Finally, build the model adapter and call one of the adapter’s methods to see 
 
 ```python
 adapter = package.build()
-adapter.model = model
-adapter.load_from_model(model=model)
-# adapter.train()
+adapter.load_from_model(model_entity=model)
 ```
