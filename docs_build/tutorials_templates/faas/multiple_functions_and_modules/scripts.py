@@ -33,7 +33,7 @@ def func4():
             gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
             gray_item = item.dataset.items.upload(local_path=gray,
                                                   remote_path='/gray' + item.dir,
-                                                  remote_name=item.filename)
+                                                  remote_name=item.name)
             # add modality
             item.modalities.create(name='gray',
                                    ref=gray_item.id)
@@ -59,7 +59,7 @@ def func4():
             bgr_equalized = cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
             bgr_equalized_item = item.dataset.items.upload(local_path=bgr_equalized,
                                                            remote_path='/equ' + item.dir,
-                                                           remote_name=item.filename)
+                                                           remote_name=item.name)
             # add modality
             item.modalities.create(name='equ',
                                    ref=bgr_equalized_item.id)
