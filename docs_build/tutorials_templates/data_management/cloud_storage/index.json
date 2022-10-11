@@ -1,0 +1,28 @@
+{
+  "name": "external-storage",
+  "title": "External Storage",
+  "description": "Create and bind external storage with GCP, AWS and Azure",
+  "content": [
+    {
+      "displayName": "Create External Dataset",
+      "description": "Create external dataset",
+      "location": "data_management/cloud_storage/create_an_external_dataset/chapter.md"
+    },
+    {
+      "displayName": "Dataset Binding with AWS",
+      "description": "Dataset Binding with AWS",
+      "location": "data_management/cloud_storage/binding_with_aws/chapter.md"
+    },
+    {
+      "displayName": "Dataset Binding with Azure",
+      "description": "Dataset Binding with Azure",
+      "location": "data_management/cloud_storage/binding_with_azure/chapter.md"
+    },
+    {
+      "displayName": "Dataset Binding with GCS",
+      "description": "Dataset Binding with GCS",
+      "location": "data_management/cloud_storage/binding_with_gcs//chapter.md"
+    }
+  ]
+}
+
