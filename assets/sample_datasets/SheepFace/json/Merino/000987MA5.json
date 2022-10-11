@@ -1,0 +1,57 @@
+{
+  "_id": "61151cbc379ab25549ecf1c0",
+  "filename": "/Merino/000987MA5.jpg",
+  "annotations": [
+    {
+      "id": "61151f2342c9f93453c306dd",
+      "url": "https://gate.dataloop.ai/api/v1/annotations/61151f2342c9f93453c306dd",
+      "creator": "or@dataloop.ai",
+      "createdAt": "2021-08-12T13:16:19.944Z",
+      "updatedBy": "or@dataloop.ai",
+      "updatedAt": "2021-08-12T13:16:19.944Z",
+      "metadata": {
+        "system": {
+          "automated": true
+        }
+      },
+      "hash": "67574104638b5ec09f0ad5692a3748462bd5e656",
+      "itemId": "61151cbc379ab25549ecf1c0",
+      "item": "https://gate.dataloop.ai/api/v1/items/61151cbc379ab25549ecf1c0",
+      "label": "Merino",
+      "attributes": [],
+      "dataset": "https://gate.dataloop.ai/api/v1/datasets/61151cb9e5759208912b4e8e",
+      "datasetId": "61151cb9e5759208912b4e8e",
+      "type": "class",
+      "coordinates": []
+    }
+  ],
+  "itemMetadata": {
+    "system": {
+      "originalname": "000987MA5.jpg",
+      "size": 7309,
+      "encoding": "7bit",
+      "mimetype": "image/jpeg",
+      "annotationStatus": [],
+      "refs": [],
+      "isBinary": true,
+      "executionLogs": {
+        "image-preprocess": {
+          "default_module": {
+            "on_create": {
+              "61151cbdf75a938028cf1418": {
+                "progress": 100,
+                "status": "success"
+              }
+            }
+          }
+        }
+      },
+      "channels": 3,
+      "exif": {},
+      "height": 181,
+      "thumbnailAnnotationsId": "61151cc1a4c3770b8281fe6c",
+      "thumbnailId": "61151cc0851649409d934769",
+      "width": 156
+    }
+  }
+}

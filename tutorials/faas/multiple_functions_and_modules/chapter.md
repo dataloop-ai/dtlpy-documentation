@@ -46,7 +46,7 @@ class ImageProcess(dl.BaseServiceRunner):
         gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
         gray_item = item.dataset.items.upload(local_path=gray,
                                               remote_path='/gray' + item.dir,
-                                              remote_name=item.filename)
+                                              remote_name=item.name)
         # add modality
         item.modalities.create(name='gray',
                                ref=gray_item.id)
@@ -71,7 +71,7 @@ class ImageProcess(dl.BaseServiceRunner):
         bgr_equalized = cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
         bgr_equalized_item = item.dataset.items.upload(local_path=bgr_equalized,
                                                        remote_path='/equ' + item.dir,
-                                                       remote_name=item.filename)
+                                                       remote_name=item.name)
         # add modality
         item.modalities.create(name='equ',
                                ref=bgr_equalized_item.id)
@@ -163,6 +163,8 @@ Now we can upload (“create”) an image to our dataset to trigger the service.
 item = dataset.items.upload(
     local_path=['https://github.com/dataloop-ai/dtlpy-documentation/raw/main/assets/images/hamster.jpg'])
 ```
+Remote path is optional, images will go to the main directory by default.  
+  
 To see the original item, please click [here](https://raw.githubusercontent.com/dataloop-ai/dtlpy-documentation/main/assets/images/hamster.jpg).  
   
 ### Review the function's logs  

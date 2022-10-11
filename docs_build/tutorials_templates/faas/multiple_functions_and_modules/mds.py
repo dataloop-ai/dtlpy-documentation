@@ -95,6 +95,8 @@ def func10():
 
 def func11():
     """
+    Remote path is optional, images will go to the main directory by default.
+
     To see the original item, please click [here](https://raw.githubusercontent.com/dataloop-ai/dtlpy-documentation/main/assets/images/hamster.jpg).
     
     ### Review the function's logs
