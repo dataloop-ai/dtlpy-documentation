@@ -11,7 +11,7 @@ def section1():
     Access & Permissions - Creating an integration with GCS/S2/Azure cloud requires adding a key/secret with the following
     permissions:
 
-    List (Mandatory) - allowing Dataloop to list all of the items in the storage.
+    List (Mandatory) - allowing Dataloop to list all the items in the storage.
     Get (Mandatory) - get the items and perform pre-process functionalities like thumbnails, item info etc.
     Put / Write (Mandatory) - lets you upload your items
     directly to the external storage from the Dataloop platform.
@@ -25,7 +25,7 @@ def section1():
 
 def section2():
     """
-    ### Create Integration With S3
+    ### Create Integration With Amazon S3
     """
 
 
@@ -37,7 +37,7 @@ def section3():
 
 def section4():
     """
-    ### Storage Driver
+    ### External Storage Driver
 
     Once you have an integration, you can set up a driver, which adds a specific bucket (and optionally with a specific
     path/folder) as a storage resource.
@@ -48,6 +48,6 @@ def section4():
 
 def section5():
     """
-    Once the integration and drivers are ready, you can create a Dataloop Datsaset and sync all the data:
+    Once the integration and drivers are ready, you can create a Dataloop Dataset and sync all the data:
     """
 

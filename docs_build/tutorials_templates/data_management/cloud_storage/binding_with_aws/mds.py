@@ -1,13 +1,15 @@
 def section1():
     """
-    ## Create an AWS Lambda to Continuously Sync a Bucket with Dataloop's Dataset
+    ## Dataset Binding with AWS
+
+    We will create an AWS Lambda to continuously sync a bucket with Dataloop's dataset
 
     If you want to catch events from the AWS bucket and update the Dataloop Dataset you need to set up a Lambda.
     The Lambda will catch the AWS bucket events and will reflect them into the Dataloop Platform.
 
-    We have prepared an environment zip file with our SDK for python3.8 so you don't need to create anything else to use dtlpy in the lambda.
+    We have prepared an environment zip file with our SDK for python3.8, so you don't need to create anything else to use dtlpy in the lambda.
 
-    NOTE: For any other custom use (e.g other python version or more packages) try creating your own layer (We used [this](https://www.geeksforgeeks.org/how-to-install-python-packages-for-aws-lambda-layers) tutorial and the python:3.8 docker image).
+    NOTE: For any other custom use (e.g. other python version or more packages) try creating your own layer (We used [this](https://www.geeksforgeeks.org/how-to-install-python-packages-for-aws-lambda-layers) tutorial and the python:3.8 docker image).
 
     ### Create the Lambda
     1. Create a new Lambda
@@ -24,7 +26,7 @@ def section2():
     Because the layer's size is larger than 50MB you cannot use it directly (AWS restrictions), but need to upload it to a bucket first.
     Once uploaded, create a new layer for the dtlpy env:
     1. Go to the layers screen and "click Add Layer".
-    ![add_layer](../../../../assets/aws-lambda-screenshots/create_layer.png)
+    ![add_layer](../../../../assets/bind_aws/create_layer.png)
     2. Choose a name (dtlpy-env).
     3. Use the link to the bucket layer.zip.
     4. Select the env (x86_64, python3.8).
@@ -32,7 +34,7 @@ def section2():
 
     Go back to your lambda and add the layer:
     1. Select the "Add Layer".
-    ![add_layer](../../../../assets/aws-lambda-screenshots/add_layer.png)
+    ![add_layer](../../../../assets/bind_aws/add_layer.png)
     2. Choose "Custom layer" and select the Layer you've added and the version.
     3. click "Add" at the bottom.
 

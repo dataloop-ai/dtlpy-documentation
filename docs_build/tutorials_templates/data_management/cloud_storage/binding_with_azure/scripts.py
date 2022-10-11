@@ -8,7 +8,6 @@ def section1():
     dtlpy_username = os.environ.get('DTLPY_USERNAME')
     dtlpy_password = os.environ.get('DTLPY_PASSWORD')
 
-
     def main(myblob: func.InputStream):
         dl.login_m2m(email=dtlpy_username, password=dtlpy_password)
         dataset = dl.datasets.get(dataset_id=dataset_id,
