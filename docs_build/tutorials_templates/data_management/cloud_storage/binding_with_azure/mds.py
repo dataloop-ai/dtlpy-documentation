@@ -26,12 +26,12 @@ def section1():
     2. Sign in to Azure
     3. Create your local project
        * in Select a template for your project's first function choose -> Azure Blob Storage trigger
-       * in Storage account select your Storage account that created in step4
-       * in Resource group select your Resource group that created in step1
+       * in Storage account select your Storage account
+       * in Resource group select your Resource group
        * open the code file
        * add dtlpy to the requirements.txt file
-       * add "disabled": false to the function.json file
-       * add a function code to \__init\__.py file
+       * add **"disabled": false** to the function.json file
+       * add a function code to \_\_init\_\_.py file
 
     """
 
