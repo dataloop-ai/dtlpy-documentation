@@ -12,7 +12,7 @@ def section1():
     ![add_layer](../../../../assets/bind_gcs/create_function.png)
     ![add_layer](../../../../assets/bind_gcs/settings.png)
 
-    2. add dtlpy to the requirements.txt
+    2. Add dtlpy to the requirements.txt
     3. Copy the following code to the main file:
     """
 
