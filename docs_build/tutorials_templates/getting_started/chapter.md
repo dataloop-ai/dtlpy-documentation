@@ -246,9 +246,8 @@ dataset.items.upload(local_path='/path/to/file.extension')
 dataset.items.upload(local_path=r'C:\UploadDemo\test1.jpg')
 ```
 
-```
-⚠ Ensure the path and file exists before running the command.
-```
+> :warning: Ensure the path and file exists before running the command.
+
 
 Confirmation of the completed upload is **displayed**:
 
