@@ -84,7 +84,8 @@ def func14():
 
 def func15():
     mask = np.zeros(shape=(item.height, item.width), dtype=np.uint8)
-    mask[50:100, 200:250] = builder.add(annotation_definition=dl.Segmentation(geo=mask, label='label1'))
+    mask[50:100, 200:250] = 1
+    builder.add(annotation_definition=dl.Segmentation(geo=mask, label='label1'))
 
 
 def func16():
