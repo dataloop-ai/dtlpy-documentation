@@ -38,9 +38,7 @@ The Getting Started guide provides the developer with an efficient SDK on-boardi
 The **Dataloop SDK** requires several prerequisite software packages to be installed on your system before it can be
 used.
 
-```
-🛈 The scope of this guide does not cover detailed external software installation issues. Please use the provided software vendor website links for further installation information and troubleshooting related to your OS.
-```
+> :information_source: The scope of this guide does not cover detailed external software installation issues. Please use the provided software vendor website links for further installation information and troubleshooting related to your OS.
 
 ### **Python**
 
@@ -194,9 +192,7 @@ Confirmation of the successfully created dataset is **displayed**:
 Dataset(id='632c24ae3444a86f029acb47', url='https://gate.dataloop.ai/api/v1/datasets/632c1194120a7571664d0de3', name='My-First-Dataset', creator='JohnDoe@gmail.com', items_count=0, expiration_options=None, index_driver='v1', created_at='2022-09-22T07:41:08.324Z')
 ```
 
-```
-🛈 Your Dataset ID will differ from the example above.
-```
+> :information_source: Your Dataset ID will differ from the example above.
 
 ## Uploading items
 
@@ -206,7 +202,7 @@ Individual items or entire folders can be uploaded.
 Before items can be uploaded, the dataset to which the items will be uploaded must be selected.
 
 ### To select the dataset:
-* **Run** the following command to initialize a new instance **(dataset)** of the new dataset **(My-First-Dataset)** in
+**Run** the following command to initialize a new instance **(dataset)** of the new dataset **(My-First-Dataset)** in
   order to upload items:
 
 ```python
@@ -257,9 +253,7 @@ Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/'632c24ae3444a86f029a
 The **Item ID** of the uploaded file is 632dadf7b28a0c0da317dfc8. This ID is used when **Listing/Getting** items (
 See [Getting Items](#getting-items)).
 
-```
-🛈 Your Item ID will differ from the example above.
-```
+> :information_source: Your Item ID will differ from the example above.
 
 If the item to upload is not found, the following **error message** is **displayed**:
 
@@ -267,10 +261,7 @@ If the item to upload is not found, the following **error message** is **display
 dtlpy.exceptions.NotFound: ('404', 'Unknown local path: C:\\UploadDemo\\test1.jpg')
 ```
 
-```
-🛈  By default, files are uploaded to the root directory.
-Items can be uploaded to an existing folder within a dataset using the remote_path argument (Not in the scope of this guide).
-```
+> :information_source: By default, files are uploaded to the root directory. Items can be uploaded to an existing folder within a dataset using the remote_path argument (Not in the scope of this guide).
 
 ### <span style="text-decoration:underline;">Exercise 1</span>
 
@@ -298,9 +289,7 @@ item.print()
 item_1 = dataset.items.get(item_id='632c365b6002b1266e007830')
 ```
 
-```
-🛈 Your Item ID will differ from the example above.
-```
+> :information_source: Your Item ID will differ from the example above.
 
 2. **Run** the following command to print the specified item:
 
@@ -319,9 +308,7 @@ The item details are **displayed** including the following:
 
 1. Write the commands to **print** the details of the 2nd uploaded item (**Test2**). Name the item object **item_2**
 
-```
-💡 Remember: The ID of the item (Test2) must be identified first.
-```
+> :bulb: Remember: The ID of the item (Test2) must be identified first.
 
 ### Getting All Items
 
@@ -430,18 +417,14 @@ item_1.annotations.upload(builder)
 
 The label is annotated as 2 **Point Markers** to **item_1**.
 
-```
-🛈 Other Label Types include Box, Cube, Polygon etc.
-```
+> :information_source:  Other Label Types include Box, Cube, Polygon etc.
 
 ### <span style="text-decoration:underline;">Exercise 3</span>
 
 1. **Annotate** 3 items (use **item_2** from [Exercise 2](#span-styletext-decorationunderlineexercise-2span)) with the **Classification** of '**Face**'.
 2. **Annotate** 2 random **Point Marker** annotations with the label '**Eye**' to an item (use **item_2** from [Exercise 2](#span-styletext-decorationunderlineexercise-2span)).
 
-```
-💡 Remember: The label must first be added to the Recipe of the dataset.
-```
+> :bulb: Remember: The label must first be added to the Recipe of the dataset.
 
 ## Working with Filters
 
@@ -460,7 +443,7 @@ The first step is to create a **Filter Query**.
 
 1. **Run** the following command to create a **Filter Query** named **my_filter**
 
-```
+```python
 my_filter = dl.Filters()
 ```
 
@@ -472,15 +455,13 @@ Once the **Filter Query** is created, **Filter Parameters** can be added.
 
 2. **Run** the following command to add a **Filter Parameter** to **my_filter** that filters for all items that include **Point Marker Annotation** types:
 
-```
+```python
 my_filter.add_join(field='type', values='point')
 ```
 
 The **Filter Parameter** is created.
 
-```
-🛈 Other Fields can be used as Filter Parameters including id, dataset_id, etc.
-```
+> :information_source: Other Fields can be used as Filter Parameters including id, dataset_id, etc.
 
 Additional **Filter Parameter**s can be added to the **Filter Query.**
 
@@ -583,9 +564,7 @@ metadata** can be used for data filtering, sorting, etc.
 The following example will demonstrate adding a new user **metadata field** named **Date&Time** to the item named
 **test1**, which in this case has an **item ID** = 632dadf7b28a0c0da317dfc8
 
-```
-🛈 Your Item ID will differ from the example above. See Get a Single Item.
-```
+> :information_source:  Your Item ID will differ from the example above. See Get a Single Item.
 
 The first step is to **import** the **datetime** module.
 
