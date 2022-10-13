@@ -44,7 +44,7 @@ used.
 
 Python **3.6 or later** must be installed in order to use the SDK.
 
-* To download Python:
+#### To download Python:
 
 1. Visit [https://www.python.org/downloads/](https://www.python.org/downloads/)
 2. From the **Downloads** page, **select** your desired OS and proceed with the download.
@@ -59,8 +59,9 @@ Python was installed from [python.org](https://www.python.org/) as described abo
 
 You can check if **pip** is installed on your system.
 
-* To verify if pip exists on your system:
-* **Run** the following from the Command Line:
+#### To verify if pip exists on your system:
+
+**Run** the following from the Command Line:
 
 ```
 pip --version
@@ -68,8 +69,8 @@ pip --version
 
 If **pip** isn’t already installed, you can bootstrap it from the standard library.
 
-* To bootstrap pip:
-* **Run** the following from the Command Line:
+#### To bootstrap pip:
+**Run** the following from the Command Line:
 
 ```
 python3 -m ensurepip --default-pip
@@ -79,8 +80,9 @@ python3 -m ensurepip --default-pip
 
 Once you have verified that **pip** is installed, the **Dataloop SDK Package** can be installed.
 
-* To install the Dataloop SDK Package:
-* **Run** the following from the **Command Line:**
+#### To install the Dataloop SDK Package:
+
+**Run** the following from the **Command Line:**
 
 ```
 pip install dtlpy
@@ -96,7 +98,7 @@ Successfully installed dtlpy-1.64.9
 
 Once the **Dataloop SDK Package** is installed, you can login to the SDK.
 
-* To log in to the Dataloop SDK:
+To log in to the Dataloop SDK:
 
 1. **Open** a Python Shell.
 2. **Run** the following Python command:
@@ -314,8 +316,8 @@ The item details are **displayed** including the following:
 
 All item details in a dataset can be printed using a loop.
 
-* To get all items:
-* Run the following command to loop through the dataset and print all item details:
+#### To get all items:
+Run the following command to loop through the dataset and print all item details:
 
 ```python
 pages = dataset.items.list()
@@ -353,7 +355,7 @@ The SDK can add **Classification** labels to an **Item** using 2 steps.
 1. **Adding** a label to a dataset’s **Recipe**.
 2. **Adding** the label to an item as a **Classification**.
 
-* To Add a Classification Label to a Dataset Recipe:
+#### To Add a Classification Label to a Dataset Recipe:
 
 1. Run the following command to add a **Label** (**Person**) to the **My-First-Dataset** dataset recipe.
 
@@ -391,7 +393,7 @@ The SDK can add **Point Marker** labels to an **Item** using 2 steps.
 1. **Adding** a label to a dataset’s **Recipe**.
 2. **Adding** the label to an item as a **Point Marker**.
 
-* To Add/Upload a Point Marker Label to a Dataset Recipe:
+### To Add/Upload a Point Marker Label to a Dataset Recipe:
 
 1. **Run** the following command to add a Label (**Ear**) to the **My-First-Dataset** dataset recipe.
 
@@ -399,7 +401,7 @@ The SDK can add **Point Marker** labels to an **Item** using 2 steps.
 dataset.add_label(label_name='Ear')
 ```
 
-The label is created it’s **Properties** are displayed.
+The label is created its **Properties** are displayed.
 
 ```
 [Label(tag='Ear', display_data={}, color='#0214a7', display_label='Person', attributes=[], children=[])]
@@ -439,7 +441,7 @@ all items that include **Point Marker Annotation** types that are **Labelled** a
 
 The first step is to create a **Filter Query**.
 
-* To Create a Filter Query:
+#### To Create a Filter Query:
 
 1. **Run** the following command to create a **Filter Query** named **my_filter**
 
@@ -451,7 +453,7 @@ The **Filter Query** is created.
 
 Once the **Filter Query** is created, **Filter Parameters** can be added.
 
-* To Add a Filter Parameter:
+#### To Add a Filter Parameter:
 
 2. **Run** the following command to add a **Filter Parameter** to **my_filter** that filters for all items that include **Point Marker Annotation** types:
 
@@ -478,7 +480,7 @@ The **Additional Filter Parameter** is added.
 
 The created **Filter Query** can be **applied** to the dataset and **displayed**.
 
-* To Apply the Filter Query:
+#### To Apply the Filter Query:
 
 4. **Run** the following commands to **Apply** the **Filter Query** to the **dataset** and **display** the filtered
    item(s):
@@ -505,7 +507,7 @@ with another value, such as ‘Adult’, across the entire **subset**.
 
 The first step is to **Create** a new **Filter Query** with a **Filter Parameter** that filters for all items that include a **Label** value of **‘Person’**.
 
-* To Create the Replacement Filter Query:
+### To Create the Replacement Filter Query:
 
 1. **Run** the following commands to **create** the Replacement **Filter Query** and **Filter Parameter**:
 
@@ -568,8 +570,9 @@ The following example will demonstrate adding a new user **metadata field** name
 
 The first step is to **import** the **datetime** module.
 
-* To Import the datetime Module:
-* **Run** the following commands to import the **datetime module**:
+#### To Import the datetime Module:
+
+**Run** the following commands to import the **datetime module**:
 
 ```python
 import datetime
@@ -579,7 +582,7 @@ The **datetime** module is imported.
 
 An instance of item **test1** can be **created**.
 
-* **Create** an [instance](#to-get-a-single-item)of item **test1** named **item_1**.
+**Create** an [instance](#to-get-a-single-item)of item **test1** named **item_1**.
 
 ```python
 item_1 = dataset.items.get(item_id='632dadf7b28a0c0da317dfc8')
@@ -589,8 +592,9 @@ An instance of item **test1** named **item_1** is created.
 
 The current date can be **assigned** to a new field in the item’s metadata named **Date&Time** and the item can be **updated**.
 
-* To Assign the Current Date to a New Metadata Field:
-* **Run** the following commands to assign the date to a new **metadata field** and **update** the item:
+#### To Assign the Current Date to a New Metadata Field:
+
+**Run** the following commands to assign the date to a new **metadata field** and **update** the item:
 
 ```python
 now = datetime.datetime.now().isoformat()
@@ -606,8 +610,9 @@ The date is **assigned** to the new **metadata field** and the item is **updated
 
 **Metadata fields** can also be created for a subset of items at once using **filters**.
 
-* To Create Metadata fields for Multiple Items using Filters:
-* **Run** the following commands to **create metadata fields** for **a subset** of **items** that include the label **‘Person’** using a **filter**:
+#### To Create Metadata fields for Multiple Items using Filters:
+
+**Run** the following commands to **create metadata fields** for **a subset** of **items** that include the label **‘Person’** using a **filter**:
 
 ```python
 filters = dl.Filters()
@@ -627,9 +632,9 @@ The date is **assigned** to the new **metadata field** and **all items** that in
 
 A **Task** is used to initiate annotations. A **Task** requires defining the included data items, the assignee(s), and other options such as due date, etc.
 
-* To Create a Task
-* **Run** the following commands to **create** a **Task** containing items with the label **‘Person’** (from the
-  previous example).
+### To Create a Task
+
+**Run** the following commands to **create** a **Task** containing items with the label **‘Person’** (from the previous example).
 
 ```python
 task = dataset.tasks.create(task_name='test',
@@ -647,8 +652,7 @@ The task is **created**.
 
 ## Logging out
 
-* To Logout
-* **Run** the following command to **Logout** of the SDK:
+To Logout **Run** the following command to **Logout** of the SDK:
 
 ```python
 dl.logout()
