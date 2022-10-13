@@ -233,9 +233,7 @@ The structure of the **Upload Item Command** is:
 dataset.items.upload(local_path='/path/to/file.extension')
 ```
 
-```
-⚠ directory paths look different in Windows and in Linux, Windows require an "r" at the beginning.
-```
+> :information_source: directory paths look different in Windows and in Linux, Windows require an "r" at the beginning.
 
 ### To upload an item to a dataset:
 
