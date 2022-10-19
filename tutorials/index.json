@@ -6,7 +6,7 @@
     {
       "displayName": "Getting Started With Dataloop SDK",
       "description": "Getting started with Dataloop SDK",
-      "location": "getting_started/chapter.md"
+      "location": "getting_started/index.json"
     },
     {
       "displayName": "Data Management Tutorial",
