@@ -1,4 +1,4 @@
-# Training an object detection model with YOLOv5  
+# Training an Object Detection Model with YOLOv5  
 In this tutorial we will download a public model from the AI library to inference and train on custom data locally.  
 Here we will use a YOLOv5 model.  
   
@@ -16,42 +16,13 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
 import dtlpy as dl
+import json
 from dtlpy.ml import train_utils
 ```
-## Create the Package and pretrained model in your project  
-First, we create the Model entity for our project. You can view the public models in the public Dataloop Github.  
-You can view all publicly available models by using a Filter. Here we will use a YOLOv5 model pretrained on the COCO dataset.  
-  
-
-```python
-filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
-filters.add(field='scope', values='public')
-dl.models.list(filters=filters).print()
-# get the public model
-model = dl.models.get(model_name='pretrained-yolo-v5-small')
-```
-### Run the pretrained Model  
-We will then "build" a model adapter to get the package code locally and create an instance of the ModelAdapter class. Then we will load the pretrained model and weights into the model adapter.  
-
-```python
-package = dl.packages.get(package_id=model.package_id)
-adapter = package.build(module_name='model-adapter')
-adapter.load_from_model(model_entity=model)
-```
-### Predict on an item  
-Now we can get an item and inference on it with the predict method and upload the annotations. If you would like to see the item and predictions, you can view it locally or you can open the item on the platform and edit it directly there.  
-
-```python
-item = dl.items.get(item_id='611e174e4c09acc3c5bb81d3')
-annotations = adapter.predict_items([item], with_upload=True)
-image = np.asarray(Image.open(item.download()))
-plt.imshow(item.annotations.show(image,
-                                 thickness=5))
-print('Classes found: {}'.format([ann.label for ann in annotations[0]]))
-```
-## Train on new dataset  
+## Create a Project and a Dataset  
 We will use a public fruits dataset. We create a project and a dataset and upload the data with 3 labels of fruit.  
 NOTE: You might need to change the location of the items, which currently points to the root of the documentation repository. If you downloaded the dtlpy documentation repo locally, this should work as-is.  
+  
 
 ```python
 project = dl.projects.create('Fruit - Model Mgmt')
@@ -60,83 +31,60 @@ dataset.to_df()
 _ = dataset.items.upload(local_path='../../../../assets/sample_datasets/FruitImage/items/*',
                          local_annotations_path='../../../../assets/sample_datasets/FruitImage/json')
 dataset.add_labels(label_list=['orange', 'banana', 'apple'])
+dataset.open_in_web()
 ```
-Now we'll run the "prepare_dataset" method. This will clone and freeze the dataset so that we'll be able to reproduce the training with the same copy of the data. The cloned dataset will be split into subsets, either filtered using DQL or as percentages. In this example, we'll use an 80/20 train validation split.  
+Now we'll add the train and validation sets to the dataset metadata:  
 
 ```python
-pages = dataset.items.list()
-num_items = pages.items_count
-train_proportion = 0.8
-val_proportion = 0.2
-train_partitions = [0] * round(train_proportion * num_items)
-val_partitions = [1] * round(val_proportion * num_items)
-partitions = train_partitions + val_partitions
-random.shuffle(partitions)
-dataset.items.make_dir(directory='/train')
-dataset.items.make_dir(directory='/val')
-item_count = 0
-for item in pages.all():
-    if partitions[item_count] == 0:
-        item.move(new_path='/train')
-    elif partitions[item_count] == 1:
-        item.move(new_path='/val')
-    item_count += 1
-subsets = {'train': dl.Filters(field='dir', values='/train'),
-           'validation': dl.Filters(field='dir', values='/val')}
-dataset.metadata['system']['subsets'] = {
-    'train': json.dumps(dl.Filters(field='dir', values='/train').prepare()),
-    'validation': json.dumps(dl.Filters(field='dir', values='/validation').prepare()),
-}
-dataset.update()
-cloned_dataset = train_utils.prepare_dataset(dataset=dataset,
-                                             filters=None,
-                                             subsets=subsets)
+subsets = {'train': json.dumps(dl.Filters(field='dir', values='/train').prepare()),
+           'validation': json.dumps(dl.Filters(field='dir', values='/validation').prepare())}
+dataset.metadata['system']['subsets'] = subsets
+dataset.update(True)
 ```
-After partitioning and cloning the data, we will clone the pretrained model to have a starting point for the fine-tuning. We create an artifact where we can save the model weights. We will also indicate the model's configuration will determine some runtime configurations, such as number of epochs. In this tutorial we will train for only 2 epochs.  
+## Clone the Public Model Into Your Project  
+We'll get and clone the public yolo pretrained model (you can view the public models in the public Dataloop Github).  
+You can view all publicly available models by using a Filter. Here we will use a YOLOv5 model pretrained on the COCO dataset.  
+  
 
 ```python
-new_model = model.clone(model_name='fruits-model',
-                        dataset=cloned_dataset,
-                        project_id=project.id)
-# create an Item Artifact to save snapshot in your project
-artifact = dl.LocalArtifact(filepath='<dummy filepath>',
-                            package_name=package.name,
-                            model_name=model_name)
-new_model.configuration = {'weights_filename': 'model.pth',
-                           'batch_size': 16,
-                           'start_epoch': 0,
-                           'num_epochs': 2,
-                           'input_size': 256,
-                           'id_to_label_map': {(v - 1): k for k, v in cloned_dataset.instance_map.items()}
-                           }
+import dtlpy as dl
+filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
+filters.add(field='scope', values='public')
+dl.models.list(filters=filters).to_df()
+# get the public model
+pretrained_model = dl.models.get(model_name='pretrained-yolo-v5-small')
+model = pretrained_model.clone(model_name='fruits-model',
+                               dataset=dataset,
+                               project_id=project.id,
+                               configuration={'batch_size': 16,
+                                              'start_epoch': 0,
+                                              'num_epochs': 2,
+                                              'input_size': 256,
+                                              'id_to_label_map': {(v - 1): k for k, v in
+                                                                  dataset.instance_map.items()}
+                                              })
 ```
+## Train on Your Dataset  
 We'll load the new, untrained model into the adapter and prepare the local dataset to be used for training.  
 
 ```python
-adapter.load_from_snapshot(snapshot=new_snapshot)
-root_path, data_path, output_path = adapter.prepare_training()
+adapter = dl.packages.build(package=model.package,
+                            init_inputs={'model_entity': model},
+                            module_name='model-adapter')
 ```
-## Start the training  
+## Start the Training  
 The package, model, and data are now prepared. We are ready to train!  
 
 ```python
-print("Training {!r} with snapshot {!r} on data {!r}".format(model.name, new_snapshot.id, data_path))
-adapter.train(data_path=data_path,
-              output_path=output_path)
+print("Training {!r} on data {!r}".format(model.name, data_path))
+adapter.train_model(model=model)
 ```
-## Save the Model  
-We will save the locally-trained model and upload the trained weights to the Artifact Item. This ensures that everything is on the Dataloop platform and allows other developers to use our trained model.  
-
-```python
-adapter.save_to_model(local_path=output_path,
-                      replace=True)
-```
-We can also list all Artifacts associated with this Package, and add more files that are needed to load or run the model.  
+We can list all Artifacts associated with this Package, and add more files that are needed to load or run the model.  
 
 ```python
 adapter.model.artifacts.list_content()
 ```
-## Predict on our newly trained model  
+## Predict Your Newly Trained Model  
 With everything in place, we will load our model and view an item's prediction.  
 
 ```python
