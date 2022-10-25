@@ -76,7 +76,7 @@ adapter = dl.packages.build(package=model.package,
 The package, model, and data are now prepared. We are ready to train!  
 
 ```python
-print("Training {!r} on data {!r}".format(model.name, data_path))
+print("Training {!r} on dataset {!r}".format(model.name, dataset.name))
 adapter.train_model(model=model)
 ```
 We can list all Artifacts associated with this Package, and add more files that are needed to load or run the model.  
