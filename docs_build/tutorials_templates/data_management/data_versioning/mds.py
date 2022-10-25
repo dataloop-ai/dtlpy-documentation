@@ -1,4 +1,4 @@
-def section1():
+def section1(project, dataset_id, clone_name):
     """
     # Data Versioning
     Dataloop's powerful data versioning provides you with unique tools for data management - clone, merge, slice & dice your files, to create multiple versions for various applications. Sample use cases include:
@@ -13,7 +13,7 @@ def section1():
     """
 
 
-def section2():
+def section2(dataset_ids, project_ids, merge_name):
     """
     ## Merge Datasets
     Dataset merging outcome depends on how similar or different the datasets are.
