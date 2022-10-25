@@ -13,20 +13,20 @@ def section1(item_id, annotation_id):
     annotation.update()
 
 
-def section2(project_name, dataset_name, local_path, local_annotations_path):
+def section2(project_name, dataset_name, local_items_path, local_annotations_path):
     """
     Required parameters:
 
     :param str project_name:
     :param str dataset_name:
-    :param str local_path: r'<items path>'
+    :param str local_items_path: r'<items path>'
     :param str local_annotations_path: r'<annotation json file path>'
     """
 
     import dtlpy as dl
     project = dl.projects.get(project_name=project_name)
     dataset = project.datasets.get(dataset_name=dataset_name)
-    dataset.items.upload(local_path=local_path,
+    dataset.items.upload(local_path=local_items_path,
                          local_annotations_path=local_annotations_path,
                          item_metadata=dl.ExportMetadata.FROM_JSON,
                          overwrite=True)
@@ -52,37 +52,37 @@ def section3(dataset, local_items_path, local_annotations_path):
     )
 
 
-def section4(dataset, local_path, local_annotations_path):
+def section4(dataset, local_items_path, local_annotations_path):
     """
     Required parameters:
 
     :param dl.Dataset dataset:
-    :param str local_items_path: r'C:/path/to/items'
-    :param str local_annotations_path: r'C:/path/to/annotations/file/coco.json'
+    :param str local_items_path: r'C:/home/project/images_folder/*'
+    :param str local_annotations_path: r'C:/home/project/annotations_folder'
     """
 
     # Local path to the items folder
-    # If you wish to upload items with your directory tree use : r'C:/home/project/images_folder' 
-    local_items_path = r'C:/home/project/images_folder/*'
+    # If you wish to upload items with your directory tree use : r'C:/home/project/images_folder'
     # Local path to the corresponding annotations - make sure the file names fit
-    local_annotations_path = r'C:/home/project/annotations_folder'
-    dataset.items.upload(local_path=local_annotations_path,
+    dataset.items.upload(local_path=local_items_path,
                          local_annotations_path=local_annotations_path)
 
 
-def section5(dataset):
+def section5(csv_file_path, dataset, item_id):
     """
     Required parameters:
 
+    :param str csv_file_path: r'C:/file.csv'
     :param dl.Dataset dataset:
+    :param str item_id: 'my_item_id'
     """
 
     import dtlpy as dl
     import pandas as pd
     # Read CSV file
-    df = pd.read_csv(r'C:/file.csv')
+    df = pd.read_csv(csv_file_path)
     # Get item
-    item = dataset.items.get(item_id='my_item_id')
+    item = dataset.items.get(item_id=item_id)
     builder = item.annotations.builder()
     # Read line by line from the csv file
     for i_row, row in df.iterrows():
@@ -100,8 +100,6 @@ def section5(dataset):
 
 
 def section5a():
-
-
     import dtlpy as dl
     project = dl.projects.get(project_name='project_name')
     dataset = project.datasets.get(dataset_name='dataset_name')
