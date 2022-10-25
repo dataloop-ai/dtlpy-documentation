@@ -1,42 +1,83 @@
-def section1():
+def section1(item_id, annotation_id):
+    """
+    Required parameters:
+
+    :param str item_id:
+    :param str annotation_id:
+    """
+
     import dtlpy as dl
-    item = dl.items.get(item_id="")
-    annotation = item.annotations.get(annotation_id="")
+    item = dl.items.get(item_id=item_id)
+    annotation = item.annotations.get(annotation_id=annotation_id)
     annotation.metadata["user"] = True
     annotation.update()
 
 
-def section2():
-    project = dl.projects.get(project_name='project_name')
-    dataset = project.datasets.get(dataset_name='dataset_name')
-    dataset.items.upload(local_path=r'<items path>',
-                         local_annotations_path=r'<annotation json file path>',
+def section2(project_name, dataset_name, local_path, local_annotations_path):
+    """
+    Required parameters:
+
+    :param str project_name:
+    :param str dataset_name:
+    :param str local_path: r'<items path>'
+    :param str local_annotations_path: r'<annotation json file path>'
+    """
+
+    import dtlpy as dl
+    project = dl.projects.get(project_name=project_name)
+    dataset = project.datasets.get(dataset_name=dataset_name)
+    dataset.items.upload(local_path=local_path,
+                         local_annotations_path=local_annotations_path,
                          item_metadata=dl.ExportMetadata.FROM_JSON,
                          overwrite=True)
 
 
-def section3():
+def section3(dataset, local_items_path, local_annotations_path):
+    """
+    Required parameters:
+
+    :param dl.Dataset dataset:
+    :param str local_items_path: r'C:/path/to/items'
+    :param str local_annotations_path: r'C:/path/to/annotations/file/coco.json'
+    """
+
+    import dtlpy as dl
     converter = dl.Converter()
     converter.upload_local_dataset(
         from_format=dl.AnnotationFormat.COCO,
         dataset=dataset,
-        local_items_path=r'C:/path/to/items',
+        local_items_path=local_items_path,
         # Please make sure the names of the items are the same as written in the COCO JSON file
-        local_annotations_path=r'C:/path/to/annotations/file/coco.json'
+        local_annotations_path=local_annotations_path
     )
 
 
-def section4():
+def section4(dataset, local_path, local_annotations_path):
+    """
+    Required parameters:
+
+    :param dl.Dataset dataset:
+    :param str local_items_path: r'C:/path/to/items'
+    :param str local_annotations_path: r'C:/path/to/annotations/file/coco.json'
+    """
+
     # Local path to the items folder
     # If you wish to upload items with your directory tree use : r'C:/home/project/images_folder' 
     local_items_path = r'C:/home/project/images_folder/*'
     # Local path to the corresponding annotations - make sure the file names fit
     local_annotations_path = r'C:/home/project/annotations_folder'
-    dataset.items.upload(local_path=local_items_path,
+    dataset.items.upload(local_path=local_annotations_path,
                          local_annotations_path=local_annotations_path)
 
 
-def section5():
+def section5(dataset):
+    """
+    Required parameters:
+
+    :param dl.Dataset dataset:
+    """
+
+    import dtlpy as dl
     import pandas as pd
     # Read CSV file
     df = pd.read_csv(r'C:/file.csv')
@@ -59,6 +100,9 @@ def section5():
 
 
 def section5a():
+
+
+    import dtlpy as dl
     project = dl.projects.get(project_name='project_name')
     dataset = project.datasets.get(dataset_name='dataset_name')
     # local path to item
@@ -75,6 +119,8 @@ def section5a():
 
 
 def section5b():
+
+
     project = dl.projects.get(project_name='project_name')
     dataset = project.datasets.get(dataset_name='dataset_name')
     item = dataset.items.get(filepath='/my_item.mp4')
@@ -88,36 +134,48 @@ def section5b():
 
 
 def section6():
+
+
     dl.use_attributes_2(True)
     annotation.attributes.update({"ID of the attribute": "value of the attribute"})
     annotation = annotation.update(True)
 
 
 def section7():
+
+
     dl.use_attributes_2(True)
     annotation.attributes.update({"<attribute-id>": number_on_range})
     annotation = annotation.update(system_metadata=True)
 
 
 def section8():
+
+
     dl.use_attributes_2(True)
     annotation.attributes.update({"<attribute-id>": ["selection", "selection"]})
     annotation = annotation.update(system_metadata=True)
 
 
 def section9():
+
+
     dl.use_attributes_2(True)
     annotation.attributes.update({"<attribute-id>": "selection"})
     annotation = annotation.update(system_metadata=True)
 
 
 def section10():
+
+
     dl.use_attributes_2(True)
     annotation.attributes.update({"<attribute-id>": True / False})
     annotation = annotation.update(system_metadata=True)
 
 
 def section11():
+
+
     # Use the show function for all annotation types
     box = dl.Box()
     # Must provide all inputs

@@ -20,7 +20,7 @@ def section3():
 
 def section4():
     """
-    ## Upload Entire Directory and their Corresponding  Dataloop JSON Annotations
+    ## Upload Entire Directory and their Corresponding Dataloop JSON Annotations
 
     """
 
