@@ -2,7 +2,7 @@ import behave
 from docs_build.tutorials_templates.data_management.data_versioning import scripts
 
 
-@behave.when(u'I prepared test data versioning introduction')
+@behave.when(u'I prepared test data versioning')
 def step_impl(context):
     sections_list = {
         'section1': section1_prepare,
@@ -30,7 +30,7 @@ def section2_prepare(context):
     context.project_ids = [context.project.id, context.project.id]
 
 
-@behave.then(u'I run test data versioning introduction')
+@behave.then(u'I run test data versioning')
 def step_impl(context):
     sections_list = {
         'section1': section1_run,
@@ -53,7 +53,7 @@ def section2_run(context):
     context.scripts.section2(dataset_ids=context.dataset_ids, project_ids=context.project_ids, merge_name=context.merge_name)
 
 
-@behave.then(u'I validate test data versioning faas introduction')
+@behave.then(u'I validate test data versioning')
 def step_impl(context):
     sections_list = {
         'section1': section1_validate,

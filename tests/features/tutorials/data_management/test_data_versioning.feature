@@ -12,24 +12,24 @@ Feature: Data versioning tutorial
 
     @testrail-C4528883
     Scenario: Run "Data Versioning"
-        When I prepared test data versioning introduction
+        When I prepared test data versioning
             | Section name |
             | section1     |
-        Then I run test data versioning introduction
+        Then I run test data versioning
             | Section name |
             | section1     |
-        And  I validate test data versioning faas introduction
+        And  I validate test data versioning
             | Section name |
             | section1     |
 
     @testrail-C4528883
     Scenario: Run "Merge Datasets"
-        When I prepared test data versioning introduction
+        When I prepared test data versioning
             | Section name |
             | section2     |
-        Then I run test data versioning introduction
+        Then I run test data versioning
             | Section name |
             | section2     |
-        And  I validate test data versioning faas introduction
+        And  I validate test data versioning
             | Section name |
             | section2     |
