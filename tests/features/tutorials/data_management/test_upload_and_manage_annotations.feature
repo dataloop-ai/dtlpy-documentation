@@ -8,7 +8,7 @@ Feature: Upload and manage annotations
     Scenario: Sanity
         Given I prepared project by the name of "upload and manage annotations project"
         And   I prepared dataset by the name of "upload and manage annotations dataset"
-        And
+        And   I prepared an item of type "image"
 
 
     @testrail-C4528884
