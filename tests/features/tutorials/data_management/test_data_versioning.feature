@@ -7,7 +7,7 @@ Feature: Data versioning tutorial
         And   There is an item with annotations of type "image"
 
     @testrail-C4528883
-    Scenario Outline: Run "Data Versioning"
+    Scenario Outline: Run "Data Versioning" "<Section name>"
         When I prepared test data versioning "<Section name>"
         Then I run test data versioning "<Section name>"
         And  I validate test data versioning "<Section name>"
