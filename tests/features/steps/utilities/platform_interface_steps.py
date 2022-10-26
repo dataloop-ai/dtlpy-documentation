@@ -155,21 +155,3 @@ def step_impl(context, date):
         context.timestamp.append((datetime.datetime.now() + datetime.timedelta(days=1)).replace(microsecond=0).isoformat())
     else:
         assert False, "Please provide one of the options : today , yesterday, tomorrow"
-
-
-def rebuild_path(full_path: str):
-    """
-    Rebuild the given path, split by backslashes, using the function os.path.join()
-
-    @param full_path: The path to rebuild
-
-    @return: The rebuilt path
-    """
-
-    full_path_list = full_path.split('/')
-    return_path = full_path_list[0]
-
-    for i in range(len(full_path_list)-1):
-        return_path = os.path.join(return_path, full_path_list[i+1])
-
-    return return_path

@@ -2,41 +2,36 @@ import behave
 from docs_build.tutorials_templates.data_management.data_versioning import scripts
 
 
-@behave.when(u'I prepared test data versioning')
-def step_impl(context):
+@behave.when(u'I prepared test data versioning "{section_name}"')
+def step_impl(context, section_name):
     sections_list = {
         'section1': section1_prepare,
         'section2': section2_prepare,
     }
-    section_name = context.table.rows.cells[0]
 
     context.scripts = scripts
     sections_list[section_name](context)
 
 
 def section1_prepare(context):
-    context.dataset = context.dl.datasets.get(dataset_name='data version dataset')
     context.dataset_id = context.dataset.id
-    context.clone_name = context.dataset + '-clone'
+    context.clone_name = context.dataset.name + '-clone'
 
 
 def section2_prepare(context):
-    context.dataset1 = context.dl.datasets.get(dataset_name='data version dataset')
-    context.dataset2 = context.dl.datasets.get(dataset_name='data version dataset-clone')
-    context.dataset2.recipe = context.dataset1.recipe
-    context.dataset2.update()
-
+    context.dataset1 = context.project.datasets.get(dataset_name=context.dataset.name)
+    context.dataset2 = context.project.datasets.get(dataset_name=context.dataset.name + '-clone')
     context.dataset_ids = [context.dataset1.id, context.dataset2.id]
     context.project_ids = [context.project.id, context.project.id]
+    context.merge_name = context.dataset.name + '-merge'
 
 
-@behave.then(u'I run test data versioning')
-def step_impl(context):
+@behave.then(u'I run test data versioning "{section_name}"')
+def step_impl(context, section_name):
     sections_list = {
         'section1': section1_run,
         'section2': section2_run,
     }
-    section_name = context.table.rows.cells[0]
 
     try:
         sections_list[section_name](context)
@@ -53,24 +48,23 @@ def section2_run(context):
     context.scripts.section2(dataset_ids=context.dataset_ids, project_ids=context.project_ids, merge_name=context.merge_name)
 
 
-@behave.then(u'I validate test data versioning')
-def step_impl(context):
+@behave.then(u'I validate test data versioning "{section_name}"')
+def step_impl(context, section_name):
     sections_list = {
         'section1': section1_validate,
         'section2': section2_validate,
     }
-    section_name = context.table.rows.cells[0]
 
     sections_list[section_name](context)
 
 
 def section1_validate(context):
     clone_dataset = context.project.datasets.get(dataset_name=context.clone_name)
-    assert context.item == clone_dataset.items.list[0]
-    assert context.item.annotations.list == clone_dataset.items.list[0].annotations.list
+    clone_item = clone_dataset.items.get(filepath=context.item.filename)
+    assert context.item.annotations_count == clone_item.annotations_count
 
 
 def section2_validate(context):
     merge_dataset = context.project.datasets.get(dataset_name=context.merge_name)
-    assert context.item == merge_dataset.items.list[0]
-    assert context.item.annotations.list == merge_dataset.items.list[0].annotations.list
+    merge_item = merge_dataset.items.get(filepath=context.item.filename)
+    assert context.item.annotations_count == merge_item.annotations_count
