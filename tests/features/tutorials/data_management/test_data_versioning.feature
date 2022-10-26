@@ -2,8 +2,8 @@ Feature: Data versioning tutorial
 
     Background: Initiate Platform Interface
         Given Platform Interface is initialized as dlp and Environment is set according to git branch
-        And   There is a project by the name of "data version project"
-        And   There is a dataset by the name of "data version dataset"
+        And   There is a project by the name of "data versioning project"
+        And   There is a dataset by the name of "data versioning dataset"
         And   There is an item with annotations of type "image"
 
     @testrail-C4528883
