@@ -29,23 +29,15 @@ def section2_prepare(context):
 @behave.then(u'I run test data versioning "{section_name}"')
 def step_impl(context, section_name):
     sections_list = {
-        'section1': section1_run,
-        'section2': section2_run,
+        'section1': context.scripts.section1,
+        'section2': context.scripts.section2,
     }
 
     try:
-        sections_list[section_name](context)
+        sections_list[section_name]()
 
     except Exception as e:
         assert False, "Failed to run example : {}".format(e)
-
-
-def section1_run(context):
-    context.scripts.section1()
-
-
-def section2_run(context):
-    context.scripts.section2()
 
 
 @behave.then(u'I validate test data versioning "{section_name}"')
