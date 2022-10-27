@@ -1,5 +1,5 @@
 import behave
-from docs_build.tutorials_templates.data_management.data_versioning import scripts
+from docs_build.tutorials_templates.data_management.data_versioning.scripts import Scripts
 
 
 @behave.when(u'I prepared test data versioning "{section_name}"')
@@ -9,21 +9,21 @@ def step_impl(context, section_name):
         'section2': section2_prepare,
     }
 
-    context.scripts = scripts
+    context.scripts = Scripts()
     sections_list[section_name](context)
 
 
 def section1_prepare(context):
-    context.dataset_id = context.dataset.id
-    context.clone_name = context.dataset.name + '-clone'
+    context.scripts.project = context.project
+    context.scripts.dataset = context.dataset
+    context.scripts.clone_name = context.dataset.name + '-clone'
 
 
 def section2_prepare(context):
-    context.dataset1 = context.project.datasets.get(dataset_name=context.dataset.name)
-    context.dataset2 = context.project.datasets.get(dataset_name=context.dataset.name + '-clone')
-    context.dataset_ids = [context.dataset1.id, context.dataset2.id]
-    context.project_ids = [context.project.id, context.project.id]
-    context.merge_name = context.dataset.name + '-merge'
+    context.scripts.project = context.project
+    context.scripts.dataset = context.dataset
+    context.scripts.dataset_clone = context.project.datasets.get(dataset_name=context.dataset.name + '-clone')
+    context.scripts.merge_name = context.dataset.name + '-merge'
 
 
 @behave.then(u'I run test data versioning "{section_name}"')
@@ -41,11 +41,11 @@ def step_impl(context, section_name):
 
 
 def section1_run(context):
-    context.scripts.section1(project=context.project, dataset_id=context.dataset_id, clone_name=context.clone_name)
+    context.scripts.section1()
 
 
 def section2_run(context):
-    context.scripts.section2(dataset_ids=context.dataset_ids, project_ids=context.project_ids, merge_name=context.merge_name)
+    context.scripts.section2()
 
 
 @behave.then(u'I validate test data versioning "{section_name}"')
@@ -59,12 +59,12 @@ def step_impl(context, section_name):
 
 
 def section1_validate(context):
-    clone_dataset = context.project.datasets.get(dataset_name=context.clone_name)
+    clone_dataset = context.project.datasets.get(dataset_name=context.dataset.name + '-clone')
     clone_item = clone_dataset.items.get(filepath=context.item.filename)
     assert context.item.annotations_count == clone_item.annotations_count
 
 
 def section2_validate(context):
-    merge_dataset = context.project.datasets.get(dataset_name=context.merge_name)
+    merge_dataset = context.project.datasets.get(dataset_name=context.dataset.name + '-merge')
     merge_item = merge_dataset.items.get(filepath=context.item.filename)
     assert context.item.annotations_count == merge_item.annotations_count
