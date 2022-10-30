@@ -27,9 +27,9 @@ def func2():
 
 
 def func3():
-    filters = dl.Filters(resource=dl.FiltersResource.PACKAGE, use_defaults=False)
+    filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
     filters.add(field='scope', values='public')
-    dl.packages.list(filters=filters).print()
+    dl.models.list(filters=filters).print()
 
 
 def func4():
