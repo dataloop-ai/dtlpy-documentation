@@ -4,7 +4,7 @@ import dtlpy as dl
 def func1():
     import dtlpy as dl
     import os
-    project = dl.projects.get(project_name='<project_id>')
+    project = dl.projects.get(project_id='<project_id>')
     package = project.packages.push(package_name='dummy-model-package',
                                     codebase=dl.entities.LocalCodebase(os.getcwd()),
                                     modules=[])
