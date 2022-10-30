@@ -4,12 +4,7 @@ def func1():
     In this tutorial we will download a public model from the AI library to inference and train on custom data locally.
     Here we will use a YOLOv5 model.
 
-    Start by installing the following packages if you don't have them installed already. The model adapter will use them later.
-    torch
-    torchvision
-    imgaug
-    scikit-image<0.18
-
+    Create a venv and install the requirements for the yolov5 package [here](https://github.com/dataloop-ai/yolov5/blob/master/requirements.txt)
     Then, import the modules required for the scripts in this tutorial.
     """
 
