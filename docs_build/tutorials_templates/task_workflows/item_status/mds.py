@@ -9,12 +9,21 @@ def func1():
     ### 1. Set status on an item in task
     """
 
+
 def func2():
     """
     ### 2. Set status on multiple items
+    #### 1. using dataset and filter (this way recommended of the items is not in the same task and items that include in only one task)
    """
 
+
 def func3():
+    """
+    #### 2. use task entity (this way recommended for items in the same task)
+   """
+
+
+def func4():
     """
     ### 3. Clear status from an item (no-status)
     Clearing a status from an item will make it available again for work in the respective task, and the worker (annotator)
@@ -22,12 +31,14 @@ def func3():
     """
 
 
-def func4():
+def func5():
     """
-    ### 4. Manage task statuses
-    The statuses in a task can be managed, add new custom statuses and remove existing ones.
+    ### 4. Add task statuses
+    """
 
-    
+
+def func6():
+    """
     <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>
     Changing the statuses in the task doesn't change the status on any items that already received a status.
     """
