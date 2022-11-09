@@ -13,13 +13,13 @@ def func1():
 def func2():
     """
     ### 2. Set status on multiple items
-    #### 1. using dataset and filter (this way recommended of the items is not in the same task and items that include in only one task)
+    #### 1. Using dataset and filter (recommended for using with multiple items from different tasks)
    """
 
 
 def func3():
     """
-    #### 2. use task entity (this way recommended for items in the same task)
+    #### 2. Use task entity (recommended for items of the same task)
    """
 
 

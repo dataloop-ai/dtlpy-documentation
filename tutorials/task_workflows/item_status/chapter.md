@@ -18,7 +18,7 @@ item.update_status(status=dl.ItemStatus.APPROVED, assignment_id=assignment.id)
 item.update_status(status=dl.ItemStatus.DISCARDED)  # this will work if the item is included in only one task
 ```
 ### 2. Set status on multiple items  
-#### 1. using dataset and filter (this way recommended of the items is not in the same task and items that include in only one task)  
+#### 1. Using dataset and filter (recommended for using with multiple items from different tasks)  
 
 ```python
 filters = dl.Filters(field='annotated', values=True)
@@ -31,7 +31,7 @@ dataset.items.update_status(status=dl.ItemStatus.DISCARDED, filters=filters)
 item_ids = ['id1', 'id2', 'id3']
 dataset.items.update_status(status=dl.ItemStatus.COMPLETED, item_ids=item_ids)
 ```
-#### 2. use task entity (this way recommended for items in the same task)  
+#### 2. Use task entity (recommended for items of the same task)  
 
 ```python
 # With filter
@@ -58,7 +58,7 @@ item.update_status(dl.ITEM_STATUS_COMPLETED, clear=True)  # this will work if th
 task = dl.tasks.create(
     task_name='<task_name>',
     due_date=datetime.datetime(day=1, month=1, year=2029).timestamp(),
-    assignee_ids=['<annotator1@dataloop.ai>', '<annotator2@dataloop.ai>'],
+    assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai'],
     # The items will be divided equally between assignments
     filters=filters,  # filter by folder directory or use other filters,
     available_actions=[dl.ItemAction(action='action_name', display_name='display_name')]  # Task statuses
