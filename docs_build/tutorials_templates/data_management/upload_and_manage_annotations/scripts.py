@@ -5,6 +5,24 @@ class Scripts:
         # section1
         self.item_id1 = None
         self.annotation_id1 = None
+        self.annotation1 = None
+        # section2
+        self.project_name2 = None
+        self.dataset_name2 = None
+        self.local_items_path2 = None
+        self.local_annotations_path2 = None
+        # section3
+        self.dataset3 = None
+        self.local_items_path3 = None
+        self.local_annotations_path3 = None
+        # section4
+        self.dataset4 = None
+        self.local_items_path4 = None
+        self.local_annotations_path4 = None
+        # section5
+        self.csv_file_path5 = None
+        self.dataset5 = None
+        self.item_id5 = None
 
     def section1(self):
         # DTLPY-STOP
@@ -18,15 +36,16 @@ class Scripts:
         annotation.metadata["user"] = True
         annotation.update()
 
-    def section2(self, project_name, dataset_name, local_items_path, local_annotations_path):
-        """
-        Required parameters:
+        # DTLPY-STOP
+        self.annotation1 = annotation
 
-        :param str project_name:
-        :param str dataset_name:
-        :param str local_items_path: r'<items path>'
-        :param str local_annotations_path: r'<annotation json file path>'
-        """
+    def section2(self):
+        # DTLPY-STOP
+        project_name = getattr(self, 'project_name2', 'project')
+        dataset_name = getattr(self, 'dataset_name2', 'dataset')
+        local_items_path = getattr(self, 'local_items_path2', r'<items path>')
+        local_annotations_path = getattr(self, 'local_annotations_path2', r'<annotation json file path>')
+        # DTLPY-START
 
         import dtlpy as dl
         project = dl.projects.get(project_name=project_name)
@@ -36,15 +55,12 @@ class Scripts:
                              item_metadata=dl.ExportMetadata.FROM_JSON,
                              overwrite=True)
 
-
-    def section3(dataset, local_items_path, local_annotations_path):
-        """
-        Required parameters:
-
-        :param dl.Dataset dataset:
-        :param str local_items_path: r'C:/path/to/items'
-        :param str local_annotations_path: r'C:/path/to/annotations/file/coco.json'
-        """
+    def section3(self):
+        # DTLPY-STOP
+        dataset = getattr(self, 'dataset3', 'dataset')
+        local_items_path = getattr(self, 'local_items_path3', r'C:/path/to/items')
+        local_annotations_path = getattr(self, 'local_annotations_path3', r'C:/path/to/annotations/file/coco.json')
+        # DTLPY-START
 
         import dtlpy as dl
         converter = dl.Converter()
@@ -56,31 +72,27 @@ class Scripts:
             local_annotations_path=local_annotations_path
         )
 
+    def section4(self):
+        # DTLPY-STOP
+        dataset = getattr(self, 'dataset4', 'dataset')
+        local_items_path = getattr(self, 'local_items_path4', r'C:/home/project/images_folder/*')
+        local_annotations_path = getattr(self, 'local_annotations_path4', r'C:/home/project/annotations_folder')
+        # DTLPY-START
 
-    def section4(dataset, local_items_path, local_annotations_path):
-        """
-        Required parameters:
+        dataset.items.upload(
+            # Local path to the items folder
+            # If you wish to upload items with your directory tree use : r'C:/home/project/images_folder'
+            local_path=local_items_path,
+            # Local path to the corresponding annotations - make sure the file names fit
+            local_annotations_path=local_annotations_path
+        )
 
-        :param dl.Dataset dataset:
-        :param str local_items_path: r'C:/home/project/images_folder/*'
-        :param str local_annotations_path: r'C:/home/project/annotations_folder'
-        """
-
-        # Local path to the items folder
-        # If you wish to upload items with your directory tree use : r'C:/home/project/images_folder'
-        # Local path to the corresponding annotations - make sure the file names fit
-        dataset.items.upload(local_path=local_items_path,
-                             local_annotations_path=local_annotations_path)
-
-
-    def section5(csv_file_path, dataset, item_id):
-        """
-        Required parameters:
-
-        :param str csv_file_path: r'C:/file.csv'
-        :param dl.Dataset dataset:
-        :param str item_id: 'my_item_id'
-        """
+    def section5(self):
+        # DTLPY-STOP
+        csv_file_path = getattr(self, 'csv_file_path5', r'C:/file.csv')
+        dataset = getattr(self, 'dataset5', 'dataset')
+        item_id = getattr(self, 'item_id5', 'my_item_id')
+        # DTLPY-START
 
         import dtlpy as dl
         import pandas as pd
@@ -97,7 +109,7 @@ class Scripts:
                                                      bottom=row['bottom'],
                                                      right=row['right'],
                                                      label=row['label']),
-                        object_visible=row['visible'],  # Support hidden annotations on the visible row
+                        object_visible=row['visible'],   # Support hidden annotations on the visible row
                         object_id=row['annotation id'],  # Numbering system that separates different annotations
                         frame_num=row['frame'])
         # Upload all created annotations
