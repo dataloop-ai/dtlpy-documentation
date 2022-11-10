@@ -6,7 +6,7 @@ Feature: Manage datasets tutorial
         And   There is a dataset by the name of "manage datasets dataset"
         And   There is an item with annotations of type "image"
 
-    @testrail-C4528884
+    @testrail-C4532885
     Scenario Outline: Run "Upload & Manage Annotations" "<Section name>"
         When I prepared test manage datasets "<Section name>"
         Then I run test manage datasets "<Section name>"
