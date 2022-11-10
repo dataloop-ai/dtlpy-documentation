@@ -8,7 +8,9 @@ def step_impl(context, section_name):
     sections_list = {
         "section1": section1_prepare,
         "section2": section2_prepare,
-        "section3": section3_prepare
+        "section3": section3_prepare,
+        "section4": section4_prepare,
+        "section5": section5_prepare,
     }
 
     context.scripts = Scripts()
@@ -33,12 +35,26 @@ def section3_prepare(context):
     context.scripts.local_annotations_path3 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'], "sample_datasets/FruitImage/json/train/apple_2.json")
 
 
+def section4_prepare(context):
+    context.scripts.dataset4 = context.dataset
+    context.scripts.local_items_path4 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'], "sample_datasets/FruitImage/items/train/apple_3.jpg")
+    context.scripts.local_annotations_path4 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'], "sample_datasets/FruitImage/json/train/apple_3.json")
+
+
+def section5_prepare(context):
+    context.scripts.csv_file_path5 = ''
+    context.scripts.dataset5 = context.dataset.id
+    context.scripts.item_id5 = context.item.id
+
+
 @behave.then(u'I run test upload and manage annotations "{section_name}"')
 def step_impl(context, section_name):
     sections_list = {
         'section1': context.scripts.section1,
         'section2': context.scripts.section2,
         'section3': context.scripts.section3,
+        'section4': context.scripts.section4,
+        'section5': context.scripts.section5,
     }
 
     try:

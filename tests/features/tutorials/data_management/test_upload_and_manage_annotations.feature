@@ -13,11 +13,11 @@ Feature: Upload and manage annotations
 
     Examples:
         | Section name |
-        | section1     |
-        | section2     |
-        | section3     |
+#        | section1     |
+#        | section2     |
+#        | section3     |
 #        | section4     |
-#        | section5     |
+        | section5     |
 #        | section5a    |
 #        | section5b    |
 #        | section6     |
