@@ -55,16 +55,6 @@ RUN pip3 install --user \
 ```  
   
 ## Using Private Docker Registry  
-<div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>  
-Using private images is NOT supported yet!</div>  
   
-To connect a private registry, you'll need to add the credentials as an Organization Secret and use the secret in the runtime configuration:  
+To connect a private registry, you'll need to add the docker container registry credentials as an Organization Secret (ONLY in the UI) and just create use the runner image.  
   
-
-```python
-service = package.deploy(service_name='my-service',
-                         runtime=dl.KubernetesRuntime(
-                             runner_image='gcr.io/ricks-project/butter-robot:2.5.13',
-                             runner_image_integration_id=''
-                         ))
-```
