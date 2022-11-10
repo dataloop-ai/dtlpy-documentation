@@ -1,4 +1,4 @@
-Feature: Test upload and manage items tutorial
+Feature: Upload and manage items tutorial
 
     Background: Initiate Platform Interface
         Given Platform Interface is initialized as dlp and Environment is set according to git branch
@@ -6,7 +6,7 @@ Feature: Test upload and manage items tutorial
         And   There is a dataset by the name of "test upload and manage items dataset"
         And   There is an item of type "image"
 
-    @testrail-C
+    @testrail-C4532886
     Scenario Outline: Run "Data Versioning" "<Section name>"
         When I prepared test upload and manage items "<Section name>"
         Then I run test upload and manage items "<Section name>"
