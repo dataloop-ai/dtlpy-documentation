@@ -1,25 +1,49 @@
 import dtlpy as dl
 
-class Scripts:
-    def section1(self, project, dataset_name):
-        """
-        Required parameters:
 
-        :param dl.Project project:
-        :param str dataset_name: 'my-dataset-name'
-        """
+class Scripts:
+    def __init__(self):
+        # section1
+        self.project1 = None
+        self.dataset_name1 = None
+        self.dataset1 = None
+        # section2
+        self.project_name2 = None
+        self.driver2 = None
+        self.dataset_name2 = None
+        self.dataset2 = None
+        # section3
+        self.project3 = None
+        self.dataset_id3 = None
+        self.dataset3 = None
+        # section4
+        self.dataset4 = None
+        self.directory4 = None
+        # section5
+        self.source_folder5 = None
+        self.destination_folder5 = None
+        self.source_project_name5 = None
+        self.source_dataset_name5 = None
+        self.destination_project_name5 = None
+        self.destination_dataset_name5 = None
+
+    def section1(self):
+        # DTLPY-STOP
+        project = getattr(self, 'project1', 'project')
+        dataset_name = getattr(self, 'dataset_name1', 'my-dataset-name')
+        # DTLPY-START
 
         dataset = project.datasets.create(dataset_name=dataset_name)
 
+        # DTLPY-STOP
+        self.dataset1 = dataset
 
-    def section2(self, project_name, driver, dataset_name):
-        """
-        Required parameters:
-
-        :param str project_name: 'my-project-name'
-        :param str driver: 'my-dataset-name'
-        :param str dataset_name: 'dataset_name'
-        """
+    def section2(self):
+        # DTLPY-STOP
+        project_name = getattr(self, 'project_name2', 'my-project-name')
+        driver = getattr(self, 'driver2', 'my_driver_name')
+        dataset_name = getattr(self, 'dataset_name2', 'my_dataset_name')
+        # DTLPY-START
 
         project = dl.projects.get(project_name=project_name)
         # Get your drivers list
@@ -27,41 +51,38 @@ class Scripts:
         # Create a dataset from a driver name. You can also create by the driver ID.
         dataset = project.datasets.create(driver=driver, dataset_name=dataset_name)
 
+        # DTLPY-STOP
+        self.dataset2 = dataset
 
-    def section3(self, project, dataset_id):
-        """
-        Required parameters:
-
-        :param dl.Project project:
-        :param str dataset_id: 'my-dataset-id'
-        """
+    def section3(self):
+        # DTLPY-STOP
+        project = getattr(self, 'project3', 'project')
+        dataset_id = getattr(self, 'dataset_id3', 'my-dataset-id')
+        # DTLPY-START
 
         datasets = project.datasets.list()
         dataset = project.datasets.get(dataset_id=dataset_id)
 
+        # DTLPY-STOP
+        self.dataset3 = dataset
 
-    def section4(self, dataset, directory):
-        """
-        Required parameters:
-
-        :param dl.Dataset dataset:
-        :param str directory: "/directory/name"
-        """
+    def section4(self):
+        # DTLPY-STOP
+        dataset = getattr(self, 'dataset4', 'dataset')
+        directory = getattr(self, 'directory3', '/directory/name')
+        # DTLPY-START
 
         dataset.items.make_dir(directory=directory)
 
-
-    def section5(self, source_folder, destination_folder, source_project_name, source_dataset_name, destination_project_name, destination_dataset_name):
-        """
-        Required parameters:
-
-        :param str source_folder: '/source_folder'
-        :param str destination_folder: '/destination_folder'
-        :param str source_project_name: 'source_project_name'
-        :param str source_dataset_name: 'source_dataset_name'
-        :param str destination_project_name: 'destination_project_name'
-        :param str destination_dataset_name: 'destination_dataset_name'
-        """
+    def section5(self):
+        # DTLPY-STOP
+        source_folder = getattr(self, 'project_name2', '/source_folder')
+        destination_folder = getattr(self, 'driver2', '/destination_folder')
+        source_project_name = getattr(self, 'dataset_name2', 'source_project_name')
+        source_dataset_name = getattr(self, 'project_name2', 'source_dataset_name')
+        destination_project_name = getattr(self, 'driver2', 'destination_project_name')
+        destination_dataset_name = getattr(self, 'dataset_name2', 'destination_dataset_name')
+        # DTLPY-START
 
         copy_annotations = True
         flat_copy = False  # if true, it copies all dir files and sub dir files to the destination folder without sub directories
