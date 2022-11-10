@@ -56,12 +56,12 @@ def section5_prepare(context):
     context.scripts.first_local_path5 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'],
                                                      'sample_datasets/FruitImage/items/train/apple_1.jpg')
     context.scripts.first_local_annotations_path5 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'],
-                                                                 'images/hamster.json')
+                                                                 'sample_datasets/FruitImage/json/train/apple_1.json')
     ''' Second item and info attached: '''
     context.scripts.second_local_path5 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'],
                                                       'sample_datasets/FruitImage/items/train/apple_2.jpg')
     context.scripts.second_local_annotations_path5 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'],
-                                                                  'images/hamster.json')
+                                                                  'sample_datasets/FruitImage/json/train/apple_2.json')
 
 
 @behave.then(u'I run test upload and manage items "{section_name}"')
