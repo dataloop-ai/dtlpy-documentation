@@ -2,10 +2,7 @@ Feature: Upload and manage annotations
 
     Background: Initiate Platform Interface
         Given Platform Interface is initialized as dlp and Environment is set according to git branch
-
-    @testrail-C
-    Scenario: Sanity
-        Given There is a project by the name of "upload and manage annotations project"
+        And   There is a project by the name of "upload and manage annotations project"
         And   There is a dataset by the name of "upload and manage annotations dataset"
         And   There is an item with annotations of type "image"
 

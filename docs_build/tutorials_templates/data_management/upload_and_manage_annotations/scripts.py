@@ -6,8 +6,7 @@ class Scripts:
         self.item_id1 = None
         self.annotation_id1 = None
 
-
-    def section1(self, item_id, annotation_id):
+    def section1(self):
         # DTLPY-STOP
         item_id = getattr(self, 'item_id1', 'item_id')
         annotation_id = getattr(self, 'annotation_id1', 'annotation_id')
@@ -18,7 +17,6 @@ class Scripts:
         annotation = item.annotations.get(annotation_id=annotation_id)
         annotation.metadata["user"] = True
         annotation.update()
-
 
     def section2(self, project_name, dataset_name, local_items_path, local_annotations_path):
         """

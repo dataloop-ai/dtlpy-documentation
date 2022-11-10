@@ -8,12 +8,12 @@ def step_impl(context, section_name):
         "section1": section1_prepare
     }
 
-    context.scripts = Scripts
+    context.scripts = Scripts()
     sections_list[section_name](context)
 
 
 def section1_prepare(context):
-    context.scripts.item_id = context.item.id
+    context.scripts.item_id1 = context.item.id
     context.scripts.annotation_id1 = context.item.annotations.list()[0].id
 
 
