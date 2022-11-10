@@ -14,10 +14,10 @@ Feature: Manage datasets tutorial
     Examples:
         | Section name |
         | section1     |
-#        | section2     | #TODO: Create Driver
-#        | section3     |
-#        | section4     |
-#        | section5     |
+#        | section2     | #TODO: Solve Driver security issues
+        | section3     |
+        | section4     |
+        | section5     |
 
 
 

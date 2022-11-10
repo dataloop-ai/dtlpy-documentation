@@ -1,4 +1,5 @@
 import behave
+import os
 from docs_build.tutorials_templates.data_management.manage_datasets.scripts import Scripts
 
 
@@ -23,7 +24,7 @@ def section1_prepare(context):
 
 def section2_prepare(context):
     context.scripts.project_name2 = context.project.name
-    # context.scripts.driver2 = '' #TODO: Create Driver
+    # context.scripts.driver2 = '' #TODO: Solve Driver security issues
     context.scripts.dataset_name2 = 'manage datasets dataset-section2'
 
 
@@ -33,15 +34,21 @@ def section3_prepare(context):
 
 
 def section4_prepare(context):
-    context.scripts.project = context.project
-    context.scripts.dataset = context.dataset
-    context.scripts.clone_name = context.dataset.name + '-clone'
+    context.scripts.dataset4 = context.dataset
 
 
 def section5_prepare(context):
-    context.scripts.project = context.project
-    context.scripts.dataset = context.dataset
-    context.scripts.clone_name = context.dataset.name + '-clone'
+    context.dataset.items.upload(local_path=os.path.join(os.environ['DATALOOP_TEST_ASSETS'], "images/hamster.jpg"),
+                                 local_annotations_path=os.path.join(os.environ['DATALOOP_TEST_ASSETS'], "images/hamster.json"),
+                                 remote_path='/images/hamster.jpg')
+    context.second_dataset = context.project.datasets.create(dataset_name='manage datasets dataset2-section5')
+
+    context.scripts.source_project_name5 = context.project.name
+    context.scripts.source_dataset_name5 = context.dataset.name
+    context.scripts.source_folder5 = '/images'
+    context.scripts.destination_project_name5 = context.project.name
+    context.scripts.destination_dataset_name5 = context.second_dataset.name
+    context.scripts.destination_folder5 = '/transferred_images'
 
 
 @behave.then(u'I run test manage datasets "{section_name}"')
@@ -59,3 +66,5 @@ def step_impl(context, section_name):
 
     except Exception as e:
         assert False, "Failed to run example : {}".format(e)
+
+    print('Hio')

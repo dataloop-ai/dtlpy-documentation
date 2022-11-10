@@ -18,14 +18,13 @@ class Scripts:
         self.dataset3 = None
         # section4
         self.dataset4 = None
-        self.directory4 = None
         # section5
-        self.source_folder5 = None
-        self.destination_folder5 = None
         self.source_project_name5 = None
         self.source_dataset_name5 = None
+        self.source_folder5 = None
         self.destination_project_name5 = None
         self.destination_dataset_name5 = None
+        self.destination_folder5 = None
 
     def section1(self):
         # DTLPY-STOP
@@ -69,19 +68,18 @@ class Scripts:
     def section4(self):
         # DTLPY-STOP
         dataset = getattr(self, 'dataset4', 'dataset')
-        directory = getattr(self, 'directory3', '/directory/name')
         # DTLPY-START
 
-        dataset.items.make_dir(directory=directory)
+        dataset.items.make_dir(directory='/directory/name')
 
     def section5(self):
         # DTLPY-STOP
-        source_folder = getattr(self, 'project_name2', '/source_folder')
-        destination_folder = getattr(self, 'driver2', '/destination_folder')
-        source_project_name = getattr(self, 'dataset_name2', 'source_project_name')
-        source_dataset_name = getattr(self, 'project_name2', 'source_dataset_name')
-        destination_project_name = getattr(self, 'driver2', 'destination_project_name')
-        destination_dataset_name = getattr(self, 'dataset_name2', 'destination_dataset_name')
+        source_project_name = getattr(self, 'source_project_name5', 'source_project_name')
+        source_dataset_name = getattr(self, 'source_dataset_name5', 'source_dataset_name')
+        source_folder = getattr(self, 'source_folder5', '/source_folder')
+        destination_project_name = getattr(self, 'destination_project_name5', 'destination_project_name')
+        destination_dataset_name = getattr(self, 'destination_dataset_name5', 'destination_dataset_name')
+        destination_folder = getattr(self, 'destination_folder5', '/destination_folder')
         # DTLPY-START
 
         copy_annotations = True
