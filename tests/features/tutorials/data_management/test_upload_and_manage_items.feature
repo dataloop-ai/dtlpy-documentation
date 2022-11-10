@@ -6,7 +6,7 @@ Feature: Test upload and manage items tutorial
         And   There is a dataset by the name of "test upload and manage items dataset"
         And   There is an item of type "image"
 
-    @testrail-C4528883
+    @testrail-C
     Scenario Outline: Run "Data Versioning" "<Section name>"
         When I prepared test upload and manage items "<Section name>"
         Then I run test upload and manage items "<Section name>"
@@ -15,7 +15,7 @@ Feature: Test upload and manage items tutorial
         | Section name |
 #        | section1     |
 #        | section2     |
-        | section3     |
+#        | section3     |
 #        | section4     |
-#        | section5     |
+        | section5     |
 

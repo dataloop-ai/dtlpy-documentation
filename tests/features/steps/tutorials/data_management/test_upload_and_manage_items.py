@@ -51,17 +51,17 @@ def section4_prepare(context):
 
 
 def section5_prepare(context):
-    # dataset_id = getattr(self, 'dataset_id5', 'id')
-    # ''' First item and info attached: '''
-    # local_path1 = getattr(self, 'first_local_path5', r"E:\TypesExamples\000000000064.jpg")
-    # local_annotations_path1 = getattr(self, 'first_local_annotations_path5', r"E:\TypesExamples\000000000776.json")
-    # ''' Second item and info attached: '''
-    # local_path2 = getattr(self, 'second_local_path5', r"E:\TypesExamples\000000000776.jpg")
-    # local_annotations_path2 = getattr(self, 'second_local_annotations_path5', r"E:\TypesExamples\000000000776.json")
-    context.scripts.project = context.project
-    context.scripts.dataset = context.dataset
-    context.scripts.dataset_clone = context.project.datasets.get(dataset_name=context.dataset.name + '-clone')
-    context.scripts.merge_name = context.dataset.name + '-merge'
+    context.scripts.dataset_id5 = context.dataset
+    ''' First item and info attached: '''
+    context.scripts.first_local_path5 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'],
+                                                     'sample_datasets/FruitImage/items/train/apple_1.jpg')
+    context.scripts.first_local_annotations_path5 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'],
+                                                                 'images/hamster.json')
+    ''' Second item and info attached: '''
+    context.scripts.second_local_path5 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'],
+                                                      'sample_datasets/FruitImage/items/train/apple_2.jpg')
+    context.scripts.second_local_annotations_path5 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'],
+                                                                  'images/hamster.json')
 
 
 @behave.then(u'I run test upload and manage items "{section_name}"')
@@ -69,9 +69,9 @@ def step_impl(context, section_name):
     sections_list = {
         'section1': context.scripts.section1,
         'section2': context.scripts.section2,
-        'section3': context.scripts.section2,
-        'section4': context.scripts.section2,
-        'section5': context.scripts.section2,
+        'section3': context.scripts.section3,
+        'section4': context.scripts.section4,
+        'section5': context.scripts.section5,
     }
 
     try:
