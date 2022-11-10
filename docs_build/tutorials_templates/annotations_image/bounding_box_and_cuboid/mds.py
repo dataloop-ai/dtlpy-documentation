@@ -1,6 +1,6 @@
 def section1():
     """
-    # Bounding Box abd Cuboid
+    # Bounding Box and Cuboid
     ## Create Box Annotation
 
     """

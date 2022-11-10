@@ -52,7 +52,7 @@ def func5():
 
 
 def func6():
-    print("Training {!r} on data {!r}".format(model.name, data_path))
+    print("Training {!r} on dataset {!r}".format(model.name, dataset.name))
     adapter.train_model(model=model)
 
 
