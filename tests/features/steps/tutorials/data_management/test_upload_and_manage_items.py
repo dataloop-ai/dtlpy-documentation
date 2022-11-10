@@ -51,7 +51,7 @@ def section4_prepare(context):
 
 
 def section5_prepare(context):
-    context.scripts.dataset_id5 = context.dataset
+    context.scripts.dataset_id5 = context.dataset.id
     ''' First item and info attached: '''
     context.scripts.first_local_path5 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'],
                                                      'sample_datasets/FruitImage/items/train/apple_1.jpg')

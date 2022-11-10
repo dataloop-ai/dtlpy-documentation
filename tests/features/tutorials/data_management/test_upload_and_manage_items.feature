@@ -13,9 +13,9 @@ Feature: Test upload and manage items tutorial
 
     Examples:
         | Section name |
-#        | section1     |
-#        | section2     |
-#        | section3     |
-#        | section4     |
+        | section1     |
+        | section2     |
+        | section3     |
+        | section4     |
         | section5     |
 
