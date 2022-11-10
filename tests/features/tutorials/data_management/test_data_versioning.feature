@@ -6,7 +6,7 @@ Feature: Data versioning tutorial
         And   There is a dataset by the name of "data versioning dataset"
         And   There is an item with annotations of type "image"
 
-    @testrail-C4528883
+    @testrail-C4532887
     Scenario Outline: Run "Data Versioning" "<Section name>"
         When I prepared test data versioning "<Section name>"
         Then I run test data versioning "<Section name>"
