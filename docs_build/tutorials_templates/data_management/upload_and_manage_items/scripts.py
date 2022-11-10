@@ -6,7 +6,9 @@ class Scripts:
         # section1
         self.project_name1 = None
         self.dataset_name1 = None
-        self.local_path1 = None
+        self.local_path_item1 = None
+        self.local_path_item2 = None
+        self.local_path_item3 = None
         self.remote_path1 = None
         self.project1 = None
         self.dataset1 = None
@@ -18,6 +20,7 @@ class Scripts:
         # section3
         self.project3 = None
         self.dataset_name3 = None
+        self.file_name3 = None
         self.link3 = None
         self.item3 = None
         # section4
@@ -34,9 +37,9 @@ class Scripts:
         # DTLPY-STOP
         project_name = getattr(self, 'project_name1', 'project_name')
         dataset_name = getattr(self, 'dataset_name1', 'dataset_name')
-        local_path = getattr(self, 'local_path1', [[r'C:/home/project/images/John Morris.jpg',
-                                                    r'C:/home/project/images/John Benton.jpg',
-                                                    r'C:/home/project/images/Liu Jinli.jpg']])
+        local_path_item1 = getattr(self, 'local_path_item1', r'C:/home/project/images/John Morris.jpg')
+        local_path_item2 = getattr(self, 'local_path_item2', r'C:/home/project/images/John Benton.jpg')
+        local_path_item3 = getattr(self, 'local_path_item3', r'C:/home/project/images/Liu Jinli.jpg')
         remote_path = getattr(self, 'remote_path1', '/folder_name')
         # DTLPY-START
 
@@ -45,7 +48,7 @@ class Scripts:
             dl.login()
         project = dl.projects.get(project_name=project_name)
         dataset = project.datasets.get(dataset_name=dataset_name)
-        dataset.items.upload(local_path=local_path,
+        dataset.items.upload(local_path=[local_path_item1, local_path_item2, local_path_item3],
                              remote_path=remote_path)  # Remote path is optional, images will go to the root directory by default
 
         # DTLPY-STOP
@@ -72,19 +75,19 @@ class Scripts:
         # DTLPY-STOP
         project = getattr(self, 'project3', 'project')
         dataset_name = getattr(self, 'dataset_name3', 'dataset_name')
+        file_name = getattr(self, 'file_name3', 'file_name.jpg')
         # DTLPY-START
 
         dataset = project.datasets.get(dataset_name=dataset_name)
         url_path = 'http://ww.some_website/beautiful_flower.jpg'
         # Create link
-        link = dl.UrlLink(ref=url_path, mimetype='image', name='file_name.jpg')
+        link = dl.UrlLink(ref=url_path, mimetype='image', name=file_name)
         # Upload link
         item = dataset.items.upload(local_path=link)
 
         # DTLPY-STOP
         self.link3 = link
         self.item3 = item
-
 
     def section4(self):
         # DTLPY - STOP
