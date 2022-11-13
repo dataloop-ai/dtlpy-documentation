@@ -44,11 +44,8 @@ def func4():
 
 def func5():
     # Create annotation task with new statue
-    task = dl.tasks.create(
+    task = dataset.tasks.create(
         task_name='<task_name>',
-        due_date=datetime.datetime(day=1, month=1, year=2029).timestamp(),
         assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai'],
-        # The items will be divided equally between assignments
-        filters=filters,  # filter by folder directory or use other filters,
         available_actions=[dl.ItemAction(action='action_name', display_name='display_name')]  # Task statuses
     )

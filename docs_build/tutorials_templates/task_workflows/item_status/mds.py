@@ -33,7 +33,7 @@ def func4():
 
 def func5():
     """
-    ### 4. Add task statuses
+    ### 4. Create a task with item actions (statuses options)
     """
 
 

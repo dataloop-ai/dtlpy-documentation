@@ -51,16 +51,13 @@ item.update_status(dl.ITEM_STATUS_DISCARDED, task_id=task.id, clear=True)
 item.update_status(dl.ITEM_STATUS_APPROVED, assignment_id=assignment.id, clear=True)
 item.update_status(dl.ITEM_STATUS_COMPLETED, clear=True)  # this will work if the item is included in only one task
 ```
-### 4. Add task statuses  
+### 4. Create a task with item actions (statuses options)  
 
 ```python
 # Create annotation task with new statue
-task = dl.tasks.create(
+task = dataset.tasks.create(
     task_name='<task_name>',
-    due_date=datetime.datetime(day=1, month=1, year=2029).timestamp(),
     assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai'],
-    # The items will be divided equally between assignments
-    filters=filters,  # filter by folder directory or use other filters,
     available_actions=[dl.ItemAction(action='action_name', display_name='display_name')]  # Task statuses
 )
 ```
