@@ -63,7 +63,7 @@ dataset.metadata['system']['subsets'] = {
     'train': json.dumps(dl.Filters(field='dir', values='/train').prepare()),
     'validation': json.dumps(dl.Filters(field='dir', values='/validation').prepare()),
 }
-dataset.update()
+dataset.update(system_metadata=True)
 ```
 This way, when the training starts, the sets will be downloaded using the DQL and any future training session on this dataset will have the same subsets of data.  
   
