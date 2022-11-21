@@ -42,8 +42,8 @@ def section2():
     """
     4. Deploy the code to the function app you created.
     5. In VS code go to view tab -> Command Palette -> Azure Functions: Upload Local Settings
-    6. go to the Function App -> Select your function -> Configuration (Under Settings section)
+    6. Go to the Function App -> Select your function -> Configuration (Under Settings section)
            * add the 3 secrets vars DATASET_ID, DTLPY_USERNAME, DTLPY_PASSWORD
 
-    **Done! Now your storage blob will be sync with the Dataloop dataset**
+    **Done! Now your storage blob will be synced with the Dataloop dataset**
     """

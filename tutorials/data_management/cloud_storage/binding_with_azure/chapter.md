@@ -58,4 +58,4 @@ def main(myblob: func.InputStream):
 6. Go to the Function App -> Select your function -> Configuration (Under Settings section)  
        * add the 3 secrets vars DATASET_ID, DTLPY_USERNAME, DTLPY_PASSWORD  
   
-**Done! Now your storage blob will sync with the Dataloop dataset**  
+**Done! Now your storage blob will be synced with the Dataloop dataset**  
