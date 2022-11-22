@@ -1,5 +1,6 @@
 import dtlpy as dl
 
+
 class Scripts:
     def __init__(self):
         # section1
@@ -115,101 +116,155 @@ class Scripts:
         # Upload all created annotations
         item.annotations.upload(annotations=builder)
 
-
     def section5a(self):
-        import dtlpy as dl
-        project = dl.projects.get(project_name='project_name')
-        dataset = project.datasets.get(dataset_name='dataset_name')
-        # local path to item
-        local_item_path = r'/Users/local/path/to/item.png'
-        # local path to vtt
-        local_vtt_path = r'/Users/local/path/to/subtitles.vtt'
-        # upload item
-        item = dataset.items.upload(local_path=local_item_path)
+        # DTLPY-STOP
+        project_name = getattr(self, 'project_name5a', 'project_name')
+        dataset_name = getattr(self, 'dataset_name5a', 'dataset_name')
+        local_item_path = getattr(self, 'local_item_path5a', r'/Users/local/path/to/item.png')
+        local_vtt_path = getattr(self, 'local_vtt_path5a', r'/Users/local/path/to/subtitles.vtt')
+        # DTLPY-START
 
-        # upload VTT file - wait until the item finishs uploading
+        import dtlpy as dl
+        project = dl.projects.get(project_name=project_name)
+        dataset = project.datasets.get(dataset_name=dataset_name)
+
+        # upload item
+        item = dataset.items.upload(local_path=local_item_path)  # local path to item
+
+        # upload VTT file - wait until the item finishes uploading
         builder = item.annotations.builder()
-        builder.from_vtt_file(filepath=local_vtt_path)
+        builder.from_vtt_file(filepath=local_vtt_path)  # local path to vtt
         item.annotations.upload(builder)
 
-
     def section5b(self):
-        project = dl.projects.get(project_name='project_name')
-        dataset = project.datasets.get(dataset_name='dataset_name')
-        item = dataset.items.get(filepath='/my_item.mp4')
+        # DTLPY-STOP
+        project_name = getattr(self, 'project_name5b', 'project_name')
+        dataset_name = getattr(self, 'dataset_name5b', 'dataset_name')
+        filepath = getattr(self, 'filepath5b', '/my_item.mp4')
+        label = getattr(self, 'label5b', '<label>')
+        text = getattr(self, 'text5b', '<text>')
+        start_time = getattr(self, 'start_time5b', '<start>')
+        end_time = getattr(self, 'end_time5b', '<end>')
+        # DTLPY-START
+
+        project = dl.projects.get(project_name=project_name)
+        dataset = project.datasets.get(dataset_name=dataset_name)
+        item = dataset.items.get(filepath=filepath)
         # Using annotation builder
         builder = item.annotations.builder()
-        builder.add(annotation_definition=dl.Subtitle(label='<label>', text='<text>'),
-                    start_time='<start>',
-                    end_time='<end>')
-
-
+        builder.add(annotation_definition=dl.Subtitle(label=label, text=text),
+                    start_time=start_time,
+                    end_time=end_time)
 
     def section6(self):
+        # DTLPY-STOP
+        annotation = getattr(self, 'annotation6', '')
+        # DTLPY-START
+
         dl.use_attributes_2(True)
         annotation.attributes.update({"ID of the attribute": "value of the attribute"})
         annotation = annotation.update(True)
 
-
     def section7(self):
-        dl.use_attributes_2(True)
-        annotation.attributes.update({"<attribute-id>": number_on_range})
-        annotation = annotation.update(system_metadata=True)
+        # DTLPY-STOP
+        annotation = getattr(self, 'annotation7', '')
+        attribute_id = getattr(self, 'attribute_id7', '<attribute-id>')
+        number_on_range = getattr(self, 'number_on_range7', '')
+        # DTLPY-START
 
+        dl.use_attributes_2(True)
+        annotation.attributes.update({attribute_id: number_on_range})
+        annotation = annotation.update(system_metadata=True)
 
     def section8(self):
-        dl.use_attributes_2(True)
-        annotation.attributes.update({"<attribute-id>": ["selection", "selection"]})
-        annotation = annotation.update(system_metadata=True)
+        # DTLPY-STOP
+        annotation = getattr(self, 'annotation8', '')
+        attribute_id = getattr(self, 'attribute_id8', '<attribute-id>')
+        # DTLPY-START
 
+        dl.use_attributes_2(True)
+        annotation.attributes.update({attribute_id: ["selection", "selection"]})
+        annotation = annotation.update(system_metadata=True)
 
     def section9(self):
-        dl.use_attributes_2(True)
-        annotation.attributes.update({"<attribute-id>": "selection"})
-        annotation = annotation.update(system_metadata=True)
+        # DTLPY-STOP
+        annotation = getattr(self, 'annotation9', '')
+        attribute_id = getattr(self, 'attribute_id9', '<attribute-id>')
+        # DTLPY-START
 
+        dl.use_attributes_2(True)
+        annotation.attributes.update({attribute_id: "selection"})
+        annotation = annotation.update(system_metadata=True)
 
     def section10(self):
-
+        # DTLPY-STOP
+        annotation = getattr(self, 'annotation10', '')
+        attribute_id = getattr(self, 'attribute_id10', '<attribute-id>')
+        true_or_false = getattr(self, 'true_or_false10', True / False)
+        # DTLPY-START
 
         dl.use_attributes_2(True)
-        annotation.attributes.update({"<attribute-id>": True / False})
+        annotation.attributes.update({attribute_id: true_or_false})
         annotation = annotation.update(system_metadata=True)
 
-
     def section11(self):
+        # DTLPY-STOP
+        image = getattr(self, 'image11', '')
+        thickness = getattr(self, 'thickness11', '')
+        with_text = getattr(self, 'with_text11', '')
+        height = getattr(self, 'height11', '')
+        width = getattr(self, 'width11', '')
+        annotation_format = getattr(self, 'annotation_format11', '')
+        color = getattr(self, 'color11', '')
+        # DTLPY-START
+
         # Use the show function for all annotation types
         box = dl.Box()
         # Must provide all inputs
-        box.show(image='',
-                 thickness='',
-                 with_text='',
-                 height='',
-                 width='',
-                 annotation_format='',
-                 color='')
-
+        box.show(image=image,
+                 thickness=thickness,
+                 with_text=with_text,
+                 height=height,
+                 width=width,
+                 annotation_format=annotation_format,
+                 color=color)
 
     def section12(self):
-        # Must input an image or height and width
-        annotation.show(image='',
-                        height='', width='',
-                        annotation_format='dl.ViewAnnotationOptions.*',
-                        thickness='',
-                        with_text='')
+        # DTLPY-STOP
+        annotation = getattr(self, 'annotation12', '')
+        image = getattr(self, 'image12', '')
+        height = getattr(self, 'height12', '')
+        width = getattr(self, 'width12', '')
+        thickness = getattr(self, 'thickness12', '')
+        with_text = getattr(self, 'with_text12', '')
+        # DTLPY-START
 
+        # Must input an image or height and width
+        annotation.show(image=image,
+                        height=height, width=width,
+                        annotation_format='dl.ViewAnnotationOptions.*',
+                        thickness=thickness,
+                        with_text=with_text)
 
     def section13(self):
-        dataset.download(local_path=r'C:/home/project/images',  # The default value is ".dataloop" folder
+        # DTLPY-STOP
+        dataset = getattr(self, 'dataset13', '')
+        local_path = getattr(self, 'local_path13', r'C:/home/project/images')
+        # DTLPY-START
+
+        dataset.download(local_path=local_path,  # The default value is ".dataloop" folder
                          annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 
-
     def section14(self):
-        dataset.download(local_path=r'C:/home/project/images',  # The default value is ".dataloop" folder
+        # DTLPY-STOP
+        dataset = getattr(self, 'dataset14', '')
+        local_path = getattr(self, 'local_path14', r'C:/home/project/images')
+        # DTLPY-START
+
+        dataset.download(local_path=local_path,  # The default value is ".dataloop" folder
                          annotation_options=[dl.VIEW_ANNOTATION_OPTIONS_MASK,
                                              dl.VIEW_ANNOTATION_OPTIONS_JSON,
                                              dl.ViewAnnotationOptions.INSTANCE])
-
 
     def section15(self):
         # Filter items from "folder_name" directory
@@ -221,7 +276,6 @@ class Scripts:
                          annotation_filters=annotation_filters,
                          annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 
-
     def section16(self):
         item = dataset.items.get(item_id="item_id")  # Get item from dataset to be able to view the dataset colors on Mask
         # Filter items with dog annotations
@@ -229,7 +283,6 @@ class Scripts:
         item.download(local_path=r'C:/home/project/images',  # the default value is ".dataloop" folder
                       annotation_filters=annotation_filters,
                       annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
-
 
     def section17(self):
         # Filter items from "folder_name" directory
@@ -246,18 +299,26 @@ class Scripts:
                                   filters=item_filters,
                                   annotation_filters=annotation_filters)
 
-
     def section18(self):
+        # DTLPY-STOP
+        dataset = getattr(self, 'dataset18', '')
+        local_path = getattr(self, 'local_path18', '/path')
+        # DTLPY-START
+
         # Param export_version will be set to ExportVersion.V1 by default.
-        dataset.download(local_path='/path',
+        dataset.download(local_path=local_path,
                          annotation_options='json',
                          export_version=dl.ExportVersion.V2)
 
-
     def section19(self):
+        # DTLPY-STOP
+        item_id = getattr(self, 'item_id19', 'my-item-id')
+        save_path = getattr(self, 'save_path19', r'C:/home/project/images.jpg')
+        # DTLPY-START
+
         from PIL import Image
-        item = dl.items.get(item_id='my-item-id')
+        item = dl.items.get(item_id=item_id)
         array = item.download(save_locally=False, to_array=True)
         # Check out the downloaded Ndarray with these commands - optional
         image = Image.fromarray(array)
-        image.save(r'C:/home/project/images.jpg')
+        image.save(save_path)
