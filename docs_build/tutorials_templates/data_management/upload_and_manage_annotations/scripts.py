@@ -24,6 +24,58 @@ class Scripts:
         self.csv_file_path5 = None
         self.dataset5 = None
         self.item_id5 = None
+        # section6
+        self.annotation6 = None
+        # section7
+        self.annotation7 = None
+        self.attribute_id7 = None
+        self.number_on_range7 = None
+        # section8
+        self.annotation8 = None
+        self.attribute_id8 = None
+        # section9
+        self.annotation9 = None
+        self.attribute_id9 = None
+        # section10
+        self.annotation10 = None
+        self.attribute_id10 = None
+        self.true_or_false10 = None
+        # section11
+        self.image11 = None
+        self.thickness11 = None
+        self.with_text11 = None
+        self.height11 = None
+        self.width11 = None
+        self.annotation_format11 = None
+        self.color11 = None
+        # section12
+        self.annotation12 = None
+        self.image12 = None
+        self.height12 = None
+        self.width12 = None
+        self.thickness12 = None
+        self.with_text12 = None
+        # section13
+        self.dataset13 = None
+        self.local_path13 = None
+        # section14
+        self.dataset14 = None
+        self.local_path14 = None
+        # section15
+        self.dataset15 = None
+        self.local_path15 = None
+        # section16
+        self.dataset16 = None
+        self.local_path16 = None
+        # section17
+        self.dataset17 = None
+        self.local_path17 = None
+        # section18
+        self.dataset18 = None
+        self.local_path18 = None
+        # section19
+        self.item_id19 = None
+        self.save_path19 = None
 
     def section1(self):
         # DTLPY-STOP
@@ -267,24 +319,39 @@ class Scripts:
                                              dl.ViewAnnotationOptions.INSTANCE])
 
     def section15(self):
+        # DTLPY-STOP
+        dataset = getattr(self, 'dataset15', '')
+        local_path = getattr(self, 'local_path15', r'C:/home/project/images')
+        # DTLPY-START
+
         # Filter items from "folder_name" directory
         item_filters = dl.Filters(resource='items', field='dir', values='/dog_name')
         # Filter items with dog annotations
         annotation_filters = dl.Filters(resource=dl.FiltersResource.ANNOTATION, field='label', values='dog')
-        dataset.download(local_path=r'C:/home/project/images',  # The default value is ".dataloop" folder
+        dataset.download(local_path=local_path,  # The default value is ".dataloop" folder
                          filters=item_filters,
                          annotation_filters=annotation_filters,
                          annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 
     def section16(self):
+        # DTLPY-STOP
+        dataset = getattr(self, 'dataset16', '')
+        local_path = getattr(self, 'local_path16', r'C:/home/project/images')
+        # DTLPY-START
+
         item = dataset.items.get(item_id="item_id")  # Get item from dataset to be able to view the dataset colors on Mask
         # Filter items with dog annotations
         annotation_filters = dl.Filters(resource='annotations', field='label', values='dog')
-        item.download(local_path=r'C:/home/project/images',  # the default value is ".dataloop" folder
+        item.download(local_path=local_path,  # the default value is ".dataloop" folder
                       annotation_filters=annotation_filters,
                       annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 
     def section17(self):
+        # DTLPY-STOP
+        dataset = getattr(self, 'dataset17', '')
+        local_path = getattr(self, 'local_path17', r'C:/home/coco_annotations')
+        # DTLPY-START
+
         # Filter items from "folder_name" directory
         item_filters = dl.Filters(resource='items', field='dir', values='/dog_name')
         # Filter items with dog annotations
@@ -295,9 +362,9 @@ class Scripts:
                                   # to_format='yolo',
                                   # to_format='voc',
                                   to_format='coco',
-                                  local_path=r'C:/home/coco_annotations',
+                                  local_path=local_path,
                                   filters=item_filters,
-                                  annotation_filters=annotation_filters)
+                                  annotation_filter=annotation_filters)
 
     def section18(self):
         # DTLPY-STOP
