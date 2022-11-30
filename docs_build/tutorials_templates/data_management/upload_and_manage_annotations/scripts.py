@@ -94,8 +94,8 @@ class Scripts:
 
     def section2(self):
         # DTLPY-STOP
-        project_name = getattr(self, 'project_name2', 'project')
-        dataset_name = getattr(self, 'dataset_name2', 'dataset')
+        project_name = getattr(self, 'project_name2', 'project_name')
+        dataset_name = getattr(self, 'dataset_name2', 'dataset_name')
         local_items_path = getattr(self, 'local_items_path2', r'<items path>')
         local_annotations_path = getattr(self, 'local_annotations_path2', r'<annotation json file path>')
         # DTLPY-START
