@@ -9,12 +9,14 @@ on:
   pull_request:
     branches: [ "main" ]
 
+  schedule:
+      # Workflow will run every day At 07:00
+      - cron:  '0 7 * * *'
+
 permissions:
   contents: read
 
-schedule:
-    # Workflow will run every day At 07:00
-    - cron:  '0 7 * * *'
+
 
 jobs:
   build:
