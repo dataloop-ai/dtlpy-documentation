@@ -58,8 +58,11 @@ def section4_prepare(context):
 
 
 def section5_prepare(context):
-    context.scripts.csv_file_path5 = ''
-    context.scripts.dataset5 = context.dataset.id
+    video_item_path = os.path.join(os.environ['DATALOOP_TEST_ASSETS'], "sample_items/sample_video.mp4")
+    context.item = context.dataset.items.upload(local_path=video_item_path)
+
+    context.scripts.csv_file_path5 = os.path.join(os.environ['DATALOOP_TEST_ASSETS'], "sample_items/video_annotation_example.csv")
+    context.scripts.dataset5 = context.dataset
     context.scripts.item_id5 = context.item.id
 
 
