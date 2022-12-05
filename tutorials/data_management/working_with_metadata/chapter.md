@@ -90,7 +90,7 @@ Item in platform should have section 'user' in metadata with field 'MyKey' and v
 annotation = dl.annotations.get(annotation_id='my-annotation-id')
 # modify metadata
 annotation.metadata['user'] = dict()
-item.metadata['user']['red'] = True
+annotation.metadata['user']['red'] = True
 # update and reclaim annotation
 annotation = annotation.update()
 ```
