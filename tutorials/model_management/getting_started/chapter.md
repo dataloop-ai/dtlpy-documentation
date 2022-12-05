@@ -36,7 +36,7 @@ for x_metric, y_metric in zip(epoch, epoch_metric):
                           dataset_id=model.dataset_id)
 ```
 Metrics plots will appear under the “metrics” tab of your chosen model, and will look something like this:  
-![Screenshot of model metrics plot](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt_3/assets/images/model_management/metrics_example.png)  
+![Screenshot of model metrics plot](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt_3/assets/images/model_management/metrics_example.png/)  
   
 ### Using pretrained models from the AI library  
   
