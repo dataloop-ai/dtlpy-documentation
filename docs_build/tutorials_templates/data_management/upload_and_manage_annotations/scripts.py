@@ -39,6 +39,8 @@ class Scripts:
         self.end_time5b = None
         # section6
         self.annotation6 = None
+        self.attribute_id6 = None
+        self.attribute_value6 = None
         # section7
         self.annotation7 = None
         self.attribute_id7 = None
@@ -256,12 +258,16 @@ class Scripts:
 
     def section6(self):
         annotation = 'annotation'
+        attribute_id = "ID of the attribute"
+        attribute_value = "value of the attribute"
         # DTLPY-STOP
         annotation = self.annotation6
+        attribute_id =self.attribute_id6
+        attribute_value = self.attribute_value6
         # DTLPY-START
 
         dl.use_attributes_2(True)
-        annotation.attributes.update({"ID of the attribute": "value of the attribute"})
+        annotation.attributes.update({attribute_id: attribute_value})
         annotation = annotation.update(True)
 
     def section7(self):
