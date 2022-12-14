@@ -1,0 +1,116 @@
+import behave
+import os
+from docs_build.tutorials_templates.data_management.working_with_metadata.scripts import Scripts
+
+
+@behave.when(u'I prepared test working with metadata "{section_name}"')
+def step_impl(context, section_name):
+    sections_list = {
+        "section1": section1_prepare,
+        "section2": section2_prepare,
+        "section3": section3_prepare,
+        "section4": section4_prepare,
+        "section5": section5_prepare,
+        "section6": section6_prepare,
+        "section7": section7_prepare,
+        "section8": section8_prepare,
+        "section9": section9_prepare,
+        "section10": section10_prepare,
+        "section11": section11_prepare,
+        "section12": section12_prepare,
+        "section13": section13_prepare,
+        "section14": section14_prepare,
+        "section15": section15_prepare,
+    }
+
+    context.scripts = Scripts()
+    sections_list[section_name](context)
+
+
+def section1_prepare(context):
+    return True
+
+
+def section2_prepare(context):
+    return True
+
+
+def section3_prepare(context):
+    return True
+
+
+def section4_prepare(context):
+    return True
+
+
+def section5_prepare(context):
+    return True
+
+
+def section6_prepare(context):
+    assert True
+
+
+def section7_prepare(context):
+    assert True
+
+
+def section8_prepare(context):
+    assert True
+
+
+def section9_prepare(context):
+    assert True
+
+
+def section10_prepare(context):
+    assert True
+
+
+def section11_prepare(context):
+    assert True
+
+
+def section12_prepare(context):
+    assert True
+
+
+def section13_prepare(context):
+    assert True
+
+
+def section14_prepare(context):
+    assert True
+
+
+def section15_prepare(context):
+    assert True
+
+
+@behave.then(u'I run test working with metadata "{section_name}"')
+def step_impl(context, section_name):
+    sections_list = {
+        'section1': context.scripts.section1,
+        'section2': context.scripts.section2,
+        'section3': context.scripts.section3,
+        'section4': context.scripts.section4,
+        'section5': context.scripts.section5,
+        'section5a': context.scripts.section5a,
+        'section5b': context.scripts.section5b,
+        'section6': context.scripts.section6,
+        'section7': context.scripts.section7,
+        'section8': context.scripts.section8,
+        'section9': context.scripts.section9,
+        'section10': context.scripts.section10,
+        'section11': context.scripts.section11,
+        'section12': context.scripts.section12,
+        'section13': context.scripts.section13,
+        'section14': context.scripts.section14,
+        'section15': context.scripts.section15,
+    }
+
+    try:
+        sections_list[section_name]()
+
+    except Exception as e:
+        assert False, "Failed to run example : {}".format(e)
