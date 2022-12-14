@@ -27,9 +27,11 @@ class Scripts:
         self.destination_folder5 = None
 
     def section1(self):
+        dataset_name = 'my-dataset-name'
+
         # DTLPY-STOP
-        project = getattr(self, 'project1', 'project')
-        dataset_name = getattr(self, 'dataset_name1', 'my-dataset-name')
+        project = self.project1
+        dataset_name = self.dataset_name1
         # DTLPY-START
 
         dataset = project.datasets.create(dataset_name=dataset_name)
@@ -38,10 +40,14 @@ class Scripts:
         self.dataset1 = dataset
 
     def section2(self):
+        project_name = 'my-project-name'
+        driver = 'my_driver_name'
+        dataset_name = 'my_dataset_name'
+
         # DTLPY-STOP
-        project_name = getattr(self, 'project_name2', 'my-project-name')
-        driver = getattr(self, 'driver2', 'my_driver_name')
-        dataset_name = getattr(self, 'dataset_name2', 'my_dataset_name')
+        project_name = self.project_name2
+        driver = self.driver2
+        dataset_name = self.dataset_name2
         # DTLPY-START
 
         project = dl.projects.get(project_name=project_name)
@@ -54,9 +60,11 @@ class Scripts:
         self.dataset2 = dataset
 
     def section3(self):
+        dataset_id = 'my-dataset-id'
+
         # DTLPY-STOP
-        project = getattr(self, 'project3', 'project')
-        dataset_id = getattr(self, 'dataset_id3', 'my-dataset-id')
+        project = self.project3
+        dataset_id = self.dataset_id3
         # DTLPY-START
 
         datasets = project.datasets.list()
@@ -67,19 +75,26 @@ class Scripts:
 
     def section4(self):
         # DTLPY-STOP
-        dataset = getattr(self, 'dataset4', 'dataset')
+        dataset = self.dataset4
         # DTLPY-START
 
         dataset.items.make_dir(directory='/directory/name')
 
     def section5(self):
+        source_folder = '/source_folder'
+        destination_folder = '/destination_folder'
+        source_project_name = 'source_project_name'
+        source_dataset_name = 'source_dataset_name'
+        destination_project_name = 'destination_project_name'
+        destination_dataset_name = 'destination_dataset_name'
+
         # DTLPY-STOP
-        source_project_name = getattr(self, 'source_project_name5', 'source_project_name')
-        source_dataset_name = getattr(self, 'source_dataset_name5', 'source_dataset_name')
-        source_folder = getattr(self, 'source_folder5', '/source_folder')
-        destination_project_name = getattr(self, 'destination_project_name5', 'destination_project_name')
-        destination_dataset_name = getattr(self, 'destination_dataset_name5', 'destination_dataset_name')
-        destination_folder = getattr(self, 'destination_folder5', '/destination_folder')
+        source_project_name = self.source_project_name5
+        source_dataset_name = self.source_dataset_name5
+        source_folder = self.source_folder5
+        destination_project_name = self.destination_project_name5
+        destination_dataset_name = self.destination_dataset_name5
+        destination_folder = self.destination_folder5
         # DTLPY-START
 
         copy_annotations = True
