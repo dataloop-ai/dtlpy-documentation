@@ -74,11 +74,13 @@ class Scripts:
         self.dataset3 = dataset
 
     def section4(self):
+        directory = '/directory/name'
+
         # DTLPY-STOP
         dataset = self.dataset4
         # DTLPY-START
 
-        dataset.items.make_dir(directory='/directory/name')
+        dataset.items.make_dir(directory=directory)
 
     def section5(self):
         source_folder = '/source_folder'
