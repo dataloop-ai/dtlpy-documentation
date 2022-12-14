@@ -4,7 +4,6 @@ Feature: Modalities
         Given Platform Interface is initialized as dlp and Environment is set according to git branch
         And   There is a project by the name of "modalities project"
         And   There is a dataset by the name of "modalities dataset"
-        And   There is an item with annotations of type "image"
 
     @testrail-C
     Scenario Outline: Run "Modalities" "<Section name>"

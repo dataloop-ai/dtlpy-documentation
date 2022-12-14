@@ -1,5 +1,6 @@
 import dtlpy as dl
 
+
 class Scripts:
     def __init__(self):
         # section1
@@ -14,6 +15,7 @@ class Scripts:
         # NOT RUNNABLE
         # section4
         self.dataset4 = None
+        self.modalities_json4 = None
         # section5
         self.main5 = None
 
@@ -74,8 +76,11 @@ class Scripts:
         import json
         from concurrent.futures import ThreadPoolExecutor
 
+        modalities_json = '/home/project/images/modalities.json'
+
         # DTLPY-STOP
         dataset = self.dataset4
+        modalities_json = self.modalities_json4
         # DTLPY-START
 
         def upload_single(dataset, source, modalities):
@@ -95,7 +100,7 @@ class Scripts:
             main_item.update(system_metadata=True)
 
         def main():
-            with open('/home/project/images/modalities.json', 'r') as f:
+            with open(modalities_json, 'r') as f:
                 modalities_layout = json.load(f)
             # Run the following script to upload the modalities
             with ThreadPoolExecutor(max_workers=32) as executor:
