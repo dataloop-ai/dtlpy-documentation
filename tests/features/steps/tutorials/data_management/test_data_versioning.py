@@ -15,7 +15,7 @@ def step_impl(context, section_name):
 
 def section1_prepare(context):
     context.scripts.project = context.project
-    context.scripts.dataset = context.dataset
+    context.scripts.dataset_id = context.dataset.id
     context.scripts.clone_name = context.dataset.name + '-clone'
 
 

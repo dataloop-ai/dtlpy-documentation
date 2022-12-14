@@ -5,19 +5,22 @@ class Scripts:
     def __init__(self):
         # section1
         self.project = None
-        self.dataset = None
+        self.dataset_id = None
         self.clone_name = None
         # section2
+        self.dataset = None
         self.dataset_clone = None
         self.merge_name = None
         self.dataset_merge = None
 
     def section1(self):
+        dataset_id = 'my-dataset-id'
+        clone_name = 'clone-name'
+
         # DTLPY-STOP
-        project = getattr(self, 'project', 'project-sdk-tutorial')
-        dataset = getattr(self, 'dataset', 'dataset-sdk-tutorial')
-        dataset_id = dataset.id
-        clone_name = getattr(self, 'clone_name', 'clone-name')
+        project = self.project
+        dataset_id = self.dataset_id
+        clone_name = self.clone_name
         # DTLPY-START
 
         dataset = project.datasets.get(dataset_id=dataset_id)
@@ -31,15 +34,19 @@ class Scripts:
         self.dataset_clone = dataset_clone
 
     def section2(self):
+        dataset_ids = ["dataset-1-id", "dataset-2-id"]
+        project_ids = ["dataset-1-project-id", "dataset-2-project-id"]
+        merge_name = 'my_dataset-merge'
+
         # DTLPY-STOP
-        project = getattr(self, 'project', 'project-sdk-tutorial')
-        dataset = getattr(self, 'dataset', 'dataset-sdk-tutorial')
-        clone_dataset = getattr(self, 'dataset', 'dataset-sdk-tutorial')
+        project = self.project
+        dataset = self.dataset
+        clone_dataset = self.dataset_clone
 
         dataset_ids = [dataset.id, clone_dataset.id]
         project_ids = [project.id, project.id]
 
-        merge_name = getattr(self, 'merge_name', 'my_dataset-merge')
+        merge_name = self.merge_name
         # DTLPY-START
 
         dataset_merge = dl.datasets.merge(merge_name=merge_name,
