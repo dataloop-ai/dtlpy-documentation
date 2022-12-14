@@ -11,7 +11,7 @@ def step_impl(context, section_name):
         "section2": section2_prepare,
         # "section3": section3_prepare, NOT RUNNABLE
         "section4": section4_prepare,
-        # "section5": section5_prepare, PREPARE FROM section4
+        # "section5": section5_prepare, PREPARED FROM section4
     }
 
     context.scripts = Scripts()
