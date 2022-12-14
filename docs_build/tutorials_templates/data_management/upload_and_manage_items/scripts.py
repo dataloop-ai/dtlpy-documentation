@@ -34,13 +34,21 @@ class Scripts:
         self.items5 = None
 
     def section1(self):
+        project_name = 'project_name'
+        dataset_name = 'dataset_name'
+        local_path = [r'C:/home/project/images/John Morris.jpg',
+                      r'C:/home/project/images/John Benton.jpg',
+                      r'C:/home/project/images/Liu Jinli.jpg']
+        remote_path = '/folder_name'
+
         # DTLPY-STOP
-        project_name = getattr(self, 'project_name1', 'project_name')
-        dataset_name = getattr(self, 'dataset_name1', 'dataset_name')
-        local_path_item1 = getattr(self, 'local_path_item1', r'C:/home/project/images/John Morris.jpg')
-        local_path_item2 = getattr(self, 'local_path_item2', r'C:/home/project/images/John Benton.jpg')
-        local_path_item3 = getattr(self, 'local_path_item3', r'C:/home/project/images/Liu Jinli.jpg')
-        remote_path = getattr(self, 'remote_path1', '/folder_name')
+        project_name = self.project_name1
+        dataset_name = self.dataset_name1
+        local_path_item1 = self.local_path_item1
+        local_path_item2 = self.local_path_item2
+        local_path_item3 = self.local_path_item3
+        local_path = [local_path_item1, local_path_item2, local_path_item3]
+        remote_path = self.remote_path1
         # DTLPY-START
 
         import dtlpy as dl
@@ -48,7 +56,7 @@ class Scripts:
             dl.login()
         project = dl.projects.get(project_name=project_name)
         dataset = project.datasets.get(dataset_name=dataset_name)
-        dataset.items.upload(local_path=[local_path_item1, local_path_item2, local_path_item3],
+        dataset.items.upload(local_path=local_path,
                              remote_path=remote_path)  # Remote path is optional, images will go to the root directory by default
 
         # DTLPY-STOP
@@ -56,6 +64,11 @@ class Scripts:
         self.dataset1 = dataset
 
     def section2(self):
+        project_name = 'project_name'
+        dataset_name = 'dataset_name'
+        local_path = r'C:/home/project/images'
+        remote_path = '/folder_name'
+
         # DTLPY-STOP
         project_name = getattr(self, 'project_name2', 'project_name')
         dataset_name = getattr(self, 'dataset_name2', 'dataset_name')
@@ -72,10 +85,13 @@ class Scripts:
                              remote_path=remote_path)  # Remote path is optional, images will go to the root directory by default
 
     def section3(self):
+        dataset_name = 'dataset_name'
+        file_name = 'file_name.jpg'
+
         # DTLPY-STOP
-        project = getattr(self, 'project3', 'project')
-        dataset_name = getattr(self, 'dataset_name3', 'dataset_name')
-        file_name = getattr(self, 'file_name3', 'file_name.jpg')
+        project = self.project3
+        dataset_name = self.dataset_name3
+        file_name = self.file_name3
         # DTLPY-START
 
         dataset = project.datasets.get(dataset_name=dataset_name)
@@ -91,20 +107,36 @@ class Scripts:
 
     def section4(self):
         # DTLPY - STOP
-        item = getattr(self, 'item4', 'item')
+        item = self.item4
         # DTLPY-START
 
         item.open_in_web()
 
     def section5(self):
+        dataset_id = 'id'
+
+        # First item:
+        local_path1 = r"E:\TypesExamples\000000000064.jpg"
+        local_annotations_path1 = r"E:\TypesExamples\000000000776.json"
+        remote_path1 = '/first'
+        remote_name1 = 'f.jpg'
+        item_metadata1 = {'user': {'dummy': 'fir'}}
+
+        # Second item:
+        local_path2 = r"E:\TypesExamples\000000000776.jpg"
+        local_annotations_path2 = r"E:\TypesExamples\000000000776.json"
+        remote_path2 = "/second"
+        remote_name2 = 's.jpg'
+        item_metadata2 = {'user': {'dummy': 'sec'}}
+
         # DTLPY - STOP
-        dataset_id = getattr(self, 'dataset_id5', 'id')
+        dataset_id = self.dataset_id5
         ''' First item and info attached: '''
-        local_path1 = getattr(self, 'first_local_path5', r"E:\TypesExamples\000000000064.jpg")
-        local_annotations_path1 = getattr(self, 'first_local_annotations_path5', r"E:\TypesExamples\000000000776.json")
+        local_path1 = self.first_local_path5
+        local_annotations_path1 = self.first_local_annotations_path5
         ''' Second item and info attached: '''
-        local_path2 = getattr(self, 'second_local_path5', r"E:\TypesExamples\000000000776.jpg")
-        local_annotations_path2 = getattr(self, 'second_local_annotations_path5', r"E:\TypesExamples\000000000776.json")
+        local_path2 = self.second_local_path5
+        local_annotations_path2 = self.second_local_annotations_path5
         # DTLPY-START
 
         import pandas
@@ -114,15 +146,15 @@ class Scripts:
         # First item and info attached:
         to_upload.append({'local_path': local_path1,  # Local path to image
                           'local_annotations_path': local_annotations_path1,  # Local path to annotation file
-                          'remote_path': "/first",  # Remote directory of uploaded image
-                          'remote_name': 'f.jpg',  # Remote name of image
-                          'item_metadata': {'user': {'dummy': 'fir'}}})  # Metadata for the created item
+                          'remote_path': remote_path1,  # Remote directory of uploaded image
+                          'remote_name': remote_name1,  # Remote name of image
+                          'item_metadata': item_metadata1})  # Metadata for the created item
         # Second item and info attached:
         to_upload.append({'local_path': local_path2,  # Local path to image
                           'local_annotations_path': local_annotations_path2,  # Local path to annotation file
-                          'remote_path': "/second",  # Remote directory of uploaded image
-                          'remote_name': 's.jpg',  # Remote name of image
-                          'item_metadata': {'user': {'dummy': 'sec'}}})  # Metadata for the created item
+                          'remote_path': remote_path2,  # Remote directory of uploaded image
+                          'remote_name': remote_name2,  # Remote name of image
+                          'item_metadata': item_metadata2})  # Metadata for the created item
         df = pandas.DataFrame(to_upload)  # Make data into DF table
         items = dataset.items.upload(local_path=df,
                                      overwrite=True)  # Upload DF to platform
