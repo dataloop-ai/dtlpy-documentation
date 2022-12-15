@@ -57,5 +57,9 @@ def step_impl(context, section_name):
         assert False, "Failed to run example : {}".format(e)
 
     if section_name == 'section4':
-        sections_list['section5']()
+        try:
+            sections_list['section5']()
+        except Exception as e:
+            assert False, "Failed to run example : {}".format(e)
+
 
