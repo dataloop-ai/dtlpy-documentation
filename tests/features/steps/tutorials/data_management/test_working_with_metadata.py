@@ -36,31 +36,38 @@ def section1_prepare(context):
 
 
 def section2_prepare(context):
+    context.item.metadata['user'] = {}
     context.scripts.item2 = context.item
     context.scripts.annotation2 = context.item.annotations.list()[0]
 
 
 def section3_prepare(context):
+    context.item.metadata['user'] = {}
     context.scripts.item3 = context.item
     context.scripts.annotation3 = context.item.annotations.list()[0]
 
 
 def section4_prepare(context):
+    context.item.metadata['user'] = {}
     context.scripts.item4 = context.item
     context.scripts.annotation4 = context.item.annotations.list()[0]
 
 
 def section5_prepare(context):
+    context.item.metadata['user'] = {}
     context.scripts.item5 = context.item
     context.scripts.annotation5 = context.item.annotations.list()[0]
 
 
 def section6_prepare(context):
+    context.item.metadata['user'] = {}
     context.scripts.item6 = context.item
     context.scripts.annotation6 = context.item.annotations.list()[0]
 
 
 def section7_prepare(context):
+    context.item.metadata['user'] = {}
+    context.item.metadata['user']['MyKey'] = []
     context.scripts.item7 = context.item
     context.scripts.annotation7 = context.item.annotations.list()[0]
 
