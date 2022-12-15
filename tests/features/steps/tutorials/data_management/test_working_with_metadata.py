@@ -66,8 +66,11 @@ def section7_prepare(context):
 
 
 def section8_prepare(context):
+    item_path = "sample_datasets/FruitImage/items/train/apple_1.jpg"
+    full_path = context.dataset.items.upload(local_path=os.path.join(os.environ['DATALOOP_TEST_ASSETS'], item_path))
+
     context.scripts.dataset8 = context.dataset
-    context.scripts.local_path8 = True
+    context.scripts.local_path8 = full_path
     context.scripts.item_id8 = context.item.id
     ### In progress
 
@@ -82,15 +85,21 @@ def section10_prepare(context):
 
 
 def section11_prepare(context):
+    item_path = "sample_datasets/FruitImage/items/train/apple_2.jpg"
+    full_path = context.dataset.items.upload(local_path=os.path.join(os.environ['DATALOOP_TEST_ASSETS'], item_path))
+
     context.scripts.dataset11 = context.dataset
-    context.scripts.local_path11 = True
+    context.scripts.local_path11 = full_path
     context.scripts.item_id11 = context.item.id
     ### In progress
 
 
 def section15_prepare(context):
+    item_path = "sample_datasets/FruitImage/items/train/apple_3.jpg"
+    full_path = context.dataset.items.upload(local_path=os.path.join(os.environ['DATALOOP_TEST_ASSETS'], item_path))
+
     context.scripts.dataset11 = context.dataset
-    context.scripts.local_path11 = True
+    context.scripts.local_path11 = full_path
     context.scripts.item_id11 = context.item.id
     ### In progress
 
@@ -103,8 +112,6 @@ def step_impl(context, section_name):
         'section3': context.scripts.section3,
         'section4': context.scripts.section4,
         'section5': context.scripts.section5,
-        'section5a': context.scripts.section5a,
-        'section5b': context.scripts.section5b,
         'section6': context.scripts.section6,
         'section7': context.scripts.section7,
         'section8': context.scripts.section8,

@@ -13,3 +13,4 @@ from tests.features.steps.tutorials.faas import test_faas_introduction
 from tests.features.steps.tutorials.faas import test_faas_single_function
 
 from tests.features.steps.utilities import items_interface
+from tests.features.steps.tutorials.data_management import test_working_with_metadata
