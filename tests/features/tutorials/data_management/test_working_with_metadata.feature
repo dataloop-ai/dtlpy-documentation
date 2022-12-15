@@ -7,7 +7,7 @@ Feature: Working with metadata tutorial
         And   There is an item with annotations of type "image"
 
     @testrail-C
-    Scenario Outline: Run "Data Versioning" "<Section name>"
+    Scenario Outline: Run "Working with metadata" "<Section name>"
         When I prepared test working with metadata "<Section name>"
         Then I run test working with metadata "<Section name>"
 
