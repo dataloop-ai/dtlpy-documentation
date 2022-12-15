@@ -7,33 +7,47 @@ class Scripts:
         self.project_name1 = None
         self.dataset_name1 = None
         # section2
-
+        self.item2 = None
+        self.annotation2 = None
         # section3
-
+        self.item3 = None
+        self.annotation3 = None
         # section4
-
+        self.item4 = None
+        self.annotation4 = None
         # section5
-
+        self.item5 = None
+        self.annotation5 = None
         # section6
-
+        self.item6 = None
+        self.annotation6 = None
         # section7
-
+        self.item7 = None
+        self.annotation7 = None
         # section8
-
+        self.dataset8 = None
+        self.local_path8 = None
+        self.item_id8 = None
         # section9
-
+        self.annotation_id9 = None
         # section10
-
+        self.project_name10 = None
+        self.dataset_name10 = None
         # section11
-
+        self.dataset11 = None
+        self.local_path11 = None
+        self.item_id11 = None
         # section12
-
+        self.filters12 = None
         # section13
-
+        self.filters13 = None
         # section14
-
+        self.dataset14 = None
+        self.filters14 = None
         # section15
-
+        self.dataset15 = None
+        self.local_path15 = None
+        self.item_id15 = None
 
     def section1(self):
         import dtlpy as dl
@@ -70,8 +84,8 @@ class Scripts:
 
     def section4(self):
         # DTLPY-STOP
-        item = self.item3
-        annotation = self.annotation3
+        item = self.item4
+        annotation = self.annotation4
         # DTLPY-START
 
         item.metadata['user']['MyKey'] = True
@@ -131,7 +145,7 @@ class Scripts:
         annotation_id = 'my-annotation-id'
 
         # DTLPY-STOP
-        annotation_id = self.annotation_id8
+        annotation_id = self.annotation_id9
         # DTLPY-START
 
         # Get annotation
@@ -188,6 +202,9 @@ class Scripts:
         # DTLPY-START
 
         filters.add(field='metadata.user.Key', values='Value')
+
+        # DTLPY-STOP
+        self.filters13 = filters
 
     def section14(self):
         # DTLPY-STOP

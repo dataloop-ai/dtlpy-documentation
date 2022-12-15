@@ -9,6 +9,7 @@ Feature: Working with metadata tutorial
     Scenario Outline: Run "Data Versioning" "<Section name>"
         When I prepared test working with metadata "<Section name>"
         Then I run test working with metadata "<Section name>"
+        And  There is an item with annotations of type "image"
 
     Examples:
         | Section name |
@@ -24,6 +25,6 @@ Feature: Working with metadata tutorial
         | section10    |
         | section11    |
         | section12    |
-        | section13    |
-        | section14    |
+        #| section13    |
+        #| section14    |
         | section15    |

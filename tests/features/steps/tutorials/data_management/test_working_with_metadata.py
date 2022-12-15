@@ -17,74 +17,82 @@ def step_impl(context, section_name):
         "section9": section9_prepare,
         "section10": section10_prepare,
         "section11": section11_prepare,
-        "section12": section12_prepare,
-        "section13": section13_prepare,
-        "section14": section14_prepare,
+        # "section12": section12_prepare, NO PREPARE REQUIRED
+        # "section13": section13_prepare, DONE FROM section12
+        # "section14": section14_prepare, DONE FROM section13
         "section15": section15_prepare,
     }
+
+    if section_name == "section12":
+        return  # NO PREPARE NEEDED
 
     context.scripts = Scripts()
     sections_list[section_name](context)
 
 
 def section1_prepare(context):
-    return True
+    context.scripts.dataset_name1 = context.dataset.name
+    context.scripts.project_name1 = context.project.name
 
 
 def section2_prepare(context):
-    return True
+    context.scripts.item2 = context.item
+    context.scripts.annotation2 = context.item.annotations.list()[0]
 
 
 def section3_prepare(context):
-    return True
+    context.scripts.item3 = context.item
+    context.scripts.annotation3 = context.item.annotations.list()[0]
 
 
 def section4_prepare(context):
-    return True
+    context.scripts.item4 = context.item
+    context.scripts.annotation4 = context.item.annotations.list()[0]
 
 
 def section5_prepare(context):
-    return True
+    context.scripts.item5 = context.item
+    context.scripts.annotation5 = context.item.annotations.list()[0]
 
 
 def section6_prepare(context):
-    assert True
+    context.scripts.item6 = context.item
+    context.scripts.annotation6 = context.item.annotations.list()[0]
 
 
 def section7_prepare(context):
-    assert True
+    context.scripts.item7 = context.item
+    context.scripts.annotation7 = context.item.annotations.list()[0]
 
 
 def section8_prepare(context):
-    assert True
+    context.scripts.dataset8 = context.dataset
+    context.scripts.local_path8 = True
+    context.scripts.item_id8 = context.item.id
+    ### In progress
 
 
 def section9_prepare(context):
-    assert True
+    context.scripts.annotation9 = context.item.annotations.list()[0]
 
 
 def section10_prepare(context):
-    assert True
+    context.scripts.dataset_name10 = context.dataset.name
+    context.scripts.project_name10 = context.project.name
 
 
 def section11_prepare(context):
-    assert True
-
-
-def section12_prepare(context):
-    assert True
-
-
-def section13_prepare(context):
-    assert True
-
-
-def section14_prepare(context):
-    assert True
+    context.scripts.dataset11 = context.dataset
+    context.scripts.local_path11 = True
+    context.scripts.item_id11 = context.item.id
+    ### In progress
 
 
 def section15_prepare(context):
-    assert True
+    context.scripts.dataset11 = context.dataset
+    context.scripts.local_path11 = True
+    context.scripts.item_id11 = context.item.id
+    ### In progress
 
 
 @behave.then(u'I run test working with metadata "{section_name}"')
@@ -114,3 +122,17 @@ def step_impl(context, section_name):
 
     except Exception as e:
         assert False, "Failed to run example : {}".format(e)
+
+    if section_name == 'section12':
+        try:
+            context.scripts.filters13 = context.scripts.filters12
+            sections_list['section13']()
+        except Exception as e:
+            assert False, "Failed to run example : {}".format(e)
+
+        try:
+            context.scripts.dataset14 = context.dataset
+            context.scripts.filters14 = context.scripts.filters13
+            sections_list['section14']()
+        except Exception as e:
+            assert False, "Failed to run example : {}".format(e)
