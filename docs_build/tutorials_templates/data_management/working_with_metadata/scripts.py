@@ -38,7 +38,7 @@ class Scripts:
         self.local_path11 = None
         self.item_id11 = None
         # section12
-        self.filters12 = None
+        # NO VARIABLES REQUIRED
         # section13
         self.filters13 = None
         # section14
@@ -194,7 +194,7 @@ class Scripts:
         filters.resource = dl.FiltersResource.ITEM
 
         # DTLPY-STOP
-        self.filters12 = filters
+        self.filters13 = filters
 
     def section13(self):
         # DTLPY-STOP
@@ -204,7 +204,7 @@ class Scripts:
         filters.add(field='metadata.user.Key', values='Value')
 
         # DTLPY-STOP
-        self.filters13 = filters
+        self.filters14 = filters
 
     def section14(self):
         # DTLPY-STOP

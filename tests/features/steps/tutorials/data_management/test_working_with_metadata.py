@@ -125,14 +125,12 @@ def step_impl(context, section_name):
 
     if section_name == 'section12':
         try:
-            context.scripts.filters13 = context.scripts.filters12
             sections_list['section13']()
         except Exception as e:
             assert False, "Failed to run example : {}".format(e)
 
         try:
             context.scripts.dataset14 = context.dataset
-            context.scripts.filters14 = context.scripts.filters13
             sections_list['section14']()
         except Exception as e:
             assert False, "Failed to run example : {}".format(e)
