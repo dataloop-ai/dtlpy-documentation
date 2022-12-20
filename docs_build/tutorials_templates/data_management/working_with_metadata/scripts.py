@@ -73,6 +73,8 @@ class Scripts:
         item.metadata['user'] = {}
         item.metadata['user']['MyKey'] = 'MyValue'
         annotation.metadata['user']['MyKey'] = 'MyValue'
+
+        # DTLPY-STOP
         item = item.update()
         annotation = annotation.update()
 
@@ -84,6 +86,8 @@ class Scripts:
 
         item.metadata['user']['MyKey'] = 3
         annotation.metadata['user']['MyKey'] = 3
+
+        # DTLPY-STOP
         item = item.update()
         annotation = annotation.update()
 
@@ -95,6 +99,8 @@ class Scripts:
 
         item.metadata['user']['MyKey'] = True
         annotation.metadata['user']['MyKey'] = True
+
+        # DTLPY-STOP
         item = item.update()
         annotation = annotation.update()
 
@@ -106,6 +112,8 @@ class Scripts:
 
         item.metadata['user']['MyKey'] = None
         annotation.metadata['user']['MyKey'] = None
+
+        # DTLPY-STOP
         item = item.update()
         annotation = annotation.update()
 
@@ -118,6 +126,8 @@ class Scripts:
         # add metadata of a list (can contain elements of different types).
         item.metadata['user']['MyKey'] = ["A", 2, False]
         annotation.metadata['user']['MyKey'] = ["A", 2, False]
+
+        # DTLPY-STOP
         item = item.update()
         annotation = annotation.update()
 

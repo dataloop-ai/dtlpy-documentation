@@ -61,8 +61,6 @@ def section6_prepare(context):
 
 
 def section7_prepare(context):
-    context.item.metadata['user'] = {}
-    context.item.metadata['user']['MyKey'] = []
     context.scripts.item7 = context.item
     context.scripts.annotation7 = context.item.annotations.list()[0]
 
