@@ -6,7 +6,7 @@ Feature: Working with metadata tutorial
         And   There is a dataset by the name of "working with metadata dataset"
         And   There is an item with annotations of type "image"
 
-    @testrail-C
+    @testrail-C4533367
     Scenario Outline: Run "Working with metadata" "<Section name>"
         When I prepared test working with metadata "<Section name>"
         Then I run test working with metadata "<Section name>"
