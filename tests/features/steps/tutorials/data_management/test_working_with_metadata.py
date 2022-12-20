@@ -72,7 +72,6 @@ def section8_prepare(context):
     context.scripts.dataset8 = context.dataset
     context.scripts.local_path8 = full_path
     context.scripts.item_id8 = context.item.id
-    ### In progress
 
 
 def section9_prepare(context):
@@ -91,7 +90,6 @@ def section11_prepare(context):
     context.scripts.dataset11 = context.dataset
     context.scripts.local_path11 = full_path
     context.scripts.item_id11 = context.item.id
-    ### In progress
 
 
 def section15_prepare(context):
@@ -101,7 +99,6 @@ def section15_prepare(context):
     context.scripts.dataset15 = context.dataset
     context.scripts.local_path15 = full_path
     context.scripts.item_id15 = context.item.id
-    ### In progress
 
 
 @behave.then(u'I run test working with metadata "{section_name}"')
@@ -131,18 +128,10 @@ def step_impl(context, section_name):
         assert False, "Failed to run example : {}".format(e)
 
     if section_name == 'section11':
-        try:
-            sections_list['section12']()
-        except Exception as e:
-            assert False, "Failed to run example : {}".format(e)
+        context.scripts.dataset14 = context.dataset
 
-        try:
-            sections_list['section13']()
-        except Exception as e:
-            assert False, "Failed to run example : {}".format(e)
-
-        try:
-            context.scripts.dataset14 = context.dataset
-            sections_list['section14']()
-        except Exception as e:
-            assert False, "Failed to run example : {}".format(e)
+        for section_name in ['section12', 'section13', 'section14']:
+            try:
+                sections_list[section_name]()
+            except Exception as e:
+                assert False, "Failed to run example : {}".format(e)
