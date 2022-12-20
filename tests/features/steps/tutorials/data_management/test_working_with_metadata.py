@@ -76,7 +76,7 @@ def section8_prepare(context):
 
 
 def section9_prepare(context):
-    context.scripts.annotation9 = context.item.annotations.list()[0]
+    context.scripts.annotation_id9 = context.item.annotations.list()[0].id
 
 
 def section10_prepare(context):
@@ -98,9 +98,9 @@ def section15_prepare(context):
     item_path = "sample_datasets/FruitImage/items/train/apple_3.jpg"
     full_path = context.dataset.items.upload(local_path=os.path.join(os.environ['DATALOOP_TEST_ASSETS'], item_path))
 
-    context.scripts.dataset11 = context.dataset
-    context.scripts.local_path11 = full_path
-    context.scripts.item_id11 = context.item.id
+    context.scripts.dataset15 = context.dataset
+    context.scripts.local_path15 = full_path
+    context.scripts.item_id15 = context.item.id
     ### In progress
 
 
@@ -130,7 +130,12 @@ def step_impl(context, section_name):
     except Exception as e:
         assert False, "Failed to run example : {}".format(e)
 
-    if section_name == 'section12':
+    if section_name == 'section11':
+        try:
+            sections_list['section12']()
+        except Exception as e:
+            assert False, "Failed to run example : {}".format(e)
+
         try:
             sections_list['section13']()
         except Exception as e:

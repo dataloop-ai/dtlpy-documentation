@@ -24,7 +24,7 @@ Feature: Working with metadata tutorial
         | section9     |
         | section10    |
         | section11    |
-        | section12    |
-        #| section13    | RUNNING FROM section12
-        #| section14    | RUNNING FROM section12
+        #| section12    | RUNNING FROM section11
+        #| section13    | RUNNING FROM section11
+        #| section14    | RUNNING FROM section11
         | section15    |
