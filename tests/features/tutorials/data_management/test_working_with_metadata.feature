@@ -19,12 +19,12 @@ Feature: Working with metadata tutorial
         | section4     |
         | section5     |
         | section6     |
-        | section7     |
-        | section8     |
-        | section9     |
-        | section10    |
-        | section11    |
-        | section12    |
-        #| section13    |
-        #| section14    |
-        | section15    |
+#        | section7     |
+#        | section8     |
+#        | section9     |
+#        | section10    |
+#        | section11    |
+#        | section12    |
+        #| section13    | NO NEED
+        #| section14    | NO NEED
+#        | section15    |

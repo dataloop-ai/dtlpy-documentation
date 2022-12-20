@@ -70,8 +70,11 @@ class Scripts:
         annotation = self.annotation2
         # DTLPY-START
 
+        item.metadata['user'] = {}
         item.metadata['user']['MyKey'] = 'MyValue'
         annotation.metadata['user']['MyKey'] = 'MyValue'
+        item = item.update()
+        annotation = annotation.update()
 
     def section3(self):
         # DTLPY-STOP
@@ -81,6 +84,8 @@ class Scripts:
 
         item.metadata['user']['MyKey'] = 3
         annotation.metadata['user']['MyKey'] = 3
+        item = item.update()
+        annotation = annotation.update()
 
     def section4(self):
         # DTLPY-STOP
@@ -90,6 +95,8 @@ class Scripts:
 
         item.metadata['user']['MyKey'] = True
         annotation.metadata['user']['MyKey'] = True
+        item = item.update()
+        annotation = annotation.update()
 
     def section5(self):
         # DTLPY-STOP
@@ -99,6 +106,8 @@ class Scripts:
 
         item.metadata['user']['MyKey'] = None
         annotation.metadata['user']['MyKey'] = None
+        item = item.update()
+        annotation = annotation.update()
 
     def section6(self):
         # DTLPY-STOP
@@ -109,6 +118,8 @@ class Scripts:
         # add metadata of a list (can contain elements of different types).
         item.metadata['user']['MyKey'] = ["A", 2, False]
         annotation.metadata['user']['MyKey'] = ["A", 2, False]
+        item = item.update()
+        annotation = annotation.update()
 
     def section7(self):
         # DTLPY-STOP
