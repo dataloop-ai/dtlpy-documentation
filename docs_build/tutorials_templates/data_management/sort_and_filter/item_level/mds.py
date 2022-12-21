@@ -76,7 +76,7 @@ def section5():
     ### Update User Metadata of Filtered Items
     <b>Update Filtered Items</b> - The 'update_value' must be a dictionary.
     The dictionary will only update user metadata.
-    Understand more about user metadata <a href=https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/working_with_metadata/chapter.md" target="_blank">here</a>.
+    Understand more about user metadata <a href=https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/working_with_metadata/chapter.md/" target="_blank">here</a>.
     In this example, you will update/add user metadata (with the field "BlackDogs" and value True), to items in a specific folder 'dogs' with an attribute 'black'.
 
     """
@@ -160,7 +160,7 @@ def section16():
 def section17():
     """
     ### Advanced Filtering Operators
-    Explore advanced filtering options on <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md" target="_blank">this page</a>.
+    Explore advanced filtering options on <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md/" target="_blank">this page</a>.
 
     ### Response to DQL Query
     A typical response to a DQL query will look like the following:

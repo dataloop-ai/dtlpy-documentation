@@ -198,6 +198,14 @@ def main():
                 dst_index_filepath = src_index_filepath.replace(TEMPLATES_PATH, TUTORIALS_PATH)
                 os.makedirs(os.path.dirname(dst_index_filepath), exist_ok=True)
                 shutil.copy(src=src_index_filepath, dst=dst_index_filepath)
+            elif filename == 'chapter.md':
+                """
+                copy already created MD files
+                """
+                src_index_filepath = os.path.join(path, filename)
+                dst_index_filepath = src_index_filepath.replace(TEMPLATES_PATH, TUTORIALS_PATH)
+                os.makedirs(os.path.dirname(dst_index_filepath), exist_ok=True)
+                shutil.copy(src=src_index_filepath, dst=dst_index_filepath)
 
 
 if __name__ == "__main__":

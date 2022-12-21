@@ -1,6 +1,6 @@
 import behave
 import os
-from examples.items.modalities.pdf_viewer_modality import example
+from examples.items.add_pdf_viewer_modality import example
 import random
 
 
@@ -16,7 +16,7 @@ def step_impl(context, filepath):
         context.pdf_file_path = os.path.join(os.environ['DATALOOP_TEST_ASSETS'], 'images/lorem-ipsum.pdf')
 
     except Exception as e:
-        assert "Failed to run preparation : {}".format(e)
+        assert False, "Failed to run preparation : {}".format(e)
 
 
 @behave.then(u'I run pdf viewer modality example')

@@ -48,7 +48,6 @@ def section8():
     item.metadata['user']['MyKey'] = 'MyValue'
     # update and reclaim item
     item = item.update()
-    # item in platform should have section 'user' in metadata with field 'MyKey' and value 'MyValue'
 
 
 def section9():
@@ -56,10 +55,9 @@ def section9():
     annotation = dl.annotations.get(annotation_id='my-annotation-id')
     # modify metadata
     annotation.metadata['user'] = dict()
-    item.metadata['user']['red'] = True
+    annotation.metadata['user']['red'] = True
     # update and reclaim annotation
     annotation = annotation.update()
-    # annotation in platform should have section 'user' in metadata with field 'red' and value True
 
 
 def section10():

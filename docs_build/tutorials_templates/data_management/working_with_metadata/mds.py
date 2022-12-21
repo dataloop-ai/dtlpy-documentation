@@ -56,12 +56,16 @@ def section8():
 
 def section9():
     """
+    Item in platform should have section 'user' in metadata with field 'MyKey' and value 'MyValue'.
+
     ### Add metadata to annotations' user metadata
     """
 
 
 def section10():
     """
+    annotation in platform should have section 'user' in metadata with field 'red' and value True
+
     ### Filter items by user metadata
     #### 1. Get your dataset
     """
@@ -70,7 +74,7 @@ def section10():
 def section11():
     """
     #### 2. Add metadata to an item
-    You can also <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md" target="_blank">add metadata to filtered items</a>
+    You can also <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md/" target="_blank">add metadata to filtered items</a>
     """
 
 

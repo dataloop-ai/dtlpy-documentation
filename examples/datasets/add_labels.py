@@ -60,15 +60,16 @@ def main(project_name, dataset_name):
     #################
     dataset.delete_labels(label_names=['Cat', 'Dog'])
 
-    ########################################
-    # Copy dataset labels to a new dataset #
-    ########################################
+    #############################################
+    # Deep copy dataset labels to a new dataset #
+    #############################################
     new_dataset = project.datasets.create(dataset_name='new_dataset_with_labels',
                                           labels=dataset.labels)
 
-    ##########################################
-    # Copy dataset ontology to a new dataset #
-    ##########################################
+    #########################################
+    # Create a POINTER to the SAME ontology #
+    #########################################
+    # This will work only in the same project
     new_dataset = project.datasets.create(dataset_name='new_dataset_with_ontology',
                                           ontology_ids=dataset.ontology_ids)
 

@@ -7,6 +7,7 @@ p = Path('docs_build').glob('**/mds.py')
 files = [x for x in p if x.is_file()]
 
 for file in files:
+    print(f'Checking {file}')
     with open(file, 'r', encoding='UTF-8') as f:
         string = f.read()
     # res = re.findall(r'(https?://[^\s"]+)', string)
@@ -15,7 +16,7 @@ for file in files:
         for url in res:
             resp = requests.get(url)
             if not resp.ok:
-                print(f'BROKEN: {url}, in {file}')
+                print(f'    BROKEN: {url}, in {file}')
                 # assert False
 
 

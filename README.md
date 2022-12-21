@@ -50,16 +50,18 @@ jupyter notebook tutorials
   *  [Classification point and pose](tutorials/annotations_image/classification_point_and_pose/chapter.ipynb)
   *  [Ellipse and item description](tutorials/annotations_image/ellipse_and_item_description/chapter.ipynb)
   *  [Polygon and polyline](tutorials/annotations_image/polygon_and_polyline/chapter.ipynb)
+  *  [Segmentation](tutorials/annotations_image/segmentation/chapter.ipynb)
   *  [Setup](tutorials/annotations_image/setup/chapter.ipynb)
 * Annotations video
   *  [Video annotations](tutorials/annotations_video/video_annotations/chapter.ipynb)
+*  [Auto annotate service](tutorials/auto_annotate_service/chapter.ipynb)
 * Data management
   * Cloud storage
-    *  [Binding with cloud function](tutorials/data_management/cloud_storage/binding_with_cloud_function/chapter.ipynb)
-    *  [Binding with lambda](tutorials/data_management/cloud_storage/binding_with_lambda/chapter.ipynb)
+    *  [Binding with aws](tutorials/data_management/cloud_storage/binding_with_aws/chapter.ipynb)
+    *  [Binding with azure](tutorials/data_management/cloud_storage/binding_with_azure/chapter.ipynb)
+    *  [Binding with gcs](tutorials/data_management/cloud_storage/binding_with_gcs/chapter.ipynb)
     *  [Create an external dataset](tutorials/data_management/cloud_storage/create_an_external_dataset/chapter.ipynb)
   *  [Data versioning](tutorials/data_management/data_versioning/chapter.ipynb)
-  *  [Item & user metadata](tutorials/data_management/Item & User Metadata/chapter.ipynb)
   *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
   *  [Modalities](tutorials/data_management/modalities/chapter.ipynb)
   * Sort and filter
@@ -68,19 +70,20 @@ jupyter notebook tutorials
     *  [Item level](tutorials/data_management/sort_and_filter/item_level/chapter.ipynb)
     *  [Pagination](tutorials/data_management/sort_and_filter/pagination/chapter.ipynb)
   *  [Upload and manage annotations](tutorials/data_management/upload_and_manage_annotations/chapter.ipynb)
-  *  [Upload and manage data and metadata](tutorials/data_management/upload_and_manage_data_and_metadata/chapter.ipynb)
+  *  [Upload and manage items](tutorials/data_management/upload_and_manage_items/chapter.ipynb)
   *  [Working with metadata](tutorials/data_management/working_with_metadata/chapter.ipynb)
 * Faas
+  *  [Advance](tutorials/faas/advance/chapter.ipynb)
   *  [Auto annotate](tutorials/faas/auto_annotate/chapter.ipynb)
   *  [Concept](tutorials/faas/concept/chapter.ipynb)
-  *  [Execution control](tutorials/faas/execution_control/chapter.ipynb)
+  *  [Custom environment using docker](tutorials/faas/custom_environment_using_docker/chapter.ipynb)
   *  [Introduction](tutorials/faas/introduction/chapter.ipynb)
   *  [Multiple functions and modules](tutorials/faas/multiple_functions_and_modules/chapter.ipynb)
   *  [Single function rgb to gray](tutorials/faas/single_function_rgb_to_gray/chapter.ipynb)
-  *  [Ui slots](tutorials/faas/ui_slots/chapter.ipynb)
 * Model management
   *  [Create new model](tutorials/model_management/create_new_model/chapter.ipynb)
   *  [Dataloop dataloader](tutorials/model_management/dataloop_dataloader/chapter.ipynb)
+  *  [Getting started](tutorials/model_management/getting_started/chapter.ipynb)
   *  [Introduction](tutorials/model_management/introduction/chapter.ipynb)
   * Use dataloop zoo models
     *  [Classification](tutorials/model_management/use_dataloop_zoo_models/classification/chapter.ipynb)
@@ -89,13 +92,6 @@ jupyter notebook tutorials
   *  [Concepts](tutorials/recipe_and_ontology/concepts/chapter.ipynb)
   *  [Ontology](tutorials/recipe_and_ontology/ontology/chapter.ipynb)
   *  [Recipe](tutorials/recipe_and_ontology/recipe/chapter.ipynb)
-* Sdk 101 tutorial
-  *  [Advance tutorials](tutorials/sdk_101_tutorial/advance_tutorials/chapter.ipynb)
-  *  [Bounding box and cuboid](tutorials/sdk_101_tutorial/bounding_box_and_cuboid/chapter.ipynb)
-  *  [Classification point and pose](tutorials/sdk_101_tutorial/classification_point_and_pose/chapter.ipynb)
-  *  [Ellipse and item description](tutorials/sdk_101_tutorial/ellipse_and_item_description/chapter.ipynb)
-  *  [Polygon and polyline](tutorials/sdk_101_tutorial/polygon_and_polyline/chapter.ipynb)
-  *  [Setup](tutorials/sdk_101_tutorial/setup/chapter.ipynb)
 * Task workflows
   *  [Create a task](tutorials/task_workflows/create_a_task/chapter.ipynb)
   *  [Item status](tutorials/task_workflows/item_status/chapter.ipynb)
@@ -134,9 +130,11 @@ jupyter notebook tutorials
   *  [Filter by task status](examples/items/filter_by_task_status.py)
   *  [Move item](examples/items/move_item.py)
 * Model mgmt
-  *  [Inception keras training](examples/model_mgmt/inception_keras_training.py)
-  *  [Resnet torch training](examples/model_mgmt/resnet_torch_training.py)
-  *  [Yolov5 training](examples/model_mgmt/yolov5_training.py)
+  * Snippets
+    *  [Clone model](examples/model_mgmt/snippets/clone_model.py)
+    *  [Deploy model](examples/model_mgmt/snippets/deploy_model.py)
+    *  [Evaluate model](examples/model_mgmt/snippets/evaluate_model.py)
+    *  [Train model](examples/model_mgmt/snippets/train_model.py)
 * Pipelines
   *  [Create pipeline](examples/pipelines/create_pipeline.py)
 * Reports
