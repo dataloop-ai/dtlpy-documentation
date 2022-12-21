@@ -25,7 +25,7 @@ def func2():
 def func3():
     """
     ## Model and weights files
-    The function uses 2 files containing the model and its weights for inferencing detections. We need to have these files at the same folder as the entry point.
+    The function uses 2 files containing the model and its weights for inference. We need to have these files at the same folder as the entry point.
     To get these files please download them here.
     https://storage.googleapis.com/dtlpy/model_assets/faas-tutorial/model_weights.zip
 

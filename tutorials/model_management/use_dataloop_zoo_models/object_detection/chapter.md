@@ -2,7 +2,7 @@
 In this tutorial we will download a public model from the AI library to inference and train on custom data locally.  
 Here we will use a YOLOv5 model.  
   
-Create a venv and install the requirements for the yolov5 package [here](https://github.com/dataloop-ai/yolov5/blob/master/requirements.txt)  
+Create a venv and install the requirements for the yolov5 package [here](https://github.com/dataloop-ai/yolov5/blob/master/requirements.txt/)  
 Then, import the modules required for the scripts in this tutorial.  
 
 ```python

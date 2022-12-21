@@ -28,6 +28,8 @@ def section1():
        * in Select a template for your project's first function choose -> Azure Blob Storage trigger
        * in Storage account select your Storage account
        * in Resource group select your Resource group
+       * Set the 'Create new Azure Blob Storage trigger' to your container name (used in the Dataloop platform)
+        ![add_layer](../../../../assets/bind_azure/trigger_dataset.png)
        * open the code file
        * add dtlpy to the requirements.txt file
        * add **"disabled": false** to the function.json file
@@ -38,13 +40,10 @@ def section1():
 
 def section2():
     """
-
     4. Deploy the code to the function app you created.
-    5. Set the 'Create new Azure Blob Storage trigger' to your container name (used in the Dataloop platform)
-    ![add_layer](../../../../assets/bind_azure/trigger_dataset.png)
-    6. In VS code go to view tab -> Command Palette -> Azure Functions: Upload Local Settings
-    9. go to the Function App -> insert to your function -> Function -> Function App
+    5. In VS code go to view tab -> Command Palette -> Azure Functions: Upload Local Settings
+    6. Go to the Function App -> Select your function -> Configuration (Under Settings section)
            * add the 3 secrets vars DATASET_ID, DTLPY_USERNAME, DTLPY_PASSWORD
 
-    **Done! Now your storage blob will be syncto the Dataloop dataset**
+    **Done! Now your storage blob will be synced with the Dataloop dataset**
     """

@@ -74,7 +74,7 @@ def section10():
 def section11():
     """
     #### 2. Add metadata to an item
-    You can also <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md" target="_blank">add metadata to filtered items</a>
+    You can also <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md/" target="_blank">add metadata to filtered items</a>
     """
 
 
