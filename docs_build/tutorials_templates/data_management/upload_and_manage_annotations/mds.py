@@ -31,7 +31,7 @@ def section5():
     Uploading annotations to video items needs to consider spanning between frames, and toggling visibility (occlusion). In this example, we will use the following CSV file.
     In this file there is a single 'person' box annotation that begins on frame number 20, disappears on frame number 41, reappears on frame number 51 and ends on frame number 90.
 
-    [Video_annotations_example.CSV](https://cdn.document360.io/53f32fe9-1937-4652-8526-90c1bc78d3f8/Images/Documentation/video_annotation_example.csv)
+    [Video_annotations_example.CSV](https://cdn.document360.io/53f32fe9-1937-4652-8526-90c1bc78d3f8/Images/Documentation/video_annotation_example.csv/)
 
     """
 
@@ -135,9 +135,9 @@ def section15():
 
     ## Filter by Item and/or Annotation
     * **Items filter** - download filtered items based on multiple parameters, like their directory.
-    You can also download items based on different filters. Learn all about item filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md).
+    You can also download items based on different filters. Learn all about item filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md/).
     * **Annotation filter** - download filtered annotations based on multiple parameters like their label.
-    You can also download items annotations based on different filters, learn all about annotation filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/annotation_level/chapter.md).
+    You can also download items annotations based on different filters, learn all about annotation filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/annotation_level/chapter.md/).
     This example will download items and JSONS from a dog folder of the label 'dog'.
 
 
@@ -148,7 +148,7 @@ def section16():
     """
 
     ## Filter by Annotations
-    * **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/annotation_level/chapter.md).
+    * **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/annotation_level/chapter.md/).
 
 
     """
@@ -159,8 +159,8 @@ def section17():
 
     ## Download Annotations in COCO/YOLO/VOC Format
 
-    * **Items filter** - download filtered items based on multiple parameters like their directory. You can also download items based on different filters, learn all about item filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md).
-    * **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/annotation_level/chapter.md).
+    * **Items filter** - download filtered items based on multiple parameters like their directory. You can also download items based on different filters, learn all about item filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md/).
+    * **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/annotation_level/chapter.md/).
  
     This example will download COCO from a dog items folder of the label 'dog' (edit the script to change to YOLO/VOC).
 

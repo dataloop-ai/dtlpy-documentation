@@ -24,7 +24,7 @@ def func2():
 def func3():
     """
     Metrics plots will appear under the “metrics” tab of your chosen model, and will look something like this:
-    ![Screenshot of model metrics plot](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt_3/assets/images/model_management/metrics_example.png)
+    ![Screenshot of model metrics plot](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt_3/assets/images/model_management/metrics_example.png/)
 
     ### Using pretrained models from the AI library
 

@@ -37,7 +37,7 @@ def func4():
         'train': json.dumps(dl.Filters(field='dir', values='/train').prepare()),
         'validation': json.dumps(dl.Filters(field='dir', values='/validation').prepare()),
     }
-    dataset.update()
+    dataset.update(system_metadata=True)
 
 
 def func5():
@@ -64,7 +64,7 @@ def func7():
     package = dl.packages.get(package_id=model.package_id)
 
     # build model
-    adapter = package.build(module_name='model-adapter') # module name varies by model
+    adapter = package.build(module_name='model-adapter')  # module name varies by model
     adapter.load_from_model(model_entity=model)
 
 

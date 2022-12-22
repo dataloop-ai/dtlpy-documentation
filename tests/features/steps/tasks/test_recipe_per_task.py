@@ -10,7 +10,7 @@ def step_impl(context):
     try:
         create_multiple_tasks()
     except Exception as e:
-        assert "Failed to run example : {}".format(e)
+        assert False, "Failed to run example : {}".format(e)
 
 
 @behave.then(u'I prepared recipe per task example on project "{project_name}" with dataset "{dataset_name}"')
@@ -51,7 +51,7 @@ def step_impl(context, project_name, dataset_name):
                 assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai'])
 
     except Exception as e:
-        assert "Failed to run preparation : {}".format(e)
+        assert False, "Failed to run preparation : {}".format(e)
 
 
 @behave.then(u'I validate recipe per task example')

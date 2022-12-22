@@ -28,7 +28,13 @@ def step_impl(context, item_type):
         context.item = context.dataset.items.upload(local_path=local_path,
                                                     local_annotations_path=local_annotations_path)[0]
     except Exception as e:
-        context.item = context.dataset.items.list()[0][0]
+        if item_type == "image":
+            for item in context.dataset.items.list()[0]:
+                if item.filename == '/hamster.jpg':
+                    context.item = item
+                    return
+
+        context.item = None
 
 
 @behave.given('I delete the item')
