@@ -90,7 +90,7 @@ Item in platform should have section 'user' in metadata with field 'MyKey' and v
 annotation = dl.annotations.get(annotation_id='my-annotation-id')
 # modify metadata
 annotation.metadata['user'] = dict()
-item.metadata['user']['red'] = True
+annotation.metadata['user']['red'] = True
 # update and reclaim annotation
 annotation = annotation.update()
 ```
@@ -104,7 +104,7 @@ project = dl.projects.get(project_name='project_name')
 dataset = project.datasets.get(dataset_name='dataset_name')
 ```
 #### 2. Add metadata to an item  
-You can also <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md" target="_blank">add metadata to filtered items</a>  
+You can also <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md/" target="_blank">add metadata to filtered items</a>  
 
 ```python
 # upload and claim item

@@ -24,9 +24,9 @@
             "location": "faas/multiple_functions_and_modules/chapter.md"
         },
         {
-            "displayName": "Execution Control",
-            "description": "Kill and Timeout on an Execution",
-            "location": "faas/execution_control/chapter.md"
+            "displayName": "Advance Guides",
+            "description": "Learn more about the options of the services and executions",
+            "location": "faas/advance/chapter.md"
         },
         {
             "displayName": "UI Slots",

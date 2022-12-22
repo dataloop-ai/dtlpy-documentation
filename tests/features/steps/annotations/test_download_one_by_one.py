@@ -15,10 +15,13 @@ def step_impl(context):
         if context.new_path not in context.dataset.directory_tree.dir_names:
             context.dataset.items.make_dir(directory=context.new_path)
 
+        path_image1 = os.path.join('sample_datasets', 'FruitImage', 'items', 'validation', 'apple_77.jpg')
+        path_image2 = os.path.join('sample_datasets', 'FruitImage', 'items', 'validation', 'apple_78.jpg')
+        path_image3 = os.path.join('sample_datasets', 'FruitImage', 'items', 'validation', 'apple_79.jpg')
         context.items_filepath = [
-            os.path.join(os.environ['DATALOOP_TEST_ASSETS'], 'sample_datasets/FruitImage/items/test/apple_77.jpg'),
-            os.path.join(os.environ['DATALOOP_TEST_ASSETS'], 'sample_datasets/FruitImage/items/test/apple_78.jpg'),
-            os.path.join(os.environ['DATALOOP_TEST_ASSETS'], 'sample_datasets/FruitImage/items/test/apple_79.jpg')]
+            os.path.join(os.environ['DATALOOP_TEST_ASSETS'], path_image1),
+            os.path.join(os.environ['DATALOOP_TEST_ASSETS'], path_image2),
+            os.path.join(os.environ['DATALOOP_TEST_ASSETS'], path_image3)]
 
         # Upload items
         context.item_1 = context.dataset.items.upload(local_path=context.items_filepath[0], remote_path='/')
@@ -29,20 +32,20 @@ def step_impl(context):
         time.sleep(10)
 
         # Upload annotations
-        context.annotations_file_path = os.path.join(os.environ['DATALOOP_TEST_ASSETS'],
-                                                     'sample_datasets/FruitImage/json/test/apple_77.json')
+        path_annotation1 = os.path.join('sample_datasets', 'FruitImage', 'json', 'validation', 'apple_77.json')
+        context.annotations_file_path = os.path.join(os.environ['DATALOOP_TEST_ASSETS'], path_annotation1)
         with open(context.annotations_file_path, "r") as f:
             context.annotations = json.load(f)["annotations"]
         context.item_1.annotations.upload(context.annotations)
 
-        context.annotations_file_path = os.path.join(os.environ['DATALOOP_TEST_ASSETS'],
-                                                     'sample_datasets/FruitImage/json/test/apple_78.json')
+        path_annotation2 = os.path.join('sample_datasets', 'FruitImage', 'json', 'validation', 'apple_78.json')
+        context.annotations_file_path = os.path.join(os.environ['DATALOOP_TEST_ASSETS'], path_annotation2)
         with open(context.annotations_file_path, "r") as f:
             context.annotations = json.load(f)["annotations"]
         context.item_2.annotations.upload(context.annotations)
 
-        context.annotations_file_path = os.path.join(os.environ['DATALOOP_TEST_ASSETS'],
-                                                     'sample_datasets/FruitImage/json/test/apple_79.json')
+        path_annotation3 = os.path.join('sample_datasets', 'FruitImage', 'json', 'validation', 'apple_79.json')
+        context.annotations_file_path = os.path.join(os.environ['DATALOOP_TEST_ASSETS'], path_annotation3)
         with open(context.annotations_file_path, "r") as f:
             context.annotations = json.load(f)["annotations"]
         context.item_3.annotations.upload(context.annotations)
@@ -54,7 +57,7 @@ def step_impl(context):
         # Wait for on-create to success
 
     except Exception as e:
-        assert "Failed to run preparation : {}".format(e)
+        assert False, "Failed to run preparation : {}".format(e)
 
 
 @behave.then(u'I run download one by one example')
@@ -67,7 +70,6 @@ def step_impl(context):
 
 @behave.then(u'I validate download one by one example')
 def step_impl(context):
-
     assert not len(os.listdir(context.root_path)) == 0, 'no files nd in {}'.format(context.root_path)
     try:
         with open(os.path.join(context.root_path, 'apple_77.json'), "r") as f:
