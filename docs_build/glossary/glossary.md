@@ -41,7 +41,7 @@ definitions of where to find the class and how to load itFaaS is the function
 ## I
 ### Instance Catalog
 
-### <a tag="item"></a>Item ([Entity](#entity))
+### <a name="item"></a>Item ([Entity](#entity))
 An object representing some file and metadata
 ## J
 ## K
