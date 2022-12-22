@@ -2,9 +2,11 @@
 
 ```python
 import dtlpy as dl
+project_name = 'project_name'
+dataset_name = 'dataset_name'
 # Get project and dataset
-project = dl.projects.get(project_name='project_name')
-dataset = project.datasets.get(dataset_name='dataset_name')
+project = dl.projects.get(project_name=project_name)
+dataset = project.datasets.get(dataset_name=dataset_name)
 ```
 ## User Metadata  
 As a powerful tool to manage data based on your categories and information, you can add any keys and values to both the item’s and annotations’ user-metadata sections using the Dataloop SDK. Then, you can use your user-metadata for data filtering, sorting, etc.  
@@ -17,6 +19,7 @@ Metadata is a dictionary attribute used with items, annotations, and other entit
 ### String  
 
 ```python
+item.metadata['user'] = dict()
 item.metadata['user']['MyKey'] = 'MyValue'
 annotation.metadata['user']['MyKey'] = 'MyValue'
 ```
@@ -56,10 +59,12 @@ annotation = annotation.update()
 ### Add metadata to an item's user metadata  
 
 ```python
+local_path = r'C:/home/project/images/item.mimetype'
+item_id = 'write-your-id-number'
 # upload and claim item
-item = dataset.items.upload(local_path=r'C:/home/project/images/item.mimetype')
+item = dataset.items.upload(local_path=local_path)
 # or get item
-item = dataset.items.get(item_id='write-your-id-number')
+item = dataset.items.get(item_id=item_id)
 # modify metadata
 item.metadata['user'] = dict()
 item.metadata['user']['MyKey'] = 'MyValue'
@@ -70,10 +75,12 @@ item = item.update()
 ### Modify an existing user metadata field  
 
 ```python
+local_path = r'C:/home/project/images/item.mimetype'
+item_id = 'write-your-id-number'
 # upload and claim item
-item = dataset.items.upload(local_path=r'C:/home/project/images/item.mimetype')
+item = dataset.items.upload(local_path=local_path)
 # or get item
-item = dataset.items.get(item_id='write-your-id-number')
+item = dataset.items.get(item_id=item_id)
 # modify metadata
 if 'user' not in item.metadata:
     item.metadata['user'] = dict()
@@ -86,8 +93,9 @@ Item in platform should have section 'user' in metadata with field 'MyKey' and v
 ### Add metadata to annotations' user metadata  
 
 ```python
+annotation_id = 'my-annotation-id'
 # Get annotation
-annotation = dl.annotations.get(annotation_id='my-annotation-id')
+annotation = dl.annotations.get(annotation_id=annotation_id)
 # modify metadata
 annotation.metadata['user'] = dict()
 annotation.metadata['user']['red'] = True
@@ -100,17 +108,21 @@ annotation in platform should have section 'user' in metadata with field 'red' a
 #### 1. Get your dataset  
 
 ```python
-project = dl.projects.get(project_name='project_name')
-dataset = project.datasets.get(dataset_name='dataset_name')
+project_name = 'project_name'
+dataset_name = 'dataset_name'
+project = dl.projects.get(project_name=project_name)
+dataset = project.datasets.get(dataset_name=dataset_name)
 ```
 #### 2. Add metadata to an item  
 You can also <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md/" target="_blank">add metadata to filtered items</a>  
 
 ```python
+local_path = r'C:/home/project/images/item.mimetype'
+item_id = 'write-your-id-number'
 # upload and claim item
-item = dataset.items.upload(local_path=r'C:/home/project/images/item.mimetype')
+item = dataset.items.upload(local_path=local_path)
 # or get item
-item = dataset.items.get(item_id='write-your-id-number')
+item = dataset.items.get(item_id=item_id)
 # modify metadata
 item.metadata['user'] = dict()
 item.metadata['user']['MyKey'] = 'MyValue'

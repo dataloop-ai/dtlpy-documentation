@@ -9,7 +9,8 @@ You can create datasets within a project. There are no limits to the number of d
 correlates with data versioning where datasets can be cloned and merged.  
 
 ```python
-dataset = project.datasets.create(dataset_name='my-dataset-name')
+dataset_name = 'my-dataset-name'
+dataset = project.datasets.create(dataset_name=dataset_name)
 ```
 ## Create Dataset With Cloud Storage Driver  
   
@@ -19,11 +20,14 @@ that.
   
 
 ```python
-project = dl.projects.get(project_name='my-project-name')
+project_name = 'my-project-name'
+driver = 'my_driver_name'
+dataset_name = 'my_dataset_name'
+project = dl.projects.get(project_name=project_name)
 # Get your drivers list
 project.drivers.list().print()
 # Create a dataset from a driver name. You can also create by the driver ID.
-dataset = project.datasets.create(driver='my_driver_name', dataset_name="my_dataset_name")
+dataset = project.datasets.create(driver=driver, dataset_name=dataset_name)
 ```
   
 ## Retrieve Datasets  
@@ -32,8 +36,9 @@ You can read all datasets that exist in a project, and then access the datasets 
   
 
 ```python
+dataset_id = 'my-dataset-id'
 datasets = project.datasets.list()
-dataset = project.datasets.get(dataset_id='my-dataset-id')
+dataset = project.datasets.get(dataset_id=dataset_id)
 ```
   
 ## Create Directory  
@@ -42,7 +47,8 @@ A dataset can have multiple directories, allowing you to manage files by context
 source, etc.  
 
 ```python
-dataset.items.make_dir(directory="/directory/name")
+directory = '/directory/name'
+dataset.items.make_dir(directory=directory)
 ```
 ## Deep Copy a Folder to Another Dataset  
   
@@ -51,14 +57,14 @@ files that are stored in the Dataloop system, you’ll need to download the file
   
 
 ```python
-copy_annotations = True
-flat_copy = False  # if true, it copies all dir files and sub dir files to the destination folder without sub directories
 source_folder = '/source_folder'
 destination_folder = '/destination_folder'
 source_project_name = 'source_project_name'
 source_dataset_name = 'source_dataset_name'
 destination_project_name = 'destination_project_name'
 destination_dataset_name = 'destination_dataset_name'
+copy_annotations = True
+flat_copy = False  # if true, it copies all dir files and sub dir files to the destination folder without sub directories
 # Get source project dataset
 project = dl.projects.get(project_name=source_project_name)
 dataset_from = project.datasets.get(dataset_name=source_dataset_name)

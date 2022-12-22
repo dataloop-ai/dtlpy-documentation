@@ -70,7 +70,7 @@ class Scripts:
         annotation = self.annotation2
         # DTLPY-START
 
-        item.metadata['user'] = {}
+        item.metadata['user'] = dict()
         item.metadata['user']['MyKey'] = 'MyValue'
         annotation.metadata['user']['MyKey'] = 'MyValue'
 

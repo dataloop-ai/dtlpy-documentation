@@ -10,12 +10,14 @@ Data Version "Snapshot" - Use our versioning feature as a way to save data (item
 Cloning a dataset creates a new dataset with the same files as the original. Files are actually a reference to the original binary and not a new copy of the original, so your cloud data remains safe and protected. When cloning a dataset, you can add a destination dataset, remote file path, and more...  
 
 ```python
-dataset = project.datasets.get(dataset_id='my-dataset-id')
-dataset.clone(clone_name='clone-name',
-              filters=None,
-              with_items_annotations=True,
-              with_metadata=True,
-              with_task_annotations_status=True)
+dataset_id = 'my-dataset-id'
+clone_name = 'clone-name'
+dataset = project.datasets.get(dataset_id=dataset_id)
+dataset_clone = dataset.clone(clone_name=clone_name,
+                              filters=None,
+                              with_items_annotations=True,
+                              with_metadata=True,
+                              with_task_annotations_status=True)
 ```
 ## Merge Datasets  
 Dataset merging outcome depends on how similar or different the datasets are.  
@@ -26,7 +28,8 @@ Dataset merging outcome depends on how similar or different the datasets are.
 ```python
 dataset_ids = ["dataset-1-id", "dataset-2-id"]
 project_ids = ["dataset-1-project-id", "dataset-2-project-id"]
-dataset_merge = dl.datasets.merge(merge_name="my_dataset-merge",
+merge_name = 'my_dataset-merge'
+dataset_merge = dl.datasets.merge(merge_name=merge_name,
                                   project_ids=project_ids,
                                   dataset_ids=dataset_ids,
                                   with_items_annotations=True,

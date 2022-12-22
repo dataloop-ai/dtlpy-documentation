@@ -6,20 +6,25 @@ Modalities are multiple layers representing the same reality/scene. For example 
 import dtlpy as dl
 if dl.token_expired():
     dl.login()
-project = dl.projects.get(project_name='project_name')
-dataset = project.datasets.get(dataset_name='dataset_name')
+project_name = 'project_name'
+dataset_name = 'dataset_name'
+project = dl.projects.get(project_name=project_name)
+dataset = project.datasets.get(dataset_name=dataset_name)
 ```
 ## Set a single modality  
 In the following example, Item2 is defined as a modality for the main item, item1  
   
 
 ```python
+first_item_id = 'your-item-id'
+second_item_id = 'your-item-id'
+modality_name = 'your-modality-name'
 # Get the first item (main)
-item1 = dataset.items.get(item_id='your-item-id')
+item1 = dataset.items.get(item_id=first_item_id)
 # Get the second item
-item2 = dataset.items.get(item_id='your-item-id')
+item2 = dataset.items.get(item_id=second_item_id)
 # Create modality
-item1.modalities.create(name='your-modality-name',
+item1.modalities.create(name=modality_name,
                         modality_type=dl.ModalityTypeEnum.OVERLAY,
                         ref=item2.id)
 # Update item to apply changes to platform
@@ -50,6 +55,7 @@ import os
 import dtlpy as dl
 import json
 from concurrent.futures import ThreadPoolExecutor
+modalities_json = '/home/project/images/modalities.json'
 def upload_single(dataset, source, modalities):
     # Upload main item. If it's not a local image - create a URL Link
     if not os.path.isfile(source):
@@ -65,7 +71,7 @@ def upload_single(dataset, source, modalities):
                                     name='{}:{}'.format(modality_item.name, modality_item.id))
     main_item.update(system_metadata=True)
 def main():
-    with open('/home/project/images/modalities.json', 'r') as f:
+    with open(modalities_json, 'r') as f:
         modalities_layout = json.load(f)
     # Run the following script to upload the modalities
     with ThreadPoolExecutor(max_workers=32) as executor:
@@ -77,6 +83,8 @@ def main():
     executor.shutdown()
 if __name__ == "__main__":
     main()
+# DTLPY STOP
+self.main5 = main
 ```
 Run the main() function to start the run  
 

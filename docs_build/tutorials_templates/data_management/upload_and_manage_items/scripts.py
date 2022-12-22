@@ -70,10 +70,10 @@ class Scripts:
         remote_path = '/folder_name'
 
         # DTLPY-STOP
-        project_name = getattr(self, 'project_name2', 'project_name')
-        dataset_name = getattr(self, 'dataset_name2', 'dataset_name')
-        local_path = getattr(self, 'local_path2', r'C:/home/project/images')
-        remote_path = getattr(self, 'remote_path2', '/folder_name')
+        project_name = self.project_name2
+        dataset_name = self.dataset_name2
+        local_path = self.local_path2
+        remote_path = self.remote_path2
         # DTLPY-START
 
         import dtlpy as dl
@@ -106,7 +106,7 @@ class Scripts:
         self.item3 = item
 
     def section4(self):
-        # DTLPY - STOP
+        # DTLPY-STOP
         item = self.item4
         # DTLPY-START
 
@@ -129,7 +129,7 @@ class Scripts:
         remote_name2 = 's.jpg'
         item_metadata2 = {'user': {'dummy': 'sec'}}
 
-        # DTLPY - STOP
+        # DTLPY-STOP
         dataset_id = self.dataset_id5
         ''' First item and info attached: '''
         local_path1 = self.first_local_path5
@@ -159,5 +159,5 @@ class Scripts:
         items = dataset.items.upload(local_path=df,
                                      overwrite=True)  # Upload DF to platform
 
-        # DTLPY - STOP
+        # DTLPY-STOP
         self.items5 = items

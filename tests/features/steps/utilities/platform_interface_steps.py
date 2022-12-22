@@ -1,10 +1,10 @@
 import datetime
 import random
-
 import behave
 import time
 import jwt
 import os
+
 import dtlpy as dl
 import numpy as np
 from behave_testrail_reporter import TestrailReporter
@@ -63,7 +63,8 @@ def before_all(context):
 
         allow_locally_with_user = os.environ.get('ALLOW_RUN_TESTS_LOCALLY_WITH_USER', 'false') == 'true'
 
-        if not allow_locally_with_user and payload['email'] not in ['oa-test-4@dataloop.ai', 'oa-test-1@dataloop.ai', 'oa-test-2@dataloop.ai',
+        if not allow_locally_with_user and payload['email'] not in ['oa-test-4@dataloop.ai', 'oa-test-1@dataloop.ai',
+                                                                    'oa-test-2@dataloop.ai',
                                                                     'oa-test-3@dataloop.ai']:
             assert False, 'Cannot run test on user: "{}". only test users'.format(payload['email'])
 
@@ -150,26 +151,10 @@ def step_impl(context, date):
     if date == "today":
         context.timestamp.append(datetime.datetime.now().replace(microsecond=0).isoformat())
     elif date == "yesterday":
-        context.timestamp.append((datetime.datetime.now() - datetime.timedelta(days=1)).replace(microsecond=0).isoformat())
+        context.timestamp.append(
+            (datetime.datetime.now() - datetime.timedelta(days=1)).replace(microsecond=0).isoformat())
     elif date == "tomorrow":
-        context.timestamp.append((datetime.datetime.now() + datetime.timedelta(days=1)).replace(microsecond=0).isoformat())
+        context.timestamp.append(
+            (datetime.datetime.now() + datetime.timedelta(days=1)).replace(microsecond=0).isoformat())
     else:
         assert False, "Please provide one of the options : today , yesterday, tomorrow"
-
-
-def rebuild_path(full_path: str):
-    """
-    Rebuild the given path, split by backslashes, using the function os.path.join()
-
-    @param full_path: The path to rebuild
-
-    @return: The rebuilt path
-    """
-
-    full_path_list = full_path.split('/')
-    return_path = full_path_list[0]
-
-    for i in range(len(full_path_list)-1):
-        return_path = os.path.join(return_path, full_path_list[i+1])
-
-    return return_path
