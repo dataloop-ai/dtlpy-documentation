@@ -3,7 +3,7 @@
 [A](#a) | [B](#b) | [C](#c) | [D](#d) | [E](#e) | [F](#f) | [G](#g) | [H](#h) | [I](#i) | [J](#j) | [K](#k) | [L](#l) | [M](#m) | [N](#n) | [O](#o) | [P](#p) | [Q](#q) | [R](#r) | [S](#s) | [T](#t) | [U](#u) | [V](#v) | [W](#w) | [X](#x) | [Y](#y) | [Z](#z)
 
 ## A
-### <a name="annotation"></a>Annotation ($Entity)
+### <a name="annotation"></a>Annotation ([Entity](#entity))
 A JSON format representing the objects and labels exists in an [Item](#item).
 ### <a name="artifacts"></a>Artifacts ([Entity](#entity))
 Large files (binaries) that we don't want to pack inside a package (which should only contain code), but are still needed during the deployment of a package.They are uploaded separately and downloaded when the service is initiated.    Usually need to be added to the .gitignoreThere are three types: Item, Local, or Link
@@ -26,7 +26,7 @@ A shallow copy of the item (with or without metadata and annotations) without co
 ## D
 ### <a name="dataset"></a>Dataset ([Entity](#entity))
 
-### <a name="dql---dataloop-query-language"></a>DQL - Dataloop Query Language
+### <a name="dql"></a>DQL (Dataloop Query Language)
 
 ## E
 ### <a name="entity"></a>Entity
