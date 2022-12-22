@@ -35,7 +35,7 @@ def step_impl(context, item_type):
                     return
 
         context.item = None
-
+        
 
 @behave.given('I delete the item')
 def step_impl(context):
