@@ -12,7 +12,7 @@ definitions = [
      "description": "The content of any type of file (image, video, pdf, etc)"},
     {"header": "Clone",
      "description": "A shallow copy of the item (with or without metadata and annotations) without copying the binaries."},
-    {"header": "Annotation ($Entity)",
+    {"header": "Annotation ($[Entity])",
      "description": "A JSON format representing the objects and labels exists in an $[Item]."},
     {"header": "Label ($[Entity])",
      "description": "A piece of text that gives information about an annotation instance. Contains also the color, display name and children of the anntoation."},
@@ -93,7 +93,7 @@ definitions = [
 
     {"header": "Metadata",
      "description": "A dictionary object that contains metadata of the Dl object. Usually includes “system” and “user” in the metadata fields to distinguish between necessary and custom user metadata."},
-    {"header": "DQL - Dataloop Query Language",
+    {"header": "DQL (Dataloop Query Language)",
      "description": ""},
     {"header": "Dataset ($[Entity])",
      "description": ""},
