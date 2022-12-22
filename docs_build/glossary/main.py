@@ -1,67 +1,68 @@
 import string
+import re
 
 definitions = [
     {"name": "Entity",
      "description": "A Dataloop data model object. Represented by a json."},
     {"name": "Repository",
      "description": ""},
-    {"name": "Item ($Entity)",
+    {"name": "Item ($[Entity])",
      "description": "An object representing some file and metadata"},
     {"name": "Binaries (Item)",
      "description": "The content of any type of file (image, video, pdf, etc)"},
     {"name": "Clone",
      "description": "A shallow copy of the item (with or without metadata and annotations) without copying the binaries."},
     {"name": "Annotation ($Entity)",
-     "description": "A JSON format representing the objects and labels exists in an $Item."},
-    {"name": "Label ($Entity)",
+     "description": "A JSON format representing the objects and labels exists in an $[Item]."},
+    {"name": "Label ($[Entity])",
      "description": "A piece of text that gives information about an annotation instance. Contains also the color, display name and children of the anntoation."},
-    {"name": "Attribute ($Entity)",
+    {"name": "Attribute ($[Entity])",
      "description": ""},
-    {"name": "Box ($Entity)",
-     "description": "A bounding box $Annotation type. Represented by 2 point for top-left and bottom-right. type=`box`"},
-    {"name": "Polygon ($Entity)",
-     "description": "A polygon $Annotation type. Represented by a list of (x,y) points. type=`segment`"},
+    {"name": "Box ($[Entity])",
+     "description": "A bounding box $[Annotation] type. Represented by 2 point for top-left and bottom-right. type=`box`"},
+    {"name": "Polygon ($[Entity])",
+     "description": "A polygon $[Annotation] type. Represented by a list of (x,y) points. type=`segment`"},
 
-    {"name": "Segmentation ($Entity)",
-     "description": "A binary mask $Annotation type. Represented by mask with the same size as the image, 0 for background, 1 for the object. type=`binary`"},
+    {"name": "Segmentation ($[Entity])",
+     "description": "A binary mask $[Annotation] type. Represented by mask with the same size as the image, 0 for background, 1 for the object. type=`binary`"},
 
-    {"name": "Task ($Entity)",
+    {"name": "Task ($[Entity])",
      "description": "A set of items to be reviewed/annotated by human workers. A task is divided into assignments."
                     "Can be managed by a queue (Pulling Task) or by workload (percentage of items per assignee)."
                     "The task is connected to a recipe for instructions and world definitions (ontology)"},
-    {"name": "Assignment ($Entity)",
+    {"name": "Assignment ($[Entity])",
      "description": "A single annotators’ items for manual review and/or annotation. Items can be redistributed or reassigned between assignments."
                     "The annotator is referred to as an “assignee”"},
-    {"name": "Package ($Entity)",
+    {"name": "Package ($[Entity])",
      "description": "A package is the bundle of code and definitions that can be used for creating models or deploying services. Code is a dl.Codebase entity, and definitions include modules, functions, IOs, and the code entry point."
                     "Can be Python, nodeJS (maybe everything, we don't care)."
                     "Used to deploy a service and create an executable version of that code."
                     "Limited to 100MB"
                     "Can be public/global, or specific to a project"},
-    {"name": "Module ($Entity)",
+    {"name": "Module ($[Entity])",
      "description": "A json representing the python class and functions (location, IOs etc.)"},
-    {"name": "Function ($Entity)",
+    {"name": "Function ($[Entity])",
      "description": "definitions of where to find the class and how to load it"
                     "FaaS is the function"},
-    {"name": "Codebase ($Entity)",
+    {"name": "Codebase ($[Entity])",
      "description": "-four types of code bases: item codebase vs git codebase vs local codebase vs filesystem (currently no one uses this, and is likely for when working in a remote container)"
                     "-limited to 100MB"},
-    {"name": "Artifacts ($Entity)",
+    {"name": "Artifacts ($[Entity])",
      "description": "Large files (binaries) that we don't want to pack inside a package (which should only contain code), but are still needed during the deployment of a package."
                     "They are uploaded separately and downloaded when the service is initiated.    "
                     "Usually need to be added to the .gitignore"
                     "There are three types: Item, Local, or Link"},
-    {"name": "Service ($Entity)",
-     "description": "A deployed $Package that serves the code. Given the matching input to a function, it will run it and return the output, e.g. if we have code in our $Package for converting RGB images to grayscale, the dl.Service would run the code and upload the grayed image."},
-    {"name": "Execution ($Entity)",
+    {"name": "Service ($[Entity])",
+     "description": "A deployed $[Package] that serves the code. Given the matching input to a function, it will run it and return the output, e.g. if we have code in our $[Package] for converting RGB images to grayscale, the dl.Service would run the code and upload the grayed image."},
+    {"name": "Execution ($[Entity])",
      "description": ""},
-    {"name": "Trigger ($Entity)",
+    {"name": "Trigger ($[Entity])",
      "description": ""},
     {"name": "Pod type",
      "description": ""},
     {"name": "Instance Catalog",
      "description": ""},
-    {"name": "Model ($Entity)",
+    {"name": "Model ($[Entity])",
      "description": "A Dataloop Model is a combination of data (dl.Dataset), configurations (json dictionary), and code (dl.Package) to represent a learnable instance of the data."
                     "You can train, evaluate, compare, and deploy a dl.Model."
                     "Out-of-the-box models are available on the platform with the scope attribute “public”, as opposed to project specific models with “project” scope."},
@@ -85,7 +86,7 @@ definitions = [
      "description": "A machine learning model that is composed of layers consisting of simple connected units or neurons followed by nonlinearities."},
     {"name": "Command",
      "description": ""},
-    {"name": "Pipeline ($Entity)",
+    {"name": "Pipeline ($[Entity])",
      "description": "A collection of functions (machine processing) and tasks (human processing) that creates a processing flow. Structured from nodes (processing units) and connections (to move data types between nodes)"},
     {"name": "Pipeline Cycle",
      "description": "A single run over the pipeline. From the first node to the last available node to run"},
@@ -94,7 +95,7 @@ definitions = [
      "description": "A dictionary object that contains metadata of the Dl object. Usually includes “system” and “user” in the metadata fields to distinguish between necessary and custom user metadata."},
     {"name": "DQL - Dataloop Query Language",
      "description": ""},
-    {"name": "Dataset ($Entity)",
+    {"name": "Dataset ($[Entity])",
      "description": ""},
     {"name": "",
      "description": ""},
@@ -116,8 +117,26 @@ def create():
                               definition["name"].lower().startswith(letter.lower())]
         md_string += f"## {letter.upper()}\n"
         for definition in letter_definitions:
-            md_string += f"### {definition['name']}\n"
-            md_string += f"{definition['description']}\n"
+            name = definition['name']
+            description = definition['description']
+            # name = "this is a $[test] with two $[dollars]"
+            grps = re.finditer(r"\$\[([A-Za-z0-9_]+)\]", name)
+            for grp in grps:
+                txt = grp.group(1)
+                name = name.replace(grp.group(), f'[{txt}](#{txt.lower()})')
+
+            grps = re.finditer(r"\$\[([A-Za-z0-9_]+)\]", description)
+            for grp in grps:
+                txt = grp.group(1)
+                description = description.replace(grp.group(), f'[{txt}](#{txt.lower()})')
+
+            # replace $ with the current link
+            md_string += f"### {name}\n"
+            md_string += f"{description}\n"
 
     with open('docs_build/glossary/glossary.md', 'w', encoding='utf8') as f:
         f.write(md_string)
+
+
+if __name__ == "__main__":
+    create()
