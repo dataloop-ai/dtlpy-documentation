@@ -1,4 +1,4 @@
-##Pipelines
+## Pipelines
 
 The Dataloop pipeline process allows transitioning data between labeling tasks,
 QA tasks, functions installed in Dataloop, code snippets, ML models. 

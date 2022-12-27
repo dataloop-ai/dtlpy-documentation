@@ -1,4 +1,4 @@
-##Advanced tasks & assignments
+## Advanced tasks & assignments
 
 Items in a task are distributed among all contributors. The automatic option will assign an equal portion of items per contributor, while the manual option gives you more control (some contributors are more experienced than others, and some may not be fully available to the assigned task).
 

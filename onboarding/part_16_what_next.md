@@ -1,4 +1,4 @@
-##What is next? 
+## What is next? 
 
 We hope that this guide introduced you to all the main features of Dataloop and you have 
 full picture of our capabilities. 

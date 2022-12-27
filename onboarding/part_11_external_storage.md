@@ -1,4 +1,4 @@
-##External cloud storage
+## External cloud storage
 
 The Dataloop platform has 2 types of storage, Dataloop cloud storage and External cloud storage (S3/Azure/ GCS/Private container registry).
 

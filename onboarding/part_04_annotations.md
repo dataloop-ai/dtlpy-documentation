@@ -1,4 +1,4 @@
-##Annotations
+## Annotations
 
 There are different types of annotations that you can create on the platform. 
 In this introduction section we will focus on [classification](https://dataloop.ai/docs/classify-item)

@@ -1,11 +1,6 @@
-##Advanced annotations 
+## Advanced annotations 
 
 https://sdk-docs.dataloop.ai/en/latest/tutorials/annotations_image/advance_tutorials/chapter.html
-
-
-
-
-
 
 
 

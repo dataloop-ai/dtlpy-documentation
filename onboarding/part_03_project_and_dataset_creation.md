@@ -1,12 +1,12 @@
 
-##Project
+## Project
 
 1. [Create project](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/getting_started/sdk_overview/chapter.md#to-create-a-new-project)
 2. [Get project](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/getting_started/sdk_overview/chapter.md#to-select-the-new-project)
 3. [Add contributors](https://sdk-docs.dataloop.ai/en/latest/repositories.html#dtlpy.repositories.projects.Projects.list_members)
 
 
-##Dataset
+## Dataset
 
 1. [Create dataset](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/getting_started/sdk_overview/chapter.md#to-create-a-new-dataset)
 2. [Get dataset](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/getting_started/sdk_overview/chapter.md#to-select-the-dataset)

@@ -1,4 +1,4 @@
-##Advanced filtering 
+## Advanced filtering 
 
 In this part you will learn more capabilities of filters and DQL. 
 
