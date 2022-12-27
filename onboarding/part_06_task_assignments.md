@@ -14,5 +14,5 @@ You can [create tasks](../tutorials/task_workflows/create_a_task/chapter.md) fro
 
 > What will you learn next? 
 
-1. If you want to learn what other options you can be done with tasks & assignments, continue to [this](part_15_advanced_tasks.md) chapter.
-2. If you want to continue to data versioning, continue to [this](part_07_data_versioning.md) chapter
+1. If you want to learn what other options you can be done with tasks & assignments, go to [chapter 15](part_15_advanced_tasks.md).
+2. If you want to continue to data versioning, continue to [chapter 7](part_07_data_versioning.md).

@@ -24,7 +24,7 @@ You can use this tool for pre annotation processing (resize, video assembler/dis
 > What you will learn next? 
 
 In the next chapter you will learn about pipelines which you can use after to integrate with any FAAS you will create. 
-To continue go to [this chapter](part_09_pipelines.md)
+To continue go to [chapter 9](part_09_pipelines.md)
 
 
 

@@ -17,7 +17,7 @@ The data can be filtered by any criteria, split, merged, and change status in th
 
 In the next chapter you will learn about model management which will help you 
 to understand in depth the full cycle that you can implement into your workflows by using Dataloop. 
-To continue to learn about model management go to [this chapter](part_10_model_management.md)
+To continue to learn about model management go to [chapter 10](part_10_model_management.md)
 
 
 

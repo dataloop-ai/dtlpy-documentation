@@ -27,9 +27,9 @@
 
 > What will you learn next? 
 
-1. If all your data is in your external cloud storage you can learn how to connect it [here](part_11_external_storage.md)
+1. If all your data is in your external cloud storage you can learn how to connect it in [chapter 11](part_11_external_storage.md).
 
-2. If you want to learn more how to use Data versioning capabilities, go to [this chapter](part_07_data_versioning.md)
+2. If you want to learn more how to use Data versioning capabilities, go to [chapter 7](part_07_data_versioning.md).
 
 
 

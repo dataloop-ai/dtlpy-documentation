@@ -32,8 +32,8 @@ You can learn basic queries [here](../tutorials/data_management/sort_and_filter/
 
 > What will you learn next? 
 
-1. If you want to learn more complex filtering and queries continue to [this chapter](part_14_advanced_filtering.md)
-2. If you want to learn how to create tasks and assignments continue to [this chapter](part_06_task_assignments.md)
+1. If you want to learn more complex filtering and queries continue to [chapter 14](part_14_advanced_filtering.md).
+2. If you want to learn how to create tasks and assignments go to [chapter 6](part_06_task_assignments.md).
 
 
 

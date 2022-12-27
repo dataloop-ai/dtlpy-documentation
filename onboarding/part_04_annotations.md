@@ -25,9 +25,9 @@ and [bounding box](https://dataloop.ai/docs/create-bounding-box) and [polyline](
 
 > What will you learn next? 
 
-1. If you want to enhance your knowledge on different type of annotation continue to [this chapter](part_12_annotations_advanced.md)
+1. If you want to enhance your knowledge on different type of annotation continue to [chapter 12](part_12_annotations_advanced.md).
 
-2. If you want to learn how to upload annotation to videos continue to [this chapter](part_13_annotations_on_video.md)
+2. If you want to learn how to upload annotation to videos continue to [chapter 13](part_13_annotations_on_video.md).
 
 
 
