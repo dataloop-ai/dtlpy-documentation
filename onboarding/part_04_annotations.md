@@ -4,11 +4,11 @@ There are different types of annotations that you can create on the platform.
 In this introduction section we will focus on [classification](https://dataloop.ai/docs/classify-item)
 and [bounding box](https://dataloop.ai/docs/create-bounding-box) and [polyline](https://dataloop.ai/docs/create-polygon)
 
-1. [Setup](https://sdk-docs.dataloop.ai/en/latest/tutorials/annotations_image/setup/chapter.html)
-2. [Upload annotations](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/getting_started/sdk_overview/chapter.md#annotating-items) ( review only box and classification)
-3. [Classification](https://sdk-docs.dataloop.ai/en/latest/tutorials/annotations_image/classification_point_and_pose/chapter.html)
-4. [Bounding box](https://sdk-docs.dataloop.ai/en/latest/tutorials/annotations_image/bounding_box_and_cuboid/chapter.html)
-5. [Polygon and polyline](https://sdk-docs.dataloop.ai/en/latest/tutorials/annotations_image/polygon_and_polyline/chapter.html)
+1. [Setup](../tutorials/annotations_image/setup/chapter.md)
+2. [Upload annotations](../tutorials/getting_started/sdk_overview/chapter.md#annotating-items) ( review only box and classification)
+3. [Classification](../tutorials/annotations_image/classification_point_and_pose/chapter.md)
+4. [Bounding box](../tutorials/annotations_image/bounding_box_and_cuboid/chapter.md)
+5. [Polygon and polyline](../tutorials/annotations_image/polygon_and_polyline/chapter.md)
 
 
  

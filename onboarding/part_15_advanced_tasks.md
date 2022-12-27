@@ -7,12 +7,12 @@ While the task is actively worked by annotators you can choose to redistribute a
 Because changes in the workforce can occur while the task is active, you have the option to reassign an assignment from one annotator to the other
 
 
-Please follow [this](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.md) tutorial to learn how to reassign and redistribute assignments. 
+Please follow [this](../tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.md) tutorial to learn how to reassign and redistribute assignments. 
 
 
 > What will you learn next? 
 
-We recommend you to go back to the [chapter 7 ] to continue the learning process. 
+We recommend you to go back to the [chapter 7](part_07_data_versioning.md) to continue the learning process. 
 
 
 

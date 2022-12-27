@@ -8,11 +8,11 @@
 
 ## Dataset
 
-1. [Create dataset](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/getting_started/sdk_overview/chapter.md#to-create-a-new-dataset)
-2. [Get dataset](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/getting_started/sdk_overview/chapter.md#to-select-the-dataset)
-3. [Upload items](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/getting_started/sdk_overview/chapter.md#uploading-items)
-4. [Get items](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/getting_started/sdk_overview/chapter.md#getting-items)
-5. [Add metadata](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/upload_and_manage_items/chapter.md)
+1. [Create dataset](../tutorials/getting_started/sdk_overview/chapter.md#to-create-a-new-dataset)
+2. [Get dataset](../tutorials/getting_started/sdk_overview/chapter.md#to-select-the-dataset)
+3. [Upload items](../tutorials/getting_started/sdk_overview/chapter.md#uploading-items)
+4. [Get items](../tutorials/getting_started/sdk_overview/chapter.md#getting-items)
+5. [Add metadata](../tutorials/data_management/upload_and_manage_items/chapter.md)
 
 ***Exercise:*** 
 
@@ -27,9 +27,9 @@
 
 > What will you learn next? 
 
-1. If all your data is in your external cloud storage you can learn how to connect it [here](part_11_external%20storage.md)
+1. If all your data is in your external cloud storage you can learn how to connect it [here](part_11_external_storage.md)
 
-2. If you want to learn more how to use Data versioning capabilities, go to [this chapter](part_7_data%20versioning.md)
+2. If you want to learn more how to use Data versioning capabilities, go to [this chapter](part_07_data_versioning.md)
 
 
 

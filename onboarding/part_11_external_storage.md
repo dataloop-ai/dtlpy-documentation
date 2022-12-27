@@ -14,4 +14,4 @@ There are 3 tutorials how to create connection between Dataloop and your externa
 
 > What will you learn next? 
 
-We recommend you go back to the [chapter 4](part_7_data_versioning.md) to continue the learning flow. 
+We recommend you go back to the [chapter 4](part_07_data_versioning.md) to continue the learning flow. 

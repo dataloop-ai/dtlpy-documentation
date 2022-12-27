@@ -11,10 +11,10 @@ You can use this tool for pre annotation processing (resize, video assembler/dis
 
 **Advanced examples how to implement FAAS:**
 
-1. Create and deploy [simple function](https://sdk-docs.dataloop.ai/en/latest/tutorials/faas/single_function_rgb_to_gray/chapter.html)
+1. Create and deploy [simple function](../tutorials/faas/single_function_rgb_to_gray/chapter.md)
 2. The function that extracts image Exif information and uploads it [to item's metadata](https://github.com/dataloop-ai/image-exif)
-3. Add [classification](https://github.com/SewarDra/dtlpyTraining-Sessions/tree/main/Session%202-FaaS%26Pipelines/add_classification-basic%20FaaS)
-4. Auto [pre annotating process](https://sdk-docs.dataloop.ai/en/latest/tutorials/faas/auto_annotate/chapter.html#model-and-weights-files)
+3. Add [classification](../functions/add_annotation_to_item/README.md)
+4. Auto [pre annotating process](../tutorials/faas/auto_annotate/chapter.md#model-and-weights-files)
 
 **Video tutorials how to create FAAS in UI**
 
@@ -24,7 +24,7 @@ You can use this tool for pre annotation processing (resize, video assembler/dis
 > What you will learn next? 
 
 In the next chapter you will learn about pipelines which you can use after to integrate with any FAAS you will create. 
-To continue go to [this chapter](part_9_pipelines.md)
+To continue go to [this chapter](part_09_pipelines.md)
 
 
 
