@@ -1,6 +1,6 @@
 ## FAAS
 
-Dataloop Function-as-a-Service ([FAAS](https://dataloop.ai/docs/faas))  is a compote service that automatically runs your code based on time patterns or in response to trigger events.
+Dataloop Function-as-a-Service ([FAAS](https://dataloop.ai/docs/faas))  is a compute service that automatically runs your code based on time patterns or in response to trigger events.
 You can use this tool for pre annotation processing (resize, video assembler/dissembler); post annotation processing (auto-parenting, augmentation); ML models (auto-detection), QA models (auto QA, consensus model, majority vote model)
 
 **The main concepts in FAAS:**
@@ -12,7 +12,7 @@ You can use this tool for pre annotation processing (resize, video assembler/dis
 **Advanced examples how to implement FAAS:**
 
 1. Create and deploy [simple function](../tutorials/faas/single_function_rgb_to_gray/chapter.md)
-2. The function that extracts image Exif information and uploads it [to item's metadata](https://github.com/dataloop-ai/image-exif)
+2. Write a function that extracts image Exif information and uploads it [to the item's metadata](https://github.com/dataloop-ai/image-exif)
 3. Add [classification](../functions/add_annotation_to_item/README.md)
 4. Auto [pre annotating process](../tutorials/faas/auto_annotate/chapter.md#model-and-weights-files)
 
@@ -23,7 +23,7 @@ You can use this tool for pre annotation processing (resize, video assembler/dis
 
 > What you will learn next? 
 
-In the next chapter you will learn about pipelines which you can use after to integrate with any FAAS you will create. 
+In the next chapter you will learn about pipelines which you can use to integrate with any FAAS you will create. 
 To continue go to [chapter 9](part_09_pipelines.md)
 
 

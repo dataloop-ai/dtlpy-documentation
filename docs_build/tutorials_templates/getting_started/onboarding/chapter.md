@@ -150,7 +150,7 @@ auto-parenting, augmentation); ML models (auto-detection), QA models (auto QA, c
 - [Docker image](https://dataloop.ai/docs/faas-docker-images)
 - [Service analytics](https://dataloop.ai/docs/service-analytics)
 
-**Advanced examples how to implemnet FAAS:**
+**Advanced examples how to implement FAAS:**
 
 1. Create and
    deploy [simple function](https://sdk-docs.dataloop.ai/en/latest/tutorials/faas/single_function_rgb_to_gray/chapter.html)

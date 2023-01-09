@@ -5,7 +5,7 @@ def func1():
     ## Quick Overview
     Dataloop's model management allows machine learning engineers to manage their research and production processes in one centralized place.
 
-    Models are run using a combination of Packagess, Datasets, and Artifacts.
+    Models are run using a combination of Packages, Datasets, and Artifacts.
 
     Model architectures are pushed to the cloud via Packages. Packages are bundles of code that contain the codebase required for the model to run. Datasets will include the images being used for training or inference, and they also indicate which images are included within a dataset subset (e.g. train/validation/test, or dividing your datset in other ways to achieve specific model training objectives).
 
@@ -20,7 +20,7 @@ def func1():
 
     In this tutorial we will cover the required Dataloop entities to create, compare, restore, manage, and deploy model training sessions and trained models.
 
-    ![Components of a Model](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt_3/assets/images/model_management/model_diagram.png/)
+    ![Components of a Model](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/assets/images/model_management/model_diagram.png/)
 
     ### Package and Model Entities
 
@@ -73,7 +73,7 @@ def func1():
 
     In “offline” mode, code and weights are not saved anywhere in the Dataloop platform. Only model metrics are saved and viewable at a later time.
 
-    ![An example of model metrics](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt_3/assets/images/model_management/metrics_example.png/)
+    ![An example of model metrics](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/assets/images/model_management/metrics_example.png/)
 
     In "online" mode, models can be trained to be deployed anywhere on the platform. For example, you can easily create a button interface to use your model to inference on a new data item and view it on the platform.
 

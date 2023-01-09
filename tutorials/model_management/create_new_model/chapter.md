@@ -85,4 +85,5 @@ Finally, build the model adapter and call one of the adapter’s methods to see 
 ```python
 adapter = package.build()
 adapter.load_from_model(model_entity=model)
+# adapter.train()
 ```
