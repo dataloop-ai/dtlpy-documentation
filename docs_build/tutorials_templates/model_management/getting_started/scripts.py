@@ -4,7 +4,7 @@ import dtlpy as dl
 def func1():
     import dtlpy as dl
     import os
-    project = dl.projects.get(project_name='<project_id>')
+    project = dl.projects.get(project_id='<project_id>')
     package = project.packages.push(package_name='dummy-model-package',
                                     codebase=dl.entities.LocalCodebase(os.getcwd()),
                                     modules=[])
@@ -27,9 +27,9 @@ def func2():
 
 
 def func3():
-    filters = dl.Filters(resource=dl.FiltersResource.PACKAGE, use_defaults=False)
+    filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
     filters.add(field='scope', values='public')
-    dl.packages.list(filters=filters).print()
+    dl.models.list(filters=filters).print()
 
 
 def func4():
