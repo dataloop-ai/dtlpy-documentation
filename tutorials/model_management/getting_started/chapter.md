@@ -12,7 +12,7 @@ To export metrics for tracking model performance, you need to create a dummy pac
 ```python
 import dtlpy as dl
 import os
-project = dl.projects.get(project_name='<project_id>')
+project = dl.projects.get(project_id='<project_id>')
 package = project.packages.push(package_name='dummy-model-package',
                                 codebase=dl.entities.LocalCodebase(os.getcwd()),
                                 modules=[])
@@ -46,9 +46,9 @@ To see available public models, filter all available packages:
   
 
 ```python
-filters = dl.Filters(resource=dl.FiltersResource.PACKAGE, use_defaults=False)
+filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
 filters.add(field='scope', values='public')
-dl.packages.list(filters=filters).print()
+dl.models.list(filters=filters).print()
 ```
 Public models can be downloaded to your machine for local training and inference, or they can be trained and deployed on the cloud for integration into the Dataloop platform.  
   

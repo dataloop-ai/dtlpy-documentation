@@ -40,3 +40,28 @@ To see the item we uploaded, run the following code:
 ```python
 item.open_in_web()
 ```
+Let’s convert the item from RGB to grayscale, using the service we created:  
+
+```python
+execution = service.execute(project_id=project.id,
+                            item_id=item.id,
+                            function_name='rgb2gray')
+execution.logs(follow=True)
+execution = execution.wait()
+print(execution.latest_status)
+```
+And also can execute on multiple items use:  
+
+```python
+filters = dl.Filters(field='dir', values='/test', resource=dl.FiltersResource.ITEM,
+                     context={'datasets': [dataset.id]})
+command = service.execute_batch(
+    filters=filters,
+    function_name='rgb2gray')
+```
+The transformed image will be saved in your dataset in the folder specified.  
+You may now open the item received upon execution:  
+
+```python
+item.open_in_web()
+```
