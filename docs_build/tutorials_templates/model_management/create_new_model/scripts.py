@@ -13,14 +13,6 @@ def func1():
         def load(self, local_path, **kwargs):
             print('loading a model')
             self.model = torch.load(os.path.join(local_path, 'model.pth'))
-
-        def save(self, local_path, **kwargs):
-            print('saving a model to {}'.format(local_path))
-            torch.save(self.model, os.path.join(local_path, 'model.pth'))
-
-        def train(self, data_path, output_path, **kwargs):
-            print('running a training session')
-
         def predict(self, batch, **kwargs):
             print('predicting batch of size: {}'.format(len(batch)))
             preds = self.model(batch)
@@ -34,11 +26,10 @@ def func2():
     project = dl.projects.get(project_name='<project_name>')
     dataset = project.datasets.get(dataset_name='<dataset_name')
 
-    codebase = project.codebases.pack(directory='<path to local dir>')
+    # codebase = project.codebases.pack(directory='<path to local dir>')
     # codebase: dl.GitCodebase = dl.GitCodebase(git_url='github.com/mygit', git_tag='v25.6.93')
     metadata = dl.Package.get_ml_metadata(cls=SimpleModelAdapter,
-                                          default_configuration={'weights_filename': 'model.pth',
-                                                                 'input_size': 256},
+                                          default_configuration={},
                                           output_type=dl.AnnotationType.CLASSIFICATION
                                           )
     module = dl.PackageModule.from_entry_point(entry_point='adapter_script.py')
@@ -48,7 +39,7 @@ def func3():
     package = project.packages.push(package_name='My-Package',
                                     src_path=os.getcwd(),
                                     package_type='ml',
-                                    codebase=codebase,
+                                    # codebase=codebase,
                                     modules=[module],
                                     is_global=False,
                                     service_config={
@@ -66,7 +57,7 @@ def func4():
                                   description='first model we are uploading',
                                   tags=['pretrained', 'tutorial'],
                                   dataset_id=None,
-                                  configuration={'weights_filename': 'model.pth'
+                                  configuration={'weights_filename': '<weights filename and extension>'
                                                  },
                                   project_id=package.project.id,
                                   model_artifacts=[artifact],
@@ -75,6 +66,22 @@ def func4():
 
 
 def func5():
-    adapter = package.build()
-    adapter.load_from_model(model_entity=model)
-    # adapter.train()
+    model.status = 'trained'
+    model.update()
+    model.deploy()
+
+def func6():
+    model = dl.models.get(model_id='<model_id>')
+    item = dl.models.get(model_id='<item_id>')
+
+    payload = {'input': {'itemIds': [item.id]},
+               'config': {'serviceId': model.metadata['system']['deploy']['services'][0]}}
+
+    success, response = dl.client_api.gen_request(req_type="post",
+                                                  path=f"/ml/models/{model.id}/predict",
+                                                  json_req=payload)
+    if not success:
+        raise dl.exceptions.PlatformException(response)
+    ex = response.json()
+
+    print(ex)

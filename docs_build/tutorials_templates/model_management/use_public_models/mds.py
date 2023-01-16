@@ -1,36 +1,39 @@
 def func1():
     """
-    ## Getting Started
+    ## Tutorial: Using models from the AI library to predict on items
 
-    This tutorial will help you get started with the basics of model management:
-    * logging metrics only (aka “offline mode”)
-    * downloading pretrained model for local training and inference
-    * deploying pretrained models from the AI library onto the Dataloop platform
+    Model algorithms ready to use out-of-the-box are available in the Dataloop AI Library. The AI library contains various algorithms and pretrained models that can be used for inferencing or fine-tuning via additional training on your custom datasets.
 
-    ### Logging metrics
-    To export metrics for tracking model performance, you need to create a dummy package (with a dummy codebase reference) and model (including a valid dataset ID). Remember to replace <project_name> and <dataset_id> with the appropriate strings to reference your project and dataset.
+    ### Using pretrained models from the AI library
+
+    To see available public models, filter all available packages:
 
     """
 
 
 def func2():
     """
+    Public models can be downloaded to your machine for local training and inference, or they can be trained and deployed on the cloud for integration into the Dataloop platform.
 
-    Once you’ve created these two entities, metrics can be sent to the platform with the `model.add_log_samples` command.
-    Here is an example:
+    At this point, you can do one of the following:
+    1. Download a model for local training and/or inferencing
+    2. Implement a model on the platform
+
+    Deploying on the platform also allows you to inference on data items, as well as integrate the model into FaaS or pipelines.
+
+    ## Download a public model for local training and/or inferencing
+        1. download codebase
+        2. build adapter
+        3. load adapter
+        4. run predict
+
+
     """
 
 
 def func3():
     """
-    Metrics plots will appear under the “metrics” tab of your chosen model, and will look something like this:
-    ![Screenshot of model metrics plot](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/assets/images/model_management/metrics_example.png/)
 
-    ### Using pretrained models from the AI library
-
-    The Dataloop AI library includes various architectures and pretrained models that can be used for inference or further training.
-
-    To see available public models, filter all available packages:
 
     """
 

@@ -28,7 +28,7 @@ We will use the Package entity to save the architecture of the model (e.g Yolov5
   
 - In “online” mode (see “Model Comparison” below), Packages should include a Model Adapter to create the Dataloop API  
   
-Model algorithms that come as-is can be found in the AI Library. All public packages listed in the AI Library are pretrained and include the model algorithm code and default configurations. Users can download the codebase of any packages pushed to the cloud.  
+Model algorithms that are ready as-is to use can be found in the AI Library. All public packages listed in the AI Library are pretrained and include the model algorithm code and default configurations. Users can download the codebase of any packages pushed to the cloud.  
   
 #### Model  
   
@@ -36,7 +36,7 @@ Using the Package (code), Dataset and Ontology (data and labels) and configurati
   
 The Model contains the weights and any other artifacts needed to load the trained model and inference.  
   
-A model can also be cloned to be a starting point for a new model (for fine-tuning or transfer learning).  
+A Model can also be cloned to be a starting point for a new model (for fine-tuning or transfer learning).  
   
 ### Additional Package components  
   
