@@ -7,7 +7,7 @@
 Welcome to the Dataloop onboarding!
 This guide combines all our documentation sources in a structured way to make sure you are familiar with the necessary foundation to get started on our platform. 
 
-[Glossary]()
+[Glossary](../docs_build/glossary/glossary.md)
 
 [Cheat Sheet](https://dataloop.ai/docs/sdk-cheatsheet)
 
