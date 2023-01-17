@@ -47,7 +47,7 @@ An object representing some file and metadata
 ## K
 ## L
 ### <a name="label"></a>Label ([Entity](#entity))
-A piece of text that gives information about an annotation instance. Contains also the color, display name and children of the anntoation.
+A piece of text that gives information about an annotation instance. Contains also the color, display name and children of the annotation.
 ### <a name="logsample"></a>LogSample
 
 ## M
@@ -58,15 +58,17 @@ The representation of what a machine learning algorithm has learned from the tra
 ### <a name="model"></a>Model ([Entity](#entity))
 A Dataloop Model is a combination of data (dl.Dataset), configurations (json dictionary), and code (dl.Package) to represent a learnable instance of the data.You can train, evaluate, compare, and deploy a dl.Model.Out-of-the-box models are available on the platform with the scope attribute “public”, as opposed to project specific models with “project” scope.
 ### <a name="model-adapter"></a>Model Adapter
-A python class to wrap a generic ML code (train, predict etc) for standardizing models (and frameworks) to match the requirements of the Dataloop API.Log Sample, Metric Sample, A single data point is used to measure and compare different models and metrics. e.g. saving the train/validation loss and accuracy of a training sessionOffline ModeFor model management, only dl.Model is used to save configurations and training/evaluation metrics, while code and weights and biases are kept locally.Gives the ability to manage training runs, view live metrics, and compare dl.Models (configurations and metrics)Online ModeAllows integration into the Dataloop platform (after creating Model Adapter).Gives the ability to create custom buttons (e.g. in the annotations studio), train, deploy and evaluate using the Model Management Pages, using models inside a pipeline etc.)
+A python class to wrap a generic ML code (train, predict, etc.) for standardizing models (and frameworks) to match the requirements of the Dataloop API. Log/Metric Sample: a single data point is used to measure and compare different models and metrics. e.g. saving the train/validation loss and accuracy of a training session. Offline Mode: for model management, only dl.Model is used to save configurations and training/evaluation metrics, while code and weights and biases are kept locally. Gives the ability to manage training runs, view live metrics, and compare dl.Models (configurations and metrics) Online Mode: allows integration into the Dataloop platform (after creating Model Adapter). Gives the ability to create custom buttons (e.g. in the annotations studio), train, deploy and evaluate using the Model Management Pages, using models inside a pipeline etc.)
 ### <a name="model-weights-/-model-artifacts"></a>Model Weights / Model Artifacts
 Those are the files that are saved/created by training a machine learning algorithm on a dataset. They are adjusted using optimization algorithms and unique to each training session.
 ### <a name="module"></a>Module ([Entity](#entity))
-A json representing the python class and functions (location, IOs etc.)
+A json representing the python class and functions (location, IOs, etc.).
 ## N
 ### <a name="neural-network"></a>Neural Network
-A machine learning model that is composed of layers consisting of simple connected units or neurons followed by nonlinearities.
+A machine learning model that is composed of layers consisting of simple connected units or neurons followed by non-linearities.
 ## O
+### <a name="neural-network"></a>Ontology ([Entity](#entity)) 
+A set of definitions that defines the structure and relationships of your labels.   
 ## P
 ### <a name="package"></a>Package ([Entity](#entity))
 A package is the bundle of code and definitions that can be used for creating models or deploying services. Code is a dl.Codebase entity, and definitions include modules, functions, IOs, and the code entry point.Can be Python, nodeJS (maybe everything, we don't care).Used to deploy a service and create an executable version of that code.Limited to 100MBCan be public/global, or specific to a project
@@ -80,6 +82,8 @@ A single run over the pipeline. From the first node to the last available node t
 A polygon [Annotation](#annotation) type. Represented by a list of (x,y) points. type=`segment`
 ## Q
 ## R
+### <a name="recipe"></a>Recipe ([Entity](#entity))
+A recipe is a set of labeling instructions and settings (e.g. labelling tools) for an annotation task.
 ### <a name="repository"></a>Repository
 
 ## S
