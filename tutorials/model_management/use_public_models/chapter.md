@@ -11,16 +11,9 @@ To see available public models, filter all available packages to view those with
   
 
 ```python
-import dtlpy as dl
-import os
-project = dl.projects.get(project_id='<project_id>')
-package = project.packages.push(package_name='dummy-model-package',
-                                codebase=dl.entities.LocalCodebase(os.getcwd()),
-                                modules=[])
-model = package.models.create(model_name='My Model',
-                              description='model for offline model logging',
-                              dataset_id='<dataset_id>',
-                              labels=[])
+filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
+filters.add(field='scope', values='public')
+dl.models.list(filters=filters).print()
 ```
 ### Clone and deploy a public model  
   
@@ -30,14 +23,11 @@ Only models that are trained (i.e. model.status = 'trained') can be deployed. Si
   
 
 ```python
-epoch = np.linspace(0, 9, 10)
-epoch_metric = np.linspace(0, 9, 10)
-for x_metric, y_metric in zip(epoch, epoch_metric):
-    model.add_log_samples(samples=dl.LogSample(figure='tutorial plot',
-                                               legend='some metric',
-                                               x=x_metric,
-                                               y=y_metric),
-                          dataset_id=model.dataset_id)
+public_model = dl.models.get(model_id="<model_id>")
+model = project.models.clone(from_model=public_model,
+                             model_name='remote_model',
+                             project_id=project.id)
+model.deploy()
 ```
 ### Train on a custom dataset  
   
@@ -45,13 +35,14 @@ If you want to customize the public model (for transfer-learning or fine-tuning)
   
 
 ```python
-filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
-filters.add(field='scope', values='public')
-dl.models.list(filters=filters).print()
+custom_model = dl.models.clone(from_model=public_model,
+                               model_name='remote_custom_model',
+                               dataset=dataset,
+                               project_id=project.id,
+                               labels=['label1', 'label2'])
 ```
-Public models can be downloaded to your machine for local training and inference, or they can be trained and deployed on the cloud for integration into the Dataloop platform.  
   
-### Dataset Subsets  
+#### Dataset Subsets  
 Our public models use a train/validation split of the dataset for the training session. To avoid data leakage between training sessions and to make each training reproducible,  
 we will determine the data subsets and save the split type to the dataset entity (using a DQL). Using DQL filters you can subset the data however you like.  
   
@@ -68,32 +59,13 @@ This way, when the training starts, the sets will be downloaded using the DQL an
   
 NOTE: In the future, this mechanism will be expanded to use a tagging system on items. This will allow more flexible data subsets and random data allocation.  
   
-### Deploying a model remotely  
+#### Deploying the model  
   
-Download the model and package you want to copy it to your project. Since the public model is pretrained, it can be deployed without any further action.  
-  
-
-```python
-public_model = dl.models.get(model_id="<model_id>")
-model = project.models.clone(from_model=public_model,
-                             model_name='remote_model',
-                             project_id=project.id)
-model.deploy()
-```
-If you want to customize the public model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels for model training.  
-  
-A model can be trained with a new dataset with `model.train()`.  
-  
-A model can only be deployed after it's been trained. `model.deploy()` automatically creates a bot and service for the trained model.  
+Once the model is trained, it can be deployed as a service. The `model.deploy()` function automatically creates a bot and service for the trained model.  
   
 
 ```python
-custom_model = dl.models.clone(from_model=public_model,
-                               model_name='remote_custom_model',
-                               dataset=dataset,
-                               project_id=project.id,
-                               labels=['label1', 'label2'])
 custom_model.train()
 custom_model.deploy()
 ```
-Once you have a model deployed, you can create a UI slot to inference on individual data items on the platform, or call the model to inference in a FaaS.  
+Once you have a model deployed, you can create a UI slot to inference on individual data items on the platform, or call the model to inference in a FaaS or pipelines.  
