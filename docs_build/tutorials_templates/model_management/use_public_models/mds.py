@@ -1,8 +1,10 @@
 def func1():
     """
-    ## Tutorial: Using models from the AI library to predict on items
+    ## Tutorial: Using models from the AI library to predict
 
-    Model algorithms ready to use out-of-the-box are available in the Dataloop AI Library. The AI library contains various algorithms and pretrained models that can be used for inferencing or fine-tuning via additional training on your custom datasets.
+    Model algorithms that are ready for use out-of-the-box are available in the Dataloop AI Library. The AI library contains various algorithms and pretrained models that can be used for inferencing or fine-tuning via additional training on your custom datasets.
+
+
 
     ### Using pretrained models from the AI library
 
@@ -15,25 +17,21 @@ def func2():
     """
     Public models can be downloaded to your machine for local training and inference, or they can be trained and deployed on the cloud for integration into the Dataloop platform.
 
-    At this point, you can do one of the following:
-    1. Download a model for local training and/or inferencing
-    2. Implement a model on the platform
-
     Deploying on the platform also allows you to inference on data items, as well as integrate the model into FaaS or pipelines.
 
-    ## Download a public model for local training and/or inferencing
-        1. download codebase
-        2. build adapter
-        3. load adapter
-        4. run predict
+    ### Implement a public model on the platform
 
+    #### Clone and deploy a public model
+    Download the model and package you want to copy it to your project.
+
+    Only models that are trained (i.e. `model.status = ‘trained’) can be deployed. Since the public model is pre-trained, it can be deployed directly.
 
     """
 
 
 def func3():
     """
-
+    If you want to customize the public model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels you want to use for model training.
 
     """
 

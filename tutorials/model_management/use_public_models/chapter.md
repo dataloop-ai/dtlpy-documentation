@@ -1,6 +1,8 @@
-## Tutorial: Using models from the AI library to predict on items  
+## Tutorial: Using models from the AI library to predict  
   
-Model algorithms ready to use out-of-the-box are available in the Dataloop AI Library. The AI library contains various algorithms and pretrained models that can be used for inferencing or fine-tuning via additional training on your custom datasets.  
+Model algorithms that are ready for use out-of-the-box are available in the Dataloop AI Library. The AI library contains various algorithms and pretrained models that can be used for inferencing or fine-tuning via additional training on your custom datasets.  
+  
+  
   
 ### Using pretrained models from the AI library  
   
@@ -21,18 +23,14 @@ model = package.models.create(model_name='My Model',
 ```
 Public models can be downloaded to your machine for local training and inference, or they can be trained and deployed on the cloud for integration into the Dataloop platform.  
   
-At this point, you can do one of the following:  
-1. Download a model for local training and/or inferencing  
-2. Implement a model on the platform  
-  
 Deploying on the platform also allows you to inference on data items, as well as integrate the model into FaaS or pipelines.  
   
-## Download a public model for local training and/or inferencing  
-    1. download codebase  
-    2. build adapter  
-    3. load adapter  
-    4. run predict  
+### Implement a public model on the platform  
   
+#### Clone and deploy a public model  
+Download the model and package you want to copy it to your project.  
+  
+Only models that are trained (i.e. `model.status = ‘trained’) can be deployed. Since the public model is pre-trained, it can be deployed directly.  
   
 
 ```python
@@ -45,7 +43,7 @@ for x_metric, y_metric in zip(epoch, epoch_metric):
                                                y=y_metric),
                           dataset_id=model.dataset_id)
 ```
-  
+If you want to customize the public model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels you want to use for model training.  
   
 
 ```python
@@ -62,11 +60,11 @@ we will determine the data subsets and save the split type to the dataset entity
 For example, if your dataset is split between folders, you can use this DQL to add metadata for all items in the dataset  
 
 ```python
-dataset.metadata['system']['subsets'] = {
-    'train': json.dumps(dl.Filters(field='dir', values='/train').prepare()),
-    'validation': json.dumps(dl.Filters(field='dir', values='/validation').prepare()),
-}
-dataset.update(system_metadata=True)
+public_model = dl.models.get(model_id="<model_id>")
+model = project.models.clone(from_model=public_model,
+                             model_name='remote_model',
+                             project_id=project.id)
+model.deploy()
 ```
 This way, when the training starts, the sets will be downloaded using the DQL and any future training session on this dataset will have the same subsets of data.  
   
@@ -78,23 +76,24 @@ Download the model and package you want to copy it to your project. Since the pu
   
 
 ```python
-public_model = dl.models.get(model_id="<model_id>")
-model = project.models.clone(from_model=public_model,
-                             model_name='remote_model',
-                             project_id=project.id)
-model.deploy()
-```
-If you want to customize the public model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels for model training.  
-  
-
-```python
 custom_model = dl.models.clone(from_model=public_model,
                                model_name='remote_custom_model',
                                dataset=dataset,
                                project_id=project.id,
                                labels=['label1', 'label2'])
-model.train()
-model.deploy()
+custom_model.train()
+custom_model.deploy()
+```
+If you want to customize the public model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels for model training.  
+  
+
+```python
+item = dl.items.get(item_id='631ef21d240440c5455788b7')
+annotations = adapter.predict_items([item], with_upload=True)
+image = np.asarray(Image.open(item.download()))
+plt.imshow(item.annotations.show(image,
+                                 thickness=5))
+print('Prediction: {}'.format(annotations[0][0].label))
 ```
 A model can be trained with a new dataset with `model.train()`.  
   
