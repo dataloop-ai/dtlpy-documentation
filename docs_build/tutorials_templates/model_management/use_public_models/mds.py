@@ -1,36 +1,34 @@
 def func1():
     """
-    ## Tutorial: Using models from the AI library to predict
+    ## Tutorial: Using models from the AI library
 
     Model algorithms that are ready for use out-of-the-box are available in the Dataloop AI Library. The AI library contains various algorithms and pretrained models that can be used for inferencing or fine-tuning via additional training on your custom datasets.
 
+    This tutorial will cover how to use AI library models for:
 
+    - predicting from pretrained models, and
+    - fine-tuning training on a custom dataset.
 
-    ### Using pretrained models from the AI library
-
-    To see available public models, filter all available packages:
+    To see available public models, filter all available packages to view those with a “public” scope:
 
     """
 
 
 def func2():
     """
-    Public models can be downloaded to your machine for local training and inference, or they can be trained and deployed on the cloud for integration into the Dataloop platform.
+    ### Clone and deploy a public model
 
-    Deploying on the platform also allows you to inference on data items, as well as integrate the model into FaaS or pipelines.
-
-    ### Implement a public model on the platform
-
-    #### Clone and deploy a public model
     Download the model and package you want to copy it to your project.
 
-    Only models that are trained (i.e. `model.status = ‘trained’) can be deployed. Since the public model is pre-trained, it can be deployed directly.
+    Only models that are trained (i.e. model.status = 'trained') can be deployed. Since the public model is pre-trained, it can be deployed directly.
 
     """
 
 
 def func3():
     """
+    ### Train on a custom dataset
+
     If you want to customize the public model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels you want to use for model training.
 
     """
@@ -64,24 +62,13 @@ def func6():
     """
     If you want to customize the public model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels for model training.
 
-    """
-
-def func7():
-    """
     A model can be trained with a new dataset with `model.train()`.
 
     A model can only be deployed after it's been trained. `model.deploy()` automatically creates a bot and service for the trained model.
 
-    Now the model is deployed, you can create a UI slot to inference on individual data items on the platform, or call the model to inference in a FaaS.
-
-    ### Downloading a model for local training and inferencing
-
-    For local training and inferecing, you need to download the package codebase to get build the model adapter that you need to run the train and predict methods. Follow the same steps as above to copy the public model to your project. Then download the model's package codebase to build and load the model adapter.
-
     """
 
-def func8():
+def func7():
     """
-    Now that the pretrained model is loaded locally, you can inference on a data item and view the image and prediction:
+    Once you have a model deployed, you can create a UI slot to inference on individual data items on the platform, or call the model to inference in a FaaS.
     """
-

@@ -31,16 +31,16 @@ def func3():
     filters.add(field='scope', values='public')
     dl.packages.list(filters=filters).print()
 
-#
-# def func4():
-#     dataset.metadata['system']['subsets'] = {
-#         'train': json.dumps(dl.Filters(field='dir', values='/train').prepare()),
-#         'validation': json.dumps(dl.Filters(field='dir', values='/validation').prepare()),
-#     }
-#     dataset.update(system_metadata=True)
-
 
 def func4():
+    dataset.metadata['system']['subsets'] = {
+        'train': json.dumps(dl.Filters(field='dir', values='/train').prepare()),
+        'validation': json.dumps(dl.Filters(field='dir', values='/validation').prepare()),
+    }
+    dataset.update(system_metadata=True)
+
+
+def func5():
     public_model = dl.models.get(model_id="<model_id>")
 
     model = project.models.clone(from_model=public_model,
@@ -50,7 +50,7 @@ def func4():
     model.deploy()
 
 
-def func5():
+def func6():
     custom_model = dl.models.clone(from_model=public_model,
                                    model_name='remote_custom_model',
                                    dataset=dataset,
@@ -59,19 +59,3 @@ def func5():
     custom_model.train()
     custom_model.deploy()
 
-
-# def func5():
-#     package = dl.packages.get(package_id=model.package_id)
-#
-#     # build model
-#     adapter = package.build(module_name='model-adapter')  # module name varies by model
-#     adapter.load_from_model(model_entity=model)
-
-
-def func6():
-    item = dl.items.get(item_id='631ef21d240440c5455788b7')
-    annotations = adapter.predict_items([item], with_upload=True)
-    image = np.asarray(Image.open(item.download()))
-    plt.imshow(item.annotations.show(image,
-                                     thickness=5))
-    print('Prediction: {}'.format(annotations[0][0].label))

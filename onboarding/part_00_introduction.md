@@ -5,7 +5,7 @@
 ## Introduction
 
 Welcome to the Dataloop onboarding!
-It incorporates all our documentation sources in a structured way to make sure you are familiar with all basics to get started with the platform. 
+This guide combines all our documentation sources in a structured way to make sure you are familiar with the necessary foundation to get started on our platform. 
 
 [Glossary]()
 
