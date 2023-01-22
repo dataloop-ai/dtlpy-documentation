@@ -31,6 +31,12 @@ def func4():
 
 def func5():
     """
+    For executing on multiple items (with a filter) use:
+    """
+
+
+def func6():
+    """
     The transformed image will be saved in your dataset in the folder specified.
     You may now open the item received upon execution:
     """

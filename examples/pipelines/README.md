@@ -36,3 +36,18 @@ Enter the task/assignment item, and press 'Done' to continue with the pipeline.
 After status is set on the item, it will continue to the last function that will add `item.metadata['user']['second'] = 'World'` and exit the pipeline.
 
 ![Alt text](../../assets/pipeline_example.png)
+
+
+### Manually Execute 
+You can execute a pipeline manually on single and multiple items.    
+For single cycle:
+```
+execution = pipeline.execute(execution_input=dl.FunctionIO(type=dl.PackageInputType.ITEM, value=item.id, name='item'))
+```
+
+For multiple cycles (using a filter):
+```
+command = pipeline.pipeline_executions.create_batch(
+    execution_inputs=dl.FunctionIO(type=dl.PackageInputType.STRING, value='test', name='string'),  # custom input
+    filters=filters)
+```
