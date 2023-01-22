@@ -34,7 +34,7 @@ def filter_by_status(project_name: str,
         field='metadata.system.refs',
         values={
             "id": task_id,  # Task id key can be omitted (and will return all tasks), or can be a list of tasks
-            "type": "task", # Type can be "task" or "assignment"
+            "type": "task",  # Type can be "task" or "assignment"
             "metadata":
                 {
                     "status": {'${}'.format(dl.FiltersOperations.IN): status},
