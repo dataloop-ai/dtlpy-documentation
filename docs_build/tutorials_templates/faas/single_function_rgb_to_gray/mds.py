@@ -31,7 +31,7 @@ def func4():
 
 def func5():
     """
-    And also can execute on multiple items use:
+    For executing on multiple items (with a filter) use:
     """
 
 

@@ -57,7 +57,9 @@ class Scripts:
         self.execution = execution
 
     def func5(self, service, dataset):
-        filters = dl.Filters(field='dir', values='/test', resource=dl.FiltersResource.ITEM,
+        filters = dl.Filters(resource=dl.FiltersResource.ITEM,
+                             field='dir',
+                             values='/test',
                              context={'datasets': [dataset.id]})
         command = service.execute_batch(
             filters=filters,

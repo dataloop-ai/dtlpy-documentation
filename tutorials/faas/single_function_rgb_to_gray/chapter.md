@@ -50,10 +50,12 @@ execution.logs(follow=True)
 execution = execution.wait()
 print(execution.latest_status)
 ```
-And also can execute on multiple items use:  
+For executing on multiple items (with a filter) use:  
 
 ```python
-filters = dl.Filters(field='dir', values='/test', resource=dl.FiltersResource.ITEM,
+filters = dl.Filters(resource=dl.FiltersResource.ITEM,
+                     field='dir',
+                     values='/test',
                      context={'datasets': [dataset.id]})
 command = service.execute_batch(
     filters=filters,
