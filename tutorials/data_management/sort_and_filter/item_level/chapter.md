@@ -338,3 +338,14 @@ A typical response to a DQL query will look like the following:
     ]
 }
 ```
+### Using Custom DQL Filter  
+If you have a DQL JSON copied from the platform you can create an SDK Filter directly with it using the "custom_filter" attribute:  
+
+```python
+filters = dl.Filters(custom_filter={"$and": [{"hidden": False},
+                                             {"type": "file"},
+                                             {"annotated": True}]},
+                     )
+pages = dataset.items.list(filters=filters)
+print('Number of filtered items in dataset: {}'.format(pages.items_count))
+```

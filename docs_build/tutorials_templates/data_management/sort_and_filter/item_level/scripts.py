@@ -255,3 +255,13 @@ def section17():
             }
         ]
     }
+
+
+def section18():
+    filters = dl.Filters(custom_filter={"$and": [{"hidden": False},
+                                                 {"type": "file"},
+                                                 {"annotated": True}]},
+                         )
+    pages = dataset.items.list(filters=filters)
+    print('Number of filtered items in dataset: {}'.format(pages.items_count))
+

@@ -165,3 +165,9 @@ def section17():
     ### Response to DQL Query
     A typical response to a DQL query will look like the following:
     """
+
+def section18():
+    """
+    ### Using Custom DQL Filter
+    If you have a DQL JSON copied from the platform you can create an SDK Filter directly with it using the "custom_filter" attribute:
+    """
