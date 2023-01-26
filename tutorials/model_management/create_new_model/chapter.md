@@ -117,7 +117,7 @@ To test whether your function was successfully uploaded and deployed onto the pl
 
 ```python
 model = dl.models.get(model_id='<model_id>')
-item = dl.models.get(model_id='<item_id>')
+item = dl.items.get(model_id='<item_id>')
 payload = {'input': {'itemIds': [item.id]},
            'config': {'serviceId': model.metadata['system']['deploy']['services'][0]}}
 success, response = dl.client_api.gen_request(req_type="post",

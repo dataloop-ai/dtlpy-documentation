@@ -72,7 +72,7 @@ def func5():
 
 def func6():
     model = dl.models.get(model_id='<model_id>')
-    item = dl.models.get(model_id='<item_id>')
+    item = dl.items.get(model_id='<item_id>')
 
     payload = {'input': {'itemIds': [item.id]},
                'config': {'serviceId': model.metadata['system']['deploy']['services'][0]}}
