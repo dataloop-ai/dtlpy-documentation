@@ -168,7 +168,6 @@ sketch
 .ionide
 
 ### yarn ###
-yarn.lock
 .yarn/*
 !.yarn/releases
 !.yarn/patches
