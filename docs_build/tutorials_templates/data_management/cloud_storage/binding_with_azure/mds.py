@@ -20,19 +20,15 @@ def section1():
        * Publish -> Code
        * Runtime stack -> Python
        * Version -> <=3.7
+       * press next and choose your Storage account
 
     In VScode, flow the instructions in [azure docs](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python) to configure your environment and deploy the function:
     1. Configure your environment
     2. Sign in to Azure
     3. Create your local project
-       * in Select a template for your project's first function choose -> Azure Blob Storage trigger
-       * in Storage account select your Storage account
-       * in Resource group select your Resource group
-       * Set the 'Create new Azure Blob Storage trigger' to your container name (used in the Dataloop platform)
-        ![add_layer](../../../../assets/bind_azure/trigger_dataset.png)
+       * in Select a template for your project's first function choose -> Azure Event Grid trigger
        * open the code file
        * add dtlpy to the requirements.txt file
-       * add **"disabled": false** to the function.json file
        * add a function code to \_\_init\_\_.py file
 
     """
@@ -43,7 +39,16 @@ def section2():
     4. Deploy the code to the function app you created.
     5. In VS code go to view tab -> Command Palette -> Azure Functions: Upload Local Settings
     6. Go to the Function App -> Select your function -> Configuration (Under Settings section)
-           * add the 3 secrets vars DATASET_ID, DTLPY_USERNAME, DTLPY_PASSWORD
+           * add the 4 secrets vars DATASET_ID, DTLPY_USERNAME, DTLPY_PASSWORD, CONTAINER_NAME (your container that want to trigger it)
+    7. Go to Function App -> select your function -> go to Functions tag and select your function -> Integration ->
+        select the trigger -> Create Event Grid subscription
+        * Event Schema -> Event Grid Schema
+        * Topic Types -> Storage Account (Blob & GPv2)
+        * select your Subscription, Resource Group, Resource
+        * System Topic Name -> your Event Grid Topic (if you do not have one create it)
+        * Filter to Event Types -> Create and Delete
+        * Endpoint Type -> Function App
+        * Endpoint -> your function
 
     **Done! Now your storage blob will be synced with the Dataloop dataset**
     """

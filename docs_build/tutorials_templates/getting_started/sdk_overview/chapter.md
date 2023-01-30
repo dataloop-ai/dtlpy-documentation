@@ -651,7 +651,7 @@ A **Task** is used to initiate annotations. A **Task** requires defining the inc
 
 ```python
 task = dataset.tasks.create(task_name='test',
-                            due_date=datetime(day=15, month=7, year=2022).timestamp(),
+                            due_date=datetime.datetime(day=15, month=7, year=2022).timestamp(),
                             assignee_ids=['JohnDoe@gmail.com'],
                             filters=filters)
 ```
