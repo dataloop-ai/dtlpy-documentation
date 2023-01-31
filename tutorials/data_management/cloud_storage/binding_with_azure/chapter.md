@@ -78,6 +78,7 @@ If you choose option 2 follow these steps:
     1. Open your favorite IDE (Doesn't matter where)  
     2. Open a new file  
     3. Copy this code snippet and run it  
+    4. Use the printed values and populate the relevant vars  
     NOTE: Make sure the project name is the same project where the desired upstream dataset is located  
   
 
@@ -85,8 +86,8 @@ If you choose option 2 follow these steps:
 import dtlpy as dl
 project = dl.projects.get(project_name='project name')
 bot = project.bots.create(name='bot name', return_credentials=True)
-print('username', bot.id)
-print('password', bot.password)
+print('username: ', bot.id)
+print('password: ', bot.password)
 ```
 7. Go to Function App -> Select your function -> Navigate in the sidebar to the functions tab and select your function ->  
 Integration -> Select the trigger -> Create Event Grid subscription  

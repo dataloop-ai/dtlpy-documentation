@@ -60,6 +60,7 @@ def section2():
         1. Open your favorite IDE (Doesn't matter where)
         2. Open a new file
         3. Copy this code snippet and run it
+        4. Use the printed values and populate the relevant vars
         NOTE: Make sure the project name is the same project where the desired upstream dataset is located
 
     """
