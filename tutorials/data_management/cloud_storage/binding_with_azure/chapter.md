@@ -71,7 +71,7 @@ def main(event: func.EventGridEvent):
        * Add the 4 secrets vars `DATASET_ID`, `DTLPY_USERNAME`, `DTLPY_PASSWORD`, `CONTAINER_NAME` (your container that want to trigger it)  
             * To populate the values for the vars: `DTLPY_USERNAME`, `DTLPY_PASSWORD` you have 2 options:  
                 * Option 1: Use your **registered** dataloop user and password  
-                * Option 2: Create a **DataLoop Bot** on your project using this code  
+                * Option 2: Create a **DataLoop Bot** on your project using this code - the bot will be used as the service account of the function  
   
   
 If you choose option 2 follow these steps:  
@@ -84,8 +84,9 @@ If you choose option 2 follow these steps:
 
 ```python
 import dtlpy as dl
+dl.login()
 project = dl.projects.get(project_name='project name')
-bot = project.bots.create(name='bot name', return_credentials=True)
+bot = project.bots.create(name='serviceAccount', return_credentials=True)
 print('username: ', bot.id)
 print('password: ', bot.password)
 ```

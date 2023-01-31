@@ -26,7 +26,8 @@ def section1():
 
 def section2():
     import dtlpy as dl
+    dl.login()
     project = dl.projects.get(project_name='project name')
-    bot = project.bots.create(name='bot name', return_credentials=True)
+    bot = project.bots.create(name='serviceAccount', return_credentials=True)
     print('username: ', bot.id)
     print('password: ', bot.password)
