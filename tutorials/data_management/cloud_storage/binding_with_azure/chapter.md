@@ -31,6 +31,7 @@ In VS code, flow the instructions in [azure docs](https://learn.microsoft.com/en
 1. Configure your environment  
 2. Sign in to Azure  
 3. Create your local project  
+   * On VS code go to Azure panel -> workspace (bottom left panel)-> create a function  
    * Choose the directory location for your project workspace and choose Select.  
     You should either create a new folder or choose an empty folder for the project workspace.  
     Don't choose a project folder that is already part of a workspace.  
