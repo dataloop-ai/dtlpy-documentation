@@ -13,10 +13,10 @@ We assume you already have an Azure account with resource group and storage acco
 1. Create a Container in the created Storage account  
    * Public access level -> Container OR Blob  
 NOTE: This container should be used as the external storage for the Dataloop dataset.  
-2. Go back to Function App and click create -> to create a new function  
+2. Go back to Function App and click Create -> to create a new function  
    * Choose Subscription  
-   * Choose your Resource group  
-   * Choose Function name  
+   * Choose your Resource Group  
+   * Choose Function Name  
    * Publish -> Code  
    * Runtime stack -> Python  
    * Version -> 3.10 >= Version >= 3.7  
@@ -69,19 +69,8 @@ def main(event: func.EventGridEvent):
 4. Deploy the code to the function app you created - For more info take a look at [azure docs](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python?pivots=python-mode-configuration#deploy-the-project-to-azure)  
 5. In VS code go to view tab -> Command Palette -> Azure Functions: Upload Local Settings  
 6. Go to the Function App -> Select your function -> Configuration (Under Settings section)  
-       * Add the 4 secrets vars `DATASET_ID`, `DTLPY_USERNAME`, `DTLPY_PASSWORD`, `CONTAINER_NAME` (your container that want to trigger it)  
-            * To populate the values for the vars: `DTLPY_USERNAME`, `DTLPY_PASSWORD` you have 2 options:  
-                * Option 1: Use your **registered** dataloop user and password  
-                * Option 2: Create a **DataLoop Bot** on your project using this code - the bot will be used as the service account of the function  
-  
-  
-If you choose option 2 follow these steps:  
-    1. Open your favorite IDE (Doesn't matter where)  
-    2. Open a new file  
-    3. Copy this code snippet and run it  
-    4. Use the printed values and populate the relevant vars  
-    NOTE: Make sure the project name is the same project where the desired upstream dataset is located  
-  
+       * Add the 4 secrets vars `DATASET_ID`, `DTLPY_USERNAME`, `DTLPY_PASSWORD`, `CONTAINER_NAME` (the container to add a trigger)  
+    To populate the values for the vars: `DTLPY_USERNAME`, `DTLPY_PASSWORD` you'll need to create a **DataLoop Bot** on your Dataloop project using the following code:  
 
 ```python
 import dtlpy as dl
@@ -101,7 +90,7 @@ Integration -> Select the trigger -> Create Event Grid subscription
     * Endpoint Type -> Function App (Azure function)  
     * Endpoint -> your function  
   
-**NOTE:** It will take up to 5 mins when you deploy using auto upstream  
+**NOTE:** It will take up to 5 minutes when you deploy using auto upstream  
   
   
 **Done! Now your storage blob will be synced with the Dataloop dataset**  
