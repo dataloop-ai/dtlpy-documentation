@@ -61,5 +61,3 @@ for item in pages.all():
 After this code exectues, all samples that are labeled 'Person' will have that label removed and replaced with 'Adult'.
 
 Now that you know how to use queries and filters, you will learn about metadata and how to create tasks, in the next chapter.
-
-### [Next Chapter: 05_metadata-and-task-assignments](./05_metadata-and-task-assignments.md)

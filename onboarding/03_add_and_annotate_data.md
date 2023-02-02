@@ -4,7 +4,7 @@ If you followed up the onboarding tutorial so far, you should have created and s
 
 To do that, you must first create a local directory on your computer, where you will place your data samples. If you are on windows, for example, you can create a folder at "C:\UploadDemo". Now you need to place an image (any image you have laying around). Then, I recommend you rename it to "test1.jpg". Now you can upload that sample to the dataset we created in the last chapter, using the following command:
 
-```python 
+```python
 dataset.items.upload(local_path=r'C:\UploadDemo\test1.jpg')
 ```
 
@@ -39,7 +39,7 @@ For the best results, I suggest you upload multiple items before using the comma
 ## Annotating items
 Dataset items are annotated using Labels. A Label is composed of various Label Settings and Instructions that are defined by a dataset’s Recipe. For example, an image  file item can contain 1 label defined as a Classification, to categorize the entire image. It can also contain multiple labels covering only portions of your images, defined as Point Markers, to identify specific objects in an image or video file item.
 
-### Classification 
+### Classification
 Classifications are used to categorize an entire image or scene (in the case of a video file). For example, a Classification label can be used to classify product images under categories, subcategories, and characteristics, such as men’s clothes, polo shirts, hand cremes, etc.
 
 The SDK can add Classification labels to an item using 2 steps:
@@ -81,5 +81,3 @@ Congratulations, you just learned how to create and select a dataset, add data s
 
 In the next chapter, you will learn the basics of filtering the data items from your dataset, which is extremely helpful when you have a high number of data samples.
 
-
-### <a href="./04_querying-and-filtering.md">Next Chapter: 04_querying-and-filtering</a>

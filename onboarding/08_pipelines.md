@@ -89,17 +89,4 @@ If you are interested in how you can work with pipelines in the web version of d
 3. [Task with FAAS and Filter](https://app.guidde.co/share/playbooks/uhQbzYGjMZjQoAWGMzcM3r?origin=jMK1qNxyBfeCaSgiUvBzFi9AfJb2)
 4. [Task with Filter](https://app.guidde.co/share/playbooks/f94hGsB1CoURVjVUhD354B?origin=jMK1qNxyBfeCaSgiUvBzFi9AfJb2)
 
-In the next chapter you will learn about model management which will help you to understand in depth the full cycle that you can implement into your workflows using Dataloop. 
-
-## [Next Chapter: 09_model-management](./09_model_management.md)
-
-
-
-
-
-
-
-
-
-
-
+In the next chapter you will learn about model management which will help you to understand in depth the full cycle that you can implement into your workflows using Dataloop.

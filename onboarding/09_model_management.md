@@ -11,7 +11,7 @@ Dataloop's model management feature enables machine learning engineers to centra
 
 The Model Comparison feature in the Dataloop platform enables users to view and compare different versions of models all in one place. This can be done by selecting user-specified metrics to evaluate the models.
 
-The Model Management system in the platform can work in two ways: "offline" mode and "online" mode. 
+The Model Management system in the platform can work in two ways: "offline" mode and "online" mode.
 
 * In the **offline mode**, users can train and run models locally using their own data and compare the configurations and metrics of different models on the platform. This mode does not require extensive platform integration and can be used after creating dl.Package and dl.Model entities. However, it is limited to visualizing metrics that have been exported from the local model training sessions only. The code and weights of the models are not saved in the Dataloop platform, but the metrics can be viewed at a later time.
 
@@ -19,7 +19,7 @@ The Model Management system in the platform can work in two ways: "offline" mode
 
 ### Model Management in SDK
 
-Model management is also available both in the UI web version of dataloop and in the SDK version. 
+Model management is also available both in the UI web version of dataloop and in the SDK version.
 
 You can find more about how to use models in our [redocly documentetaion on Model Management](https://dlportal-demo.redoc.ly/tutorials/model_management/) or [our SDK-focused documentation](https://sdk-docs.dataloop.ai/en/latest/tutorials.html#model-management).
 
@@ -74,5 +74,3 @@ model.train()
 ```
 
 The next chapter of this onboarding will show you what the next steps are in learning more about Dataloop's SDK. It will provide additional resources and redirect you to more advanced tutorials and exercices.
-
-## [Next Chapter: 10_next-steps](./10_next-steps.md)

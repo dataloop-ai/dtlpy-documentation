@@ -4,7 +4,7 @@ Data versioning is critical for big data and data-centric AI & analytics applica
 Dataloop provides data [versioning tools](https://dataloop.ai/docs/clone-merge-dataset?highlight=clone) to manage your data that you can use for:
 1. Golden training sets management;
 2. [Reproducibility](https://en.wikipedia.org/wiki/Reproducibility);
-3. Rxperimentation; 
+3. Rxperimentation;
 4. Task and assignment management.
 
 To get started with data versioning, you must first "get" the dataset you want to version.
@@ -50,7 +50,7 @@ dl.projects.list()
 ```
 Remember that for 2 datasets to be merged, they need to have the same [Recipes](https://dataloop.ai/docs/ontology). To make things easy, we will just used the dataset we just cloned named "dataset_v2" and merge it with the "My-First-Dataset". We do this since they both have the same Recipe and Ontology, so we won't get any errors. Remember that a cloned dataset will have the same recipe and ontology as the base dataset.
 
-After gathering all of the ids you need, you can now proceed to merge "My-First-Dataset" with "dataset_v2" and create a bigger dataset. You can do that using the code below: 
+After gathering all of the ids you need, you can now proceed to merge "My-First-Dataset" with "dataset_v2" and create a bigger dataset. You can do that using the code below:
 ```python
 dataset_ids = ["dataset-1-id", "dataset-2-id"]
 project_ids = ["dataset-1-project-id", "dataset-2-project-id"]
@@ -66,6 +66,3 @@ All you have to do in this code is to replace the "dataset_ids" and the "project
 After executing this, you should have successfully merged the 2 datasets into a bigger one, called "my_merged_dataset".
 
 In the next chapter, you will learn about Dataloop's Function-as-a-Service (FAAS), a compute service that automatically runs your code based on time patterns or in response to trigger events.
-
-### [Next Chapter: 07_faas](./07_faas.md)
-

@@ -32,7 +32,7 @@ To download Python:
 </ol>
 
 If you aleady have python installed but you are unsure about which version it is, you can <a href="https://phoenixnap.com/kb/check-python-version">check your python version</a> using the following command:
-```python 
+```python
 python --version
 ```
 
@@ -46,20 +46,20 @@ Once you make sure your python version is 3.6 or greater, you can move to the ne
  The package installer for Python is called pip. To install dataloop's SDK package you need to have pip installed on your system.  If you installed Python correctly, be it from python.org or by using Anaconda, pip should already be installed.
 
 To make sure that pip is installed you can run the following command:
-```python 
+```python
 pip --version
 ```
 
 
 If pip isn’t already installed, but python is installed, you can install pip from the standard library, by executing the following command in the Command Line:
-```python 
+```python
 python3 -m ensurepip --default-pip
 ```
 
 
 Now that you made sure both Python and its package installer, pip, are up-to-date, we can proceed to install dataloop's SDK, using the following command:
 
-```python 
+```python
 pip install dtlpy
 ```
 If everything works well, you should have a confirmation, that the dtlpy package was successfully installed.
@@ -67,7 +67,6 @@ If everything works well, you should have a confirmation, that the dtlpy package
 
 Congratulations! You finished the installation process! In the next chapter, we will look at how to sign up to dataloop (if you haven't already), and how to sign in to it using python code. Then you will learn how to create a new project and a new dataset where you will be able to import data samples to populate it.
 
-### <a href="./02_login-and-project-and-dataset-creation.md">Next Chapter: 02_login-and-project-and-dataset-creation</a>
 
 
 

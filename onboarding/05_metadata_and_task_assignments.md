@@ -1,4 +1,4 @@
-### Metadata 
+### Metadata
 Metadata is a dictionary attribute that is used with items, annotations, and other Dataloop system entities such as [Recipes](https://dataloop.ai/blog/data-recipes/). Using the SDK, you can add any metadata values to any data sample. This user metadata can be used for data filtering, sorting, and other purposes.
 
 You will first learn how to add a new metadata field to the "test1" dataset sample we added earlier. This metadata item is called "datetime", and will assign the current date and time to the sample you select.
@@ -76,6 +76,3 @@ task = dataset.tasks.create(
 ```
 
 Now you know the basics of metadata and tasks. In the next chapter, you will learn  how you can use data versioning tools to manage your data.
-
-
-### [Next Chapter: 06_data_versioning](./06_data_versioning.md)

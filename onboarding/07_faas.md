@@ -84,17 +84,3 @@ That's it for the FaaS Onboarding. If you want to find out more about FaaS funct
 
 Now that you have learned how to work with the FaaS provided by Dataloop, let's move on and talk about pipelines - in the next chapter.
 
-
-## [Next Chapter: 08_pipelines](./08_pipelines.md)
-
-
-
-
-
-
-
-
-
-
-
-

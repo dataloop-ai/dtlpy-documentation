@@ -25,8 +25,6 @@ Here are some useful links and resources that may help you in your path to learn
 4. <a href="https://github.com/dataloop-ai-apps/Onboarding">Onboarding Files</a>: You can find all of the files in this onboarding on our GitHub, which you can save on your machine or clone inside your own repository.
 5. [In-depth SDK documentation](https://sdk-docs.dataloop.ai/en/latest/tutorials.html#model-management).
 
-### <a href="./01_sdk-installation.md">Next Chapter: 01_sdk-installation</a>
-
 
 
 
