@@ -1,34 +1,22 @@
-      - label: 00 introduction
-        page: onboarding/00_introduction.md
-      - label: 01 platform overview
-        page: onboarding/01_platform_overview.md
-      - label: 02 sdk installation
-        page: onboarding/02_sdk_installation.md
-      - label: 03 project and dataset creation
-        page: onboarding/03_project_and_dataset_creation.md
-      - label: 04 annotations
-        page: onboarding/04_annotations.md
-      - label: 05 dql filters
-        page: onboarding/05_dql_filters.md
-      - label: 06 task assignments
-        page: onboarding/06_task_assignments.md
-      - label: 07 data versioning
-        page: onboarding/07_data_versioning.md
-      - label: 08 faas
-        page: onboarding/08_faas.md
-      - label: 09 pipelines
-        page: onboarding/09_pipelines.md
-      - label: 10 model management
-        page: onboarding/10_model_management.md
-      - label: 11 external storage
-        page: onboarding/11_external_storage.md
-      - label: 12 annotations advanced
-        page: onboarding/12_annotations_advanced.md
-      - label: 13 annotations on video
-        page: onboarding/13_annotations_on_video.md
-      - label: 14 advanced filtering
-        page: onboarding/14_advanced_filtering.md
-      - label: 15 advanced tasks
-        page: onboarding/15_advanced_tasks.md
-      - label: 16 what next
-        page: onboarding/16_what_next.md
+      - label: Useful Information
+        page: onboarding/00_useful_information.md
+      - label: Installation
+        page: onboarding/01_sdk_installation.md
+      - label: Login, Projects and Datasets
+        page: onboarding/02_login_and_project_and_dataset_creation.md
+      - label: Items and Annotations
+        page: onboarding/03_add_and_annotate_data.md
+      - label: Querying
+        page: onboarding/04_querying_and_filtering.md
+      - label: Tasks and Assignments
+        page: onboarding/05_metadata_and_task_assignments.md
+      - label: Versioning
+        page: onboarding/06_data_versioning.md
+      - label: Function as a Service
+        page: onboarding/07_faas.md
+      - label: Pipelines
+        page: onboarding/08_pipelines.md
+      - label: Model Management
+        page: onboarding/09_model_management.md
+      - label: What's Next
+        page: onboarding/10_next_steps.md
