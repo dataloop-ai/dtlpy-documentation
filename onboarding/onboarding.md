@@ -4,7 +4,7 @@ title: Onboarding
 
 # Onboarding
 
-- [00 introduction](part_00_introduction.md)
+- [00 introduction](00_introduction.md)
 - [01 platform overview](part_01_platform_overview.md)
 - [02 sdk installation](part_02_sdk_installation.md)
 - [03 project and dataset creation](part_03_project_and_dataset_creation.md)
