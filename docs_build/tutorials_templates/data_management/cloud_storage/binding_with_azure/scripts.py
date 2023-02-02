@@ -22,3 +22,12 @@ def section1():
                 dataset.items.upload(local_path=file_name)
             else:
                 dataset.items.delete(filename=file_name)
+
+
+def section2():
+    import dtlpy as dl
+    dl.login()
+    project = dl.projects.get(project_name='project name')
+    bot = project.bots.create(name='serviceAccount', return_credentials=True)
+    print('username: ', bot.id)
+    print('password: ', bot.password)
