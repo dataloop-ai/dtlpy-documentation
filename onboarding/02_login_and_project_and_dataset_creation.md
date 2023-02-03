@@ -12,7 +12,13 @@ import dtlpy as dl
 dl.login()
 ```
 
-After executing them, a browser tab will be opened where you can log in. If everything is good, you will see a banner saying that you can return to coding, which means you successfully logged in!
+After executing them, a browser tab will be opened where you can log in. 
+<br>
+![image](https://user-images.githubusercontent.com/58508793/216592564-635791c5-3004-46de-9dcf-5e1f059a97c7.png)
+
+If everything is good, you will see a banner saying that you can return to coding, which means you successfully logged in!
+<br>
+![image](https://user-images.githubusercontent.com/58508793/216593171-4075acc5-9917-4ce6-9d1f-45c4feb3dfe1.png)
 
 Just keep in mind that the login token lasts for 24 hours. After that, you will need to execute the login code again. Or, you can use the following code, which will check everytime when your run your code if the login token expired or not, and also will allow you to run all of your code, without having to log in every time:<br>
 ```python
@@ -62,11 +68,27 @@ Or you can select the new project using the Project ID. However, for this you ne
 ```python
 dl.projects.list()
 ```
-After that, you can import the Project you want to work on, by using its "project_id":
+After running this command, you should get something like this:
+
+```python
+Project(created_at=1674492313392, creator='myfuncont@gmail.com', id='764803e6-af9b-4dde-8141-fea54231fb54', name='My-First-Project', feature_constraints=[{'name': 'downloadJsons', 'quota': 0, 'title': 'Download Annotation as Json'}, {'name': 'createGPUService', 'quota': 0, 'title': 'Create GPU service'}, {'name': 'createIntegration', 'quota': 0, 'title': 'Create Integrations'}, {'name': 'createDriver', 'quota': 0, 'title': 'Create Driver'}])
+```
+
+You should see above, that there is a variable called "id". That is the ID you need to use to "get" the project, in the code below. Just replace the ID you see in the line of code below with your own Project ID, which you should get after executing the code above.
 
  ```python
- project = dl.projects.get(project_id='e4a5e5b3-a22a-4b59-9b76-30417a0859d9')
+ project = dl.projects.get(project_id='764803e6-af9b-4dde-8141-fea54231fb54')
 ```
+As a bonus, you can also open your project in web view, using the following command:
+```python
+project.open_in_web()
+```
+In this case, a new tab will open, and you will be able to see the project ID in your URL:
+<br>
+
+![image](https://user-images.githubusercontent.com/58508793/216595924-89f522b4-6c59-4597-907f-f0c4a220d830.png)
+
+
 
 ## Creating New Dataset
 
@@ -82,7 +104,7 @@ There are 3 types of datasets:
 
 <br>
 You can now create a new dataset inside this Project. To do that, you can use the following command:
-<br>
+
 
 ```python
 project.datasets.create(dataset_name='My-First-Dataset')
