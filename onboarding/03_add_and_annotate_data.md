@@ -69,7 +69,7 @@ item<span class="token punctuation">.</span>annotations<span class="token punctu
 
 Now the item you added a bit earlier is successfully annotated and classified with the label "Person".
 
-### Annotating using Point Markers
+### Example: Annotating images using Point Markers
 A Point Marker is used to identify specific regions in your data samples. For example, it can identify regions where objects are present, in an image or video item, like an image of a person's face that contains multiple Point Marker labels specifying where the person’s eyes, mouth, ears, etc. are.
 
 Point Marker commands accept 2 sets of coordinates (x, y) as input parameters, which specify the location which you want to label.
