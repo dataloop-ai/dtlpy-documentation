@@ -70,10 +70,10 @@ item<span class="token punctuation">.</span>annotations<span class="token punctu
 Now the item you added a bit earlier is successfully annotated and classified with the label "Person".
 
 ### Annotating using Point Markers
-A Point Marker is used to identify specific objects in an image or video item. For example, an image of a person's face can contain multiple Point Marker labels specifying the person’s eyes, mouth, ears, etc.
+A Point Marker is used to identify specific regions in your data samples. For example, it can identify regions where objects are present, in an image or video item, like an image of a person's face that contains multiple Point Marker labels specifying where the person’s eyes, mouth, ears, etc. are.
 
-Point Marker commands accept 2 sets of coordinates (x, y) as input parameters, which specify the location in the image which you want to label.
-Just as in the case of classification, we need to first create the label and add it to the dataset, before we can use it. Let's just add a new label to our current dataset:
+Point Marker commands accept 2 sets of coordinates (x, y) as input parameters, which specify the location which you want to label.
+Just as in the case of Classification, we need to first create the label and add it to the dataset, before we can use it. Let's just add a new label to our current dataset:
 
 <pre class="language-python"><code class="language-python">dataset<span class="token punctuation">.</span>add_label<span class="token punctuation">(</span>label_name<span class="token operator">=</span><span class="token string">'Ear'</span><span class="token punctuation">)</span></code></pre>
 
@@ -83,6 +83,11 @@ Easy, right? Now you can add the "Ear" label we just created to a specific regio
 builder<span class="token punctuation">.</span>add<span class="token punctuation">(</span>annotation_definition<span class="token operator">=</span>dl<span class="token punctuation">.</span>Point<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token number">80</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token number">80</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'Ear'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 builder<span class="token punctuation">.</span>add<span class="token punctuation">(</span>annotation_definition<span class="token operator">=</span>dl<span class="token punctuation">.</span>Point<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token number">120</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token number">120</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'Ear'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 item_1<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>upload<span class="token punctuation">(</span>builder<span class="token punctuation">)</span></code></pre>
+
+After this, you can open the sample in web view, to see the new labels you have added, using the following command:
+```python
+item.open_in_web()
+```
 
 Congratulations, you just learned how to create and select a dataset, add data samples to it and then anotate those items.
 
