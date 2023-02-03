@@ -44,12 +44,12 @@ You can also loop through all of the items in the dataset, and print their detai
 For the best results, I suggest you upload multiple items before using the command above.
 
 ## Annotating items
-Dataset items are annotated using Labels. A Label is composed of various Label Settings and Instructions that are defined by a dataset’s Recipe. For example, an image  file item can contain 1 label defined as a Classification, to categorize the entire image. It can also contain multiple labels covering only portions of your images, defined as Point Markers, to identify specific objects in an image or video file item.
+Dataset items are annotated using Labels. A Label is composed of various Label Settings and Instructions that are defined by a dataset’s [Recipe](https://dataloop.ai/blog/data-recipes/). For example, an item can contain 1 label defined as a Classification, to categorize the entire data sample. It can also contain multiple labels covering only parts of your data sample, to identify specific sections of that item.
 
 ### Classification
-Classifications are used to categorize an entire image or scene (in the case of a video file). For example, a Classification label can be used to classify product images under categories, subcategories, and characteristics, such as men’s clothes, polo shirts, hand cremes, etc.
+Classification is used to categorize an entire data sample. For example, a Classification label can be used to classify product images under categories, subcategories, and characteristics, such as men’s clothes, polo shirts, hand cremes, etc.
 
-The SDK can add Classification labels to an item using 2 steps:
+The Python SDK can add Classification labels to an item using 2 steps:
 
 1. Firstly, you need to add a label to be part of the dataset (create label);
 2. Add that label to the item you wish (to classify it).
