@@ -14,7 +14,7 @@ If you want to try our online platform, you can <a href="https://dataloop.ai/doc
 
 If you are interested in our API, you can <a href="https://dataloop.ai/docs/api">find out more here</a>!
 
-If you are interested in using the Python SDK version of dataloop, you are in the right place!
+If you are interested in using the Python SDK version of Dataloop, you are in the right place!
 
 ## Useful Links
 Here are some useful links and resources that may help you in your path to learning.
