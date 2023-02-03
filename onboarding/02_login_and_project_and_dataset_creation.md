@@ -117,7 +117,13 @@ To use this dataset you must select it first, using the following code: <br>
 ```python
 dataset = project.datasets.get(dataset_name='My-First-Dataset')
 ```
+You can also open the dataset in web, using the following line of code:
+```python
+dataset.open_in_web()
+```
+It should look something like this:
 
+![image](https://user-images.githubusercontent.com/58508793/216603246-a06de404-5422-42fc-8c91-3cb46fcdc7f6.png)
 
 You can now start to populate that dataset, by adding samples and annotating them. That's what we will do in the next chapter!
 
