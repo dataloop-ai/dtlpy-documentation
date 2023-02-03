@@ -16,7 +16,6 @@ dataset.items.upload(local_path=r'C:\UploadDemo\test1.jpg')
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Upload Items: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.54it/s]
 Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/'632c24ae3444a86f029acb47', created_at='2022-09-22T10:18:03.000Z', dataset_id='632c24ae3444a86f029acb47', filename='/test1.jpg', name='test.jpg', type='file', id='632dadf7b28a0c0da317dfc8', spec=None, creator='JohnDoe@gmail.com', _description=None, annotations_count=0)</code></pre></div>
 
-<br><br>
 In there you will also see an "id" line, which refers to the item's id code. Keep that in mind, since we will use it. Now  you can get the image you just uploaded, from the dataset, and then print the item's details, using the following lines of code:
 
 <pre class="language-python">
@@ -27,6 +26,14 @@ Remember that you need to replace "my_item_id" with the item id you got after yo
 ```python
 print(item)
 ```
+Now that the sample has been uploaded, you can also open it in web view, using the following code:
+```python
+item.open_in_web()
+```
+This will open a new tab, where you will see the sample you just uploaded. In the URL you will be able to see all of the ID for Project, dataset and item:
+
+![image](https://user-images.githubusercontent.com/58508793/216602773-016eee27-a914-4922-8a5e-938c3d0eecd7.png)
+
 
 You can also loop through all of the items in the dataset, and print their details, using the following code:
 
