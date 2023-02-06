@@ -56,5 +56,14 @@ class Scripts:
         # DTLPY-STOP
         self.execution = execution
 
-    def func5(self):
+    def func5(self, service, dataset):
+        filters = dl.Filters(resource=dl.FiltersResource.ITEM,
+                             field='dir',
+                             values='/test',
+                             context={'datasets': [dataset.id]})
+        command = service.execute_batch(
+            filters=filters,
+            function_name='rgb2gray')
+
+    def func6(self):
         item.open_in_web()

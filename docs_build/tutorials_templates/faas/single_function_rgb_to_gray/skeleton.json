@@ -22,5 +22,28 @@
   {
     "type": "code",
     "name": "func3"
+  },
+  {
+    "type": "md",
+    "name": "func4"
+  },
+  {
+    "type": "code",
+    "name": "func4"
+  },{
+    "type": "md",
+    "name": "func5"
+  },
+  {
+    "type": "code",
+    "name": "func5"
+  },
+  {
+    "type": "md",
+    "name": "func6"
+  },
+  {
+    "type": "code",
+    "name": "func6"
   }
 ]

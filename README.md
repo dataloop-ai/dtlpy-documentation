@@ -118,12 +118,6 @@ jupyter notebook tutorials
 * Datasets
   *  [Add labels](examples/datasets/add_labels.py)
   *  [Copy folder](examples/datasets/copy_folder.py)
-* Integrations
-  * Gcs cloud function
-    *  [Create function](examples/integrations/gcs_cloud_function/create_function.py)
-    *  [Delete function](examples/integrations/gcs_cloud_function/delete_function.py)
-  * S3 lambda
-    *  [Lambda function](examples/integrations/s3_lambda/lambda_function.py)
 * Items
   *  [Add metadata to item](examples/items/add_metadata_to_item.py)
   *  [Add pdf viewer modality](examples/items/add_pdf_viewer_modality.py)
