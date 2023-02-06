@@ -1,4 +1,4 @@
-## Tutorial: Using models from the AI library  
+## Tutorial: using models from the AI library  
   
 Model algorithms that are ready for use out-of-the-box are available in the Dataloop AI Library. The AI library contains various algorithms and pretrained models that can be used for inferencing or fine-tuning via additional training on your custom datasets.  
   
@@ -7,7 +7,7 @@ This tutorial will cover how to use AI library models for:
 - predicting from pretrained models, and  
 - fine-tuning training on a custom dataset.  
   
-To see available public models, filter all available packages to view those with a “public” scope:  
+To see available AI library models, filter all available packages to view those with a “public” scope:  
   
 
 ```python
@@ -15,11 +15,11 @@ filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
 filters.add(field='scope', values='public')
 dl.models.list(filters=filters).print()
 ```
-### Clone and deploy a public model  
+### Clone and deploy a model  
   
-Download the model and package you want to copy it to your project.  
+Get the model and package you want and copy it to your project.  
   
-Only models that are trained (i.e. model.status = 'trained') can be deployed. Since the public model is pre-trained, it can be deployed directly.  
+Only models that are trained (i.e. model.status = 'trained') can be deployed. Since the AI library model is pre-trained (i.e. model status is 'trained'), it can be deployed directly.  
   
 
 ```python
@@ -31,7 +31,7 @@ model.deploy()
 ```
 ### Train on a custom dataset  
   
-If you want to customize the public model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels you want to use for model training.  
+If you would like to customize the AI library model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels you want to use for model training.  
   
 
 ```python
@@ -42,9 +42,8 @@ custom_model = dl.models.clone(from_model=public_model,
                                labels=['label1', 'label2'])
 ```
   
-#### Dataset Subsets  
-Our public models use a train/validation split of the dataset for the training session. To avoid data leakage between training sessions and to make each training reproducible,  
-we will determine the data subsets and save the split type to the dataset entity (using a DQL). Using DQL filters you can subset the data however you like.  
+#### Dataset subsets  
+Our AI library models require a train/validation split of the dataset for the training session. To avoid data leakage between training sessions and to make each training reproducible, we will determine the data subsets and save the split type to the dataset entity (using a DQL). Using DQL filters you can subset the data however you like.  
   
 For example, if your dataset is split between folders, you can use this DQL to add metadata for all items in the dataset  
 
@@ -59,13 +58,20 @@ This way, when the training starts, the sets will be downloaded using the DQL an
   
 NOTE: In the future, this mechanism will be expanded to use a tagging system on items. This will allow more flexible data subsets and random data allocation.  
   
-#### Deploying the model  
-  
-Once the model is trained, it can be deployed as a service. The `model.deploy()` function automatically creates a bot and service for the trained model.  
+To train the model on your custom data, simply use the `model.train()` function and wait for the training to finish. You can monitor the training progress on the platform or via the python SDK. To see the updated model status, retrieve the model again from the platform.  
   
 
 ```python
 custom_model.train()
+custom_model = dl.models.get(model_id=custom_model.id)
+print(custom_model.status)
+```
+#### Deploying the model  
+  
+Once the model is trained, it can be deployed as a service. The `model.deploy()` function automatically creates a bot and service for the trained model.  
+  
+Once you have a model deployed, you can create a UI slot to inference on individual data items on the platform, or call the model to inference in a FaaS or pipelines.  
+
+```python
 custom_model.deploy()
 ```
-Once you have a model deployed, you can create a UI slot to inference on individual data items on the platform, or call the model to inference in a FaaS or pipelines.  

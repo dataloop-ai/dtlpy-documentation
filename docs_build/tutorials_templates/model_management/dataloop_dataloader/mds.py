@@ -1,6 +1,6 @@
 def func1():
     """
-    # Dataloop Dataloader
+    # Dataloop dataloader
     A dl.Dataset image and annotation generator for training and for items visualization
 
     We can visualize the data with augmentation for debugging and exploration.
@@ -10,7 +10,7 @@ def func1():
 
 def func2():
     """
-    ## Object Detection Examples
+    ## Object detection examples
     We can visualize a random item from the dataset:
     """
 
@@ -61,7 +61,7 @@ def func6():
 
 def func7():
     """
-    ## Segmentation Examples
+    ## Segmentation examples
     First we'll load a semantic dataset and view some images and the output structure
 
     """
@@ -81,7 +81,7 @@ def func9():
 
 def func10():
     """
-    ## Setting a Label Map
+    ## Setting a label map
     One of the inputs to the DatasetGenerator is 'label_to_id_map'. This variable can be used to change the label mapping for the annotations
     and allow using the dataset ontology in a greater variety of cases.
     For example, you can map multiple labels so a single id or add a default value for all the unlabeled pixels in segmentation annotations.

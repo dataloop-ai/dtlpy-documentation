@@ -35,4 +35,8 @@ def func4():
 
 def func5():
     custom_model.train()
+    custom_model = dl.models.get(model_id=custom_model.id)
+    print(custom_model.status)
+
+def func6():
     custom_model.deploy()

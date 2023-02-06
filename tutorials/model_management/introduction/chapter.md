@@ -1,6 +1,6 @@
 # Model Management  
   
-## Quick Overview  
+## Quick overview  
 Dataloop's model management allows machine learning engineers to manage their research and production processes in one centralized place.  
   
 Models are run using a combination of Packages, Datasets, and Artifacts.  
@@ -51,9 +51,9 @@ Artifacts are any additional files necessary for a given model to run on the clo
 3. Git repository  
 4. other link  
   
-#### The Model Adapter  
+#### The Model adapter  
   
-The Model Adapter is a python class that creates a single API between Dataloop's platform and your model. The Model Adapter class contains standardized methods that make it possible to integrate models into other parts of the Dataloop platform. Model Adapters allow the following model functions:  
+The model adapter is a python class that creates a single API between Dataloop's platform and your model. The ModelAdapter class contains standardized methods that make it possible to integrate models into other parts of the Dataloop platform. Model adapters allow the following model functions:  
 1. train  
 2. predict  
 3. load/save model weights  
