@@ -40,7 +40,7 @@ class SimpleModelAdapter(dl.BaseModelAdapter):
         preds = self.model(batch)
         return preds
 ```
-Please see an example(https://github.com/dataloop-ai/yolov5/blob/master/dataloop/model_adapter.py) in Github of a working model adapter and see how to construct Annotation Collections.  
+Please see an example [here](https://github.com/dataloop-ai/yolov5/blob/master/dataloop/model_adapter.py) (for YOLOv5) in Github of a working model adapter and see how to construct Annotation Collections.  
   
 #### Push the package  
   
