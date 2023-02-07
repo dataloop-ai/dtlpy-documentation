@@ -133,8 +133,7 @@ ___
 
 ### query
 
-▸ **
-query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKContributor`](SDKContributor.md)>>
+▸ **query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKContributor`](SDKContributor.md)>>
 
 Lists all the contributors of the active project.
 

@@ -172,8 +172,7 @@ ___
 
 ### query
 
-▸ **
-query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<`APIRecipeV2`
+▸ **query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<`APIRecipeV2`
 > >
 
 Lists all recipes.

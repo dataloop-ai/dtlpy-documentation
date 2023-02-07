@@ -178,8 +178,7 @@ ___
 
 ### logs
 
-▸ **
-logs**(`payload?`): `Promise`<[`SDKAnnotationLogs`](../modules/iAnnotation.md#sdkannotationlogs)>
+▸ **logs**(`payload?`): `Promise`<`SDKAnnotationLogs`>
 
 Retrieves all annotation CRUD logs by itemId and datasetId.
 If not provided, the active dataset and item will be used.
@@ -203,7 +202,7 @@ const logs = await dl.annotations.logs({
 
 #### Returns
 
-`Promise`<[`SDKAnnotationLogs`](../modules/iAnnotation.md#sdkannotationlogs)>
+`Promise`<`SDKAnnotationLogs`>
 
 - A promise that resolves to the logs of the annotations.
 
@@ -215,8 +214,7 @@ ___
 
 ### query
 
-▸ **
-query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKAnnotation`](SDKAnnotation.md)>>
+▸ **query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKAnnotation`](SDKAnnotation.md)>>
 
 Lists all annotations by filter.
 

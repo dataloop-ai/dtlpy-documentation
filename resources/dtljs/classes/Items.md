@@ -200,8 +200,7 @@ ___
 
 ### query
 
-▸ **
-query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKItem`](SDKItem.md)>>
+▸ **query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKItem`](SDKItem.md)>>
 
 Lists all items by filter.
 When no payload is provided, it returns all the items in the active dataset.

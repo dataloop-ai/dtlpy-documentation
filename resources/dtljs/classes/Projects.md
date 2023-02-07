@@ -141,8 +141,7 @@ ___
 
 ### query
 
-▸ **
-query**(): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKProject`](SDKProject.md)>>
+▸ **query**(): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKProject`](SDKProject.md)>>
 
 Lists all projects.
 

@@ -142,8 +142,7 @@ ___
 
 ### query
 
-▸ **
-query**(): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKDataset`](SDKDataset.md)>>
+▸ **query**(): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKDataset`](SDKDataset.md)>>
 
 Retrieves a list of datasets.
 
