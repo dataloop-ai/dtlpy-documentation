@@ -26,6 +26,7 @@ By using debug apps, developers can ensure that their applications are functioni
 ![img_2.png](./assets/img_2.png)
 * Go to the dataset browser, right-click on an item, *Open With...* and choose your app!
 ![img_3.png](./assets/img_3.png)
+
 ### Item Viewer Example
 Here is an example of a basic Item Viewer App written in html & javascript
 *(We trust that you're better than us and can write better code than this using something like React/Vue etc.)*
