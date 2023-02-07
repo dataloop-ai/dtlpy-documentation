@@ -8,9 +8,9 @@ Events that are emitted from the frame (SDK) to the host (platform)
 
 ### Enumeration Members
 
-- [CLOSE\_DIALOG](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#close_dialog)
-- [TOGGLE\_ACTION\_LOCK](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#toggle_action_lock)
-- [UPDATE\_NODE\_CONFIG](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#update_node_config)
+- [CLOSE\_DIALOG](DlFrameEvent.md#close_dialog)
+- [TOGGLE\_ACTION\_LOCK](DlFrameEvent.md#toggle_action_lock)
+- [UPDATE\_NODE\_CONFIG](DlFrameEvent.md#update_node_config)
 
 ## Enumeration Members
 

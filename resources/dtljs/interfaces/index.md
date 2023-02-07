@@ -1,13 +1,13 @@
-[main](../index.md).interfaces
-
 # Interfaces
 
-- [IBundle](../interfaces/sdkApi_interfaces_bundles.IBundle.md)
-- [IEntity](../interfaces/sdkApi_interfaces_entities_base.IEntity.md)
-- [iAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md)
-- [iDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md)
-- [iItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md)
-- [iProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md)
-- [IPagedResponse](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)
-- [iTask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md)
-- [iContributor](../interfaces/sdkApi_interfaces_entities_iUser.IContributor.md)
+[main](../index.md).interfaces
+
+- [IBundle](../interfaces/IBundle.md)
+- [IEntity](../interfaces/IEntity.md)
+- [iAnnotation](../interfaces/IAnnotation.md)
+- [iDataset](../interfaces/IDataset.md)
+- [iItem](../interfaces/IItem.md)
+- [iProject](../interfaces/IProject.md)
+- [IPagedResponse](../interfaces/IPagedResponse.md)
+- [iTask](../interfaces/ITask.md)
+- [iContributor](../interfaces/IContributor.md)

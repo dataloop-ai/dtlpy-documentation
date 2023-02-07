@@ -3,7 +3,8 @@
 ## Table of contents
 
 ### Modules
-- [xFrameDriver (dl)](./classes/appLib_SDKDrivers_xFrameDriver.xFrameDriver.md)
-- [interfaces](./interfaces/index.md)
-- [enums](./enums/index.md)
-- [classes](./classes/index.md)
+- [xFrameDriver (dl)](./classes/xFrameDriver.md)
+- [Repositories](./classes/repositories.md)
+- [Interfaces](./interfaces/index.md)
+- [Entities](./classes/entities.md)
+- [Enums](./enums/index.md)

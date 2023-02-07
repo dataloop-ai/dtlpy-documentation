@@ -8,11 +8,11 @@ Events that are emitted from the host (platform) to the frame (SDK)
 
 ### Enumeration Members
 
-- [DIALOG\_PAYLOAD](appLib_SDKDrivers_xFrameDriver_events.DlEvent.md#dialog_payload)
-- [NODE\_CONFIG](appLib_SDKDrivers_xFrameDriver_events.DlEvent.md#node_config)
-- [READY](appLib_SDKDrivers_xFrameDriver_events.DlEvent.md#ready)
-- [THEME](appLib_SDKDrivers_xFrameDriver_events.DlEvent.md#theme)
-- [VALIDATION\_RESULT](appLib_SDKDrivers_xFrameDriver_events.DlEvent.md#validation_result)
+- [DIALOG\_PAYLOAD](DlEvent.md#dialog_payload)
+- [NODE\_CONFIG](DlEvent.md#node_config)
+- [READY](DlEvent.md#ready)
+- [THEME](DlEvent.md#theme)
+- [VALIDATION\_RESULT](DlEvent.md#validation_result)
 
 ## Enumeration Members
 
