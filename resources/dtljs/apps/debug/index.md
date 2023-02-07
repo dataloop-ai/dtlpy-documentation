@@ -20,12 +20,16 @@ By using debug apps, developers can ensure that their applications are functioni
 * On the left sidebar menu, go to **Application Hub** under the **Application (FAAS)** section, and open the **Developer** tab.
 ![img.png](./assets/img.png)
 * Click the **Add Function** button.
-* Fill out the name of the app, choose a main slot and add your application's URL address (For example: https://local.dataloop.ai:3000)
-![img_1.png](./assets/img_1.png)
+* Fill out the name of the app, choose a main slot and add your application's URL address
+  * (For example: https://local.dataloop.ai:3000)
+  ![img_1.png](./assets/img_1.png)
 * Press the **Create** button, and wallah! You have a debug app in the Platform.
 ![img_2.png](./assets/img_2.png)
-* Go to the dataset browser, right-click on an item, *Open With...* and choose your app!
-![img_3.png](./assets/img_3.png)
+* Go to the dataset browser, right-click on an item, *Open With...* and choose your app! <br /><p><img src="./assets/img_3.png"><br /></p>
+
+
+_____
+
 
 ### Item Viewer Example
 Here is an example of a basic Item Viewer App written in html & javascript
