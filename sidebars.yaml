@@ -25,6 +25,9 @@ contents:
         pages:
           - label: Debug Applications
             page: resources/dtljs/apps/debug/index.md
+            pages:
+              - label: Dataloop JSON Examples
+                page: resources/dtljs/apps/debug/json-examples.md
   - label: Onboarding
     page: onboarding/onboarding.md
     expanded: false
