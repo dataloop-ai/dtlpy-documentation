@@ -60,6 +60,13 @@ contents:
       - label: JS API
         page: resources/dtljs/index.md
         pages:
+        - label: xFrame
+          page: resources/dtljs/xFrame/index.md
+          pages:
+            - label: API
+              page: resources/dtljs/xFrame/api.md
+            - label: Design
+              page: resources/dtljs/xFrame/design.md
         - label: xFrameDriver
           page: resources/dtljs/classes/xFrameDriver.md
         - group: Interfaces
