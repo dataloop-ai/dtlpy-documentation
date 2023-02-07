@@ -1,0 +1,296 @@
+# Class: Items
+
+[dl.repositories](./index.md).Items
+
+Items repository.
+
+The Items class allows you to manage items in datasets.
+
+## Hierarchy
+
+- [`Repository`](appLib_SDKDrivers_xFrameDriver_repository.Repository.md)
+
+  ↳ **`Items`**
+
+## Implements
+
+- [`IBundle`](../interfaces/sdkApi_interfaces_bundles.IBundle.md)<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)>
+
+## Table of contents
+
+### Constructors
+
+- [constructor](appLib_SDKDrivers_xFrameDriver_items.Items.md#constructor)
+
+### Methods
+
+- [create](appLib_SDKDrivers_xFrameDriver_items.Items.md#create)
+- [crudReq](appLib_SDKDrivers_xFrameDriver_items.Items.md#crudreq)
+- [crudReqSync](appLib_SDKDrivers_xFrameDriver_items.Items.md#crudreqsync)
+- [delete](appLib_SDKDrivers_xFrameDriver_items.Items.md#delete)
+- [fetch](appLib_SDKDrivers_xFrameDriver_items.Items.md#fetch)
+- [get](appLib_SDKDrivers_xFrameDriver_items.Items.md#get)
+- [query](appLib_SDKDrivers_xFrameDriver_items.Items.md#query)
+- [stream](appLib_SDKDrivers_xFrameDriver_items.Items.md#stream)
+- [update](appLib_SDKDrivers_xFrameDriver_items.Items.md#update)
+
+## Constructors
+
+### constructor
+
+• **new Items**(`agent`)
+
+Creates an instance of Repository.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `agent` | `PeerAgent` |
+
+#### Inherited from
+
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md)
+.[constructor](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#constructor)
+
+## Methods
+
+### create
+
+▸ **create**(`payload`, `options`): `Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)>
+
+Creates a new item in the Items repository.
+
+**`Example`**
+
+```ts
+const itemPayload = {
+    datasetId: 'abc123'
+}
+const itemFile = new File(['content'], 'itemName.txt', { type: 'text/plain' });
+const itemOptions = {
+    file: itemFile,
+    path: 'path/to/item',
+    metadata: { custom: 'metadata' }
+}
+const createdItem = await dl.items.create(itemPayload, itemOptions);
+console.log(createdItem);
+// logs: SDKItem { datasetId: 'abc123', ... }
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `payload` | `Partial`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)> | The payload for creating the item. |
+| `options` | `Object` | Options for creating the item. |
+| `options.file` | `File` | - |
+| `options.metadata?` | `any` | - |
+| `options.path?` | `string` | - |
+
+#### Returns
+
+`Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)>
+
+- A promise that resolves with the created item.
+
+___
+
+### delete
+
+▸ **delete**(`payload?`): `Promise`<`void`>
+
+Deletes an item from the repository.
+If the itemId is not provided, the active itemId is used.
+If the datasetId is not provided, the active datasetId is used.
+
+**`Example`**
+
+```ts
+// delete an item with ID 'item1' in dataset with ID 'dataset1'
+await dl.items.delete({ itemId: 'item1', datasetId: 'dataset1' });
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `payload?` | `Object` | The payload containing the itemId and datasetId of the item to be deleted. |
+| `payload.datasetId?` | `string` | - |
+| `payload.itemId` | `string` | - |
+
+#### Returns
+
+`Promise`<`void`>
+
+- A promise that resolves once the item is deleted.
+
+#### Implementation of
+
+IBundle.delete
+
+___
+
+### fetch
+
+▸ **fetch**(`id?`): `Promise`<`any`>
+
+Fetches the raw contents of an item by id. When the id is not provided, it uses the active item.
+
+**`Example`**
+
+```ts
+// Given a text file with the contents "hello world"
+const rawItem = await dl.items.fetch('a-txt-file-id')
+console.log(rawItem)
+// logs: "hello world"
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `id?` | `string` | The id of the item to be fetched. |
+
+#### Returns
+
+`Promise`<`any`>
+
+- A promise that resolves to the content data.
+
+#### Implementation of
+
+IBundle.fetch
+
+___
+
+### get
+
+▸ **get**(`id?`): `Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)>
+
+Gets an item by id. When the id is not provided, it returns the active item.
+
+**`Example`**
+
+```ts
+const activeItem = await dl.items.get()
+```
+
+**`Example`**
+
+```ts
+const item = await dl.items.get('item-id-123')
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `id?` | `string` | The id of the item to retrieve. |
+
+#### Returns
+
+`Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)>
+
+- A promise that resolves to the item data.
+
+#### Implementation of
+
+IBundle.get
+
+___
+
+### query
+
+▸ **
+query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)>>
+
+Lists all items by filter.
+When no payload is provided, it returns all the items in the active dataset.
+
+**`Example`**
+
+```ts
+const pagedResponse = await dl.items.query()
+const itemsArray = pagedResponse.items
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `payload?` | `Object` | contains DQL filter. |
+| `payload.filter` | `DQL`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)> | - |
+
+#### Returns
+
+`Promise`<[`IPagedResponse`](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)>>
+
+- Returns a Promise that resolves to a paged response object of items.
+
+#### Implementation of
+
+IBundle.query
+
+___
+
+### stream
+
+▸ **stream**(`url?`): `Promise`<`string`>
+
+Retrieves the stream of an item by an item's stream URL.
+
+**`Example`**
+
+```ts
+const stream = await dl.items.stream('https://gate.dataloop.ai/api/v1/items/item-id/stream')
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `url?` | `string` | The stream url of the item. |
+
+#### Returns
+
+`Promise`<`string`>
+
+- A promise that resolves to the stream's string.
+
+#### Implementation of
+
+IBundle.stream
+
+___
+
+### update
+
+▸ **update**(`fieldsToUpdate`): `Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)>
+
+Update an existing item.
+
+**`Example`**
+
+```ts
+const updatedItem = await dl.items.update({
+    id: "item-1",
+    name: "Updated item name"
+})
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `fieldsToUpdate` | `Partial`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)> | The fields to update on the item. |
+
+#### Returns
+
+`Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)>
+
+- The updated item.
+
+#### Implementation of
+
+IBundle.update
