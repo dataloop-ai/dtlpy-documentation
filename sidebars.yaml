@@ -21,6 +21,10 @@ contents:
         page: tutorials/recipe_and_ontology.md
       - label: Task workflows
         page: tutorials/task_workflows.md
+      - label: Applications
+        pages:
+          - label: Debug Applications
+            page: resources/dtljs/apps/debug/index.md
   - label: Onboarding
     page: onboarding/onboarding.md
     expanded: false
