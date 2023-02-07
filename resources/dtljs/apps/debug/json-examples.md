@@ -165,7 +165,7 @@
         "displayName": "Floating Window",
         "invoke": {
           "type": "panel",
-          "namespace": "floatingWindowPanel",
+          "namespace": "floatingWindowPanel"
         },
         "icon": "icon-dl-add",
         "location": "datasetsDashboard",
