@@ -42,8 +42,7 @@ definitions of where to find the class and how to load itFaaS is the function
 ### <a name="instance-catalog"></a>Instance Catalog
 
 ### <a name="item"></a>Item ([Entity](#entity))
-Data samples you upload to your dataset will be stored in something called an "item". Items are Dataloop objects that belong to the Dataloop "Item" class. They are stored as a "json" file and are represented as Dataloop data model objects. Items include the data sample you upload as well as the afferent metadata you add to that data sample. 
-For example, if the item is a jpg file, it has a "stream" method to the get the image and the other json attributes, such as the metadata.
+Data samples you upload to your dataset will be stored in something called an "item". Items are Dataloop objects that belong to the Dataloop "Item" class. They are stored as a "json" file and are represented as Dataloop data model objects. Items include the data sample you upload as well as the afferent metadata you add to that data sample. For example, each item has a "stream" method to get the data sample along with other json attributes, such as the metadata.
 ## J
 ## K
 ## L
