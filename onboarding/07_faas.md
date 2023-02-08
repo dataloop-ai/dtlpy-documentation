@@ -6,10 +6,10 @@ You can use this tool for pre-annotation processing (resize, video assembler/dis
 Our FaaS uses the [Kubernetes cluster](https://kubernetes.io/docs/concepts/overview/), to provide very low latency requests with minor operational costs.
 
 ## FAAS Concenpts
-To work with FAAS, you first need to understand a few important concepts that will help you along the way.
+To start working with Dataloop's FaaS, you first need to understand a few important concepts that will help you along the way.
 
 ### Services
-Services are set up with a runtime driver and configuration that determines how to deploy the Service. The only supported driver is Kubernetes, which creates a Kubernetes deployment to control the number of replicas and resource allocation for the Service. The amount of resources and GPU type each replica has is determined by the instance type of the Service. The Agent, a pod running Dataloop code, manages the execution of the Service by loading the Module, listening to a Rabbitmq queue, processing messages, updating metrics and statuses, and monitoring the service overview. The Agent terminates when the Service goes down. When a manual execution or trigger occurs, a message is sent to Rabbitmq which invokes the function through one of the Agents.
+Services are set up with a runtime driver and configuration that determines how to deploy the Service. The only supported driver is Kubernetes, which creates a Kubernetes deployment to control the number of replicas and resource allocation for the Service. The amount of resources and the GPU type each replica has is determined by the instance type of the Service. The Agent, a pod running Dataloop code, manages the execution of the Service by loading the Module, listening to a Rabbitmq queue, processing messages, updating metrics and statuses, and monitoring the service overview. The Agent terminates when the Service goes down. When a manual execution or trigger occurs, a message is sent to Rabbitmq which invokes the function through one of the Agents.
 
 To ensure zero downtime during Service updates, we use a rolling update approach. When a Service update is initiated, the backend selects a few Agents and instructs them to stop receiving new messages from RabbitMQ, wait for ongoing executions to finish, and then shut down. A new Agent with updated parameters is then created in place of the exiting one. If an Agent fails to shut down after being ordered, it will be forcibly terminated, even if it hasn't finished processing all its assigned executions.
 
