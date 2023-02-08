@@ -17,9 +17,9 @@ The Model Management system in the platform can work in two ways: "offline" mode
 
 * On the other hand, the **online mode** allows users to train models that can be deployed anywhere within the platform. For instance, users can create a button interface to use their model for inferencing on new data and view the results on the platform. To use this mode, users must create a ModelAdapter class and implement the required functions to access the Dataloop API. This mode includes all the features available in the "offline" mode.
 
-### Model Management in SDK
+### Model Management in Dataloop's Python SDK
 
-Model management is also available both in the UI web version of dataloop and in the SDK version.
+Model management is also available both in the UI web version of Dataloop and in the Python SDK version.
 
 You can find more about how to use models in our [redocly documentetaion on Model Management](https://dlportal-demo.redoc.ly/tutorials/model_management/) or [our SDK-focused documentation](https://sdk-docs.dataloop.ai/en/latest/tutorials.html#model-management).
 
