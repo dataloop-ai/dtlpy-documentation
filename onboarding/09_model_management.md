@@ -21,7 +21,7 @@ The Model Management system in the platform can work in two ways: "offline" mode
 
 Model management is also available both in the UI web version of Dataloop and in the Python SDK version.
 
-You can find more about how to use models in our [redocly documentetaion on Model Management](https://dlportal-demo.redoc.ly/tutorials/model_management/) or [our SDK-focused documentation](https://sdk-docs.dataloop.ai/en/latest/tutorials.html#model-management).
+You can find more about how to use models in our [redocly documentetaion on Model Management](https://dlportal-demo.redoc.ly/tutorials/model_management/) or [our Python SDK-focused documentation](https://sdk-docs.dataloop.ai/en/latest/tutorials.html#model-management).
 
 Additionally, here are some code snippets that may be useful:
 1. Clone a model;
@@ -73,4 +73,4 @@ model = pretrained_model.clone(model_name='my first exp',
 model.train()
 ```
 
-The next chapter of this onboarding will show you what the next steps are in learning more about Dataloop's SDK. It will provide additional resources and redirect you to more advanced tutorials and exercices.
+The next chapter of this onboarding will show you what the next steps are in learning more about Dataloop's Python SDK. It will provide additional resources and redirect you to more advanced tutorials and exercices.
