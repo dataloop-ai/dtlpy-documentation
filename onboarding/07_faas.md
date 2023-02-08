@@ -13,7 +13,7 @@ Services are set up with a runtime driver and configuration that determines how 
 
 To ensure zero downtime during Service updates, we use a rolling update approach. When a Service update is initiated, the backend selects a few Agents and instructs them to stop receiving new messages from RabbitMQ, wait for ongoing executions to finish, and then shut down. A new Agent with updated parameters is then created in place of the exiting one. If an Agent fails to shut down after being ordered, it will be forcibly terminated, even if it hasn't finished processing all its assigned executions.
 
-If you want to find out more about Services in the SDK, you can look at our [documentation about Services](https://dataloop.ai/docs/service-runtime).
+If you want to find out more about Services in the  Python SDK, you can look at our [documentation about Services](https://dataloop.ai/docs/service-runtime).
 
 ### Docker Images
 
@@ -50,7 +50,7 @@ def rgb2gray(item: dl.Item):
                            ref=bgr_equalized_item.id)
     item.update(system_metadata=True)
 ```
-You can now deploy the FaaS using Dataloop SDK. Once the service variable is defined and the service is deployed, you may execute the available function on any input you wish. In this case we ran the function on the "My-First-Project" dataset:
+You can now deploy the FaaS using Dataloop's Python SDK. Once the service variable is defined and the service is deployed, you may execute the available function on any input you wish. In this case we ran the function on the "My-First-Project" dataset:
 ```python
 project = dl.projects.get(project_name='My-First-Project')
 service = project.services.deploy(func=rgb2gray,
