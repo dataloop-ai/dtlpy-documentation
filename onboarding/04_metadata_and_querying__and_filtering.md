@@ -1,12 +1,13 @@
+
+
 ## Querying and Filtering
 
 The Dataloop's Python SDK allows you to filter item data, which is extremely helpful when analysing your dataset. You can filter items by defining the parameters of the filter in Filter Queries. For example, you can create a Filter Query that filters item data based on a specific field name or an item's annotation label.
 
 A Filter Query can have multiple parameters. For example, you can include a parameter that filters for all items that include Point Marker Annotation samples labeled as 'Ear', or any other criteria you want.
 
-_**Reminder**_: To use any of the code, you need to be logged in to Dataloop and to ```import dtlpy```!
-
 ### Creating Filters
+_**Reminder**_: To use any dataloop code, you need to be logged in to Dataloop and to ```import dtlpy```!
 The first steps in working with filters is to create a filter variable:
 ```python
 my_filter = dl.Filters()
@@ -62,4 +63,51 @@ for item in pages.all():
 ```
 After this code exectues, all samples that are labeled 'Person' will have that label removed and replaced with 'Adult'.
 
-Now you know how to use queries and filters. Next, you will learn about metadata and how to create tasks, in the next chapter.
+## Metadata
+
+Metadata is a dictionary attribute that is used with items, annotations, and other Dataloop system entities such as [Recipes](https://dataloop.ai/blog/data-recipes/). Using the Python SDK, you can add any metadata values to any data sample. This user metadata can be used for data filtering, sorting, and other purposes.
+
+You will first learn how to add a new metadata field to the "test1" dataset sample we added earlier. This metadata item is called "datetime", and will assign the current date and time to the sample you select.
+
+To do that, we must first import the "datetime" module, which shouldn't require any installation, as it is already part of Python's standard library:
+```python
+import datetime
+```
+Now you need to find out the "item_id" of the sample that you want to add metadata to. You can use the following line of code to print all of the data samples inside of your dataset:
+```python
+dataset.items.get_all_items()
+```
+You should get something like this, in which you can find the 'id' of the sample you want to use. If you didn't add any other sample than the one we used in the tutorial, you will have only a single sample, called "test1":
+```python
+Iterate Entity: 100%|████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.15it/s]
+[Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/63cebc185bc9dbe3ed851dbe', created_at='2023-01-23T17:04:15.000Z', dataset_id='63cebc185bc9dbe3ed851dbe', filename='/test1.jpg', name='test1.jpg', type='file', id='63cebe0f6f60196b004423d9', spec=None, creator='myfuncont@gmail.com', _description=None, annotations_count=3)]
+```
+Next, you need to create a new instance of "test1" datasample:
+
+```python
+item_1 = dataset.items.get(item_id='632dadf7b28a0c0da317dfc8')
+```
+An instance of item test1 named item_1 should be created. The current date can now be assigned to a new field in the item’s metadata named Date&Time and the item can be updated.
+
+You can now asign the current date to a new metadata field for that variable:
+```python
+now = datetime.datetime.now().isoformat()
+# modify metadata for the item
+item_1.metadata['user'] = dict()
+# add it to the item's metadata
+item_1.metadata['user']['dateTime'] = now
+# update the item
+item_1 = item_1.update()
+```
+The date should now be assigned to a new metadata field for that variable, and the sample from your databes should be updated.
+
+Now, you will learn to use the filters from the previous chapter, to create a metadata field for a whole subset of items. Since you most likely have only one item, labeled "Adult" after the label change we did earlier, that's the criteria we will use:
+```python
+filters = dl.Filters()
+filters.add_join(field='label', values='Adult')
+now = datetime.datetime.now().isoformat()
+dataset.items.update(filters=filters, update_values={'user': {'dateTime': now}})
+```
+If all works well, you should have updated all of the items labeled "Adult" with the current date-time as a parameter. You should also get a long list of details of the dataset and the items modified, after running the command above. You can the save the datetime you just added and use it for various operations you may need to do in the future, such as querying and filtering, or to track changes done to the dataset.
+
+Now you know how to use metadata, queries and filters. In the next chapter, you will learn about how to create tasks.
