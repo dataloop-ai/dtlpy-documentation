@@ -138,79 +138,79 @@
 * *Invoke a panel or a function in an application*
 ```json
 {
-  "components": {
-    "panels": [
-      {
-        "name": "floatingWindowPanel",
-        "supportedSlots": [
+      "components": {
+        "panels": [
           {
-            "type": "floatingWindow",
-            "configuration": {
-              "layout": {
-                "width": 455,
-                "height": 340,
-                "resizeable": true,
-                "backgroundColor": "dl-color-studio-panel"
+            "name": "floatingWindowPanel",
+            "supportedSlots": [
+              {
+                "type": "floatingWindow",
+                "configuration": {
+                  "layout": {
+                    "width": 455,
+                    "height": 340,
+                    "resizeable": true,
+                    "backgroundColor": "dl-color-studio-panel"
+                  }
+                }
               }
+            ],
+            "conditions": {
+              "resources": []
             }
           }
         ],
-        "conditions": {
-          "resources": []
-        }
-      }
-    ],
-    "toolbars": [
-      {
-        "displayName": "Floating Window",
-        "invoke": {
-          "type": "panel",
-          "namespace": "floatingWindowPanel"
-        },
-        "icon": "icon-dl-add",
-        "location": "datasetsDashboard",
-        "conditions": {
-          "resources": []
-        }
-      },
-      {
-        "displayName": "Run function",
-        "invoke": {
-          "type": "function",
-          "namespace": "my_module.my_function"
-        },
-        "icon": "icon-dl-edit",
-        "location": "itemMenu",
-        "conditions": {
-          "resources": []
-        }
-      }
-    ],
-    "modules": [
-      {
-        "name": "my_module",
-        "entryPoint": "modules/main.py",
-        "className": "Runner",
-        "initInputs": [],
-        "functions": [
+        "toolbars": [
           {
-            "name": "my_function",
-            "input": [
+            "displayName": "Floating Window",
+            "invoke": {
+              "type": "panel",
+              "namespace": "floatingWindowPanel"
+            },
+            "icon": "icon-dl-add",
+            "location": "datasetsDashboard",
+            "conditions": {
+              "resources": []
+            }
+          },
+          {
+            "displayName": "Run function",
+            "invoke": {
+              "type": "function",
+              "namespace": "my_module.my_function"
+            },
+            "icon": "icon-dl-edit",
+            "location": "itemMenu",
+            "conditions": {
+              "resources": []
+            }
+          }
+        ],
+        "modules": [
+          {
+            "name": "my_module",
+            "entryPoint": "modules/main.py",
+            "className": "Runner",
+            "initInputs": [],
+            "functions": [
               {
-                "type": "Item",
-                "name": "item"
-              }
-            ],
-            "output": [
-              {
-                "type": "Item",
-                "name": "item"
+                "name": "my_function",
+                "input": [
+                  {
+                    "type": "Item",
+                    "name": "item"
+                  }
+                ],
+                "output": [
+                  {
+                    "type": "Item",
+                    "name": "item"
+                  }
+                ]
               }
             ]
           }
         ]
       }
-    ]
-  }
 }
 ```

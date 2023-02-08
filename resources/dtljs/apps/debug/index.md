@@ -18,14 +18,14 @@ By using debug apps, developers can ensure that their applications are functioni
 
 ### How to add a debug app in the Dataloop Platform
 * On the left sidebar menu, go to **Application Hub** under the **Application (FAAS)** section, and open the **Developer** tab.
-![img.png](./assets/img.png)
+![img.png](../../../../assets/apps/img.png)
 * Click the **Add Function** button.
 * Fill out the name of the app, choose a main slot and add your application's URL address
   * (For example: https://local.dataloop.ai:3000)
-  ![img_1.png](./assets/img_1.png)
+  ![img_1.png](../../../../assets/apps/img_1.png)
 * Press the **Create** button, and wallah! You have a debug app in the Platform.
-![img_2.png](./assets/img_2.png)
-* Go to the dataset browser, right-click on an item, *Open With...* and choose your app! <br /><p><img src="./assets/img_3.png"><br /></p>
+![img_2.png](../../../../assets/apps/img_2.png)
+* Go to the dataset browser, right-click on an item, *Open With...* and choose your app! <br /><p><img src="../../../../assets/apps/img_3.png"><br /></p>
 
 
 _____
