@@ -6,8 +6,8 @@ With Dataloop’s pipeline, organizations can streamline any production pipeline
 
 As an example, a pipeline may start with preprocessing data through code snippets (such as cutting a video into frames), then sending the output to multiple parallel tasks for labeling, quality assurance, or other processes. Completed tasks can then be directed to a separate task for review, while discarded items are stored in a separate dataset.
 
-## Pipelines in SDK
-The Dataloop platform allows for the manipulation and use of pipelines through both the user interface and the software development kit (SDK). For the purpose of this section, we will focus on working with pipelines through the SDK, but we will also provide additional resources at the end in the form of video tutorials for those who prefer to use the web version of Dataloop for managing pipelines.
+## Pipelines in the Python SDK
+The Dataloop platform allows for the manipulation and use of pipelines through both the user interface and the software development kit (SDK). In this section, we will focus on working with pipelines through the Python SDK, but we will also provide additional resources at the end in the form of video tutorials for those who prefer to use the web version of Dataloop for managing pipelines.
 
 First, let's create a new pipeline:
 ```python
@@ -41,7 +41,7 @@ In the example above, you print the details of a sample you defined in a previou
 ```python
 Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/63cebc185bc9dbe3ed851dbe', created_at='2023-01-23T17:04:15.000Z', dataset_id='63cebc185bc9dbe3ed851dbe', filename='/test1.jpg', name='test1.jpg', type='file', id='63cebe0f6f60196b004423d9', spec=None, creator='myfuncont@gmail.com', _description=None, annotations_count=3)
 ```
-Now you should have all the information to execute your pipeline. Here are also some other useful lines of code, that will help you when working with pipelines in the SDK.
+Now you should have all the information to execute your pipeline. Here are also some other useful lines of code, that will help you when working with pipelines in the Python SDK.
 
 1. Delete a pipeline object:
 ```python
