@@ -1,8 +1,10 @@
 ## Querying and Filtering
 
-The Dataloop Python SDK allows you to filter item data, which is extremely helpful when analysing your dataset. You can filter items by defining the parameters of the filter in Filter Queries. For example, you can create a Filter Query that filters item data based on a specific field name or an item's annotation label.
+The Dataloop's Python SDK allows you to filter item data, which is extremely helpful when analysing your dataset. You can filter items by defining the parameters of the filter in Filter Queries. For example, you can create a Filter Query that filters item data based on a specific field name or an item's annotation label.
 
 A Filter Query can have multiple parameters. For example, you can include a parameter that filters for all items that include Point Marker Annotation samples labeled as 'Ear', or any other criteria you want.
+
+_**Reminder**_: To use any of the code, you need to be logged in to Dataloop and to ```import dtlpy```!
 
 ### Creating Filters
 The first steps in working with filters is to create a filter variable:
@@ -60,4 +62,4 @@ for item in pages.all():
 ```
 After this code exectues, all samples that are labeled 'Person' will have that label removed and replaced with 'Adult'.
 
-Now that you know how to use queries and filters, you will learn about metadata and how to create tasks, in the next chapter.
+Now you know how to use queries and filters. Next, you will learn about metadata and how to create tasks, in the next chapter.
