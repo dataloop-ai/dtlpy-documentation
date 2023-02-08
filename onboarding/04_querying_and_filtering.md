@@ -1,8 +1,8 @@
 ## Querying and Filtering
 
-The Dataloop SDK allows you to filter item data, which is extremely helpful when analysing your dataset. You can filter items by defining the parameters of the filter in Filter Queries. For example, you can create a Filter Query that filters item data based on a specific field name or an item's annotation label.
+The Dataloop Python SDK allows you to filter item data, which is extremely helpful when analysing your dataset. You can filter items by defining the parameters of the filter in Filter Queries. For example, you can create a Filter Query that filters item data based on a specific field name or an item's annotation label.
 
-A Filter Query can have multiple parameters. For example, you can include a parameter that filters for all items that include Point Marker Annotation types labeled as 'Ear', or any other criteria you want.
+A Filter Query can have multiple parameters. For example, you can include a parameter that filters for all items that include Point Marker Annotation samples labeled as 'Ear', or any other criteria you want.
 
 ### Creating Filters
 The first steps in working with filters is to create a filter variable:
@@ -13,7 +13,7 @@ You can now add filter parameters to the filter variable you just created. For e
 ```python
 my_filter.add_join(field='type', values='point')
 ```
-You now created a filter and defined the filtering parameters too look for any samples that have any point marker annotations in it. You can now use this filter variable to actually look for any point makered samples in the dataset we defined earlier:
+You now created a filter and defined the filtering parameters too look for any samples that have any Point Marker Annotations in it. You can now use this filter variable to actually look for any Point Makered samples in the dataset we defined earlier:
 ```python
 pages = dataset.items.list(filters=my_filter)
 for item in pages.all():
