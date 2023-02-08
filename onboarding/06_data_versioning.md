@@ -29,7 +29,7 @@ Now you have a clone of your initial dataset, called "dataset_v2".
 
 ## Merge 2 datasets
 
-If you have multiple datasets that you want to merge, Dataloop provides this option as well. This can be useful when you have multiple annotation teams, working on subsets of a big dataset you want to put together. After everyone has finished their tasks (which you leaned how to create previously), you will want to merge all of the anotated datasets together, to finish your job. You will now learn how to do just that.
+If you have multiple datasets that you want to merge, Dataloop provides this option as well. This can be useful when you have multiple annotation teams, working on subsets of a big dataset you want to put together. After everyone has finished their tasks (which you leaned how to create previously), you will want to merge all of the annotated datasets together, to finish your job. You will now learn how to do just that.
 
  To see all of the datasets you have inside of your current project and details like the id of each dataset, run the line of code below:
 ```python
