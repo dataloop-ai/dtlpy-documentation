@@ -66,7 +66,7 @@ const classAnnotation = await dl.annotations.create({
     type: "class",
     itemId: "itemId-123",
     label: "Person",
-    description: "This is a person classification,
+    description: "This is a person classification"
 })
 ```
 
