@@ -95,6 +95,8 @@ contents:
               page: resources/dtljs/interfaces/ITask.md
             - label: IContributor
               page: resources/dtljs/interfaces/IContributor.md
+            - label: IPagedResponse
+              page: resources/dtljs/interfaces/IPagedResponse.md
           expanded: false
         - label: Enums
           page: resources/dtljs/enums/index.md
