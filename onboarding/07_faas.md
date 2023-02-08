@@ -80,7 +80,7 @@ That's it for the FaaS Onboarding. If you want to find out more about FaaS funct
 2. [Faas SDK Cheat-Sheet Section](https://dataloop.ai/docs/sdk-cheatsheet#:~:text=Copy-,FaaS,-To%20learn%20more)
 3. [Advanced Auto-annotation Service](https://dataloop.ai/docs/auto-annotation-service)
 4. [Pre-annotation service tutorial](https://dlportal-demo.redoc.ly/tutorials/faas/auto_annotate/chapter/#model-and-weights-files);
-5. Tutorial and code for [extracting Exif (Exchangeable Image File Format) information](https://github.com/dataloop-ai/image-exif) from images and uploads it.
+5. Tutorial and code for [extracting Exif (Exchangeable Image File Format) information](https://github.com/dataloop-ai/image-exif) from images and uploading it.
 
 Now that you have learned how to work with the FaaS provided by Dataloop, let's move on and talk about pipelines - in the next chapter.
 
