@@ -37,10 +37,10 @@ project.datasets.list()
 ```
 After runing this, you should see all of the datasets you have created. If you executed only the code in this onboarding tutorial, you should have  only 2 datasets, namely "My-First-Dataset", and "dataset_v2" clone of "My-First-Dataset. 
 ```python
-[Dataset(id='63d94b3837906e27029899c2', url='https://gate.dataloop.ai/api/v1/datasets/63d94b3837906e27029899c2', name='Binaries', creator='inbal@dataloop.ai', items_count=1, expiration_options=None, index_driver='v1', created_at='2023-01-31T17:09:12.776Z'),
- Dataset(id='63da62d973b62f22086f1d8f', url='https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f', name='My-First-Dataset', creator='myfuncont@gmail.com', items_count=1, expiration_options=None, index_driver='v1', created_at='2023-02-01T13:02:17.250Z'),
- Dataset(id='63da63cab9421abb1ddd5a94', url='https://gate.dataloop.ai/api/v1/datasets/63da63cab9421abb1ddd5a94', name='dataset_v2', creator='myfuncont@gmail.com', items_count=1, expiration_options=None, index_driver='v1', created_at='2023-02-01T13:06:18.801Z'),
- Dataset(id='63da644a4d9815630ac3d50f', url='https://gate.dataloop.ai/api/v1/datasets/63da644a4d9815630ac3d50f', name='First_second_merged_dataset', creator='myfuncont@gmail.com', items_count=1, expiration_options=None, index_driver='v1', created_at='2023-02-01T13:08:26.592Z')]
+[Dataset(id='63d94b3837906e27029899c2', url='https://gate.dataloop.ai/api/v1/datasets/63d94b3837906e27029899c2', name='Binaries', creator='email@dataloop.ai', items_count=1, expiration_options=None, index_driver='v1', created_at='2023-01-31T17:09:12.776Z'),
+ Dataset(id='63da62d973b62f22086f1d8f', url='https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f', name='My-First-Dataset', creator='email@dataloop.ai', items_count=1, expiration_options=None, index_driver='v1', created_at='2023-02-01T13:02:17.250Z'),
+ Dataset(id='63da63cab9421abb1ddd5a94', url='https://gate.dataloop.ai/api/v1/datasets/63da63cab9421abb1ddd5a94', name='dataset_v2', creator='email@dataloop.ai', items_count=1, expiration_options=None, index_driver='v1', created_at='2023-02-01T13:06:18.801Z'),
+ Dataset(id='63da644a4d9815630ac3d50f', url='https://gate.dataloop.ai/api/v1/datasets/63da644a4d9815630ac3d50f', name='First_second_merged_dataset', creator='email@dataloop.ai', items_count=1, expiration_options=None, index_driver='v1', created_at='2023-02-01T13:08:26.592Z')]
 ```
 
 The success of dataset merging depends on how similar or different the datasets are:
@@ -69,6 +69,6 @@ dataset_merge = dl.datasets.merge(merge_name="my_merged_dataset",
 ```
 All you have to do in this code is to replace the "dataset_ids" and the "project_ids" variables with the id of the datasets you want to merge and the id of the Project each dataset is part of. In our case, the project ID's will be the same for both datasets, since we previously created them as part of the same Project.
 
-After executing this, you should have successfully merged the 2 datasets into a bigger one, called "my_merged_dataset".
+After executing this, you should have successfully merged the 2 datasets into a new one, called "my_merged_dataset".
 
-In the next chapter, you will learn about Dataloop's Function-as-a-Service (FAAS), a Compute Service that can automatically run your code based on time patterns or in response to trigger events.
+In the next chapter, you will learn about Dataloop's Function-as-a-Service (FaaS), a Compute Service that can automatically run your code based on time patterns or in response to trigger events.
