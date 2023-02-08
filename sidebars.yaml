@@ -21,6 +21,13 @@ contents:
         page: tutorials/recipe_and_ontology.md
       - label: Task workflows
         page: tutorials/task_workflows.md
+      - label: Applications
+        pages:
+          - label: Debug Applications
+            page: resources/dtljs/apps/debug/index.md
+            pages:
+              - label: Dataloop JSON Examples
+                page: resources/dtljs/apps/debug/json-examples.md
   - label: Onboarding
     page: onboarding/onboarding.md
     expanded: false
@@ -58,7 +65,88 @@ contents:
       - label: Python API
         page: resources/dtlpy/dl.md
       - label: JS API
-        page: resources/dtlpy/dl.md
+        page: resources/dtljs/index.md
+        pages:
+        - label: xFrame
+          page: resources/dtljs/xFrame/index.md
+          pages:
+            - label: API
+              page: resources/dtljs/xFrame/api.md
+            - label: Design
+              page: resources/dtljs/xFrame/design.md
+        - label: xFrameDriver
+          page: resources/dtljs/classes/xFrameDriver.md
+        - group: Interfaces
+          page: resources/dtljs/interfaces/index.md
+          pages:
+            - label: IBundle
+              page: resources/dtljs/interfaces/IBundle.md
+            - label: IEntity
+              page: resources/dtljs/interfaces/IEntity.md
+            - label: IAnnotation
+              page: resources/dtljs/interfaces/IAnnotation.md
+            - label: IDataset
+              page: resources/dtljs/interfaces/IDataset.md
+            - label: IItem
+              page: resources/dtljs/interfaces/IItem.md
+            - label: IProject
+              page: resources/dtljs/interfaces/IProject.md
+            - label: ITask
+              page: resources/dtljs/interfaces/ITask.md
+            - label: IContributor
+              page: resources/dtljs/interfaces/IContributor.md
+            - label: IPagedResponse
+              page: resources/dtljs/interfaces/IPagedResponse.md
+          expanded: false
+        - label: Enums
+          page: resources/dtljs/enums/index.md
+          pages:
+            - label: DlEvent
+              page: resources/dtljs/enums/DlEvent.md
+            - label: DlFrameEvent
+              page: resources/dtljs/enums/DlFrameEvent.md
+        - label: Repositories
+          page: resources/dtljs/classes/repositories.md
+          pages:
+            - label: Annotations
+              page: resources/dtljs/classes/Annotations.md
+            - label: Contributors
+              page: resources/dtljs/classes/Contributors.md
+            - label: Datasets
+              page: resources/dtljs/classes/Datasets.md
+            - label: Items
+              page: resources/dtljs/classes/Items.md
+            - label: Labels
+              page: resources/dtljs/classes/Labels.md
+            - label: Ontologies
+              page: resources/dtljs/classes/Ontologies.md
+            - label: Projects
+              page: resources/dtljs/classes/Projects.md
+            - label: Recipes
+              page: resources/dtljs/classes/Recipes.md
+            - label: Settings
+              page: resources/dtljs/classes/AppSettings.md
+            - label: Tasks
+              page: resources/dtljs/classes/Tasks.md
+        - label: Entities
+          page: resources/dtljs/classes/entities.md
+          pages:
+            - label: SDKAnnotation
+              page: resources/dtljs/classes/SDKAnnotation.md
+            - label: SDKAnnotationEvent
+              page: resources/dtljs/classes/SDKAnnotationEvent.md
+            - label: SDKContributor
+              page: resources/dtljs/classes/SDKContributor.md
+            - label: SDKDataset
+              page: resources/dtljs/classes/SDKDataset.md
+            - label: SDKFunctionExecution
+              page: resources/dtljs/classes/SDKFunctionExecution.md
+            - label: SDKItem
+              page: resources/dtljs/classes/SDKItem.md
+            - label: SDKProject
+              page: resources/dtljs/classes/SDKProject.md
+            - label: SDKTask
+              page: resources/dtljs/classes/SDKTask.md
   - label: Glossary
     page: docs_build/glossary/glossary.md
   - label: SDK Cheat Sheet
