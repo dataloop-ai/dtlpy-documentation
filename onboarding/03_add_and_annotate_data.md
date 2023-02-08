@@ -4,7 +4,7 @@ If you followed up the onboarding tutorial so far, you should have created and s
 
 Data samples you upload to your dataset will be stored in something called an "item". Items are Dataloop objects belonging to the custom Dataloop "Item" class. They are represented as a Dataloop data model objects and are stored as a "json" file. Items contain the data sample you upload and the afferent metadata that you add to that data sample. For example, each item has a "stream" method to get the data sample along with other json attributes, such as the metadata.
 
-To annotate an item, you must first create a local directory on your computer, where you will place your data samples. If you are on windows, for example, you can create a folder at "C:\UploadDemo". Now you need to place an image (any image you have laying around). Then, I recommend you rename it to "test1.jpg". Now you can upload that sample to the dataset we created in the last chapter, using the following command:
+To annotate an item, you must first create a local directory on your computer, where you will place your data samples. If you are on windows, for example, you can create a folder at "C:\UploadDemo". Now you need to place an image (any image you have laying around). Then, we recommend you rename it to "test1.jpg". Now you can upload that sample to the dataset we created in the last chapter, using the following command:
 
 ```python
 dataset.items.upload(local_path=r'C:\UploadDemo\test1.jpg')
