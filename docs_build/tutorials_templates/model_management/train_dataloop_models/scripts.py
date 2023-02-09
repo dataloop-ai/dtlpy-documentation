@@ -40,3 +40,6 @@ def func5():
 
 def func6():
     custom_model.deploy()
+
+def func7():
+    model.predict(item_ids=[item.id])

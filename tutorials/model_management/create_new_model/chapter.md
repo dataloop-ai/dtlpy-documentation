@@ -38,7 +38,14 @@ class SimpleModelAdapter(dl.BaseModelAdapter):
     def predict(self, batch, **kwargs):
         print('predicting batch of size: {}'.format(len(batch)))
         preds = self.model(batch)
-        return preds
+        batch_annotations = list()
+        for i_img, predicted_class in enumerate(preds):  # annotations per image
+            image_annotations = dl.AnnotationCollection()
+            # in this example, we will assume preds is a label for a classification model
+            image_annotations.add(annotation_definition=dl.Classification(label=predicted_class),
+                                  model_info={'name': self.model_name})
+            batch_annotations.append(image_annotations)
+        return batch_annotations
 ```
 Please see an example [here](https://github.com/dataloop-ai/yolov5/blob/master/dataloop/model_adapter.py) (for YOLOv5) in Github of a working model adapter and see how to construct Annotation Collections.  
   
@@ -112,19 +119,16 @@ You should now be able to see the model in the “Deployed” tab. After clickin
   
 #### Via the SDK  
   
-To test whether your function was successfully uploaded and deployed onto the platform, you can post a request using your model and an uploaded item.  
+To test whether your function was successfully uploaded and deployed onto the platform, you can use the `model.predict()` function to predict on a list of item IDs. The function will return an Execution entity, which you can use to check the status of the prediction execution.  
   
 
 ```python
 model = dl.models.get(model_id='<model_id>')
 item = dl.items.get(model_id='<item_id>')
-payload = {'input': {'itemIds': [item.id]},
-           'config': {'serviceId': model.metadata['system']['deploy']['services'][0]}}
-success, response = dl.client_api.gen_request(req_type="post",
-                                              path=f"/ml/models/{model.id}/predict",
-                                              json_req=payload)
-if not success:
-    raise dl.exceptions.PlatformException(response)
-ex = response.json()
-print(ex)
+execution = model.predict(item_ids=[item.id])
+# after a few seconds, update your execution from the cloud
+execution = dl.executions.get(execution_id=execution.id)
+# print the most recent status
+print(execution.status[-1]['status'])
 ```
+If you encounter errors, you will need to look at the logs to see where the error occurred.  Go to "Model Management", under the "Deployed" tab, click on the number in the "Executions" column for the appropriate model, and then click on the "Execution" log icon on the right side of the screen (the paper icon). Here you can see the output of the cloud machine. You can also access this page via the "Application Hub", under "Executions".  

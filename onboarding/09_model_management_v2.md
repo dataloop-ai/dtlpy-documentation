@@ -19,9 +19,9 @@ Models require components and parts that can be changed, and these changes can b
 
 Models trained offline or online can connect to the model metrics. See [this tutorial](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt/tutorials/model_management/model_metrics_only/chapter.md) for how to upload metrics functionality on the platform.
 
-#### Models from the AI Library
+#### Copying or customizing model from the AI Library
 
-The Dataloop AI Library contains pre-trained models that can be used directly for predicting on items, or further trained to customize on your dataset. See [this tutorial](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt/tutorials/model_management/use_public_models/chapter.md) for how to clone or train a public model on the platform.
+The Dataloop AI Library contains pre-trained models that can be used directly for predicting on items, or further trained to customize on your dataset. See [this tutorial](https://github.com/dataloop-ai/dtlpy-documentation/blob/model_mgmt/tutorials/model_management/use_public_models/chapter.md) for how to copy or customize a public model on the platform.
 
 #### Building custom models
 

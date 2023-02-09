@@ -13,10 +13,19 @@ def func1():
         def load(self, local_path, **kwargs):
             print('loading a model')
             self.model = torch.load(os.path.join(local_path, 'model.pth'))
+
         def predict(self, batch, **kwargs):
             print('predicting batch of size: {}'.format(len(batch)))
             preds = self.model(batch)
-            return preds
+            batch_annotations = list()
+            for i_img, predicted_class in enumerate(preds):  # annotations per image
+                image_annotations = dl.AnnotationCollection()
+                # in this example, we will assume preds is a label for a classification model
+                image_annotations.add(annotation_definition=dl.Classification(label=predicted_class),
+                                      model_info={'name': self.model_name})
+                batch_annotations.append(image_annotations)
+
+            return batch_annotations
 
 
 def func2():
@@ -70,18 +79,13 @@ def func5():
     model.update()
     model.deploy()
 
+
 def func6():
     model = dl.models.get(model_id='<model_id>')
     item = dl.items.get(model_id='<item_id>')
 
-    payload = {'input': {'itemIds': [item.id]},
-               'config': {'serviceId': model.metadata['system']['deploy']['services'][0]}}
-
-    success, response = dl.client_api.gen_request(req_type="post",
-                                                  path=f"/ml/models/{model.id}/predict",
-                                                  json_req=payload)
-    if not success:
-        raise dl.exceptions.PlatformException(response)
-    ex = response.json()
-
-    print(ex)
+    execution = model.predict(item_ids=[item.id])
+    # after a few seconds, update your execution from the cloud
+    execution = dl.executions.get(execution_id=execution.id)
+    # print the most recent status
+    print(execution.status[-1]['status'])

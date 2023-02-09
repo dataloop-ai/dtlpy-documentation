@@ -46,5 +46,13 @@
   {
     "type": "code",
     "name": "func6"
+  },
+  {
+    "type": "md",
+    "name": "func7"
+  },
+  {
+    "type": "code",
+    "name": "func7"
   }
 ]

@@ -75,3 +75,11 @@ Once you have a model deployed, you can create a UI slot to inference on individ
 ```python
 custom_model.deploy()
 ```
+### Predict on a single item  
+  
+Once a model is deployed, you can predict on items using the `model.predict()` function. The function returns an execution object that can be used to track whether the prediction execution was successful. If successful, the annotations will be uploaded to the item directly and can be viewed in the annotation studio.  
+  
+
+```python
+model.predict(item_ids=[item.id])
+```

@@ -71,11 +71,11 @@ def func6():
 
     #### Via the SDK
 
-    To test whether your function was successfully uploaded and deployed onto the platform, you can post a request using your model and an uploaded item.
+    To test whether your function was successfully uploaded and deployed onto the platform, you can use the `model.predict()` function to predict on a list of item IDs. The function will return an Execution entity, which you can use to check the status of the prediction execution.
 
     """
 
 def func7():
     """
-    If you encounter errors, please look in the Application Hub for your model and check the logs.
+    If you encounter errors, you will need to look at the logs to see where the error occurred.  Go to "Model Management", under the "Deployed" tab, click on the number in the "Executions" column for the appropriate model, and then click on the "Execution" log icon on the right side of the screen (the paper icon). Here you can see the output of the cloud machine. You can also access this page via the "Application Hub", under "Executions".
     """
