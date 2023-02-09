@@ -1,0 +1,10 @@
+type: reference-docs
+definitionId: restapi
+settings:
+  generateCodeSamples:
+    pagination: section
+    showConsole: true
+    languages:
+      - lang: curl
+      - lang: JavaScript
+      - lang: Node.js
