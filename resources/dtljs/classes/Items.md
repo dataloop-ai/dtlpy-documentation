@@ -63,7 +63,7 @@ Creates a new item in the Items repository.
 
 ```ts
 const file = new File(['content'], 'filename.txt', { type: 'text/plain' })
-const binariesItem = {
+const binariesItemPayload = {
     file: file,
     path: 'path/to/item',
     metadata: {
@@ -72,7 +72,7 @@ const binariesItem = {
     binaries: true
 }
 
-const item = await sdk.items.create(itemPayload)
+const item = await sdk.items.create(binariesItemPayload)
 ```
 
 #### Parameters
