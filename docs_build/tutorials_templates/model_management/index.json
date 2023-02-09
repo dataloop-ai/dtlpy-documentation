@@ -5,13 +5,28 @@
   "content": [
     {
       "displayName": "Introduction",
-      "description": "Getting started with Model.",
+      "description": "Getting started with Model Management",
       "location": "model_management/introduction/chapter.md"
     },
     {
-      "displayName": "Create a Model and Snapshot",
-      "description": "Create a Model with a Dataloop Model Adapter",
-      "location": "model_management/create_new_model/chapter.md"
+      "displayName": "Model Metrics Only",
+      "description": "Track Metrics for Model Training",
+      "location": "model_management/model_metrics_only/chapter.md"
+    },
+    {
+      "displayName": "Train and Deploy Dataloop Models",
+      "description": "Train and Deploy Models from the AI Library",
+      "location": "model_management/train_dataloop_models/chapter.md"
+    },
+    {
+      "displayName": "Train Models Locally",
+      "description": "Download AI Library Models to Train Offline",
+      "location": "model_management/train_models_locally/chapter.md"
+    },
+    {
+      "displayName": "Create a New Model",
+      "description": "Create a Custom Model",
+      "location": "model_management/create_a_new_model/chapter.md"
     },
     {
       "displayName": "Using Dataloop's Dataset Generator",

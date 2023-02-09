@@ -19,21 +19,28 @@ The Model Management system in the platform can work in two ways: "offline" mode
 
 ### Model Management in SDK
 
-Model management is also available both in the UI web version of dataloop and in the SDK version.
+Model management is also available both in the UI web version of Dataloop and in the SDK version.
 
-You can find more about how to use models in our [redocly documentetaion on Model Management](https://dlportal-demo.redoc.ly/tutorials/model_management/) or [our SDK-focused documentation](https://sdk-docs.dataloop.ai/en/latest/tutorials.html#model-management).
+You can find more about how to use models in our [redocly documentation on Model Management](https://dlportal-demo.redoc.ly/tutorials/model_management/) or [our SDK-focused documentation](https://sdk-docs.dataloop.ai/en/latest/tutorials.html#model-management).
 
 Additionally, here are some code snippets that may be useful:
-1. Clone a model;
+1. Log metrics;
 ```python
-import dtlpy as dl
+project = dl.projects.get(project_id='$PROJECT_ID')
+package = project.packages.push(package_name='dummy-model-package',
+                                codebase=dl.entities.LocalCodebase(os.getcwd()),
+                                modules=[])
+model = package.models.create(model_name='My Model',
+                              description='model for offline model logging',
+                              dataset_id='<dataset_id>',
+                              labels=[])
 
 package = dl.packages.get(package_name='resnet')
 pretrained_model = package.models.get(model_name='pretrained-resnet50')
 
 model = pretrained_model.clone(model_name='my pretrained',
                                description='pretrained cloned in to my project',
-                               project_id="$PROJECT_ID")
+                               project_id='$PROJECT_ID')
 ```
 2. Deploy a model;
 ```python

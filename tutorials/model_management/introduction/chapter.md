@@ -1,6 +1,6 @@
 # Model Management  
   
-## Quick Overview  
+## Quick overview  
 Dataloop's model management allows machine learning engineers to manage their research and production processes in one centralized place.  
   
 Models are run using a combination of Packages, Datasets, and Artifacts.  
@@ -28,7 +28,7 @@ We will use the Package entity to save the architecture of the model (e.g Yolov5
   
 - In “online” mode (see “Model Comparison” below), Packages should include a Model Adapter to create the Dataloop API  
   
-Model algorithms that come as-is can be found in the AI Library. All public packages listed in the AI Library are pretrained and include the model algorithm code and default configurations. Users can download the codebase of any packages pushed to the cloud.  
+Model algorithms that are ready as-is to use can be found in the AI Library. All public packages listed in the AI Library are pretrained and include the model algorithm code and default configurations. Users can download the codebase of any packages pushed to the cloud.  
   
 #### Model  
   
@@ -36,7 +36,7 @@ Using the Package (code), Dataset and Ontology (data and labels) and configurati
   
 The Model contains the weights and any other artifacts needed to load the trained model and inference.  
   
-A model can also be cloned to be a starting point for a new model (for fine-tuning or transfer learning).  
+A Model can also be cloned to be a starting point for a new model (for fine-tuning or transfer learning).  
   
 ### Additional Package components  
   
@@ -51,9 +51,9 @@ Artifacts are any additional files necessary for a given model to run on the clo
 3. Git repository  
 4. other link  
   
-#### The Model Adapter  
+#### The Model adapter  
   
-The Model Adapter is a python class that creates a single API between Dataloop's platform and your model. The Model Adapter class contains standardized methods that make it possible to integrate models into other parts of the Dataloop platform. Model Adapters allow the following model functions:  
+The model adapter is a python class that creates a single API between Dataloop's platform and your model. The ModelAdapter class contains standardized methods that make it possible to integrate models into other parts of the Dataloop platform. Model adapters allow the following model functions:  
 1. train  
 2. predict  
 3. load/save model weights  
