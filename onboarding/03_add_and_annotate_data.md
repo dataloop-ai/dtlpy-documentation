@@ -1,92 +1,115 @@
-## Uploading Data Samples
+# 03\_add\_and\_annotate\_data
 
-If you followed up the onboarding tutorial so far, you should have created and selected a dataset already. This means you are now ready to add data samples to your dataset and then learn how to annotate them.
+### Uploading Data Samples
 
-Data samples you upload to your dataset will be stored in something called an "item". Items are Dataloop objects belonging to the custom Dataloop "Item" class. They are represented as a Dataloop data model objects and are stored as a "json" file. Items contain the data sample you upload and the afferent metadata that you add to that data sample. For example, each item has a "stream" method to get the data sample along with other json attributes, such as the metadata.
+If you followed the onboarding tutorial so far, you should have created a Project and Dataset and selected that Dataset to work with. This means you are now ready to add data samples to your Dataset and then learn how to annotate them.
 
-To annotate an item, you must first create a local directory on your computer, where you will place your data samples. If you are on windows, for example, you can create a folder at "C:\UploadDemo". Now you need to place an image (any image you have laying around). Then, we recommend you rename it to "test1.jpg". Now you can upload that sample to the dataset we created in the last chapter, using the following command:
+Data samples you upload to your dataset will be stored as something called an Item. Items are Dataloop objects belonging to the Dataloop Item class. They are represented as a Dataloop data model object and are stored as a binary object along with a JSON file that contains metadata about the Item. Item JSON files also contain metadata from annotations, for example, that you add to further describe or classify the data sample. Each Item has a `stream` method to get the data sample along with other attributes, such as the metadata, from the accompanying JSON file.
+
+To get going, create a local directory on your computer where you will place your data sample files. If you are on Windows, for example, you can create a folder `C:\UploadDemo`. Now you place an image file in that folder (any image you have laying around will do). Rename the file `test1.jpg` so the rest of the following steps will work as written. Now you can upload that sample to the Dataset we created in the last chapter, using the following command:
 
 ```python
 dataset.items.upload(local_path=r'C:\UploadDemo\test1.jpg')
 ```
 
+\
+If everything goes right, you should get something similar to the output below:\
 
 
+```
+Upload Items: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.54it/s]
+Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/'632c24ae3444a86f029acb47', created_at='2022-09-22T10:18:03.000Z', dataset_id='632c24ae3444a86f029acb47', filename='/test1.jpg', name='test.jpg', type='file', id='632dadf7b28a0c0da317dfc8', spec=None, creator='JohnDoe@gmail.com', _description=None, annotations_count=0)
+```
 
+In there you will also see an `id` entry, which refers to the Item's ID code. Copy this Item ID and paste it into a text file or similar, since we will use it later. Now you can `get` and `print` the details about the image, now an Item, you just uploaded into the Dataset using the following lines of code:
 
-<br>If everything goes right, you should get something simmilar to the output below: <br>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Upload Items: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.54it/s]
-Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/'632c24ae3444a86f029acb47', created_at='2022-09-22T10:18:03.000Z', dataset_id='632c24ae3444a86f029acb47', filename='/test1.jpg', name='test.jpg', type='file', id='632dadf7b28a0c0da317dfc8', spec=None, creator='JohnDoe@gmail.com', _description=None, annotations_count=0)</code></pre></div>
+```python
+item = dataset.items.get(item_id='my_item_id')
+item.print()
+```
 
-In there you will also see an "id" line, which refers to the item's id code. Keep that in mind, since we will use it. Now  you can get the image you just uploaded, from the dataset, and then print the item's details, using the following lines of code:
+Remember to replace `my_item_id` in the `get` request with the Item ID you got after you uploaded your data sample. Or, you can just print that Item's details using this simple line of code:
 
-<pre class="language-python">
-<code class="language-python">item <span class="token operator">=</span> dataset<span class="token punctuation">.</span>items<span class="token punctuation">.</span>get<span class="token punctuation">(</span>item_id<span class="token operator">=</span><span class="token string">'my_item_id'</span><span class="token punctuation">)</span>
-item<span class="token punctuation">.</span><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-
-Remember that you need to replace "my_item_id" with the item id you got after you uploaded your data sample. Or, you can just print that item's details using this simple line of code:
 ```python
 print(item)
 ```
-Now that the sample has been uploaded, you can also open it in web view, using the following code:
+
+Now that the sample has been uploaded, you can also open it in web UI, using the following code:
+
 ```python
 item.open_in_web()
 ```
-This will open a new tab, where you will see the sample you just uploaded. In the URL you will be able to see all of the ID for Project, dataset and item:
+
+This will open a new browser tab where you will see the sample you just uploaded. In the URL you will be able to see all of the IDs for Project, Dataset and Item:
 
 ![image](https://user-images.githubusercontent.com/58508793/216602773-016eee27-a914-4922-8a5e-938c3d0eecd7.png)
 
+You can also loop through all of the Items in the Dataset, and print their details, using the following code:
 
-You can also loop through all of the items in the dataset, and print their details, using the following code:
-
-<pre class="language-python"><code class="language-python">pages <span class="token operator">=</span> dataset<span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">for</span> item <span class="token keyword">in</span> pages<span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    item<span class="token punctuation">.</span><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+```python
+pages = dataset.items.list()
+for item in pages.all():
+    item.print()
+```
 
 For the best results, I suggest you upload multiple items before using the command above.
 
-## Annotating items
-Dataset items are annotated using Labels. A Label is composed of various Label Settings and Instructions that are defined by a dataset’s [Recipe](https://dataloop.ai/blog/data-recipes/). For example, an item can contain 1 label defined as a Classification, to categorize the entire data sample. It can also contain multiple labels covering only parts of your data sample, to identify specific sections of that item.
+### Annotating Items
 
-### Classification
+Dataset Items are annotated using Labels. A Label is composed of various Label Settings and Instructions that are defined by a Dataset’s [Recipe](https://dataloop.ai/blog/data-recipes/). For example, an Item can contain 1 Label defined as a Classification, to categorize the entire data sample. It can also contain multiple labels covering only parts of your data sample, to identify specific sections of that item.
+
+#### Classification
+
 Classification is used to categorize an entire data sample. For example, a Classification label can be used to classify product images under categories, subcategories, and characteristics, such as men’s clothes, polo shirts, hand cremes, etc.
 
-The Python SDK can add Classification labels to an item using 2 steps:
+The Python SDK can add Classification Labels to an item using 2 steps:
 
-1. Firstly, you need to add a label to be part of the dataset (create label);
-2. Add that label to the item you wish (to classify it).
+1. Firstly, you need to add a Label to be part of the Dataset's Recipe (create Label);
+2. Add that Label to the Item you wish to classify.
 
-To complete the first step, you can run the following command to add a Label (Person) to the "My-First-Dataset" dataset's list of labels:
+To complete the first step, you can run the following command to add a Label (Person) to the "My-First-Dataset" Dataset's list of Labels:
 
-<pre class="language-python"><code class="language-python">dataset<span class="token punctuation">.</span>add_label<span class="token punctuation">(</span>label_name<span class="token operator">=</span><span class="token string">'Person'</span><span class="token punctuation">)</span></code></pre>
+```python
+dataset.add_label(label_name='Person')
+```
 
-After executin that code, you should get something similar to this result:
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[Label(tag='Person', display_data={}, color='#0214a7', display_label='Person', attributes=[], children=[])]</code></pre></div>
+After executing the code, you should get something similar to this result:
+
+```
+[Label(tag='Person', display_data={}, color='#0214a7', display_label='Person', attributes=[], children=[])]
+```
 
 The second step is to annotate the image you just uploaded:
 
-<pre class="language-python"><code class="language-python">builder <span class="token operator">=</span> item<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>builder<span class="token punctuation">(</span><span class="token punctuation">)</span>
-builder<span class="token punctuation">.</span>add<span class="token punctuation">(</span>annotation_definition<span class="token operator">=</span>dl<span class="token punctuation">.</span>Classification<span class="token punctuation">(</span>label<span class="token operator">=</span><span class="token string">'Person'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-item<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>upload<span class="token punctuation">(</span>builder<span class="token punctuation">)</span></code></pre>
+```python
+builder = item.annotations.builder()
+builder.add(annotation_definition=dl.Classification(label='Person'))
+item.annotations.upload(builder)
+```
 
-Now the item you added a bit earlier is successfully annotated and classified with the label "Person".
+Now the Item you added a bit earlier is successfully annotated and classified with the label "Person".
 
-### Example: Annotating images using Point Markers
-A Point Marker is used to identify specific regions in your data samples. For example, it can identify regions where objects are present, in an image or video item, like an image of a person's face that contains multiple Point Marker labels specifying where the person’s eyes, mouth, ears, etc. are.
+#### Example: Annotating images using Point Markers
 
-Point Marker commands accept 2 sets of coordinates (x, y) as input parameters, which specify the location which you want to label.
-Just as in the case of Classification, we need to first create the label and add it to the dataset, before we can use it. Let's just add a new label to our current dataset:
+A Point Marker is used to identify specific regions in your data sample files. For example, it can identify regions where objects are present, in an image or video Item, like an image of a person's face that contains multiple Point Marker Labels specifying where the person’s eyes, mouth, ears, etc. are.
 
-<pre class="language-python"><code class="language-python">dataset<span class="token punctuation">.</span>add_label<span class="token punctuation">(</span>label_name<span class="token operator">=</span><span class="token string">'Ear'</span><span class="token punctuation">)</span></code></pre>
+Point Marker commands accept 2 sets of coordinates (x, y) as input parameters, which specify the location which you want to label. Just as in the case of Classification, we need to first create the Label and add it to the Dataset Recipe before we can use it. Let's just add a new Label to our current Dataset:
+
+```python
+dataset.add_label(label_name='Ear')
+```
 
 Easy, right? Now you can add the "Ear" label we just created to a specific region of your image:
 
-<pre class="language-python"><code class="language-python">builder <span class="token operator">=</span> item_1<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>builder<span class="token punctuation">(</span><span class="token punctuation">)</span>
-builder<span class="token punctuation">.</span>add<span class="token punctuation">(</span>annotation_definition<span class="token operator">=</span>dl<span class="token punctuation">.</span>Point<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token number">80</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token number">80</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'Ear'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-builder<span class="token punctuation">.</span>add<span class="token punctuation">(</span>annotation_definition<span class="token operator">=</span>dl<span class="token punctuation">.</span>Point<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token number">120</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token number">120</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'Ear'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-item_1<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>upload<span class="token punctuation">(</span>builder<span class="token punctuation">)</span></code></pre>
+```python
+builder = item_1.annotations.builder()
+builder.add(annotation_definition=dl.Point(x=80, y=80, label='Ear'))
+builder.add(annotation_definition=dl.Point(x=120, y=120, label='Ear'))
+item_1.annotations.upload(builder)
+```
 
 After this, you can open the sample in web view, to see the new labels you have added, using the following command:
+
 ```python
 item.open_in_web()
 ```
@@ -94,4 +117,3 @@ item.open_in_web()
 Congratulations, you just learned how to create and select a dataset, add data samples to it and then anotate those items.
 
 In the next chapter, you will learn the basics of filtering the data items from your dataset, which is extremely helpful when you have a high number of data samples.
-
