@@ -108,12 +108,12 @@ builder.add(annotation_definition=dl.Point(x=120, y=120, label='Ear'))
 item_1.annotations.upload(builder)
 ```
 
-After this, you can open the sample in web view, to see the new labels you have added, using the following command:
+After this, you can open the sample in web UI, to see the new labels you have added, using the following command:
 
 ```python
 item.open_in_web()
 ```
 
-Congratulations, you just learned how to create and select a dataset, add data samples to it and then anotate those items.
+Congratulations, you just learned how to create and select a Dataset, add data sample files to it creating Items, and then annotate those Items.
 
-In the next chapter, you will learn the basics of filtering the data items from your dataset, which is extremely helpful when you have a high number of data samples.
+In the next chapter, you will learn the basics of filtering the data Items within your dataset, which is extremely helpful when you have a high number of data sample Files.
