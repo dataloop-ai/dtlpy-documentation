@@ -27,8 +27,15 @@ In there you will also see an `id` entry, which refers to the Item's ID code. Co
 item = dataset.items.get(item_id='my_item_id')
 item.print()
 ```
-
-Remember to replace `my_item_id` in the `get` request with the Item ID you got after you uploaded your data sample. Or, you can just print that Item's details using this simple line of code:
+For which you should get the following output:
+```python
++----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------+
+|    | annotated   | filename   | name      | type   | id                       | hidden   | dir   |   annotationsCount | dataset                                                           | createdAt                | datasetId                | creator             |
+|----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------|
+|  0 | True        | /test1.jpg | test1.jpg | file   | 63da62df7592bf239854adc0 | False    | /     |                  3 | https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f | 2023-02-01T13:02:23.000Z | 63da62d973b62f22086f1d8f | email@gmail.com |
++----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------+
+```
+Remember to replace `my_item_id` in the `get` request with the Item ID you got after you uploaded your data sample. Or, you can just print that Item's details the normal print function, to which you will get the same output as above:
 
 ```python
 print(item)
@@ -51,7 +58,17 @@ pages = dataset.items.list()
 for item in pages.all():
     item.print()
 ```
+And you should get an output similar to this:
 
+```python
+Iterate Entity: 100%|████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.44it/s]
++----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------+
+|    | annotated   | filename   | name      | type   | id                       | hidden   | dir   |   annotationsCount | dataset                                                           | createdAt                | datasetId                | creator             |
+|----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------|
+|  0 | True        | /test1.jpg | test1.jpg | file   | 63da62df7592bf239854adc0 | False    | /     |                  3 | https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f | 2023-02-01T13:02:23.000Z | 63da62d973b62f22086f1d8f | email@gmail.com |
++----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------+
+Iterate Entity: 100%|████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.29it/s]
+```
 For the best results, I suggest you upload multiple items before using the command above.
 
 ### Annotating Items
