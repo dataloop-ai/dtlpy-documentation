@@ -107,7 +107,10 @@ builder = item.annotations.builder()
 builder.add(annotation_definition=dl.Classification(label='Person'))
 item.annotations.upload(builder)
 ```
-
+And should get this output:
+```python
+AnnotationCollection(item=Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f', created_at='2023-02-01T13:02:23.000Z', dataset_id='63da62d973b62f22086f1d8f', filename='/test1.jpg', name='test1.jpg', type='file', id='63da62df7592bf239854adc0', spec=None, creator='email@gmail.com', _description=None, annotations_count=3), annotations=[Annotation(id='63db94346b35f547a1539602', item_id='63da62df7592bf239854adc0', creator='email@gmail.com', created_at='2023-02-02T10:45:08.711Z', type='class', item_height=738, item_width=564, label_suggestions=None, _start_frame=0, _start_time=0)])
+```
 Now the Item you added a bit earlier is successfully annotated and classified with the label "Person".
 
 #### Example: Annotating images using Point Markers
@@ -128,7 +131,10 @@ builder.add(annotation_definition=dl.Point(x=80, y=80, label='Ear'))
 builder.add(annotation_definition=dl.Point(x=120, y=120, label='Ear'))
 item_1.annotations.upload(builder)
 ```
-
+With this output:
+```python
+AnnotationCollection(item=Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f', created_at='2023-02-01T13:02:23.000Z', dataset_id='63da62d973b62f22086f1d8f', filename='/test1.jpg', name='test1.jpg', type='file', id='63da62df7592bf239854adc0', spec=None, creator='myfuncont@gmail.com', _description=None, annotations_count=3), annotations=[Annotation(id='63da632797d0cfccbab6ae88', item_id='63da62df7592bf239854adc0', creator='myfuncont@gmail.com', created_at='2023-02-01T13:03:35.121Z', type='point', item_height=738, item_width=564, label_suggestions=None, _start_frame=0, _start_time=0), Annotation(id='63da632797d0cf0f7cb6ae87', item_id='63da62df7592bf239854adc0', creator='myfuncont@gmail.com', created_at='2023-02-01T13:03:35.119Z', type='point', item_height=738, item_width=564, label_suggestions=None, _start_frame=0, _start_time=0)])
+```
 After this, you can open the sample in web view, to see the new labels you have added, using the following command:
 
 ```python
