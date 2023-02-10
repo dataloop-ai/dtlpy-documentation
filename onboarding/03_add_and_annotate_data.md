@@ -35,12 +35,16 @@ For which you should get the following output:
 |  0 | True        | /test1.jpg | test1.jpg | file   | 63da62df7592bf239854adc0 | False    | /     |                  3 | https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f | 2023-02-01T13:02:23.000Z | 63da62d973b62f22086f1d8f | email@gmail.com |
 +----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------+
 ```
-Remember to replace `my_item_id` in the `get` request with the Item ID you got after you uploaded your data sample. Or, you can just print that Item's details the normal print function, to which you will get the same output as above:
+Remember to replace `my_item_id` in the `get` request with the Item ID you got after you uploaded your data sample. Or, you can just print that Item's details the normal print function:
 
 ```python
 print(item)
 ```
+After executing, you will get this output:
 
+```python
+Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f', created_at='2023-02-01T13:02:23.000Z', dataset_id='63da62d973b62f22086f1d8f', filename='/test1.jpg', name='test1.jpg', type='file', id='63da62df7592bf239854adc0', spec=None, creator='email@gmail.com', _description=None, annotations_count=3)
+```
 Now that the sample has been uploaded, you can also open it in web UI, using the following code:
 
 ```python
