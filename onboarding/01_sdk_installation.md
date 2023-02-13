@@ -12,17 +12,6 @@ The Dataloop platform is built upon an extensive Python SDK that provides full c
 * Annotations
 * Metadata
 
-### Type Conventions
-
-In this document you will see the following:
-
-* Dataloop, Python, Dataset, Items, etc.
-  * Keywords that related to labels you'll see and use in the Dataloop UI are always capitalized
-* `code`
-  * Anything relating to code or a code block will appear as code within grey highlighting
-* **Bold text**
-  * Heading and important things to note will be displayed in bold text
-
 ### Installation
 
 In order to use our Python SDK, you must first install it on your machine. To do that you need to follow the steps below.

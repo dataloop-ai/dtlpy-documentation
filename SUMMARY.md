@@ -52,7 +52,7 @@
   * [01\_sdk\_installation](onboarding/01\_sdk\_installation.md)
   * [02\_login\_and\_project\_and\_dataset\_creation](onboarding/02\_login\_and\_project\_and\_dataset\_creation.md)
   * [03\_add\_and\_annotate\_data](onboarding/03\_add\_and\_annotate\_data.md)
-  * [04\_metadata\_and\_querying\_\_and\_filtering](onboarding/04\_metadata\_and\_querying\_\_and\_filtering.md)
+  * [4. Metadata, querying and filtering](onboarding/04\_metadata\_and\_querying\_\_and\_filtering.md)
   * [Tasks](onboarding/05\_task\_assignments.md)
   * [06\_data\_versioning](onboarding/06\_data\_versioning.md)
   * [07\_faas](onboarding/07\_faas.md)

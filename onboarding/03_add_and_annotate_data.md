@@ -13,7 +13,8 @@ dataset.items.upload(local_path=r'C:\UploadDemo\test1.jpg')
 ```
 
 \
-If everything goes right, you should get something similar to the output below:\\
+If everything goes right, you should get something similar to the output below:\
+
 
 ```
 Upload Items: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.54it/s]
@@ -27,26 +28,10 @@ item = dataset.items.get(item_id='my_item_id')
 item.print()
 ```
 
-For which you should get the following output:
-
-```python
-+----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------+
-|    | annotated   | filename   | name      | type   | id                       | hidden   | dir   |   annotationsCount | dataset                                                           | createdAt                | datasetId                | creator             |
-|----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------|
-|  0 | True        | /test1.jpg | test1.jpg | file   | 63da62df7592bf239854adc0 | False    | /     |                  3 | https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f | 2023-02-01T13:02:23.000Z | 63da62d973b62f22086f1d8f | email@gmail.com |
-+----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------+
-```
-
-Remember to replace `my_item_id` in the `get` request with the Item ID you got after you uploaded your data sample. Or, you can just print that Item's details the normal print function:
+Remember to replace `my_item_id` in the `get` request with the Item ID you got after you uploaded your data sample. Or, you can just print that Item's details using this simple line of code:
 
 ```python
 print(item)
-```
-
-After executing, you will get this output:
-
-```python
-Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f', created_at='2023-02-01T13:02:23.000Z', dataset_id='63da62d973b62f22086f1d8f', filename='/test1.jpg', name='test1.jpg', type='file', id='63da62df7592bf239854adc0', spec=None, creator='email@gmail.com', _description=None, annotations_count=3)
 ```
 
 Now that the sample has been uploaded, you can also open it in web UI, using the following code:
@@ -65,18 +50,6 @@ You can also loop through all of the Items in the Dataset, and print their detai
 pages = dataset.items.list()
 for item in pages.all():
     item.print()
-```
-
-And you should get an output similar to this:
-
-```python
-Iterate Entity: 100%|████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.44it/s]
-+----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------+
-|    | annotated   | filename   | name      | type   | id                       | hidden   | dir   |   annotationsCount | dataset                                                           | createdAt                | datasetId                | creator             |
-|----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------|
-|  0 | True        | /test1.jpg | test1.jpg | file   | 63da62df7592bf239854adc0 | False    | /     |                  3 | https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f | 2023-02-01T13:02:23.000Z | 63da62d973b62f22086f1d8f | email@gmail.com |
-+----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------+
-Iterate Entity: 100%|████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.29it/s]
 ```
 
 For the best results, I suggest you upload multiple items before using the command above.
@@ -114,17 +87,9 @@ builder.add(annotation_definition=dl.Classification(label='Person'))
 item.annotations.upload(builder)
 ```
 
-And should get this output:
-
-```python
-AnnotationCollection(item=Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f', created_at='2023-02-01T13:02:23.000Z', dataset_id='63da62d973b62f22086f1d8f', filename='/test1.jpg', name='test1.jpg', type='file', id='63da62df7592bf239854adc0', spec=None, creator='email@gmail.com', _description=None, annotations_count=3), annotations=[Annotation(id='63db94346b35f547a1539602', item_id='63da62df7592bf239854adc0', creator='email@gmail.com', created_at='2023-02-02T10:45:08.711Z', type='class', item_height=738, item_width=564, label_suggestions=None, _start_frame=0, _start_time=0)])
-```
-
 Now the Item you added a bit earlier is successfully annotated and classified with the label "Person".
 
 #### Example: Annotating images using Point Markers
-
-Be sure to complete this Example as we will refer to it in the coming sections.
 
 A Point Marker is used to identify specific regions in your data sample files. For example, it can identify regions where objects are present, in an image or video Item, like an image of a person's face that contains multiple Point Marker Labels specifying where the person’s eyes, mouth, ears, etc. are.
 
@@ -143,12 +108,6 @@ builder.add(annotation_definition=dl.Point(x=120, y=120, label='Ear'))
 item_1.annotations.upload(builder)
 ```
 
-With this output:
-
-```python
-AnnotationCollection(item=Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/63da62d973b62f22086f1d8f', created_at='2023-02-01T13:02:23.000Z', dataset_id='63da62d973b62f22086f1d8f', filename='/test1.jpg', name='test1.jpg', type='file', id='63da62df7592bf239854adc0', spec=None, creator='email@gmail.com', _description=None, annotations_count=3), annotations=[Annotation(id='63da632797d0cfccbab6ae88', item_id='63da62df7592bf239854adc0', creator='email@gmail.com', created_at='2023-02-01T13:03:35.121Z', type='point', item_height=738, item_width=564, label_suggestions=None, _start_frame=0, _start_time=0), Annotation(id='63da632797d0cf0f7cb6ae87', item_id='63da62df7592bf239854adc0', creator='email@gmail.com', created_at='2023-02-01T13:03:35.119Z', type='point', item_height=738, item_width=564, label_suggestions=None, _start_frame=0, _start_time=0)])
-```
-
 After this, you can open the sample in web view, to see the new labels you have added, using the following command:
 
 ```python
@@ -157,4 +116,4 @@ item.open_in_web()
 
 Congratulations, you just learned how to create and select a dataset, add data samples to it and then anotate those items.
 
-In the next chapter, you will learn the basics of filtering the data Items within your Dataset, which is extremely helpful when you have a high number of data sample files.
+In the next chapter, you will learn the basics of filtering the data items from your dataset, which is extremely helpful when you have a high number of data samples.
