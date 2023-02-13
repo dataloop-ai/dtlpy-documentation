@@ -1,28 +1,36 @@
+# 04\_metadata\_and\_querying\_\_and\_filtering
 
+### Querying and Filtering a Dataset
 
-## Querying and Filtering
+Dataloop's Python SDK allows you to filter Items based on their metadata which is extremely helpful when analyzing your Dataset. You can filter Items by defining the parameters of the Filter in Filter Queries. For example, you can create a Filter Query that filters Item data based on a specific field name or an Item's annotation label.
 
-The Dataloop's Python SDK allows you to filter item data, which is extremely helpful when analysing your dataset. You can filter items by defining the parameters of the filter in Filter Queries. For example, you can create a Filter Query that filters item data based on a specific field name or an item's annotation label.
+A Filter Query can have multiple parameters. For example, you can include a parameter that filters for all Items that include Point Marker Annotation samples labeled as 'Ear', or any other criteria available as part of the metadata for the collection of data samples in the Dataset.
 
-A Filter Query can have multiple parameters. For example, you can include a parameter that filters for all items that include Point Marker Annotation samples labeled as 'Ear', or any other criteria you want.
+#### Creating Filters
 
-### Creating Filters
-_**Reminder**_: To use any dataloop code, you need to be logged in to Dataloop and to ```import dtlpy```!
-The first steps in working with filters is to create a filter variable:
+_**Reminder**_: To use any Dataloop Python SDK code, you need to be logged in to Dataloop and  `import dtlpy`&#x20;
+
+The first steps in working with Filters is to create a Filter variable:
+
 ```python
 my_filter = dl.Filters()
 ```
-You can now add filter parameters to the filter variable you just created. For example, you can extract all of the data samples that have point marker annotations:
+
+You can now add Filter Parameters to the Filter Variable you just created. For example, you can segregate all of the data samples that have point marker annotations:
+
 ```python
 my_filter.add_join(field='type', values='point')
 ```
-You now created a filter and defined the filtering parameters too look for any samples that have any Point Marker Annotations in it. You can now use this filter variable to actually look for any Point Makered samples in the dataset we defined earlier:
+
+You now created a Filter and defined the filtering parameters too look for any samples that have  Point Marker Annotations. You can now use this Filter Variable to look for any Point Maker samples in the Dataset we defined earlier in the Point Marker Example:
+
 ```python
 pages = dataset.items.list(filters=my_filter)
 for item in pages.all():
     item.print()
 ```
-After executing these lines of code, the filter we created will be applied to the whole dataset. If you have multiple samples that have point markers in it, each of them will be displayed along with details for each sample extracted, as shown below:
+
+After executing these lines of code, the Filter we created will be applied to the entire Dataset. If you have multiple samples that have Point Markers associated with them, each of them will be displayed along with details for each sample, as shown below:
 
 ```python
 Iterate Entity: 100%|████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.66it/s]
@@ -33,22 +41,28 @@ Iterate Entity: 100%|███████████████████�
 +----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------+
 ```
 
-### Using filters to replace data
-Existing item data can be replaced using filters. You can, for example, create and apply a Filter Query that returns a subset of item data that includes a specific Classification, such as 'Person,' and replace it with another value, such as 'Adult,' across the entire subset.
+#### Using Filters to replace data
 
-The first step is to create a new Filter Query with a Filter Parameter that looks for all items with the label 'Person,' which we previously created and assigned to a sample.
+Existing Item data can be replaced using Filters. You can, for example, create and apply a Filter Query that returns a subset of Item data that includes a specific Classification, such as 'Person,' and replace it with another value, such as 'Adult,' across the entire subset.
 
-We can use the replacement filter to replace information about samples from our dataset, but we must first create it and assign some filtering parameters to it, similarly to the example above:
+The first step is to create a new Filter Query with a Filter Parameter that looks for all items with the Label 'Person,' which we previously created and assigned to a sample.
+
+We can use the replacement Filter to replace information about samples from our Dataset, but we must first create it and assign some Filter Parameters to it, similarly to the example above:
+
 ```python
 person_filter = dl.Filters(resource=dl.FILTERS_RESOURCE_ITEM)
 person_filter.add_join(field='label', values='Person')
 ```
-We can now create a new label called 'Adult' and add it to the filter we just created, which will be used to replace all of the 'Person' samples in the dataset:
+
+We can now create a new Label called 'Adult' and add it to the Filter we just created, which will be used to replace all of the 'Person' samples in the Dataset:
+
 ```python
 dataset.add_label(label_name='Adult')
 pages = dataset.items.list(filters=person_filter)
 ```
-Now you can delete the existing label (Person) and replace it with the new label we just created (Adult), using the following code:
+
+Now you can delete the existing Label (Person) and replace it with the new Label we just created (Adult), using the following code:
+
 ```python
 import dtlpy as dl
 
@@ -61,35 +75,42 @@ for item in pages.all():
     annotations.add(annotation_definition=dl.Classification(label='Adult'))
     item.annotations.upload(annotations)
 ```
-After this code exectues, all samples that are labeled 'Person' will have that label removed and replaced with 'Adult'.
 
-## Metadata
+After this code executes, all samples that are labeled 'Person' will have that Label removed and replaced with 'Adult'.
 
-Metadata is a dictionary attribute that is used with items, annotations, and other Dataloop system entities such as [Recipes](https://dataloop.ai/blog/data-recipes/). Using the Python SDK, you can add any metadata values to any data sample. This user metadata can be used for data filtering, sorting, and other purposes.
+### Metadata
 
-You will first learn how to add a new metadata field to the "test1" dataset sample we added earlier. This metadata item is called "datetime", and will assign the current date and time to the sample you select.
+Metadata is a dictionary attribute that is used with Items, Annotations, and other Dataloop system entities such as [Recipes](https://dataloop.ai/blog/data-recipes/). Using the Python SDK, you can add any metadata values to any data sample. This user created metadata can be used for data filtering, sorting, and other purposes.
 
-To do that, we must first import the "datetime" module, which shouldn't require any installation, as it is already part of Python's standard library:
+You will first learn how to add a new metadata field to the `test1.jpg` Dataset sample file we added earlier. This metadata item is called `datetime`, and will assign the current date and time to the sample you select.
+
+To do this, we must first import the `datetime` module, which shouldn't require any installation as it is already part of Python's standard library:
+
 ```python
 import datetime
 ```
-Now you need to find out the "item_id" of the sample that you want to add metadata to. You can use the following line of code to print all of the data samples inside of your dataset:
+
+Now you need to find out the `item_id` of the sample to which you want to add metadata. You can use the following line of code to print all of the data samples inside of your Dataset:
+
 ```python
 dataset.items.get_all_items()
 ```
-You should get something like this, in which you can find the 'id' of the sample you want to use. If you didn't add any other sample than the one we used in the tutorial, you will have only a single sample, called "test1":
+
+You should get something like this, in which you can find the `id` of the sample you want to use. If you didn't add any other samples other than the one we used in the tutorial, you will have only a single sample, called `test1.jpg`:
+
 ```python
 Iterate Entity: 100%|████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.15it/s]
 [Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/63cebc185bc9dbe3ed851dbe', created_at='2023-01-23T17:04:15.000Z', dataset_id='63cebc185bc9dbe3ed851dbe', filename='/test1.jpg', name='test1.jpg', type='file', id='63cebe0f6f60196b004423d9', spec=None, creator='myfuncont@gmail.com', _description=None, annotations_count=3)]
 ```
-Next, you need to create a new instance of "test1" datasample:
+
+Next, `get` the `item_id` for `test1.jpg` in the data sample and assign it to a variable `item_1`:
 
 ```python
 item_1 = dataset.items.get(item_id='632dadf7b28a0c0da317dfc8')
 ```
-An instance of item test1 named item_1 should be created. The current date can now be assigned to a new field in the item’s metadata named Date&Time and the item can be updated.
 
-You can now asign the current date to a new metadata field for that variable:
+The current date and time can now be assigned to a new `user` defined field in the Item’s metadata named `dateTime` using the variable `item_1` you just created.  Run the following code:
+
 ```python
 now = datetime.datetime.now().isoformat()
 # modify metadata for the item
@@ -99,15 +120,18 @@ item_1.metadata['user']['dateTime'] = now
 # update the item
 item_1 = item_1.update()
 ```
-The date should now be assigned to a new metadata field for that variable, and the sample from your databes should be updated.
 
-Now, you will learn to use the filters from the previous chapter, to create a metadata field for a whole subset of items. Since you most likely have only one item, labeled "Adult" after the label change we did earlier, that's the criteria we will use:
+The date and time should now be assigned to a new metadata field for that variable, and the sample from your Dataset should be updated.
+
+Now, you will learn to use the filters from the previous chapter to create a metadata field for a whole subset of Items. Since you most likely have only one Item labeled "Adult" after the Label change we did earlier, this is the Filter criteria we will use:
+
 ```python
 filters = dl.Filters()
 filters.add_join(field='label', values='Adult')
 now = datetime.datetime.now().isoformat()
 dataset.items.update(filters=filters, update_values={'user': {'dateTime': now}})
 ```
-If all works well, you should have updated all of the items labeled "Adult" with the current date-time as a parameter. You should also get a long list of details of the dataset and the items modified, after running the command above. You can the save the datetime you just added and use it for various operations you may need to do in the future, such as querying and filtering, or to track changes done to the dataset.
 
-Now you know how to use metadata, queries and filters. In the next chapter, you will learn about how to create tasks.
+If all works well, you should have updated all of the Items labeled "Adult" with the current date and time and filtered them using the date and time as a Filter Parameter. You should also get a list of details for the Dataset and the modified Items modified after running the command above. You can the save the `dateTime` code you used and apply it to various operations you may need to do in the future, such as querying and filtering, or to track changes done to the Dataset.
+
+Now you know how to use Metadata, Queries and Filters. In the next chapter, you will learn about how to create Tasks.
