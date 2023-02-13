@@ -146,5 +146,9 @@
     {
         "header": "Recipe ($[Entity])",
         "description": "A recipe is a set of labeling instructions and settings (e.g. labelling tools) for an annotation task."
+    },
+    {
+        "header": "Agent",
+        "description": "An agent is a pod running Dataloop code, manages the execution of the Service by loading the Module, listening to a Rabbitmq queue, processing messages, updating metrics and statuses, and monitoring the service overview. The Agent terminates when the Service goes down."
     }
 ]
