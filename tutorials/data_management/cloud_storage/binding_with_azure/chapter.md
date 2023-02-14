@@ -44,9 +44,9 @@ In VS code, flow the instructions in [azure docs](https://learn.microsoft.com/en
 
 ```python
 import azure.functions as func
-import dtlpy as dl
 import os
 os.environ["DATALOOP_PATH"] = "/tmp"
+import dtlpy as dl
 dataset_id = os.environ.get('DATASET_ID')
 dtlpy_username = os.environ.get('DTLPY_USERNAME')
 dtlpy_password = os.environ.get('DTLPY_PASSWORD')
@@ -55,16 +55,23 @@ def main(event: func.EventGridEvent):
     url = event.get_json()['url']
     if container_name in url:
         dl.login_m2m(email=dtlpy_username, password=dtlpy_password)
-        dataset = dl.datasets.get(dataset_id=dataset_id,
-                                  fetch=False  # to avoid GET the dataset each time
-                                  )
+        dataset = dl.datasets.get(dataset_id=dataset_id)
+        driver_path = dl.drivers.get(driver_id=dataset.driver).path
         # remove th Container name from the path
-        file_name = url.split(container_name)[1]
-        if 'BlobCreated' in event.event_type:
-            file_name = 'external:/' + file_name
-            dataset.items.upload(local_path=file_name)
+        file_name_to_upload = url.split(container_name)[1]
+        if driver_path == '/':
+            driver_path = None
+        if driver_path is not None and driver_path not in url:
+            return
+        if driver_path:
+            remote_path = file_name_to_upload.replace(driver_path, '')
         else:
-            dataset.items.delete(filename=file_name)
+            remote_path = file_name_to_upload
+        if 'BlobCreated' in event.event_type:
+            file_name = 'external:/' + file_name_to_upload
+            dataset.items.upload(local_path=file_name, remote_path=os.path.dirname(remote_path))
+        else:
+            dataset.items.delete(filename=remote_path)
 ```
 4. Deploy the code to the function app you created - For more info take a look at [azure docs](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python?pivots=python-mode-configuration#deploy-the-project-to-azure)  
 5. In VS code go to view tab -> Command Palette -> Azure Functions: Upload Local Settings  

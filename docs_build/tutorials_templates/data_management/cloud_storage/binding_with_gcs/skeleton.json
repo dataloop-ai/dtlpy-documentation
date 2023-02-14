@@ -18,5 +18,13 @@
   {
     "type": "md",
     "name": "section3"
+  },
+  {
+    "type": "code",
+    "name": "section3"
+  },
+  {
+    "type": "md",
+    "name": "section4"
   }
 ]

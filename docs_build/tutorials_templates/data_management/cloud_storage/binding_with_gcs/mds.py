@@ -9,21 +9,28 @@ def section1():
 
     ### Create the cloud function
     1. Create a cloud function for create event (must add the environment variables DATASET_ID, DTLPY_USERNAME and DTLPY_PASSWORD)
-    ![add_layer](../../../../assets/bind_gcs/create_function.png)
-    ![add_layer](../../../../assets/bind_gcs/settings.png)
-
-    2. Add dtlpy to the requirements.txt
-    3. Copy the following code to the main file:
+        To populate the values for the vars: `DTLPY_USERNAME`, `DTLPY_PASSWORD` you'll need to create a **DataLoop Bot** on your Dataloop project using the following code:
     """
 
 
 def section2():
     """
-    4. create another function for delete with delete event with this code
+    ![add_layer](../../../../assets/bind_gcs/create_function.png)
+    ![add_layer](../../../../assets/bind_gcs/settings.png)
+
+    2. runtimes: =>python37, Entry point: create_gcs (your function name)
+    3. Add dtlpy to the requirements.txt file
+    4. Copy the following code to the main.py file:
     """
 
 
 def section3():
+    """
+    4. create another function for delete with delete event with this code and the same settings
+    """
+
+
+def section4():
     """
     Deploy and you're good to go! 
     """
