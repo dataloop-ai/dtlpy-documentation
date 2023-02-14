@@ -15,7 +15,6 @@ toc:
   enable: true
 oasDefinitions:
   restapi: ./resources/rest_api/openapi.json
-  # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
   - https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
@@ -30,7 +29,7 @@ nav:
   - label: Dataloop Platform
     href: https://console.dataloop.ai
   #  page: developer-portal/index.md
-    
+
   - label: Developers and support docs
     icon: ./images/dl_icon.png
     page: ./tutorials/tutorials.mdx

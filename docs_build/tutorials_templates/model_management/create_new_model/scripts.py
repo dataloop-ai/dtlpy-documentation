@@ -14,17 +14,18 @@ def func1():
             print('loading a model')
             self.model = torch.load(os.path.join(local_path, 'model.pth'))
 
-        def save(self, local_path, **kwargs):
-            print('saving a model to {}'.format(local_path))
-            torch.save(self.model, os.path.join(local_path, 'model.pth'))
-
-        def train(self, data_path, output_path, **kwargs):
-            print('running a training session')
-
         def predict(self, batch, **kwargs):
             print('predicting batch of size: {}'.format(len(batch)))
             preds = self.model(batch)
-            return preds
+            batch_annotations = list()
+            for i_img, predicted_class in enumerate(preds):  # annotations per image
+                image_annotations = dl.AnnotationCollection()
+                # in this example, we will assume preds is a label for a classification model
+                image_annotations.add(annotation_definition=dl.Classification(label=predicted_class),
+                                      model_info={'name': self.model_name})
+                batch_annotations.append(image_annotations)
+
+            return batch_annotations
 
 
 def func2():
@@ -34,11 +35,10 @@ def func2():
     project = dl.projects.get(project_name='<project_name>')
     dataset = project.datasets.get(dataset_name='<dataset_name')
 
-    codebase = project.codebases.pack(directory='<path to local dir>')
+    # codebase = project.codebases.pack(directory='<path to local dir>')
     # codebase: dl.GitCodebase = dl.GitCodebase(git_url='github.com/mygit', git_tag='v25.6.93')
     metadata = dl.Package.get_ml_metadata(cls=SimpleModelAdapter,
-                                          default_configuration={'weights_filename': 'model.pth',
-                                                                 'input_size': 256},
+                                          default_configuration={},
                                           output_type=dl.AnnotationType.CLASSIFICATION
                                           )
     module = dl.PackageModule.from_entry_point(entry_point='adapter_script.py')
@@ -48,7 +48,7 @@ def func3():
     package = project.packages.push(package_name='My-Package',
                                     src_path=os.getcwd(),
                                     package_type='ml',
-                                    codebase=codebase,
+                                    # codebase=codebase,
                                     modules=[module],
                                     is_global=False,
                                     service_config={
@@ -66,7 +66,7 @@ def func4():
                                   description='first model we are uploading',
                                   tags=['pretrained', 'tutorial'],
                                   dataset_id=None,
-                                  configuration={'weights_filename': 'model.pth'
+                                  configuration={'weights_filename': '<weights filename and extension>'
                                                  },
                                   project_id=package.project.id,
                                   model_artifacts=[artifact],
@@ -75,6 +75,17 @@ def func4():
 
 
 def func5():
-    adapter = package.build()
-    adapter.load_from_model(model_entity=model)
-    # adapter.train()
+    model.status = 'trained'
+    model.update()
+    model.deploy()
+
+
+def func6():
+    model = dl.models.get(model_id='<model_id>')
+    item = dl.items.get(model_id='<item_id>')
+
+    execution = model.predict(item_ids=[item.id])
+    # after a few seconds, update your execution from the cloud
+    execution = dl.executions.get(execution_id=execution.id)
+    # print the most recent status
+    print(execution.status[-1]['status'])
