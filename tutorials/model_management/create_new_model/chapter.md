@@ -117,6 +117,8 @@ model.deploy()
   
 You should now be able to see the model in the “Deployed” tab. After clicking on your model, you should see a “Test” tab where you can drag and drop an image, click “Test” and see the results of your model prediction.  
   
+![Screenshot of deployed model test tab](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/assets/images/model_management/test_tab.png)  
+  
 #### Via the SDK  
   
 To test whether your function was successfully uploaded and deployed onto the platform, you can use the `model.predict()` function to predict on a list of item IDs. The function will return an Execution entity, which you can use to check the status of the prediction execution.  

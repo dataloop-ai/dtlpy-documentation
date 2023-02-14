@@ -42,8 +42,16 @@ def create_gcs(event, context):
     dataset = dl.datasets.get(dataset_id=dataset_id,
                               fetch=False  # to avoid GET the dataset each time
                               )
+    driver_path = dl.drivers.get(driver_id=dataset.driver).path
+    remote_path = None
+    if driver_path == '/':
+        driver_path = None
+    if driver_path is not None and driver_path not in file['name']:
+        return
+    if driver_path:
+        remote_path = file['name'].replace(driver_path, '')
     file_name = 'external://' + file['name']
-    dataset.items.upload(local_path=file_name)
+    dataset.items.upload(local_path=file_name, remote_path=remote_path)
 ```
 4. create another function for delete with delete event with this code and the same settings  
 
@@ -64,7 +72,15 @@ def delete_gcs(event, context):
     dataset = dl.datasets.get(dataset_id=dataset_id,
                               fetch=False  # to avoid GET the dataset each time
                               )
-    file_name = file['name']
-    dataset.items.delete(filename=file_name)
+    driver_path = dl.drivers.get(driver_id=dataset.driver).path
+    if driver_path == '/':
+        driver_path = None
+    if driver_path is not None and driver_path not in file['name']:
+        return
+    if driver_path:
+        remote_path = file['name'].replace(driver_path, '')
+    else:
+        remote_path = file['name']
+    dataset.items.delete(filename=remote_path)
 ```
 Deploy and you're good to go!  
