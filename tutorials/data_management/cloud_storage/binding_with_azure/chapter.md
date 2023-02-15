@@ -64,6 +64,8 @@ def main(event: func.EventGridEvent):
         if driver_path is not None and driver_path not in url:
             return
         if driver_path:
+            if not driver_path.startswith("/"):
+                driver_path = "/" + driver_path
             remote_path = file_name_to_upload.replace(driver_path, '')
         else:
             remote_path = file_name_to_upload

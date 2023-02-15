@@ -49,6 +49,8 @@ def create_gcs(event, context):
     if driver_path is not None and driver_path not in file['name']:
         return
     if driver_path:
+        if not driver_path.startswith("/"):
+            driver_path = "/" + driver_path
         remote_path = file['name'].replace(driver_path, '')
     file_name = 'external://' + file['name']
     dataset.items.upload(local_path=file_name, remote_path=remote_path)
@@ -78,6 +80,8 @@ def delete_gcs(event, context):
     if driver_path is not None and driver_path not in file['name']:
         return
     if driver_path:
+        if not driver_path.startswith("/"):
+            driver_path = "/" + driver_path
         remote_path = file['name'].replace(driver_path, '')
     else:
         remote_path = file['name']

@@ -41,6 +41,8 @@ def lambda_handler(event, context):
         if driver_path is not None and driver_path not in filename:
             return
         if driver_path:
+            if not driver_path.startswith("/"):
+                driver_path = "/" + driver_path
             remote_path = filename.replace(driver_path, '')
         else:
             remote_path = filename
