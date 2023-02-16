@@ -59,7 +59,7 @@
   * [08\_pipelines](onboarding/08\_pipelines.md)
   * [Model management](onboarding/09\_model\_management.md)
   * [What is next?](onboarding/10\_next\_steps.md)
-  * [Advanced Onboarding Exercise in Python](<onboarding/11. onboarding\_Exercise.md>)
+  * [Advanced Onboarding Exercise in Python](onboarding/advanced-onboarding-exercise-in-python.md)
   * [Onboarding](onboarding/onboarding.md)
   * [onboarding4sb](onboarding/onboarding4sb.md)
 * [resources](resources/README.md)
