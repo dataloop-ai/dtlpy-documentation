@@ -1,6 +1,4 @@
-# 08\_pipelines
-
-### Pipelines
+# Chapter 8 - Pipelines
 
 Dataloop’s Pipeline system integrates human and machine processing in a series of interconnected nodes to streamline data handling. The pipeline architecture allows for data to flow through labeling tasks, quality assurance tasks, functions within the Dataloop system, code snippets, and machine learning models, allowing for data filtering, splitting, merging, and status changes as needed.
 
