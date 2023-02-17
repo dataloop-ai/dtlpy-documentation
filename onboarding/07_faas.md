@@ -1,6 +1,4 @@
-# 07\_faas
-
-### Function as a Service (FaaS)
+# Chapter 7 - Function as a Service (FaaS)
 
 The Dataloop Function-as-a-Service ([FAAS](07\_faas.md#faas)) allows users to deploy packages and run services from them leveraging the Dataloop platform's computing resources and data. Overall, it serves as an incredibly powerful tool that provides exceptional flexibility, expands the platform's capabilities, and essentially enables the technical users of the platform to meet a variety of backend automation needs and requirements.
 
