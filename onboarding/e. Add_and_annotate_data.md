@@ -1,4 +1,4 @@
-# 3. Add and annotate data
+# Chapter 3 - Add and Annotate data
 
 ### Uploading Data Samples
 
