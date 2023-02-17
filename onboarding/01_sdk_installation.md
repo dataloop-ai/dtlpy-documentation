@@ -1,4 +1,4 @@
-# 01\_sdk\_installation
+# Chapter 1 - Python SDK Installation
 
 ### SDK Overview
 
