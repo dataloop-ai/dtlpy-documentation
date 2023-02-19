@@ -83,6 +83,6 @@ If you have just deployed the model, `get` the model again to get the updated mo
   
 
 ```python
-dl.models.get(model_id=model.id)
+model = dl.models.get(model_id=model.id)
 model.predict(item_ids=[item.id])
 ```
