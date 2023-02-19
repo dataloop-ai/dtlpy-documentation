@@ -10,9 +10,7 @@ def section1():
 def section2():
     import os
     os.environ["DATALOOP_PATH"] = "/tmp"
-
     import dtlpy as dl
-
     dataset_id = os.environ.get('DATASET_ID')
     dtlpy_username = os.environ.get('DTLPY_USERNAME')
     dtlpy_password = os.environ.get('DTLPY_PASSWORD')
@@ -35,17 +33,15 @@ def section2():
         if driver_path is not None and driver_path not in file['name']:
             return
         if driver_path:
-            if not driver_path.startswith("/"):
-                driver_path = "/" + driver_path
             remote_path = file['name'].replace(driver_path, '')
         file_name = 'external://' + file['name']
         dataset.items.upload(local_path=file_name, remote_path=remote_path)
 
 
 def section3():
-    import dtlpy as dl
     import os
-
+    os.environ["DATALOOP_PATH"] = "/tmp"
+    import dtlpy as dl
     dataset_id = os.environ.get('DATASET_ID')
     dtlpy_username = os.environ.get('DTLPY_USERNAME')
     dtlpy_password = os.environ.get('DTLPY_PASSWORD')
@@ -67,8 +63,6 @@ def section3():
         if driver_path is not None and driver_path not in file['name']:
             return
         if driver_path:
-            if not driver_path.startswith("/"):
-                driver_path = "/" + driver_path
             remote_path = file['name'].replace(driver_path, '')
         else:
             remote_path = file['name']
