@@ -42,4 +42,5 @@ def func6():
     custom_model.deploy()
 
 def func7():
+    dl.models.get(model_id=model.id)
     model.predict(item_ids=[item.id])
