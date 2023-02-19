@@ -16,6 +16,8 @@ The Repository class is the base class for all repositories.
 
   ↳ [`Datasets`](Datasets.md)
 
+  ↳ [`Executions`](Executions.md)
+
   ↳ [`Items`](Items.md)
 
   ↳ [`Labels`](Labels.md)

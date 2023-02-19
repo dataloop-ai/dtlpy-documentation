@@ -24,10 +24,10 @@ contents:
       - label: Applications
         pages:
           - label: Debug Applications
-            page: resources/dtljs/apps/debug/index.md
+            page: tutorials/apps/debug/index.md
             pages:
               - label: Dataloop JSON Examples
-                page: resources/dtljs/apps/debug/json-examples.md
+                page: tutorials/apps/debug/json-examples.md
   - label: Onboarding
     page: onboarding/onboarding.md
     expanded: false
@@ -97,6 +97,8 @@ contents:
               page: resources/dtljs/interfaces/IContributor.md
             - label: IPagedResponse
               page: resources/dtljs/interfaces/IPagedResponse.md
+            - label: SDKExecutionPayload
+              page: resources/dtljs/interfaces/SDKExecutionPayload.md
           expanded: false
         - label: Enums
           page: resources/dtljs/enums/index.md
@@ -128,6 +130,8 @@ contents:
               page: resources/dtljs/classes/AppSettings.md
             - label: Tasks
               page: resources/dtljs/classes/Tasks.md
+            - label: Executions
+              page: resources/dtljs/classes/Executions.md
         - label: Entities
           page: resources/dtljs/classes/entities.md
           pages:
