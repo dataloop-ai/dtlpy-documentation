@@ -22,7 +22,7 @@ contents:
       - label: Task workflows
         page: tutorials/task_workflows.md
       - label: Applications
-        pages: tutorials/applications.md
+        page: tutorials/applications.md
   - label: Onboarding
     page: onboarding/onboarding.md
     expanded: false
