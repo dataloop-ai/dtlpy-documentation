@@ -1,0 +1,28 @@
+{
+    "name": "applications",
+    "title": "Creating Dataloop Application",
+    "description": "Developing application on theDataloop platform, both web and python",
+    "content": [
+        {
+            "displayName": "Introduction",
+            "description": "Introduction",
+            "location": "applications/introduction/chapter.md"
+        },
+        {
+            "displayName": "Single Page Application",
+            "description": "Introduction",
+            "location": "applications/single_page_application/chapter.md"
+        },
+        {
+            "displayName": "Python Application",
+            "description": "Introduction",
+            "location": "applications/python_application/chapter.md"
+        },
+        {
+            "displayName": "Debug",
+            "description": "Debug",
+            "location": "applications/debug_spa/chapter.md"
+        }
+    ]
+}
+
