@@ -22,12 +22,7 @@ contents:
       - label: Task workflows
         page: tutorials/task_workflows.md
       - label: Applications
-        pages:
-          - label: Debug Applications
-            page: tutorials/apps/debug/index.md
-            pages:
-              - label: Dataloop JSON Examples
-                page: tutorials/apps/debug/json-examples.md
+        pages: tutorials/applications.md
   - label: Onboarding
     page: onboarding/onboarding.md
     expanded: false
