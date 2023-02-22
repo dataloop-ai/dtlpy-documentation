@@ -12,14 +12,24 @@ def section1():
     NOTE: For any other custom use (e.g. other python version or more packages) try creating your own layer (We used [this](https://www.geeksforgeeks.org/how-to-install-python-packages-for-aws-lambda-layers) tutorial and the python:3.8 docker image).
 
     ### Create the Lambda
+    ### Create the Lambda
     1. Create a new Lambda
-    2. The default timeout is 3[s] so we'll need to change to 1[m]:
+    2. The default timeout is 3[s] so we'll need to change to 1[m] (1 Minute):
         Configuration → General configuration → Edit → Timeout
-    3. Copy the following code:
+
+    3. Go to the Lambda console -> Select your function -> Configuration -> (Left-side panel) Environment variables -> Edit -> Add environment variable
+           * Add the 3 secrets vars `DATASET_ID`, `DTLPY_USERNAME`, `DTLPY_PASSWORD`
+        To populate the values for the vars: `DTLPY_USERNAME`, `DTLPY_PASSWORD` you'll need to create a **DataLoop Bot** on your Dataloop project using the following code:
     """
 
 
 def section2():
+    """
+    4. Copy the following code:
+    """
+
+
+def section3():
     """
     ### Add a Layer to the Lambda
     We have created an AWS Layer with the Dataloop SDK ready. Click [here](https://storage.googleapis.com/dtlpy/aws-python3.8-lambda-layer/layer.zip/) to download the zip file.
@@ -41,9 +51,9 @@ def section2():
     ### Create the Bucket Events
     Go to the bucket you are using, and create the event:
     1. Go to Properties → Event notifications → Create event notification
-    1. Choose a name for the Event
-    1. For Event types choose: All object create events, All object delete events
-    1. Destination - Lambda function → Choose from your Lambda functions → choose the function you build → SAVE
+    2. Choose a name for the Event
+    3. For Event types choose: All object create events, All object delete events
+    4. Destination - Lambda function → Choose from your Lambda functions → choose the function you build → SAVE
 
     Deploy and you're good to go!
     """
