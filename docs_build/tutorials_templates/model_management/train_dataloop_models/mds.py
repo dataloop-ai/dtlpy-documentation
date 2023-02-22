@@ -65,4 +65,6 @@ def func7():
 
     Once a model is deployed, you can predict on items using the `model.predict()` function. The function returns an execution object that can be used to track whether the prediction execution was successful. If successful, the annotations will be uploaded to the item directly and can be viewed in the annotation studio.
 
+    If you have just deployed the model, `get` the model again to get the updated model metadata that includes the deployment information.
+
     """
