@@ -6,7 +6,7 @@ def main():
     # Get item
     item = dl.items.get(item_id='item_id')
 
-    # get annotation
+    # Get annotation
     annotation = dl.annotations.get(annotation_id='annotation_id')
 
     # Create item score
