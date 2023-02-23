@@ -1,4 +1,4 @@
-# Dataloop Dataloader  
+# Dataloop dataloader  
 A dl.Dataset image and annotation generator for training and for items visualization  
   
 We can visualize the data with augmentation for debugging and exploration.  
@@ -12,7 +12,7 @@ datagen = DatasetGenerator(data_path='train',
                            dataset_entity=dataset,
                            annotation_type=dl.AnnotationType.BOX)
 ```
-## Object Detection Examples  
+## Object detection examples  
 We can visualize a random item from the dataset:  
 
 ```python
@@ -92,7 +92,7 @@ for i in range(2):
     ax[i, 1].imshow(item_element['orig_image'])
     ax[i, 1].set_title('Before Augmentations')
 ```
-## Segmentation Examples  
+## Segmentation examples  
 First we'll load a semantic dataset and view some images and the output structure  
   
 
@@ -138,7 +138,7 @@ for i_label_ind, label_ind in enumerate(unique_labels[:8]):
     ax.imshow(one_hot_annotations[:, :, label_ind])
     ax.set_title(datagen.id_to_label_map[label_ind])
 ```
-## Setting a Label Map  
+## Setting a label map  
 One of the inputs to the DatasetGenerator is 'label_to_id_map'. This variable can be used to change the label mapping for the annotations  
 and allow using the dataset ontology in a greater variety of cases.  
 For example, you can map multiple labels so a single id or add a default value for all the unlabeled pixels in segmentation annotations.  

@@ -1,7 +1,16 @@
 def section1():
     import dtlpy as dl
-    import os
+    dl.login()
+    project = dl.projects.get(project_name='project name')
+    bot = project.bots.create(name='serviceAccount', return_credentials=True)
+    print('username: ', bot.id)
+    print('password: ', bot.password)
 
+
+def section2():
+    import os
+    os.environ["DATALOOP_PATH"] = "/tmp"
+    import dtlpy as dl
     dataset_id = os.environ.get('DATASET_ID')
     dtlpy_username = os.environ.get('DTLPY_USERNAME')
     dtlpy_password = os.environ.get('DTLPY_PASSWORD')
@@ -17,14 +26,22 @@ def section1():
         dataset = dl.datasets.get(dataset_id=dataset_id,
                                   fetch=False  # to avoid GET the dataset each time
                                   )
+        driver_path = dl.drivers.get(driver_id=dataset.driver).path
+        remote_path = None
+        if driver_path == '/':
+            driver_path = None
+        if driver_path is not None and driver_path not in file['name']:
+            return
+        if driver_path:
+            remote_path = file['name'].replace(driver_path, '')
         file_name = 'external://' + file['name']
-        dataset.items.upload(local_path=file_name)
+        dataset.items.upload(local_path=file_name, remote_path=remote_path)
 
 
-def section2():
-    import dtlpy as dl
+def section3():
     import os
-
+    os.environ["DATALOOP_PATH"] = "/tmp"
+    import dtlpy as dl
     dataset_id = os.environ.get('DATASET_ID')
     dtlpy_username = os.environ.get('DTLPY_USERNAME')
     dtlpy_password = os.environ.get('DTLPY_PASSWORD')
@@ -40,5 +57,13 @@ def section2():
         dataset = dl.datasets.get(dataset_id=dataset_id,
                                   fetch=False  # to avoid GET the dataset each time
                                   )
-        file_name = file['name']
-        dataset.items.delete(filename=file_name)
+        driver_path = dl.drivers.get(driver_id=dataset.driver).path
+        if driver_path == '/':
+            driver_path = None
+        if driver_path is not None and driver_path not in file['name']:
+            return
+        if driver_path:
+            remote_path = file['name'].replace(driver_path, '')
+        else:
+            remote_path = file['name']
+        dataset.items.delete(filename=remote_path)
