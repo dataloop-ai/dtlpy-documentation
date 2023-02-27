@@ -1,10 +1,10 @@
-## Part 2: Create and test a Dataloop app locally.
+# Create and test a Dataloop app locally.
 
 ## What are Dataloop Applications?
 
 Dataloop applications are helper applications which can work under the main container of the dataloop ecosystem (Dataloop OS) and receive access to the predefined panels and can utilise Dataloop SDK and Components to create a useful features for the end user.
 
-## How tp create and test Dataloop Applications?
+## How to create and test Dataloop Applications?
 
 ### Tl;dr 
 
@@ -43,7 +43,7 @@ As a part of this tutorial, we will be creating and testing a react-based "Image
 <details>
     <summary>App.js</summary>
     
-`
+```
 import './App.css';
 import { useEffect, useState } from 'react';
 
@@ -89,7 +89,7 @@ function App() {
 }
 
 export default App;
-`
+```
 
 </details>
 
@@ -153,7 +153,9 @@ sudo vi /etc/hosts/sites-available/000-default.conf
 
 3. Make changes to the file:
 
-    DocumentRoot /var/www/html ====> DocumentRoot /var/www/image-viewer
+    ```
+    DocumentRoot /var/www/html ====> DocumentRoot /var/www/html/image-viewer
+    ```
 
 
 4. Move the `cert.pem` and `key.pem` files to the respective folders `/etc/ssl/certs/` and `/etc/ssl/private/`
@@ -176,7 +178,7 @@ mv key.pem /etc/ssl/private/key.pem
 
     - To the DocumentRoot folder
         ```
-        DocumentRoot /var/www/html ====> DocumentRoot /var/www/image-viewer
+        DocumentRoot /var/www/html ====> DocumentRoot /var/www/html/image-viewer
         ```
 
 7. Enable this site.
@@ -205,7 +207,7 @@ Before deploying your application, you want to test it in a fast manner. For tha
 You will need two files: `dataloop.json` and `app.json`. These files define the meta configuration of your application and let the Dataloop OS know what to expect from your application.
 
 The base route of your application should serve these files.
-eg: if your base route is: pipeline-2x.dataloop.ai then the dataloop.json file should be available at GET `https://local.dataloop.ai/dataloop.json` location.
+eg: if your base route is: `local.dataloop.ai` then the dataloop.json file should be available at GET `https://local.dataloop.ai/dataloop.json` location.
 
 Currently, there is no validation of the JSON file, it doesn’t affect the operation of the application.
 
@@ -353,10 +355,10 @@ declare global {
 
 ### FAQ section:
 
-Q. Why do we need the domain to be local.dataloop.ai to test the app locally?
+Q. Why do we need the domain to be local.dataloop.ai to test the app locally?    
 A: Dataloop AI platform needs to pass cookies to the guest application in order to authenticate the application and provide it access to the SDK backend.
 
-Q. Why do we need HTTPS for running the application locally?
+Q. Why do we need HTTPS for running the application locally?    
 A: Dataloop AI platform runs on HTTPS and it tries to access your `dataloop.json` file. If the local server is serving over HTTP and not on HTTPS, the [Mixed-Content Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content#loading_locally_delivered_mixed-resources) of most of the browsers won't allow the HTTP request for this `dataloop.json` file.
 
 
