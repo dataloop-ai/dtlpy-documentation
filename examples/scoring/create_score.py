@@ -14,7 +14,7 @@ def main():
     # Refs are the context of score (vector)
     # Item refs input options: 1-dataset 2-task 3-assignment 4-annotator 5-relative
 
-    itemScore = dl.features.create(
+    item_score = dl.features.create(
         [90],
         project_id=project.id,
         entity_id=item.id,
@@ -27,7 +27,7 @@ def main():
     # Refs are the context of score (vector)
     # annotation refs input options: 1-dataset 2-task 3-assignment 4-item 5-annotator 6-relative
 
-    annotationScore = dl.features.create(
+    annotation_score = dl.features.create(
         [90],
         project_id=project.id,
         entity_id=annotation.id,
