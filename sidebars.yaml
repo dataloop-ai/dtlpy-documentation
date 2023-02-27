@@ -58,7 +58,16 @@ contents:
         pages:
           - page: resources/rest_api/reference.page.yaml/*
       - label: Python API
-        page: resources/dtlpy/dl.md
+        page: resources/dtlpy/index.md
+        pages:
+          - label: CLI
+            page: resources/dtlpy/cli.md
+          - label: Entities
+            page: resources/dtlpy/entities.md
+          - label: Repositories
+            page: resources/dtlpy/repositories.md
+          - label: Utilities
+            page: resources/dtlpy/utilities.md
       - label: JS API
         page: resources/dtljs/index.md
         pages:
