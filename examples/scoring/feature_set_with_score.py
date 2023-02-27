@@ -7,7 +7,7 @@ def main():
     # DataType must be provided in order for the feature set to support scoring type , itemScore
     # Size must be 1
 
-    itemScoreSet = dl.feature_sets.create(
+    item_score_set = dl.feature_sets.create(
         project_id=project.id,
         name='my_items_set',
         data_type=dl.FeatureDataType.ITEM_SCORE,
@@ -20,7 +20,7 @@ def main():
     # DataType Must be provided in order for the feature set to support scoring type , annotationScore
     # Size must be 1
 
-    annotationScoreSet = dl.feature_sets.create(
+    annotation_score_set = dl.feature_sets.create(
         project_id='projectId',
         name='my_annotations_set',
         data_type=dl.FeatureDataType.ANNOTATION_SCORE,
