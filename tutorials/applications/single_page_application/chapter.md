@@ -142,7 +142,7 @@ Rewrite the start command:
 Now, your application would be running on the default port 3000 on the following host:
 `https://local.dataloop.ai:3000`
 
-#### Apache setup:
+#### APACHE SETUP:
 
 1. After creating your application, you should create a react build and move it to the `/var/www/html/image-viewer` folder for the Apache server to access it. 
 
@@ -176,7 +176,7 @@ mv key.pem /etc/ssl/private/key.pem
             SSLCertificateKeyFile /etc/ssl/private/key.pem
         ```
 
-    - To the DocumentRoot folder
+    - To the `DocumentRoot` folder
         ```
         DocumentRoot /var/www/html ====> DocumentRoot /var/www/html/image-viewer
         ```
