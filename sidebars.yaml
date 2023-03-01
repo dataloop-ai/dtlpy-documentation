@@ -129,8 +129,10 @@ contents:
           page: tutorials/applications/single_page_application/chapter.md
         - label: Python Application
           page: tutorials/applications/python_application/chapter.md
-        - label: Debug
+        - label: Debug Panel Locally
           page: tutorials/applications/debug_spa/chapter.md
+        - label: Manifest Examples
+          page: tutorials/applications/dpk_examples/chapter.md
   - label: Onboarding
     page: onboarding/onboarding.md
     expanded: false
