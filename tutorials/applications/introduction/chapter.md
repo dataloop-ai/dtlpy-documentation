@@ -13,7 +13,7 @@ with the underlying platform.*
 But if you really want to start from scratch:
 1. Install the Dataloop SDK
 2. Create a directory where you wished to initialize the project in your terminal.
-3. In the terminal, yype:
+3. In the terminal, type:
 ```shell
 dlp app init
 ```
