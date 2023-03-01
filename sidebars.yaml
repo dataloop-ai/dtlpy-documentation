@@ -5,24 +5,120 @@ contents:
     page: tutorials/tutorials.mdx
     expanded: false
     pages:
-      - label: Annotations image
-        page: tutorials/annotations_image.md
-      - label: Annotations video
-        page: tutorials/annotations_video.md
-      - label: Auto annotate service
-        page: tutorials/auto_annotate_service/chapter.md
-      - label: Data management
+      - expanded: false
+        group: Getting Started With Dataloop SDK
+        page: tutorials/getting_started.md
+        pages:
+        - label: SDK Overview
+          page: tutorials/getting_started/sdk_overview/chapter.md
+      - expanded: false
+        group: Data Management Tutorial
         page: tutorials/data_management.md
-      - label: Faas
+        pages:
+        - expanded: false
+          group: Cloud Storage
+          pages:
+          - label: Create External Dataset
+            page: tutorials/data_management/cloud_storage/create_an_external_dataset/chapter.md
+          - label: Dataset Binding with AWS
+            page: tutorials/data_management/cloud_storage/binding_with_aws/chapter.md
+          - label: Dataset Binding with Azure
+            page: tutorials/data_management/cloud_storage/binding_with_azure/chapter.md
+          - label: Dataset Binding with GCS
+            page: tutorials/data_management/cloud_storage/binding_with_gcs/chapter.md
+        - label: Manage Datasets
+          page: tutorials/data_management/manage_datasets/chapter.md
+        - label: Data Versioning
+          page: tutorials/data_management/data_versioning/chapter.md
+        - label: Upload and Manage Data and Metadata
+          page: tutorials/data_management/upload_and_manage_items/chapter.md
+        - label: Upload and Manage Annotations
+          page: tutorials/data_management/upload_and_manage_annotations/chapter.md
+        - expanded: false
+          group: Sort and Filters
+          pages:
+          - label: Advance SDK Filters
+            page: tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md
+          - label: Annotation Level Filters
+            page: tutorials/data_management/sort_and_filter/annotation_level/chapter.md
+          - label: Item Level
+            page: tutorials/data_management/sort_and_filter/item_level/chapter.md
+          - label: Pagination
+            page: tutorials/data_management/sort_and_filter/pagination/chapter.md
+        - label: Working with Metadata
+          page: tutorials/data_management/working_with_metadata/chapter.md
+      - expanded: false
+        group: FaaS Tutorial
         page: tutorials/faas.md
-      - label: Model management
-        page: tutorials/model_management.md
-      - label: Recipe and ontology
-        page: tutorials/recipe_and_ontology.md
-      - label: Task workflows
+        pages:
+        - label: FaaS Interactive Tutorial
+          page: tutorials/faas/concept/chapter.md
+        - label: Introduction
+          page: tutorials/faas/introduction/chapter.md
+        - label: Run Your First Function
+          page: tutorials/faas/single_function_rgb_to_gray/chapter.md
+        - label: Multiple Functions and Modules
+          page: tutorials/faas/multiple_functions_and_modules/chapter.md
+        - label: Advance Guides
+          page: tutorials/faas/advance/chapter.md
+        - label: Custom Environment
+          page: tutorials/faas/custom_environment_using_docker/chapter.md
+        - label: Example - Auto/Pre Annotation service
+          page: tutorials/faas/auto_annotate/chapter.md
+      - expanded: false
+        group: Task Workflows
         page: tutorials/task_workflows.md
-      - label: Applications
-        page: tutorials/applications.md
+        pages:
+        - label: Create Tasks and Assignment
+          page: tutorials/task_workflows/create_a_task/chapter.md
+        - label: Managing Tasks and Assignments
+          page: tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.md
+      - expanded: false
+        group: Image Annotations
+        page: tutorials/annotations_image.md
+        pages:
+        - label: Setup
+          page: tutorials/annotations_image/setup/chapter.md
+        - label: Classification, Point and Pose
+          page: tutorials/annotations_image/classification_point_and_pose/chapter.md
+        - label: Bounding Box and Cuboid
+          page: tutorials/annotations_image/bounding_box_and_cuboid/chapter.md
+        - label: Polygon and Polyline
+          page: tutorials/annotations_image/polygon_and_polyline/chapter.md
+        - label: Ellipse and Item Description
+          page: tutorials/annotations_image/ellipse_and_item_description/chapter.md
+        - label: Segmentation
+          page: tutorials/annotations_image/segmentation/chapter.md
+        - label: Advance Tutorials
+          page: tutorials/annotations_image/advance_tutorials/chapter.md
+      - expanded: false
+        group: Video Annotations
+        page: tutorials/annotations_video.md
+        pages:
+        - label: Video Annotations
+          page: tutorials/annotations_video/video_annotations/chapter.md
+      - expanded: false
+        group: Recipe and Ontology
+        page: tutorials/recipe_and_ontology.md
+        pages:
+        - label: Concepts
+          page: tutorials/recipe_and_ontology/concepts/chapter.md
+        - label: Ontology
+          page: tutorials/recipe_and_ontology/ontology/chapter.md
+        - label: Recipe
+          page: tutorials/recipe_and_ontology/recipe/chapter.md
+      - expanded: false
+        group: Model Management
+        page: tutorials/model_management.md
+        pages:
+        - label: Introduction
+          page: tutorials/model_management/introduction/chapter.md
+        - label: Model Metrics Only
+          page: tutorials/model_management/model_metrics_only/chapter.md
+        - label: Train and Deploy Dataloop Models
+          page: tutorials/model_management/train_dataloop_models/chapter.md
+        - label: Using Dataloop's Dataset Generator
+          page: tutorials/model_management/dataloop_dataloader/chapter.md
   - label: Onboarding
     page: onboarding/onboarding.md
     expanded: false
