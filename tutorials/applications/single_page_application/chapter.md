@@ -1,12 +1,8 @@
 # Create and test a Dataloop app locally.
 
-## What are Dataloop Applications?
-
-Dataloop applications are helper applications which can work under the main container of the dataloop ecosystem (Dataloop OS) and receive access to the predefined panels and can utilise Dataloop SDK and Components to create a useful features for the end user.
-
 ## How to create and test Dataloop Applications?
 
-### Tl;dr 
+### Tl;dr
 
 ![Tutorial Image](https://github.com/dataloop-ai-apps/dtlpy-documentation/raw/tutorial-application/assets/apps/app_testing_tutorial.gif "Tutorial Image")
 
@@ -28,7 +24,7 @@ As a part of this tutorial, we will be creating and testing a react-based "Image
 - [Install Node.js](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04) for running the react based application.
 - [install Apache server](https://ubuntu.com/tutorials/install-and-configure-apache#2-installing-apache) for serving your build on ports 80 and 443. You can use Nginx, Node.js, Python, etc based servers as well.
 
-### Create a React Application: 
+### Create a React Application:
 
 1. Initiatialise a react-based application.
     ```
@@ -42,7 +38,7 @@ As a part of this tutorial, we will be creating and testing a react-based "Image
 
 <details>
     <summary>App.js</summary>
-    
+
 ```
 import './App.css';
 import { useEffect, useState } from 'react';
@@ -101,7 +97,7 @@ export default App;
 
 The `dl` object would now be globally available through the window object, i.e., `window.dl`. You can do a lot of stuff on all the Dataloop entities using DL. For using typescript please [see below](#typescript).
 
-[Read more about installing the SDK](https://dtlpy-documentation.redoc.ly/resources/dtljs/xframe/) 
+[Read more about installing the SDK](https://dtlpy-documentation.redoc.ly/resources/dtljs/xframe/)
 
 
 ### Create a host:
@@ -144,11 +140,11 @@ Now, your application would be running on the default port 3000 on the following
 
 #### APACHE SETUP:
 
-1. After creating your application, you should create a react build and move it to the `/var/www/html/image-viewer` folder for the Apache server to access it. 
+1. After creating your application, you should create a react build and move it to the `/var/www/html/image-viewer` folder for the Apache server to access it.
 
 2. Open the file file `000-default.conf`.
 ```
-sudo vi /etc/hosts/sites-available/000-default.conf 
+sudo vi /etc/hosts/sites-available/000-default.conf
 ```
 
 3. Make changes to the file:
@@ -188,7 +184,7 @@ mv key.pem /etc/ssl/private/key.pem
 
 8. Enable SSL in apache.
     ```
-    sudo a2enmod ssl  
+    sudo a2enmod ssl
     ```
 
 9. Restart Apache:
@@ -268,7 +264,7 @@ Examples of basic app.json and dataloop.json:
   }
 
 }
-``` 
+```
 
 </details>
 
@@ -317,7 +313,7 @@ Examples of basic app.json and dataloop.json:
         ]
     }
 }
-``` 
+```
 
 </details>
 
@@ -326,7 +322,7 @@ Examples of basic app.json and dataloop.json:
 
 2. Click the Add function button at the top left corner
 
-3. Name your application, set the address to the appropriate URL (in our case it is local.dataloop.ai), and specify the required slot (We are testing for Item Viewer). 
+3. Name your application, set the address to the appropriate URL (in our case it is local.dataloop.ai), and specify the required slot (We are testing for Item Viewer).
 
 4. And now you are ready to run your application. Locate an item in a sample dataset and right-click on it. Click the `Open With` option and Click on your application name. You would be able to see the text *Hello World* item if you used the given App.js file.
 
@@ -358,6 +354,7 @@ declare global {
 Q. Why do we need the domain to be local.dataloop.ai to test the app locally?    
 
 A: Dataloop AI platform needs to pass cookies to the guest application in order to authenticate the application and provide it access to the SDK backend.
+
 
 Q. Why do we need HTTPS for running the application locally?    
 
