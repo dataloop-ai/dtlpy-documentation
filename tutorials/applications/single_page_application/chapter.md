@@ -351,10 +351,13 @@ declare global {
 
 ### FAQ section:
 
-Q. Why do we need the domain to be local.dataloop.ai to test the app locally?
+Q. Why do we need the domain to be local.dataloop.ai to test the app locally?    
+
 A: Dataloop AI platform needs to pass cookies to the guest application in order to authenticate the application and provide it access to the SDK backend.
 
-Q. Why do we need HTTPS for running the application locally?
+
+Q. Why do we need HTTPS for running the application locally?    
+
 A: Dataloop AI platform runs on HTTPS and it tries to access your `dataloop.json` file. If the local server is serving over HTTP and not on HTTPS, the [Mixed-Content Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content#loading_locally_delivered_mixed-resources) of most of the browsers won't allow the HTTP request for this `dataloop.json` file.
 
 
