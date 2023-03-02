@@ -128,13 +128,14 @@ Now, you can choose any option to serve your application over  HTTPS. We have me
 There are various ways to enable HTTPS in the [create-react-app’s local build](https://create-react-app.dev/docs/using-https-in-development/#linux-macos-bash-1
 ).
 
-Open package.json.
-Locate `scripts` section and the `start` script there.
-Rewrite the start script:
-```
-“start”: “HTTPS=true SSL_CRT_FILE=cert.pem SSL_KEY_FILE=key.pem react-scripts start”
-```
-	Make sure the path of the file cert.pem and key.pem is correct.
+- Open package.json.
+- Locate `scripts` section and the `start` script there.
+- Rewrite the start script:
+    ```
+    “start”: “HTTPS=true SSL_CRT_FILE=cert.pem SSL_KEY_FILE=key.pem react-scripts start”
+    ```
+
+Make sure the path of the file cert.pem and key.pem is correct.        
 Now, your application would be running on the default port 3000 on the following host:
 `https://local.dataloop.ai:3000`
 
