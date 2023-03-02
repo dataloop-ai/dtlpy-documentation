@@ -4,7 +4,7 @@
 
 ### Tl;dr
 
-![Tutorial Image](https://github.com/dataloop-ai-apps/dtlpy-documentation/raw/tutorial-application/assets/apps/app_testing_tutorial.gif "Tutorial Image")
+![Tutorial Image](https://raw.githubusercontent.com/dataloop-ai/dtlpy-documentation/development/assets/apps/app_testing_tutorial.gif "Tutorial Image")
 
 
 - Create a client-side app using the framework of your choice. Use our [JS SDK](https://dtlpy-documentation.redoc.ly/resources/dtljs/) to work with Dataloop entities.
@@ -120,7 +120,7 @@ We need to serve this application on HTTPS, so use [OPENSSL](https://www.ibm.com
     openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
     ```
 
-Now, you can choose any option to serve your application over  HTTPS. We have mentioned two ways here. One is using create-react-app and other is to use apache:
+Now, you can choose any option to serve your application over  HTTPS. We have mentioned two ways here. One is using create-react-app and the other is using apache:
 
 
 #### CREATE-REACT-APP:
@@ -128,13 +128,14 @@ Now, you can choose any option to serve your application over  HTTPS. We have me
 There are various ways to enable HTTPS in the [create-react-app’s local build](https://create-react-app.dev/docs/using-https-in-development/#linux-macos-bash-1
 ).
 
-Open package.json
-Locale scripts section and start command there.
-Rewrite the start command:
-```
-“start”: “HTTPS=true SSL_CRT_FILE=cert.pem SSL_KEY_FILE=key.pem react-scripts start”
-```
-	Make sure the path of the file cert.pem and key.pem is correct.
+- Open package.json.
+- Locate `scripts` section and the `start` script there.
+- Rewrite the start script:
+    ```
+    “start”: “HTTPS=true SSL_CRT_FILE=cert.pem SSL_KEY_FILE=key.pem react-scripts start”
+    ```
+
+Make sure the path of the file cert.pem and key.pem is correct.        
 Now, your application would be running on the default port 3000 on the following host:
 `https://local.dataloop.ai:3000`
 
@@ -353,7 +354,7 @@ declare global {
 
 Q. Why do we need the domain to be local.dataloop.ai to test the app locally?    
 
-A: Dataloop AI platform needs to pass cookies to the guest application in order to authenticate the application and provide it access to the SDK backend.
+A: Dataloop AI platform needs to pass cookies to the guest application to authenticate the application and provide it access to the SDK backend.
 
 
 Q. Why do we need HTTPS for running the application locally?    
