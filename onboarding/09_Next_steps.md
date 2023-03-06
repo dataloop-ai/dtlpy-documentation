@@ -1,4 +1,4 @@
-## What is next? 
+## What's next? 
 
 We hope that this onboarding guide introduced you to all the main features of Dataloop, and more specifically, the Dataloop Python SDK.  Our aim was to provide you an overall picture of what value our platform can bring to your AI data development and production flows.  
 
