@@ -15,6 +15,8 @@ Then, import the modules required for the scripts in this tutorial.
 import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
+random = np.random
+import json
 import dtlpy as dl
 from dtlpy.ml import train_utils
 ```
@@ -99,13 +101,9 @@ cloned_dataset = train_utils.prepare_dataset(dataset=dataset,
 After partitioning and cloning the data, we will clone the pretrained model to have a starting point for the fine-tuning. We create an artifact where we can save the model weights. We will also indicate the model's configuration will determine some runtime configurations, such as number of epochs. In this tutorial we will train for only 2 epochs.  
 
 ```python
-artifact = dl.LocalArtifact(filepath='<dummy filepath>',
-                            package_name=package.name,
-                            model_name='sheep-soft-augmentations')
 new_model = model.clone(model_name='sheep-soft-augmentations',
                         dataset_id=cloned_dataset.id,
                         project_id=project.id,
-                        artifact=artifact,
                         labels=list(dataset.instance_map.keys()),
                         configuration={'batch_size': 16,
                                        'start_epoch': 0,
@@ -119,7 +117,7 @@ We'll load the new, untrained model into the adapter and prepare the local datas
 
 ```python
 adapter.load_from_model(model=new_model)
-root_path, data_path, output_path = adapter.prepare_training()
+data_path, output_path = <local_path_to_store_data_locally>, <local_path_to_store_outputs_locally>
 ```
 ## Start the training  
 The package, model, and data are now prepared. We are ready to train!  
