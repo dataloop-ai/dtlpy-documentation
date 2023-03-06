@@ -1,4 +1,4 @@
-# Chapter 9 - Beta!  Model Management
+# Chapter 10 - Beta!  Model Management
 
 **Model Management is currently in Beta**!  The below information is being shared at this time for your reference.  Complete documentation and examples on how to use Model Management will be published closer to General Availability (GA) of this feature.
 
