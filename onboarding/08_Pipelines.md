@@ -119,4 +119,4 @@ If you are interested in how you can work with Pipelines in the Dataloop web UI,
 3. [Task with FAAS and Filter](https://app.guidde.co/share/playbooks/uhQbzYGjMZjQoAWGMzcM3r?origin=jMK1qNxyBfeCaSgiUvBzFi9AfJb2)
 4. [Task with Filter](https://app.guidde.co/share/playbooks/f94hGsB1CoURVjVUhD354B?origin=jMK1qNxyBfeCaSgiUvBzFi9AfJb2)
 
-In the next chapter you will learn about Model Management on the Dataloop platform.  This will help you gain an in-depth understanding of how to implement and run a full data lifecycle, including ML model management, into your workflows.  Literally, data loops.
+The next chapter of this onboarding will show you what the next steps are in learning more about Dataloop's Python SDK. It will provide additional resources and redirect you to more advanced tutorials and exercices.
