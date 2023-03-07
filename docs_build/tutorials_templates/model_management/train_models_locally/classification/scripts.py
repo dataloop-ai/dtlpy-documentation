@@ -3,6 +3,7 @@ def func1():
     import matplotlib.pyplot as plt
     from PIL import Image
     import numpy as np
+    import json
     import dtlpy as dl
     import json
     from dtlpy.ml import train_utils
