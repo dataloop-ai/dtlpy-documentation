@@ -4,21 +4,39 @@
 
 ## A
 ### <a name="annotation"></a>Annotation ([Entity](#entity))
-A JSON format representing the objects and labels exists in an [Item](#item).
+An Annotation entity refers to a label, tag, or another piece of Metadata that is attached to an Item in a Dataset. Annotations are typically used to provide additional context or information about an Item, and to enable machine learning models to better understand and interpret the data. Annotations in the Dataloop system can take many forms, depending on the specific Task and type of data being annotated. Annotations in the Dataloop system are typically created by human annotators, who use the system's interface to draw bounding boxes, select Labels, or enter text. Annotations can also be reviewed and verified by other annotators or team Members, to ensure accuracy and consistency.  Some common types of Annotations include:
+- Bounding Boxes: Used to identify the location and size of objects within images or videos;
+- Classification Labels: Used to categorize Items based on their content or characteristics;
+- Text Transcriptions: Used to convert spoken words or written text into machine-readable formats;
+- Semantic Segmentation Masks: Used to identify and segment different regions or objects within an image.
+
+
+Note: A JSON format representing the objects and labels exists in an [Item](#item).
+
+
 ### <a name="artifacts"></a>Artifacts ([Entity](#entity))
-Large files (binaries) that we don't want to pack inside a package (which should only contain code), but are still needed during the deployment of a package.  
-They are uploaded separately and downloaded when the service is initiated.  
-Usually need to be added to the .gitignore  
-There are three types: Item, Local, or Link
+
+Large files (binaries) that we don't want to pack inside a package (which should only contain code), but are still needed during the deployment of a package.  They are uploaded separately and downloaded when the service is initiated.  Usually need to be added to the ```.gitignore```.
+There are three types of Artifacts: 
+- Item; 
+- Local; 
+- Link.
+
 ### <a name="assignment"></a>Assignment ([Entity](#entity))
-A single annotators’ items for manual review and/or annotation. Items can be redistributed or reassigned between assignments.  
-The annotator is referred to as an “assignee”
+An Assignment is a specific Task that is assigned to an individual, represents a unique instance of an Assignment, and contains all the information necessary for annotators to complete the work. As Annotators work on the Assignment, Annotators can communicate with Project Managers or team leaders and can ask for clarification on any aspects of the Task that are unclear. Once an Assignment is completed, the Dataloop system automatically aggregates the results and provides Project managers with real-time insights into the progress of each Assignment, the quality of the Annotations, and the overall status of the Project.
+
+An Assigment may be a single Annotators’ Items for manual review and/or annotation. Items can be redistributed or reassigned between Assignments.  
+The Annotator is also referred to as an “Assignee”.
+
 ### <a name="attribute"></a>Attribute ([Entity](#entity))
 
 ## B
+
 ### <a name="binaries"></a>Binaries ([Item](#item))
-The content of any type of file (image, video, pdf, etc)
-### <a name="box"></a>Box ([Entity](#entity))
+
+The content of any type of file (image, video, pdf, etc.). The bineries are managed by the Master Dataset entity in Dataloop.
+
+### <a name="box"></a>Bounding Box ([Entity](#entity))
 A bounding box [Annotation](#annotation) type. Represented by 2 point for top-left and bottom-right. type=`box`
 ## C
 ### <a name="clone"></a>Clone
