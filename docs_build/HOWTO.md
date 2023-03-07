@@ -16,3 +16,5 @@ For each directory, there's an index.json to build the structure of the chpaters
 
 ## Build
 Run the `collect_tutorials.py` to collect all tutorials form the "tutorials_templates" and build the final "tutorials" directory.
+
+
