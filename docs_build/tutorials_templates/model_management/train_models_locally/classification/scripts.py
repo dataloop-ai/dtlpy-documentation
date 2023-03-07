@@ -3,6 +3,7 @@ def func1():
     import matplotlib.pyplot as plt
     from PIL import Image
     import numpy as np
+    import json
     import dtlpy as dl
     from dtlpy.ml import train_utils
 
@@ -51,7 +52,7 @@ def func6():
     val_partitions = [1] * round(val_proportion * num_items)
 
     partitions = train_partitions + val_partitions
-    random.shuffle(partitions)
+    np.random.shuffle(partitions)
 
     dataset.items.make_dir(directory='/train')
     dataset.items.make_dir(directory='/val')
@@ -80,14 +81,9 @@ def func6():
     # cloned_dataset.set_readonly()
 
 def func7():
-    artifact = dl.LocalArtifact(filepath='<dummy filepath>',
-                                package_name=package.name,
-                                model_name='sheep-soft-augmentations')
-
     new_model = model.clone(model_name='sheep-soft-augmentations',
                             dataset_id=cloned_dataset.id,
                             project_id=project.id,
-                            artifact=artifact,
                             labels=list(dataset.instance_map.keys()),
                             configuration={'batch_size': 16,
                                            'start_epoch': 0,
@@ -100,7 +96,7 @@ def func7():
 
 def func8():
     adapter.load_from_model(model=new_model)
-    root_path, data_path, output_path = adapter.prepare_training()
+    root_path, data_path, output_path = '<local_path_to_store_data_locally>', '<local_path_to_store_outputs_locally>'
 
 
 def func9():
