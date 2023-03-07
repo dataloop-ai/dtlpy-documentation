@@ -15,7 +15,6 @@ Then, import the modules required for the scripts in this tutorial.
 import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
-random = np.random
 import json
 import dtlpy as dl
 from dtlpy.ml import train_utils
@@ -75,7 +74,7 @@ val_proportion = 0.2
 train_partitions = [0] * round(train_proportion * num_items)
 val_partitions = [1] * round(val_proportion * num_items)
 partitions = train_partitions + val_partitions
-random.shuffle(partitions)
+np.random.shuffle(partitions)
 dataset.items.make_dir(directory='/train')
 dataset.items.make_dir(directory='/val')
 item_count = 0
@@ -95,8 +94,6 @@ dataset.update()
 cloned_dataset = train_utils.prepare_dataset(dataset=dataset,
                                              filters=None,
                                              subsets=subsets)
-# if you want to lock the dataset for future reproducibility, use:
-# cloned_dataset.set_readonly()
 ```
 After partitioning and cloning the data, we will clone the pretrained model to have a starting point for the fine-tuning. We create an artifact where we can save the model weights. We will also indicate the model's configuration will determine some runtime configurations, such as number of epochs. In this tutorial we will train for only 2 epochs.  
 
@@ -117,7 +114,7 @@ We'll load the new, untrained model into the adapter and prepare the local datas
 
 ```python
 adapter.load_from_model(model=new_model)
-data_path, output_path = <local_path_to_store_data_locally>, <local_path_to_store_outputs_locally>
+root_path, data_path, output_path = '<local_path_to_store_data_locally>', '<local_path_to_store_outputs_locally>'
 ```
 ## Start the training  
 The package, model, and data are now prepared. We are ready to train!  
