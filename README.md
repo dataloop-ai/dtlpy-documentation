@@ -83,11 +83,12 @@ jupyter notebook tutorials
 * Model management
   *  [Create new model](tutorials/model_management/create_new_model/chapter.ipynb)
   *  [Dataloop dataloader](tutorials/model_management/dataloop_dataloader/chapter.ipynb)
-  *  [Getting started](tutorials/model_management/getting_started/chapter.ipynb)
   *  [Introduction](tutorials/model_management/introduction/chapter.ipynb)
-  * Use dataloop zoo models
-    *  [Classification](tutorials/model_management/use_dataloop_zoo_models/classification/chapter.ipynb)
-    *  [Object detection](tutorials/model_management/use_dataloop_zoo_models/object_detection/chapter.ipynb)
+  *  [Model metrics only](tutorials/model_management/model_metrics_only/chapter.ipynb)
+  *  [Train dataloop models](tutorials/model_management/train_dataloop_models/chapter.ipynb)
+  * Train models locally
+    *  [Classification](tutorials/model_management/train_models_locally/classification/chapter.ipynb)
+    *  [Object detection](tutorials/model_management/train_models_locally/object_detection/chapter.ipynb)
 * Recipe and ontology
   *  [Concepts](tutorials/recipe_and_ontology/concepts/chapter.ipynb)
   *  [Ontology](tutorials/recipe_and_ontology/ontology/chapter.ipynb)
@@ -133,6 +134,9 @@ jupyter notebook tutorials
   *  [Create pipeline](examples/pipelines/create_pipeline.py)
 * Reports
   *  [Create reports examples](examples/reports/create_reports_examples.py)
+* Scoring
+  *  [Create score](examples/scoring/create_score.py)
+  *  [Feature set with score](examples/scoring/feature_set_with_score.py)
 * Tasks
   *  [Recipe per task](examples/tasks/recipe_per_task.py)
 * Uploads

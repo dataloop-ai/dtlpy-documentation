@@ -5,7 +5,6 @@ def func1():
     import numpy as np
     import json
     import dtlpy as dl
-    import json
     from dtlpy.ml import train_utils
 
 

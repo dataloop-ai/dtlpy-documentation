@@ -171,7 +171,7 @@ def build_md_file(skeleton_filepath, mds_filepath, scripts_filepath):
         f.writelines(lines)
 
 
-def main():
+def build_tutorials():
     for path, subdirs, files in os.walk(TEMPLATES_PATH):
         for filename in files:
             if filename == 'skeleton.json':
@@ -223,4 +223,4 @@ if __name__ == "__main__":
     python docs_build/collect_tutorials.py
 
     """
-    main()
+    build_tutorials()
