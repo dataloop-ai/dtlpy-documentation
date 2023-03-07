@@ -27,6 +27,29 @@ By using debug apps, developers can ensure that their applications are functioni
 ![img_2.png](../../../../assets/apps/img_2.png)
 * Go to the dataset browser, right-click on an item, *Open With...* and choose your app! <br /><p><img src="../../../../assets/apps/img_3.png"><br /></p>
 
+### Tests
+
+In order to run tests locally, you must mock the `dl` xFrame Driver and provide it with mock data. We created
+a `DlMockDriver` and a **Debug Snapshot** shortcut exactly for that!
+
+- The `DlMockDriver` is a mock driver that simulates the `dl` xFrame Driver, and is used for testing applications
+  locally.
+    - You can mock the `window.dl` during testing by assigning a new instance of `DlMockDriver` to `global.window.dl`,
+      effectively overriding its original value.
+
+* In order to get the mock data for the mock driver, you can use the **Debug Snapshot** feature.
+    - [Add a debug app to the Platform](index.md#How to add a debug app in the Dataloop Platform).
+    - Press the **Debug Snapshot** icon at the top bar (or **Alt+Shift+S**) in order to download the generated
+      snapshot file.
+    - Place the file in your tests directory.
+    - Require the snapshot file in your test file, and use it to create a new instance of `DlMockDriver`.
+
+```typescript
+import { DlMockDriver } from '@dataloop/jssdk'
+
+const data = require('./snapshot.json')
+global.window.dl = new DlMockDriver(data)
+```
 
 _____
 
