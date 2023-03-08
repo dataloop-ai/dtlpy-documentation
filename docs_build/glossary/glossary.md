@@ -12,7 +12,7 @@ An Annotation entity refers to a label, tag, or another piece of Metadata that i
 **Note:** A JSON format representing the objects and labels exists in an [Item](#item).
 
 ### <a name="admin"></a>Admin
-An Admin is simmilar to an [Owner](owner) can delete/rename an Organization, create Projects, and add/remove Organization Members. However Admin privileges can be removed, while Owner privileges cannot.
+An Admin is simmilar to an [Owner](#owner) can delete/rename an Organization, create Projects, and add/remove Organization Members. However Admin privileges can be removed, while Owner privileges cannot.
 
 
 ### <a name="artifacts"></a>Artifacts ([Entity](#entity))
@@ -149,6 +149,7 @@ Item Links are a way to connect files hosted in your external storage to the pla
 ## L
 ### <a name="label"></a>Label ([Entity](#entity))
 A piece of text that gives information about an Annotation instance. Contains also the color, display name and children of the annotation.
+
 ### <a name="logsample"></a>LogSample
 
 
@@ -283,7 +284,7 @@ It can be of 2 types:
 
 
 ### <a name="tasktranscriptions"></a>Text Transcriptions
-A type of [Annotation](annotation) used to convert spoken words or written text into machine-readable formats.
+A type of [Annotation](#annotation) used to convert spoken words or written text into machine-readable formats.
 
 
 ## U
