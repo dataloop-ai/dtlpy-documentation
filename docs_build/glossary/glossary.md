@@ -21,7 +21,8 @@ There are three types of Artifacts:
 - Item; 
 - Local; 
 - Link.
-- 
+
+
 ### <a name="api"></a>API
 APIs (Application Programming Interface) are mechanisms that enable two software components to communicate with each other using a set of definitions and protocols.
 
