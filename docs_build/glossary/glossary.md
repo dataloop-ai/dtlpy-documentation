@@ -5,13 +5,13 @@
 ## A
 ### <a name="annotation"></a>Annotation ([Entity](#entity))
 An Annotation entity refers to a label, tag, or another piece of Metadata that is attached to an Item in a Dataset. Annotations are typically used to provide additional context or information about an Item, and to enable machine learning models to better understand and interpret the data. Annotations in the Dataloop system can take many forms, depending on the specific Task and type of data being annotated. Annotations in the Dataloop system are typically created by human annotators, who use the system's interface to draw bounding boxes, select Labels, or enter text. Annotations can also be reviewed and verified by other annotators or team Members, to ensure accuracy and consistency.  Some common types of Annotations include:
-- Bounding Boxes: Used to identify the location and size of objects within images or videos;
-- Classification Labels: Used to categorize Items based on their content or characteristics;
-- Text Transcriptions: Used to convert spoken words or written text into machine-readable formats;
-- Semantic Segmentation Masks: Used to identify and segment different regions or objects within an image.
-Note: A JSON format representing the objects and labels exists in an [Item](#item).
+- Bounding Boxes - Used to identify the location and size of objects within images or videos;
+- Classification Labels - Used to categorize Items based on their content or characteristics;
+- Text Transcriptions - Used to convert spoken words or written text into machine-readable formats;
+- Semantic Segmentation Masks - Used to identify and segment different regions or objects within an image.
+**Note:** A JSON format representing the objects and labels exists in an [Item](#item).
 
-### <a name="artifacts"></a>Admin
+### <a name="admin"></a>Admin
 An Admin is simmilar to an [Owner](owner) can delete/rename an Organization, create Projects, and add/remove Organization Members. However Admin privileges can be removed, while Owner privileges cannot.
 
 
@@ -21,11 +21,16 @@ There are three types of Artifacts:
 - Item; 
 - Local; 
 - Link.
+- 
+### <a name="api"></a>API
+APIs (Application Programming Interface) are mechanisms that enable two software components to communicate with each other using a set of definitions and protocols.
+
 
 ### <a name="assignment"></a>Assignment ([Entity](#entity))
 An Assignment is a specific Task that is assigned to an individual, represents a unique instance of an Assignment, and contains all the information necessary for annotators to complete the work. As Annotators work on the Assignment, Annotators can communicate with Project Managers or team leaders and can ask for clarification on any aspects of the Task that are unclear. Once an Assignment is completed, the Dataloop system automatically aggregates the results and provides Project managers with real-time insights into the progress of each Assignment, the quality of the Annotations, and the overall status of the Project.
 
 An Assigment may be a single Annotators’ Items for manual review and/or annotation. Items can be redistributed or reassigned between Assignments.  The Annotator is also referred to as an “Assignee”.
+
 ### <a name="autoscaler"></a>AutoScaler
 The FaaS ([Service](#service)) Autoscaler is a component of the Dataloop system that automatically adjusts the number of serverless computing Resources allocated to the FaaS Service based on current demand. The purpose of the Autoscaler is to ensure that the system can handle spikes in demand without overprovisioning Resources and incurring unnecessary costs. The FaaS Autoscaler in Dataloop is designed to be flexible and configurable. Users can set thresholds for scaling up or down the number of Resources allocated to the FaaS Service, and they can also define scaling policies that govern how the Autoscaler responds to different types of demand. Dataloop autoscale runtime configuration is compound with the following Attributes:
 - cooldown_period - Define how long to wait before scaling down (reducing the number of replicas) in case the queue is empty again. So that running Executions will have time to complete.
@@ -68,11 +73,12 @@ Dataset clones contain pointers to original files, enabling management of virtua
 The Package Codebase is the code you import to the platform containing all of the Modules and functions. When you upload the code to the platform, either from your computer or from Github, it is saved on the platform as an Item (in a zip file).
 
 There are four types of code bases, which are all limited to 100MB: 
-- Item Codebase
-- git Codebase 
-- local Codebase 
-- filesystem (currently no one uses this, and is likely used when working in a remote container)  
-- 
+- Item Codebase;
+- git Codebase;
+- local Codebase;
+- filesystem (currently no one uses this, and is likely used when working in a remote container);  
+
+
 ### <a name="classificationlabel"></a>Classification Label
 A type of [Annotation](#annotation) that is used to categorize Items based on the sum of characteristics it has. Usually a text is attributed to a classification label, describing the category in which the Item was classified.
 
@@ -87,17 +93,18 @@ A Dataset is a collection of Items (files), their Metadata, and Annotations. A D
 
 ### <a name="dql"></a>DQL (Dataloop Query Language)
 The Dataloop platform gives you different capabilities to organize your data in Datasets, folders, and versioning systems, you still need the ability to query your data. This is where our **Dataloop Query Language** becomes useful. When using the DQL in the SDK, additional fields such as sort, page, and pageSize can be defined to sort the data that is returned from the Query. Every DQL query has the following components:
-- Resource: The target Resource for the Query. The Resource can be Items or Annotations.
-- Filter: The Filter includes Attributes and logical operators to filter Items.
-## E
+- Resource - The target Resource for the Query; the Resource can be Items or Annotations;
+- Filter - The Filter includes Attributes and logical operators to filter Items.
 
+
+## E
 ### <a name="entity"></a>Entity
-A Dataloop data model object. Represented by a json.
+A Dataloop data model object. Represented by a json. It contains information about the various Dataloop entities and their related functions/operations and data. For example for “Item” entities - Download, Update (e.g. update its metadata), or update its status in task.
 
 ### <a name="execution"></a>Execution ([Entity](#entity))
 Execution refers to the process of executing a function within the FaaS Service. When a user submits a function for Execution, the FaaS Service creates a container to run the function and provides any necessary inputs. The function is executed within the container, and the results are returned to the user.
 
-### <a name="execution"></a>ExecutionIO ([Entity](#entity))
+### <a name="executionio"></a>ExecutionIO ([Entity](#entity))
 ExecutionIO or Execution input is the same input the function requires. The input will be provided to the method the Execution invokes. The input of Dataloop type (Item, Dataset, Annotation, etc.) should be passed with an ID of the corresponding entity or it can be an input of type Json that can have any JSON serializable value and will provide it as is to the method.
 
 
@@ -177,9 +184,9 @@ A Model Version can be created as a baseline from a model architecture in the AI
 
 ### <a name="modeladapter"></a>Model Adapter
 A python class to wrap a generic ML code (train, predict, etc.) for standardizing models (and frameworks) to match the requirements of the Dataloop API.  
-- Log Sample: A single data point is used to measure and compare different models and metrics. e.g. saving the train/validation loss and accuracy of a training session.  
-- Offline Mode: For local model management, only dl.Model is used to save configurations and training/evaluation metrics, while code and weights and biases are kept locally.  Gives the ability to manage training runs, view live metrics, and compare dl.Models (configurations and metrics) locally;
-- Online Mode: Allows integration into the Dataloop platform (after creating Model Adapter). Gives the ability to create custom buttons (e.g. in the annotations studio), train, deploy and evaluate using the Model Management Pages, using models inside a pipeline etc.).
+- Log Sample - A single data point is used to measure and compare different models and metrics. e.g. saving the train/validation loss and accuracy of a training session.  
+- Offline Mode - For local model management, only dl.Model is used to save configurations and training/evaluation metrics, while code and weights and biases are kept locally.  Gives the ability to manage training runs, view live metrics, and compare dl.Models (configurations and metrics) locally;
+- Online Mode - Allows integration into the Dataloop platform (after creating Model Adapter). Gives the ability to create custom buttons (e.g. in the Annotations studio), train, deploy and evaluate using the Model Management Pages, using Models inside a Pipeline etc.).
 
 ### <a name="modelweightsmodelartifacts"></a>Model Weights / Model Artifacts
 Are the files that are saved/created by training a machine learning algorithm on a Dataset. They are adjusted using optimization algorithms and unique to each training session.
@@ -235,6 +242,9 @@ Project Contributors are users who have been granted access to a specific Projec
 - Annotation Manager - as an Annotation manager you can create Annotations or QA Tasks, redistribute and reassign these Tasks to annotators, as well as review their Tasks.
 - Annotator - annotators can only work on Annotation and QA Assignments assigned to them.
 
+### <a name="pagination"></a>Pagination (SDK)
+We use pages instead of a list when we have an object that contains a lot of information. The page object divides a large list into pages (with a default of 1000 items) in order to save time when going over the entries. You can redefine the number of entries per page with the ‘page_size’ attribute. When going over all entries in a page out of multiple pages, we use nested loops to first go to the pages and then go over the entities for each page.
+
 ### <a name="podtype"></a>Pod type
 
 ### <a name="polygon"></a>Polygon ([Entity](#entity))
@@ -271,7 +281,7 @@ It can be of 2 types:
 - CRONTrigger - enables you to run functions at specified time patterns with constant input using the Cron syntax. In the Cron Trigger specification, you specify when you want the Trigger to start, when you want it to end, specifying when it should run, and the input that should be sent to the action.
 
 
-### <a name="task"></a>Text Transcriptions
+### <a name="tasktranscriptions"></a>Text Transcriptions
 A type of [Annotation](annotation) used to convert spoken words or written text into machine-readable formats.
 
 
