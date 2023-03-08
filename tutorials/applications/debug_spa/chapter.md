@@ -24,12 +24,11 @@ _- Used for applications that have panels (UI)_.
 
 ### How to add a debug app in the Dataloop Platform
 
-- On the left sidebar menu, go to **Application Hub** under the **Application (FAAS)** section, and open the **
-  Developer** tab.
+- On the left sidebar menu, go to **Application Hub** under the **Application (FAAS)** section, and open the **Developer** tab.
   ![img.png](../../../assets/apps/img.png)
-- Click the **Add Function** button.
+- Click the **Add Debug App** button.
 - Fill out the name of the app, choose a main slot and add your application's URL address
-    - (For example: https://local.dataloop.ai:3000)
+    - (For example: https://local.dataloop.ai:3000)<br />
       ![img_1.png](../../../assets/apps/img_1.png)
 - Press the **Create** button, and wallah! You have a debug app in the Platform.
   ![img_2.png](../../../assets/apps/img_2.png)
@@ -119,8 +118,8 @@ _This following item viewer example supports images only._
         item = await dl.items.get()
         const stream = await dl.items.stream(item.stream)
         const img = new Image(
-            item.metadata?.system.width,
-            item.metadata?.system.height
+                item.metadata?.system.width,
+                item.metadata?.system.height
         )
 
         console.log("@@@@@", JSON.stringify(stream))
