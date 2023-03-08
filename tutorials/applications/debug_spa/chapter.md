@@ -46,7 +46,7 @@ a `DlMockDriver` and a **Debug Snapshot** shortcut exactly for that!
       effectively overriding its original value.
 
 * In order to get the mock data for the mock driver, you can use the **Debug Snapshot** feature.
-    - [Add a debug app to the Platform](chapter.md#How to add a debug app in the Dataloop Platform).
+    - [Add a debug app to the Platform](#how-to-add-a-debug-app-in-the-dataloop-platform).
     - Press the **Debug Snapshot** icon at the top bar (or **Alt+Shift+S**) in order to download the generated
       snapshot file.
     - Place the file in your tests directory.
