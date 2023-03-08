@@ -138,6 +138,12 @@ A machine learning model that is composed of layers consisting of simple connect
 A set of definitions that defines the structure and relationships of your Labels. The Ontology of a Dataset is the building block of your Model and will help you define the object detection your trained model provides. Ontology holds 2 important components that are used in your Project:
 - Labels (like classes) - are the names you use to classify your Annotations;
 - Attributes - allow additional independent degrees of freedom while building a world definition.
+### <a name="organization"></a>Organization
+Is an entity composed of one or more users who collaborate on data-related Projects and share Resources and data. An Organization is composed of multiple elements like Integration/Secrets, Members, Bots, and ComputerCache.
+
+### <a name="owner"></a>Owner
+An Owner in Dataloop represents the user who created the [Organization](organization). This user cannot be removed. An owner can delete/rename an Organization, create Projects, and add/remove Organization Members.
+
 
 ## P
 ### <a name="package"></a>Package ([Entity](#entity))
