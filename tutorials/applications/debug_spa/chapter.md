@@ -20,7 +20,7 @@ _- Used for applications that have panels (UI)_.
 - Your app should have a `dataloop.json` file that simulates an installed app entity - it needs to be publicly served
   under the app's main address (For example: https://local.dataloop.ai:3000/dataloop.json).
 - You're going to need a working, functioning Dataloop Platform user with a **Developer** role.
-- You're going to need to be familiar with our [Javascript SDK](../../index.md)
+- You're going to need to be familiar with our [Javascript SDK](../../../resources/dtljs/index.md)
 
 ### How to add a debug app in the Dataloop Platform
 
