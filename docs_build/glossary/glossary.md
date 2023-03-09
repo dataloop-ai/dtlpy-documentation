@@ -81,11 +81,10 @@ There are four types of code bases, which are all limited to 100MB:
 
 
 ### <a name="classificationlabel"></a>Classification Label
-A type of [Annotation](#annotation) that is used to categorize Items based on the sum of characteristics it has. Usually text is attributed to a classification label, describing the category in which the Item was classified.  For example, shirt, clouse, pants, coat would all fall under the classification of Clothing.
+A type of [Annotation](#annotation) that is used to categorize Items based on the sum of characteristics it has. Usually text is attributed to a classification Label, describing the category in which the Item was classified.  For example, shirt, clouse, pants, coat would all fall under the classification of Clothing.
 
 ### <a name="command"></a>Command
-
-Stefan - Please add content here that defines what a command is.  Thx!
+A program or utility that runs from the command line is known as a **command**. An interface that accepts lines of text and converts them into instructions for your computer is known as a command line. A graphical user interface (GUI) is simply a command-line program abstraction.
 
 ## D
 ### <a name="dataset"></a>Dataset ([Entity](#entity))
