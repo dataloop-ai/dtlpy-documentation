@@ -8,7 +8,7 @@ Events that are emitted from the host (platform) to the frame (SDK)
 
 ### Enumeration Members
 
-- [DIALOG\_PAYLOAD](DlEvent.md#dialog_payload)
+- [INVOKE\_PAYLOAD](DlEvent.md#invoke_payload)
 - [EXECUTION\_STATUS](DlEvent.md#execution_status)
 - [NODE\_CONFIG](DlEvent.md#node_config)
 - [READY](DlEvent.md#ready)
@@ -17,9 +17,9 @@ Events that are emitted from the host (platform) to the frame (SDK)
 
 ## Enumeration Members
 
-### DIALOG\_PAYLOAD
+### INVOKE\_PAYLOAD
 
-The dialog payload
+The payload sent during a toolbar invoke to a panel
 
 ___
 
