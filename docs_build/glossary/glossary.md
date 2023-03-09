@@ -12,11 +12,11 @@ An Annotation entity refers to a label, tag, or another piece of Metadata that i
 **Note:** A JSON format representing the objects and labels exists in an [Item](#item).
 
 ### <a name="admin"></a>Admin
-An Admin is simmilar to an [Owner](#owner) can delete/rename an Organization, create Projects, and add/remove Organization Members. However Admin privileges can be removed, while Owner privileges cannot.
+An Admin is simmilar to an [Owner](#owner).  An Admin can delete/rename an Organization, create Projects, and add/remove Organization Members. However Admin privileges can be removed, while Owner privileges cannot.
 
 
 ### <a name="artifacts"></a>Artifacts ([Entity](#entity))
-Large files (binaries) that we don't want to pack inside a package (which should only contain code), but are still needed during the deployment of a package.  They are uploaded separately and downloaded when the service is initiated.  Usually need to be added to the ```.gitignore```.
+Large files (binaries) that we don't want to pack inside a package (which should only contain code), but are still needed during the deployment of a package.  They are uploaded separately and downloaded when the service is initiated.  They usually need to be added to the ```.gitignore```.
 There are three types of Artifacts: 
 - Item; 
 - Local; 
@@ -30,7 +30,7 @@ APIs (Application Programming Interface) are mechanisms that enable two software
 ### <a name="assignment"></a>Assignment ([Entity](#entity))
 An Assignment is a specific Task that is assigned to an individual, represents a unique instance of an Assignment, and contains all the information necessary for annotators to complete the work. As Annotators work on the Assignment, Annotators can communicate with Project Managers or team leaders and can ask for clarification on any aspects of the Task that are unclear. Once an Assignment is completed, the Dataloop system automatically aggregates the results and provides Project managers with real-time insights into the progress of each Assignment, the quality of the Annotations, and the overall status of the Project.
 
-An Assigment may be a single Annotators’ Items for manual review and/or annotation. Items can be redistributed or reassigned between Assignments.  The Annotator is also referred to as an “Assignee”.
+An Assigment may be an Item or collection of Items that are allocated to an Annotator for manual annotation and/or review. Items can be redistributed or reassigned between Assignments.  The Annotator is also referred to as an “Assignee” or "Contributor".
 
 ### <a name="autoscaler"></a>AutoScaler
 The FaaS ([Service](#service)) Autoscaler is a component of the Dataloop system that automatically adjusts the number of serverless computing Resources allocated to the FaaS Service based on current demand. The purpose of the Autoscaler is to ensure that the system can handle spikes in demand without overprovisioning Resources and incurring unnecessary costs. The FaaS Autoscaler in Dataloop is designed to be flexible and configurable. Users can set thresholds for scaling up or down the number of Resources allocated to the FaaS Service, and they can also define scaling policies that govern how the Autoscaler responds to different types of demand. Dataloop autoscale runtime configuration is compound with the following Attributes:
@@ -50,25 +50,25 @@ An Attribute refers to a specific property or characteristic that can be associa
 
 ## B
 ### <a name="bot"></a>Bot
-A Bot is a dummy user that has developer role permissions within a Project. In Dataloop, Bots are used to run Services. Once a Service has been deployed, it will log in using the Bot with which the Service was created or the Bot will be created automatically. All platform API requests will be made using the Bot’s token.
+A Bot is a machine user that has Developer role permissions within a Project. In Dataloop, Bots are used to run Services. Once a Service has been deployed, it will log in using the Bot with which the Service was created or the Bot will be created automatically. All platform API requests will be made using the Bot’s token.
 
 ### <a name="binaries"></a>Binaries ([Item](#item))
 
-The content of any type of file (image, video, pdf, etc.). The bineries are managed by the Master Dataset entity in Dataloop.
+The content of any type of file (image, video, pdf, etc.). Binaries are managed by the Master Dataset entity in Dataloop.
 
 ### <a name="box"></a>Bounding Box ([Entity](#entity))
-A bounding box [Annotation](#annotation) type is used to identify the location and size of objects within images or videos .A bounding box is represented by 2 point for top-left and bottom-right.
+A bounding box [Annotation](#annotation) type is used to identify the location and size of objects within images or videos.  A bounding box is represented by 2 points that define top-left and bottom-right.
 
 **Note:** type=`box`
 
 
 ## C
 ### <a name="computercache"></a>ComputerCache
-A ComputerCache or Cache in Dataloop can refer to a component that stores data temporarily, making it faster and easier to access. When data is requested by a user or an Application, from within the FaaS (see entry for Package) namespace, it is retrieved from the cache instead of being fetched from the Services - reducing API calls and improving performance.
+A ComputerCache or Cache in Dataloop can refer to a component that stores data temporarily in memory, making the data faster and easier to access. When data is requested by a user or an Application from within the FaaS (see entry for Package) namespace it is retrieved from the cache instead of being fetched from the Services - reducing API calls and improving performance.
 
 
 ### <a name="clone"></a>Clone
-Dataset clones contain pointers to original files, enabling management of virtual Items that do not replicate the binaries (this clone is created without copying the file binaries) of the underlying storage once cloned or copied. When cloning a Dataset, users can decide if the new copy will contain Metadata and Annotations created over the original.
+Dataset clones contain pointers to original file binaries, enabling management of virtual Items that do not replicate the binaries (this clone is created without copying the file binaries) in the underlying storage once cloned. When cloning a Dataset, users can decide if the new virtual copy will contain Metadata and Annotations created on the original.
 
 ### <a name="codebase"></a>Codebase ([Entity](#entity))
 The Package Codebase is the code you import to the platform containing all of the Modules and functions. When you upload the code to the platform, either from your computer or from Github, it is saved on the platform as an Item (in a zip file).
@@ -81,9 +81,11 @@ There are four types of code bases, which are all limited to 100MB:
 
 
 ### <a name="classificationlabel"></a>Classification Label
-A type of [Annotation](#annotation) that is used to categorize Items based on the sum of characteristics it has. Usually a text is attributed to a classification label, describing the category in which the Item was classified.
+A type of [Annotation](#annotation) that is used to categorize Items based on the sum of characteristics it has. Usually text is attributed to a classification label, describing the category in which the Item was classified.  For example, shirt, clouse, pants, coat would all fall under the classification of Clothing.
 
 ### <a name="command"></a>Command
+
+Stefan - Please add content here that defines what a command is.  Thx!
 
 ## D
 ### <a name="dataset"></a>Dataset ([Entity](#entity))
