@@ -133,6 +133,8 @@ contents:
           page: tutorials/applications/debug_spa/chapter.md
         - label: Manifest Examples
           page: tutorials/applications/dpk_examples/chapter.md
+        - label: UI Toolbars
+          page: tutorials/applications/toolbars/chapter.md
   - label: Onboarding
     page: onboarding/onboarding.md
     expanded: false

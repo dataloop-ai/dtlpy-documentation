@@ -6,3 +6,4 @@
  - [Python Application](applications/python_application/chapter.md)
  - [Debug Panel Locally](applications/debug_spa/chapter.md)
  - [App Manifest Examples](applications/dpk_examples/chapter.md)
+ - [UI Toolbars](applications/toolbars/chapter.md)

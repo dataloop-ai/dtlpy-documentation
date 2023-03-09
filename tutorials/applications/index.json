@@ -27,6 +27,11 @@
             "displayName": "Manifest Examples",
             "description": "A few manifest examples",
             "location": "applications/dpk_examples/chapter.md"
+        },
+        {
+            "displayName": "UI Toolbars",
+            "description": "Toolbars tutorial",
+            "location": "applications/toolbars/chapter.md"
         }
     ]
 }
