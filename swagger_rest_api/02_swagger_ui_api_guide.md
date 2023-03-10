@@ -12,8 +12,70 @@ The image above is what you should see after logging in to Dataloop's platform, 
 
 **Note:** This Swagger API guide will have the same structure as our [Developer Onboarding](../onboarding), which teaches you how to use the basic functions of Dataloop in Python code. Everything we'll cover in this guide can be done in Python code (in the Python SDK) as well as using the API.
 
+## Projects 
+
+This section explores the various API requests you can use to manage Projects in Dataloop. Here's a list of the most important Project requests:
+- [List an User's Projects for the current Organization](https://gate.dataloop.ai/api/v1/docs/#/Projects/get_projects);
+- [Create a new Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/post_projects);
+- [Show a Project's details](https://gate.dataloop.ai/api/v1/docs/#/Projects/get_projects__id_);
+- [Delete a Project by ID](https://gate.dataloop.ai/api/v1/docs/#/Projects/delete_projects__id_);
+- [Rename Project, using the Project's ID](https://gate.dataloop.ai/api/v1/docs/#/Projects/patch_projects__id_);
+- [List all of the Project's Contributors using Project's ID](https://gate.dataloop.ai/api/v1/docs/#/Projects/get_projects__id__members);
+- [List all of the Project's Contributors using Project's name](https://gate.dataloop.ai/api/v1/docs/#/Projects/get_projects__project_name__name_);
+- [Add a new User to a specific Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/post_projects__project_id__members__user_id_);
+- [Remove a Member from a Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/delete_projects__project_id__members__user_id_);
+- [Change a User's Role and permissions usin Project ID and User ID](https://gate.dataloop.ai/api/v1/docs/#/Projects/patch_projects__project_id__members__user_id_);
+- [Move the Project to another Organization](https://gate.dataloop.ai/api/v1/docs/#/Projects/patch_projects__project_id__org);
+- [Add an account to a Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/post_projects__project_id__accounts);
+- [Remove an account from a Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/delete_projects__project_id__accounts);
+- [Replace an account for a Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/patch_projects__project_id__accounts);
+
+### Example: GET Projects List
+
+Let's get started with an example of a basic API request. Go ahead and scroll down until you find the "Projects" section. 
+
+![image](https://user-images.githubusercontent.com/58508793/219648842-aba4b7ff-c26d-4315-ab71-2eaf719e8732.png)
+
+
+Now,  select the first GET method, to get all of the projects and  then click "Try it out", like in the image below:
+![image](https://user-images.githubusercontent.com/58508793/219650991-266730c4-debf-4fcc-9b37-a327b4af6145.png)
+
+
+Click the big ```Execute``` button:
+![image](https://user-images.githubusercontent.com/58508793/219651137-475d2a9d-cdd3-4c70-b98d-18a0f1d0daee.png)
+
+You should now instantly recieve a response in JSON format that shows all Projects to which you have access, similar to the image below:
+
+![image](https://user-images.githubusercontent.com/58508793/219651466-b6cc5956-440a-41f9-984d-d853d3c4ed85.png)
+
+In the ```Response Body``` you will receive all of the details and inforamtion that the command you ran returns. Feel free to try more commands in the ```Projects``` section on your own.
+
 ## Datasets
-Here, we will cover the most important API examples, using the API requests from the Datasets section.
+This section will cover the most important API examples, using the API requests from the Datasets section. The most important API request can be seen below:
+- [Get a names list of all existing Datasets](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsListDatasets);
+- [Create a new Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsCreateDataset);
+- [Get Dataset by ID](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetDataset);
+- [Delete a Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsDeleteDataset);
+- [Update a Dataset's properties](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsPatchDataset);
+- [Clone a Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsCloneDataset);
+- [Delete all expired Items](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsDeleteExpiredItems);
+- [Merge Datasets](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsMergeDatasets);
+- [Get a directory tree of the Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetDirectoryTree);
+- [Download a JSON file representing all Annotations in the specified Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetAnnotationsAsJSON);
+- [Download a .zip archive containing all Annotations in the specified Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetAnnotationsAsZIP); 
+- [Get Annotations in .zip chunks (multiple segments, in case of huge Datasets)](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetAnnotationsZIPChunks);
+- [Get a Dataset's Label Aggregation](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetDatasetLabelAggregation);
+- [Get a Filtered Dataset Labe Aggregation](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetFilteredDatasetLabelAggregation);
+- [Get a specific .zip chunk](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsStreamAnnotationsZIPChunk);
+- [Annotate Items by RQL](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsAnnotateItemsByRQL);
+- [Querry Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsQueryDatasets);
+- [ Reset dataset counters for Item count, Annotation count, etc.](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsResetDatasetCounters);
+- [Update an Item's Annotation;](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsRestoreAnnotation)
+- [Synchronize missing files from storage](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsSync);
+- [Import Items to the Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsImportItemsToDataset);
+- [Detach Items from Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsDetachItemsFromDataset);
+- [Get a Project's Datasets](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetProjectDatasets);
+
 ### Example: Show all datasets
 To show all of the datasets in your organization (or in a particular project, if you want to), you can use the ```GET/datasets``` API request. Go to the Datasets section, look for it and click it. It should look like this once selected:
 
@@ -37,34 +99,45 @@ To do that, you must first find out the ```ID``` of the dataset you wish to Quer
 The response to this ```GET``` Query can be seen below, including the dataset ID. Be sure to copy this ID, as we will use it in a moment (the ID you see after running the ```GET``` command on **your own dataset**):
 ![image](https://user-images.githubusercontent.com/58508793/219679455-89d26a5d-5303-43b8-b3af-86002bf3bb8d.png)
 
-
-
 Filters can be used to specify diferent criteria that can be used to more accurately search for the information you want to find. In the image below, you can see how to input the Dataset ID and a specific Query.
 ![image](https://user-images.githubusercontent.com/58508793/218518081-65d657d6-a4c2-4443-8046-e1791b0fa2cd.png)
 
-
-## Projects 
-### Example: GET Projects List
-
-Let's get started with an example of a basic API request. Go ahead and scroll down until you find the "Projects" section. 
-
-![image](https://user-images.githubusercontent.com/58508793/219648842-aba4b7ff-c26d-4315-ab71-2eaf719e8732.png)
+There are a lot more requests you can use in the [Dataset section of the API](https://gate.dataloop.ai/api/v1/docs/#/Datasets). Each request has a short description which will let you know what functionality it has. Feel free to explore and try out other Dataset API requests.
 
 
-Now,  select the first GET method, to get all of the projects and  then click "Try it out", like in the image below:
-![image](https://user-images.githubusercontent.com/58508793/219650991-266730c4-debf-4fcc-9b37-a327b4af6145.png)
+## Items
+The Items section of the API helps you do a variety of requests regarding Items. Here are some of the most important requests (with links) and their functionality:
+- [List items in a dataset](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsGetItems);
+- [Create a new item in a dataset](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsCreateItem);
+- [Move files to a specified directory](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsMoveItems);
+- [Get Item by ID](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsGetItem);
+- [Delete Item by ID](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsRemoveItem);
+- [Edit Item by ID](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsEditItem);
+- [Remove Items by Query](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsRemoveItemsByQuery);
+- [Create Item Revision using ID](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsCreateItemRevision);
+- [Stream an Item](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsStreamItem);
+- [Stream Item's Thumbnail](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsStreamItemThumbnail);
+- [Get Directory Child Items](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsGetDirectoryChildItems);
+- [Clone Item](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsCloneItem);
 
 
-Click the big ```Execute``` button:
-![image](https://user-images.githubusercontent.com/58508793/219651137-475d2a9d-cdd3-4c70-b98d-18a0f1d0daee.png)
+## Annotations
+This section explores the various API requests you can use to manage Annotations in Datalop. Here's a list of the most important Annotation reqeusts:
+- [List all Annotations of a specific Item, by ID](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsListAnnotations);
+- [Create an Annotation for an Item](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsCreateAnnotation);
+- [List an Annotation of an Item by Annotation ID](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsGetAnnotation);
+- [Delete an Annotation from an Item](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsDeleteAnnotation);
+- [Update an Item's Annotation](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsUpdateAnnotation);
+- [Update an Item's Annotation status to issue](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsAnnotationIssues);
+- [List the Log for all Annotations  of an Item](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsLogListAnnotationsLog);
+- [List the Log for a specific Annotation  of an Item](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsLogGetAnnotation);
+- [Delete Annotation Log for a specific Annotation](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsLogDeleteAnnotation);
+- [Update an Item's Annotation Log](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsLogUpdateAnnotation);
+- [Update an Item's Annotation status to issue](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsLogAnnotationIssues);
+- [Query Annotations for a specified Dataset](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetAnnotationsQueryAnnotations);
+- [List all Annotations of an item by Annotation ID](https://gate.dataloop.ai/api/v1/docs/#/Annotations/AnnotationsGetAnnotation);
 
-You should now instantly recieve a response in JSON format that shows all Projects to which you have access, similar to the image below:
-
-![image](https://user-images.githubusercontent.com/58508793/219651466-b6cc5956-440a-41f9-984d-d853d3c4ed85.png)
-
-In the ```Response Body``` you will receive all of the details and inforamtion that the command you ran returns. Feel free to try more commands in the ```Projects``` section on your own.
-
-## Example: GET Datasets Query for Items (Item count)
+### Example: GET Datasets Query for Items (Item count)
 You will now test some commands in the ```Dataset``` section of the API, which will be similar to what we did in the ```Projects``` section. Scroll up to the Dataset Section now. By using a simple query on the Datasets endpoint, you can use the Dataset ID and query to get the requested items.
 
 To do that, you must first find out the ```ID``` of the dataset you wish to Query. To find a Dataset ID, you can just click the ```Get\datasets``` API line, which will return the details about all of the datasets to which you have access in the Dataloop platform. You can also add the name of the Dataset as a parameter to the Query, search by creator or by the Project name. Below, the Query is done by using the Dataset name "Creatures", which is a Dataset used in one of Dataloop's Onboarding Exercises (be sure to use your own Dataset's name):
@@ -77,6 +150,12 @@ The response to this ```GET``` Query can be seen below, including the dataset ID
 
 Filters can be used to specify diferent criteria that can be used to more accurately search for the information you want to find. In the image below, you can see how to input the Dataset ID and a specific Query.
 ![image](https://user-images.githubusercontent.com/58508793/218518081-65d657d6-a4c2-4443-8046-e1791b0fa2cd.png)
+
+
+
+
+
+
 
 
 
