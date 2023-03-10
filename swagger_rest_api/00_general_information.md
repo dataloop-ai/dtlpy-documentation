@@ -2,7 +2,7 @@
 The Dataloop platform offers a RESTful API HTTP interface that allows developers to perform full code language-agnostic automatic flows. In this section you will learn the basic intuition for what an API, REST and RESTful API is, and how Dataloop uses it to bring you quick and easy access to advanced development tools.
 
 ## What is an API?
-An Application Programming Interface (API) establishes the rules that must be followed while communicating with other software systems. APIs are exposed or created by developers so that other applications can interface with their applications programmatically. For example, you could use the API of a news website, to add a "Latest News" section to your own website. In this case, your website would make an API Call to the news website, and will get back all of the latest-news articles in the past week, without having to do any processes on its own.
+An Application Programming Interface (API) establishes the rules that must be followed while communicating with other software systems. APIs are exposed or created by developers so that other applications can interface with their applications programmatically. For example, you could use the API of Dataloop to execurte your Neural Network Model on our server; our server would then process the Feedforward pass, and you would get the results back on your computer or website, without using any of your own resources or tools.
 
 A web API can be thought of as a bridge between clients and web resources. In the scope of APIs, clients are people who want to get information from the internet. The client can be either a person or a software system that makes use of an API. Developers, for example, can create programs that automatically access various data from the API system. 
 
