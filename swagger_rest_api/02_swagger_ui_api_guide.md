@@ -10,8 +10,41 @@ After logging in to the platform, the API authentication will be completed autom
 
 The image above is what you should see after logging in to Dataloop's platform, and going to the Swagger API UI. You can [find the Dataloop Swagger API here](https://gate.dataloop.ai/api/v1/docs/).
 
+**Note:** This Swagger API guide will have the same structure as our [Developer Onboarding](../onboarding), which teaches you how to use the basic functions of Dataloop in Python code. Everything we'll cover in this guide can be done in Python code (in the Python SDK) as well as using the API.
 
-## Example: GET Projects List
+## Datasets
+Here, we will cover the most important API examples, using the API requests from the Datasets section.
+### Example: Show all datasets
+To show all of the datasets in your organization (or in a particular project, if you want to), you can use the ```GET/datasets``` API request. Go to the Datasets section, look for it and click it. It should look like this once selected:
+
+![image](https://user-images.githubusercontent.com/58508793/224307707-27a41a69-9a95-4d0c-86e3-c9e2b245e829.png)
+
+Click the "Try it out" button, and you will be able to complete the "name", "creator" and "projects" fields, to search for datasets matching specific criteria. You should firstly Execute without completing any of the fields. This will show you all of the Datasets you have access to, as seen below:
+
+![image](https://user-images.githubusercontent.com/58508793/224308368-f0dcf9bc-0bd1-4baf-9e18-fb567a250790.png)
+
+All of the information you requested, based on your Query should be in the "Response Body".
+
+**Note**: If you have no dataset created, you can create one using the ```POST/datasets```, which is located just below the ```GET/datasets```.
+
+
+### Example: GET a Dataset's Item count
+By using a simple Query on the Datasets endpoint, you can use the Dataset ID and Query to get the requested items.
+
+To do that, you must first find out the ```ID``` of the dataset you wish to Query. To find a Dataset ID, you can just click the ```Get\datasets``` API line (which we described above), which will return the details about all of the Datasets to which you have access in the Dataloop platform. You can also add the name of the Dataset as a parameter to the Query, search by Creator or by the Project name. Below, the Query is executed by using the Dataset name "Creatures", which is a Dataset used in one of [Dataloop's Python SDK Onboarding Exercises](../onboarding/11_onboarding_exercise.md) (be sure to use your own Dataset's name or ID):
+![image](https://user-images.githubusercontent.com/58508793/219678882-765f6257-e92e-48dc-a0ad-70fba382227c.png)
+
+The response to this ```GET``` Query can be seen below, including the dataset ID. Be sure to copy this ID, as we will use it in a moment (the ID you see after running the ```GET``` command on **your own dataset**):
+![image](https://user-images.githubusercontent.com/58508793/219679455-89d26a5d-5303-43b8-b3af-86002bf3bb8d.png)
+
+
+
+Filters can be used to specify diferent criteria that can be used to more accurately search for the information you want to find. In the image below, you can see how to input the Dataset ID and a specific Query.
+![image](https://user-images.githubusercontent.com/58508793/218518081-65d657d6-a4c2-4443-8046-e1791b0fa2cd.png)
+
+
+## Projects 
+### Example: GET Projects List
 
 Let's get started with an example of a basic API request. Go ahead and scroll down until you find the "Projects" section. 
 
@@ -47,9 +80,10 @@ Filters can be used to specify diferent criteria that can be used to more accura
 
 
 
+## Custom Querries
+Implementing  Custom Queries will allow you to better Search, Filer, Sort and Update your data. To do that, you will have to [learn more about the Dataloop Query Language (DQL) our proprietary Query Language](https://dataloop.ai/docs/api-dql).
 
-Implementing Queries will allow you to better Search, Filer, Sort and Update your data. To do that, you will have to [learn more about the Dataloop Query Language (DQL) our proprietary Query Language](https://dataloop.ai/docs/api-dql).
-Below, you can find a Query we created for you, to search your dataset for all a specific annotation - in ths case "Bear". Just copy and paste it in the ```/datasets/{id}/query```. You should have the Dataset ```ID``` available from the API call we did above. Of course, you need to have at least an Annotated Item in your Dataset for this complete example to work.  To search for that specific Annotation. You would do the following:
+Below, you can find some Queries we created for you, to search your Dataset for all a specific Annotation - in ths case "Bear". Just copy and paste it in the ```/datasets/{id}/query```. You should have the Dataset ```ID``` available from the API call we did above. Of course, you need to have at least an Annotated Item with the annotation "Bear" in your Dataset for this complete example to work.  To search for a specific Annotation you have, you can change the "Bear" string with the Annotation your Item in your Dataset. You would do the following:
 
 ```
 copy{
@@ -75,7 +109,7 @@ copy{
             {
                "label":{
                   "$in":[
-                     "Car"
+                     "Bear"
                   ]
                }
             },
@@ -183,7 +217,8 @@ copy{
   "hasNextPage": false
 }
 ```
-## Example:POST Datasets Query for Annotations
+
+## Example: POST Datasets Query for Annotations
 
 In this example you learn how to get the Annotation count for all the Bounding Box with the Labels "dogs" from your dataset. You can also change the Label "dogs" with a Label that you have in your own Dataset.
 
@@ -214,5 +249,17 @@ copy{
    }
 }
 ```
-And then press execute, to apply your Query and:
+And then press execute, to apply your Query:
 ![image](https://user-images.githubusercontent.com/58508793/219695813-00cbe260-1c72-4749-b91c-e99d89ac2a43.png)
+
+You should get all of the Items with the Annotation "dogs", and all of their Metadata details.
+
+## Final Words
+
+There are a lot more API Requests, Commands and Queries you can try on your own. Be sure to have a look around and learn how to use them.
+
+If you have any troubles, be sure to [Contact Dataloop's Support](https://dataloop.ai/contact/).
+
+You can also [Book a Demo](https://dataloop.ai/demo/), if you want to have someone teach you more about the API and the Dataloop platform in general.
+
+
