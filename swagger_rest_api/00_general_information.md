@@ -2,7 +2,7 @@
 The Dataloop platform offers a RESTful API HTTP interface that allows developers to perform full code language-agnostic automatic flows. In this section you will learn the basic intuition for what an API, REST and RESTful API is, and how Dataloop uses it to bring you quick and easy access to advanced development tools.
 
 ## What is an API?
-An Application Programming Interface (API) establishes the rules that must be followed while communicating with other software systems. APIs are exposed or created by developers so that other applications can interface with their applications programmatically. For example, you could use the API of Dataloop to execurte your Neural Network Model on our server; our server would then process the Feedforward pass, and you would get the results back on your computer or website, without using any of your own resources or tools.
+An Application Programming Interface (API) establishes the rules that must be followed while communicating with other software systems. APIs are exposed or created by developers so that other applications can interface with their applications programmatically. For example, you could use the API of Dataloop to execute your Neural Network Model on our server, using an API request; our server would then process the Feedforward pass, and you would get the results back on your computer or website, without using any of your own resources or tools.
 
 A web API can be thought of as a bridge between clients and web resources. In the scope of APIs, clients are people who want to get information from the internet. The client can be either a person or a software system that makes use of an API. Developers, for example, can create programs that automatically access various data from the API system. 
 
@@ -30,10 +30,10 @@ When the client requires a resource, it uses the API to communicate with the ser
 ## Key Features of Dataloop's API
 Dataloop's platform gives users some very useful tools, because of the REST API it uses, such as:
 
-- Editing Metadata - Add data to describe your items and datasets, such as unique or serial IDs for a sequence of frames or images, location of item creation, sensor position and more.
+- Editing Metadata - Add data to describe your Items and Datasets, such as unique or serial IDs for a sequence of frames or images, location of Item creation, sensor position and more.
 
-- Bulk Uploads - Import millions of items without compressing your data quality or separating metadata from items with the bulk upload capabilities.
+- Bulk Uploads - Import millions of Items without compressing your data quality or separating Metadata from Items with the bulk upload capabilities.
 
-- Direct M2M Integrations - Perform commands directly through your code, including the automatic creation of projects, datasets, ontologies, and inferencing - all accessible via direct HTTP requests.
+- Direct M2M Integrations - Perform commands directly through your code, including the automatic creation of Projects, Datasets, Ontologies, and inferencing - all accessible via direct HTTP requests.
 
 Now that you know the basics of the APIs in general and Dataloop's API, you can move on to learning how to [Authenticate on Dataloop's platform](./1.%20Authentication.md).
