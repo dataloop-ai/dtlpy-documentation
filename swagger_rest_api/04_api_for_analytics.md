@@ -207,6 +207,6 @@ if __name__ == "__main__":
 ### Final thoughts
 This exercise, while it may extract simple information, has showcased how you can perform some basic analysis using API calls on a Dataloop Project. Feel free to modify the code to fit your particular needs and perform the analysis you want to. 
 
-You can find the complete code in a Jupyter Notbook we created for you.
+You can find the complete code in a Jupyter Notebook we created for you.
 
 
