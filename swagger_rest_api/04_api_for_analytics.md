@@ -1,6 +1,6 @@
 ## API for analytics
 
-In this bonus section of the API, we will present an exercise that will teach you how can use the API for analytics. You also have a Jupyter notebook that has all of the code from this section in a single file, which you can run and test yourself. This readme is a guide that will teach you what that code works, so you can understand how to operate or modify it to your needs.
+In this bonus section of the API, we will present an exercise that will teach you how can use the API for analytics. You also have [a Jupyter notebook that has all of the code from this section](./api_analytics.ipynb) in a single file, which you can run and test yourself. This readme is a guide that will teach you what that code works, so you can understand how to operate or modify it to your needs.
 
 The example we are going to showcase here will extract and print all Annotator activity (active/idle), per task and per item, for a chosen Project. These parameters are:
 ```
@@ -207,6 +207,6 @@ if __name__ == "__main__":
 ### Final thoughts
 This exercise, while it may extract simple information, has showcased how you can perform some basic analysis using API calls on a Dataloop Project. Feel free to modify the code to fit your particular needs and perform the analysis you want to. 
 
-You can find the complete code in a Jupyter Notebook we created for you.
+[You can find the complete code in a Jupyter Notebook we created for you.](./api_analytics.ipynb)
 
 
