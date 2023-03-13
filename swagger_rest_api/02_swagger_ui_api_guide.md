@@ -214,6 +214,37 @@ Here are the most important API requests regarding Packages:
 - [Get Package revisions by ID](https://gate.dataloop.ai/api/v1/docs#/Packages/Packages_getPackageRevisions);
 - [Delete a Package by ID](https://gate.dataloop.ai/api/v1/docs#/Packages/Packages_deletePackages).
 
+## Executions
+This section explores the most important API requests regrding Executions. An Execution refers to the process of executing a function within the FaaS Service. When a user submits a function for Execution, the FaaS Service creates a container to run the function and provides any necessary inputs. The function is executed within the container, and the results are returned to the user.
+
+Here are the most important API requests regarding Packages:
+- [Get an execution by ID](https://gate.dataloop.ai/api/v1/docs#/Executions/Executions_getExecution);
+- [Update execution changes to Dataloop's platform](https://gate.dataloop.ai/api/v1/docs#/Executions/Executions_updateExecution);
+- [Increment the number of attempts that an execution is allowed to try to run a Service that is not responding](https://gate.dataloop.ai/api/v1/docs#/Executions/Executions_incrementExecutionAttempts);
+- [Get Execution Counters](https://gate.dataloop.ai/api/v1/docs#/Executions/Executions_getExecutionCounters);
+- [List a Service's Executions](https://gate.dataloop.ai/api/v1/docs#/Executions/Executions_listExecutions);
+- [Re-run an Execution](https://gate.dataloop.ai/api/v1/docs#/Executions/Executions_rerunExecution);
+- [Re-run batch Execution](https://gate.dataloop.ai/api/v1/docs#/Executions/Executions_rerunExecutionQuery);
+- [Execute a function on an existing Service](https://gate.dataloop.ai/api/v1/docs#/Executions/Executions_createExecution);
+- [Update Execution progress](https://gate.dataloop.ai/api/v1/docs#/Executions/Executions_pushProgress);
+- [Terminate an Execution using ID](https://gate.dataloop.ai/api/v1/docs#/Executions/Executions_terminateExecution).
+
+
+##
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Custom Querries
 Implementing  Custom Queries will allow you to better Search, Filer, Sort and Update your data. To do that, you will have to [learn more about the Dataloop Query Language (DQL) our proprietary Query Language](https://dataloop.ai/docs/api-dql).
 
