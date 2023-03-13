@@ -193,7 +193,10 @@ Here are the most important API requests for Services:
 - [Update a Replica's Status](https://gate.dataloop.ai/api/v1/docs#/Services/Services_updateReplicaStatus);
 - [Get the status of a Service](https://gate.dataloop.ai/api/v1/docs#/Services/Services_getServiceStatus);
 - [Rollout a Service](https://gate.dataloop.ai/api/v1/docs#/Services/Services_rolloutService);
-- [Debug a Service's Stream](https://gate.dataloop.ai/api/v1/docs#/Services/Services_serviceStream);
+- [Debug a Service's Stream](https://gate.dataloop.ai/api/v1/docs#/Services/Services_serviceStream);\
+- [Apply docker private registry credentials on the user's compute system](https://gate.dataloop.ai/api/v1/docs#/compute/Compute_registryCred);
+- [Delete docker private registry credentials from the user compute system](https://gate.dataloop.ai/api/v1/docs#/compute/Compute_deleteRegistryCred).
+
 
 ## Packages
 This section explores the most important API requests regrding Packages. A Package refers to an entity that is processed using the "Functions-as-a-Service" (FaaS) technology. FaaS Packages are used to automate the processing of data and can be used to perform a wide range of Tasks, such as data cleaning, data transformation, and data enrichment. FaaS Packages in the Dataloop system are created by Project managers or data scientists, who define the specific requirements for each Package, such as the data inputs, the functions to be executed, and the output data format. Once the FaaS Package is defined, it can be executed using the Dataloop FaaS engine, which automatically manages the Execution of the functions within the Package. The Package is a static code with a schema that holds all the Modules, functions, and the code base from which they can be taken.
@@ -224,9 +227,45 @@ Here are the most important API requests regarding Packages:
 - [Terminate an Execution using ID](https://gate.dataloop.ai/api/v1/docs#/Executions/Executions_terminateExecution).
 
 
+## Pipelines
+Pipelines allow you to create automated flows that weave together humans and machines to process data in a Pipeline architecture. Pipelines consist of a series of Nodes, where each Node’s output is the input of the next one. They allow for transitioning of data between labeling and QA Tasks, FaaS (see entry for Package), and code snippets and, machine learning (ML) models. It is flexible and scalable and can be used for both training and production. Common examples of use cases include automatic pre-processing of data for Annotation workflows and deployment Pipelines for ML models.
+
+Here are the most important API calls for Pipelines:
+- [Create a Pipeline](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_create);
+- [Get a Pipeline by ID](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_get);
+- [Update a Pipeline](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_update);
+- [Update a Pipeline's Settings](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_updateSettings);
+- [Get a Pipeline's statistics](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_getStatistics);
+- [Reset a Pipeline's counters](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_reset);
+- [Delete the Pipeline - should also terminate the composition](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_terminate);
+- [Execute a Pipeline and return the Pipeline execution as an object](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_execute);
+- [Get one of Pipeline nodes by pipeline id and node id](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_getNode);
+- [List Pipelines using a Query](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_list);
+- [Install Pipeline](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_install);
+- [Uninstall Pipeline](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_uninstall);
+- [Purge Pipeline](https://gate.dataloop.ai/api/v1/docs#/pipelines/Pipeline_purge);
+- [See a Pipeline's Executions](https://gate.dataloop.ai/api/v1/docs#/pipelines/PipelineExecution_executions);
+- [See a Pipeline's logs](https://gate.dataloop.ai/api/v1/docs#/pipelines/PipelineLogs_logs);
+- [Create Pipeline Template](https://gate.dataloop.ai/api/v1/docs#/pipelines%2Ftemplates/PipelineTemplates_create);
+- [Querry Pipeline Template](https://gate.dataloop.ai/api/v1/docs#/pipelines%2Ftemplates/PipelineTemplates_query).
+
+## Triggers
+A Trigger is a rule-based mechanism that initiates an action when a specific event occurs. Triggers are used to automate workflows and streamline data processing. They are created by defining a set of conditions that must be met for the Trigger to be activated. These conditions can be based on a variety of factors, such as the content of data, the time of day, or the occurrence of specific events. Once a Trigger is activated, it can initiate a range of actions, such as sending notifications, generating reports, or Triggering the Execution of a specific Task or workflow. It can be of 2 types:
+
+EventTrigger - contains a Project on which it monitors events, a Resource type such as Item, Annotation, Task, etc. The action that happened to the Resource such as created, updated, deleted status changed, etc. a DQL (The Data Query Engine) Filter that checks whether or not to invoke the operation based on the Resource JSON, and an operation.
+CRONTrigger - enables you to run functions at specified time patterns with constant input using the Cron syntax. In the Cron Trigger specification, you specify when you want the Trigger to start, when you want it to end, specifying when it should run, and the input that should be sent to the action.
+
+Here are the most important API requests for Triggers:
+- [List Triggers and retrieves Services using a Query](https://gate.dataloop.ai/api/v1/docs#/Triggers/Triggers_listTriggers);
+- [Create a Trigger - can create two types: a cron-trigger or an event-trigger](https://gate.dataloop.ai/api/v1/docs#/Triggers/Triggers_createTrigger);
+- [Get Trigger by ID](https://gate.dataloop.ai/api/v1/docs#/Triggers/Triggers_getTrigger);
+- [Update a Trigger](https://gate.dataloop.ai/api/v1/docs#/Triggers/Triggers_updateTrigger);
+- [Delete a Trigger](https://gate.dataloop.ai/api/v1/docs#/Triggers/Triggers_deleteTriggers);
+- [Querry a Trigger's resource information](https://gate.dataloop.ai/api/v1/docs#/TriggerResourceInformation/TriggerResourceInformation_queryTriggerResourceInformation);
+- 
+
+
 ##
-
-
 
 
 
