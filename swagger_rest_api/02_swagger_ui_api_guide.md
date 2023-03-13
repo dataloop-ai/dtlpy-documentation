@@ -32,25 +32,6 @@ Here's a list of the most important Project requests:
 - [Remove an account from a Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/delete_projects__project_id__accounts);
 - [Replace an account for a Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/patch_projects__project_id__accounts);
 
-### Example: GET Projects List
-
-Let's get started with an example of a basic API request. Go ahead and scroll down until you find the "Projects" section. 
-
-![image](https://user-images.githubusercontent.com/58508793/219648842-aba4b7ff-c26d-4315-ab71-2eaf719e8732.png)
-
-
-Now,  select the first GET method, to get all of the projects and  then click "Try it out", like in the image below:
-![image](https://user-images.githubusercontent.com/58508793/219650991-266730c4-debf-4fcc-9b37-a327b4af6145.png)
-
-
-Click the big ```Execute``` button:
-![image](https://user-images.githubusercontent.com/58508793/219651137-475d2a9d-cdd3-4c70-b98d-18a0f1d0daee.png)
-
-You should now instantly recieve a response in JSON format that shows all Projects to which you have access, similar to the image below:
-
-![image](https://user-images.githubusercontent.com/58508793/219651466-b6cc5956-440a-41f9-984d-d853d3c4ed85.png)
-
-In the ```Response Body``` you will receive all of the details and inforamtion that the command you ran returns. Feel free to try more commands in the ```Projects``` section on your own.
 
 ## Datasets
 This section will cover the most important API examples, using the API requests from the Datasets section. A Dataset is a collection of Items (files), their Metadata, and Annotations. A Dataset can have a file-system-like structure, with folders and subfolders at any level. There are different types of Datasets:
@@ -84,33 +65,7 @@ The most important API request can be seen below:
 - [Detach Items from Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsDetachItemsFromDataset);
 - [Get a Project's Datasets](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetProjectDatasets);
 
-### Example: Show all datasets
-To show all of the datasets in your organization (or in a particular project, if you want to), you can use the ```GET/datasets``` API request. Go to the Datasets section, look for it and click it. It should look like this once selected:
 
-![image](https://user-images.githubusercontent.com/58508793/224307707-27a41a69-9a95-4d0c-86e3-c9e2b245e829.png)
-
-Click the "Try it out" button, and you will be able to complete the "name", "creator" and "projects" fields, to search for datasets matching specific criteria. You should firstly Execute without completing any of the fields. This will show you all of the Datasets you have access to, as seen below:
-
-![image](https://user-images.githubusercontent.com/58508793/224308368-f0dcf9bc-0bd1-4baf-9e18-fb567a250790.png)
-
-All of the information you requested, based on your Query should be in the "Response Body".
-
-**Note**: If you have no dataset created, you can create one using the ```POST/datasets```, which is located just below the ```GET/datasets```.
-
-
-### Example: GET a Dataset's Item count
-By using a simple Query on the Datasets endpoint, you can use the Dataset ID and Query to get the requested items.
-
-To do that, you must first find out the ```ID``` of the dataset you wish to Query. To find a Dataset ID, you can just click the ```Get\datasets``` API line (which we described above), which will return the details about all of the Datasets to which you have access in the Dataloop platform. You can also add the name of the Dataset as a parameter to the Query, search by Creator or by the Project name. Below, the Query is executed by using the Dataset name "Creatures", which is a Dataset used in one of [Dataloop's Python SDK Onboarding Exercises](../onboarding/11_onboarding_exercise.md) (be sure to use your own Dataset's name or ID):
-![image](https://user-images.githubusercontent.com/58508793/219678882-765f6257-e92e-48dc-a0ad-70fba382227c.png)
-
-The response to this ```GET``` Query can be seen below, including the dataset ID. Be sure to copy this ID, as we will use it in a moment (the ID you see after running the ```GET``` command on **your own dataset**):
-![image](https://user-images.githubusercontent.com/58508793/219679455-89d26a5d-5303-43b8-b3af-86002bf3bb8d.png)
-
-Filters can be used to specify diferent criteria that can be used to more accurately search for the information you want to find. In the image below, you can see how to input the Dataset ID and a specific Query.
-![image](https://user-images.githubusercontent.com/58508793/218518081-65d657d6-a4c2-4443-8046-e1791b0fa2cd.png)
-
-There are a lot more requests you can use in the [Dataset section of the API](https://gate.dataloop.ai/api/v1/docs/#/Datasets). Each request has a short description which will let you know what functionality it has. Feel free to explore and try out other Dataset API requests.
 
 
 ## Items
@@ -164,6 +119,22 @@ Here are the most important API requests for Tasks:
 - [Update an existing Task](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksPatchTask);
 - [Get a specific task by ID](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksGetTask);
 - [Delete a task](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksDeleteTask);
+
+
+## Assignments
+An Assignment is a specific Task that is assigned to an individual, represents a unique instance of an Assignment, and contains all the information necessary for annotators to complete the work. As Annotators work on the Assignment, Annotators can communicate with Project Managers or team leaders and can ask for clarification on any aspects of the Task that are unclear. Once an Assignment is completed, the Dataloop system automatically aggregates the results and provides Project managers with real-time insights into the progress of each Assignment, the quality of the Annotations, and the overall status of the Project.
+
+An Assigment may be an Item or collection of Items that are allocated to an Annotator for manual annotation and/or review. Items can be redistributed or reassigned between Assignments. The Annotator is also referred to as an “Assignee” or "Contributor".
+
+Here are the most important API requests for Assignments:
+- [Create a new Assignment](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsCreateAssignment);
+- [Find Assignments using a Query](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsFindAssignments);
+- [Update an existing Assignment](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsPatchAssignment);
+- [Get a specific Assignment](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsGetAssignment);
+- [Delete a assignment](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsDeleteAssignment);
+- [Reassign Assignment to an Annotator](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsReassignAssignment);
+- [Redistribute an Assignment to Annotators](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsRedistributeAssignment);
+
 
 ## Organization
 This section explores the most important API requests you can use to manage your Organization. In Dataloop, an Organization is an entity composed of one or more users who collaborate on data-related Projects and share Resources and data. An Organization is composed of multiple elements like Integration/Secrets, Members, Bots, and ComputerCache. The leader of an Organization is the Owner. An Owner in Dataloop represents the User who created the Organization.  An owner can delete/rename an Organization, create Projects, and add/remove Organization Members. The Owner cannot be removed from the Organization.
@@ -234,6 +205,67 @@ Here are the most important API requests regarding Packages:
 
 
 
+
+
+
+
+
+
+
+
+## Examples
+### Datasets
+### Example: Show all datasets
+To show all of the datasets in your organization (or in a particular project, if you want to), you can use the ```GET/datasets``` API request. Go to the Datasets section, look for it and click it. It should look like this once selected:
+
+![image](https://user-images.githubusercontent.com/58508793/224307707-27a41a69-9a95-4d0c-86e3-c9e2b245e829.png)
+
+Click the "Try it out" button, and you will be able to complete the "name", "creator" and "projects" fields, to search for datasets matching specific criteria. You should firstly Execute without completing any of the fields. This will show you all of the Datasets you have access to, as seen below:
+
+![image](https://user-images.githubusercontent.com/58508793/224308368-f0dcf9bc-0bd1-4baf-9e18-fb567a250790.png)
+
+All of the information you requested, based on your Query should be in the "Response Body".
+
+**Note**: If you have no dataset created, you can create one using the ```POST/datasets```, which is located just below the ```GET/datasets```.
+
+
+### Example: GET a Dataset's Item count
+By using a simple Query on the Datasets endpoint, you can use the Dataset ID and Query to get the requested items.
+
+To do that, you must first find out the ```ID``` of the dataset you wish to Query. To find a Dataset ID, you can just click the ```Get\datasets``` API line (which we described above), which will return the details about all of the Datasets to which you have access in the Dataloop platform. You can also add the name of the Dataset as a parameter to the Query, search by Creator or by the Project name. Below, the Query is executed by using the Dataset name "Creatures", which is a Dataset used in one of [Dataloop's Python SDK Onboarding Exercises](../onboarding/11_onboarding_exercise.md) (be sure to use your own Dataset's name or ID):
+![image](https://user-images.githubusercontent.com/58508793/219678882-765f6257-e92e-48dc-a0ad-70fba382227c.png)
+
+The response to this ```GET``` Query can be seen below, including the dataset ID. Be sure to copy this ID, as we will use it in a moment (the ID you see after running the ```GET``` command on **your own dataset**):
+![image](https://user-images.githubusercontent.com/58508793/219679455-89d26a5d-5303-43b8-b3af-86002bf3bb8d.png)
+
+Filters can be used to specify diferent criteria that can be used to more accurately search for the information you want to find. In the image below, you can see how to input the Dataset ID and a specific Query.
+![image](https://user-images.githubusercontent.com/58508793/218518081-65d657d6-a4c2-4443-8046-e1791b0fa2cd.png)
+
+There are a lot more requests you can use in the [Dataset section of the API](https://gate.dataloop.ai/api/v1/docs/#/Datasets). Each request has a short description which will let you know what functionality it has. Feel free to explore and try out other Dataset API requests.
+
+
+
+
+## Projects
+### Example: GET Projects List
+
+Let's get started with an example of a basic API request. Go ahead and scroll down until you find the "Projects" section. 
+
+![image](https://user-images.githubusercontent.com/58508793/219648842-aba4b7ff-c26d-4315-ab71-2eaf719e8732.png)
+
+
+Now,  select the first GET method, to get all of the projects and  then click "Try it out", like in the image below:
+![image](https://user-images.githubusercontent.com/58508793/219650991-266730c4-debf-4fcc-9b37-a327b4af6145.png)
+
+
+Click the big ```Execute``` button:
+![image](https://user-images.githubusercontent.com/58508793/219651137-475d2a9d-cdd3-4c70-b98d-18a0f1d0daee.png)
+
+You should now instantly recieve a response in JSON format that shows all Projects to which you have access, similar to the image below:
+
+![image](https://user-images.githubusercontent.com/58508793/219651466-b6cc5956-440a-41f9-984d-d853d3c4ed85.png)
+
+In the ```Response Body``` you will receive all of the details and inforamtion that the command you ran returns. Feel free to try more commands in the ```Projects``` section on your own.
 
 
 
