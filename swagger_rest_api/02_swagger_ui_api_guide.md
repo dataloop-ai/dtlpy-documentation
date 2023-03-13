@@ -14,7 +14,7 @@ The image above is what you should see after logging in to Dataloop's platform, 
 
 ## Projects 
 
-This section explores the various API requests you can use to manage Projects in Dataloop. 
+This section explores the various API requests you can use to manage Projects in Dataloop. A Project in Dataloop is a high-level Organizational entity that represents a specific task or goal. It can be used to manage data, Tasks, and Annotations related to a particular Project, and often serves as the main unit of work in the system. It provides a centralized location for managing data and Tasks related to a specific goal or objective. This can help improve collaboration among team members, ensure consistency in the data and Annotations, and make it easier to track progress and results.
 
 Here's a list of the most important Project requests:
 - [List an User's Projects for the current Organization](https://gate.dataloop.ai/api/v1/docs/#/Projects/get_projects);
@@ -53,7 +53,13 @@ You should now instantly recieve a response in JSON format that shows all Projec
 In the ```Response Body``` you will receive all of the details and inforamtion that the command you ran returns. Feel free to try more commands in the ```Projects``` section on your own.
 
 ## Datasets
-This section will cover the most important API examples, using the API requests from the Datasets section. The most important API request can be seen below:
+This section will cover the most important API examples, using the API requests from the Datasets section. A Dataset is a collection of Items (files), their Metadata, and Annotations. A Dataset can have a file-system-like structure, with folders and subfolders at any level. There are different types of Datasets:
+
+- Master - Original Dataset, managing the actual binaries;
+- Clone - Contains pointers to original files, enabling management of virtual Items that do not replicate the binaries of the underlying storage once cloned or copied. When cloning a Dataset, users can decide if the new copy will contain Metadata and Annotations created over the original Dataset;
+- Merge - Multiple Datasets can be merged into one, enabling multiple Annotations to be merged onto the same Item (for 2 Datasets to be successfully merged, they need to have the same Recipe and Ontology.
+
+The most important API request can be seen below:
 - [Get a names list of all existing Datasets](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsListDatasets);
 - [Create a new Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsCreateDataset);
 - [Get Dataset by ID](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetDataset);
@@ -108,7 +114,9 @@ There are a lot more requests you can use in the [Dataset section of the API](ht
 
 
 ## Items
-The Items section of the API helps you do a variety of requests regarding Items. Here are some of the most important requests (with links) and their functionality:
+The Items section of the API helps you do a variety of requests regarding Items. An Item in Dataloop, is a unit of data that represents a ‘single instance’ or ‘file’ of a larger Dataset. It can be an image, a video, a sound recording, a text document, or any other type of digital asset that needs to be labeled, annotated, or analyzed. Each Item in the Dataloop system is typically associated with one or more Tasks, which define the specific operations that need to be performed on the Item. For example, an Item may be labeled with Bounding Boxes to identify objects in an image, transcribed to convert speech-to-text, or classified based on its content. Items also have associated Metadata.
+
+Here are some of the most important requests (with links) and their functionality:
 - [List items in a dataset](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsGetItems);
 - [Create a new item in a dataset](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsCreateItem);
 - [Move files to a specified directory](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsMoveItems);
@@ -124,7 +132,12 @@ The Items section of the API helps you do a variety of requests regarding Items.
 
 
 ## Annotations
-This section explores the various API requests you can use to manage Annotations in Datalop.
+This section explores the various API requests you can use to manage Annotations in Datalop. An Annotation entity refers to a label, tag, or another piece of Metadata that is attached to an Item in a Dataset. Annotations are typically used to provide additional context or information about an Item, and to enable machine learning models to better understand and interpret the data. Annotations in the Dataloop system can take many forms, depending on the specific Task and type of data being annotated. Annotations in the Dataloop system are typically created by human annotators, who use the system's interface to draw bounding boxes, select Labels, or enter text. Annotations can also be reviewed and verified by other annotators or team Members, to ensure accuracy and consistency. Some common types of Annotations include:
+
+- Bounding Boxes - Used to identify the location and size of objects within images or videos;
+- Classification Labels - Used to categorize Items based on their content or characteristics;
+- Text Transcriptions - Used to convert spoken words or written text into machine-readable formats;
+- Semantic Segmentation Masks - Used to identify and segment different regions or objects within an image. Note: A JSON format representing the objects and labels exists in an Item.
 
 Here's a list of the most important Annotation reqeusts:
 - [List all Annotations of a specific Item, by ID](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsListAnnotations);
@@ -141,15 +154,65 @@ Here's a list of the most important Annotation reqeusts:
 - [Query Annotations for a specified Dataset](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetAnnotationsQueryAnnotations);
 - [List all Annotations of an item by Annotation ID](https://gate.dataloop.ai/api/v1/docs/#/Annotations/AnnotationsGetAnnotation);
 
-## Tasks and Assignments
+## Tasks 
+This section explore how to use the API to create and manage Annotation Tasks. A Task in Dataloop is a unit of work that needs to be completed by an individual or a team. A Task can represent any type of activity, such as annotating data, reviewing Annotations, labeling images, performing Quality Assurance (QA) checks, or any other data-related Task that requires human input. Tasks in the Dataloop system are created by Project managers, who define the specific requirements for each Task, such as the type of data to be labeled, the Annotation instructions, the deadline, and the number of annotators required. Tasks are then assigned to individual annotators or teams of annotators who complete the Task according to the specified requirements.
 
+Here are the most important API requests for Tasks:
+- [Create a new Task](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksCreateTask);
+- [Find tasks by a Query](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksFindTasks);
+- [Add work (or items to be annotated) to an existing Task](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksAddItemsToTask);
+- [Update an existing Task](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksPatchTask);
+- [Get a specific task by ID](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksGetTask);
+- [Delete a task](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksDeleteTask);
 
+## Organization
+This section explores the most important API requests you can use to manage your Organization. In Dataloop, an Organization is an entity composed of one or more users who collaborate on data-related Projects and share Resources and data. An Organization is composed of multiple elements like Integration/Secrets, Members, Bots, and ComputerCache. The leader of an Organization is the Owner. An Owner in Dataloop represents the User who created the Organization.  An owner can delete/rename an Organization, create Projects, and add/remove Organization Members. The Owner cannot be removed from the Organization.
 
+Here are the most important API request regarding Organizations:
+- [List all of the Organization's Projects](https://gate.dataloop.ai/api/v1/docs#/Organization/get_orgs__org_id__projects);
+- [List all of the Projects of an User in your Organization](https://gate.dataloop.ai/api/v1/docs#/Organization/get_orgs__org_id__members__user_id__projects);
+- [Add a new member into the Organization](https://gate.dataloop.ai/api/v1/docs#/Organization/post_orgs__org_id__members);
+- [Get a specific Organization by ID](https://gate.dataloop.ai/api/v1/docs#/Organization/get_orgs__org_id_);
+- [Delete an Organization (must be Owner)](https://gate.dataloop.ai/api/v1/docs#/Organization/delete_orgs__org_id_);
+- [Update an Organization](https://gate.dataloop.ai/api/v1/docs#/Organization/patch_orgs__org_id__plan);
 
+## Services (FaaS)
+This section explores the most important API reuqests you can use to manage Sevices. A Service or FaaS (Function-as-a-Service), is a cloud computing model where a cloud provider manages and runs individual functions in response to events or Triggers. In Dataloop, a FaaS Service is a serverless computing Service that allows users to run code without the need to manage servers or infrastructure. The FaaS Service is a key component of the system architecture, providing a platform for executing code and integrating with other Services in the system. The FaaS Service in Dataloop is designed to handle the Execution of small, isolated functions that can be triggered by a variety of events, such as data input from sensors or user actions.
 
+A service can also be thought as a deployed Package that serves the code. Given the matching input to a function, it will run it and return the output, e.g. if we have code in our Package for converting RGB images to grayscale, the dl.Service would run the code and upload the grayed image (the processing would be done on the Cloud, and we would receive only the output of that Cloud processing).
 
+Here are the most important API requests for Services:
+- [Add a Service notification](https://gate.dataloop.ai/api/v1/docs#/Services/Services_notify);
+- [Get all global services by using a list of Project ID and Service name](https://gate.dataloop.ai/api/v1/docs#/Services/Services_getGlobalServices);
+- [Add or remove Cache for the Organization](https://gate.dataloop.ai/api/v1/docs#/Services/Services_cache);
+- [Add or remove Fs-Cache for the Organization](https://gate.dataloop.ai/api/v1/docs#/Services/Services_fsCache);
+- [Get a list of Services based on Query parameters](https://gate.dataloop.ai/api/v1/docs#/Services/Services_listServices);
+- [Create new Service/Package](https://gate.dataloop.ai/api/v1/docs#/Services/Services_createService);
+- [Get a Service by ID and version](https://gate.dataloop.ai/api/v1/docs#/Services/Services_getService);
+- [Update a Service](https://gate.dataloop.ai/api/v1/docs#/Services/Services_updateService);
+- [Delete a Service](https://gate.dataloop.ai/api/v1/docs#/Services/Services_deleteService);
+- [Get service revisions by ID](https://gate.dataloop.ai/api/v1/docs#/Services/Services_getServiceRevisions);
+- [Pause the execution of a Service](https://gate.dataloop.ai/api/v1/docs#/Services/Services_stopService);
+- [Resume the execution of a Service](https://gate.dataloop.ai/api/v1/docs#/Services/Services_resumeService);
+- [Get the logs for a Pipeline](https://gate.dataloop.ai/api/v1/docs#/Services/Services_getLogs);
+- [Get the logs for a Service by using Service ID](https://gate.dataloop.ai/api/v1/docs#/Services/Services_getServiceLogs);
+- [Update a Replica's Status](https://gate.dataloop.ai/api/v1/docs#/Services/Services_updateReplicaStatus);
+- [Get the status of a Service](https://gate.dataloop.ai/api/v1/docs#/Services/Services_getServiceStatus);
+- [Rollout a Service](https://gate.dataloop.ai/api/v1/docs#/Services/Services_rolloutService);
+- [Debug a Service's Stream](https://gate.dataloop.ai/api/v1/docs#/Services/Services_serviceStream);
 
+## Packages
+This section explores the most important API requests regrding Packages. A Package refers to an entity that is processed using the "Functions-as-a-Service" (FaaS) technology. FaaS Packages are used to automate the processing of data and can be used to perform a wide range of Tasks, such as data cleaning, data transformation, and data enrichment. FaaS Packages in the Dataloop system are created by Project managers or data scientists, who define the specific requirements for each Package, such as the data inputs, the functions to be executed, and the output data format. Once the FaaS Package is defined, it can be executed using the Dataloop FaaS engine, which automatically manages the Execution of the functions within the Package. The Package is a static code with a schema that holds all the Modules, functions, and the code base from which they can be taken.
 
+A Package could also be thought as a bundle of code and definitions that can be used for creating models or deploying services. Code is a dl.Codebase entity, and definitions include modules, functions, IOs, and the code entry point. For now, it can be Python, nodeJS format. The main function of Packages is to deploy a Service and create an executable version of that code. Packages can be public, global, or specific to a particular Project.
+
+Here are the most important API requests regarding Packages:
+- [Get a list of Packages](https://gate.dataloop.ai/api/v1/docs#/Packages/Packages_listPackages);
+- [Create a new Package](https://gate.dataloop.ai/api/v1/docs#/Packages/Packages_createPackage);
+- [Get a Package by ID](https://gate.dataloop.ai/api/v1/docs#/Packages/Packages_getPackage);
+- [Update Package](https://gate.dataloop.ai/api/v1/docs#/Packages/Packages_updatePackage);
+- [Get Package revisions by ID](https://gate.dataloop.ai/api/v1/docs#/Packages/Packages_getPackageRevisions);
+- [Delete a Package by ID](https://gate.dataloop.ai/api/v1/docs#/Packages/Packages_deletePackages).
 
 ## Custom Querries
 Implementing  Custom Queries will allow you to better Search, Filer, Sort and Update your data. To do that, you will have to [learn more about the Dataloop Query Language (DQL) our proprietary Query Language](https://dataloop.ai/docs/api-dql).
