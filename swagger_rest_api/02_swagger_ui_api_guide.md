@@ -14,7 +14,9 @@ The image above is what you should see after logging in to Dataloop's platform, 
 
 ## Projects 
 
-This section explores the various API requests you can use to manage Projects in Dataloop. Here's a list of the most important Project requests:
+This section explores the various API requests you can use to manage Projects in Dataloop. 
+
+Here's a list of the most important Project requests:
 - [List an User's Projects for the current Organization](https://gate.dataloop.ai/api/v1/docs/#/Projects/get_projects);
 - [Create a new Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/post_projects);
 - [Show a Project's details](https://gate.dataloop.ai/api/v1/docs/#/Projects/get_projects__id_);
@@ -122,7 +124,9 @@ The Items section of the API helps you do a variety of requests regarding Items.
 
 
 ## Annotations
-This section explores the various API requests you can use to manage Annotations in Datalop. Here's a list of the most important Annotation reqeusts:
+This section explores the various API requests you can use to manage Annotations in Datalop.
+
+Here's a list of the most important Annotation reqeusts:
 - [List all Annotations of a specific Item, by ID](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsListAnnotations);
 - [Create an Annotation for an Item](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsCreateAnnotation);
 - [List an Annotation of an Item by Annotation ID](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsGetAnnotation);
@@ -137,19 +141,7 @@ This section explores the various API requests you can use to manage Annotations
 - [Query Annotations for a specified Dataset](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetAnnotationsQueryAnnotations);
 - [List all Annotations of an item by Annotation ID](https://gate.dataloop.ai/api/v1/docs/#/Annotations/AnnotationsGetAnnotation);
 
-### Example: GET Datasets Query for Items (Item count)
-You will now test some commands in the ```Dataset``` section of the API, which will be similar to what we did in the ```Projects``` section. Scroll up to the Dataset Section now. By using a simple query on the Datasets endpoint, you can use the Dataset ID and query to get the requested items.
-
-To do that, you must first find out the ```ID``` of the dataset you wish to Query. To find a Dataset ID, you can just click the ```Get\datasets``` API line, which will return the details about all of the datasets to which you have access in the Dataloop platform. You can also add the name of the Dataset as a parameter to the Query, search by creator or by the Project name. Below, the Query is done by using the Dataset name "Creatures", which is a Dataset used in one of Dataloop's Onboarding Exercises (be sure to use your own Dataset's name):
-![image](https://user-images.githubusercontent.com/58508793/219678882-765f6257-e92e-48dc-a0ad-70fba382227c.png)
-
-The response to this ```GET``` Query can be seen below, including the dataset ID. Be sure to copy this ID, as we will use it in a moment (the ID you see after running the ```GET``` command on **your own dataset**):
-![image](https://user-images.githubusercontent.com/58508793/219679455-89d26a5d-5303-43b8-b3af-86002bf3bb8d.png)
-
-
-
-Filters can be used to specify diferent criteria that can be used to more accurately search for the information you want to find. In the image below, you can see how to input the Dataset ID and a specific Query.
-![image](https://user-images.githubusercontent.com/58508793/218518081-65d657d6-a4c2-4443-8046-e1791b0fa2cd.png)
+## Tasks and Assignments
 
 
 
