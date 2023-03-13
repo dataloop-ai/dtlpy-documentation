@@ -16,7 +16,7 @@ The image above is what you should see after logging in to Dataloop's platform, 
 
 This section explores the various API requests you can use to manage Projects in Dataloop. A Project in Dataloop is a high-level Organizational entity that represents a specific task or goal. It can be used to manage data, Tasks, and Annotations related to a particular Project, and often serves as the main unit of work in the system. It provides a centralized location for managing data and Tasks related to a specific goal or objective. This can help improve collaboration among team members, ensure consistency in the data and Annotations, and make it easier to track progress and results.
 
-Here's a list of the most important Project requests:
+Here's a list of the most important API requests for Projects:
 - [List an User's Projects for the current Organization](https://gate.dataloop.ai/api/v1/docs/#/Projects/get_projects);
 - [Create a new Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/post_projects);
 - [Show a Project's details](https://gate.dataloop.ai/api/v1/docs/#/Projects/get_projects__id_);
@@ -40,7 +40,7 @@ This section will cover the most important API examples, using the API requests 
 - Clone - Contains pointers to original files, enabling management of virtual Items that do not replicate the binaries of the underlying storage once cloned or copied. When cloning a Dataset, users can decide if the new copy will contain Metadata and Annotations created over the original Dataset;
 - Merge - Multiple Datasets can be merged into one, enabling multiple Annotations to be merged onto the same Item (for 2 Datasets to be successfully merged, they need to have the same Recipe and Ontology.
 
-The most important API request can be seen below:
+The most important API request for Datasets can be seen below:
 - [Get a names list of all existing Datasets](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsListDatasets);
 - [Create a new Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsCreateDataset);
 - [Get Dataset by ID](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetDataset);
@@ -65,13 +65,36 @@ The most important API request can be seen below:
 - [Detach Items from Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsDetachItemsFromDataset);
 - [Get a Project's Datasets](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetProjectDatasets);
 
+## Recipes
+A "Recipe" refers to a set of instructions or rules that define how data should be processed, labeled, or analyzed within a Project. Recipes can be thought of as templates or workflows that provide a standardized way of working with data and can help to streamline the process of generating labeled Datasets for machine learning and other applications. Linked with an Ontology, the Recipe adds labeling instructions and settings, such as labeling tools to be used, mapping of tools to specific labels/Attributes, PDF instructions file, and more. Recipes in the Dataloop system can be customized and adapted to fit a wide range of use cases and data types.
 
+Here are the most important API requests for Recipes:
+- [Create a new Recipe](https://gate.dataloop.ai/api/v1/docs#/Recipes/RecipesCreateRecipe);
+- [Find Recipes by Query](https://gate.dataloop.ai/api/v1/docs#/Recipes/RecipesFindRecipes);
+- [Clone a Recipe](https://gate.dataloop.ai/api/v1/docs#/Recipes/RecipesCloneRecipe);
+- [Update an existing Recipe](https://gate.dataloop.ai/api/v1/docs#/Recipes/RecipesPatchRecipe);
+- [Get a specific Recipe](https://gate.dataloop.ai/api/v1/docs#/Recipes/RecipesGetRecipe);
+- [Delete a Recipe](https://gate.dataloop.ai/api/v1/docs#/Recipes/RecipesDeleteRecipe).
+
+
+## Ontologies
+An Ontology in Dataloop represents a set of definitions that describe the structure and relationships of your Labels. The Ontology of a Dataset is the building block of your Model and will help you define the object detection your trained model provides. Ontology holds 2 important components that are used in your Project:
+- Labels (like classes) - are the names you use to classify your Annotations;
+- Attributes - allow additional independent degrees of freedom while building a world definition.
+
+Here are the most important API requests for Ontology:
+- [Create a new Ontology](https://gate.dataloop.ai/api/v1/docs#/Ontologies/OntologiesCreateOntology);
+- [Find Ontologies using a Query](https://gate.dataloop.ai/api/v1/docs#/Ontologies/OntologiesFindOntologies);
+- [Update an existing Ontology](https://gate.dataloop.ai/api/v1/docs#/Ontologies/OntologiesUpdateOntology);
+- [Get a specific Ontology by ID](https://gate.dataloop.ai/api/v1/docs#/Ontologies/OntologiesGetOntology);
+- [Delete an Ontology](https://gate.dataloop.ai/api/v1/docs#/Ontologies/OntologiesDeleteOntology);
+- [Update an existing Ontology](https://gate.dataloop.ai/api/v1/docs#/Ontologies/OntologiesAddLabels).
 
 
 ## Items
 The Items section of the API helps you do a variety of requests regarding Items. An Item in Dataloop, is a unit of data that represents a ‘single instance’ or ‘file’ of a larger Dataset. It can be an image, a video, a sound recording, a text document, or any other type of digital asset that needs to be labeled, annotated, or analyzed. Each Item in the Dataloop system is typically associated with one or more Tasks, which define the specific operations that need to be performed on the Item. For example, an Item may be labeled with Bounding Boxes to identify objects in an image, transcribed to convert speech-to-text, or classified based on its content. Items also have associated Metadata.
 
-Here are some of the most important requests (with links) and their functionality:
+Here are some of the most important API requests for Items:
 - [List items in a dataset](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsGetItems);
 - [Create a new item in a dataset](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsCreateItem);
 - [Move files to a specified directory](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsMoveItems);
