@@ -30,7 +30,7 @@ Here's a list of the most important API requests for Projects:
 - [Move the Project to another Organization](https://gate.dataloop.ai/api/v1/docs/#/Projects/patch_projects__project_id__org);
 - [Add an account to a Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/post_projects__project_id__accounts);
 - [Remove an account from a Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/delete_projects__project_id__accounts);
-- [Replace an account for a Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/patch_projects__project_id__accounts);
+- [Replace an account for a Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/patch_projects__project_id__accounts).
 
 
 ## Datasets
@@ -63,7 +63,7 @@ The most important API request for Datasets can be seen below:
 - [Synchronize missing files from storage](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsSync);
 - [Import Items to the Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsImportItemsToDataset);
 - [Detach Items from Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsDetachItemsFromDataset);
-- [Get a Project's Datasets](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetProjectDatasets);
+- [Get a Project's Datasets](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetProjectDatasets).
 
 ## Recipes
 A "Recipe" refers to a set of instructions or rules that define how data should be processed, labeled, or analyzed within a Project. Recipes can be thought of as templates or workflows that provide a standardized way of working with data and can help to streamline the process of generating labeled Datasets for machine learning and other applications. Linked with an Ontology, the Recipe adds labeling instructions and settings, such as labeling tools to be used, mapping of tools to specific labels/Attributes, PDF instructions file, and more. Recipes in the Dataloop system can be customized and adapted to fit a wide range of use cases and data types.
@@ -106,7 +106,7 @@ Here are some of the most important API requests for Items:
 - [Stream an Item](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsStreamItem);
 - [Stream Item's Thumbnail](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsStreamItemThumbnail);
 - [Get Directory Child Items](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsGetDirectoryChildItems);
-- [Clone Item](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsCloneItem);
+- [Clone Item](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsCloneItem).
 
 
 ## Annotations
@@ -130,7 +130,7 @@ Here's a list of the most important Annotation reqeusts:
 - [Update an Item's Annotation Log](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsLogUpdateAnnotation);
 - [Update an Item's Annotation status to issue](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetItemAnnotationsLogAnnotationIssues);
 - [Query Annotations for a specified Dataset](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetAnnotationsQueryAnnotations);
-- [List all Annotations of an item by Annotation ID](https://gate.dataloop.ai/api/v1/docs/#/Annotations/AnnotationsGetAnnotation);
+- [List all Annotations of an item by Annotation ID](https://gate.dataloop.ai/api/v1/docs/#/Annotations/AnnotationsGetAnnotation).
 
 ## Tasks 
 This section explore how to use the API to create and manage Annotation Tasks. A Task in Dataloop is a unit of work that needs to be completed by an individual or a team. A Task can represent any type of activity, such as annotating data, reviewing Annotations, labeling images, performing Quality Assurance (QA) checks, or any other data-related Task that requires human input. Tasks in the Dataloop system are created by Project managers, who define the specific requirements for each Task, such as the type of data to be labeled, the Annotation instructions, the deadline, and the number of annotators required. Tasks are then assigned to individual annotators or teams of annotators who complete the Task according to the specified requirements.
@@ -141,7 +141,7 @@ Here are the most important API requests for Tasks:
 - [Add work (or items to be annotated) to an existing Task](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksAddItemsToTask);
 - [Update an existing Task](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksPatchTask);
 - [Get a specific task by ID](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksGetTask);
-- [Delete a task](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksDeleteTask);
+- [Delete a task](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksDeleteTask).
 
 
 ## Assignments
@@ -156,7 +156,7 @@ Here are the most important API requests for Assignments:
 - [Get a specific Assignment](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsGetAssignment);
 - [Delete a assignment](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsDeleteAssignment);
 - [Reassign Assignment to an Annotator](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsReassignAssignment);
-- [Redistribute an Assignment to Annotators](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsRedistributeAssignment);
+- [Redistribute an Assignment to Annotators](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsRedistributeAssignment).
 
 
 ## Organization
@@ -168,7 +168,7 @@ Here are the most important API request regarding Organizations:
 - [Add a new member into the Organization](https://gate.dataloop.ai/api/v1/docs#/Organization/post_orgs__org_id__members);
 - [Get a specific Organization by ID](https://gate.dataloop.ai/api/v1/docs#/Organization/get_orgs__org_id_);
 - [Delete an Organization (must be Owner)](https://gate.dataloop.ai/api/v1/docs#/Organization/delete_orgs__org_id_);
-- [Update an Organization](https://gate.dataloop.ai/api/v1/docs#/Organization/patch_orgs__org_id__plan);
+- [Update an Organization](https://gate.dataloop.ai/api/v1/docs#/Organization/patch_orgs__org_id__plan).
 
 ## Services (FaaS)
 This section explores the most important API reuqests you can use to manage Sevices. A Service or FaaS (Function-as-a-Service), is a cloud computing model where a cloud provider manages and runs individual functions in response to events or Triggers. In Dataloop, a FaaS Service is a serverless computing Service that allows users to run code without the need to manage servers or infrastructure. The FaaS Service is a key component of the system architecture, providing a platform for executing code and integrating with other Services in the system. The FaaS Service in Dataloop is designed to handle the Execution of small, isolated functions that can be triggered by a variety of events, such as data input from sensors or user actions.
@@ -249,6 +249,20 @@ Here are the most important API calls for Pipelines:
 - [Create Pipeline Template](https://gate.dataloop.ai/api/v1/docs#/pipelines%2Ftemplates/PipelineTemplates_create);
 - [Querry Pipeline Template](https://gate.dataloop.ai/api/v1/docs#/pipelines%2Ftemplates/PipelineTemplates_query).
 
+
+## Composition
+FaaS Functions give you the ability to quickly deploy services that have small functionality. But any more complex use cases requires multiple functions to work together. Function composition refers to combining single functions to create bigger, more complex functions. [Read more about Composing Pipelines here](https://dataloop.ai/docs/composing-pipelines).
+
+Here are the most important API requests regarding Compositions:
+- [Create a new Composition](https://gate.dataloop.ai/api/v1/docs#/compositions/Composition_create);
+- [Get Compositions by Querry](https://gate.dataloop.ai/api/v1/docs#/compositions/Composition_list);
+- [Get an Composition updated Object from the database](https://gate.dataloop.ai/api/v1/docs#/compositions/Composition_get);
+- [Update an existing Composition](https://gate.dataloop.ai/api/v1/docs#/compositions/Composition_update);
+- [Install an existing Composition](https://gate.dataloop.ai/api/v1/docs#/compositions/Composition_install);
+- [Uninstall existing Composition](https://gate.dataloop.ai/api/v1/docs#/compositions/Composition_uninstall);
+- [Delete the composition](https://gate.dataloop.ai/api/v1/docs#/compositions/Composition_terminate).
+
+
 ## Triggers
 A Trigger is a rule-based mechanism that initiates an action when a specific event occurs. Triggers are used to automate workflows and streamline data processing. They are created by defining a set of conditions that must be met for the Trigger to be activated. These conditions can be based on a variety of factors, such as the content of data, the time of day, or the occurrence of specific events. Once a Trigger is activated, it can initiate a range of actions, such as sending notifications, generating reports, or Triggering the Execution of a specific Task or workflow. It can be of 2 types:
 
@@ -261,17 +275,77 @@ Here are the most important API requests for Triggers:
 - [Get Trigger by ID](https://gate.dataloop.ai/api/v1/docs#/Triggers/Triggers_getTrigger);
 - [Update a Trigger](https://gate.dataloop.ai/api/v1/docs#/Triggers/Triggers_updateTrigger);
 - [Delete a Trigger](https://gate.dataloop.ai/api/v1/docs#/Triggers/Triggers_deleteTriggers);
-- [Querry a Trigger's resource information](https://gate.dataloop.ai/api/v1/docs#/TriggerResourceInformation/TriggerResourceInformation_queryTriggerResourceInformation);
-- 
+- [Querry a Trigger's resource information](https://gate.dataloop.ai/api/v1/docs#/TriggerResourceInformation/TriggerResourceInformation_queryTriggerResourceInformation).
 
 
-##
+## Features, Sets, Vectors
+A Feature vector is a numerical representation of an object or entity, typically used in machine learning and data analysis. It consists of a list of Features or Attributes that describe the object in a quantitative manner. A Feature set, on the other hand, is a collection of Feature vectors that are used to train a machine-learning algorithm. The Feature set contains all the necessary Features that are relevant to the problem being solved and is used to extract meaningful patterns and relationships from the data. The Dataloop system enables Feature vector augmentations on both Items and Annotations, this capability grants users the ability to search and Filter Annotations and Items according to their ‘similarity’ in the euclidean space.
+
+Here are the most important API requests regarding Features:
+- [Get Feature Vectors by creator](https://gate.dataloop.ai/api/v1/docs#/features/FeatureVectorsGetFeatureVectors);
+- [Add new Feature Vector](https://gate.dataloop.ai/api/v1/docs#/features/FeatureVectorsAddFeatureVectors);
+- [Get a Feature Vector by ID](https://gate.dataloop.ai/api/v1/docs#/features/FeatureVectorsGetFeatureVector);
+- [Delete a Feature Vector by ID](https://gate.dataloop.ai/api/v1/docs#/features/FeatureVectorsDeleteFeatureVector);
+- [Query Feature Vectors](https://gate.dataloop.ai/api/v1/docs#/features/FeatureVectorsQueryFeatures);
+- [Get a feature set by ID](https://gate.dataloop.ai/api/v1/docs#/features/FeatureSetsGetFeatureSets);
+- [Add a new feature set](https://gate.dataloop.ai/api/v1/docs#/features/FeatureSetsAddFeatureSets);
+- [Get a feature set by ID](https://gate.dataloop.ai/api/v1/docs#/features/FeatureSetsGetFeatureSet);
+- [Delete a feature set by ID](https://gate.dataloop.ai/api/v1/docs#/features/FeatureSetsDeleteFeatureSet);
+- [Update a feature set by ID](https://gate.dataloop.ai/api/v1/docs#/features/FeatureSetsEditFeatureSet).
+
+Feature API requests focused on Vectors:
+- [Get Feature Vectors by creator](https://gate.dataloop.ai/api/v1/docs#/vectors/FeatureVectorsGetFeatureVectors);
+- [Add anew Feature Vector](https://gate.dataloop.ai/api/v1/docs#/vectors/FeatureVectorsAddFeatureVectors);
+- [Get a Feature Vector by ID](https://gate.dataloop.ai/api/v1/docs#/vectors/FeatureVectorsGetFeatureVector);
+- [Delete a Feature Vector by ID](https://gate.dataloop.ai/api/v1/docs#/vectors/FeatureVectorsDeleteFeatureVector);
+- [Query Feature Vectors](https://gate.dataloop.ai/api/v1/docs#/vectors/FeatureVectorsQueryFeatures).
+
+Feature API requests focused on Feature Sets:
+- [Get all Feature Sets](https://gate.dataloop.ai/api/v1/docs#/sets/FeatureSetsGetFeatureSets);
+- [Add a new Feature Set](https://gate.dataloop.ai/api/v1/docs#/sets/FeatureSetsAddFeatureSets);
+- [Get a Feature Set by ID](https://gate.dataloop.ai/api/v1/docs#/sets/FeatureSetsGetFeatureSet);
+- [Delete a Feature Set by ID](https://gate.dataloop.ai/api/v1/docs#/sets/FeatureSetsDeleteFeatureSet);
+- [Update a feature set by ID](https://gate.dataloop.ai/api/v1/docs#/sets/FeatureSetsEditFeatureSet).
 
 
+## Models
+A Model entity in Dataloop refers to a machine learning algorithm that has been trained on labeled data to make predictions or perform other Tasks. Models are a key component of the Dataloop system, as they enable users to apply machine-learning techniques to a wide range of data types, including images, text, and audio. The system has several pre-installed and publicly available model architectures, which can be installed in your Project and trained with your data to achieve the pre-annotation of your labels such as ResNet, Yolo-V5, U-net. A Dataloop Model is a combination of data (dl.Dataset), configurations (json dictionary), and code (dl.Package) to represent a learnable instance of the data. You can train, evaluate, compare, and deploy a dl.Model in Dataloop.
 
+Here are the most important API requests for Models:
+- [Get the details of a Model using ID](https://gate.dataloop.ai/api/v1/docs#/Models/Get%20Model);
+- [Update a Model](https://gate.dataloop.ai/api/v1/docs#/Models/Update%20Model);
+- [Delete a Model](https://gate.dataloop.ai/api/v1/docs#/Models/Delete%20Model);
+- [Get models by using a Query](https://gate.dataloop.ai/api/v1/docs#/Models/List%20Models);
+- [Create a new Model](https://gate.dataloop.ai/api/v1/docs#/Models/Create%20Model);
+- [Query Models](https://gate.dataloop.ai/api/v1/docs#/Models/Query%20Models);
+- [Train a Model](https://gate.dataloop.ai/api/v1/docs#/Models/Train%20Model);
+- [Model Prediction](https://gate.dataloop.ai/api/v1/docs#/Models/Model%20Prediction);
+- [Evaluate a Model](https://gate.dataloop.ai/api/v1/docs#/Models/Evaluate%20Model);
+- [Deploy a Model](https://gate.dataloop.ai/api/v1/docs#/Models/Deploy%20Model);
+- [Clone a Model](https://gate.dataloop.ai/api/v1/docs#/Models/Clone%20Model);
+- [Show the latest Model executions](https://gate.dataloop.ai/api/v1/docs#/Models/Models%20Executions);
+- [Show the latest Model Services](https://gate.dataloop.ai/api/v1/docs#/Models/Models%20Services);
+- [Show all Dataset that the Model has been assigned to](https://gate.dataloop.ai/api/v1/docs#/Models/Models%20Datasets%20Count).
 
+Model Metrics can also be used to analyse your Models and extract important insights from them, using these API requests:
+- [Generate Model Metrics Report](https://gate.dataloop.ai/api/v1/docs#/Model%20Metrics/Generate%20Model%20Metrics%20Report);
+- [Publish Model Metrics](https://gate.dataloop.ai/api/v1/docs#/Model%20Metrics/Publish%20Model%20Metrics);
+- [Delete a Metric](https://gate.dataloop.ai/api/v1/docs#/Model%20Metrics/Delete%20Metric);
+- [Query Model Metrics](https://gate.dataloop.ai/api/v1/docs#/Model%20Metrics/Query%20Model%20Metrics).
 
+## Applications & DPK
+Here are the most important API requests for Applications:
+- [Install a new Application](https://gate.dataloop.ai/api/v1/docs#/apps/App_install);
+- [Update an existing Application](https://gate.dataloop.ai/api/v1/docs#/apps/App_update);
+- [Get an Application updated object from the database](https://gate.dataloop.ai/api/v1/docs#/apps/App_get);
+- [Uninstall a running Application(will remove all the components belonging to the app)](https://gate.dataloop.ai/api/v1/docs#/apps/App_uninstall);
 
+DPK Applications API requests:
+- [Publish an DPK Application](https://gate.dataloop.ai/api/v1/docs#/dpk/Dpk_publish);
+- [Get an dpk updated object from the database](https://gate.dataloop.ai/api/v1/docs#/dpk/Dpk_get);
+- [Delete an dpk Application](https://gate.dataloop.ai/api/v1/docs#/dpk/Dpk_deleteOne);
+- [Get the revisions of a dpk by name](https://gate.dataloop.ai/api/v1/docs#/dpk/Dpk_getRevisions);
+- [Querry DPK](https://gate.dataloop.ai/api/v1/docs#/dpk/Dpk_query).
 
 
 
@@ -340,178 +414,8 @@ In the ```Response Body``` you will receive all of the details and inforamtion t
 
 
 ## Custom Querries
-Implementing  Custom Queries will allow you to better Search, Filer, Sort and Update your data. To do that, you will have to [learn more about the Dataloop Query Language (DQL) our proprietary Query Language](https://dataloop.ai/docs/api-dql).
+Implementing  Custom Queries will allow you to better Search, Filer, Sort and Update your data. If you want to do that, you can [learn more about the Dataloop Query Language (DQL), our proprietary Query Language](https://dataloop.ai/docs/api-dql).
 
-Below, you can find some Queries we created for you, to search your Dataset for all a specific Annotation - in ths case "Bear". Just copy and paste it in the ```/datasets/{id}/query```. You should have the Dataset ```ID``` available from the API call we did above. Of course, you need to have at least an Annotated Item with the annotation "Bear" in your Dataset for this complete example to work.  To search for a specific Annotation you have, you can change the "Bear" string with the Annotation your Item in your Dataset. You would do the following:
-
-```
-copy{
-   "resource":"items",
-   "filter":{
-      "$and":[
-         {
-            "type":"file"
-         },
-         {
-            "hidden":false
-         }
-      ]
-   },
-   "join":{
-      "on":{
-         "resource":"annotations",
-         "local":"itemId",
-         "forigen":"id"
-      },
-      "filter":{
-         "$and":[
-            {
-               "label":{
-                  "$in":[
-                     "Bear"
-                  ]
-               }
-            },
-            {
-               "type":{
-                  "$in":[
-                     "box"
-                  ]
-               }
-            }
-         ]
-      }
-   }
-}
-```
-The Response body for this query should show you the Items in your dataset that are Annotated with the specific Annotation you provided the Query. You will see the all of the detailed information for each Item under its Item Metadata, similar to the output seen below:
-```
-copy{
-  "totalItemsCount": 2,
-  "items": [
-    {
-      "id": "5e5fdae499d5538db88b8d5f",
-      "datasetId": "5e5fdad764cab43156881739",
-      "createdAt": "2020-03-04T16:44:20.000Z",
-      "dir": "/",
-      "filename": "/18407C.JPG",
-      "type": "file",
-      "hidden": false,
-      "metadata": {
-        "system": {
-          "originalname": "18407C.JPG",
-          "size": 340727,
-          "encoding": "7bit",
-          "mimetype": "image/jpeg",
-          "annotationStatus": [],
-          "refs": [],
-          "executionLogs": {
-            "image-metadata-extractor": {
-              "default_module": {
-                "run": {
-                  "5e5fdae44eac5e41d231dbf4": {
-                    "progress": 100,
-                    "status": "success"
-                  }
-                }
-              }
-            }
-          },
-          "exif": {},
-          "height": 1007,
-          "width": 1600
-        }
-      },
-      "name": "18407C.JPG",
-      "url": "https://gate.dataloop.ai/api/v1/items/5e5fdae499d5538db88b8d5f",
-      "dataset": "https://gate.dataloop.ai/api/v1/datasets/5e5fdad764cab43156881739",
-      "annotated": true,
-      "stream": "https://gate.dataloop.ai/api/v1/items/5e5fdae499d5538db88b8d5f/stream",
-      "thumbnail": "https://gate.dataloop.ai/api/v1/items/5e5fdae499d5538db88b8d5f/thumbnail",
-      "annotations": "https://gate.dataloop.ai/api/v1/items/5e5fdae499d5538db88b8d5f/annotations"
-    },
-    {
-      "id": "5e5fdae4659f5f1a7b74901d",
-      "datasetId": "5e5fdad764cab43156881739",
-      "createdAt": "2020-03-04T16:44:20.000Z",
-      "dir": "/",
-      "filename": "/18407.JPG",
-      "type": "file",
-      "hidden": false,
-      "metadata": {
-        "system": {
-          "originalname": "18407.JPG",
-          "size": 238418,
-          "encoding": "7bit",
-          "mimetype": "image/jpeg",
-          "annotationStatus": [],
-          "refs": [],
-          "executionLogs": {
-            "image-metadata-extractor": {
-              "default_module": {
-                "run": {
-                  "5e5fdae4b314cc1a13c399d7": {
-                    "progress": 100,
-                    "status": "success"
-                  }
-                }
-              }
-            }
-          },
-          "exif": {},
-          "height": 1041,
-          "width": 1291
-        }
-      },
-      "name": "18407.JPG",
-      "url": "https://gate.dataloop.ai/api/v1/items/5e5fdae4659f5f1a7b74901d",
-      "dataset": "https://gate.dataloop.ai/api/v1/datasets/5e5fdad764cab43156881739",
-      "annotated": true,
-      "stream": "https://gate.dataloop.ai/api/v1/items/5e5fdae4659f5f1a7b74901d/stream",
-      "thumbnail": "https://gate.dataloop.ai/api/v1/items/5e5fdae4659f5f1a7b74901d/thumbnail",
-      "annotations": "https://gate.dataloop.ai/api/v1/items/5e5fdae4659f5f1a7b74901d/annotations"
-    }
-  ],
-  "totalPagesCount": 1,
-  "hasNextPage": false
-}
-```
-
-## Example: POST Datasets Query for Annotations
-
-In this example you learn how to get the Annotation count for all the Bounding Box with the Labels "dogs" from your dataset. You can also change the Label "dogs" with a Label that you have in your own Dataset.
-
-First, you need to go to  ```POST/datasets/query``` from the ```Dataset``` section of the Swagger API, and click ```Try Out```:
-![image](https://user-images.githubusercontent.com/58508793/219695497-83099e65-7881-4016-8886-fbf36ffc7cdb.png)
-
-You can then add the the below request body (or your request body), in the Query area:
-```
-copy{
-   "resource":"annotations",
-   "filter":{
-      "$and":[
-         {
-            "label":{
-               "$in":[
-                  "dogs"
-               ]
-            }
-         },
-         {
-            "type":{
-               "$in":[
-                  "box"
-               ]
-            }
-         }
-      ]
-   }
-}
-```
-And then press execute, to apply your Query:
-![image](https://user-images.githubusercontent.com/58508793/219695813-00cbe260-1c72-4749-b91c-e99d89ac2a43.png)
-
-You should get all of the Items with the Annotation "dogs", and all of their Metadata details.
 
 ## Final Words
 
