@@ -411,7 +411,7 @@ You should now instantly recieve a response in JSON format that shows all Projec
 In the ```Response Body``` you will receive all of the details and inforamtion that the command you ran returns. Feel free to try more commands in the ```Projects``` section on your own.
 
 ### Example 4: List a Project's Recipes
-In this example, we will retrieve a list of all of the Recipes that are available in a given project, by using a Project's ID. [Click here to go to the "Get/recipes" section](https://gate.dataloop.ai/api/v1/docs#/Recipes/RecipesFindRecipes). Then, as usual, click on the "Try Out" button, and you should see this:
+In this example, we will retrieve a list of all of the Recipes that are available in a given project, by using a Project's ID. [Click here to go to the "Get/recipes" section](https://gate.dataloop.ai/api/v1/docs#/Recipes/RecipesFindRecipes). Then, as usual, click on the "Try it out" button, and you should see this:
 
 ![image](https://user-images.githubusercontent.com/58508793/225086132-f19a65e4-498c-4281-857c-8f3bba90da4f.png)
 
@@ -445,7 +445,22 @@ Here, you can use a Project's ID, and filter using other paramenters, like Datas
 
 ![image](https://user-images.githubusercontent.com/58508793/225093480-e2c513f7-4275-4839-b779-6332865e3ca3.png)
 
-### Example 7:
+### Example 7: List all Projects from a specific Organization
+In this example, we will add a new User to be a part of a specific Organization. To do that, you must first [go to the "GET/orgs/{org_id}/projects"](https://gate.dataloop.ai/api/v1/docs#/Organization/get_orgs__org_id__projects) in the Organization section. After that, use the "Try it out" button, and you should see something simmilar to what you see below:
+
+![image](https://user-images.githubusercontent.com/58508793/225096445-c5381326-e174-4e05-8d94-46c37dbab348.png)
+
+You will need to find out your Organization's ID to perform this request. To do that, you need to go to the web-version of Dataloop, select the Organization you want, and then go to the "Orgamization Overview" section. There, you will find the ID of the active Organization in the site URL, like you can observe below:
+
+![image](https://user-images.githubusercontent.com/58508793/225097020-111fcdf0-3a62-4875-a147-aa778aafb71f.png)
+
+You can then use that ID in the ["GET/orgs/{org_id}/projects"](https://gate.dataloop.ai/api/v1/docs#/Organization/get_orgs__org_id__projects) request and press the Execute button. You should then see a list of details about your Organization, and then a list of all of the Projects (and  Project details) of that Organization - as you can observe below:
+![image](https://user-images.githubusercontent.com/58508793/225099630-0cd0001b-fa8b-4db4-a234-0c30b6f62523.png)
+
+**Note:** You can also use this request to find the Project IDs for the projects of a specific Organization, when needed.
+
+
+
 
 
 ## Custom Querries
