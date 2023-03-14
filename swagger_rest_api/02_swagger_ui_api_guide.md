@@ -1,5 +1,10 @@
 # Swagger UI API Documentation
 
+## Contents
+### API requests
+ ([Projects](#Projects))
+
+## Intro
 Dataloop's [Swagger UI](https://gate.dataloop.ai/api/v1/docs) offers the ability to perform API Requests such as ```GET```, ```POST```, ```PUT```, ```PATCH``` and 
 ```DELETE``` to different endpoints in our backend services like Projects, Datasets, Tasks, etc. It makes the process extremely easy and intuitive. With only a few clicks, you can run commands to get any information you may require about your Projects, Items, Datasets, Tasks or any other entity that is part of Dataloop.
 
@@ -12,7 +17,7 @@ The image above is what you should see after logging in to Dataloop's platform, 
 
 **Note:** This Swagger API guide will have the same structure as our [Developer Onboarding](../onboarding), which teaches you how to use the basic functions of Dataloop in Python code. Everything we'll cover in this guide can be done in Python code (in the Python SDK) as well as using the API.
 
-## Projects 
+## <a name="Projects"></a>Projects 
 
 This section explores the various API requests you can use to manage Projects in Dataloop. A Project in Dataloop is a high-level Organizational entity that represents a specific task or goal. It can be used to manage data, Tasks, and Annotations related to a particular Project, and often serves as the main unit of work in the system. It provides a centralized location for managing data and Tasks related to a specific goal or objective. This can help improve collaboration among team members, ensure consistency in the data and Annotations, and make it easier to track progress and results.
 
