@@ -176,7 +176,7 @@ Here are the most important API request regarding Organizations:
 - [Delete an Organization (must be Owner)](https://gate.dataloop.ai/api/v1/docs#/Organization/delete_orgs__org_id_);
 - [Update an Organization](https://gate.dataloop.ai/api/v1/docs#/Organization/patch_orgs__org_id__plan).
 
-## <a name="Services(FaaS)"></a>Services(FaaS)
+## <a name="Services"></a>Services(FaaS)
 This section explores the most important API reuqests you can use to manage Sevices. A Service or FaaS (Function-as-a-Service), is a cloud computing model where a cloud provider manages and runs individual functions in response to events or Triggers. In Dataloop, a FaaS Service is a serverless computing Service that allows users to run code without the need to manage servers or infrastructure. The FaaS Service is a key component of the system architecture, providing a platform for executing code and integrating with other Services in the system. The FaaS Service in Dataloop is designed to handle the Execution of small, isolated functions that can be triggered by a variety of events, such as data input from sensors or user actions.
 
 A service can also be thought as a deployed Package that serves the code. Given the matching input to a function, it will run it and return the output, e.g. if we have code in our Package for converting RGB images to grayscale, the dl.Service would run the code and upload the grayed image (the processing would be done on the Cloud, and we would receive only the output of that Cloud processing).
