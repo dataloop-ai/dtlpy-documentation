@@ -1,8 +1,8 @@
 meta:
-  title: Redocly Training
-  description: The best API documentation generator ever.
-  siteUrl: https://developer-portal-starter.redoc.ly
-  keywords: redocly developer portal, api portal starter, api reference docs
+  title: Dataloop's Developers
+  description: Drive your AI to production with end-to-end data management, automation pipelines and a quality-first data labeling platform.
+  siteUrl: https://developers.dataloop.ai
+  keywords: dataloop developer portal, api portal starter, api reference docs
   lang: en-US
 linkChecker:
   severity: warning
@@ -10,7 +10,7 @@ linkChecker:
     CheckExternal: false
 logo:
   image: ./images/dl_logo-removebg-preview.png
-  altText: Redocly Training
+  altText: Dataloop's Developers
 toc:
   enable: true
 oasDefinitions:
@@ -43,19 +43,19 @@ nav:
   - search: true
 
 footer:
-  copyrightText: Copyright © Redocly 2019-2021. All right reserved.
+  copyrightText: Copyright © Dataloop Ltd. 2023
   columns:
     - group: Legal
       items:
         - label: Terms of Use
-          href: 'https://redoc.ly/subscription-agreement/'
+          href: 'https://dataloop.ai/terms/'
         - label: Privacy Notice
-          href: 'https://redoc.ly/privacy-notice/'
+          href: 'https://dataloop.ai/privacy-policy/'
         - label: Cookie Notice
-          href: 'https://redoc.ly/cookie-notice/'
+          href: 'https://dataloop.ai/privacy-policy/'
     - group: Support
       items:
         - label: FAQ
-          page: faq.md
+          href: 'https://dataloop.ai/docs/help-getting-started'
         - label: Contact us
-          page: contact.mdx
+          href: 'https://dataloop.ai/contact/'
