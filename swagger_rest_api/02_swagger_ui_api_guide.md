@@ -361,7 +361,7 @@ DPK Applications API requests:
 
 ## <a name="Examples"></a>Examples
 
-### <a name="ShowAllDatasets"></a> Example 1: Show all datasets
+### Example 1: Show all datasets
 To show all of the datasets in your organization (or in a particular project, if you want to), you can use the ```GET/datasets``` API request. Go to the Datasets section, look for it and click it. It should look like this once selected:
 
 ![image](https://user-images.githubusercontent.com/58508793/224307707-27a41a69-9a95-4d0c-86e3-c9e2b245e829.png)
@@ -392,7 +392,7 @@ As you can observe in the Response Body, the "Creatures" Dataset has a total of 
 
 ### Example 3: GET a list of Projects 
 
-Let's get started with an example of a basic API request. Go ahead and scroll down until you find the "Projects" section. 
+Let's now test an example of a basic Project API request. Go ahead and scroll down until you find the "Projects" section. 
 
 ![image](https://user-images.githubusercontent.com/58508793/219648842-aba4b7ff-c26d-4315-ab71-2eaf719e8732.png)
 
@@ -410,14 +410,42 @@ You should now instantly recieve a response in JSON format that shows all Projec
 
 In the ```Response Body``` you will receive all of the details and inforamtion that the command you ran returns. Feel free to try more commands in the ```Projects``` section on your own.
 
-Example 4: 
+### Example 4: List a Project's Recipes
+In this example, we will retrieve a list of all of the Recipes that are available in a given project, by using a Project's ID. [Click here to go to the "Get/recipes" section](https://gate.dataloop.ai/api/v1/docs#/Recipes/RecipesFindRecipes). Then, as usual, click on the "Try Out" button, and you should see this:
+
+![image](https://user-images.githubusercontent.com/58508793/225086132-f19a65e4-498c-4281-857c-8f3bba90da4f.png)
+
+As you can observe, there are multiple paramenters you can complete, but the most critical field  is the "Projects" in which you need to add an array representing the Project's ID. As you can see, that field was already filled using our "CreatureHun" Project's ID. In you case, you will need to find the ID of the Project you want to Querry and replace the ID you see in the image with your own Project ID. You can find a Project's ID using the [Get Projects] (https://gate.dataloop.ai/api/v1/docs#/Projects/get_projects) API request (which will list all active projects) - or you can go the web version of Dataloop, select your project and then look at the URL, where you will find the Project's ID:
+
+![image](https://user-images.githubusercontent.com/58508793/225088107-e7566b7c-9552-4ed1-bb66-590b49f616a0.png)
+
+After you complete the ID field (and any other fields you wish) and execute, you should see something similar to this, in the Response Body:
+
+![image](https://user-images.githubusercontent.com/58508793/225087359-4d62a8bc-49f2-4a6c-bbec-d1cc62e8d1d5.png)
 
 
+### Example 5: Show Items from a Dataset
+In this example we will show all of the Items from a Dataset. To do so, you have to go to the ["Get Items" API request](https://gate.dataloop.ai/api/v1/docs#/Items/DatasetItemsGetItems) of the Items section. Once there , you should press "Try Out" and you will see this:
 
+![image](https://user-images.githubusercontent.com/58508793/225089839-3f2f79f4-5aa0-4c46-81b3-63f1e982d238.png)
 
+To execute the API request, you must at least provide the Dataset's ID. You can also use an URL encoded JSON Query, if you want to filter for specific Items. To find your Dataset's ID, you can either got  to the "Get/datasets" request and use it to list your Dataset and ID, you go to the web-version of Dataloop, and you will find the ID in the URL, as you can see below:
+![image](https://user-images.githubusercontent.com/58508793/225090815-54e95e00-e6ff-4004-b425-9c2f14d59fcf.png)
 
+The Dataset ID is found immediately after the "/datasets/". You can then use that ID to show all of the Items inside of the Dataset. After running the "Get/items" request, you should get something similar to what you can see below - which is a counter of all of the Items extracted and various details about each of those Items: 
 
+![image](https://user-images.githubusercontent.com/58508793/225090358-44dd83b8-c8dd-47cc-a6c5-9be323827bf1.png)
 
+### Example 6: Find all Tasks in a Project
+In this examples, we will list all of the Tasks that were created as part of a specific Project. To do this, you must go to the ["Get/annotationtasks"](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksFindTasks). As usual, press the "Try Out" button, and a screen where you must provide various parameters will open up:
+
+![image](https://user-images.githubusercontent.com/58508793/225092785-ecd8a6a6-c5f5-485f-ad62-7326272b06c4.png)
+ 
+Here, you can use a Project's ID, and filter using other paramenters, like Dataset, Task Name, Creator, etc. which will help you filter so you can find the specific Task you are looking for. If you are using only the Project's ID as in the example above, you will get all of the Tasks that were assigned to that project. You can see that in the Response Body, below, after executing the request:
+
+![image](https://user-images.githubusercontent.com/58508793/225093480-e2c513f7-4275-4839-b779-6332865e3ca3.png)
+
+### Example 7:
 
 
 ## Custom Querries
