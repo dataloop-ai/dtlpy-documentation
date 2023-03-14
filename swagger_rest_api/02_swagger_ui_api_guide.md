@@ -2,7 +2,7 @@
 
 ## Contents
 ### API Requests
-[Projects](#Projects)|[Datasets](#Datasets)|[Recipes](#Recipes)|[Ontologies](#Ontologies)|[Items](#Items)|[Annotations](#Annotations)|[Tasks](#Tasks)|[Assignments](#Assignments)|[Organization](#Organization)|[Services](#Services)|[Packages](#Packages)|[Executions](#Executions)|[Pipelines](#Pipelines)|[Composition](#Composition)|[Triggers](#Triggers)|[Features, Sets, Vectors](#Features)|[Models](#Models)|[Applications & DPK](#Applications)|
+[Projects](#Projects) | [Datasets](#Datasets) | [Recipes](#Recipes) | [Ontologies](#Ontologies) | [Items](#Items) | [Annotations](#Annotations)  |[Tasks](#Tasks)|[Assignments](#Assignments)|[Organization](#Organization)|[Services(FaaS)](#Services)|[Packages](#Packages)|[Executions](#Executions)|[Pipelines](#Pipelines)|[Composition](#Composition)|[Triggers](#Triggers)|[Features, Sets, Vectors](#Features)|[Models](#Models)|[Applications & DPK](#Applications)|
 ### Examples
 Examples
 ## Intro
@@ -284,7 +284,7 @@ Here are the most important API requests for Triggers:
 - [Querry a Trigger's resource information](https://gate.dataloop.ai/api/v1/docs#/TriggerResourceInformation/TriggerResourceInformation_queryTriggerResourceInformation).
 
 
-## <a name="Features"></a> Features
+## <a name="Features"></a>Features
 A Feature vector is a numerical representation of an object or entity, typically used in machine learning and data analysis. It consists of a list of Features or Attributes that describe the object in a quantitative manner. A Feature set, on the other hand, is a collection of Feature vectors that are used to train a machine-learning algorithm. The Feature set contains all the necessary Features that are relevant to the problem being solved and is used to extract meaningful patterns and relationships from the data. The Dataloop system enables Feature vector augmentations on both Items and Annotations, this capability grants users the ability to search and Filter Annotations and Items according to their ‘similarity’ in the euclidean space.
 
 Here are the most important API requests regarding Features:
@@ -339,7 +339,7 @@ Model Metrics can also be used to analyse your Models and extract important insi
 - [Delete a Metric](https://gate.dataloop.ai/api/v1/docs#/Model%20Metrics/Delete%20Metric);
 - [Query Model Metrics](https://gate.dataloop.ai/api/v1/docs#/Model%20Metrics/Query%20Model%20Metrics).
 
-## <a name="Applications"></a>Applications&DPK
+## <a name="Applications"></a>Applications
 Here are the most important API requests for Applications:
 - [Install a new Application](https://gate.dataloop.ai/api/v1/docs#/apps/App_install);
 - [Update an existing Application](https://gate.dataloop.ai/api/v1/docs#/apps/App_update);
