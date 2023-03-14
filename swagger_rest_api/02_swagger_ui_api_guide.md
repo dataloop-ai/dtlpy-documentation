@@ -1,9 +1,10 @@
 # Swagger UI API Documentation
 
 ## Contents
-### API requests
- ([Projects](#Projects))
-
+### API Requests
+[Projects](#Projects)|[Datasets](#Datasets)|[Recipes](#Recipes)|[Ontologies](#Ontologies)|[Items](#Items)|[Annotations](#Annotations)|[Tasks](#Tasks)|[Assignments](#Assignments)|[Organization](#Organization)|[Services(FaaS)](#Services(FaaS))|[Packages](#Packages)|[Executions](#Executions)|[Pipelines](#Pipelines)|[Composition](#Composition)|[Triggers](#Triggers)|[Features, Sets, Vectors](#Features)|[Models](#Models)|[Applications & DPK](#Applications)|
+### Examples
+Examples
 ## Intro
 Dataloop's [Swagger UI](https://gate.dataloop.ai/api/v1/docs) offers the ability to perform API Requests such as ```GET```, ```POST```, ```PUT```, ```PATCH``` and 
 ```DELETE``` to different endpoints in our backend services like Projects, Datasets, Tasks, etc. It makes the process extremely easy and intuitive. With only a few clicks, you can run commands to get any information you may require about your Projects, Items, Datasets, Tasks or any other entity that is part of Dataloop.
@@ -38,7 +39,7 @@ Here's a list of the most important API requests for Projects:
 - [Replace an account for a Project](https://gate.dataloop.ai/api/v1/docs/#/Projects/patch_projects__project_id__accounts).
 
 
-## Datasets
+## <a name="Datasets"></a>Datasets
 This section will cover the most important API examples, using the API requests from the Datasets section. A Dataset is a collection of Items (files), their Metadata, and Annotations. A Dataset can have a file-system-like structure, with folders and subfolders at any level. There are different types of Datasets:
 
 - Master - Original Dataset, managing the actual binaries;
@@ -70,7 +71,7 @@ The most important API request for Datasets can be seen below:
 - [Detach Items from Dataset](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsDetachItemsFromDataset);
 - [Get a Project's Datasets](https://gate.dataloop.ai/api/v1/docs/#/Datasets/DatasetsGetProjectDatasets).
 
-## Recipes
+## <a name="Recipes"></a>Recipes
 A "Recipe" refers to a set of instructions or rules that define how data should be processed, labeled, or analyzed within a Project. Recipes can be thought of as templates or workflows that provide a standardized way of working with data and can help to streamline the process of generating labeled Datasets for machine learning and other applications. Linked with an Ontology, the Recipe adds labeling instructions and settings, such as labeling tools to be used, mapping of tools to specific labels/Attributes, PDF instructions file, and more. Recipes in the Dataloop system can be customized and adapted to fit a wide range of use cases and data types.
 
 Here are the most important API requests for Recipes:
@@ -82,7 +83,7 @@ Here are the most important API requests for Recipes:
 - [Delete a Recipe](https://gate.dataloop.ai/api/v1/docs#/Recipes/RecipesDeleteRecipe).
 
 
-## Ontologies
+## <a name="Ontologies"></a>Ontologies
 An Ontology in Dataloop represents a set of definitions that describe the structure and relationships of your Labels. The Ontology of a Dataset is the building block of your Model and will help you define the object detection your trained model provides. Ontology holds 2 important components that are used in your Project:
 - Labels (like classes) - are the names you use to classify your Annotations;
 - Attributes - allow additional independent degrees of freedom while building a world definition.
@@ -96,7 +97,7 @@ Here are the most important API requests for Ontology:
 - [Update an existing Ontology](https://gate.dataloop.ai/api/v1/docs#/Ontologies/OntologiesAddLabels).
 
 
-## Items
+## <a name="Items"></a>Items
 The Items section of the API helps you do a variety of requests regarding Items. An Item in Dataloop, is a unit of data that represents a ‘single instance’ or ‘file’ of a larger Dataset. It can be an image, a video, a sound recording, a text document, or any other type of digital asset that needs to be labeled, annotated, or analyzed. Each Item in the Dataloop system is typically associated with one or more Tasks, which define the specific operations that need to be performed on the Item. For example, an Item may be labeled with Bounding Boxes to identify objects in an image, transcribed to convert speech-to-text, or classified based on its content. Items also have associated Metadata.
 
 Here are some of the most important API requests for Items:
@@ -114,7 +115,7 @@ Here are some of the most important API requests for Items:
 - [Clone Item](https://gate.dataloop.ai/api/v1/docs/#/Items/DatasetItemsCloneItem).
 
 
-## Annotations
+## <a name="Annotations"></a>Annotations
 This section explores the various API requests you can use to manage Annotations in Datalop. An Annotation entity refers to a label, tag, or another piece of Metadata that is attached to an Item in a Dataset. Annotations are typically used to provide additional context or information about an Item, and to enable machine learning models to better understand and interpret the data. Annotations in the Dataloop system can take many forms, depending on the specific Task and type of data being annotated. Annotations in the Dataloop system are typically created by human annotators, who use the system's interface to draw bounding boxes, select Labels, or enter text. Annotations can also be reviewed and verified by other annotators or team Members, to ensure accuracy and consistency. Some common types of Annotations include:
 
 - Bounding Boxes - Used to identify the location and size of objects within images or videos;
@@ -137,7 +138,7 @@ Here's a list of the most important Annotation reqeusts:
 - [Query Annotations for a specified Dataset](https://gate.dataloop.ai/api/v1/docs/#/Annotations/DatasetAnnotationsQueryAnnotations);
 - [List all Annotations of an item by Annotation ID](https://gate.dataloop.ai/api/v1/docs/#/Annotations/AnnotationsGetAnnotation).
 
-## Tasks 
+## <a name="Tasks"></a>Tasks 
 This section explore how to use the API to create and manage Annotation Tasks. A Task in Dataloop is a unit of work that needs to be completed by an individual or a team. A Task can represent any type of activity, such as annotating data, reviewing Annotations, labeling images, performing Quality Assurance (QA) checks, or any other data-related Task that requires human input. Tasks in the Dataloop system are created by Project managers, who define the specific requirements for each Task, such as the type of data to be labeled, the Annotation instructions, the deadline, and the number of annotators required. Tasks are then assigned to individual annotators or teams of annotators who complete the Task according to the specified requirements.
 
 Here are the most important API requests for Tasks:
@@ -149,7 +150,7 @@ Here are the most important API requests for Tasks:
 - [Delete a task](https://gate.dataloop.ai/api/v1/docs#/Tasks/TasksDeleteTask).
 
 
-## Assignments
+## <a name="Assignments"></a>Assignments
 An Assignment is a specific Task that is assigned to an individual, represents a unique instance of an Assignment, and contains all the information necessary for annotators to complete the work. As Annotators work on the Assignment, Annotators can communicate with Project Managers or team leaders and can ask for clarification on any aspects of the Task that are unclear. Once an Assignment is completed, the Dataloop system automatically aggregates the results and provides Project managers with real-time insights into the progress of each Assignment, the quality of the Annotations, and the overall status of the Project.
 
 An Assigment may be an Item or collection of Items that are allocated to an Annotator for manual annotation and/or review. Items can be redistributed or reassigned between Assignments. The Annotator is also referred to as an “Assignee” or "Contributor".
@@ -164,7 +165,7 @@ Here are the most important API requests for Assignments:
 - [Redistribute an Assignment to Annotators](https://gate.dataloop.ai/api/v1/docs#/Assignments/AssignmentsRedistributeAssignment).
 
 
-## Organization
+## <a name="Organization"></a>Organization
 This section explores the most important API requests you can use to manage your Organization. In Dataloop, an Organization is an entity composed of one or more users who collaborate on data-related Projects and share Resources and data. An Organization is composed of multiple elements like Integration/Secrets, Members, Bots, and ComputerCache. The leader of an Organization is the Owner. An Owner in Dataloop represents the User who created the Organization.  An owner can delete/rename an Organization, create Projects, and add/remove Organization Members. The Owner cannot be removed from the Organization.
 
 Here are the most important API request regarding Organizations:
@@ -175,7 +176,7 @@ Here are the most important API request regarding Organizations:
 - [Delete an Organization (must be Owner)](https://gate.dataloop.ai/api/v1/docs#/Organization/delete_orgs__org_id_);
 - [Update an Organization](https://gate.dataloop.ai/api/v1/docs#/Organization/patch_orgs__org_id__plan).
 
-## Services (FaaS)
+## <a name="Services(FaaS)"></a>Services(FaaS)
 This section explores the most important API reuqests you can use to manage Sevices. A Service or FaaS (Function-as-a-Service), is a cloud computing model where a cloud provider manages and runs individual functions in response to events or Triggers. In Dataloop, a FaaS Service is a serverless computing Service that allows users to run code without the need to manage servers or infrastructure. The FaaS Service is a key component of the system architecture, providing a platform for executing code and integrating with other Services in the system. The FaaS Service in Dataloop is designed to handle the Execution of small, isolated functions that can be triggered by a variety of events, such as data input from sensors or user actions.
 
 A service can also be thought as a deployed Package that serves the code. Given the matching input to a function, it will run it and return the output, e.g. if we have code in our Package for converting RGB images to grayscale, the dl.Service would run the code and upload the grayed image (the processing would be done on the Cloud, and we would receive only the output of that Cloud processing).
@@ -203,7 +204,7 @@ Here are the most important API requests for Services:
 - [Delete docker private registry credentials from the user compute system](https://gate.dataloop.ai/api/v1/docs#/compute/Compute_deleteRegistryCred).
 
 
-## Packages
+## <a name="Packages"></a>Packages
 This section explores the most important API requests regrding Packages. A Package refers to an entity that is processed using the "Functions-as-a-Service" (FaaS) technology. FaaS Packages are used to automate the processing of data and can be used to perform a wide range of Tasks, such as data cleaning, data transformation, and data enrichment. FaaS Packages in the Dataloop system are created by Project managers or data scientists, who define the specific requirements for each Package, such as the data inputs, the functions to be executed, and the output data format. Once the FaaS Package is defined, it can be executed using the Dataloop FaaS engine, which automatically manages the Execution of the functions within the Package. The Package is a static code with a schema that holds all the Modules, functions, and the code base from which they can be taken.
 
 A Package could also be thought as a bundle of code and definitions that can be used for creating models or deploying services. Code is a dl.Codebase entity, and definitions include modules, functions, IOs, and the code entry point. For now, it can be Python, nodeJS format. The main function of Packages is to deploy a Service and create an executable version of that code. Packages can be public, global, or specific to a particular Project.
@@ -216,7 +217,7 @@ Here are the most important API requests regarding Packages:
 - [Get Package revisions by ID](https://gate.dataloop.ai/api/v1/docs#/Packages/Packages_getPackageRevisions);
 - [Delete a Package by ID](https://gate.dataloop.ai/api/v1/docs#/Packages/Packages_deletePackages).
 
-## Executions
+## <a name="Executions"></a>Executions
 This section explores the most important API requests regrding Executions. An Execution refers to the process of executing a function within the FaaS Service. When a user submits a function for Execution, the FaaS Service creates a container to run the function and provides any necessary inputs. The function is executed within the container, and the results are returned to the user.
 
 Here are the most important API requests regarding Packages:
@@ -232,7 +233,7 @@ Here are the most important API requests regarding Packages:
 - [Terminate an Execution using ID](https://gate.dataloop.ai/api/v1/docs#/Executions/Executions_terminateExecution).
 
 
-## Pipelines
+## <a name="Pipelines"></a>Pipelines
 Pipelines allow you to create automated flows that weave together humans and machines to process data in a Pipeline architecture. Pipelines consist of a series of Nodes, where each Node’s output is the input of the next one. They allow for transitioning of data between labeling and QA Tasks, FaaS (see entry for Package), and code snippets and, machine learning (ML) models. It is flexible and scalable and can be used for both training and production. Common examples of use cases include automatic pre-processing of data for Annotation workflows and deployment Pipelines for ML models.
 
 Here are the most important API calls for Pipelines:
@@ -255,7 +256,7 @@ Here are the most important API calls for Pipelines:
 - [Querry Pipeline Template](https://gate.dataloop.ai/api/v1/docs#/pipelines%2Ftemplates/PipelineTemplates_query).
 
 
-## Composition
+## <a name="Composition"></a>Composition
 FaaS Functions give you the ability to quickly deploy services that have small functionality. But any more complex use cases requires multiple functions to work together. Function composition refers to combining single functions to create bigger, more complex functions. [Read more about Composing Pipelines here](https://dataloop.ai/docs/composing-pipelines).
 
 Here are the most important API requests regarding Compositions:
@@ -268,7 +269,7 @@ Here are the most important API requests regarding Compositions:
 - [Delete the composition](https://gate.dataloop.ai/api/v1/docs#/compositions/Composition_terminate).
 
 
-## Triggers
+## <a name="Triggers"></a>Triggers
 A Trigger is a rule-based mechanism that initiates an action when a specific event occurs. Triggers are used to automate workflows and streamline data processing. They are created by defining a set of conditions that must be met for the Trigger to be activated. These conditions can be based on a variety of factors, such as the content of data, the time of day, or the occurrence of specific events. Once a Trigger is activated, it can initiate a range of actions, such as sending notifications, generating reports, or Triggering the Execution of a specific Task or workflow. It can be of 2 types:
 
 EventTrigger - contains a Project on which it monitors events, a Resource type such as Item, Annotation, Task, etc. The action that happened to the Resource such as created, updated, deleted status changed, etc. a DQL (The Data Query Engine) Filter that checks whether or not to invoke the operation based on the Resource JSON, and an operation.
@@ -283,7 +284,7 @@ Here are the most important API requests for Triggers:
 - [Querry a Trigger's resource information](https://gate.dataloop.ai/api/v1/docs#/TriggerResourceInformation/TriggerResourceInformation_queryTriggerResourceInformation).
 
 
-## Features, Sets, Vectors
+## <a name="Features"></a>Features, Sets, Vectors
 A Feature vector is a numerical representation of an object or entity, typically used in machine learning and data analysis. It consists of a list of Features or Attributes that describe the object in a quantitative manner. A Feature set, on the other hand, is a collection of Feature vectors that are used to train a machine-learning algorithm. The Feature set contains all the necessary Features that are relevant to the problem being solved and is used to extract meaningful patterns and relationships from the data. The Dataloop system enables Feature vector augmentations on both Items and Annotations, this capability grants users the ability to search and Filter Annotations and Items according to their ‘similarity’ in the euclidean space.
 
 Here are the most important API requests regarding Features:
@@ -313,7 +314,7 @@ Feature API requests focused on Feature Sets:
 - [Update a feature set by ID](https://gate.dataloop.ai/api/v1/docs#/sets/FeatureSetsEditFeatureSet).
 
 
-## Models
+## <a name="Models"></a>Models
 A Model entity in Dataloop refers to a machine learning algorithm that has been trained on labeled data to make predictions or perform other Tasks. Models are a key component of the Dataloop system, as they enable users to apply machine-learning techniques to a wide range of data types, including images, text, and audio. The system has several pre-installed and publicly available model architectures, which can be installed in your Project and trained with your data to achieve the pre-annotation of your labels such as ResNet, Yolo-V5, U-net. A Dataloop Model is a combination of data (dl.Dataset), configurations (json dictionary), and code (dl.Package) to represent a learnable instance of the data. You can train, evaluate, compare, and deploy a dl.Model in Dataloop.
 
 Here are the most important API requests for Models:
@@ -338,7 +339,7 @@ Model Metrics can also be used to analyse your Models and extract important insi
 - [Delete a Metric](https://gate.dataloop.ai/api/v1/docs#/Model%20Metrics/Delete%20Metric);
 - [Query Model Metrics](https://gate.dataloop.ai/api/v1/docs#/Model%20Metrics/Query%20Model%20Metrics).
 
-## Applications & DPK
+## <a name="Applications"></a>Applications & DPK
 Here are the most important API requests for Applications:
 - [Install a new Application](https://gate.dataloop.ai/api/v1/docs#/apps/App_install);
 - [Update an existing Application](https://gate.dataloop.ai/api/v1/docs#/apps/App_update);
@@ -354,7 +355,7 @@ DPK Applications API requests:
 
 
 
-## Examples
+## <a name="Examples"></a>Examples
 ### Datasets
 ### Example: Show all datasets
 To show all of the datasets in your organization (or in a particular project, if you want to), you can use the ```GET/datasets``` API request. Go to the Datasets section, look for it and click it. It should look like this once selected:
