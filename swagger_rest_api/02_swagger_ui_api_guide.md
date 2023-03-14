@@ -2,9 +2,12 @@
 
 ## Contents
 ### API Requests
-[Projects](#Projects) | [Datasets](#Datasets) | [Recipes](#Recipes) | [Ontologies](#Ontologies) | [Items](#Items) | [Annotations](#Annotations)  |[Tasks](#Tasks)|[Assignments](#Assignments)|[Organization](#Organization)|[Services(FaaS)](#Services)|[Packages](#Packages)|[Executions](#Executions)|[Pipelines](#Pipelines)|[Composition](#Composition)|[Triggers](#Triggers)|[Features, Sets, Vectors](#Features)|[Models](#Models)|[Applications & DPK](#Applications)|
-### Examples
-Examples
+[Projects](#Projects) | [Datasets](#Datasets) | [Recipes](#Recipes) | [Ontologies](#Ontologies) | [Items](#Items) | [Annotations](#Annotations)  |[Tasks](#Tasks) |[Assignments](#Assignments) | [Organization](#Organization) | [Services(FaaS)](#Services) | [Packages](#Packages) | [Executions](#Executions) | [Pipelines](#Pipelines) | [Composition](#Composition) | [Triggers](#Triggers) | [Features, Sets, Vectors](#Features) | [Models](#Models) | [Applications & DPK](#Applications) |
+
+### [Examples](#Examples)
+
+
+
 ## Intro
 Dataloop's [Swagger UI](https://gate.dataloop.ai/api/v1/docs) offers the ability to perform API Requests such as ```GET```, ```POST```, ```PUT```, ```PATCH``` and 
 ```DELETE``` to different endpoints in our backend services like Projects, Datasets, Tasks, etc. It makes the process extremely easy and intuitive. With only a few clicks, you can run commands to get any information you may require about your Projects, Items, Datasets, Tasks or any other entity that is part of Dataloop.
@@ -356,8 +359,8 @@ DPK Applications API requests:
 
 
 ## <a name="Examples"></a>Examples
-### Datasets
-### Example: Show all datasets
+
+### <a name="ShowAllDatasets"></a> Example 1: Show all datasets
 To show all of the datasets in your organization (or in a particular project, if you want to), you can use the ```GET/datasets``` API request. Go to the Datasets section, look for it and click it. It should look like this once selected:
 
 ![image](https://user-images.githubusercontent.com/58508793/224307707-27a41a69-9a95-4d0c-86e3-c9e2b245e829.png)
