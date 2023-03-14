@@ -4,7 +4,7 @@
 ### API Requests
 [Projects](#Projects) | [Datasets](#Datasets) | [Recipes](#Recipes) | [Ontologies](#Ontologies) | [Items](#Items) | [Annotations](#Annotations)  |[Tasks](#Tasks) |[Assignments](#Assignments) | [Organization](#Organization) | [Services(FaaS)](#Services) | [Packages](#Packages) | [Executions](#Executions) | [Pipelines](#Pipelines) | [Composition](#Composition) | [Triggers](#Triggers) | [Features, Sets, Vectors](#Features) | [Models](#Models) | [Applications & DPK](#Applications) |
 
-### [Examples](#Examples)
+***[See API Request Examples here.](#Examples)***
 
 
 
@@ -358,6 +358,7 @@ DPK Applications API requests:
 
 
 
+
 ## <a name="Examples"></a>Examples
 
 ### <a name="ShowAllDatasets"></a> Example 1: Show all datasets
@@ -374,7 +375,7 @@ All of the information you requested, based on your Query should be in the "Resp
 **Note**: If you have no dataset created, you can create one using the ```POST/datasets```, which is located just below the ```GET/datasets```.
 
 
-### Example: GET a Dataset's Item count
+### Example 2: GET a Dataset's Item count
 By using a simple Query on the Datasets endpoint, you can use the Dataset ID and Query to get the requested items.
 
 To do that, you must first find out the ```ID``` of the dataset you wish to Query. To find a Dataset ID, you can just click the ```Get\datasets``` API line (which we described above), which will return the details about all of the Datasets to which you have access in the Dataloop platform. You can also add the name of the Dataset as a parameter to the Query, search by Creator or by the Project name. Below, the Query is executed by using the Dataset name "Creatures", which is a Dataset used in one of [Dataloop's Python SDK Onboarding Exercises](../onboarding/11_onboarding_exercise.md) (be sure to use your own Dataset's name or ID):
@@ -386,13 +387,10 @@ The response to this ```GET``` Query can be seen below, including the dataset ID
 Filters can be used to specify diferent criteria that can be used to more accurately search for the information you want to find. In the image below, you can see how to input the Dataset ID and a specific Query.
 ![image](https://user-images.githubusercontent.com/58508793/218518081-65d657d6-a4c2-4443-8046-e1791b0fa2cd.png)
 
-There are a lot more requests you can use in the [Dataset section of the API](https://gate.dataloop.ai/api/v1/docs/#/Datasets). Each request has a short description which will let you know what functionality it has. Feel free to explore and try out other Dataset API requests.
+As you can observe in the Response Body, the "Creatures" Dataset has a total of 1132 Items. You can also observe that various other pieces of information can be found in the Response Body.
 
 
-
-
-## Projects
-### Example: GET Projects List
+### Example 3: GET a list of Projects 
 
 Let's get started with an example of a basic API request. Go ahead and scroll down until you find the "Projects" section. 
 
@@ -412,7 +410,7 @@ You should now instantly recieve a response in JSON format that shows all Projec
 
 In the ```Response Body``` you will receive all of the details and inforamtion that the command you ran returns. Feel free to try more commands in the ```Projects``` section on your own.
 
-
+Example 4: 
 
 
 
