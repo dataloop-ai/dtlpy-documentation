@@ -460,16 +460,13 @@ You can then use that ID in the ["GET/orgs/{org_id}/projects"](https://gate.data
 **Note:** You can also use this request to find the Project IDs for the projects of a specific Organization, when needed.
 
 
-
-
-
 ## Custom Querries
 Implementing  Custom Queries will allow you to better Search, Filer, Sort and Update your data. If you want to do that, you can [learn more about the Dataloop Query Language (DQL), our proprietary Query Language](https://dataloop.ai/docs/api-dql).
 
 
 ## Final Words
 
-There are a lot more API Requests, Commands and Queries you can try on your own. Be sure to have a look around and learn how to use them.
+There are a lot more API Requests, Commands and Queries you can try on your own. Be sure to have a look around our [Swagger Rest API](https://gate.dataloop.ai/api/v1/docs#/) and learn how to use them, as they can be very useful and handy.
 
 If you have any troubles, be sure to [Contact Dataloop's Support](https://dataloop.ai/contact/).
 
