@@ -32,7 +32,7 @@ myBot = project.bots.create(name='my-unique-name', return_credentials=True)
 
 A Bot User on the Dataloop platform is similar to a User with Developer privileges.  The difference is that it runs in the background vs being an interactive user via the Dataloop UI.  You can view the bot user via the UI under Contributors on the Project Dashboard.
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-02-10 at 10.22.34 AM.png" alt=""><figcaption><p>Bot user created during M2M login setup</p></figcaption></figure>
+
 
 Make sure you save the login credentials of the bot you just created for future logins. You can find them using these lines of code:
 
