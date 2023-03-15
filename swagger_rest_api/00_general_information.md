@@ -4,12 +4,12 @@ The Dataloop platform offers a RESTful API HTTP interface that allows developers
 ## What is an API?
 An Application Programming Interface (API) establishes the rules that must be followed while communicating with other software systems. APIs are exposed or created by developers so that other applications can interface with their applications programmatically. For example, you could use the API of Dataloop to execute your Neural Network Model on our server, using an API request; our server would then process the Feedforward pass, and you would get the results back on your computer or website, without using any of your own resources or tools.
 
-A web API can be thought of as a bridge between clients and web resources. In the scope of APIs, clients are people who want to get information from the internet. The client can be either a person or a software system that makes use of an API. Developers, for example, can create programs that automatically access various data from the API system. 
+A web API can be thought of as a bridge between clients and web resources. In the scope of APIs, clients are people who want to get information from the Internet. The client can be either a person or a software system that makes use of an API. Developers, for example, can create programs that automatically access various data from the API system. 
 
 The information that various applications provide to their clients is referred to as *resources*. Images, videos, text, numbers, and other types of data can all be considered resources. The server is the machine that provides the resource to the client. APIs are used by businesses to share resources and deliver web services while maintaining security, control, and authentication. APIs also assist them in determining which clients have access to specific internal resources.
 
 ## What is REST?
-Representational State Transfer (REST) is a software architecture that defines how an API should function. REST was developed initially as a guideline for managing communication on a complicated network such as the internet. REST-based architecture can be used to offer high-performance and reliable communication at scale. It is simple to implement and adapt, adding visibility and cross-platform portability to any API system.
+Representational State Transfer (REST) is a software architecture that defines how an API should function. REST was developed initially as a guideline for managing communication on a complicated network such as the Internet. REST-based architecture can be used to offer high-performance and reliable communication at scale. It is simple to implement and adapt, adding visibility and cross-platform portability to any API system.
 
 
 ## What is RESTful API?
