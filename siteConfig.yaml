@@ -1,4 +1,4 @@
-meta:
+seo:
   title: Dataloop's Developers
   description: Drive your AI to production with end-to-end data management, automation pipelines and a quality-first data labeling platform.
   siteUrl: https://developers.dataloop.ai
@@ -9,7 +9,7 @@ linkChecker:
   options:
     CheckExternal: false
 logo:
-  image: ./images/dl_logo-removebg-preview.png
+  image: ./assets/site/dl_logo-removebg-preview.png
   altText: Dataloop's Developers
 toc:
   enable: true
@@ -27,16 +27,17 @@ stylesheets:
 nav:
 
   - label: Dataloop Platform
+    icon: ./assets/site/dl_icon.png
     href: https://console.dataloop.ai
   #  page: developer-portal/index.md
 
   - label: Developers and support docs
-    icon: ./images/dl_icon.png
+    icon: ./assets/site/dl_icon.png
     page: ./tutorials/tutorials.mdx
     #page: https://dataloop.ai/docs/welcome
 
   - label: SDK and CLI docs
-    icon: ./images/dl_icon.png
+    icon: ./assets/site/dl_icon.png
     page: ./resources/resources.mdx
     #href: https://sdk-docs.dataloop.ai/en/latest/index.html
 

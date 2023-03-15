@@ -1,4 +1,4 @@
-![LOGO](assets/logo.svg)  
+![LOGO](assets/site/logo.svg)
 [![Documentation Status](https://readthedocs.org/projects/dtlpy/badge/?version=latest)](https://sdk-docs.dataloop.ai/en/latest/?badge=latest)
 [![pypi](https://img.shields.io/pypi/v/dtlpy.svg)](https://pypi.org/project/dtlpy/)
 [![versions](https://img.shields.io/pypi/pyversions/dtlpy.svg)](https://github.com/dataloop-ai/dtlpy)
@@ -25,7 +25,7 @@ git clone https://github.com/dataloop-ai/dtlpy-documentation.git
 cd dtlpy-documentation
 ```
 
-If you don't have python installed, download and install from [here](https://www.python.org/downloads/) (python<3.10).  
+If you don't have python installed, download and install from [here](https://www.python.org/downloads/) (python<3.10).
 We recommend creating a python virtual environment:
 
 ```
