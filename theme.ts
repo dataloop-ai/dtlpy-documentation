@@ -1,184 +1,184 @@
-import { lighten, darken, readableColor } from 'polished';
+import { darken, desaturate, lighten, readableColor, transparentize } from 'polished';
 
-export const theme = {
-  // spacing: {
-  //   unit: 5,
-  //   sectionHorizontal: ({ spacing }) => spacing.unit * 8,
-  //   sectionVertical: ({ spacing }) => spacing.unit * 8,
-  // },
-  // breakpoints: {
-  //   xs: 0,
-  //   small: '550px',
-  //   medium: '900px',
-  //   large: '1200px',
-  // },
+export const theme: ThemeInterface = {
+  spacing: {
+    unit: 5,
+    sectionHorizontal: ({ spacing }) => spacing.unit * 8,
+    sectionVertical: ({ spacing }) => spacing.unit * 8,
+  },
+  breakpoints: {
+    small: '50rem',
+    medium: '75rem',
+    large: '105rem',
+  },
   colors: {
-    // tonalOffset: 0.2,
+    tonalOffset: 0.2,
     primary: {
-      main: '#227a88',
-      // light: ({ colors }) => lighten(colors.tonalOffset, colors.primary.main),
-      // dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
-      // contrastText: ({ colors }) => readableColor(colors.primary.main),
+      main: '#32329f',
+      light: ({ colors }) => lighten(colors.tonalOffset, colors.primary.main),
+      dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
+      contrastText: ({ colors }) => readableColor(colors.primary.main),
     },
-    // success: {
-    //   main: '#00aa13',
-    //   light: ({ colors }) => lighten(colors.tonalOffset * 3, colors.success.main),
-    //   dark: ({ colors }) => darken(colors.tonalOffset, colors.success.main),
-    //   contrastText: ({ colors }) => readableColor(colors.success.main),
-    // },
-    // error: {
-    //   main: '#e53935',
-    //   light: ({ colors }) => lighten(colors.tonalOffset * 2, colors.error.main),
-    //   dark: ({ colors }) => darken(colors.tonalOffset, colors.error.main),
-    //   contrastText: ({ colors }) => readableColor(colors.error.main),
-    // },
-    // warning: {
-    //   main: '#d4ad03',
-    //   light: ({ colors }) => lighten(colors.tonalOffset * 2, colors.warning.main),
-    //   dark: ({ colors }) => darken(colors.tonalOffset, colors.warning.main),
-    //   contrastText: ({ colors }) => readableColor(colors.warning.main),
-    // },
-    // info: {
-    //   main: '#4782cb',
-    //   light: ({ colors }) => lighten(colors.tonalOffset * 2, colors.info.main),
-    //   dark: ({ colors }) => darken(colors.tonalOffset, colors.info.main),
-    //   contrastText: ({ colors }) => readableColor(colors.info.main),
-    // },
+    success: {
+      main: '#1d8127',
+      light: ({ colors }) => lighten(colors.tonalOffset * 2, colors.success.main),
+      dark: ({ colors }) => darken(colors.tonalOffset, colors.success.main),
+      contrastText: ({ colors }) => readableColor(colors.success.main),
+    },
+    warning: {
+      main: '#ffa500',
+      light: ({ colors }) => lighten(colors.tonalOffset, colors.warning.main),
+      dark: ({ colors }) => darken(colors.tonalOffset, colors.warning.main),
+      contrastText: '#ffffff',
+    },
+    error: {
+      main: '#d41f1c',
+      light: ({ colors }) => lighten(colors.tonalOffset, colors.error.main),
+      dark: ({ colors }) => darken(colors.tonalOffset, colors.error.main),
+      contrastText: ({ colors }) => readableColor(colors.error.main),
+    },
+    gray: {
+      50: '#FAFAFA',
+      100: '#F5F5F5',
+    },
     text: {
-      primary: '#424242',
-      // secondary: '#4e566d',
+      primary: '#333333',
+      secondary: ({ colors }) => lighten(colors.tonalOffset, colors.text.primary),
     },
-    // border: {
-    //   dark: 'rgba(0,0,0, 0.15)',
-    //   light: '#ffffff',
-    // },
-    // responses: {
-    //   success: {
-    //     color: ({ colors }) => colors.success.main,
-    //     backgroundColor: ({ colors }) => transparentize(0.9, colors.success.main),
-    //   },
-    //   error: {
-    //     color: ({ colors }) => colors.error.main,
-    //     backgroundColor: ({ colors }) => transparentize(0.9, colors.error.main),
-    //   },
-    //   redirect: {
-    //     color: ({ colors }) => colors.warning.main,
-    //     backgroundColor: ({ colors }) => transparentize(0.9, colors.responses.redirect.color),
-    //   },
-    //   info: {
-    //     color: ({ colors }) => colors.info.main,
-    //     backgroundColor: ({ colors }) => transparentize(0.9, colors.responses.info.color),
-    //   },
-    // },
+    border: {
+      dark: 'rgba(0,0,0, 0.1)',
+      light: '#ffffff',
+    },
+    responses: {
+      success: {
+        color: ({ colors }) => colors.success.main,
+        backgroundColor: ({ colors }) => transparentize(0.93, colors.success.main),
+        tabTextColor: ({ colors }) => colors.responses.success.color,
+      },
+      error: {
+        color: ({ colors }) => colors.error.main,
+        backgroundColor: ({ colors }) => transparentize(0.93, colors.error.main),
+        tabTextColor: ({ colors }) => colors.responses.error.color,
+      },
+      redirect: {
+        color: ({ colors }) => colors.warning.main,
+        backgroundColor: ({ colors }) => transparentize(0.9, colors.responses.redirect.color),
+        tabTextColor: ({ colors }) => colors.responses.redirect.color,
+      },
+      info: {
+        color: '#87ceeb',
+        backgroundColor: ({ colors }) => transparentize(0.9, colors.responses.info.color),
+        tabTextColor: ({ colors }) => colors.responses.info.color,
+      },
+    },
     http: {
-      get: '#6bbd5b',
-      post: '#248fb2',
-      put: '#9b708b',
-      options: '#d3ca12',
-      patch: '#e09d43',
-      delete: '#e27a7a',
-      basic: '#999',
-      link: '#31bbb6',
-      head: '#c167e4',
+      get: '#2F8132',
+      post: '#186FAF',
+      put: '#95507c',
+      options: '#947014',
+      patch: '#bf581d',
+      delete: '#cc3333',
+      basic: '#707070',
+      link: '#07818F',
+      head: '#A23DAD',
     },
-    // navbar: {
-    //   main: ({ colors }) => colors.primary.main,
-    //   gradient: ({ colors }) => darken(colors.tonalOffset / 2, colors.navbar.main),
-    //   contrastText: 'white'
-    // },
-    // footer: {
-      // main: ({ colors }) => colors.primary.main,
-      // contrastText: 'white'
-    // },
   },
-
-  sidebar: {
-    backgroundColor: '#fafafa',
-    width: '260px',
+  schema: {
+    linesColor: theme =>
+      lighten(
+        theme.colors.tonalOffset,
+        desaturate(theme.colors.tonalOffset, theme.colors.primary.main),
+      ),
+    defaultDetailsWidth: '75%',
+    typeNameColor: theme => theme.colors.text.secondary,
+    typeTitleColor: theme => theme.schema.typeNameColor,
+    requireLabelColor: theme => theme.colors.error.main,
+    labelsTextSize: '0.9em',
+    nestingSpacing: '1em',
+    nestedBackground: '#fafafa',
+    arrow: {
+      size: '1.1em',
+      color: theme => theme.colors.text.secondary,
+    },
   },
-  // tocPanel: {
-  //   width: '240px',
-  // },
-
   typography: {
-    fontSize: '16px',
+    fontSize: '14px',
     lineHeight: '1.5em',
     fontWeightRegular: '400',
     fontWeightBold: '600',
     fontWeightLight: '300',
-    fontFamily: '"Source Sans Pro", sans-serif',
+    fontFamily: 'Roboto, sans-serif',
+    smoothing: 'antialiased',
+    optimizeSpeed: true,
     headings: {
-      fontFamily: '"Source Sans Pro", sans-serif',
-      fontWeight: '600',
+      fontFamily: 'Montserrat, sans-serif',
+      fontWeight: '400',
+      lineHeight: '1.6em',
     },
-    // heading1: {
-    //   fontSize: '1.85714em',
-    //   fontWeight: '600',
-    //   fontFamily: ({ typography }) => typography.headings.fontFamily,
-    //   lineHeight: ({ typography }) => typography.lineHeight,
-    //   color: ({ colors }) => colors.primary.main,
-    //   capitalize: true,
-    // },
-    // heading2: {
-    //   fontSize: '1.57143em',
-    //   fontWeight: '600',
-    //   color: ({ colors }) => colors.text.primary,
-    //   fontFamily: ({ typography }) => typography.headings.fontFamily,
-    //   lineHeight: ({ typography }) => typography.lineHeight,
-    //   capitalize: false,
-    // },
-    // heading3: {
-    //   fontSize: '1.27em',
-    //   fontWeight: '600',
-    //   color: ({ colors }) => colors.text.primary,
-    //   fontFamily: ({ typography }) => typography.headings.fontFamily,
-    //   lineHeight: ({ typography }) => typography.lineHeight,
-    //   capitalize: false,
-    // },
-    // heading4: {
-    // // ...
-    // },
-    // heading5: {
-    // // ...
-    // },
-    // heading6: {
-    // // ...
-    // },
     code: {
       fontSize: '13px',
-      fontFamily: '"Source Code Pro", sans-serif',
-      // fontWeight: ({ typography }) => typography.fontWeightRegular,
+      fontFamily: 'Courier, monospace',
+      lineHeight: ({ typography }) => typography.lineHeight,
+      fontWeight: ({ typography }) => typography.fontWeightRegular,
       color: '#e53935',
-      backgroundColor: 'rgba(38, 50, 56, 0.04)',
+      backgroundColor: 'rgba(38, 50, 56, 0.05)',
       wrap: false,
     },
     links: {
       color: ({ colors }) => colors.primary.main,
       visited: ({ typography }) => typography.links.color,
       hover: ({ typography }) => lighten(0.2, typography.links.color),
+      textDecoration: 'auto',
+      hoverTextDecoration: 'auto',
     },
+  },
+  sidebar: {
+    width: '260px',
+    backgroundColor: '#fafafa',
+    textColor: '#333333',
+    activeTextColor: theme =>
+      theme.sidebar.textColor !== theme.sidebar!.textColor
+        ? theme.sidebar.textColor
+        : theme.colors.primary.main,
+    groupItems: {
+      activeBackgroundColor: theme => darken(0.1, theme.sidebar.backgroundColor),
+      activeTextColor: theme => theme.sidebar.activeTextColor,
+      textTransform: 'uppercase',
+    },
+    level1Items: {
+      activeBackgroundColor: theme => darken(0.05, theme.sidebar.backgroundColor),
+      activeTextColor: theme => theme.sidebar.activeTextColor,
+      textTransform: 'none',
+    },
+    arrow: {
+      size: '1.5em',
+      color: theme => theme.sidebar.textColor,
+    },
+  },
+  logo: {
+    maxHeight: ({ sidebar }) => sidebar.width,
+    maxWidth: ({ sidebar }) => sidebar.width,
+    gutter: '2px',
   },
   rightPanel: {
     backgroundColor: '#263238',
     width: '40%',
-    // textColor: '#ffffff',
+    textColor: '#ffffff',
+    servers: {
+      overlay: {
+        backgroundColor: '#fafafa',
+        textColor: '#263238',
+      },
+      url: {
+        backgroundColor: '#fff',
+      },
+    },
   },
-  schema: {
-    nestedBackground: '#fafafa',
-    // linesColor: theme => lighten( theme.colors.tonalOffset, desaturate(theme.colors.tonalOffset, theme.colors.primary.main) ),
-    // defaultDetailsWidth: '75%',
-    // typeNameColor: theme => theme.colors.text.secondary,
-    // typeTitleColor: theme => theme.schema.typeNameColor,
-    // requireLabelColor: theme => theme.colors.error.main,
-    // labelsTextSize: '0.9em',
-    // nestingSpacing: '1em',
-    // arrow: {
-    //   size: '1.1em',
-    //   color: theme => theme.colors.text.secondary,
-    // },
+  codeBlock: {
+    backgroundColor: ({ rightPanel }) => darken(0.1, rightPanel.backgroundColor),
   },
-  // codeBlock: {
-  //   backgroundColor: ({ rightPanel }) => darken(0.1, rightPanel.backgroundColor),
-  //   tokens: {},
-  // },
+  fab: {
+    backgroundColor: '#f2f2f2',
+    color: '#0065FB',
+  },
 };
