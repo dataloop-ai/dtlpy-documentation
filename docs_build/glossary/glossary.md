@@ -9,6 +9,7 @@ An Annotation entity refers to a Label, tag, or another piece of Metadata that i
 - Classification Labels - Used to categorize Items based on their content or characteristics;
 - Text Transcriptions - Used to convert spoken words or written text into machine-readable formats;
 - Semantic Segmentation Masks - Used to identify and segment different regions or objects within an image.
+- 
 **Note:** A JSON format representing the objects and labels exists in an [Item](#item).
 
 ### <a name="admin"></a>Admin
