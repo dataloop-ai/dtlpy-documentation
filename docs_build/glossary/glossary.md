@@ -10,7 +10,7 @@ An Annotation entity refers to a Label, tag, or another piece of Metadata that i
 - Text Transcriptions - Used to convert spoken words or written text into machine-readable formats;
 - Semantic Segmentation Masks - Used to identify and segment different regions or objects within an image.
 
-**Note:** A JSON format representing the objects and labels exists in an [Item](#item).
+**Note:** A JSON format representing the objects and Labels exists in an [Item](#item).
 
 ### <a name="admin"></a>Admin
 An Admin is simmilar to an [Owner](#owner).  An Admin can delete/rename an Organization, create Projects, and add/remove Organization Members. However Admin privileges can be removed, while Owner privileges cannot.
