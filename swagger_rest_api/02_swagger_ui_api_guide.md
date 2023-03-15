@@ -2,7 +2,7 @@
 
 ## Contents
 ### API Requests
-[Projects](#Projects) | [Datasets](#Datasets) | [Recipes](#Recipes) | [Ontologies](#Ontologies) | [Items](#Items) | [Annotations](#Annotations)  |[Tasks](#Tasks) |[Assignments](#Assignments) | [Organization](#Organization) | [Services(FaaS)](#Services) | [Packages](#Packages) | [Executions](#Executions) | [Pipelines](#Pipelines) | [Composition](#Composition) | [Triggers](#Triggers) | [Features, Sets, Vectors](#Features) | [Models](#Models) | [Applications & DPK](#Applications) |
+[Projects](#Projects) | [Datasets](#Datasets) | [Recipes](#Recipes) | [Ontologies](#Ontologies) | [Items](#Items) | [Annotations](#Annotations)  |[Tasks](#Tasks) |  [Assignments](#Assignments) | [Organization](#Organization) | [Services(FaaS)](#Services) | [Packages](#Packages) | [Executions](#Executions) | [Pipelines](#Pipelines) | [Composition](#Composition) | [Triggers](#Triggers) | [Features, Sets, Vectors](#Features) | [Models](#Models) | [Applications & DPK](#Applications) |
 
 ***[See API Request Examples here.](#Examples)***
 
@@ -10,7 +10,7 @@
 
 ## Intro
 Dataloop's [Swagger UI](https://gate.dataloop.ai/api/v1/docs) offers the ability to perform API Requests such as ```GET```, ```POST```, ```PUT```, ```PATCH``` and 
-```DELETE``` to different endpoints in our backend services like Projects, Datasets, Tasks, etc. It makes the process extremely easy and intuitive. With only a few clicks, you can run commands to get any information you may require about your Projects, Items, Datasets, Tasks or any other entity that is part of Dataloop.
+```DELETE``` to different endpoints in our backend services like Projects, Datasets, Tasks, etc. It makes the process extremely easy and intuitive. With only a few clicks, you can run API requests to get any information you may require about your Projects, Items, Datasets, Tasks or any other entity that is part of Dataloop.
 
 In order to use the Swagger UI you will need to already be logged in to the Dataloop platform. If you haven't logged in yet, you need to [do that now](https://console.dataloop.ai/welcome) for the API requests to work. 
 
@@ -19,7 +19,7 @@ After logging in to the platform, the API authentication will be completed autom
 
 The image above is what you should see after logging in to Dataloop's platform, and going to the Swagger API UI. You can [find the Dataloop Swagger API here](https://gate.dataloop.ai/api/v1/docs/).
 
-**Note:** This Swagger API guide will have the same structure as our [Developer Onboarding](../onboarding), which teaches you how to use the basic functions of Dataloop in Python code. Everything we'll cover in this guide can be done in Python code (in the Python SDK) as well as using the API.
+**Note:** This Swagger API guide will have a similar order as our [Developer Onboarding](../onboarding), which teaches you how to use the basic functions of Dataloop in Python code. Everything we'll cover in this guide can be done in Python code (in the Python SDK) as well as using the API.
 
 ## <a name="Projects"></a>Projects 
 
