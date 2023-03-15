@@ -17,7 +17,7 @@ An Admin is simmilar to an [Owner](#owner).  An Admin can delete/rename an Organ
 
 
 ### <a name="artifacts"></a>Artifacts ([Entity](#entity))
-Large files (binaries) that we don't want to pack inside a package (which should only contain code), but are still needed during the deployment of a package.  They are uploaded separately and downloaded when the service is initiated.  They usually need to be added to the ```.gitignore```.
+Large files (binaries) that we don't want to pack inside a package (which should only contain code), but are still needed during the deployment of a Package.  They are uploaded separately and downloaded when a Service is initiated.  They usually need to be added to the ```.gitignore```.
 There are three types of Artifacts: 
 - Item; 
 - Local; 
@@ -29,7 +29,7 @@ APIs (Application Programming Interface) are mechanisms that enable two software
 
 
 ### <a name="assignment"></a>Assignment ([Entity](#entity))
-An Assignment is a specific Task that is assigned to an individual, represents a unique instance of an Assignment, and contains all the information necessary for annotators to complete the work. As Annotators work on the Assignment, Annotators can communicate with Project Managers or team leaders and can ask for clarification on any aspects of the Task that are unclear. Once an Assignment is completed, the Dataloop system automatically aggregates the results and provides Project managers with real-time insights into the progress of each Assignment, the quality of the Annotations, and the overall status of the Project.
+An Assignment is a specific Task that is assigned to an individual, represents a unique instance of an Assignment, and contains all the information necessary for Annotators to complete the work. As Annotators work on the Assignment, Annotators can communicate with Project Managers or team leaders and can ask for clarification on any aspects of the Task that are unclear. Once an Assignment is completed, the Dataloop system automatically aggregates the results and provides project managers with real-time insights into the progress of each Assignment, the quality of the Annotations, and the overall status of the Project.
 
 An Assigment may be an Item or collection of Items that are allocated to an Annotator for manual annotation and/or review. Items can be redistributed or reassigned between Assignments.  The Annotator is also referred to as an “Assignee” or "Contributor".
 
@@ -45,20 +45,20 @@ An Attribute refers to a specific property or characteristic that can be associa
 - Scope - where mapping to labels is done. The default applies any Attribute to all Labels, but individual selection can also be done.
 - Mandatory - enforce annotators to answer Attributes in Studio 2.0 before clicking “Done” and moving to the next Item. The Feature is enabled from Recipe instructions and applies to any Attribute set as ‘Mandatory’.
 - Type - selection and representation type of the Attribute.
-- Subject - The guidance/question presented to the annotator, on how to fill this Attribute;
+- Subject - The guidance/question presented to the Annotator, on how to fill this Attribute;
 - Section ID - Allows referring to this Attribute via JSON exports and Metadata. It's auto-populated with a running number, but can be edited to any value.
 
 
 ## B
 ### <a name="bot"></a>Bot
-A Bot is a machine user that has Developer role permissions within a Project. In Dataloop, Bots are used to run Services. Once a Service has been deployed, it will log in using the Bot with which the Service was created or the Bot will be created automatically. All platform API requests will be made using the Bot’s token.
+A Bot is a machine user that has Developer role permissions within a Project. In Dataloop, Bots are used to run Services. Once a Service has been deployed, it will log in using the Bot with which the Service was created or the Bot will be created automatically. All of the Dataloop platform's API requests will be made using the Bot’s token.
 
 ### <a name="binaries"></a>Binaries ([Item](#item))
 
 The content of any type of file (image, video, pdf, etc.). Binaries are managed by the Master Dataset entity in Dataloop.
 
 ### <a name="box"></a>Bounding Box ([Entity](#entity))
-A bounding box [Annotation](#annotation) type is used to identify the location and size of objects within images or videos.  A bounding box is represented by 2 points that define top-left and bottom-right.
+A Bounding Box [Annotation](#annotation) type is used to identify the location and size of objects within images or videos.  A Bounding Box is represented by 2 points that define top-left and bottom-right.
 
 **Note:** type=`box`
 
@@ -102,7 +102,7 @@ The Dataloop platform gives you different capabilities to organize your data in 
 
 ## E
 ### <a name="entity"></a>Entity
-A Dataloop data model object. Represented by a json. It contains information about the various Dataloop entities and their related functions/operations and data. For example for “Item” entities - Download, Update (e.g. update its metadata), or update its status in task.
+A Dataloop data model object which is represented by a JSON. It contains information about the various Dataloop entities and their related functions/operations and data. For example for “Item” entities - Download, Update (e.g. update its Metadata), or update its status in Task.
 
 ### <a name="execution"></a>Execution ([Entity](#entity))
 Execution refers to the process of executing a function within the FaaS Service. When a user submits a function for Execution, the FaaS Service creates a container to run the function and provides any necessary inputs. The function is executed within the container, and the results are returned to the user.
@@ -116,10 +116,10 @@ ExecutionIO or Execution input is the same input the function requires. The inpu
 Functions are basic running units of the FaaS. You can define the Functions on the class and when the Service is deployed, you can run each of them. The functions are defined inside a Module, where multiple Functions can be an entrance point to the FaaS.
 
 ### <a name="features"></a>Features (Set/Vectors)
-A Feature vector is a numerical representation of an object or entity, typically used in machine learning and data analysis. It consists of a list of Features or Attributes that describe the object in a quantitative manner.  A Feature set, on the other hand, is a collection of Feature vectors that are used to train a machine-learning algorithm. The Feature set contains all the necessary Features that are relevant to the problem being solved and is used to extract meaningful patterns and relationships from the data. The Dataloop system enables Feature vector augmentations on both Items and Annotations, this capability grants users the ability to search and Filter Annotations and Items according to their ‘similarity’ in the euclidean space.
+A Feature Vector is a numerical representation of an object or entity, typically used in machine learning and data analysis. It consists of a list of Features or Attributes that describe the object in a quantitative manner.  A Feature set, on the other hand, is a collection of Feature Vectors that are used to train a machine-learning algorithm. The Feature Set contains all the necessary Features that are relevant to the problem being solved and is used to extract meaningful patterns and relationships from the data. The Dataloop system enables Feature vector augmentations on both Items and Annotations, this capability grants users the ability to search and Filter Annotations and Items according to their ‘similarity’ in the euclidean space.
 
 ### <a name="filter"></a>Filter
-Filters are part of the [Dataset](#dataset) and Task Browsers, enabling you to Filter Items based on every aspect of your files. When multiple Filters are used, the relationship between them will be the AND logical operator. However, the relationship between multiple values in each Filter will be the OR logical operator. For example, entering "dog" and "cat" in the Labels Filter will result in all Items that have a "dog" label OR a "cat" label.
+Filters are part of the [Dataset](#dataset) and Task Browsers, enabling you to Filter Items based on every aspect of your files. When multiple Filters are used, the relationship between them will be the AND logical operator. However, the relationship between multiple values in each Filter will be the OR logical operator. For example, entering "dog" and "cat" in the Labels Filter will result in all Items that have a "dog" Label OR a "cat" Label.
 
 
 ## G
