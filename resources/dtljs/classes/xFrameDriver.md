@@ -24,6 +24,7 @@ This class extends the EventEmitter and implements the JsSDK interface.
 - [attributes](xFrameDriver.md#attributes)
 - [contributors](xFrameDriver.md#contributors)
 - [datasets](xFrameDriver.md#datasets)
+- [drivers](xFrameDriver.md#drivers)
 - [executions](xFrameDriver.md#executions)
 - [items](xFrameDriver.md#items)
 - [labels](xFrameDriver.md#labels)
@@ -81,6 +82,15 @@ ___
 
 The Datasets repository.
 It is used to access Dataset related CRUD methods.
+
+___
+
+### drivers
+
+• **drivers**: [`Drivers`](Drivers.md)
+
+The Drivers repository.
+It is used to access Driver related CRUD methods.
 
 ___
 

@@ -6,6 +6,7 @@
 - [Settings](./AppSettings.md)
 - [Contributors](./Contributors.md)
 - [Datasets](./Datasets.md)
+- [Drivers](./Drivers.md)
 - [Items](./Items.md)
 - [Labels](./Labels.md)
 - [Ontologies](./Ontologies.md)

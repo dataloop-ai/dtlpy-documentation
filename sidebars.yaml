@@ -205,6 +205,8 @@ contents:
               page: resources/dtljs/interfaces/IAnnotation.md
             - label: IDataset
               page: resources/dtljs/interfaces/IDataset.md
+            - label: IDriver
+              page: resources/dtljs/interfaces/IDriver.md
             - label: IItem
               page: resources/dtljs/interfaces/IItem.md
             - label: IProject
@@ -234,6 +236,8 @@ contents:
               page: resources/dtljs/classes/Contributors.md
             - label: Datasets
               page: resources/dtljs/classes/Datasets.md
+            - label: Drivers
+              page: resources/dtljs/classes/Drivers.md
             - label: Items
               page: resources/dtljs/classes/Items.md
             - label: Labels
@@ -261,6 +265,8 @@ contents:
               page: resources/dtljs/classes/SDKContributor.md
             - label: SDKDataset
               page: resources/dtljs/classes/SDKDataset.md
+            - label: SDKDriver
+              page: resources/dtljs/classes/SDKDriver.md
             - label: SDKFunctionExecution
               page: resources/dtljs/classes/SDKFunctionExecution.md
             - label: SDKItem
