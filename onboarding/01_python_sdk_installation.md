@@ -39,13 +39,13 @@ To download Python:
 
 If you already installed Python, but you are unsure about which version you have, you can [check your Python version](https://phoenixnap.com/kb/check-python-version) using the following command:
 
-```python
+```shell
 python --version
 ```
 
 Or, if this doesn't work, you can do:
 
-```python
+```shell
 python3 --version
 ```
 
@@ -59,13 +59,13 @@ The package installer for Python is called `pip`. To install Dataloop's Python S
 
 To make sure that `pip` is installed you can run the following command:
 
-```python
+```shell
 pip --version
 ```
 
 Or, if that doesn't work, try:
 
-```python
+```shell
 pip3 --version
 ```
 

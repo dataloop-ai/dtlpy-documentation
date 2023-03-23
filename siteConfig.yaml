@@ -4,6 +4,7 @@ seo:
   siteUrl: https://developers.dataloop.ai
   keywords: dataloop developer portal, api portal starter, api reference docs
   lang: en-US
+showNextButton: true
 linkChecker:
   severity: warning
   options:
