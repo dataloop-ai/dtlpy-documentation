@@ -49,7 +49,7 @@ To leverage M2M login, you first need to create a bot user with a unique name:
 import dtlpy as dl
 dl.login() # use browser login to create the bot
 project = dl.projects.get(project_name='myProject') # get your project
-myBot = project.bots.create(name='my-unique-name', return_credentials=True)
+bot = project.bots.create(name='my-unique-name', return_credentials=True)
 ```
 
 **Note:**  As a best practice, you should create only the number of bots you need for a given set of uses within a Dataloop project.  It can be leveraged across multiple needs so start with one bot and only create additional bots as the need dictates.
@@ -59,8 +59,8 @@ A bot user on the Dataloop platform is similar to a user with Developer privileg
 Make sure you save the login credentials of the bot you just created for future logins. You can find them using these lines of code:
 
 ```python
-print("the bot email is "+myBot.email)
-print("the bot password is "+myBot.password)
+print(f"the bot email is {bot.email}")
+print(f"the bot password is {bot.password}")
 ```
 
 Then, you can log in to the Dataloop platform using the Python SDK and your newly created M2M bot credentials:
