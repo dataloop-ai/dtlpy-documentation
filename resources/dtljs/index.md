@@ -1,4 +1,4 @@
-# @dataloop/jssdk
+# @dataloop-ai/jssdk
 
 ## Table of contents
 

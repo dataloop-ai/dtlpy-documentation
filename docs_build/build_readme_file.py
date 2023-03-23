@@ -103,7 +103,7 @@ def collect_tutorials(root, git_spec):
     return md_lines
 
 
-def main():
+def build_readme():
     with open('.gitignore', 'r') as f:
         spec_src = f.read()
     ignore_lines = spec_src.splitlines() + ['.git', '.dataloop']
@@ -142,4 +142,4 @@ if __name__ == "__main__":
     python docs_build/collect_folders.py
      
     """
-    main()
+    build_readme()

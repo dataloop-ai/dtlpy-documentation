@@ -11,6 +11,9 @@ Events that are emitted from the frame (SDK) to the host (platform)
 - [CLOSE\_DIALOG](DlFrameEvent.md#close_dialog)
 - [TOGGLE\_ACTION\_LOCK](DlFrameEvent.md#toggle_action_lock)
 - [UPDATE\_NODE\_CONFIG](DlFrameEvent.md#update_node_config)
+- [REDO](DlFrameEvent.md#redo)
+- [UNDO](DlFrameEvent.md#undo)
+
 
 ## Enumeration Members
 
@@ -29,3 +32,15 @@ ___
 ### UPDATE\_NODE\_CONFIG
 
 Update the node configuration
+
+___
+
+### REDO
+
+Redo action event
+
+___
+
+### UNDO
+
+Undo action event
