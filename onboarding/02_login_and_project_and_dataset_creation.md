@@ -6,7 +6,7 @@ To be able to use our Python SDK or our other tools such as our API, you must fi
 
 To create an account you can [click here](https://dataloop-production.auth0.com/login?state=hKFo2SBYdnBxZUVLTHRhQlpRTXM5bXdDYWxQdWpOUE9KZFNabqFupWxvZ2luo3RpZNkgNjg3YnRKem5yV2NwSmJVN29UVnBTbGJtYUJFSURRNnCjY2lk2SBGckcwSFpnYTFDSzVVVlVTSkp1RGtTRHFJdFBpZVdHVw\&client=FrG0HZga1CK5UVUSJJuDkSDqItPieWGW\&protocol=oauth2\&response\_type=id\_token%20code\&response\_mode=form\_post\&redirect\_uri=https%3A%2F%2Fgate.dataloop.ai%2Fadmit%3Fdefault\&scope=openid%20email%20profile%20offline\_access\&nonce=wy9u651zOeGnuAqKxk\~-AfeIKo9hL9AP\&auth0Client=eyJuYW1lIjoiYXV0aDAuanMiLCJ2ZXJzaW9uIjoiOS4xMS4zIn0%3D). You will be redirected to a Sign up/Login page, which you can use to create an account using your e-mail or Google sign-in as an option.
 
-Once you do that, we can go on and try to log in to the platform using the Python SDK. To accomplish this, you need to either open Python in your console or open an IDE where you can run the Python code. Some examples of IDEs are [Spyder](https://www.spyder-ide.org/) and [VisualStudio Code](https://code.visualstudio.com/).
+Once you do that, we can go on and try to log in to the platform using the Python SDK. To accomplish this, you need to either open Python in your console or open an IDE where you can run the Python code. Some examples of IDEs are [PyCharm](https://www.jetbrains.com/pycharm/) and [VisualStudio Code](https://code.visualstudio.com/).
 
 **Before you get started**:  Please note that all of these examples are proven to work when you are using the console or your IDE is running on your local machine.  If you're using an isolated environment on your local machine (for example, Jupyter Notebook running in a Docker Container), things like the Login browser instantiation might not work.  The login call needs to pass cleanly from the console or IDE directly to the browser.  Isolated environments might not successfully make that round-trip call.
 
@@ -127,7 +127,7 @@ There are 3 types of Datasets:
 2. Cloned - Contains pointers to original Dataset files, which enables management of virtual Items that do not replicate the file's binaries on the underlying storage once cloned or copied. When cloning a Dataset, users can decide if the new copy will overwrite the original metadata and annotations.
 3. Merged - Several Datasets can be merged into one, allowing multiple annotations to be combined into the same Dataset.
 
-If you've been following this tutorial up until this point and executing all the code examples, you can now create a new Dataset inside this Project. If not, go back and complete the steps up until this point before proceeding.  
+If you've been following this tutorial up until this point and executing all the code examples, you can now create a new Dataset inside this Project. If not, go back and complete the steps up until this point before proceeding.
 
 **Note:** This tutorial builds upon each previous step to enable you to complete the next step.  Be sure to follow the steps in a linear fashion so you are assured success.  Don't skip steps or you will likely fail to complete the entire onboarding for the SDK.
 
