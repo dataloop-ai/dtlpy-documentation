@@ -56,8 +56,6 @@ myBot = project.bots.create(name='my-unique-name', return_credentials=True)
 
 A bot user on the Dataloop platform is similar to a user with Developer privileges.  The difference is that it runs in the background vs being an interactive user via the Dataloop UI.  You can view the bot user via the UI under Contributors on the Project Dashboard.
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-02-10 at 10.22.34 AM.png" alt=""><figcaption><p>Bot user created during M2M login setup</p></figcaption></figure>
-
 Make sure you save the login credentials of the bot you just created for future logins. You can find them using these lines of code:
 
 ```python
@@ -127,7 +125,7 @@ There are 3 types of Datasets:
 2. Cloned - Contains pointers to original Dataset files, which enables management of virtual Items that do not replicate the file's binaries on the underlying storage once cloned or copied. When cloning a Dataset, users can decide if the new copy will overwrite the original metadata and annotations.
 3. Merged - Several Datasets can be merged into one, allowing multiple annotations to be combined into the same Dataset.
 
-If you've been following this tutorial up until this point and executing all the code examples, you can now create a new Dataset inside this Project. If not, go back and complete the steps up until this point before proceeding.  
+If you've been following this tutorial up until this point and executing all the code examples, you can now create a new Dataset inside this Project. If not, go back and complete the steps up until this point before proceeding.
 
 **Note:** This tutorial builds upon each previous step to enable you to complete the next step.  Be sure to follow the steps in a linear fashion so you are assured success.  Don't skip steps or you will likely fail to complete the entire onboarding for the SDK.
 

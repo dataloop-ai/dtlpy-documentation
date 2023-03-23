@@ -15,4 +15,4 @@ title: Onboarding
 - [08 Pipelines](08_pipelines.md)
 - [09 What's Next](09_next_steps.md)
 - [10 Model Management](10_model_management.md)
-- [10 Onboarding Exercise](11_onboarding_exercise.md)
+- [11 Onboarding Exercise](11_onboarding_exercise.md)
