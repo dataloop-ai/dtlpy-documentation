@@ -171,7 +171,7 @@ contents:
         expanded: false
         pages:
           - page: resources/rest_api/reference.page.yaml/*
-      - label: Python API
+      - label: Python SDK
         page: resources/dtlpy/index.md
         pages:
           - label: CLI
@@ -182,7 +182,7 @@ contents:
             page: resources/dtlpy/repositories.md
           - label: Utilities
             page: resources/dtlpy/utilities.md
-      - label: JS API
+      - label: JS SDK
         page: resources/dtljs/index.md
         pages:
         - label: xFrame
@@ -276,7 +276,7 @@ contents:
             - label: SDKTask
               page: resources/dtljs/classes/SDKTask.md
   - label: Glossary
-    page: docs_build/glossary/glossary.md
+    href: https://dataloop.ai/docs/glossary-overview
   - label: SDK Cheat Sheet
     href: https://dataloop.ai/docs/sdk-cheatsheet
 
