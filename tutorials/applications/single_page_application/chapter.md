@@ -8,7 +8,7 @@
 
 
 - Create a client-side app using the framework of your choice. Use our [JS SDK](https://dtlpy-documentation.redoc.ly/resources/dtljs/) to work with Dataloop entities.
-- Serve dataloop.json and app.json files on the root of your application.
+- Serve dataloop.json on the root of your application.
 - Serve this application on your local server on the `local.dataloop.ai` domain over HTTPS.
 - Open `console.dataloop.ai` and go to FaaS/Application Hub. Go to the `Developer` tab and click on `Add Function`.
 - Fill out the form and choose the type of your panel. eg: Item Viewer.
@@ -200,7 +200,7 @@ Your react app should be running here.
 
 Before deploying your application, you want to test it in a fast manner. For that reason, we have the debug application feature, which allows you to run your application locally and test it on the platform, and see the changes immediately as they happen.
 
-You will need two files: `dataloop.json` and `app.json`. These files define the meta configuration of your application and let the Dataloop OS know what to expect from your application.
+You will need the app manifest json, `dataloop.json`. These files define the meta configuration of your application and let the Dataloop OS know what to expect from your application.
 
 The base route of your application should serve these files.
 eg: if your base route is: `local.dataloop.ai` then the dataloop.json file should be available at GET `https://local.dataloop.ai/dataloop.json` location.
@@ -209,10 +209,10 @@ Currently, there is no validation of the JSON file, it doesn’t affect the oper
 
 <TODO: update the above line when the validation is done.>
 
-Examples of basic app.json and dataloop.json:
+Examples of a basic dataloop.json:
 
 <details>
-    <summary>app.json</summary>
+    <summary>dataloop.json</summary>
 
 ```
 {

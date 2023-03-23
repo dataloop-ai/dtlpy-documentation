@@ -17,18 +17,19 @@ _- Used for applications that have panels (UI)_.
     - You might also need to run your app in _https_ mode.
 - You may need to enable [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) on your app.
 - Your app should be up running in the browser.
-- Your app should have a `dataloop.json` file that simulates an installed app entity - it needs to be publicly served
+- Your app should have a manifest file - `dataloop.json` - it needs to be publicly served
   under the app's main address (For example: https://local.dataloop.ai:3000/dataloop.json).
 - You're going to need a working, functioning Dataloop Platform user with a **Developer** role.
 - You're going to need to be familiar with our [Javascript SDK](../../../resources/dtljs/index.md)
 
 ### How to add a debug app in the Dataloop Platform
 
-- On the left sidebar menu, go to **Application Hub** under the **Application (FAAS)** section, and open the **Developer** tab.
+- On the left sidebar menu, go to **Application Hub** under the **Application (FAAS)** section, and open the **
+  Developer** tab.
   ![img.png](../../../assets/apps/img.png)
-- Click the **Add Debug App** button.
+- Click the **Add Function** button.
 - Fill out the name of the app, choose a main slot and add your application's URL address
-    - (For example: https://local.dataloop.ai:3000)<br />
+    - (For example: https://local.dataloop.ai:3000)
       ![img_1.png](../../../assets/apps/img_1.png)
 - Press the **Create** button, and wallah! You have a debug app in the Platform.
   ![img_2.png](../../../assets/apps/img_2.png)
@@ -46,7 +47,7 @@ a `DlMockDriver` and a **Debug Snapshot** shortcut exactly for that!
       effectively overriding its original value.
 
 * In order to get the mock data for the mock driver, you can use the **Debug Snapshot** feature.
-    - [Add a debug app to the Platform](#how-to-add-a-debug-app-in-the-dataloop-platform).
+    - [Add a debug app to the Platform](index.md#How to add a debug app in the Dataloop Platform).
     - Press the **Debug Snapshot** icon at the top bar (or **Alt+Shift+S**) in order to download the generated
       snapshot file.
     - Place the file in your tests directory.
@@ -118,8 +119,8 @@ _This following item viewer example supports images only._
         item = await dl.items.get()
         const stream = await dl.items.stream(item.stream)
         const img = new Image(
-                item.metadata?.system.width,
-                item.metadata?.system.height
+            item.metadata?.system.width,
+            item.metadata?.system.height
         )
 
         console.log("@@@@@", JSON.stringify(stream))

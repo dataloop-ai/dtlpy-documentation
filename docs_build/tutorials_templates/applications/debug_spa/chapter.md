@@ -17,10 +17,10 @@ _- Used for applications that have panels (UI)_.
     - You might also need to run your app in _https_ mode.
 - You may need to enable [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) on your app.
 - Your app should be up running in the browser.
-- Your app should have a `dataloop.json` file that stimulates an installed app entity - it needs to be publicly served
+- Your app should have a manifest file - `dataloop.json` - it needs to be publicly served
   under the app's main address (For example: https://local.dataloop.ai:3000/dataloop.json).
 - You're going to need a working, functioning Dataloop Platform user with a **Developer** role.
-- You're going to need to be familiar with our [Javascript SDK](../../index.md)
+- You're going to need to be familiar with our [Javascript SDK](../../../resources/dtljs/index.md)
 
 ### How to add a debug app in the Dataloop Platform
 
