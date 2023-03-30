@@ -4,7 +4,7 @@
 
 ### Tl;dr
 
-![Tutorial Image](https://github.com/dataloop-ai-apps/dtlpy-documentation/raw/tutorial-application/assets/apps/app_testing_tutorial.gif "Tutorial Image")
+![Tutorial Image](https://github.com/dataloop-ai/dtlpy-documentation/raw/main/assets/apps/app_testing_tutorial.gif "Tutorial Image")
 
 
 - Create a client-side app using the framework of your choice. Use our [JS SDK](https://dtlpy-documentation.redoc.ly/resources/dtljs/) to work with Dataloop entities.
