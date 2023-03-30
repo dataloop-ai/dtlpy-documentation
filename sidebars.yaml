@@ -51,7 +51,7 @@ contents:
     group: FaaS Tutorial
     page: tutorials/faas.md
     pages:
-    - label: FaaS Interactive Tutorial
+    - label: Concepts
       page: tutorials/faas/concept/chapter.md
     - label: Introduction
       page: tutorials/faas/introduction/chapter.md
@@ -121,6 +121,10 @@ contents:
       page: tutorials/model_management/model_metrics_only/chapter.md
     - label: Train and Deploy Dataloop Models
       page: tutorials/model_management/train_dataloop_models/chapter.md
+    - label: Train Models Locally
+      page: tutorials/model_management/train_models_locally/classification/chapter.md
+    - label: Create a New Model
+      page: tutorials/model_management/create_new_model/chapter.md
     - label: Using Dataloop's Dataset Generator
       page: tutorials/model_management/dataloop_dataloader/chapter.md
   - expanded: false

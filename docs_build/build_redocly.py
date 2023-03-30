@@ -1,4 +1,3 @@
-from os.path import join, basename
 import os
 import glob
 import re
@@ -7,143 +6,155 @@ import json
 import pathlib
 import random
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 def build_redocly():
-    root = "../"
+    root = "./"
 
     subs_list = ['tutorials']
-    myndxlines, tut_dict = update_tutorials_redocly(root, subs_list)
+    mdx_lines, tut_dict = update_tutorials_redocly(root, subs_list)
 
-    myyaml = join(root, "sidebars.yaml")
-    update_yaml_file(tut_dict, myyaml)
+    sidebars_yaml = os.path.join(root, "sidebars.yaml")
+    update_yaml_file(tut_dict, sidebars_yaml)
 
-    mdxfile = join(root, 'tutorials/tutorials.mdx')
-    update_mdx_file(myndxlines, mdxfile)
+    mdx_file = os.path.join(root, 'tutorials/tutorials.mdx')
+    update_mdx_file(mdx_lines, mdx_file)
 
 
-def update_tutorials_redocly(root, subs_list):
-    tutorials_folder = join(root, 'tutorials')
+def update_tutorials_redocly(root, sub_folders_list):
     superdict = dict()
     superdict['contents'] = []
-    mymdxstr = []
+    mdx_str = []
     mydict = dict()
-    for mysub in subs_list:
+    for sub_folder in sub_folders_list:
         mylist = []
-        mydir = join(root, mysub)
-        myjson = [basename(x) for x in glob.glob(glob.escape(tutorials_folder) + "/*.json", recursive=False) if
-                  os.path.isfile(x)]
-        if len(myjson) == 1:
-            myjson = join(mydir, myjson[0])
-            mydict.update({'group': 'Tutorials', 'page': mysub + "/" + mysub + ".mdx", 'expanded': False, 'pages': []})
-            mymdxstr = gen_sub_dict(myjson, mydict, mydir, mysub, 0, mylist)
+        directory = os.path.join(root, sub_folder)
+        myjson = [os.path.basename(x)
+                  for x in glob.glob(sub_folder + "/*.json", recursive=False)
+                  if os.path.isfile(x)]
+        if len(myjson) == 0:
+            ...
+        elif len(myjson) == 1:
+
+            myjson = os.path.join(directory, myjson[0])
+            mydict.update({'group': 'Tutorials',
+                           'page': sub_folder + "/" + sub_folder + ".mdx",
+                           'expanded': False,
+                           'pages': []})
+            mdx_str = gen_sub_dict(myjson, mydict, directory, sub_folder, 0, mylist)
             superdict['contents'].append(mydict)
         else:
-            print("too many json files in directory", len(myjson), myjson)
-    return (mymdxstr, mydict)
+            raise ValueError(f"too many json files in directory: {len(myjson)}, {myjson}")
+    return mdx_str, mydict
 
 
-def gen_sub_dict(myjson, mydict, mydir, mysubdir,level,strlist):
+def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
     with open(myjson) as json_file:
         data = json.load(json_file)
-    tmpstrlist = []
-    for subdict in data['content']:
-        strforlist = "\t"*(level-1)
-        tmpdict=dict()
-        displayName = subdict['displayName']
-        location = subdict['location']
-        tmpfile = join(mydir,location)
-        mdfile = "nofile"
-        if not os.path.isfile(tmpfile):
-            print("file does not exist:", tmpfile)
+    yaml_str_list = []
+    for content in data['content']:
+        str_for_list = "\t" * (level - 1)
+        comp_dict = dict()
+        display_name = content['displayName']
+        location = content['location']
+        logger.info(f'Build redocly page for {location}')
+        location_filepath = os.path.join(directory, location)
+        md_file = "nofile"
+        if not os.path.isfile(location_filepath):
+            logger.warning(f"file does not exist: {location_filepath}")
             continue
-        file_extension = pathlib.Path(tmpfile).suffix
+        file_extension = pathlib.Path(location_filepath).suffix
         if file_extension == ".json":
-            tmpdict['group'] = subdict['displayName']
-            tmpdict['expanded'] = False
-            tmpdict['pages'] = []
-            strforlist += f' - {displayName}'
-            if level>0: strlist.append(strforlist)
-            gen_sub_dict(tmpfile, tmpdict, mydir, mysubdir,level+1,strlist)
+            comp_dict['group'] = content['displayName']
+            comp_dict['expanded'] = False
+            comp_dict['pages'] = []
+            str_for_list += f' - {display_name}'
+            if level > 0:
+                str_list.append(str_for_list)
+            gen_sub_dict(location_filepath, comp_dict, directory, mysubdir, level + 1, str_list)
         else:
-            tmpdict['label'] = subdict['displayName']
-            tmpdict['page'] = mysubdir+"/"+subdict['location']
-            strforlist += f' - [{displayName}]({location})'
-            if level>0: strlist.append(strforlist)
-        if level==0:
-            mdfile = gen_md_file('\n'.join(strlist),location,mydir,subdict['displayName'])
-            tmpdict['page'] = mysubdir+"/"+mdfile
-            strlist=[]
-        getmdxdtr(subdict['displayName'],mdfile,subdict['description'], tmpstrlist)
-        mydict['pages'].append(tmpdict)
-    return tmpstrlist
+            comp_dict['label'] = content['displayName']
+            comp_dict['page'] = mysubdir + "/" + content['location']
+            str_for_list += f' - [{display_name}]({location})'
+            if level > 0:
+                str_list.append(str_for_list)
+        if level == 0:
+            md_file = gen_md_file('\n'.join(str_list), location, directory, content['displayName'])
+            comp_dict['page'] = mysubdir + "/" + md_file
+            str_list = []
+        get_mdx_str(header=content['displayName'],
+                    md_file=md_file,
+                    description=content['description'],
+                    str_list=yaml_str_list)
+        mydict['pages'].append(comp_dict)
+    return yaml_str_list
 
 
-def getmdxdtr(header,tofile,description, mystr):
-    r="{"
-    l="}"
-    nl='\n'
-    mydict={1:"launchFastIcon",2:"icon1",3:"icon3"}
-    myicon = mydict[random.randint(1,3)]
-    mystr.append(f'    <WideTile header="{header}" to="{tofile}" icon={r}{myicon}{l}>{nl}')
-    mystr.append(f'          {description}{nl}')
-    mystr.append(f'    </WideTile>{nl}')
+def get_mdx_str(header, md_file, description, str_list):
+    icons = {1: "launchFastIcon",
+             2: "icon1",
+             3: "icon3"}
+    icon = icons[random.randint(1, 3)]
+    str_list.append(f'    <WideTile header="{header}" to="{md_file}" icon={{{icon}}}>\n')
+    str_list.append(f'          {description}\n')
+    str_list.append(f'    </WideTile>\n')
 
 
-def gen_md_file(mdstr,mydir,mydest,h2):
-    file_name = mydir.split("/")[0] + ".md"
-    file_path = mydest + "/"+ file_name
-    mdstr = '# Tutorials\n\n## ' + h2 + "\n" + mdstr
-    fileh = open(file_path,"w+")
-    fileh.write(mdstr)
-    fileh.close()
+def gen_md_file(md_str, directory, mydest, h2):
+    file_name = directory.split("/")[0] + ".md"
+    file_path = mydest + "/" + file_name
+    md_str = '# Tutorials\n\n## ' + h2 + "\n" + md_str
+    with open(file_path, "w+") as f:
+        f.write(md_str)
     return file_name
 
 
-def get_yaml_data(myyaml):
-    with open(myyaml) as file:
+def get_yaml_data(yaml_filepath):
+    with open(yaml_filepath) as f:
         try:
-            data = yaml.safe_load(file)
+            data = yaml.safe_load(f)
         except yaml.YAMLError as exception:
             print(exception)
     return data
 
 
-def update_yaml_file(tut_dict, yaml_file):
-    data = get_yaml_data(yaml_file)
+def update_yaml_file(tut_dict, yaml_filepath):
+    data = get_yaml_data(yaml_filepath=yaml_filepath)
     for i in range(len(data['contents'])):
         mydict = data['contents'][i]
         if 'group' in mydict:
             if mydict['group'] == 'Tutorials':
                 data['contents'][i] = tut_dict
                 break
-    with open(yaml_file, 'w') as file:
+    with open(yaml_filepath, 'w') as file:
         yaml.dump(data, file)
 
 
-def update_mdx_file(mdxlines, mdxfile):
-    file1 = open(mdxfile, "r+")
-    newlines = []
-    inside = False
-    for item in file1.readlines():
-        if re.search('^\s*<FlexSection', item):
-            inside = True
+def update_mdx_file(mdx_lines, mdx_file):
+    with open(mdx_file, "r+") as f:
+        newlines = []
+        inside = False
+        for item in f.readlines():
+            if re.search('^\s*<FlexSection', item):
+                inside = True
+                newlines.append(item)
+                continue
+
+            if re.search('^\s*</FlexSection', item):
+                inside = False
+                newlines.extend(mdx_lines)
+                newlines.append(item)
+                continue
+
+            if inside:
+                continue
+
             newlines.append(item)
-            continue
-
-        if re.search('^\s*</FlexSection', item):
-            inside = False
-            newlines.extend(mdxlines)
-            newlines.append(item)
-            continue
-
-        if inside:
-            continue
-
-        newlines.append(item)
-    file1.close()
-    file2 = open(mdxfile, "w")
-    file2.writelines(newlines)
-    file2.close()
+    with open(mdx_file, "w") as f:
+        f.writelines(newlines)
 
 
 if __name__ == "__main__":
