@@ -4,8 +4,8 @@
     "description": "Use Dataloop Python SDK to create, deploy, and execute cloud functions.\n\nSee our SDK Getting Started guide at https://dataloop.ai/docs/sdk-register.\n",
     "content": [
         {
-            "displayName": "FaaS Interactive Tutorial",
-            "description": "FaaS Interactive Tutorial – Using Python & Dataloop SDK",
+            "displayName": "Concepts",
+            "description": "FaaS Concepts – Using Python & Dataloop SDK",
             "location": "faas/concept/chapter.md"
         },
         {

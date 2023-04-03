@@ -1,7 +1,7 @@
 {
   "name": "model-mgmt-tutorial",
   "title": "Model Management Tutorial",
-  "description": "Use Dataloop Python SDK to create, train, inference and manage Models and Snapshots.\n\nSee our SDK Getting Started guide at https://dataloop.ai/docs/sdk-register.\n",
+  "description": "Use Dataloop Python SDK to create, train, inference and manage ML Models.\n\nSee our SDK Getting Started guide at https://dataloop.ai/docs/sdk-register.\n",
   "content": [
     {
       "displayName": "Introduction",
@@ -21,12 +21,12 @@
     {
       "displayName": "Train Models Locally",
       "description": "Download AI Library Models to Train Offline",
-      "location": "model_management/train_models_locally/chapter.md"
+      "location": "model_management/train_models_locally/classification/chapter.md"
     },
     {
       "displayName": "Create a New Model",
       "description": "Create a Custom Model",
-      "location": "model_management/create_a_new_model/chapter.md"
+      "location": "model_management/create_new_model/chapter.md"
     },
     {
       "displayName": "Using Dataloop's Dataset Generator",
