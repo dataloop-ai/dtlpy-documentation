@@ -89,3 +89,47 @@ task.add_items(
     filters=filters,  # filter by folder directory or use other filters
     assignee_ids=['<annotator1@dataloop.ai>', '<annotator2@dataloop.ai>'])
 ```
+## Creating Consensus Tasks  
+
+```python
+import dtlpy as dl
+import datetime
+if dl.token_expired():
+    dl.login()
+project = dl.projects.get(project_name='<project_name>')
+dataset = project.datasets.get(dataset_name='<dataset_name>')
+# Create annotation task
+task = dataset.tasks.create(
+    task_name='<task_name>',
+    due_date=datetime.datetime(day=1, month=1, year=2029).timestamp(),
+    assignee_ids=['<annotator1@dataloop.ai>', '<annotator2@dataloop.ai>'],
+    consensus_percentage=100,  # the consensus percentage ber task
+    consensus_assignees=2,  # the consensus assignees number of the task
+)
+```
+## Creating Pipeline Tasks Node  
+this example will create a task node in a pipeline.  
+all options are the same as creating a task, with the addition of the pipeline node options.  
+
+```python
+import dtlpy as dl
+import datetime
+if dl.token_expired():
+    dl.login()
+project = dl.projects.get(project_name='<project_name>')
+dataset = project.datasets.get(dataset_name='<dataset_name>')
+pipeline = project.pipelines.create(name='pipeline-faas-example-dataset')
+# Create annotation task
+task_node = dl.TaskNode(
+    name='My Task',
+    recipe_id='<recipe_id>',
+    recipe_title='<recipe_title>',
+    task_owner='owner',
+    workload=[dl.WorkloadUnit(assignee_id='assignee_id', load=100)],
+    position=(2, 1),
+    project_id=project.id,
+    dataset_id=dataset.id,
+)
+pipeline.nodes.add(node=task_node)
+pipeline.update()
+```
