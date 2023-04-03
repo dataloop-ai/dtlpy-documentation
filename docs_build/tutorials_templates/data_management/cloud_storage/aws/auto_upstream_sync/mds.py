@@ -12,6 +12,7 @@ def section1():
     NOTE: For any other custom use (e.g. other python version or more packages) try creating your own layer (We used [this](https://www.geeksforgeeks.org/how-to-install-python-packages-for-aws-lambda-layers) tutorial and the python:3.8 docker image).
 
     ### Create the Lambda
+    ### Create the Lambda
     1. Create a new Lambda
     2. The default timeout is 3[s] so we'll need to change to 1[m] (1 Minute):
         Configuration → General configuration → Edit → Timeout
@@ -31,7 +32,7 @@ def section2():
 def section3():
     """
     ### Add a Layer to the Lambda
-    We have created an AWS Layer with the Dataloop SDK ready. Click [here](https://storage.googleapis.com/dtlpy/aws-python3.8-lambda-layer/layer.zip) to download the zip file.
+    We have created an AWS Layer with the Dataloop SDK ready. Click [here](https://storage.googleapis.com/dtlpy/aws-python3.8-lambda-layer/layer.zip/) to download the zip file.
     Because the layer's size is larger than 50MB you cannot use it directly (AWS restrictions), but need to upload it to a bucket first.
     Once uploaded, create a new layer for the dtlpy env:
     1. Go to the layers screen and "click Add Layer".

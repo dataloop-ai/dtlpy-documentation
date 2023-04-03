@@ -9,19 +9,19 @@
       "location": "data_management/cloud_storage/create_an_external_dataset/chapter.md"
     },
     {
-      "displayName": "Dataset Binding with AWS",
-      "description": "Dataset Binding with AWS",
-      "location": "data_management/cloud_storage/binding_with_aws/chapter.md"
+      "displayName": "Amazon Web Services",
+      "description": "Amazon Cloud Provider",
+      "location": "data_management/cloud_storage/aws"
     },
     {
-      "displayName": "Dataset Binding with Azure",
-      "description": "Dataset Binding with Azure",
-      "location": "data_management/cloud_storage/binding_with_azure/chapter.md"
+      "displayName": "Microsoft Azure",
+      "description": "Azure Cloud provider",
+      "location": "data_management/cloud_storage/azure"
     },
     {
-      "displayName": "Dataset Binding with GCS",
-      "description": "Dataset Binding with GCS",
-      "location": "data_management/cloud_storage/binding_with_gcs/chapter.md"
+      "displayName": "Google Cloud Provider",
+      "description": "Google Cloud Provider",
+      "location": "data_management/cloud_storage/gcp"
     }
   ]
 }

@@ -1,0 +1,23 @@
+{
+  "name": "aws",
+  "title": "AWS",
+  "description": "AWS related capabilities ",
+  "content": [
+    {
+      "displayName": "Auto Upstream Sync with AWS",
+      "description": "Auto Upstream Sync with AWS",
+      "location": "data_management/cloud_storage/aws/auto_upstream_sync/chapter.md"
+    },
+    {
+      "displayName": "Integrations with AWS",
+      "description": "Integrations with AWS",
+      "location": "data_management/cloud_storage/aws/integration/chapter.md"
+    },
+    {
+      "displayName": "S3 Bucket Storage Driver from AWS",
+      "description": "S3 Bucket Storage Driver from AWS",
+      "location": "data_management/cloud_storage/aws/storage_driver/chapter.md"
+    }
+  ]
+}
+
