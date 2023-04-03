@@ -33,7 +33,7 @@
   },
   {
     "type": "md",
-    "name": "func7"
+    "name": "func5"
   },
   {
     "type": "code",
@@ -41,10 +41,26 @@
   },
   {
     "type": "md",
-    "name": "func8"
+    "name": "func6"
   },
   {
     "type": "code",
     "name": "func6"
+  },
+  {
+    "type": "md",
+    "name": "func7"
+  },
+  {
+    "type": "code",
+    "name": "func7"
+  },
+  {
+    "type": "md",
+    "name": "func8"
+  },
+  {
+    "type": "code",
+    "name": "func8"
   }
 ]

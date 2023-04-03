@@ -1,11 +1,9 @@
-# Tutorials 
+# Tutorials
 
-## Model management
-  *  [Create new model](model_management/create_new_model/chapter.md)
-  *  [Dataloop dataloader](model_management/dataloop_dataloader/chapter.md)
-  *  [Getting started](model_management/getting_started/chapter.md)
-  *  [Introduction](model_management/introduction/chapter.md)
-  * Use dataloop zoo models
-    *  [Classification](model_management/use_dataloop_zoo_models/classification/chapter.md)
-    *  [Object detection](model_management/use_dataloop_zoo_models/object_detection/chapter.md)
-  
+## Model Management
+ - [Introduction](model_management/introduction/chapter.md)
+ - [Model Metrics Only](model_management/model_metrics_only/chapter.md)
+ - [Train and Deploy Dataloop Models](model_management/train_dataloop_models/chapter.md)
+ - [Train Models Locally](model_management/train_models_locally/classification/chapter.md)
+ - [Create a New Model](model_management/create_new_model/chapter.md)
+ - [Using Dataloop's Dataset Generator](model_management/dataloop_dataloader/chapter.md)

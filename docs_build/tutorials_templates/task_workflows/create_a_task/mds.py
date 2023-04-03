@@ -27,6 +27,14 @@ def func3():
 
 def func4():
     """
+    # Create a Pulling Task
+    In this task, items are queued in a hidden assignment, and distributed to assignees in small batches, according to their progress.
+    Changes to the team are very easy to do, as no assignee has a large number of items in their assignment.
+    """
+
+
+def func5():
+    """
     # Add items to an existing task
     Adding items to an existing task will create new assignments (for new assignee/s).
 
@@ -34,15 +42,9 @@ def func4():
     """
 
 
-def func5():
-    """
-    ## Single Item
-    """
-
-
 def func6():
     """
-    ## List of Items
+    ## Single or a List of Items
     """
 
 

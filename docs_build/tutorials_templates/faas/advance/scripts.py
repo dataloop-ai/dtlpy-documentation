@@ -3,68 +3,37 @@ import dtlpy as dl
 
 class Scripts:
     def func1(self):
-        import dtlpy as dl
-        slots = [
-            dl.PackageSlot(module_name='image-processing',
-                           function_name='rgb2gray',
-                           display_name='RGB2GRAY',
-                           post_action=dl.SlotPostAction(type=dl.SlotPostActionType.NO_ACTION),
-                           display_scopes=[
-                               dl.SlotDisplayScope(
-                                   resource=dl.SlotDisplayScopeResource.ITEM,
-                                   panel=dl.UiBindingPanel.ALL,
-                                   filters={})])
-        ]
+        package: dl.Package
+        service = package.deploy(
+            service_name='my-service',
+            runtime=dl.KubernetesRuntime(
+                pod_type=dl.InstanceCatalog.REGULAR_S,
+                concurrency=10,
+                runner_image='python:3.9',  # optional - any custom docker image,
+                autoscaler=dl.KubernetesRabbitmqAutoscaler(
+                    min_replicas=0,
+                    max_replicas=1,
+                    queue_length=10,
+                    cooldown_period=300,
+                    polling_interval=10
+                )))
 
     def func2(self):
-        # Update package with the slot
-        package.slots = slots
-        package = package.update()
-
-        # Update service with the new package version
-        service.package_revision = package.version
-        service.update()
+        autoscaler = dl.KubernetesRabbitmqAutoscaler(
+            min_replicas=0,
+            max_replicas=1,
+            queue_length=10,
+            # cooldown_period: define how long to wait before scaling down (reducing the number of replicas) in case the queue is below the queue_length.
+            cooldown_period=300,
+            # polling_interval (in seconds): this parameter defines how often the queue is being sampled to perform any action.
+            polling_interval=10
+        )
 
     def func3(self):
-        package.services.activate_slots(service=service,
-                                        project_id=project.id,
-                                        slots=slots)
-
-    def func4(self):
-        service.pause()
-
-    def func5(self):
-        class ServiceRunner(dl.BaseServiceRunner):
-            def detect(self, item: dl.Item):
-                # Do some work
-                foo = 0
-                self.kill_event()
-                # Do some more work
-                bar = 1
-                self.kill_event()
-                # Sleep for a while
-                import time
-                time.sleep(1)
-                # And... done!
-                return
-
-    def func6(self):
-        execution.terminate()
-
-    def func7(self):
-        service.execution_timeout = 60  # 1 minute
-
-    def func8(self):
-        service.on_reset = 'failed'
-        service.on_reset = 'rerun'
-        # The service must be updated after changing these attributes
-        service.update()
-
-    def func9(self):
         package: dl.Package
         package.services.deploy(name='with-integrations',
                                 secrets=['integrationId'])
 
-    def func10(self):
+    def func4(self):
         import os
         print(os.environ['INTEGRATION_NAME'])

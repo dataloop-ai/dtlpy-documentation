@@ -21,7 +21,7 @@
     {
       "displayName": "Dataset Binding with GCS",
       "description": "Dataset Binding with GCS",
-      "location": "data_management/cloud_storage/binding_with_gcs//chapter.md"
+      "location": "data_management/cloud_storage/binding_with_gcs/chapter.md"
     }
   ]
 }

@@ -71,6 +71,22 @@ task = dataset.tasks.create(
     # The items will be divided equally between assignments
 )
 ```
+# Create a Pulling Task  
+In this task, items are queued in a hidden assignment, and distributed to assignees in small batches, according to their progress.  
+Changes to the team are very easy to do, as no assignee has a large number of items in their assignment.  
+
+```python
+task = dataset.tasks.create(
+    task_name='<task_name>',
+    due_date=datetime.datetime(day=1, month=1, year=2029).timestamp(),
+    # batch_size: Pulling batch size (items), use with pulling allocation method. Restrictions - Min 3, max 100
+    batch_size=10,
+    # max_batch_workload: Max items in assignment, use with pulling allocation method. Restrictions - Min batchSize + 2, max batchSize * 2
+    max_batch_workload=15,
+    # allowed_assignees - list the task assignees (contributors) that should be working on the task. Provide a list of users' emails
+    allowed_assignees=['<annotator1@dataloop.ai>', '<annotator2@dataloop.ai>']
+)
+```
 # Add items to an existing task  
 Adding items to an existing task will create new assignments (for new assignee/s).  
   
@@ -88,6 +104,13 @@ filters = dl.Filters(field='<metadata.system.refs>', values=[])  # filter on una
 task.add_items(
     filters=filters,  # filter by folder directory or use other filters
     assignee_ids=['<annotator1@dataloop.ai>', '<annotator2@dataloop.ai>'])
+```
+## Single or a List of Items  
+
+```python
+item = dl.items.get(item_id='<item-id>')
+task.add_items(items=[item],
+               assignee_ids=['<annotator1@dataloop.ai>'])
 ```
 ## Creating Consensus Tasks  
 

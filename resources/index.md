@@ -7,6 +7,6 @@ title: Resources
 
 ## REST API
 
-## Python API
+## Python SDK
 
-## JS API
+## JS SDK

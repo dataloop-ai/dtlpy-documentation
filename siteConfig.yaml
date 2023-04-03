@@ -1,16 +1,17 @@
-meta:
-  title: Redocly Training
-  description: The best API documentation generator ever.
-  siteUrl: https://developer-portal-starter.redoc.ly
-  keywords: redocly developer portal, api portal starter, api reference docs
+seo:
+  title: Dataloop's Developers
+  description: Drive your AI to production with end-to-end data management, automation pipelines and a quality-first data labeling platform.
+  siteUrl: https://developers.dataloop.ai
+  keywords: dataloop developer portal, api portal starter, api reference docs
   lang: en-US
+showNextButton: true
 linkChecker:
   severity: warning
   options:
     CheckExternal: false
 logo:
-  image: ./images/dl_logo-removebg-preview.png
-  altText: Redocly Training
+  image: ./assets/site/dl_logo-removebg-preview.png
+  altText: Dataloop's Developers
 toc:
   enable: true
 oasDefinitions:
@@ -27,35 +28,36 @@ stylesheets:
 nav:
 
   - label: Dataloop Platform
+    icon: ./assets/site/dl_icon.png
     href: https://console.dataloop.ai
   #  page: developer-portal/index.md
 
   - label: Developers and support docs
-    icon: ./images/dl_icon.png
+    icon: ./assets/site/dl_icon.png
     page: ./tutorials/tutorials.mdx
     #page: https://dataloop.ai/docs/welcome
 
   - label: SDK and CLI docs
-    icon: ./images/dl_icon.png
+    icon: ./assets/site/dl_icon.png
     page: ./resources/resources.mdx
     #href: https://sdk-docs.dataloop.ai/en/latest/index.html
 
   - search: true
 
 footer:
-  copyrightText: Copyright © Redocly 2019-2021. All right reserved.
+  copyrightText: Copyright © Dataloop Ltd. 2023
   columns:
     - group: Legal
       items:
         - label: Terms of Use
-          href: 'https://redoc.ly/subscription-agreement/'
+          href: 'https://dataloop.ai/terms/'
         - label: Privacy Notice
-          href: 'https://redoc.ly/privacy-notice/'
+          href: 'https://dataloop.ai/privacy-policy/'
         - label: Cookie Notice
-          href: 'https://redoc.ly/cookie-notice/'
+          href: 'https://dataloop.ai/privacy-policy/'
     - group: Support
       items:
         - label: FAQ
-          page: faq.md
+          href: 'https://dataloop.ai/docs/help-getting-started'
         - label: Contact us
-          page: contact.mdx
+          href: 'https://dataloop.ai/contact/'

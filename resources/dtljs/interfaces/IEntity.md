@@ -16,6 +16,8 @@ IEntity
 
   ↳ [`IDataset`](IDataset.md)
 
+  ↳ [`IDriver`](IDriver.md)
+
   ↳ [`IItem`](IItem.md)
 
   ↳ [`IProject`](IProject.md)

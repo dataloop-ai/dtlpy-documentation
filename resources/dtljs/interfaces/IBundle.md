@@ -20,6 +20,8 @@ IBundle
 - [`AppSettings`](../classes/AppSettings.md)
 - [`Contributors`](../classes/Contributors.md)
 - [`Datasets`](../classes/Datasets.md)
+- [`Drivers`](../classes/Drivers.md)
+- [`Executions`](../classes/Executions.md)
 - [`Items`](../classes/Items.md)
 - [`Labels`](../classes/Labels.md)
 - [`Ontologies`](../classes/Ontologies.md)

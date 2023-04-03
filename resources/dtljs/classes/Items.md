@@ -55,36 +55,36 @@ Creates an instance of Repository.
 
 ### create
 
-▸ **create**(`payload`, `options`): `Promise`<[`SDKItem`](SDKItem.md)>
+▸ **create**(`payload`): `Promise`<[`SDKItem`](SDKItem.md)>
 
 Creates a new item in the Items repository.
 
 **`Example`**
 
 ```ts
-const itemPayload = {
-    datasetId: 'abc123'
-}
-const itemFile = new File(['content'], 'itemName.txt', { type: 'text/plain' });
-const itemOptions = {
-    file: itemFile,
+const file = new File(['content'], 'filename.txt', { type: 'text/plain' })
+const binariesItemPayload = {
+    file: file,
     path: 'path/to/item',
-    metadata: { custom: 'metadata' }
+    metadata: {
+        key: 'value'
+    },
+    binaries: true
 }
-const createdItem = await dl.items.create(itemPayload, itemOptions);
-console.log(createdItem);
-// logs: SDKItem { datasetId: 'abc123', ... }
+
+const item = await sdk.items.create(binariesItemPayload)
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `payload` | `Partial`<[`SDKItem`](SDKItem.md)> | The payload for creating the item. |
-| `options` | `Object` | Options for creating the item. |
-| `options.file` | `File` | - |
-| `options.metadata?` | `any` | - |
-| `options.path?` | `string` | - |
+| Name                 | Type      | Description                                         |
+| :------------------- | :-------- | :-------------------------------------------------- |
+| `payload`            | `Object`  | The payload for the item.                           |
+| `payload.binaries?`  | `boolean` | Whether to upload the item to the Binaries dataset. |
+| `payload.datasetId?` | `string`  | The id of the dataset to create the item in.        |
+| `payload.file`       | `File`    | The file to upload.                                 |
+| `payload.metadata?`  | `any`     | The metadata to add to the item.                    |
+| `payload.path?`      | `string`  | The path to the item.                               |
 
 #### Returns
 

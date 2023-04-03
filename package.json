@@ -1,8 +1,8 @@
 {
-  "name": "portal-template",
+  "name": "dataloop-portal",
   "private": true,
   "version": "0.0.1",
-  "description": "Redocly portal template repository",
+  "description": "Dataloop.ai Developers' Portal",
   "license": "MIT",
   "scripts": {
     "start": "redocly-portal develop -p 3000",

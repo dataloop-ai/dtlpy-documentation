@@ -1,5 +1,4 @@
-# FaaS Interactive Tutorial  
-## Concept  
+# Concept  
   
 Dataloop Function-as-a-Service (FaaS) is a compute service that automatically runs your code based on time patterns or in response to trigger events.  
   

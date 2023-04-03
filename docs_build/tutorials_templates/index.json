@@ -40,8 +40,13 @@
     },
     {
       "displayName": "Model Management",
-      "description": "Tutorials for creating and managing model and snapshots",
+      "description": "Tutorials for creating and managing ML model",
       "location": "model_management/index.json"
+    },
+    {
+      "displayName": "Applications",
+      "description": "Developing and working with the Dataloop Applications",
+      "location": "applications/index.json"
     }
   ]
 }
