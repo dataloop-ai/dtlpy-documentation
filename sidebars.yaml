@@ -17,15 +17,7 @@ contents:
     pages:
     - expanded: false
       group: Cloud Storage
-      pages:
-      - label: Create External Dataset
-        page: tutorials/data_management/cloud_storage/create_an_external_dataset/chapter.md
-      - label: Dataset Binding with AWS
-        page: tutorials/data_management/cloud_storage/binding_with_aws/chapter.md
-      - label: Dataset Binding with Azure
-        page: tutorials/data_management/cloud_storage/binding_with_azure/chapter.md
-      - label: Dataset Binding with GCS
-        page: tutorials/data_management/cloud_storage/binding_with_gcs/chapter.md
+      pages: []
     - label: Manage Datasets
       page: tutorials/data_management/manage_datasets/chapter.md
     - label: Data Versioning

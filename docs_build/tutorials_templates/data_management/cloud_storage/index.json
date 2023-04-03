@@ -4,11 +4,6 @@
   "description": "Create and bind external storage with GCP, AWS and Azure",
   "content": [
     {
-      "displayName": "Create External Dataset",
-      "description": "Create external dataset",
-      "location": "data_management/cloud_storage/create_an_external_dataset/chapter.md"
-    },
-    {
       "displayName": "Amazon Web Services",
       "description": "Amazon Cloud Provider",
       "location": "data_management/cloud_storage/aws"

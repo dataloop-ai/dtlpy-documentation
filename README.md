@@ -64,9 +64,21 @@ jupyter notebook tutorials
   *  [Data versioning](tutorials/data_management/data_versioning/chapter.ipynb)
   * Cloud storage
     *  [Create an external dataset](tutorials/data_management/cloud_storage/create_an_external_dataset/chapter.ipynb)
+    * Azure
+      *  [Storage driver](tutorials/data_management/cloud_storage/azure/storage_driver/chapter.ipynb)
+      *  [Integration](tutorials/data_management/cloud_storage/azure/integration/chapter.ipynb)
+      *  [Auto upstream sync](tutorials/data_management/cloud_storage/azure/auto_upstream_sync/chapter.ipynb)
     *  [Binding with gcs](tutorials/data_management/cloud_storage/binding_with_gcs/chapter.ipynb)
+    * Gcp
+      *  [Storage driver](tutorials/data_management/cloud_storage/gcp/storage_driver/chapter.ipynb)
+      *  [Integration](tutorials/data_management/cloud_storage/gcp/integration/chapter.ipynb)
+      *  [Auto upstream sync](tutorials/data_management/cloud_storage/gcp/auto_upstream_sync/chapter.ipynb)
     *  [Binding with aws](tutorials/data_management/cloud_storage/binding_with_aws/chapter.ipynb)
     *  [Binding with azure](tutorials/data_management/cloud_storage/binding_with_azure/chapter.ipynb)
+    * Aws
+      *  [Storage driver](tutorials/data_management/cloud_storage/aws/storage_driver/chapter.ipynb)
+      *  [Integration](tutorials/data_management/cloud_storage/aws/integration/chapter.ipynb)
+      *  [Auto upstream sync](tutorials/data_management/cloud_storage/aws/auto_upstream_sync/chapter.ipynb)
   *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
 * Recipe and ontology
   *  [Recipe](tutorials/recipe_and_ontology/recipe/chapter.ipynb)
