@@ -41,6 +41,21 @@ Iterate Entity: 100%|███████████████████�
 +----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------+
 ```
 
+Here's an example of how to Filter on Tasks (Tasks are covered in a later chapter):
+
+```
+import dtlpy as dl
+
+project = dl.projects.get(project_name='<replace with your project name>')
+
+dataset = project.datasets.get(dataset_name='<replace with your dataset name')
+
+filteredtasks = dataset.tasks.get_items(task_name='<replace with your task name>')
+filteredtasks.print()
+```
+
+After you learn about Tasks, come back here and give this Filter for Tasks a try.
+
 #### Using Filters to replace data
 
 Existing Item data can be replaced using Filters. You can, for example, create and apply a Filter Query that returns a subset of Item data that includes a specific Classification, such as 'Person', and replace it with another value, such as 'Adult', across the entire subset.
