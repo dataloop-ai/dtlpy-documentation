@@ -9,6 +9,11 @@
       "location": "data_management/cloud_storage/aws/auto_upstream_sync/chapter.md"
     },
     {
+      "displayName": "Manual Upstream Sync with AWS",
+      "description": "Manual Upstream Sync with AWS",
+      "location": "data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.md"
+    },
+    {
       "displayName": "Integrations with AWS",
       "description": "Integrations with AWS",
       "location": "data_management/cloud_storage/aws/integration/chapter.md"

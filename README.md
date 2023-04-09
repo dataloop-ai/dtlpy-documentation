@@ -74,6 +74,7 @@ jupyter notebook tutorials
     * Aws
       *  [Storage driver](tutorials/data_management/cloud_storage/aws/storage_driver/chapter.ipynb)
       *  [Integration](tutorials/data_management/cloud_storage/aws/integration/chapter.ipynb)
+      *  [Manual item upstream sync](tutorials/data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.ipynb)
       *  [Auto upstream sync](tutorials/data_management/cloud_storage/aws/auto_upstream_sync/chapter.ipynb)
   *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
 * Recipe and ontology

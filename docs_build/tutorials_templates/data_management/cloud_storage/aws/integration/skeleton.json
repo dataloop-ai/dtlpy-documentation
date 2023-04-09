@@ -6,5 +6,21 @@
     {
         "type": "code",
         "name": "section1"
+    },
+    {
+        "type": "md",
+        "name": "section2"
+    },
+    {
+        "type": "code",
+        "name": "section2"
+    },
+    {
+        "type": "md",
+        "name": "section3"
+    },
+    {
+        "type": "code",
+        "name": "section3"
     }
 ]
