@@ -18,23 +18,23 @@
 
 ### Too Short; Want More?
 
-As a part of this tutorial, we will be creating and testing a react-based "Image Item Viewer" app and serving it using an Apache server. Through this app, you can view an image in a react application. Although, Dataloop runs on Micro-frontend architecture so you can write your application on any framework of your choice. For this tutorial, we are writing a react-based application.
+As a part of this tutorial, we will be creating and testing a react-based "Image Item Viewer" app and serving it using an Apache server. Through this app, you can view an image in a React application. Although, Dataloop runs on Micro-frontend architecture, so you can write your application on any framework of your choice. For this tutorial, we are writing a react-based application.
 
 ### Prerequisites:
-- [Install Node.js](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04) for running the react based application.
-- [install Apache server](https://ubuntu.com/tutorials/install-and-configure-apache#2-installing-apache) for serving your build on ports 80 and 443. You can use Nginx, Node.js, Python, etc based servers as well.
+- [Install Node.js](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04) for running the React based application.
+- [install Apache server](https://ubuntu.com/tutorials/install-and-configure-apache#2-installing-apache) for serving your build on ports 80 and 443. You can use Nginx, Node.js, Python, etc. based servers as well.
 
 ### Create a React Application:
 
-1. Initiatialise a react-based application.
+1. initialize a react-based application.
     ```
     npx create-react-app image-viewer
     ```
-2. Move to the react app folder.
+2. Move to the React app folder.
     ```
     cd image-viewer
     ```
-3. Change the App.js file to render anything you want in your react application. eg: If you just want to show an image in your react app:
+3. Change the App.js file to render anything you want in your React application. eg: If you just want to show an image in your React app:
 
 <details>
     <summary>App.js</summary>
@@ -116,17 +116,16 @@ The `dl` object would now be globally available through the window object, i.e.,
 
 We need to serve this application on HTTPS, so use [OPENSSL](https://www.ibm.com/docs/en/api-connect/2018.x?topic=overview-generating-self-signed-certificate-using-openssl) to create an SSL certificate on your local machine.
 
-    ```
-    openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
-    ```
+```shell
+openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
+```
 
 Now, you can choose any option to serve your application over  HTTPS. We have mentioned two ways here. One is using create-react-app and other is to use apache:
 
 
 #### CREATE-REACT-APP:
 
-There are various ways to enable HTTPS in the [create-react-app’s local build](https://create-react-app.dev/docs/using-https-in-development/#linux-macos-bash-1
-).
+There are various ways to enable HTTPS in the [create-react-app’s local build](https://create-react-app.dev/docs/using-https-in-development/#linux-macos-bash-1).
 
 Open package.json
 Locale scripts section and start command there.
@@ -140,9 +139,9 @@ Now, your application would be running on the default port 3000 on the following
 
 #### APACHE SETUP:
 
-1. After creating your application, you should create a react build and move it to the `/var/www/html/image-viewer` folder for the Apache server to access it.
+1. After creating your application, you should create a React build and move it to the `/var/www/html/image-viewer` folder for the Apache server to access it.
 
-2. Open the file file `000-default.conf`.
+2. Open the file `000-default.conf`.
 ```
 sudo vi /etc/hosts/sites-available/000-default.conf
 ```
@@ -194,7 +193,7 @@ mv key.pem /etc/ssl/private/key.pem
 
 10. Open `https://local.dataloop.ai`
 
-Your react app should be running here.
+Your React app should be running here.
 
 ### Test the app locally
 
@@ -352,9 +351,11 @@ declare global {
 ### FAQ section:
 
 Q. Why do we need the domain to be local.dataloop.ai to test the app locally?
+
 A: Dataloop AI platform needs to pass cookies to the guest application in order to authenticate the application and provide it access to the SDK backend.
 
 Q. Why do we need HTTPS for running the application locally?
+
 A: Dataloop AI platform runs on HTTPS and it tries to access your `dataloop.json` file. If the local server is serving over HTTP and not on HTTPS, the [Mixed-Content Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content#loading_locally_delivered_mixed-resources) of most of the browsers won't allow the HTTP request for this `dataloop.json` file.
 
 
