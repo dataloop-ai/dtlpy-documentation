@@ -6,19 +6,18 @@ development process.
 By using debug apps, developers can ensure that their applications are functioning as expected and provide a smooth and
 seamless user experience.
 
-_- Used for applications that have panels (UI)_.
+_Used for applications that have panels (UI)._
 
 ### Basic requirements
 
 - For working on dev/local environment, you will need to add `local.dataloop.ai` to your hosts file.
-    - Open your hosts file with admin/sudo privileges. This is normally in `/etc/hosts` on
-      Linux, `C:\Windows\System32\drivers\etc\hosts` on Windows. Add this line to the end of the
-      file: `127.0.0.1 local.dataloop.ai`
-    - You might also need to run your app in _https_ mode.
+  - Open your hosts file with admin/sudo privileges. This is normally in `/etc/hosts` on Linux, `C:\Windows\System32\drivers\etc\hosts` on Windows.
+    Add this line to the end of the file: `127.0.0.1 local.dataloop.ai`
+  - You might also need to run your app in _https_ mode.
 - You may need to enable [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) on your app.
 - Your app should be up running in the browser.
-- Your app should have a manifest file - `dataloop.json` - it needs to be publicly served
-  under the app's main address (For example: https://local.dataloop.ai:3000/dataloop.json).
+  - NOTE: In Windows you need to serve the app at "0.0.0.0" (otherwise it may not work on the local.dataloop.ai host)
+- Your app should have a manifest file - `dataloop.json` - it needs to be publicly served under the app's main address (For example: https://local.dataloop.ai:3000/dataloop.json).
 - You're going to need a working, functioning Dataloop Platform user with a **Developer** role.
 - You're going to need to be familiar with our [Javascript SDK](../../../resources/dtljs/index.md)
 
