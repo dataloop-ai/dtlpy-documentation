@@ -12,6 +12,7 @@ def section1():
     NOTE: For any other custom use (e.g. other python version or more packages) try creating your own layer (We used [this](https://www.geeksforgeeks.org/how-to-install-python-packages-for-aws-lambda-layers) tutorial and the python:3.8 docker image).
 
     ### Create the Lambda
+    ### Create the Lambda
     1. Create a new Lambda
     2. The default timeout is 3[s] so we'll need to change to 1[m] (1 Minute):
         Configuration → General configuration → Edit → Timeout

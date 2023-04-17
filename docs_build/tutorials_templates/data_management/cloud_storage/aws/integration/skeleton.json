@@ -22,21 +22,5 @@
     {
         "type": "code",
         "name": "section3"
-    },
-    {
-        "type": "md",
-        "name": "section4"
-    },
-    {
-        "type": "code",
-        "name": "section4"
-    },
-    {
-        "type": "md",
-        "name": "section5"
-    },
-    {
-        "type": "code",
-        "name": "section5"
     }
 ]

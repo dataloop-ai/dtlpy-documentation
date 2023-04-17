@@ -1,0 +1,23 @@
+{
+  "name": "azure",
+  "title": "Azure",
+  "description": "Azure related capabilities ",
+  "content": [
+    {
+      "displayName": "Auto Upstream Sync with Azure",
+      "description": "Auto Upstream Sync with Azure",
+      "location": "data_management/cloud_storage/azure/auto_upstream_sync/chapter.md"
+    },
+    {
+      "displayName": "Integrations with Azure",
+      "description": "Integrations with Azure",
+      "location": "data_management/cloud_storage/azure/integration/chapter.md"
+    },
+    {
+      "displayName": "Azure Blob container Storage Driver from Microsoft Azure",
+      "description": "Azure Blob container Storage Driver from Microsoft Azure",
+      "location": "data_management/cloud_storage/azure/storage_driver/chapter.md"
+    }
+  ]
+}
+
