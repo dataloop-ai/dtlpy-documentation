@@ -17,7 +17,36 @@ contents:
     pages:
     - expanded: false
       group: Cloud Storage
-      pages: []
+      pages:
+      - expanded: false
+        group: Amazon Web Services
+        pages:
+        - label: Auto Upstream Sync with AWS
+          page: tutorials/data_management/cloud_storage/aws/auto_upstream_sync/chapter.md
+        - label: Manual Upstream Sync with AWS
+          page: tutorials/data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.md
+        - label: Integrations with AWS
+          page: tutorials/data_management/cloud_storage/aws/integration/chapter.md
+        - label: S3 Bucket Storage Driver from AWS
+          page: tutorials/data_management/cloud_storage/aws/storage_driver/chapter.md
+      - expanded: false
+        group: Microsoft Azure
+        pages:
+        - label: Auto Upstream Sync with Azure
+          page: tutorials/data_management/cloud_storage/azure/auto_upstream_sync/chapter.md
+        - label: Integrations with Azure
+          page: tutorials/data_management/cloud_storage/azure/integration/chapter.md
+        - label: Azure Blob container Storage Driver from Microsoft Azure
+          page: tutorials/data_management/cloud_storage/azure/storage_driver/chapter.md
+      - expanded: false
+        group: Google Cloud Provider
+        pages:
+        - label: Auto Upstream Sync with GCP
+          page: tutorials/data_management/cloud_storage/gcp/auto_upstream_sync/chapter.md
+        - label: Integrations with GCP
+          page: tutorials/data_management/cloud_storage/gcp/integration/chapter.md
+        - label: GCS Bucket Storage Driver from GCP
+          page: tutorials/data_management/cloud_storage/gcp/storage_driver/chapter.md
     - label: Manage Datasets
       page: tutorials/data_management/manage_datasets/chapter.md
     - label: Data Versioning

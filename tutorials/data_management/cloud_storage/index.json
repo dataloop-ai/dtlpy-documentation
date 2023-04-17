@@ -6,17 +6,17 @@
     {
       "displayName": "Amazon Web Services",
       "description": "Amazon Cloud Provider",
-      "location": "data_management/cloud_storage/aws"
+      "location": "data_management/cloud_storage/aws/index.json"
     },
     {
       "displayName": "Microsoft Azure",
       "description": "Azure Cloud provider",
-      "location": "data_management/cloud_storage/azure"
+      "location": "data_management/cloud_storage/azure/index.json"
     },
     {
       "displayName": "Google Cloud Provider",
       "description": "Google Cloud Provider",
-      "location": "data_management/cloud_storage/gcp"
+      "location": "data_management/cloud_storage/gcp/index.json"
     }
   ]
 }
