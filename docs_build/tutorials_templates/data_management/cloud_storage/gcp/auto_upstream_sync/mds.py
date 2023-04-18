@@ -69,6 +69,6 @@ def section4():
 
     #### For pictures examples:
 
-    ![add_layer](../../../assets/bind_gcs/create_function.png)
-    ![add_layer](../../../assets/bind_gcs/settings.png)
+    ![add_layer](../../../../../assets/bind_gcs/create_function.png)
+    ![add_layer](../../../../../assets/bind_gcs/settings.png)
     """

@@ -121,5 +121,5 @@ def delete_gcs(event, context):
   
 #### For pictures examples:  
   
-![add_layer](../../../assets/bind_gcs/create_function.png)  
-![add_layer](../../../assets/bind_gcs/settings.png)  
+![add_layer](../../../../../assets/bind_gcs/create_function.png)  
+![add_layer](../../../../../assets/bind_gcs/settings.png)  
