@@ -46,3 +46,17 @@ def func6():
     """
     ## Single or a List of Items
     """
+
+
+def func7():
+    """
+    ## Creating Consensus Tasks
+    """
+
+
+def func8():
+    """
+    ## Creating Pipeline Tasks Node
+    this example will create a task node in a pipeline.
+    all options are the same as creating a task, with the addition of the pipeline node options.
+    """
