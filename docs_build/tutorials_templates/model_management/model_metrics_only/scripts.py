@@ -19,9 +19,15 @@ def func2():
     epoch_metric = np.linspace(0, 9, 10)
 
     for x_metric, y_metric in zip(epoch, epoch_metric):
-        model.add_log_samples(samples=dl.LogSample(figure='tutorial plot',
+        model.metrics.create(samples=dl.PlotSample(figure='tutorial plot',
                                                    legend='some metric',
                                                    x=x_metric,
                                                    y=y_metric),
-                              dataset_id=model.dataset_id)
+                             dataset_id=model.dataset_id)
 
+
+def func3():
+    samples = model.metrics.list()
+
+    for sample in samples.all():
+        print(sample.x, sample.y)
