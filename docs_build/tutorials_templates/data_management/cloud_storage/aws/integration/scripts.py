@@ -40,7 +40,8 @@ def section2():
 def section3():
 
     # After Adding the user ARN to your role trust relationship, continue and update the integration
-    updated_integration = integration.update(new_options={'roleArn': '<YOUR_IAMֹֹֹֹֹ_ROLE_ֹֹARN>'})
+    integration.update(new_options={'roleArn': '<YOUR_IAMֹֹֹֹֹ_ROLE_ֹֹARN>'})
+    updated_integration = project.integrations.get(integrations_id=integration.id)
 
     # checking the integration status was updated
     for metadata in updated_integration.meatadata:
