@@ -16389,7 +16389,7 @@
     "openapi": "3.0.0",
     "servers": [
         {
-            "url": "https://rc-gate.dataloop.ai/api/v1",
+            "url": "https://gate.dataloop.ai/api/v1",
             "description": "Main Dataloop Gateway"
         }
     ],
@@ -25682,13 +25682,13 @@
             }
         }
     },
-    "host": "rc-gate.dataloop.ai",
+    "host": "gate.dataloop.ai",
     "schemes": [
         "https"
     ],
     "x-servers": [
         {
-            "url": "https://rc-gate.dataloop.ai/api/v1",
+            "url": "https://gate.dataloop.ai/api/v1",
             "description": "Main Dataloop Gateway"
         }
     ],
