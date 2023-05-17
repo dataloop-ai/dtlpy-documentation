@@ -16383,68 +16383,6 @@
                 },
                 "summary": ""
             }
-        },
-        "annotationtasks/{id}/addToTask": {
-            "post": {
-                "x-codeSamples": [
-                    {
-                        "lang": "Python",
-                        "source": "\ndataset.tasks.add_items(task= 'task_entity',\nitems = [items])\n\n# \n# Add items to a Task.\n# \n# **Prerequisites**: You must be in the role of an *owner*, *developer*, or *annotation manager* who has been assigned to be *owner* of the annotation task.\n# \n# :param dtlpy.entities.task.Task task: task object\n# :param str task_id: the Id of the task\n# :param dtlpy.entities.filters.Filters filters: Filters entity or a dictionary containing filters parameters\n# :param list items: list of items (item Ids or objects) to add to the task\n# :param list assignee_ids: list to assignee who works in the task\n# :param dict query: query to filter the items for the task\n# :param list workload: list of WorkloadUnit objects. Customize distribution (percentage) between the task assignees. For example: [dl.WorkloadUnit(annotator@hi.com, 80), dl.WorkloadUnit(annotator2@hi.com, 20)]\n# :param int limit: the limit items that task can include\n# :param bool wait: wait until add items will to finish\n# :return: task entity\n# :rtype: dtlpy.entities.task.Task\n# \n# "
-                    }
-                ],
-                "responses": {}
-            }
-        },
-        "annotationtasks/{id}/removeFromTask": {
-            "post": {
-                "x-codeSamples": [
-                    {
-                        "lang": "Python",
-                        "source": "\ndataset.tasks.remove_items(task= 'task_entity',\nitems = [items])\n\n\n# \n# remove items from Task.\n# \n# **Prerequisites**: You must be in the role of an *owner*, *developer*, or *annotation manager* who has been assigned to be *owner* of the annotation task.\n# \n# :param dtlpy.entities.task.Task task: task object\n# :param str task_id: the Id of the task\n# :param dtlpy.entities.filters.Filters filters: Filters entity or a dictionary containing filters parameters\n# :param dict query: query to filter the items use it\n# :param list items: list of items to add to the task\n# :param bool wait: wait until remove items finish\n# :return: True if success and an error if failed\n# :rtype: bool\n# \n# **Examples**:\n# "
-                    }
-                ],
-                "responses": {}
-            }
-        },
-        "projects /{id}/members": {
-            "get": {
-                "x-codeSamples": [
-                    {
-                        "lang": "Python",
-                        "source": "\nusers_jsons_list = dl.projects.list_members(project_id='project_id', role=dl.MemberRole.DEVELOPER)\n\n# \n# Get a list of the project members.\n# \n# **Prerequisites**: You must be in the role of an *owner* to list project members.\n# \n# :param dtlpy.entities.project.Project project: Project object\n# :param role: The required role for the user. Use the enum dl.MemberRole\n# :return: list of the project members\n# :rtype: list\n# \n# "
-                    }
-                ],
-                "responses": {}
-            }
-        },
-        "projects /{project_id}/members/{user_id}": {
-            "post": {
-                "x-codeSamples": [
-                    {
-                        "lang": "Python",
-                        "source": "\nuser_json = dl.projects.add_member(project_id='project_id', email='user@dataloop.ai', role=dl.MemberRole.DEVELOPER)\n\n# \n# Add a member to the project.\n# \n# **Prerequisites**: You must be in the role of an *owner* to add a member to a project.\n# \n# :param str email: member email\n# :param str project_id: The Id of the project\n# :param role: The required role for the user. Use the enum dl.MemberRole\n# :return: dict that represent the user\n# :rtype: dict\n# \n# "
-                    }
-                ],
-                "responses": {}
-            },
-            "patch": {
-                "x-codeSamples": [
-                    {
-                        "lang": "Python",
-                        "source": "\nuser_json = = dl.projects.update_member(project_id='project_id', email='user@dataloop.ai', role=dl.MemberRole.DEVELOPER)\n\n# \n# Update member's information/details in the project.\n# \n# **Prerequisites**: You must be in the role of an *owner* to update a member.\n# \n# :param str email: member email\n# :param str project_id: The Id of the project\n# :param role: The required role for the user. Use the enum dl.MemberRole\n# :return: dict that represent the user\n# :rtype: dict\n# \n# "
-                    }
-                ],
-                "responses": {}
-            },
-            "delete": {
-                "x-codeSamples": [
-                    {
-                        "lang": "Python",
-                        "source": "\nuser_json = dl.projects.remove_member(project_id='project_id', email='user@dataloop.ai')\n\n# \n# Remove a member from the project.\n# \n# **Prerequisites**: You must be in the role of an *owner* to delete a member from a project.\n# \n# :param str email: member email\n# :param str project_id: The Id of the project\n# :return: dict that represents the user\n# :rtype: dict\n# \n# "
-                    }
-                ],
-                "responses": {}
-            }
         }
     },
     "securityDefinitions": {},
