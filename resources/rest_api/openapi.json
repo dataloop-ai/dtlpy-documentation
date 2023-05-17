@@ -25678,7 +25678,6 @@
             "bearerAuth": {
                 "type": "http",
                 "scheme": "bearer",
-                "in": "cookie",
                 "bearerFormat": "JWT"
             }
         }
