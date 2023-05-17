@@ -27,8 +27,7 @@ class Scripts:
         dataset_clone = dataset.clone(clone_name=clone_name,
                                       filters=None,
                                       with_items_annotations=True,
-                                      with_metadata=True,
-                                      with_task_annotations_status=True)
+                                      with_metadata=True)
 
         # DTLPY-STOP
         self.dataset_clone = dataset_clone
@@ -53,8 +52,7 @@ class Scripts:
                                           project_ids=project_ids,
                                           dataset_ids=dataset_ids,
                                           with_items_annotations=True,
-                                          with_metadata=False,
-                                          with_task_annotations_status=False)
+                                          with_metadata=False)
 
         # DTLPY-STOP
         self.dataset_merge = dataset_merge

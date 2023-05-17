@@ -1,6 +1,6 @@
 # Concept  
   
-Dataloop Function-as-a-Service (FaaS) is a compute service that automatically runs your code based on time patterns or in response to trigger events.  
+Dataloop Function-as-a-Service (FaaS) is a compute service that automatically runs your code based on time patterns, in response to trigger events or UI actions.  
   
 You can use Dataloop FaaS to extend other Dataloop services with custom logic. Altogether, FaaS serves as a super flexible unit that provides you with increased capabilities in the Dataloop platform and allows achieving any need while automating processes.  
   
@@ -14,9 +14,11 @@ You can configure the compute settings according to your preferences (machine ty
   
 **Pre annotation processing**: Resize, video assembler, video dissembler  
   
-**Post annotation processing**: Augmentation, crop box-annotations, auto-parenting  
+**Post annotation processing**: Augmentation, crop box-annotations, auto-parenting, input/output validation  
   
 **ML models**: Auto-detection  
   
 **QA models**: Auto QA, consensus model, majority vote model  
+  
+**ML ops**: Extractions (CSV, JSON, ZIP, REST API's, etc.), Enrichment (Features, Annotations, etc.), Masking (Privacy)  
   

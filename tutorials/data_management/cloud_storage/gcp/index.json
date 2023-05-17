@@ -1,0 +1,23 @@
+{
+  "name": "gcp",
+  "title": "GCP",
+  "description": "GCP related capabilities ",
+  "content": [
+    {
+      "displayName": "Auto Upstream Sync with GCP",
+      "description": "Auto Upstream Sync with GCP",
+      "location": "data_management/cloud_storage/gcp/auto_upstream_sync/chapter.md"
+    },
+    {
+      "displayName": "Integrations with GCP",
+      "description": "Integrations with GCP",
+      "location": "data_management/cloud_storage/gcp/integration/chapter.md"
+    },
+    {
+      "displayName": "GCS Bucket Storage Driver from GCP",
+      "description": "GCS Bucket Storage Driver from GCP",
+      "location": "data_management/cloud_storage/gcp/storage_driver/chapter.md"
+    }
+  ]
+}
+

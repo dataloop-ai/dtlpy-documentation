@@ -16,8 +16,7 @@ dataset = project.datasets.get(dataset_id=dataset_id)
 dataset_clone = dataset.clone(clone_name=clone_name,
                               filters=None,
                               with_items_annotations=True,
-                              with_metadata=True,
-                              with_task_annotations_status=True)
+                              with_metadata=True)
 ```
 ## Merge Datasets  
 Dataset merging outcome depends on how similar or different the datasets are.  
@@ -33,6 +32,5 @@ dataset_merge = dl.datasets.merge(merge_name=merge_name,
                                   project_ids=project_ids,
                                   dataset_ids=dataset_ids,
                                   with_items_annotations=True,
-                                  with_metadata=False,
-                                  with_task_annotations_status=False)
+                                  with_metadata=False)
 ```
