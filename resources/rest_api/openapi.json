@@ -25675,10 +25675,11 @@
         },
         "responses": {},
         "securitySchemes": {
-            "cookieAuth": {
-                "type": "apiKey",
-                "name": "JWT",
-                "in": "cookie"
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "in": "cookie",
+                "bearerFormat": "JWT"
             }
         }
     },
@@ -25694,7 +25695,7 @@
     ],
     "security": [
         {
-            "cookieAuth": []
+            "bearerAuth": []
         }
     ]
 }
