@@ -24428,7 +24428,7 @@
                     },
                     {
                         "name": "role",
-                        "in": "body",
+                        "in": "query",
                         "description": "Role",
                         "required": true,
                         "schema": {
@@ -24519,7 +24519,7 @@
                     },
                     {
                         "name": "role",
-                        "in": "body",
+                        "in": "query",
                         "description": "role",
                         "required": true,
                         "schema": {
