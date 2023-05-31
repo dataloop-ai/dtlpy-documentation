@@ -35,6 +35,7 @@ The Dataloop package is a zipped file of the entire application's code.
 It holds all the required components of the application, the panels it is serving, the services it uses, and the source code of the application.
 The base folder structure of the package is:
 
+```
 ├── modules
 │   ├── __init__.py
 │   └── main.py
@@ -49,7 +50,7 @@ The base folder structure of the package is:
 ├── README.md
 ├── build.sh
 └── requirements.txt
-
+```
 
 #### Panels and toolbars
 A Panel represents the view the user is going to see.
