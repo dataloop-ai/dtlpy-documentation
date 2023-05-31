@@ -154,16 +154,16 @@ contents:
     pages:
     - label: Introduction
       page: tutorials/applications/introduction/chapter.md
-    - label: Single Page Application
-      page: tutorials/applications/single_page_application/chapter.md
-    - label: Python Application
+    - label: Python Applications
       page: tutorials/applications/python_application/chapter.md
-    - label: Debug SPA
-      page: tutorials/applications/debug_spa/chapter.md
-    - label: Manifest Examples
-      page: tutorials/applications/dpk_examples/chapter.md
     - label: UI Toolbars
       page: tutorials/applications/toolbars/chapter.md
+    - label: Single Page Web Application
+      page: tutorials/applications/single_page_application/chapter.md
+    - label: Manifest Examples
+      page: tutorials/applications/dpk_examples/chapter.md
+    - label: Frequently Asked Questions
+      page: tutorials/applications/faq/chapter.md
 - expanded: false
   label: Onboarding
   page: onboarding/onboarding.md

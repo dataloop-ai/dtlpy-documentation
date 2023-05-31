@@ -3041,7 +3041,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             },
             "post": {
                 "tags": [
@@ -3089,7 +3090,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/accounts/{account_id}": {
@@ -3120,7 +3122,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             },
             "delete": {
                 "tags": [
@@ -3143,7 +3146,8 @@
                         "description": "OK",
                         "content": {}
                     }
-                }
+                },
+                "response": {}
             },
             "patch": {
                 "tags": [
@@ -3190,7 +3194,8 @@
                         "description": "OK",
                         "content": {}
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/activities/": {
@@ -3223,7 +3228,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/annotations/{annotationId}": {
@@ -3259,7 +3265,8 @@
                         "source": "\nannotation = item.annotations.get(annotation_id='annotation_id')\n\n# \n# Get a single annotation.\n# \n# **Prerequisites**: You must have an item that has been annotated. You must have the role of an *owner* or\n# *developer* or be assigned a task that includes that item as an *annotation manager* or *annotator*.\n# \n# :param str annotation_id: The id of the annotation\n# :return: Annotation object or None\n# :return: Annotation object or None\n# :rtype: dtlpy.entities.annotation.Annotation\n# \n# "
                     }
                 ],
-                "summary": "List all annotations of an item"
+                "summary": "List all annotations of an item",
+                "response": {}
             },
             "delete": {
                 "operationId": "AnnotationsDeleteAnnotation",
@@ -3290,7 +3297,8 @@
                         "source": "\nis_deleted = item.annotations.delete(annotation_id='annotation_id')\n\n# \n# Remove an annotation from item.\n# \n# **Prerequisites**: You must have an item that has been annotated. You must have the role of an *owner* or\n# *developer* or be assigned a task that includes that item as an *annotation manager* or *annotator*.\n# \n# :param dtlpy.entities.annotation.Annotation annotation: Annotation object\n# :param str annotation_id: The id of the annotation\n# :param dtlpy.entities.filters.Filters filters: Filters entity or a dictionary containing filters parameters\n# :return: True/False\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "summary": "Delete an Annotation from an item"
+                "summary": "Delete an Annotation from an item",
+                "response": {}
             },
             "put": {
                 "operationId": "AnnotationsUpdateAnnotation",
@@ -3350,7 +3358,8 @@
                         "source": "\nannotations = item.annotations.update(annotation='annotation')\n\n# \n# Update an existing annotation. For example, you may change the annotation's label and then use the update method.\n# \n# **Prerequisites**: You must have an item that has been annotated. You must have the role of an *owner* or\n# *developer* or be assigned a task that includes that item as an *annotation manager* or *annotator*.\n# \n# :param dtlpy.entities.annotation.Annotation annotations: Annotation object\n# :param bool system_metadata: bool - True, if you want to change metadata system\n# \n# :return: True if successful or error if unsuccessful\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "summary": "Update an item's annotation"
+                "summary": "Update an item's annotation",
+                "response": {}
             }
         },
         "/annotations/{annotationId}/issue": {
@@ -3383,7 +3392,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Update an item's annotation status to issue"
+                "summary": "Update an item's annotation status to issue",
+                "response": {}
             }
         },
         "/annotationtasks": {
@@ -3424,7 +3434,8 @@
                         "source": "\ndataset.tasks.create(task= 'task_entity',\ndue_date = datetime.datetime(day= 1, month= 1, year= 2029).timestamp(),\nassignee_ids =[ 'annotator1@dataloop.ai', 'annotator2@dataloop.ai'])\n\n# \n# Create a new Task (Annotation or QA).\n# \n# **Prerequisites**: You must be in the role of an *owner*, *developer*, or *annotation manager* who has been assigned to be *owner* of the annotation task.\n# \n# :param str task_name: the name of the task\n# :param float due_date: date by which the task should be finished; for example, due_date=datetime.datetime(day=1, month=1, year=2029).timestamp()\n# :param list assignee_ids: list the task assignees (contributors) that should be working on the task. Provide a list of users' emails\n# :param List[WorkloadUnit] List[WorkloadUnit] workload: list of WorkloadUnit objects. Customize distribution (percentage) between the task assignees. For example: [dl.WorkloadUnit(annotator@hi.com, 80), dl.WorkloadUnit(annotator2@hi.com, 20)]\n# :param entities.Dataset dataset: dataset object, the dataset that refer to the task\n# :param str task_owner: task owner. Provide user email\n# :param str task_type: task type \"annotation\" or \"qa\"\n# :param str task_parent_id: optional if type is qa - parent annotation task id\n# :param str project_id: the Id of the project where task will be created\n# :param str recipe_id: recipe id for the task\n# :param list assignments_ids: assignments ids to the task\n# :param dict metadata: metadata for the task\n# :param entities.Filters filters: dl.Filters entity to filter items for the task\n# :param List[entities.Item] items: list of items (item Id or objects) to insert to the task\n# :param dict DQL query: filter items for the task\n# :param list available_actions: list of available actions (statuses) that will be available for the task items; The default statuses are: \"completed\" and \"discard\"\n# :param bool wait: wait until create task finish\n# :param entities.Filters check_if_exist: dl.Filters check if task exist according to filter\n# :param int limit: the limit items that the task can include\n# :param int  batch_size: Pulling batch size (items), use with pulling allocation method. Restrictions - Min 3, max 100\n# :param int max_batch_workload: max_batch_workload: Max items in assignment, use with pulling allocation method. Restrictions - Min batchSize + 2, max batchSize * 2\n# :param list allowed_assignees: list the task assignees (contributors) that should be working on the task. Provide a list of users' emails\n# :param entities.TaskPriority priority: priority of the task options in entities.TaskPriority\n# :param int consensus_percentage: percentage of items to be copied to multiple annotators (consensus items)\n# :param int consensus_assignees: the number of different annotators per item (number of copies per item)\n# :return: Task object\n# :rtype: dtlpy.entities.task.Task\n# \n# "
                     }
                 ],
-                "summary": "Create a new Task"
+                "summary": "Create a new Task",
+                "response": {}
             },
             "get": {
                 "operationId": "TasksFindTasks",
@@ -3553,7 +3564,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Find tasks by query"
+                "summary": "Find tasks by query",
+                "response": {}
             }
         },
         "/annotationtasks/count": {
@@ -3588,7 +3600,8 @@
                         }
                     }
                 ],
-                "summary": "For org admin / owner:\r\nGet active counters for projects"
+                "summary": "For org admin / owner:\r\nGet active counters for projects",
+                "response": {}
             }
         },
         "/annotationtasks/query": {
@@ -3626,7 +3639,8 @@
                         "source": "\ndataset.tasks.list(project_ids='project_ids',pages_size=100, page_offset=0)\n\n# \n# List all tasks.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer* or *annotation manager* who has been assigned the task.\n# \n# :param project_ids: search tasks by given list of project ids\n# :param str status: search tasks by a given task status\n# :param str task_name: search tasks by a given task name\n# :param int pages_size: pages size of the output generator\n# :param int page_offset: page offset of the output generator\n# :param dtlpy.entities.recipe.Recipe recipe: Search tasks that use a given recipe. Provide the required recipe object\n# :param str creator: search tasks created by a given creator (user email)\n# :param dtlpy.entities.assignment.Assignment recipe assignments: assignments object\n# :param double min_date: search all tasks created AFTER a given date, use a milliseconds format. For example: 1661780622008\n# :param double max_date: search all tasks created BEFORE a given date, use a milliseconds format. For example: 1661780622008\n# :param dtlpy.entities.filters.Filters filters: dl.Filters entity to filters tasks using DQL\n# :return: List of Task objects\n# \n# "
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/annotationtasks/{id}": {
@@ -3674,7 +3688,8 @@
                         "source": "\ndataset.tasks.update(task='task_entity')\n\n# \n# Update a Task.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer* or *annotation manager* who created that task.\n# \n# :param dtlpy.entities.task.Task task: the task object\n# :param bool system_metadata: True, if you want to change metadata system\n# :return: Task object\n# :rtype: dtlpy.entities.task.Task\n# \n# "
                     }
                 ],
-                "summary": "Update an existing task"
+                "summary": "Update an existing task",
+                "response": {}
             },
             "get": {
                 "operationId": "TasksGetTask",
@@ -3720,7 +3735,8 @@
                         "source": "\ndataset.tasks.get(task_id='task_id')\n\n# \n# Get a Task object to use in your code.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer* or *annotation manager* who has been assigned the task.\n# \n# :param str task_name: optional - search by name\n# :param str task_id: optional - search by id\n# :return: task object\n# :rtype: dtlpy.entities.task.Task\n# \n# "
                     }
                 ],
-                "summary": "Get a specific task"
+                "summary": "Get a specific task",
+                "response": {}
             },
             "delete": {
                 "operationId": "TasksDeleteTask",
@@ -3751,7 +3767,8 @@
                         "source": "\ndataset.tasks.delete(task_id='task_id')\n\n# \n# Delete the Task.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer* or *annotation manager* who created that task.\n# \n# :param dtlpy.entities.task.Task task: the task object\n# :param str task_name: the name of the task\n# :param str task_id: the Id of the task\n# :param bool wait: wait until delete task finish\n# :return: True is success\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "summary": "Delete a task"
+                "summary": "Delete a task",
+                "response": {}
             }
         },
         "/annotationtasks/{id}/addToTask": {
@@ -3793,7 +3810,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Add work to an existing Task"
+                "summary": "Add work to an existing Task",
+                "response": {}
             }
         },
         "/app-registry": {
@@ -3825,7 +3843,8 @@
                     },
                     "required": true
                 },
-                "summary": "Publish an DPK app.\nSupply the dpk settings in the body request to create the object."
+                "summary": "Publish an DPK app.\nSupply the dpk settings in the body request to create the object.",
+                "response": {}
             }
         },
         "/app-registry/query": {
@@ -3850,7 +3869,8 @@
                 "requestBody": {
                     "$ref": "#/components/requestBodies/QueryString"
                 },
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/app-registry/{id}": {
@@ -3883,7 +3903,8 @@
                         }
                     }
                 ],
-                "summary": "Get an dpk updated object from the db."
+                "summary": "Get an dpk updated object from the db.",
+                "response": {}
             },
             "delete": {
                 "operationId": "Dpk_deleteOne",
@@ -3907,7 +3928,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/app-registry/{name}/revisions": {
@@ -3943,7 +3965,8 @@
                 "requestBody": {
                     "$ref": "#/components/requestBodies/QueryString"
                 },
-                "summary": "Get the revisions of dpk by name."
+                "summary": "Get the revisions of dpk by name.",
+                "response": {}
             }
         },
         "/apps": {
@@ -3975,7 +3998,8 @@
                     },
                     "required": true
                 },
-                "summary": "Install a new app.\nCreate and install a new app on the platform by given dpk name in the body request."
+                "summary": "Install a new app.\nCreate and install a new app on the platform by given dpk name in the body request.",
+                "response": {}
             }
         },
         "/apps/{id}": {
@@ -4018,7 +4042,8 @@
                     },
                     "required": true
                 },
-                "summary": "Update existing app.\nThe server will save the new app props and refresh all the components belonging to the dpk app"
+                "summary": "Update existing app.\nThe server will save the new app props and refresh all the components belonging to the dpk app",
+                "response": {}
             },
             "get": {
                 "operationId": "App_get",
@@ -4049,7 +4074,8 @@
                         }
                     }
                 ],
-                "summary": "Get an app updated object from the db."
+                "summary": "Get an app updated object from the db.",
+                "response": {}
             },
             "delete": {
                 "operationId": "App_uninstall",
@@ -4073,7 +4099,8 @@
                         }
                     }
                 ],
-                "summary": "Uninstall running application.\nwill remove all the components belonging to the app"
+                "summary": "Uninstall running application.\nwill remove all the components belonging to the app",
+                "response": {}
             }
         },
         "/assignments": {
@@ -4108,7 +4135,8 @@
                         }
                     }
                 ],
-                "summary": "Create a new Assignment"
+                "summary": "Create a new Assignment",
+                "response": {}
             },
             "get": {
                 "operationId": "AssignmentsFindAssignments",
@@ -4183,7 +4211,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Find assignments by query"
+                "summary": "Find assignments by query",
+                "response": {}
             }
         },
         "/assignments/{id}": {
@@ -4231,7 +4260,8 @@
                         "source": "\nassignment = task.assignments.update(assignment='assignment_entity', system_metadata=False)\n\n# \n# Update an assignment.\n# \n# **Prerequisites**: You must be in the role of an *owner*, *developer*, or *annotation manager* who has been assigned as *owner* of the annotation task.\n# \n# :param dtlpy.entities.assignment.Assignment assignment assignment: assignment entity\n# :param bool system_metadata: True, if you want to change metadata system\n# :return: Assignment object\n# :rtype: dtlpy.entities.assignment.Assignment assignment\n# \n# "
                     }
                 ],
-                "summary": "Update an existing assignment"
+                "summary": "Update an existing assignment",
+                "response": {}
             },
             "get": {
                 "operationId": "AssignmentsGetAssignment",
@@ -4277,7 +4307,8 @@
                         "source": "\nassignment = task.assignments.get(assignment_id='assignment_id')\n\n# \n# Get Assignment object to use it in your code.\n# \n# :param str assignment_name: optional - search by name\n# :param str assignment_id: optional - search by id\n# :return: Assignment object\n# :rtype: dtlpy.entities.assignment.Assignment\n# \n# "
                     }
                 ],
-                "summary": "Get a specific assignment"
+                "summary": "Get a specific assignment",
+                "response": {}
             },
             "delete": {
                 "operationId": "AssignmentsDeleteAssignment",
@@ -4302,7 +4333,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Delete a assignment"
+                "summary": "Delete a assignment",
+                "response": {}
             }
         },
         "/assignments/{id}/reassign": {
@@ -4350,7 +4382,8 @@
                         "source": "\nassignment = task.assignments.reassign(assignee_ids='annotator1@dataloop.ai')\n\n# \n# Reassign an assignment.\n# \n# **Prerequisites**: You must be in the role of an *owner*, *developer*, or *annotation manager* who has been assigned as *owner* of the annotation task.\n# \n# :param str assignee_id: the email of the user that want to assign the assignment\n# :param dtlpy.entities.assignment.Assignment assignment: assignment object\n# :param assignment_id: the Id of the assignment\n# :param dtlpy.entities.task.Task task: task object\n# :param str task_id: the Id of the task that include the assignment\n# :param bool wait: wait until reassign assignment finish\n# :return: Assignment object\n# :rtype: dtlpy.entities.assignment.Assignment\n# \n# "
                     }
                 ],
-                "summary": "Reassign Assignment to annotator"
+                "summary": "Reassign Assignment to annotator",
+                "response": {}
             }
         },
         "/assignments/{id}/redistribute": {
@@ -4401,7 +4434,8 @@
                         "source": "\nassignment = task.assignments.redistribute(workload=dl.Workload([dl.WorkloadUnit(assignee_id=\"annotator1@dataloop.ai\", load=50),\ndl.WorkloadUnit(assignee_id=\"annotator2@dataloop.ai\", load=50)]))\n\n# \n# Redistribute an assignment.\n# \n# **Prerequisites**: You must be in the role of an *owner*, *developer*, or *annotation manager* who has been assigned as *owner* of the annotation task.\n# \n# \n# :param dtlpy.entities.assignment.Workload workload: list of WorkloadUnit objects. Customize distribution (percentage) between the task assignees. For example: [dl.WorkloadUnit(annotator@hi.com, 80), dl.WorkloadUnit(annotator2@hi.com, 20)]\n# :param dtlpy.entities.assignment.Assignment assignment: assignment object\n# :param str assignment_id: the Id of the assignment\n# :param dtlpy.entities.task.Task task: the task object that include the assignment\n# :param str task_id: the Id of the task that include the assignment\n# :param bool wait: wait until redistribute assignment finish\n# :return: Assignment object\n# :rtype: dtlpy.entities.assignment.Assignment assignment\n# "
                     }
                 ],
-                "summary": "Redistribute Assignment to annotators"
+                "summary": "Redistribute Assignment to annotators",
+                "response": {}
             }
         },
         "/audit/logs": {
@@ -4488,7 +4522,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/audit/logs/csv": {
@@ -4594,7 +4629,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/billing": {
@@ -4652,7 +4688,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/billing/account/{account}/alerts/{id}": {
@@ -4691,7 +4728,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/billing/account/{account}/alerts/{id}/status": {
@@ -4748,7 +4786,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/billing/account/{id}": {
@@ -4806,7 +4845,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/billing/account/{id}/alerts/query": {
@@ -4924,7 +4964,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/billing/account/{id}/apicalls/csv": {
@@ -4980,7 +5021,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/billing/account/{id}/apicalls/json": {
@@ -5028,7 +5070,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/billing/account/{id}/csv": {
@@ -5076,7 +5119,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/billing/accounts": {
@@ -5108,7 +5152,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/billing/accounts/dl/{id}": {
@@ -5139,7 +5184,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/billing/accounts/{id}": {
@@ -5170,7 +5216,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             },
             "patch": {
                 "operationId": "Edit Billing Account",
@@ -5209,7 +5256,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/billing/accounts/{id}/payments/drivers": {
@@ -5261,7 +5309,8 @@
                             "type": "number"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/billing/accounts/{id}/payments/methods": {
@@ -5313,7 +5362,8 @@
                             "type": "number"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/billing/accounts/{id}/payments/methods/{methodid}": {
@@ -5352,7 +5402,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             },
             "delete": {
                 "operationId": "Delete Payment Method",
@@ -5382,7 +5433,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/billing/{id}": {
@@ -5413,7 +5465,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/billing/{projectId}/serviceUsage/{serviceId}": {
@@ -5471,7 +5524,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/compositions": {
@@ -5496,7 +5550,8 @@
                 "requestBody": {
                     "$ref": "#/components/requestBodies/IPostComposition"
                 },
-                "summary": "Create a new Composition.\nSupply the entities in the body request to create a Composition."
+                "summary": "Create a new Composition.\nSupply the entities in the body request to create a Composition.",
+                "response": {}
             },
             "get": {
                 "operationId": "Composition_list",
@@ -5556,7 +5611,8 @@
                         }
                     }
                 ],
-                "summary": "Retrieves Composition.\n\nSupply query parameters to filter the list."
+                "summary": "Retrieves Composition.\n\nSupply query parameters to filter the list.",
+                "response": {}
             }
         },
         "/compositions/{compositionId}": {
@@ -5589,7 +5645,8 @@
                         }
                     }
                 ],
-                "summary": "Get an composition updated object from the db."
+                "summary": "Get an composition updated object from the db.",
+                "response": {}
             },
             "patch": {
                 "operationId": "Composition_update",
@@ -5623,7 +5680,8 @@
                 "requestBody": {
                     "$ref": "#/components/requestBodies/IPostComposition"
                 },
-                "summary": "Update existing composition.\nThe server will save the new composition props and refresh all the entities belonging to the composition"
+                "summary": "Update existing composition.\nThe server will save the new composition props and refresh all the entities belonging to the composition",
+                "response": {}
             }
         },
         "/compositions/{compositionId}/install": {
@@ -5677,7 +5735,8 @@
                     "description": "Pipeline resume option",
                     "required": true
                 },
-                "summary": "Install existing composition. setting all the entities"
+                "summary": "Install existing composition. setting all the entities",
+                "response": {}
             }
         },
         "/compositions/{compositionId}/terminate": {
@@ -5722,7 +5781,8 @@
                         }
                     }
                 ],
-                "summary": "Delete the composition. delete all the entities"
+                "summary": "Delete the composition. delete all the entities",
+                "response": {}
             }
         },
         "/compositions/{compositionId}/uninstall": {
@@ -5765,7 +5825,8 @@
                     },
                     "description": "Keep Composition Triggers Active"
                 },
-                "summary": "Uninstall existing composition. move all the entities to uninstall state"
+                "summary": "Uninstall existing composition. move all the entities to uninstall state",
+                "response": {}
             }
         },
         "/compute/orgs/{orgId}/cleanup": {
@@ -5791,7 +5852,8 @@
                         }
                     }
                 ],
-                "summary": "Cleanup org driver"
+                "summary": "Cleanup org driver",
+                "response": {}
             }
         },
         "/compute/registry/orgs/{orgId}/integrations/{integrationId}": {
@@ -5826,7 +5888,8 @@
                         }
                     }
                 ],
-                "summary": "Apply docker private registry credentials on the user compute system."
+                "summary": "Apply docker private registry credentials on the user compute system.",
+                "response": {}
             },
             "delete": {
                 "operationId": "Compute_deleteRegistryCred",
@@ -5859,7 +5922,8 @@
                         }
                     }
                 ],
-                "summary": "Delete docker private registry credentials from the user compute system."
+                "summary": "Delete docker private registry credentials from the user compute system.",
+                "response": {}
             }
         },
         "/datasets": {
@@ -5915,7 +5979,8 @@
                         "source": "\ndatasets = project.datasets.list(name='name')\n\n# \n# List all datasets.\n# \n# **Prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param str name: list by name\n# :param str creator: list by creator\n# :return: List of datasets\n# :rtype: list\n# \n# "
                     }
                 ],
-                "summary": "Get a names list of all existing datasets"
+                "summary": "Get a names list of all existing datasets",
+                "response": {}
             },
             "post": {
                 "operationId": "DatasetsCreateDataset",
@@ -5971,7 +6036,8 @@
                         "source": "\ndataset = project.datasets.create(dataset_name='dataset_name', ontology_ids='ontology_ids')\n\n# \n# Create a new dataset\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param str dataset_name: The Name of the dataset\n# :param list labels: dictionary of {tag: color} or list of label entities\n# :param list attributes: dataset's ontology's attributes\n# :param list ontology_ids: optional - dataset ontology\n# :param dtlpy.entities.driver.Driver driver: optional - storage driver Driver object or driver name\n# :param str driver_id: optional - driver id\n# :param bool checkout: set the dataset as a default dataset object (cookies)\n# :param ExpirationOptions expiration_options: dl.ExpirationOptions object that contain definitions for dataset like MaxItemDays\n# :param str index_driver: dl.IndexDriver, dataset driver version\n# :param str recipe_id: optional - recipe id\n# :return: Dataset object\n# :rtype: dtlpy.entities.dataset.Dataset\n# \n# "
                     }
                 ],
-                "summary": "Create a new dataset"
+                "summary": "Create a new dataset",
+                "response": {}
             }
         },
         "/datasets/count": {
@@ -6012,7 +6078,8 @@
                         }
                     }
                 ],
-                "summary": "For org admin / owner:\nGet datasets count for projects\nGet datasets if a single project required"
+                "summary": "For org admin / owner:\nGet datasets count for projects\nGet datasets if a single project required",
+                "response": {}
             }
         },
         "/datasets/deleteExpiredItems": {
@@ -6037,7 +6104,8 @@
                     "application/json"
                 ],
                 "parameters": [],
-                "summary": "Deletes all expired items\nEach dataset has the option to set it's SLA according to the attached example\n\nWhen setting expirationOptions.itemMaxAge to a number (100 for example),\nEach item in the dataset will be deleted once the corresponding number of days have passed since it's creation"
+                "summary": "Deletes all expired items\nEach dataset has the option to set it's SLA according to the attached example\n\nWhen setting expirationOptions.itemMaxAge to a number (100 for example),\nEach item in the dataset will be deleted once the corresponding number of days have passed since it's creation",
+                "response": {}
             }
         },
         "/datasets/merge": {
@@ -6095,7 +6163,8 @@
                         "source": "\nsuccess = project.datasets.merge(dataset_ids=['dataset_id1','dataset_id2'],\nmerge_name='dataset_merge_name',\nwith_metadata=True,\nwith_items_annotations=False,\nwith_task_annotations_status=False)\n\n# \n# Merge a dataset. See our `SDK docs <https://dataloop.ai/docs/sdk-create-dataset#merge-datasets>`_ for more information.\n# \n# **Prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param str merge_name: new dataset name\n# :param list dataset_ids: list id's of the datatsets you wish to merge\n# :param str project_ids: the project id that include the datasets\n# :param bool with_items_annotations: true to merge with items annotations\n# :param bool with_metadata: true to merge with metadata\n# :param bool with_task_annotations_status: true to merge with task annotations' status\n# :param bool wait: wait for the command to finish\n# :return: True if success\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/query": {
@@ -6137,7 +6206,8 @@
                         ]
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/storage/project": {
@@ -6170,7 +6240,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/annotations": {
@@ -6228,7 +6299,8 @@
                         "format": "double"
                     }
                 ],
-                "summary": "Query annotations for a specified dataset"
+                "summary": "Query annotations for a specified dataset",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items": {
@@ -6358,7 +6430,8 @@
                         "format": "double"
                     }
                 ],
-                "summary": "List items in a dataset"
+                "summary": "List items in a dataset",
+                "response": {}
             },
             "post": {
                 "operationId": "DatasetItemsCreateItem",
@@ -6417,7 +6490,8 @@
                         "type": "file"
                     }
                 ],
-                "summary": "Create a new item in a dataset\nOrder is important - FILE MUST BE LAST FIELD OF THE FORM"
+                "summary": "Create a new item in a dataset\nOrder is important - FILE MUST BE LAST FIELD OF THE FORM",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/": {
@@ -6461,7 +6535,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/{id}": {
@@ -6510,7 +6585,8 @@
                         }
                     }
                 ],
-                "summary": "Move files to a specified directory"
+                "summary": "Move files to a specified directory",
+                "response": {}
             },
             "get": {
                 "operationId": "DatasetItemsGetItem",
@@ -6542,7 +6618,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             },
             "delete": {
                 "operationId": "DatasetItemsRemoveItem",
@@ -6567,7 +6644,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             },
             "patch": {
                 "operationId": "DatasetItemsEditItem",
@@ -6618,7 +6696,8 @@
                         "type": "boolean"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/{id}/clone": {
@@ -6660,7 +6739,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/{id}/items": {
@@ -6706,7 +6786,8 @@
                         "format": "double"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/{id}/revisions": {
@@ -6739,7 +6820,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/{id}/stream": {
@@ -6766,7 +6848,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/{id}/thumbnail": {
@@ -6816,7 +6899,8 @@
                         "type": "boolean"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/{itemId}/annotations": {
@@ -6849,7 +6933,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "List all annotations of an item"
+                "summary": "List all annotations of an item",
+                "response": {}
             },
             "post": {
                 "operationId": "DatasetItemAnnotationsCreateAnnotation",
@@ -6889,7 +6974,8 @@
                         }
                     }
                 ],
-                "summary": "Create an annotation or annotations for an item"
+                "summary": "Create an annotation or annotations for an item",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/{itemId}/annotations-log": {
@@ -6926,7 +7012,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "List all annotations of an item"
+                "summary": "List all annotations of an item",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/{itemId}/annotations-log/{annotationId}": {
@@ -6956,7 +7043,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "List all annotations of an item"
+                "summary": "List all annotations of an item",
+                "response": {}
             },
             "delete": {
                 "operationId": "DatasetItemAnnotationsLogDeleteAnnotation",
@@ -6981,7 +7069,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Delete an Annotation from an item"
+                "summary": "Delete an Annotation from an item",
+                "response": {}
             },
             "put": {
                 "operationId": "DatasetItemAnnotationsLogUpdateAnnotation",
@@ -7035,7 +7124,8 @@
                         "type": "boolean"
                     }
                 ],
-                "summary": "Update an item's annotation"
+                "summary": "Update an item's annotation",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/{itemId}/annotations-log/{annotationId}/issue": {
@@ -7068,7 +7158,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Update an item's annotation status to issue"
+                "summary": "Update an item's annotation status to issue",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/{itemId}/annotations/{annotationId}": {
@@ -7098,7 +7189,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "List all annotations of an item"
+                "summary": "List all annotations of an item",
+                "response": {}
             },
             "delete": {
                 "operationId": "DatasetItemAnnotationsDeleteAnnotation",
@@ -7123,7 +7215,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Delete an Annotation from an item"
+                "summary": "Delete an Annotation from an item",
+                "response": {}
             },
             "put": {
                 "operationId": "DatasetItemAnnotationsUpdateAnnotation",
@@ -7177,7 +7270,8 @@
                         "type": "boolean"
                     }
                 ],
-                "summary": "Update an item's annotation"
+                "summary": "Update an item's annotation",
+                "response": {}
             }
         },
         "/datasets/{datasetId}/items/{itemId}/annotations/{annotationId}/issue": {
@@ -7210,7 +7304,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Update an item's annotation status to issue"
+                "summary": "Update an item's annotation status to issue",
+                "response": {}
             }
         },
         "/datasets/{id}": {
@@ -7246,7 +7341,8 @@
                         "source": "\ndataset = project.datasets.get(dataset_id='dataset_id')\n\n# \n# Get dataset by name or id.\n# \n# **Prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# You must provide at least ONE of the following params: dataset_id, dataset_name.\n# \n# :param str dataset_name: optional - search by name\n# :param str dataset_id: optional - search by id\n# :param bool checkout: set the dataset as a default dataset object (cookies)\n# :param bool fetch: optional - fetch entity from platform (True), default taken from cookie\n# :return: Dataset object\n# :rtype: dtlpy.entities.dataset.Dataset\n# \n# "
                     }
                 ],
-                "summary": "Get a specific Dataset"
+                "summary": "Get a specific Dataset",
+                "response": {}
             },
             "delete": {
                 "operationId": "DatasetsDeleteDataset",
@@ -7284,7 +7380,8 @@
                         "source": "\nis_deleted = project.datasets.delete(dataset_id='dataset_id', sure=True, really=True)\n\n:param str dataset_name: optional - search by name\n:param str dataset_id: optional - search by id\n:param bool sure: Are you sure you want to delete?\n:param bool really: Really really sure?\n:return: True is success\n:rtype: bool\n\n# \n# Delete a dataset forever!\n# \n# **Prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# "
                     }
                 ],
-                "summary": "Delete a dataset"
+                "summary": "Delete a dataset",
+                "response": {}
             },
             "patch": {
                 "operationId": "DatasetsPatchDataset",
@@ -7337,7 +7434,8 @@
                         "source": "\ndataset = project.datasets.update(dataset='dataset_entity')\n\n# \n# Update dataset field.\n# \n# **Prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param dtlpy.entities.dataset.Dataset dataset: dataset object\n# :param bool system_metadata: True, if you want to change metadata system\n# :param dict patch: Specific patch request\n# :return: Dataset object\n# :rtype: dtlpy.entities.dataset.Dataset\n# \n# "
                     }
                 ],
-                "summary": "Update dataset properties"
+                "summary": "Update dataset properties",
+                "response": {}
             }
         },
         "/datasets/{id}/annotations": {
@@ -7376,7 +7474,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{id}/annotations/json": {
@@ -7410,7 +7509,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Download a JSON file representing all annotations in the specified dataset"
+                "summary": "Download a JSON file representing all annotations in the specified dataset",
+                "response": {}
             }
         },
         "/datasets/{id}/annotations/labels": {
@@ -7437,7 +7537,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             },
             "post": {
                 "operationId": "DatasetsGetFilteredDatasetLabelAggregation",
@@ -7483,7 +7584,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{id}/annotations/zip": {
@@ -7517,7 +7619,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Download a zip archive containing all annotations in the specified dataset\nDirectory structure is preserved in the zip archive\nEach item will be represented by a json file containing it's annotations"
+                "summary": "Download a zip archive containing all annotations in the specified dataset\nDirectory structure is preserved in the zip archive\nEach item will be represented by a json file containing it's annotations",
+                "response": {}
             }
         },
         "/datasets/{id}/annotations/zip/chunks": {
@@ -7544,7 +7647,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{id}/annotations/zip/chunks/{chunk}": {
@@ -7579,7 +7683,8 @@
                         "format": "double"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{id}/clone": {
@@ -7645,7 +7750,8 @@
                         "source": "\ndataset = project.datasets.clone(dataset_id='dataset_id',\nclone_name='dataset_clone_name',\nwith_metadata=True,\nwith_items_annotations=False,\nwith_task_annotations_status=False)\n\n# \n# Clone a dataset. Read more about cloning datatsets and items in our `documentation <https://dataloop.ai/docs/clone-merge-dataset#cloned-dataset>`_ and `SDK documentation <https://dataloop.ai/docs/sdk-create-dataset#clone-dataset>`_.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param str dataset_id: id of the dataset you wish to clone\n# :param str clone_name: new dataset name\n# :param dtlpy.entities.filters.Filters filters: Filters entity or a query dict\n# :param bool with_items_annotations: true to clone with items annotations\n# :param bool with_metadata: true to clone with metadata\n# :param bool with_task_annotations_status: true to clone with task annotations' status\n# :return: dataset object\n# :rtype: dtlpy.entities.dataset.Dataset\n# \n# "
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{id}/counters": {
@@ -7672,7 +7778,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Reset dataset counters (items count, anntotated count, etc...)"
+                "summary": "Reset dataset counters (items count, anntotated count, etc...)",
+                "response": {}
             }
         },
         "/datasets/{id}/directoryTree": {
@@ -7702,7 +7809,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Get a directory tree of the dataset"
+                "summary": "Get a directory tree of the dataset",
+                "response": {}
             }
         },
         "/datasets/{id}/export": {
@@ -7741,7 +7849,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{id}/imports": {
@@ -7783,7 +7892,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             },
             "delete": {
                 "operationId": "DatasetsDetachItemsFromDataset",
@@ -7820,7 +7930,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/datasets/{id}/query": {
@@ -7875,7 +7986,8 @@
                         "source": "\ndataset.items.list(page_offset=0, page_size=100)\n\n# \n# List items in a dataset.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param dtlpy.entities.filters.Filters filters: Filters entity or a dictionary containing filters parameters\n# :param int page_offset: start page\n# :param int page_size: page size\n# :return: Pages object\n# :rtype: dtlpy.entities.paged_entities.PagedEntities\n# \n# "
                     }
                 ],
-                "summary": "Detailed information about RQL can be found at /api/v1/rql-docs"
+                "summary": "Detailed information about RQL can be found at /api/v1/rql-docs",
+                "response": {}
             }
         },
         "/datasets/{id}/restore": {
@@ -7920,7 +8032,8 @@
                         }
                     }
                 ],
-                "summary": "Update an item's annotation"
+                "summary": "Update an item's annotation",
+                "response": {}
             }
         },
         "/datasets/{id}/sync": {
@@ -7959,7 +8072,8 @@
                         "source": "\nsuccess = project.datasets.sync(dataset_id='dataset_id')\n\n# \n# Sync dataset with external storage.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param str dataset_id: The Id of the dataset to sync\n# :param bool wait: wait for the command to finish\n# :return: True if success\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "summary": "Synchronize missing files from storage"
+                "summary": "Synchronize missing files from storage",
+                "response": {}
             }
         },
         "/datasets/{}/directoryTree": {
@@ -7970,7 +8084,7 @@
                         "source": "\ndirectory_tree = project.datasets.directory_tree(dataset='dataset_entity')\n\n# \n# Get dataset's directory tree.\n# \n# **Prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# You must provide at least ONE of the following params: dataset, dataset_name, dataset_id.\n# \n# :param dtlpy.entities.dataset.Dataset dataset: dataset object\n# :param str dataset_name: The Name of the dataset\n# :param str dataset_id: The Id of the dataset\n# :return: DirectoryTree\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/drivers": {
@@ -7997,7 +8111,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "List storage drivers"
+                "summary": "List storage drivers",
+                "response": {}
             },
             "post": {
                 "operationId": "DriversCreate",
@@ -8033,7 +8148,8 @@
                         "source": "\nproject.drivers.create(name='driver_name',\ndriver_type=dl.ExternalStorage.S3,\nintegration_id='integration_id',\nbucket_name='bucket_name',\nproject_id='project_id',\nregion='ey-west-1')\n\n# \n# Create a storage driver.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param str name: the driver name\n# :param ExternalStorage driver_type: dl.ExternalStorage (Enum). For all options run: list(dl.ExsternalStorage)\n# :param str integration_id: the integration id\n# :param str bucket_name: the external bucket name\n# :param IntegrationType integration_type: dl.IntegrationType (Enum). For all options run: list(dl.IntegrationType)\n# :param str project_id: project id\n# :param bool allow_external_delete: true to allow deleting files from external storage when files are deleted in your Dataloop storage\n# :param str region: relevant only for s3 - the bucket region\n# :param str storage_class: relevant only for s3\n# :param str path: Optional. By default path is the root folder. Path is case sensitive integration\n# :return: driver object\n# :rtype: dtlpy.entities.driver.Driver\n# \n# "
                     }
                 ],
-                "summary": "Create a new storage driver"
+                "summary": "Create a new storage driver",
+                "response": {}
             }
         },
         "/drivers/test": {
@@ -8065,7 +8181,8 @@
                         }
                     }
                 ],
-                "summary": "Test external storage access"
+                "summary": "Test external storage access",
+                "response": {}
             }
         },
         "/drivers/{id}": {
@@ -8098,7 +8215,8 @@
                         "source": "\nproject.drivers.get(driver_id='driver_id')\n\n# \n# Get a Driver object to use in your code.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# You must provide at least ONE of the following params: driver_name, driver_id.\n# \n# :param str driver_name: optional - search by name\n# :param str driver_id: optional - search by id\n# :return: Driver object\n# :rtype: dtlpy.entities.driver.Driver\n# \n# "
                     }
                 ],
-                "summary": "Get storage driver configuration"
+                "summary": "Get storage driver configuration",
+                "response": {}
             },
             "patch": {
                 "operationId": "DriversUpdateDriver",
@@ -8135,7 +8253,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Update storage driver configuration"
+                "summary": "Update storage driver configuration",
+                "response": {}
             },
             "delete": {
                 "operationId": "DriversDeleteDriver",
@@ -8166,7 +8285,8 @@
                         "source": "\nproject.drivers.delete(dataset_id='dataset_id', sure=True, really=True)\n\n:param str driver_name: optional - search by name\n:param str driver_id: optional - search by id\n:param bool sure: Are you sure you want to delete?\n:param bool really: Really really sure?\n:return: True if success\n:rtype: bool\n\n# \n# Delete a driver forever!\n# \n# **Prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# "
                     }
                 ],
-                "summary": "Delete storage driver\nNOTICE: datasets using the deleted driver will not be able to access storage after deletion"
+                "summary": "Delete storage driver\nNOTICE: datasets using the deleted driver will not be able to access storage after deletion",
+                "response": {}
             }
         },
         "/drivers/{id}/test": {
@@ -8193,7 +8313,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Test external storage access"
+                "summary": "Test external storage access",
+                "response": {}
             }
         },
         "/drivers?projectId={id}": {
@@ -8204,7 +8325,7 @@
                         "source": "\nproject.drivers.list()\n\n\n# \n# Get the project's drivers list.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :return: List of Drivers objects\n# :rtype: list\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/executions": {
@@ -8401,7 +8522,8 @@
                         }
                     }
                 ],
-                "summary": "List service executions."
+                "summary": "List service executions.",
+                "response": {}
             }
         },
         "/executions/counters": {
@@ -8435,7 +8557,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/executions/rerun": {
@@ -8468,7 +8591,8 @@
                     "description": "Rerun options.",
                     "required": true
                 },
-                "summary": "Rerun batch execution."
+                "summary": "Rerun batch execution.",
+                "response": {}
             }
         },
         "/executions/{executionId}/rerun": {
@@ -8520,7 +8644,8 @@
                         "source": "\nservice.executions.rerun(execution='execution_entity')\n\n# \n# Rerun execution\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a service.\n# \n# :param dtlpy.entities.execution.Execution execution:\n# :param bool sync: wait for the execution to finish\n# :return: Execution object\n# :rtype: dtlpy.entities.execution.Execution\n# \n# "
                     }
                 ],
-                "summary": "Rerun execution."
+                "summary": "Rerun execution.",
+                "response": {}
             }
         },
         "/executions/{id}": {
@@ -8568,7 +8693,8 @@
                         "source": "\nservice.executions.get(execution_id='execution_id')\n\n# \n# Get Service execution object\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a service.\n# \n# :param str execution_id: execution id\n# :param bool sync: if true, wait for the execution to finish\n# :return: Service execution object\n# :rtype: dtlpy.entities.execution.Execution\n# \n# "
                     }
                 ],
-                "summary": "Get an execution by id."
+                "summary": "Get an execution by id.",
+                "response": {}
             },
             "patch": {
                 "operationId": "Executions_updateExecution",
@@ -8615,7 +8741,8 @@
                         "source": "\nservice.executions.update(execution='execution_entity')\n\n# \n# Update execution changes to platform\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a service.\n# \n# :param dtlpy.entities.execution.Execution execution: execution entity\n# :return: Service execution object\n# :rtype: dtlpy.entities.execution.Execution\n# \n# "
                     }
                 ],
-                "summary": "Update execution changes to platform."
+                "summary": "Update execution changes to platform.",
+                "response": {}
             }
         },
         "/executions/{id}/attempts": {
@@ -8649,7 +8776,8 @@
                         }
                     }
                 ],
-                "summary": "Increment the number of attempts that an execution is allowed to attempt to run a service that is not responding."
+                "summary": "Increment the number of attempts that an execution is allowed to attempt to run a service that is not responding.",
+                "response": {}
             }
         },
         "/executions/{id}/progress": {
@@ -8731,7 +8859,8 @@
                     },
                     "required": true
                 },
-                "summary": "Update Execution Progress."
+                "summary": "Update Execution Progress.",
+                "response": {}
             }
         },
         "/executions/{id}/terminate": {
@@ -8773,7 +8902,8 @@
                         "source": "\nservice.executions.terminate(execution='execution_entity')\n\n# \n# Terminate Execution\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a service.\n# \n# :param dtlpy.entities.execution.Execution execution:\n# :return: execution object\n# :rtype: dtlpy.entities.execution.Execution\n# \n# "
                     }
                 ],
-                "summary": "Terminate Execution."
+                "summary": "Terminate Execution.",
+                "response": {}
             }
         },
         "/executions/{serviceId}": {
@@ -8854,7 +8984,8 @@
                         "source": "\ncommand = service.executions.create_batch(\nexecution_inputs=dl.FunctionIO(type=dl.PackageInputType.STRING, value='test', name='string'),\nfilters=dl.Filters(field='dir', values='/test'),\nfunction_name='run')\n\n# \n# Execute a function on an existing service\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a service.\n# \n# :param str service_id: service id to execute on\n# :param filters: Filters entity for a filtering before execute\n# :param str function_name: function name to run\n# :param List[FunctionIO] or dict execution_inputs: input dictionary or list of FunctionIO entities\n# :param bool wait: wait until create task finish\n# :return: execution object\n# :rtype: dtlpy.entities.execution.Execution\n# \n# "
                     }
                 ],
-                "summary": "Execute a function on an existing service."
+                "summary": "Execute a function on an existing service.",
+                "response": {}
             }
         },
         "/features/sets": {
@@ -8903,7 +9034,8 @@
                         "source": "# \n# List of features\n# \n# :return: List of features\n# :rtype: list\n# "
                     }
                 ],
-                "summary": "Get a feature set by id"
+                "summary": "Get a feature set by id",
+                "response": {}
             },
             "post": {
                 "operationId": "FeatureSetsAddFeatureSets",
@@ -8952,7 +9084,8 @@
                         "source": "# \n# Create a new Feature Set\n# \n# :param str name: the Feature name\n# :param int size: the length of a single vector in the set\n# :param str set_type: string of the feature type: 2d, 3d, modelFC, TSNE,PCA,FFT\n# :param entity_type: the entity that feature vector is linked to. Use the enum dl.FeatureEntityType\n# :param str project_id: the ID of the project where feature set will be created\n# :param list tags: optional tag per feature  - matched by index\n# :param str org_id: the ID of the org where feature set will be created\n# :param data_type: optional, only when using feature vector as scores. Use the enum dl.FeatureDataType\n# :return: Feature Set object\n# "
                     }
                 ],
-                "summary": "Add a new feature set"
+                "summary": "Add a new feature set",
+                "response": {}
             }
         },
         "/features/sets/{id}": {
@@ -8989,7 +9122,8 @@
                         "source": "# \n# Get Feature Set object\n# \n# :param str feature_set_name: name of the feature set\n# :param str feature_set_id: id of the feature set\n# :return: Feature object\n# "
                     }
                 ],
-                "summary": "Get a feature set by id"
+                "summary": "Get a feature set by id",
+                "response": {}
             },
             "delete": {
                 "operationId": "FeatureSetsDeleteFeatureSet",
@@ -9021,7 +9155,8 @@
                         "source": "# \n# Delete feature vector\n# \n# :param str feature_set_id: feature set id to delete\n# :return: success\n# :rtype: bool\n# "
                     }
                 ],
-                "summary": "Delete a feature set by id"
+                "summary": "Delete a feature set by id",
+                "response": {}
             },
             "patch": {
                 "operationId": "FeatureSetsEditFeatureSet",
@@ -9062,7 +9197,8 @@
                         }
                     }
                 ],
-                "summary": "Update a feature set by id"
+                "summary": "Update a feature set by id",
+                "response": {}
             }
         },
         "/features/vectors": {
@@ -9105,7 +9241,8 @@
                         "format": "double"
                     }
                 ],
-                "summary": "Get feature vectors by creator"
+                "summary": "Get feature vectors by creator",
+                "response": {}
             },
             "post": {
                 "operationId": "FeatureVectorsAddFeatureVectors",
@@ -9154,7 +9291,8 @@
                         "source": "# \n# Create a new Feature vector\n# \n# :param immutable value: actual vector - immutable (list of floats [1,2,3])\n# :param str project_id: the id of the project where feature will be created\n# :param str feature_set_id: ref to a featureSet this vector is a part of\n# :param str entity_id: id of the entity the featureVector is linked to (item.id, annotation.id etc)\n# :param str version: version of the featureSet generator\n# :param str parent_id: optional: parent FeatureSet id - used when FeatureVector is a subFeature\n# :param str org_id: the id of the org where featureVector will be created\n# :param str refs: the context of the featureVector (feautureSet must be defined with dataType)\n# :return: Feature vector:\n# "
                     }
                 ],
-                "summary": "Add new feature vector/s"
+                "summary": "Add new feature vector/s",
+                "response": {}
             }
         },
         "/features/vectors/query": {
@@ -9187,7 +9325,8 @@
                         }
                     }
                 ],
-                "summary": "Query feature vectors"
+                "summary": "Query feature vectors",
+                "response": {}
             }
         },
         "/features/vectors/{id}": {
@@ -9224,7 +9363,8 @@
                         "source": "# \n# Get Feature object\n# \n# :param str feature_id: feature id\n# :return: Feature object\n# "
                     }
                 ],
-                "summary": "Get a feature vector by id"
+                "summary": "Get a feature vector by id",
+                "response": {}
             },
             "delete": {
                 "operationId": "FeatureVectorsDeleteFeatureVector",
@@ -9256,7 +9396,8 @@
                         "source": "# \n# Delete feature vector\n# \n# :param str feature_id: feature id to delete\n# :return: success\n# :rtype: bool\n# "
                     }
                 ],
-                "summary": "Delete a feature vector by id"
+                "summary": "Delete a feature vector by id",
+                "response": {}
             },
             "patch": {
                 "x-codeSamples": [
@@ -9265,7 +9406,7 @@
                         "source": "# \n# Update Feature Vector changes to platform\n# \n# :param entities.Feature feature: Feature object to update\n# :return: dl.Feature entity\n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/instance_catalog": {
@@ -9287,7 +9428,8 @@
                 "tags": [
                     "InstanceCatalog"
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/invoices": {
@@ -9358,7 +9500,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/invoices/{id}": {
@@ -9407,7 +9550,8 @@
                         }
                     }
                 ],
-                "summary": "Retrieves the details of an invoice.\n\nSupply the unique invoice ID to fetch it's details."
+                "summary": "Retrieves the details of an invoice.\n\nSupply the unique invoice ID to fetch it's details.",
+                "response": {}
             }
         },
         "/invoices/{id}/stream": {
@@ -9431,7 +9575,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/items/{id}": {
@@ -9471,7 +9616,8 @@
                         "source": "\ndataset.items.get(item_id='item_id')\n\n# \n# Get Item object\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param str filepath: optional - search by remote path\n# :param str item_id: optional - search by id\n# :param bool fetch: optional - fetch entity from platform, default taken from cookie\n# :param bool is_dir: True if you want to get an item from dir type\n# :return: Item object\n# :rtype: dtlpy.entities.item.Item\n# \n# "
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             },
             "delete": {
                 "operationId": "ItemsRemoveItem",
@@ -9502,7 +9648,8 @@
                         "source": "\ndataset.items.delete(item_id='item_id')\n\n# \n# Delete item from platform.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# You must provide at least ONE of the following params: item id, filename, filters.\n# \n# :param str filename: optional - search item by remote path\n# :param str item_id: optional - search item by id\n# :param dtlpy.entities.filters.Filters filters: optional - delete items by filter\n# :return: True if success\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             },
             "patch": {
                 "operationId": "ItemsEditItem",
@@ -9559,7 +9706,8 @@
                         "source": "\ndataset.items.update(item='item_entity')\n\n# \n# Update item metadata.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# You must provide at least ONE of the following params: update_values, system_update_values.\n# \n# :param dtlpy.entities.item.Item item: Item object\n# :param dtlpy.entities.filters.Filters filters: optional update filtered items by given filter\n# :param update_values: optional field to be updated and new values\n# :param system_update_values: values in system metadata to be updated\n# :param bool system_metadata: True, if you want to update the metadata system\n# :return: Item object\n# :rtype: dtlpy.entities.item.Item\n# \n# "
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/items/{id}/clone": {
@@ -9607,7 +9755,8 @@
                         "source": "\ndataset.items.clone(item_id='item_id',\ndst_dataset_id='dist_dataset_id',\nwith_metadata=True,\nwith_task_annotations_status=False,\nwith_annotations=False)\n\n# \n# Clone item. Read more about cloning datatsets and items in our `documentation <https://dataloop.ai/docs/clone-merge-dataset#cloned-dataset>`_ and `SDK documentation <https://dataloop.ai/docs/sdk-create-dataset#clone-dataset>`_.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param str item_id: item to clone\n# :param str dst_dataset_id: destination dataset id\n# :param str remote_filepath: complete filepath\n# :param dict metadata: new metadata to add\n# :param bool with_annotations: clone annotations\n# :param bool with_metadata: clone metadata\n# :param bool with_task_annotations_status: clone task annotations status\n# :param bool allow_many: `bool` if True, using multiple clones in single dataset is allowed, (default=False)\n# :param bool wait: wait for the command to finish\n# :return: Item object\n# :rtype: dtlpy.entities.item.Item\n# \n# "
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/items/{id}/items": {
@@ -9653,7 +9802,8 @@
                         "format": "double"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/items/{id}/revisions": {
@@ -9686,7 +9836,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/items/{id}/stream": {
@@ -9713,7 +9864,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/items/{id}/thumbnail": {
@@ -9763,7 +9915,8 @@
                         "type": "boolean"
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/items/{itemId}/annotations": {
@@ -9796,7 +9949,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "List all annotations of an item"
+                "summary": "List all annotations of an item",
+                "response": {}
             },
             "post": {
                 "operationId": "ItemAnnotationsCreateAnnotation",
@@ -9842,7 +9996,8 @@
                         "source": "\nannotations = item.annotations.upload(annotations='builder')\n\n# \n# Upload a new annotation/annotations. You must first create the annotation using the annotation *builder* method.\n# \n# **Prerequisites**: Any user can upload annotations.\n# \n# :param List[dtlpy.entities.annotation.Annotation] or dtlpy.entities.annotation.Annotation annotations: list or\n# single annotation of type Annotation\n# :return: list of annotation objects\n# :rtype: entities.AnnotationCollection\n# \n# "
                     }
                 ],
-                "summary": "Create an annotation for an item"
+                "summary": "Create an annotation for an item",
+                "response": {}
             }
         },
         "/items/{itemId}/annotations/{annotationId}": {
@@ -9872,7 +10027,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "List all annotations of an item"
+                "summary": "List all annotations of an item",
+                "response": {}
             },
             "delete": {
                 "operationId": "ItemAnnotationsDeleteAnnotation",
@@ -9897,7 +10053,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Delete an Annotation from an item"
+                "summary": "Delete an Annotation from an item",
+                "response": {}
             },
             "put": {
                 "operationId": "ItemAnnotationsUpdateAnnotation",
@@ -9951,7 +10108,8 @@
                         "type": "boolean"
                     }
                 ],
-                "summary": "Update an item's annotation"
+                "summary": "Update an item's annotation",
+                "response": {}
             }
         },
         "/items/{itemId}/annotations/{annotationId}/issue": {
@@ -9984,7 +10142,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Update an item's annotation status to issue"
+                "summary": "Update an item's annotation status to issue",
+                "response": {}
             }
         },
         "/ml/metrics/publish": {
@@ -10066,7 +10225,8 @@
                         }
                     }
                 },
-                "summary": "Publish Model Metrics\n\nSupply single or multiple metrics to publish"
+                "summary": "Publish Model Metrics\n\nSupply single or multiple metrics to publish",
+                "response": {}
             }
         },
         "/ml/metrics/query": {
@@ -10117,7 +10277,8 @@
                         }
                     }
                 },
-                "summary": "Query Model Metrics\n\nSupply the query requested to query Metrics"
+                "summary": "Query Model Metrics\n\nSupply the query requested to query Metrics",
+                "response": {}
             }
         },
         "/ml/metrics/shebang": {
@@ -10202,7 +10363,8 @@
                         }
                     }
                 },
-                "summary": "Generate Model Metrics Report\n\nSupply single or multiple Model ids to generate report for"
+                "summary": "Generate Model Metrics Report\n\nSupply single or multiple Model ids to generate report for",
+                "response": {}
             }
         },
         "/ml/metrics/{id}": {
@@ -10251,7 +10413,8 @@
                         }
                     }
                 ],
-                "summary": "Delete a Metric\n\nSupply the unique id of the Metric to delete"
+                "summary": "Delete a Metric\n\nSupply the unique id of the Metric to delete",
+                "response": {}
             }
         },
         "/ml/models": {
@@ -10329,7 +10492,8 @@
                         }
                     }
                 ],
-                "summary": "Retrieves Models.\n\nSupply query parameters to filter the list."
+                "summary": "Retrieves Models.\n\nSupply query parameters to filter the list.",
+                "response": {}
             },
             "post": {
                 "operationId": "Create Model",
@@ -10378,7 +10542,8 @@
                         }
                     }
                 },
-                "summary": "Creates a new Model.\n\nSupply the appropriate Create Request object in order to create a Model."
+                "summary": "Creates a new Model.\n\nSupply the appropriate Create Request object in order to create a Model.",
+                "response": {}
             }
         },
         "/ml/models/datasets/count": {
@@ -10426,7 +10591,8 @@
                 ],
                 "security": [],
                 "parameters": [],
-                "summary": "Models Datasets Count\n\nThis will return the total dataset count that models have been assigned to"
+                "summary": "Models Datasets Count\n\nThis will return the total dataset count that models have been assigned to",
+                "response": {}
             }
         },
         "/ml/models/executions": {
@@ -10477,7 +10643,8 @@
                         }
                     }
                 },
-                "summary": "Models Executions\n\nThis will return latest 1000 models executions"
+                "summary": "Models Executions\n\nThis will return latest 1000 models executions",
+                "response": {}
             }
         },
         "/ml/models/query": {
@@ -10528,7 +10695,8 @@
                         }
                     }
                 },
-                "summary": "Query Models\n\nSupply the query requested to query Models"
+                "summary": "Query Models\n\nSupply the query requested to query Models",
+                "response": {}
             }
         },
         "/ml/models/services": {
@@ -10579,7 +10747,8 @@
                         }
                     }
                 },
-                "summary": "Models Services\n\nThis will return latest 1000 models servuces"
+                "summary": "Models Services\n\nThis will return latest 1000 models servuces",
+                "response": {}
             }
         },
         "/ml/models/{id}": {
@@ -10628,7 +10797,8 @@
                         }
                     }
                 ],
-                "summary": "Retrieves the details of a Model.\n\nSupply the unique Model ID to fetch it's details."
+                "summary": "Retrieves the details of a Model.\n\nSupply the unique Model ID to fetch it's details.",
+                "response": {}
             },
             "patch": {
                 "operationId": "Update Model",
@@ -10695,7 +10865,8 @@
                         }
                     }
                 },
-                "summary": "Update a Model\n\nSupply the unique id of the Model to update and an object describing which fields update"
+                "summary": "Update a Model\n\nSupply the unique id of the Model to update and an object describing which fields update",
+                "response": {}
             },
             "delete": {
                 "operationId": "Delete Model",
@@ -10742,7 +10913,8 @@
                         }
                     }
                 ],
-                "summary": "Delete a Model\n\nSupply the unique id of the Model to delete"
+                "summary": "Delete a Model\n\nSupply the unique id of the Model to delete",
+                "response": {}
             }
         },
         "/ml/models/{id}/clone": {
@@ -10808,7 +10980,8 @@
                         }
                     }
                 },
-                "summary": "Clone Model\n\nthis will either clone or create a copy both dataset and model and create new instances of them\n\nProvide the model ID of the Model to clone from\n\nAlso provide the Clone spec to clone a dataset with a filter and the model\nOr provide parameters to overwrite the current values in the model you want to clone"
+                "summary": "Clone Model\n\nthis will either clone or create a copy both dataset and model and create new instances of them\n\nProvide the model ID of the Model to clone from\n\nAlso provide the Clone spec to clone a dataset with a filter and the model\nOr provide parameters to overwrite the current values in the model you want to clone",
+                "response": {}
             }
         },
         "/ml/models/{id}/deploy": {
@@ -10875,7 +11048,8 @@
                         }
                     }
                 },
-                "summary": "Deploy Model\n\nSupply the model id to deploy it as a service\nYou can also supply specific config for the deployed service"
+                "summary": "Deploy Model\n\nSupply the model id to deploy it as a service\nYou can also supply specific config for the deployed service",
+                "response": {}
             }
         },
         "/ml/models/{id}/evaluate": {
@@ -10963,7 +11137,8 @@
                         }
                     }
                 },
-                "summary": "Evaluate Model\n\nSupply data to evaluate the model on\nYou can also supply specific config for the deployed service"
+                "summary": "Evaluate Model\n\nSupply data to evaluate the model on\nYou can also supply specific config for the deployed service",
+                "response": {}
             }
         },
         "/ml/models/{id}/predict": {
@@ -11067,7 +11242,8 @@
                         }
                     }
                 },
-                "summary": "Model Prediction\n\nSupply the resource to perform prediction on\nYou can also supply specific config for the deployed service"
+                "summary": "Model Prediction\n\nSupply the resource to perform prediction on\nYou can also supply specific config for the deployed service",
+                "response": {}
             }
         },
         "/ml/models/{id}/train": {
@@ -11136,7 +11312,8 @@
                         }
                     }
                 },
-                "summary": "Train Model\n\nSupply the model id to initiate a training session\nYou can also supply specific config for the deployed service"
+                "summary": "Train Model\n\nSupply the model id to initiate a training session\nYou can also supply specific config for the deployed service",
+                "response": {}
             }
         },
         "/ontologies": {
@@ -11177,7 +11354,8 @@
                         "source": "\nrecipe.ontologies.create(labels='labels_entity',\ntitle='new_ontology',\nproject_ids='project_ids')\n\n# \n# Create a new ontology.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param labels: recipe tags\n# :param str title: ontology title, name\n# :param list project_ids: recipe project/s\n# :param list attributes: recipe attributes\n# :return: Ontology object\n# :rtype: dtlpy.entities.ontology.Ontology\n# \n# "
                     }
                 ],
-                "summary": "Create a new Ontology"
+                "summary": "Create a new Ontology",
+                "response": {}
             },
             "get": {
                 "operationId": "OntologiesFindOntologies",
@@ -11241,7 +11419,8 @@
                         "format": "double"
                     }
                 ],
-                "summary": "Find ontologies by query"
+                "summary": "Find ontologies by query",
+                "response": {}
             }
         },
         "/ontologies/{id}": {
@@ -11289,7 +11468,8 @@
                         "source": "\nrecipe.ontologies.delete(ontology='ontology_entity')\n# \n# Update the Ontology metadata.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param dtlpy.entities.ontology.Ontology ontology: Ontology object\n# :param bool system_metadata: bool - True, if you want to change metadata system\n# :return: Ontology object\n# :rtype: dtlpy.entities.ontology.Ontology\n# \n# \n# "
                     }
                 ],
-                "summary": "Update an existing Ontology"
+                "summary": "Update an existing Ontology",
+                "response": {}
             },
             "get": {
                 "operationId": "OntologiesGetOntology",
@@ -11335,7 +11515,8 @@
                         "source": "\nrecipe.ontologies.get(ontology_id='ontology_id')\n\n# \n# Get Ontology object to use in your code.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param str ontology_id: ontology id\n# :return: Ontology object\n# :rtype: dtlpy.entities.ontology.Ontology\n# \n# "
                     }
                 ],
-                "summary": "Get a specific Ontology"
+                "summary": "Get a specific Ontology",
+                "response": {}
             },
             "delete": {
                 "operationId": "OntologiesDeleteOntology",
@@ -11366,7 +11547,8 @@
                         "source": "\nrecipe.ontologies.delete(ontology_id='ontology_id')\n\n# \n# Delete Ontology from the platform.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param ontology_id: ontology id\n# :return: True if success\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "summary": "Delete an Ontology"
+                "summary": "Delete an Ontology",
+                "response": {}
             }
         },
         "/ontologies/{id}/addLabels": {
@@ -11408,7 +11590,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Update an existing Ontology"
+                "summary": "Update an existing Ontology",
+                "response": {}
             }
         },
         "/ontologies/{id}/labels": {
@@ -11450,7 +11633,8 @@
                         "type": "string"
                     }
                 ],
-                "summary": "Update an existing Ontology"
+                "summary": "Update an existing Ontology",
+                "response": {}
             }
         },
         "/orgs": {
@@ -11461,7 +11645,7 @@
                         "source": "\norganizations = dl.organizations.list()\n\n# \n# Lists all the organizations in Dataloop.\n# \n# **Prerequisites**: You must be a **superuser** to use this method.\n# \n# :return: List of Organization objects\n# :rtype: list\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/orgs/{id}": {
@@ -11472,7 +11656,7 @@
                         "source": "\norg = dl.organizations.get(organization_id='organization_id')\n\n# \n# Get Organization object to be able to use it in your code.\n# \n# **Prerequisites**: You must be a **superuser** to use this method.\n# \n# You must provide at least ONE of the following params: organization_name or organization_id.\n# \n# :param str organization_id: optional - search by id\n# :param str organization_name: optional - search by name\n# :param fetch: optional - fetch entity from platform, default taken from cookie\n# :return: Organization object\n# :rtype: dtlpy.entities.organization.Organization\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/orgs/{org_id}": {
@@ -11504,7 +11688,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             },
             "delete": {
                 "tags": [
@@ -11527,7 +11712,8 @@
                         "description": "OK",
                         "content": {}
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/orgs/{org_id}/integrations": {
@@ -11538,7 +11724,7 @@
                         "source": "\nproject.integrations.create(integrations_type=dl.IntegrationType.S3,\nname='S3ntegration',\noptions={key: \"Access key ID\", secret: \"Secret access key\"})\n\n# \n# Create an integration between an external storage and the organization.\n# \n# **Examples for options include**:\n# s3 - {key: \"\", secret: \"\"};\n# gcs - {key: \"\", secret: \"\", content: \"\"};\n# azureblob - {key: \"\", secret: \"\", clientId: \"\", tenantId: \"\"};\n# key_value - {key: \"\", value: \"\"}\n# aws-sts - {key: \"\", secret: \"\", roleArns: \"\"}\n# aws-cross - {}\n# \n# **Prerequisites**: You must be an *owner* in the organization.\n# \n# :param IntegrationType integrations_type: integrations type dl.IntegrationType\n# :param str name: integrations name\n# :param dict options: dict of storage secrets\n# :return: success\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             },
             "patch": {
                 "x-codeSamples": [
@@ -11547,7 +11733,7 @@
                         "source": "\nproject.integrations.update(integrations_id='integrations_id', new_options={roleArn: \"\"})\n\n# \n# Update the integration's name.\n# \n# **Prerequisites**: You must be an *owner* in the organization.\n# \n# :param str new_name: new name\n# :param str integrations_id: integrations id\n# :param Integration integration: integration object\n# :param dict new_options: new value\n# :return: Integration object\n# :rtype: dtlpy.entities.integration.Integration\n# \n# **Examples for options include**:\n# s3 - {key: \"\", secret: \"\"};\n# gcs - {key: \"\", secret: \"\", content: \"\"};\n# azureblob - {key: \"\", secret: \"\", clientId: \"\", tenantId: \"\"};\n# key_value - {key: \"\", value: \"\"}\n# aws-sts - {key: \"\", secret: \"\", roleArns: \"\"}\n# aws-cross - {roleArn: \"\"}\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             },
             "get": {
                 "x-codeSamples": [
@@ -11556,7 +11742,7 @@
                         "source": "\nproject.integrations.list(only_available=True)\n\n# \n# List all the organization's integrations with external storage.\n# \n# **Prerequisites**: You must be an *owner* in the organization.\n# \n# :param bool only_available: if True list only the available integrations.\n# :return: groups list\n# :rtype: list\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/orgs/{org_id}/integrations/{id}": {
@@ -11567,7 +11753,7 @@
                         "source": "\nproject.integrations.delete(integrations_id='integrations_id', sure=True, really=True)\n\n# \n# Delete integrations from the organization.\n# \n# **Prerequisites**: You must be an organization *owner* to delete an integration.\n# \n# :param str integrations_id: integrations id\n# :param bool sure: Are you sure you want to delete?\n# :param bool really: Really really sure?\n# :return: success\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             },
             "get": {
                 "x-codeSamples": [
@@ -11576,7 +11762,7 @@
                         "source": "\nproject.integrations.get(integrations_id='integrations_id')\n\n# \n# Get organization integrations. Use this method to access your integration and be able to use it in your code.\n# \n# **Prerequisites**: You must be an *owner* in the organization.\n# \n# :param str integrations_id: integrations id\n# :return: Integration object\n# :rtype: dtlpy.entities.integration.Integration\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/orgs/{org_id}/members": {
@@ -11638,7 +11824,8 @@
                         "lang": "Python",
                         "source": "\nsuccess = dl.organizations.add_member(email='user@domain.com',\norganization_id='organization_id',\nrole=dl.MemberOrgRole.MEMBER)\n\n# \n# Add members to your organization. Read about members and groups `here <https://dataloop.ai/docs/org-members-groups>`_.\n# \n# **Prerequisities**: To add members to an organization, you must be an *owner* in that organization.\n# \n# You must provide at least ONE of the following params: organization, organization_name, or organization_id.\n# \n# :param str email: the member's email\n# :param str role: MemberOrgRole.ADMIN, MemberOrgRole.OWNER, MemberOrgRole.MEMBER, MemberOrgRole.WORKER\n# :param str organization_id: Organization id\n# :param str organization_name: Organization name\n# :param entities.Organization organization: Organization object\n# :return: True if successful or error if unsuccessful\n# :rtype: bool\n# \n# "
                     }
-                ]
+                ],
+                "response": {}
             },
             "get": {
                 "x-codeSamples": [
@@ -11647,7 +11834,7 @@
                         "source": "\nlist_members = dl.organizations.list_members(organization='organization-entity',\nrole=dl.MemberOrgRole.MEMBER)\n\n# \n# List all organization members.\n# \n# **Prerequisites**: You must be an organization *owner* to use this method.\n# \n# You must provide at least ONE of the following params: organization_id, organization_name, or organization.\n# \n# :param entities.Organization organization: Organization object\n# :param str organization_id: Organization id\n# :param str organization_name: Organization name\n# :param entities.MemberOrgRole role: MemberOrgRole.ADMIN, MemberOrgRole.OWNER, MemberOrgRole.MEMBER, MemberOrgRole.WORKER\n# :return: projects list\n# :rtype: list\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             },
             "patch": {
                 "x-codeSamples": [
@@ -11656,7 +11843,7 @@
                         "source": "\nmember_json = dl.organizations.update_member(email='user@domain.com',\norganization_id='organization_id',\nrole=dl.MemberOrgRole.MEMBER)\n\n# \n# Update member role.\n# \n# **Prerequisites**: You must be an organization *owner* to update a member's role.\n# \n# You must provide at least ONE of the following params: organization, organization_name, or organization_id.\n# \n# :param str email: the member's email\n# :param str role: MemberOrgRole.ADMIN, MemberOrgRole.OWNER, MemberOrgRole.MEMBER, MemberOrgRole.WORKER\n# :param str organization_id: Organization id\n# :param str organization_name: Organization name\n# :param entities.Organization organization: Organization object\n# :return: json of the member fields\n# :rtype: dict\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/orgs/{org_id}/members/{user_id}": {
@@ -11667,7 +11854,7 @@
                         "source": "\nsuccess = dl.organizations.delete_member(user_id='user_id',\norganization_id='organization_id',\nsure=True,\nreally=True)\n\n# \n# Delete member from the Organization.\n# \n# **Prerequisites**: Must be an organization *owner* to delete members.\n# \n# You must provide at least ONE of the following params: organization_id, organization_name, organization.\n# \n# :param str user_id: user id\n# :param str organization_id: Organization id\n# :param str organization_name: Organization name\n# :param entities.Organization organization: Organization object\n# :param bool sure: Are you sure you want to delete?\n# :param bool really: Really really sure?\n# :return: True if success and error if not\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/orgs/{org_id}/members/{user_id}/projects": {
@@ -11710,7 +11897,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/orgs/{org_id}/plan": {
@@ -11762,7 +11950,8 @@
                         "lang": "Python",
                         "source": "\norg = dl.organizations.update(organization='organization-entity',\nplan=dl.OrganizationsPlans.FREEMIUM)\n\n# \n# Update an organization.\n# \n# **Prerequisites**: You must be a **superuser** to update an organization.\n# \n# You must provide at least ONE of the following params: organization, organization_name, or organization_id.\n# \n# :param str plan: OrganizationsPlans.FREEMIUM, OrganizationsPlans.PREMIUM\n# :param entities.Organization organization: Organization object\n# :param str organization_id: Organization id\n# :param str organization_name: Organization name\n# :return: organization object\n# :rtype: dtlpy.entities.organization.Organization\n# \n# "
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/orgs/{org_id}/projects": {
@@ -11796,7 +11985,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/packages": {
@@ -11867,7 +12057,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             },
             "post": {
                 "operationId": "Packages_createPackage",
@@ -11896,7 +12087,8 @@
                         "source": "\nproject.packages.push(package_name='package_name',\nmodules=[module],\nversion='1.0.0',\nsrc_path=os.getcwd()\n)\n\n# \n# Push your local package to the UI.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# Project will be taken in the following hierarchy:\n# project(input) -> project_id(input) -> self.project(context) -> checked out\n# \n# :param dtlpy.entities.project.Project project: optional - project entity to deploy to. default from context or checked-out\n# :param str project_id: optional - project id to deploy to. default from context or checked-out\n# :param str package_name: package name\n# :param str src_path: path to package codebase\n# :param dtlpy.entities.codebase.Codebase codebase: codebase object\n# :param list modules: list of modules PackageModules of the package\n# :param bool is_global: is package is global or local\n# :param bool checkout: checkout package to local dir\n# :param str revision_increment: optional - str - version bumping method - major/minor/patch - default = None\n# :param str version: semver version f the package\n# :param bool ignore_sanity_check: NOT RECOMMENDED - skip code sanity check before pushing\n# :param bool service_update: optional - bool - update the service\n# :param dict service_config : Service object as dict. Contains the spec of the default service to create.\n# :param list slots: optional - list of slots PackageSlot of the package\n# :param list requirements: requirements - list of package requirements\n# :param str package_type: default 'faas', options: 'app', 'ml\n# :param dict metadata: dictionary of system and user metadata\n# \n# :return: Package object\n# :rtype: dtlpy.entities.package.Package\n# \n# "
                     }
                 ],
-                "summary": "Create new package."
+                "summary": "Create new package.",
+                "response": {}
             }
         },
         "/packages/{ids}": {
@@ -11928,7 +12120,8 @@
                         "source": "\nproject.packages.delete(package_name='package_name')\n\n# \n# Delete a Package object.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param dtlpy.entities.package.Package package: package entity\n# :param str package_id: package id\n# :param str package_name: package name\n# :return: True if success\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "summary": "Delete Package object."
+                "summary": "Delete Package object.",
+                "response": {}
             }
         },
         "/packages/{id}": {
@@ -11976,7 +12169,8 @@
                         "source": "\nproject.packages.get(package_id='package_id')\n\n# \n# Get Package object to use in your code.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param str package_id: package id\n# :param str package_name: package name\n# :param bool checkout: set the package as a default package object (cookies)\n# :param fetch: optional - fetch entity from platform, default taken from cookie\n# :return: Package object\n# :rtype: dtlpy.entities.package.Package\n# \n# "
                     }
                 ],
-                "summary": "Get package by id."
+                "summary": "Get package by id.",
+                "response": {}
             },
             "patch": {
                 "operationId": "Packages_updatePackage",
@@ -12016,7 +12210,8 @@
                         "source": "\nproject.packages.delete(package='package_entity')\n\n# \n# Update Package changes to the platform.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param dtlpy.entities.package.Package package:\n# :param revision_increment: optional - str - version bumping method - major/minor/patch - default = None\n# :return: Package object\n# :rtype: dtlpy.entities.package.Package\n# \n# "
                     }
                 ],
-                "summary": "Update package changes."
+                "summary": "Update package changes.",
+                "response": {}
             }
         },
         "/packages/{id}/revisions": {
@@ -12058,7 +12253,8 @@
                         "source": "\nproject.packages.revisions(package='package_entity')\n\n# \n# Get the package revisions history.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param dtlpy.entities.package.Package package: package entity\n# :param str package_id: package id\n# \n# "
                     }
                 ],
-                "summary": "Get package revisions by id."
+                "summary": "Get package revisions by id.",
+                "response": {}
             }
         },
         "/pipelines": {
@@ -12089,7 +12285,8 @@
                         "source": "\npipeline = project.pipelines.create(name='pipeline_name')\n\n# \n# Create a new pipeline.\n# \n# **prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param str name: pipeline name\n# :param str project_id: project id\n# :param dict pipeline_json: json containing the pipeline fields\n# :return: Pipeline object\n# :rtype: dtlpy.entities.pipeline.Pipeline\n# \n# "
                     }
                 ],
-                "summary": "Create a pipeline."
+                "summary": "Create a pipeline.",
+                "response": {}
             }
         },
         "/pipelines/query": {
@@ -12120,7 +12317,8 @@
                         "source": "\npipeline_executions = pipeline.pipeline_executions.list()\n\n# \n# List project pipeline executions.\n# \n# **prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param dtlpy.entities.filters.Filters filters: Filters entity or a dictionary containing filters parameters\n# :return: Paged entity\n# :rtype: dtlpy.entities.paged_entities.PagedEntities\n# \n# "
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/pipelines/templates/": {
@@ -12145,7 +12343,8 @@
                 "requestBody": {
                     "$ref": "#/components/requestBodies/IPostPipeline"
                 },
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/pipelines/templates/query": {
@@ -12188,7 +12387,8 @@
                     },
                     "required": true
                 },
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/pipelines/{compositionsId}/install": {
@@ -12199,7 +12399,7 @@
                         "source": "\nproject.pipelines.install(pipeline='pipeline_entity')\n\n# \n# Install (start) a pipeline.\n# \n# **prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param dtlpy.entities.pipeline.Pipeline pipeline: pipeline entity\n# :param dtlpy.entities.pipeline.PipelineResumeOption resume_option: optional - resume pipeline method (what to do with existing cycles)\n# :return: Composition object\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/pipelines/{compositionsId}/uninstall": {
@@ -12210,7 +12410,7 @@
                         "source": "\nproject.pipelines.pause(pipeline='pipeline_entity')\n\n# \n# Pause a pipeline.\n# \n# **prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param dtlpy.entities.pipeline.Pipeline pipeline: pipeline entity\n# :param bool keep_triggers_active: Do we want the triggers to stay active and collect events\n# :return: Composition object\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/pipelines/{id}/statistics": {
@@ -12249,7 +12449,8 @@
                         "source": "\npipeline_stats = project.pipelines.stats(pipeline='pipeline_entity')\n\n# \n# Get pipeline counters.\n# \n# **prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param dtlpy.entities.pipeline.Pipeline pipeline: pipeline entity - optional\n# :param str pipeline_id: pipeline_id -  optional\n# :param str pipeline_name: pipeline_name -  optional\n# :return: PipelineStats\n# :rtype: dtlpy.entities.pipeline.PipelineStats\n# \n# "
                     }
                 ],
-                "summary": "Get pipeline counters."
+                "summary": "Get pipeline counters.",
+                "response": {}
             }
         },
         "/pipelines/{pipelineId}": {
@@ -12288,7 +12489,8 @@
                         "source": "\npipeline = project.pipelines.get(pipeline_id='pipeline_id')\n\n# \n# Get Pipeline object to use in your code.\n# \n# **prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# You must provide at least ONE of the following params: pipeline_name, pipeline_id.\n# \n# :param str pipeline_id: pipeline id\n# :param str pipeline_name: pipeline name\n# :param fetch: optional - fetch entity from platform, default taken from cookie\n# :return: Pipeline object\n# :rtype: dtlpy.entities.pipeline.Pipeline\n# \n# "
                     }
                 ],
-                "summary": "Get pipeline by id."
+                "summary": "Get pipeline by id.",
+                "response": {}
             },
             "patch": {
                 "operationId": "Pipeline_update",
@@ -12328,7 +12530,8 @@
                         "source": "\npipeline = project.pipelines.update(pipeline='pipeline_entity')\n\n# \n# Update pipeline changes to platform.\n# \n# **prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param dtlpy.entities.pipeline.Pipeline pipeline: pipeline entity\n# :return: Pipeline object\n# :rtype: dtlpy.entities.pipeline.Pipeline\n# \n# "
                     }
                 ],
-                "summary": "Update pipeline changes."
+                "summary": "Update pipeline changes.",
+                "response": {}
             },
             "delete": {
                 "x-codeSamples": [
@@ -12337,7 +12540,7 @@
                         "source": "\nis_deleted = project.pipelines.delete(pipeline_id='pipeline_id')\n# \n# Delete Pipeline object.\n# \n# **prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param dtlpy.entities.pipeline.Pipeline pipeline: pipeline entity\n# :param str pipeline_id: pipeline id\n# :param str pipeline_name: pipeline name\n# :return: True if success\n# :rtype: bool\n# \n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/pipelines/{pipelineId}/execute": {
@@ -12390,7 +12593,8 @@
                         "source": "\ncommand = pipeline.pipeline_executions.create_batch(\nexecution_inputs=dl.FunctionIO(type=dl.PackageInputType.STRING, value='test', name='string'),\nfilters=dl.Filters(field='dir', values='/test'))\n\n# \n# Execute a pipeline and return the execute.\n# \n# **prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param pipeline_id: pipeline id\n# :param filters: Filters entity for a filtering before execute\n# :param execution_inputs: list of the dl.FunctionIO or dict of pipeline input - example {'item': 'item_id'}\n# :param bool wait: wait until create task finish\n# :return: entities.PipelineExecution object\n# :rtype: dtlpy.entities.pipeline_execution.PipelineExecution\n# \n# "
                     }
                 ],
-                "summary": "Execute a pipeline and return the pipeline execution as an object - or command in case batch is defined on the body."
+                "summary": "Execute a pipeline and return the pipeline execution as an object - or command in case batch is defined on the body.",
+                "response": {}
             }
         },
         "/pipelines/{pipelineId}/executions": {
@@ -12459,7 +12663,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/pipelines/{pipelineId}/install": {
@@ -12512,7 +12717,8 @@
                     },
                     "required": true
                 },
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/pipelines/{pipelineId}/nodes/{nodeId}": {
@@ -12554,7 +12760,8 @@
                         }
                     }
                 ],
-                "summary": "get one of pipeline nodes by pipeline id and node id."
+                "summary": "get one of pipeline nodes by pipeline id and node id.",
+                "response": {}
             }
         },
         "/pipelines/{pipelineId}/purge": {
@@ -12587,7 +12794,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/pipelines/{pipelineId}/reset": {
@@ -12626,7 +12834,8 @@
                         "source": "\nsuccess = project.pipelines.reset(pipeline='pipeline_entity')\n\n# \n# Reset pipeline counters.\n# \n# **prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param dtlpy.entities.pipeline.Pipeline pipeline: pipeline entity - optional\n# :param str pipeline_id: pipeline_id -  optional\n# :param str pipeline_name: pipeline_name -  optional\n# :param bool stop_if_running: If the pipeline is installed it will stop the pipeline and reset the counters.\n# :return: bool\n# \n# "
                     }
                 ],
-                "summary": "Reset pipeline counters."
+                "summary": "Reset pipeline counters.",
+                "response": {}
             }
         },
         "/pipelines/{pipelineId}/settings": {
@@ -12675,7 +12884,8 @@
                         "source": "\npipeline = project.pipelines.update_settings(pipeline='pipeline_entity', settings=dl.PipelineSettings(keep_triggers_active=True))\n\n# \n# Update pipeline settings.\n# \n# **prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param dtlpy.entities.pipeline.Pipeline pipeline: pipeline entity\n# :param dtlpy.entities.pipeline.PipelineSettings settings: settings entity\n# :return: Pipeline object\n# :rtype: dtlpy.entities.pipeline.Pipeline\n# \n# "
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/pipelines/{pipelineId}/terminate": {
@@ -12708,7 +12918,8 @@
                         }
                     }
                 ],
-                "summary": "Delete the pipeline, should terminate the composition."
+                "summary": "Delete the pipeline, should terminate the composition.",
+                "response": {}
             }
         },
         "/pipelines/{pipelineId}/uninstall": {
@@ -12751,7 +12962,8 @@
                     },
                     "required": true
                 },
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/pipelines/{pipelineId}/variables": {
@@ -12797,7 +13009,8 @@
                     },
                     "required": true
                 },
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/pipelines/{pipeline_id}/executions/{executionId}": {
@@ -12808,7 +13021,7 @@
                         "source": "\npipeline_executions = pipeline.pipeline_executions.get(pipeline_id='pipeline_id')\n\n# \n# Get Pipeline Execution object\n# \n# **prerequisites**: You must be an *owner* or *developer* to use this method.\n# \n# :param str pipeline_execution_id: pipeline execution id\n# :param str pipeline_id: pipeline id\n# :return: PipelineExecution object\n# :rtype: dtlpy.entities.pipeline_execution.PipelineExecution\n# \n# "
                     }
                 ],
-                "responses": {}
+                "response": {}
             }
         },
         "/pipelines/{piplineId}/logs": {
@@ -12862,7 +13075,8 @@
                     },
                     "required": true
                 },
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/pipelines/{projectId}/compositionStatus": {
@@ -12924,7 +13138,8 @@
                         }
                     }
                 ],
-                "summary": "Retrieves pipelines.\n\nSupply query parameters to filter the list."
+                "summary": "Retrieves pipelines.\n\nSupply query parameters to filter the list.",
+                "response": {}
             }
         },
         "/piper-misc/naming/packages/{name}": {
@@ -12957,7 +13172,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/piper-misc/naming/services/{name}": {
@@ -12990,7 +13206,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/piper-misc/naming/triggers/{name}": {
@@ -13023,7 +13240,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/plans": {
@@ -13048,7 +13266,8 @@
                     "Plans"
                 ],
                 "security": [],
-                "parameters": []
+                "parameters": [],
+                "response": {}
             }
         },
         "/plans/store/metrics": {
@@ -13073,7 +13292,8 @@
                     "Plans"
                 ],
                 "security": [],
-                "parameters": []
+                "parameters": [],
+                "response": {}
             }
         },
         "/plans/store/metrics/query": {
@@ -13119,7 +13339,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/plans/{id}": {
@@ -13150,7 +13371,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/plans/{id}/subscriptions": {
@@ -13218,7 +13440,8 @@
                         }
                     }
                 },
-                "summary": "Creates a new subscription.\n\nSupply the required subscription input.\n\nRequired fields are: account, autoRenewal, subscription period and scope"
+                "summary": "Creates a new subscription.\n\nSupply the required subscription input.\n\nRequired fields are: account, autoRenewal, subscription period and scope",
+                "response": {}
             }
         },
         "/projects": {
@@ -13247,7 +13470,8 @@
                         "lang": "Python",
                         "source": "\nprojects = dl.projects.list()\n\n# \n# Get the user's project list\n# \n# **Prerequisites**: You must be a **superuser** to list all users' projects.\n# \n# :return: List of Project objects\n# \n# "
                     }
-                ]
+                ],
+                "response": {}
             },
             "post": {
                 "tags": [
@@ -13285,7 +13509,8 @@
                         "lang": "Python",
                         "source": "\nproject = dl.projects.create(project_name='project_name')\n\n# \n# Create a new project.\n# \n# **Prerequisites**: Any user can create a project.\n# \n# :param str project_name: The Name of the project\n# :param bool checkout: set the project as a default project object (cookies)\n# :return: Project object\n# :rtype: dtlpy.entities.project.Project\n# \n# "
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/projects/{id}": {
@@ -13322,7 +13547,8 @@
                         "lang": "Python",
                         "source": "\nproject = dl.projects.get(project_id='project_id')\n\n# \n# Get a Project object.\n# \n# **Prerequisites**: You must be in the role of an *owner* to get a project object.\n# \n# You must check out to a project or provide at least one of the following params: project_id, project_name\n# \n# :param str project_name: optional - search by name\n# :param str project_id: optional - search by id\n# :param bool checkout: set the project as a default project object (cookies)\n# :param bool fetch: optional - fetch entity from platform (True), default taken from cookie\n# :param bool log_error: optional - show the logs errors\n# :return: Project object\n# :rtype: dtlpy.entities.project.Project\n# \n# "
                     }
-                ]
+                ],
+                "response": {}
             },
             "delete": {
                 "tags": [
@@ -13351,7 +13577,8 @@
                         "lang": "Python",
                         "source": "\nis_deleted = dl.projects.delete(project_id='project_id', sure=True, really=True)\n\n# \n# Delete a project forever!\n# \n# **Prerequisites**: You must be in the role of an *owner* to delete a project.\n# \n# :param str project_name: optional - search by name\n# :param str project_id: optional - search by id\n# :param bool sure: Are you sure you want to delete?\n# :param bool really: Really really sure?\n# :return: True if success, error if not\n# :rtype: bool\n# \n# "
                     }
-                ]
+                ],
+                "response": {}
             },
             "patch": {
                 "tags": [
@@ -13389,7 +13616,8 @@
                         "lang": "Python",
                         "source": "\nproject = dl.projects.delete(project='project_entity')\n\n# \n# Update a project information (e.g., name, member roles, etc.).\n# \n# **Prerequisites**: You must be in the role of an *owner* to add a member to a project.\n# \n# :param dtlpy.entities.project.Project project: project object\n# :param bool system_metadata: optional - True, if you want to change metadata system\n# :return: Project object\n# :rtype: dtlpy.entities.project.Project\n# \n# "
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/projects/{id}/members": {
@@ -13423,7 +13651,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/projects/{project_id}/accounts": {
@@ -13457,7 +13686,8 @@
                         "description": "OK",
                         "content": {}
                     }
-                }
+                },
+                "response": {}
             },
             "delete": {
                 "tags": [
@@ -13480,7 +13710,8 @@
                         "description": "Allowed for superuser only",
                         "content": {}
                     }
-                }
+                },
+                "response": {}
             },
             "patch": {
                 "tags": [
@@ -13512,7 +13743,8 @@
                         "description": "Allowed for superuser only",
                         "content": {}
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/projects/{project_id}/members/{user_id}": {
@@ -13560,7 +13792,8 @@
                         "description": "OK",
                         "content": {}
                     }
-                }
+                },
+                "response": {}
             },
             "delete": {
                 "tags": [
@@ -13592,7 +13825,8 @@
                         "description": "OK",
                         "content": {}
                     }
-                }
+                },
+                "response": {}
             },
             "patch": {
                 "tags": [
@@ -13638,7 +13872,8 @@
                         "description": "OK",
                         "content": {}
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/projects/{project_id}/org": {
@@ -13672,7 +13907,8 @@
                         "description": "OK",
                         "content": {}
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/projects/{project_name}/name'": {
@@ -13706,7 +13942,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/query/faas": {
@@ -13768,7 +14005,8 @@
                         "source": "\nservice.executions.list()\n\n# \n# List service executions\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a service.\n# \n# :param dtlpy.entities.filters.Filters filters: dl.Filters entity to filters items\n# :return: Paged entity\n# :rtype: dtlpy.entities.paged_entities.PagedEntities\n# \n# "
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/recipes": {
@@ -13809,7 +14047,8 @@
                         "source": "\ndataset.recipes.create(recipe_name='My Recipe', labels=labels))\n\n# \n# Create a new Recipe.\n# Note: If the param ontology_ids is None, an ontology will be created first.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param str project_ids: project ids\n# :param str or list ontology_ids: ontology ids\n# :param labels: labels\n# :param str recipe_name: recipe name\n# :param attributes: attributes\n# :param str annotation_instruction_file: file path or url of the recipe instruction\n# :return: Recipe entity\n# :rtype: dtlpy.entities.recipe.Recipe\n# \n# "
                     }
                 ],
-                "summary": "Create a new Recipe"
+                "summary": "Create a new Recipe",
+                "response": {}
             },
             "get": {
                 "operationId": "RecipesFindRecipes",
@@ -13880,7 +14119,8 @@
                         "format": "double"
                     }
                 ],
-                "summary": "Find recipes by query"
+                "summary": "Find recipes by query",
+                "response": {}
             }
         },
         "/recipes/{id}": {
@@ -13928,7 +14168,8 @@
                         "source": "\ndataset.recipes.update(recipe='recipe_entity')\n\n# \n# Update recipe.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param dtlpy.entities.recipe.Recipe recipe: Recipe object\n# :param bool system_metadata: True, if you want to change metadata system\n# :return: Recipe object\n# :rtype: dtlpy.entities.recipe.Recipe\n# \n# "
                     }
                 ],
-                "summary": "Update an existing recipe"
+                "summary": "Update an existing recipe",
+                "response": {}
             },
             "get": {
                 "operationId": "RecipesGetRecipe",
@@ -13974,7 +14215,8 @@
                         "source": "\ndataset.recipes.get(recipe_id='recipe_id')\n\n# \n# Get a Recipe object to use in your code.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param str recipe_id: recipe id\n# :return: Recipe object\n# :rtype: dtlpy.entities.recipe.Recipe\n# \n# "
                     }
                 ],
-                "summary": "Get a specific recipe"
+                "summary": "Get a specific recipe",
+                "response": {}
             },
             "delete": {
                 "operationId": "RecipesDeleteRecipe",
@@ -14005,7 +14247,8 @@
                         "source": "\ndataset.recipes.delete(recipe_id='recipe_id')\n\n# \n# Delete recipe from platform.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param str recipe_id: recipe id\n# :param bool force: force delete recipe\n# :return: True if success\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "summary": "Delete a recipe"
+                "summary": "Delete a recipe",
+                "response": {}
             }
         },
         "/recipes/{id}/clone": {
@@ -14053,7 +14296,8 @@
                         "source": "\ndataset.recipes.clone(recipe_id='recipe_id')\n# \n# Clone recipe.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*.\n# \n# :param dtlpy.entities.recipe.Recipe recipe: Recipe object\n# :param str recipe_id: Recipe id\n# :param bool shallow: If True, link to existing ontology, clones all ontologies that are linked to the recipe as well\n# :return: Cloned ontology object\n# :rtype: dtlpy.entities.recipe.Recipe\n# \n# \n# "
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/register": {
@@ -14073,7 +14317,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/services": {
@@ -14149,7 +14394,8 @@
                         }
                     }
                 ],
-                "summary": "Retrieves services.\n\nSupply query parameters to filter the list."
+                "summary": "Retrieves services.\n\nSupply query parameters to filter the list.",
+                "response": {}
             },
             "post": {
                 "operationId": "Services_createService",
@@ -14185,7 +14431,8 @@
                         "source": "\nservice = package.services.deploy(service_name=package_name,\nexecution_timeout=3 * 60 * 60,\nmodule_name=module.name,\nruntime=dl.KubernetesRuntime(\nconcurrency=10,\npod_type=dl.InstanceCatalog.REGULAR_S,\nautoscaler=dl.KubernetesRabbitmqAutoscaler(\nmin_replicas=1,\nmax_replicas=20,\nqueue_length=20\n)\n)\n)\n\n# \n# Deploy service.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a package.\n# \n# :param str service_name: name\n# :param dtlpy.entities.package.Package package: package entity\n# :param str bot: bot email\n# :param str revision: package revision of version\n# :param init_input: config to run at startup\n# :param dict runtime: runtime resources\n# :param str pod_type: pod type dl.InstanceCatalog\n# :param str sdk_version:  - optional - string - sdk version\n# :param str agent_versions: - dictionary - - optional -versions of sdk\n# :param bool verify: if true, verify the inputs\n# :param bool checkout: if true, checkout (switch) to service\n# :param str module_name: module name\n# :param str project_id: project id\n# :param str driver_id: driver id\n# :param Callable func: function to deploy\n# :param bool run_execution_as_process: if true, run execution as process\n# :param int execution_timeout: execution timeout in seconds\n# :param int drain_time: drain time in seconds\n# :param int max_attempts: maximum execution retries in-case of a service reset\n# :param str on_reset: what happens on reset\n# :param bool force: optional - if true, terminate old replicas immediately\n# :param list secrets: list of the integrations ids\n# :param kwargs: list of additional arguments\n# :return: Service object\n# :rtype: dtlpy.entities.service.Service\n# \n# "
                     }
                 ],
-                "summary": "Create new package."
+                "summary": "Create new package.",
+                "response": {}
             }
         },
         "/services/cache": {
@@ -14220,7 +14467,8 @@
                 "requestBody": {
                     "$ref": "#/components/requestBodies/ICacheOptions"
                 },
-                "summary": "Add or remove Cache for the org."
+                "summary": "Add or remove Cache for the org.",
+                "response": {}
             }
         },
         "/services/fs-cache": {
@@ -14262,7 +14510,8 @@
                 "requestBody": {
                     "$ref": "#/components/requestBodies/ICacheOptions"
                 },
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/services/global": {
@@ -14306,7 +14555,8 @@
                         }
                     }
                 },
-                "summary": "Get all global services\nby using list of projectId and service name\n\nExample: [{ projectId: 'my-project-id', name: 'my-service-name' },\n          { projectId: 'my-project-id2', name: 'my-service-name2' }, ... ]\n\n the server will search in the db for the service with the name my-service-name belonging to the project 'my-project-id\n also the service with the name my-service-name2 belonging to the project 'my-project-id2\n and so on..."
+                "summary": "Get all global services\nby using list of projectId and service name\n\nExample: [{ projectId: 'my-project-id', name: 'my-service-name' },\n          { projectId: 'my-project-id2', name: 'my-service-name2' }, ... ]\n\n the server will search in the db for the service with the name my-service-name belonging to the project 'my-project-id\n also the service with the name my-service-name2 belonging to the project 'my-project-id2\n and so on...",
+                "response": {}
             }
         },
         "/services/logs": {
@@ -14348,7 +14598,8 @@
                         "source": "\nservice_logs = package.services.log(service='service_entity')\n\n# \n# Get service logs.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a package.\n# \n# :param dtlpy.entities.service.Service service: service object\n# :param int size: size\n# :param dict checkpoint: the information from the lst point checked in the service\n# :param str start: iso format time\n# :param str end: iso format time\n# :param bool follow: if true, keep stream future logs\n# :param str text: text\n# :param str execution_id: execution id\n# :param str function_name: function name\n# :param str replica_id: replica id\n# :param bool system: system\n# :param bool view: if true, print out all the logs\n# :param bool until_completed: wait until completed\n# :param str log_level: the log level to display dl.LoggingLevel\n# :return: ServiceLog entity\n# :rtype: ServiceLog\n# \n# "
                     }
                 ],
-                "summary": "Get logs for pipelines."
+                "summary": "Get logs for pipelines.",
+                "response": {}
             }
         },
         "/services/status": {
@@ -14382,7 +14633,8 @@
                         }
                     }
                 ],
-                "summary": "Get Services Status."
+                "summary": "Get Services Status.",
+                "response": {}
             }
         },
         "/services/{id}": {
@@ -14430,7 +14682,8 @@
                         "source": "\nservice = package.services.get(service_id='service_id')\n\n# \n# Get service to use in your code.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a package.\n# \n# :param str service_name: optional - search by name\n# :param str service_id: optional - search by id\n# :param bool checkout: if true, checkout (switch) to service\n# :param fetch: optional - fetch entity from platform, default taken from cookie\n# :return: Service object\n# :rtype: dtlpy.entities.service.Service\n# \n# "
                     }
                 ],
-                "summary": "Get service by id and version."
+                "summary": "Get service by id and version.",
+                "response": {}
             },
             "patch": {
                 "operationId": "Services_updateService",
@@ -14486,7 +14739,8 @@
                         "source": "\nservice = package.services.update(service='service_entity')\n\n# \n# Update service changes to platform.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a package.\n# \n# :param dtlpy.entities.service.Service service: Service entity\n# :param bool force: optional - terminate old replicas immediately\n# :return: Service entity\n# :rtype: dtlpy.entities.service.Service\n# \n# "
                     }
                 ],
-                "summary": "Update service changes."
+                "summary": "Update service changes.",
+                "response": {}
             },
             "delete": {
                 "operationId": "Services_deleteService",
@@ -14516,7 +14770,8 @@
                         "source": "\nis_deleted = package.services.delete(service_id='service_id')\n\n# \n# Delete Service object\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a package.\n# \n# You must provide at least ONE of the following params: service_id, service_name.\n# \n# :param str service_name: by name\n# :param str service_id: by id\n# :return: True\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "summary": "Delete Service."
+                "summary": "Delete Service.",
+                "response": {}
             }
         },
         "/services/{id}/debug": {
@@ -14561,7 +14816,8 @@
                     },
                     "required": true
                 },
-                "summary": "Service debug stream"
+                "summary": "Service debug stream",
+                "response": {}
             }
         },
         "/services/{id}/debug(*)?": {
@@ -14613,7 +14869,8 @@
                         }
                     }
                 ],
-                "summary": "Service debug stream"
+                "summary": "Service debug stream",
+                "response": {}
             }
         },
         "/services/{id}/logs": {
@@ -14658,7 +14915,8 @@
                 "requestBody": {
                     "$ref": "#/components/requestBodies/LogQuery"
                 },
-                "summary": "Get service logs."
+                "summary": "Get service logs.",
+                "response": {}
             }
         },
         "/services/{id}/notify": {
@@ -14694,7 +14952,8 @@
                     },
                     "required": true
                 },
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/services/{id}/resume": {
@@ -14742,7 +15001,8 @@
                         "source": "\nservice_json = package.services.resume(service_id='service_id')\n\n# \n# Resume service.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a package.\n# \n# You must provide at least ONE of the following params: service_id, service_name.\n# \n# :param str service_name: service name\n# :param str service_id: service id\n# :param bool force: optional - terminate old replicas immediately\n# :return: json of the service\n# :rtype: dict\n# \n# "
                     }
                 ],
-                "summary": "Pause service."
+                "summary": "Pause service.",
+                "response": {}
             }
         },
         "/services/{id}/revisions": {
@@ -14784,7 +15044,8 @@
                         "source": "\nservice_revision = package.services.revisions(service_id='service_id')\n\n# \n# Get service revisions history.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a package.\n# \n# You must provide at leats ONE of the following params: service, service_id\n# \n# :param dtlpy.entities.service.Service service: Service entity\n# :param str service_id: service id\n# \n# "
                     }
                 ],
-                "summary": "Get service revisions by id."
+                "summary": "Get service revisions by id.",
+                "response": {}
             }
         },
         "/services/{id}/rollout": {
@@ -14833,7 +15094,8 @@
                     },
                     "required": true
                 },
-                "summary": "Rolling out service."
+                "summary": "Rolling out service.",
+                "response": {}
             }
         },
         "/services/{id}/status": {
@@ -14882,7 +15144,8 @@
                         "source": "\nstatus_json = package.services.status(service_id='service_id')\n\n# \n# Get service status.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a package.\n# \n# You must provide at least ONE of the following params: service_id, service_name\n# \n# :param str service_name: service name\n# :param str service_id: service id\n# :return: status json\n# :rtype: dict\n# \n# "
                     }
                 ],
-                "summary": "Update Replica Status."
+                "summary": "Update Replica Status.",
+                "response": {}
             },
             "get": {
                 "operationId": "Services_getServiceStatus",
@@ -14913,7 +15176,8 @@
                         }
                     }
                 ],
-                "summary": "Get service status."
+                "summary": "Get service status.",
+                "response": {}
             }
         },
         "/services/{id}/stop": {
@@ -14961,7 +15225,8 @@
                         "source": "\nsuccess = package.services.pause(service_id='service_id')\n\n# \n# Pause service.\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a package.\n# \n# You must provide at least ONE of the following params: service_id, service_name\n# \n# :param str service_name: service name\n# :param str service_id: service id\n# :param bool force: optional - terminate old replicas immediately\n# :return: True if success\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "summary": "Pause service."
+                "summary": "Pause service.",
+                "response": {}
             }
         },
         "/settings": {
@@ -15019,7 +15284,8 @@
                         }
                     }
                 },
-                "summary": "Creates a new Setting.\n\nSupply the appropriate Create Request object for either Feature flag or User setting."
+                "summary": "Creates a new Setting.\n\nSupply the appropriate Create Request object for either Feature flag or User setting.",
+                "response": {}
             }
         },
         "/settings/query": {
@@ -15070,7 +15336,8 @@
                         }
                     }
                 },
-                "summary": "Query settings\n\nSupply the query requested to query settings"
+                "summary": "Query settings\n\nSupply the query requested to query settings",
+                "response": {}
             }
         },
         "/settings/resolve": {
@@ -15122,7 +15389,8 @@
                         }
                     }
                 },
-                "summary": "Resolves the relevant settings for a specific Context.\n\nSupply the specific Context to resolve by"
+                "summary": "Resolves the relevant settings for a specific Context.\n\nSupply the specific Context to resolve by",
+                "response": {}
             }
         },
         "/settings/{id}": {
@@ -15178,7 +15446,8 @@
                         }
                     }
                 ],
-                "summary": "Retrieves the details of a setting.\n\nSupply the unique setting ID to fetch it's details."
+                "summary": "Retrieves the details of a setting.\n\nSupply the unique setting ID to fetch it's details.",
+                "response": {}
             },
             "patch": {
                 "operationId": "Update Setting",
@@ -15251,7 +15520,8 @@
                         }
                     }
                 },
-                "summary": "Update a setting\n\nSupply the unique id of the setting to update and an object describing which fields update"
+                "summary": "Update a setting\n\nSupply the unique id of the setting to update and an object describing which fields update",
+                "response": {}
             },
             "delete": {
                 "operationId": "Delete Setting",
@@ -15298,7 +15568,8 @@
                         }
                     }
                 ],
-                "summary": "Delete a setting\n\nSupply the unique id of the setting to delete"
+                "summary": "Delete a setting\n\nSupply the unique id of the setting to delete",
+                "response": {}
             }
         },
         "/subscriptions": {
@@ -15355,7 +15626,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/subscriptions/orgs/{orgid}/free": {
@@ -15391,7 +15663,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/subscriptions/orgs/{orgid}/plg": {
@@ -15427,7 +15700,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/subscriptions/projects/{projectId}/free": {
@@ -15463,7 +15737,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/subscriptions/projects/{projectId}/plg": {
@@ -15499,7 +15774,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/subscriptions/{id}": {
@@ -15530,7 +15806,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             },
             "patch": {
                 "operationId": "Edit Subscription",
@@ -15569,7 +15846,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/subscriptions/{id}/addon": {
@@ -15610,7 +15888,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/subscriptions/{id}/upgrade": {
@@ -15651,7 +15930,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/trigger-resource-information": {
@@ -15705,7 +15985,8 @@
                     },
                     "required": true
                 },
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/triggers": {
@@ -15852,7 +16133,8 @@
                         }
                     }
                 ],
-                "summary": "Retrieves services.\n\nSupply query parameters to filter the list."
+                "summary": "Retrieves services.\n\nSupply query parameters to filter the list.",
+                "response": {}
             },
             "post": {
                 "operationId": "Triggers_createTrigger",
@@ -15888,7 +16170,8 @@
                         "source": "\nservice.triggers.create(name='triggername',\nexecution_mode=dl.TriggerExecutionMode.ONCE,\nresource='Item',\nactions='Created',\nfunction_name='run',\nfilters={'$and': [{'hidden': False},\n{'type': 'file'}]}\n)\n\n# \n# Create a Trigger. Can create two types: a cron trigger or an event trigger.\n# Inputs are different for each type\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a service.\n# \n# Inputs for all types:\n# \n# :param str service_id: Id of services to be triggered\n# :param str trigger_type: can be cron or event. use enum dl.TriggerType for the full list\n# :param str name: name of the trigger\n# :param str webhook_id: id for webhook to be called\n# :param str  function_name: the function name to be called when triggered (must be defined in the package)\n# :param str  project_id: project id where trigger will work\n# :param bool active: optional - True/False, default = True, if true trigger is active\n# \n# Inputs for event trigger:\n# :param dtlpy.entities.filters.Filters filters: optional - Item/Annotation metadata filters, default = none\n# :param str resource: optional - Dataset/Item/Annotation/ItemStatus, default = Item\n# :param str actions: optional - Created/Updated/Deleted, default = create\n# :param str execution_mode: how many times trigger should be activated; default is \"Once\". enum dl.TriggerExecutionMode\n# \n# Inputs for cron trigger:\n# :param start_at: iso format date string to start activating the cron trigger\n# :param end_at: iso format date string to end the cron activation\n# :param inputs: dictionary \"name\":\"val\" of inputs to the function\n# :param str cron: cron spec specifying when it should run. more information: https://en.wikipedia.org/wiki/Cron\n# :param str pipeline_id: Id of pipeline to be triggered\n# :param pipeline: pipeline entity to be triggered\n# :param str pipeline_node_id: Id of pipeline root node to be triggered\n# :param root_node_namespace: namespace of pipeline root node to be triggered\n# \n# :return: Trigger entity\n# :rtype: dtlpy.entities.trigger.Trigger\n# \n# "
                     }
                 ],
-                "summary": "Create a Trigger. Can create two types: a cron trigger or an event trigger.\nInputs are different for each type"
+                "summary": "Create a Trigger. Can create two types: a cron trigger or an event trigger.\nInputs are different for each type",
+                "response": {}
             }
         },
         "/triggers/{id}": {
@@ -15927,7 +16210,8 @@
                         "source": "\nservice.triggers.get(trigger_id='trigger_id')\n\n# \n# Get Trigger object\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a service.\n# \n# :param str trigger_id: trigger id\n# :param str  trigger_name: trigger name\n# :return: Trigger entity\n# :rtype: dtlpy.entities.trigger.Trigger\n# \n# "
                     }
                 ],
-                "summary": "Get trigger by id.\nSupply query parameters to filter the list."
+                "summary": "Get trigger by id.\nSupply query parameters to filter the list.",
+                "response": {}
             },
             "patch": {
                 "operationId": "Triggers_updateTrigger",
@@ -15974,7 +16258,8 @@
                         "source": "\nservice.triggers.update(trigger='trigger_entity')\n\n# \n# Update trigger\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a service.\n# \n# :param dtlpy.entities.trigger.Trigger trigger: Trigger entity\n# :return: Trigger entity\n# :rtype: dtlpy.entities.trigger.Trigger\n# \n# "
                     }
                 ],
-                "summary": "Update trigger."
+                "summary": "Update trigger.",
+                "response": {}
             },
             "delete": {
                 "operationId": "Triggers_deleteTriggers",
@@ -16004,7 +16289,8 @@
                         "source": "\nservice.triggers.delete(trigger_id='trigger_id')\n\n# \n# Delete Trigger object\n# \n# **Prerequisites**: You must be in the role of an *owner* or *developer*. You must have a service.\n# \n# :param str trigger_id: trigger id\n# :param str trigger_name: trigger name\n# :return: True is successful error if not\n# :rtype: bool\n# \n# "
                     }
                 ],
-                "summary": "Delete Trigger."
+                "summary": "Delete Trigger.",
+                "response": {}
             }
         },
         "/ui-status": {
@@ -16028,7 +16314,8 @@
                 ],
                 "security": [],
                 "parameters": [],
-                "summary": "Retrieves the latest OA versions."
+                "summary": "Retrieves the latest OA versions.",
+                "response": {}
             }
         },
         "/usage/accounts/{id}": {
@@ -16078,7 +16365,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/usage/orgs/{id}": {
@@ -16118,7 +16406,8 @@
                             "type": "string"
                         }
                     }
-                ]
+                ],
+                "response": {}
             }
         },
         "/users/projects/{id}": {
@@ -16149,7 +16438,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/users/{id}": {
@@ -16180,7 +16470,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/users/{user_id}/org": {
@@ -16221,7 +16512,8 @@
                             }
                         }
                     }
-                }
+                },
+                "response": {}
             }
         },
         "/webhooks": {
@@ -16265,7 +16557,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             },
             "post": {
                 "operationId": "WebHooks_createWebHook",
@@ -16288,7 +16581,8 @@
                 "requestBody": {
                     "$ref": "#/components/requestBodies/APIWebHook"
                 },
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/webhooks/{ids}": {
@@ -16314,7 +16608,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             }
         },
         "/webhooks/{id}": {
@@ -16347,7 +16642,8 @@
                         }
                     }
                 ],
-                "summary": ""
+                "summary": "",
+                "response": {}
             },
             "patch": {
                 "operationId": "WebHooks_updateWebHook",
@@ -16381,7 +16677,70 @@
                 "requestBody": {
                     "$ref": "#/components/requestBodies/APIWebHook"
                 },
-                "summary": ""
+                "summary": "",
+                "response": {}
+            }
+        },
+        "annotationtasks/{id}/addToTask": {
+            "post": {
+                "x-codeSamples": [
+                    {
+                        "lang": "Python",
+                        "source": "\ndataset.tasks.add_items(task= 'task_entity',\nitems = [items])\n\n# \n# Add items to a Task.\n# \n# **Prerequisites**: You must be in the role of an *owner*, *developer*, or *annotation manager* who has been assigned to be *owner* of the annotation task.\n# \n# :param dtlpy.entities.task.Task task: task object\n# :param str task_id: the Id of the task\n# :param dtlpy.entities.filters.Filters filters: Filters entity or a dictionary containing filters parameters\n# :param list items: list of items (item Ids or objects) to add to the task\n# :param list assignee_ids: list to assignee who works in the task\n# :param dict query: query to filter the items for the task\n# :param list workload: list of WorkloadUnit objects. Customize distribution (percentage) between the task assignees. For example: [dl.WorkloadUnit(annotator@hi.com, 80), dl.WorkloadUnit(annotator2@hi.com, 20)]\n# :param int limit: the limit items that task can include\n# :param bool wait: wait until add items will to finish\n# :return: task entity\n# :rtype: dtlpy.entities.task.Task\n# \n# "
+                    }
+                ],
+                "response": {}
+            }
+        },
+        "annotationtasks/{id}/removeFromTask": {
+            "post": {
+                "x-codeSamples": [
+                    {
+                        "lang": "Python",
+                        "source": "\ndataset.tasks.remove_items(task= 'task_entity',\nitems = [items])\n\n\n# \n# remove items from Task.\n# \n# **Prerequisites**: You must be in the role of an *owner*, *developer*, or *annotation manager* who has been assigned to be *owner* of the annotation task.\n# \n# :param dtlpy.entities.task.Task task: task object\n# :param str task_id: the Id of the task\n# :param dtlpy.entities.filters.Filters filters: Filters entity or a dictionary containing filters parameters\n# :param dict query: query to filter the items use it\n# :param list items: list of items to add to the task\n# :param bool wait: wait until remove items finish\n# :return: True if success and an error if failed\n# :rtype: bool\n# \n# **Examples**:\n# "
+                    }
+                ],
+                "response": {}
+            }
+        },
+        "projects /{id}/members": {
+            "get": {
+                "x-codeSamples": [
+                    {
+                        "lang": "Python",
+                        "source": "\nusers_jsons_list = dl.projects.list_members(project_id='project_id', role=dl.MemberRole.DEVELOPER)\n\n# \n# Get a list of the project members.\n# \n# **Prerequisites**: You must be in the role of an *owner* to list project members.\n# \n# :param dtlpy.entities.project.Project project: Project object\n# :param role: The required role for the user. Use the enum dl.MemberRole\n# :return: list of the project members\n# :rtype: list\n# \n# "
+                    }
+                ],
+                "response": {}
+            }
+        },
+        "projects /{project_id}/members/{user_id}": {
+            "post": {
+                "x-codeSamples": [
+                    {
+                        "lang": "Python",
+                        "source": "\nuser_json = dl.projects.add_member(project_id='project_id', email='user@dataloop.ai', role=dl.MemberRole.DEVELOPER)\n\n# \n# Add a member to the project.\n# \n# **Prerequisites**: You must be in the role of an *owner* to add a member to a project.\n# \n# :param str email: member email\n# :param str project_id: The Id of the project\n# :param role: The required role for the user. Use the enum dl.MemberRole\n# :return: dict that represent the user\n# :rtype: dict\n# \n# "
+                    }
+                ],
+                "response": {}
+            },
+            "patch": {
+                "x-codeSamples": [
+                    {
+                        "lang": "Python",
+                        "source": "\nuser_json = = dl.projects.update_member(project_id='project_id', email='user@dataloop.ai', role=dl.MemberRole.DEVELOPER)\n\n# \n# Update member's information/details in the project.\n# \n# **Prerequisites**: You must be in the role of an *owner* to update a member.\n# \n# :param str email: member email\n# :param str project_id: The Id of the project\n# :param role: The required role for the user. Use the enum dl.MemberRole\n# :return: dict that represent the user\n# :rtype: dict\n# \n# "
+                    }
+                ],
+                "response": {}
+            },
+            "delete": {
+                "x-codeSamples": [
+                    {
+                        "lang": "Python",
+                        "source": "\nuser_json = dl.projects.remove_member(project_id='project_id', email='user@dataloop.ai')\n\n# \n# Remove a member from the project.\n# \n# **Prerequisites**: You must be in the role of an *owner* to delete a member from a project.\n# \n# :param str email: member email\n# :param str project_id: The Id of the project\n# :return: dict that represents the user\n# :rtype: dict\n# \n# "
+                    }
+                ],
+                "response": {}
             }
         }
     },
@@ -16389,7 +16748,7 @@
     "openapi": "3.0.0",
     "servers": [
         {
-            "url": "https://gate.dataloop.ai/api/v1",
+            "url": "https://rc-gate.dataloop.ai/api/v1",
             "description": "Main Dataloop Gateway"
         }
     ],
@@ -25675,26 +26034,26 @@
         },
         "responses": {},
         "securitySchemes": {
-            "bearerAuth": {
-                "type": "http",
-                "scheme": "bearer",
-                "bearerFormat": "JWT"
+            "cookieAuth": {
+                "type": "apiKey",
+                "name": "JWT",
+                "in": "cookie"
             }
         }
     },
-    "host": "gate.dataloop.ai",
+    "host": "rc-gate.dataloop.ai",
     "schemes": [
         "https"
     ],
     "x-servers": [
         {
-            "url": "https://gate.dataloop.ai/api/v1",
+            "url": "https://rc-gate.dataloop.ai/api/v1",
             "description": "Main Dataloop Gateway"
         }
     ],
     "security": [
         {
-            "bearerAuth": []
+            "cookieAuth": []
         }
     ]
 }
