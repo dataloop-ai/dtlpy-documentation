@@ -38,7 +38,7 @@ if dl.token_expired():
 project = dl.projects.get(project_id='<YOUR_PROJECT_ID>')
 # Create a partial AWS Cross Account integration (before you add the IAM user to the Trust relationship of the role)
 integration: dl.Integration = project.integrations.create(integrations_type=dl.IntegrationType.AWS_CROSS_ACCOUNT,
-                                                          name='<YOUR_INTEGRATION_NAME>')
+                                                          name='<YOUR_INTEGRATION_NAME>', option={})
 # value of the IAM user ARN
 for metadata in integration.meatadata:
     if metadata['name'] == 'userArn':
@@ -61,8 +61,9 @@ To update the integration and provide the IAM role ARN follow this code snippet
 ```python
 # After Adding the user ARN to your role trust relationship, continue and update the integration
 integration.update(new_options={'roleArn': '<YOUR_IAMֹֹֹֹֹ_ROLE_ֹֹARN>'})
-# checking the integration was created correctly
-for metadata in integration.meatadata:
+updated_integration = project.integrations.get(integrations_id=integration.id)
+# checking the integration status was updated
+for metadata in updated_integration.meatadata:
     if metadata['name'] == 'status':
         if metadata['value'] != 'trust-established':
             raise ValueError('ERROR: Integration was not setup correctly - please check the trust relationship in your IAM Role')

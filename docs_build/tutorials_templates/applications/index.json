@@ -9,19 +9,19 @@
             "location": "applications/introduction/chapter.md"
         },
         {
-            "displayName": "Single Page Application",
-            "description": "Create a Panel in an Application",
-            "location": "applications/single_page_application/chapter.md"
-        },
-        {
-            "displayName": "Python Application",
-            "description": "Create a Python Applications",
+            "displayName": "Python Applications",
+            "description": "Create python applications",
             "location": "applications/python_application/chapter.md"
         },
         {
-            "displayName": "Debug SPA",
-            "description": "Debug Web Application Locally",
-            "location": "applications/debug_spa/chapter.md"
+            "displayName": "UI Toolbars",
+            "description": "Toolbars tutorial",
+            "location": "applications/toolbars/chapter.md"
+        },
+        {
+            "displayName": "Single Page Web Application",
+            "description": "Create a Panel in an Application",
+            "location": "applications/single_page_application/chapter.md"
         },
         {
             "displayName": "Manifest Examples",
@@ -29,9 +29,9 @@
             "location": "applications/dpk_examples/chapter.md"
         },
         {
-            "displayName": "UI Toolbars",
-            "description": "Toolbars tutorial",
-            "location": "applications/toolbars/chapter.md"
+            "displayName": "Frequently Asked Questions",
+            "description": "frequently asked questions",
+            "location": "applications/faq/chapter.md"
         }
     ]
 }
