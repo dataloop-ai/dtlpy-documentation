@@ -294,7 +294,7 @@ IBundle.update
 
 *Note:* To update the `system` object in `metadata` field, one needs to pass `system: true` in the updated item object.
 
-Example:
+**`Example`**
 
 ```ts
 const updatedItem = await dl.items.update({
