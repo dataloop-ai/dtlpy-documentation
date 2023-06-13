@@ -291,3 +291,22 @@ const updatedItem = await dl.items.update({
 #### Implementation of
 
 IBundle.update
+
+**Note:** To update the `system` object in `metadata` field, one needs to pass `system: true` in the updated item object.
+
+**`Example`**
+
+```ts
+const updatedItem = await dl.items.update({
+    id: "item-1",
+    name: "Updated item name",
+    system: true,
+    metadata: {
+       system: {
+           audioSpeakers: { "Label 1": "Label 1 New Value" } 
+       }
+    }
+})
+```
+
+In this example, we are updating `audioSpeakers` value of the system object by passing `system: true` at the top level of the updated item object.
