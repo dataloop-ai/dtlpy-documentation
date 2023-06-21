@@ -44,3 +44,17 @@ service.on_reset = 'rerun'
 # The service must be updated after changing these attributes
 service.update()
 ```
+## Monitoring Execution Completion  
+  
+With the SDK, you have the ability to monitor the progress of a single execution until it reaches either a `success` or `failed` status.  
+Keep in mind that the local instance of dl.Execution does not automatically synchronize with the current status, requiring periodic polling to obtain the updated information.  
+You can easily accomplish this by using the following commands:  
+  
+
+```python
+execution = dl.executions.get(execution_id='')
+execution = execution.wait()
+print(f"Execution is done with status: {execution.latest_status['status']!r}, duration: {execution.duration:.2f}[s]")
+```
+The process will be suspended (with background polling) until there is a change in the execution status.  
+  

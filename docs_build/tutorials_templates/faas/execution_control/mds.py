@@ -32,3 +32,20 @@ def func4():
     2. Retry
     """
 
+
+def func5():
+    """
+    ## Monitoring Execution Completion
+
+    With the SDK, you have the ability to monitor the progress of a single execution until it reaches either a `success` or `failed` status.
+    Keep in mind that the local instance of dl.Execution does not automatically synchronize with the current status, requiring periodic polling to obtain the updated information.
+    You can easily accomplish this by using the following commands:
+
+    """
+
+
+def func6():
+    """
+    The process will be suspended (with background polling) until there is a change in the execution status.
+
+    """
