@@ -15,6 +15,38 @@ def section2():
                          overwrite=True)
 
 
+def section2a():
+    import dtlpy as dl
+    item = dl.items.get(item_id="")
+
+    # Get the entities to add to the context
+    assignment = dl.assignments.get(assignment_id="")
+
+    task = dl.tasks.get(task_id="")
+    # OR
+    task = assignment.task
+
+    recipe = dl.recipes.get(recipe_id="")
+    # OR
+    recipe = dl.recipes.get(recipe_id=task.recipe_id)
+
+    # Context dictionary
+    context = {'taskId': task.id,
+               'assignmentId': assignment.id,
+               'recipeId': recipe.id}
+
+    # Create the annotation
+    collection = item.annotations.builder()
+    collection.add(annotation_definition=dl.Classification(label='Komodo Dragon'),
+                   metadata={'system': context})
+    item.annotations.upload(annotations=collection)
+
+    # Or Update existing one
+    annotation = item.annotations.get(annotation_id="")
+    annotation.metadata["system"].update(context)
+    annotation.update(system_metadata=True)
+
+
 def section3():
     converter = dl.Converter()
     converter.upload_local_dataset(
@@ -84,7 +116,6 @@ def section5b():
                                                   text='<text>'),
                 start_time='<start>',
                 end_time='<end>')
-
 
 
 def section6():

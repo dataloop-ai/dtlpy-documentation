@@ -17,6 +17,14 @@
   },
   {
     "type": "md",
+    "name": "section2a"
+  },
+  {
+    "type": "code",
+    "name": "section2a"
+  },
+  {
+    "type": "md",
     "name": "section3"
   },
   {
