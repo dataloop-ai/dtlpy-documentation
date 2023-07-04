@@ -11,6 +11,15 @@ def section2():
     """
 
 
+def section2a():
+    """
+    ## Upload with Task and Recipe Context
+
+    Annotation can be uploaded or edited with a context. The Recipe, Task and Assignment IDs can be add to the system metadata:
+
+    """
+
+
 def section3():
     """
     ## Convert Annotations To COCO Format
@@ -57,32 +66,32 @@ def section6():
     
     You can set attributes on annotations in hte platform using the SDK. Since Dataloop deprecated a legacy attributes mechanism, attributes are refered to as '2.0' version and need to be set as such first.
     
-    ## Free Text Attribute
+    ### Free Text Attribute
     """
 
 
 def section7():
     """
-    ## Range Attributes (Slider in UI)
+    ### Range Attributes (Slider in UI)
 
     """
 
 
 def section8():
     """
-    ## CheckBox Attribute (Multiple choice)
+    ### CheckBox Attribute (Multiple choice)
     """
 
 
 def section9():
     """
-    ## Radio Button Attribute (Single Choice)
+    ### Radio Button Attribute (Single Choice)
     """
 
 
 def section10():
     """
-    ## Yes/No Attribute
+    ### Yes/No Attribute
     """
 
 
@@ -107,7 +116,7 @@ def section12():
 def section13():
     """
 
-    ## Download Data, Annotations & Metadata
+    # Download Data, Annotations & Metadata
     The item ID for a specific file can be found in the platform UI - Click BROWSE for a dataset, click on the selected file, and the file information will be displayed in the right-side panel. The item ID is detailed, and can be copied in a single click.
 
     ## Download Items and Annotations

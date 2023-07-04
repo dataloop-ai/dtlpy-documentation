@@ -18,6 +18,36 @@ dataset.items.upload(local_path=r'<items path>',
                      item_metadata=dl.ExportMetadata.FROM_JSON,
                      overwrite=True)
 ```
+## Upload with Task and Recipe Context  
+  
+Annotation can be uploaded or edited with a context. The Recipe, Task and Assignment IDs can be add to the system metadata:  
+  
+
+```python
+import dtlpy as dl
+item = dl.items.get(item_id="")
+# Get the entities to add to the context
+assignment = dl.assignments.get(assignment_id="")
+task = dl.tasks.get(task_id="")
+# OR
+task = assignment.task
+recipe = dl.recipes.get(recipe_id="")
+# OR
+recipe = dl.recipes.get(recipe_id=task.recipe_id)
+# Context dictionary
+context = {'taskId': task.id,
+           'assignmentId': assignment.id,
+           'recipeId': recipe.id}
+# Create the annotation
+collection = item.annotations.builder()
+collection.add(annotation_definition=dl.Classification(label='Komodo Dragon'),
+               metadata={'system': context})
+item.annotations.upload(annotations=collection)
+# Or Update existing one
+annotation = item.annotations.get(annotation_id="")
+annotation.metadata["system"].update(context)
+annotation.update(system_metadata=True)
+```
 ## Convert Annotations To COCO Format  
   
 
@@ -107,14 +137,14 @@ builder.add(annotation_definition=dl.Subtitle(label='<label>',
   
 You can set attributes on annotations in hte platform using the SDK. Since Dataloop deprecated a legacy attributes mechanism, attributes are refered to as '2.0' version and need to be set as such first.  
   
-## Free Text Attribute  
+### Free Text Attribute  
 
 ```python
 dl.use_attributes_2(True)
 annotation.attributes.update({"ID of the attribute": "value of the attribute"})
 annotation = annotation.update(True)
 ```
-## Range Attributes (Slider in UI)  
+### Range Attributes (Slider in UI)  
   
 
 ```python
@@ -122,21 +152,21 @@ dl.use_attributes_2(True)
 annotation.attributes.update({"<attribute-id>": number_on_range})
 annotation = annotation.update(system_metadata=True)
 ```
-## CheckBox Attribute (Multiple choice)  
+### CheckBox Attribute (Multiple choice)  
 
 ```python
 dl.use_attributes_2(True)
 annotation.attributes.update({"<attribute-id>": ["selection", "selection"]})
 annotation = annotation.update(system_metadata=True)
 ```
-## Radio Button Attribute (Single Choice)  
+### Radio Button Attribute (Single Choice)  
 
 ```python
 dl.use_attributes_2(True)
 annotation.attributes.update({"<attribute-id>": "selection"})
 annotation = annotation.update(system_metadata=True)
 ```
-## Yes/No Attribute  
+### Yes/No Attribute  
 
 ```python
 dl.use_attributes_2(True)
@@ -174,7 +204,7 @@ annotation.show(image='',
                 with_text='')
 ```
   
-## Download Data, Annotations & Metadata  
+# Download Data, Annotations & Metadata  
 The item ID for a specific file can be found in the platform UI - Click BROWSE for a dataset, click on the selected file, and the file information will be displayed in the right-side panel. The item ID is detailed, and can be copied in a single click.  
   
 ## Download Items and Annotations  

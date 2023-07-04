@@ -30,3 +30,7 @@ class Scripts:
         # The service must be updated after changing these attributes
         service.update()
 
+    def func5(self):
+        execution = dl.executions.get(execution_id='')
+        execution = execution.wait()
+        print(f"Execution is done with status: {execution.latest_status['status']!r}, duration: {execution.duration:.2f}[s]")
