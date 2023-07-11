@@ -17,7 +17,7 @@ For example, if you need to install some python packages, you can use something 
 
 <h5 a><strong><code>build.sh</code></strong></h5>
 
-``` shell
+```shell
 pip3 install my-package==1.0.0
 ```
 
