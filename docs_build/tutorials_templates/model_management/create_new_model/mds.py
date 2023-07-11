@@ -69,7 +69,7 @@ def func6():
 
     You should now be able to see the model in the “Deployed” tab. After clicking on your model, you should see a “Test” tab where you can drag and drop an image, click “Test” and see the results of your model prediction.
 
-    ![Screenshot of deployed model test tab](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/assets/images/model_management/test_tab.png)
+    ![Screenshot of deployed model test tab](../../../assets/images/model_management/test_tab.png)
 
     #### Via the SDK
 

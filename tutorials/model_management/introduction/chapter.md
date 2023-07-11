@@ -18,7 +18,7 @@ All models can be integrated into the Dataloop platform, connected to the UI via
   
 In this tutorial we will cover the required Dataloop entities to create, compare, restore, manage, and deploy model training sessions and trained models.  
   
-![Components of a Model](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/assets/images/model_management/model_diagram.png/)  
+![Components of a Model](../../../assets/images/model_management/model_diagram.png)  
   
 ### Package and Model Entities  
   
@@ -71,7 +71,7 @@ In "offline" mode, users can run and train models on their local machine using l
   
 In “offline” mode, code and weights are not saved anywhere in the Dataloop platform. Only model metrics are saved and viewable at a later time.  
   
-![An example of model metrics](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/assets/images/model_management/metrics_example.png/)  
+![An example of model metrics](../../../assets/images/model_management/metrics_example.png)  
   
 In "online" mode, models can be trained to be deployed anywhere on the platform. For example, you can easily create a button interface to use your model to inference on a new data item and view it on the platform.  
   
