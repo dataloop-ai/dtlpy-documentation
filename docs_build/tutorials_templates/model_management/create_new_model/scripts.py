@@ -61,17 +61,16 @@ def func3():
 
 
 def func4():
-    artifact = dl.LocalArtifact(local_path='<path to weights>')
     model = package.models.create(model_name='tutorial-model',
-                                  description='first model we are uploading',
-                                  tags=['pretrained', 'tutorial'],
-                                  dataset_id=None,
-                                  configuration={'weights_filename': '<weights filename and extension>'
-                                                 },
-                                  project_id=package.project.id,
-                                  model_artifacts=[artifact],
-                                  labels=['car', 'fish', 'pizza']
-                                  )
+                              description='first model we are uploading',
+                              tags=['pretrained', 'tutorial'],
+                              dataset_id=None,
+                              configuration={},
+                              project_id=package.project.id,
+                              labels=['car', 'fish', 'pizza']
+                              )
+    artifact = model.artifacts.upload(filepath='<path-to-model-weights>')
+    model.configuration['weights_filename'] = artifact.filename
 
 
 def func5():

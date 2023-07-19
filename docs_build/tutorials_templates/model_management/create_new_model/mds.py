@@ -50,7 +50,8 @@ def func4():
     """
     #### Upload artifacts and create the model
 
-    Now you can create a model and upload pretrained model weights with an Artifact Item. Here, the Artfiact item is where the saved model weights are. You can upload any weights file here and name it according to the 'weights_filename' in the configuration.
+      Now you can create a model and upload pretrained model weights with an Artifact Item. Here, the Artfiact item is where the saved model weights are. You can upload any weights file here and use the artifact filename to update the ```weights_filename``` field in the model configuration.  
+  
 
     """
 
