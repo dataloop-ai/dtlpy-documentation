@@ -87,21 +87,21 @@ package = project.packages.push(package_name='My-Package',
 ```
 #### Upload artifacts and create the model  
   
-Now you can create a model and upload pretrained model weights with an Artifact Item. Here, the Artfiact item is where the saved model weights are. You can upload any weights file here and name it according to the 'weights_filename' in the configuration.  
+  Now you can create a model and upload pretrained model weights with an Artifact Item. Here, the Artifact item will be uploaded with the file containing the model weights. You can upload any weights file here and use the artifact filename to update the ```weights_filename``` field in the model configuration.  
+  
   
 
 ```python
-artifact = dl.LocalArtifact(local_path='<path to weights>')
 model = package.models.create(model_name='tutorial-model',
-                              description='first model we are uploading',
-                              tags=['pretrained', 'tutorial'],
-                              dataset_id=None,
-                              configuration={'weights_filename': '<weights filename and extension>'
-                                             },
-                              project_id=package.project.id,
-                              model_artifacts=[artifact],
-                              labels=['car', 'fish', 'pizza']
-                              )
+                          description='first model we are uploading',
+                          tags=['pretrained', 'tutorial'],
+                          dataset_id=None,
+                          configuration={},
+                          project_id=package.project.id,
+                          labels=['car', 'fish', 'pizza']
+                          )
+artifact = model.artifacts.upload(filepath='<path-to-model-weights>')
+model.configuration['weights_filename'] = artifact.filename
 ```
 To deploy a model, its status must be set to trained so you can deploy a model by updating the status to trained and then deploy it.  
   
