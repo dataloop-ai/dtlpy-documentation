@@ -4,7 +4,7 @@ from check_links import check_links
 from build_redocly import build_redocly
 
 if __name__ == "__main__":
-    check_links()
     build_tutorials()
+    check_links()
     build_readme()
     build_redocly()

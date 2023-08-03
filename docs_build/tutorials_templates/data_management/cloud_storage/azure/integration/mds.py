@@ -9,7 +9,7 @@ def section1():
 
     Access & Permissions - Creating an integration with Azure requires allowing dataloop specific permissions for accessing the resource
 
-    To learn more about setting up integrations, please visit our [Dataloop documentation](https://dataloop.ai/docs/storage-azure)
+    To learn more about setting up integrations, please visit our [Dataloop documentation](https://dataloop.ai/docs/azure-cloud-storage)
 
 
     ### Create integration With Microsoft Azure
