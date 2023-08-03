@@ -91,6 +91,12 @@ contents:
     - label: Example - Auto/Pre Annotation service
       page: tutorials/faas/auto_annotate/chapter.md
   - expanded: false
+    group: Pipelines
+    page: tutorials/pipelines.md
+    pages:
+    - label: Create a Pipeline
+      page: tutorials/pipelines/create_a_pipeline/chapter.md
+  - expanded: false
     group: Task Workflows
     page: tutorials/task_workflows.md
     pages:

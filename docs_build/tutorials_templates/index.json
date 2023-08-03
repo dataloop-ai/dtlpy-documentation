@@ -1,53 +1,58 @@
 {
-  "name": "dataloop-tutorials",
-  "title": "Dataloop Tutorials",
-  "description": "All of Dataloop's tutorials!",
-  "content": [
-    {
-      "displayName": "Getting Started With Dataloop SDK",
-      "description": "Getting started with Dataloop SDK",
-      "location": "getting_started/index.json"
-    },
-    {
-      "displayName": "Data Management Tutorial",
-      "description": "Tutorials for data management",
-      "location": "data_management/index.json"
-    },
-    {
-      "displayName": "FaaS Tutorial",
-      "description": "Tutorials for FaaS",
-      "location": "faas/index.json"
-    },
-    {
-      "displayName": "Task Workflows",
-      "description": "Tutorials for workforce management",
-      "location": "task_workflows/index.json"
-    },
-    {
-      "displayName": "Image Annotations",
-      "description": "Tutorials for creating all types of image annotations",
-      "location": "annotations_image/index.json"
-    },
-    {
-      "displayName": "Video Annotations",
-      "description": "Tutorials for annotating videos",
-      "location": "annotations_video/index.json"
-    },
-    {
-      "displayName": "Recipe and Ontology",
-      "description": "Tutorials for managing ontologies, labels, and recipes",
-      "location": "recipe_and_ontology/index.json"
-    },
-    {
-      "displayName": "Model Management",
-      "description": "Tutorials for creating and managing ML model",
-      "location": "model_management/index.json"
-    },
-    {
-      "displayName": "Applications",
-      "description": "Developing and working with the Dataloop Applications",
-      "location": "applications/index.json"
-    }
-  ]
+    "name": "dataloop-tutorials",
+    "title": "Dataloop Tutorials",
+    "description": "All of Dataloop's tutorials!",
+    "content": [
+        {
+            "displayName": "Getting Started With Dataloop SDK",
+            "description": "Getting started with Dataloop SDK",
+            "location": "getting_started/index.json"
+        },
+        {
+            "displayName": "Data Management Tutorial",
+            "description": "Tutorials for data management",
+            "location": "data_management/index.json"
+        },
+        {
+            "displayName": "FaaS Tutorial",
+            "description": "Tutorials for FaaS",
+            "location": "faas/index.json"
+        },
+        {
+            "displayName": "Pipelines",
+            "description": "Tutorials for creating pipelines with the SDK",
+            "location": "pipelines/index.json"
+        },
+        {
+            "displayName": "Task Workflows",
+            "description": "Tutorials for workforce management",
+            "location": "task_workflows/index.json"
+        },
+        {
+            "displayName": "Image Annotations",
+            "description": "Tutorials for creating all types of image annotations",
+            "location": "annotations_image/index.json"
+        },
+        {
+            "displayName": "Video Annotations",
+            "description": "Tutorials for annotating videos",
+            "location": "annotations_video/index.json"
+        },
+        {
+            "displayName": "Recipe and Ontology",
+            "description": "Tutorials for managing ontologies, labels, and recipes",
+            "location": "recipe_and_ontology/index.json"
+        },
+        {
+            "displayName": "Model Management",
+            "description": "Tutorials for creating and managing ML model",
+            "location": "model_management/index.json"
+        },
+        {
+            "displayName": "Applications",
+            "description": "Developing and working with the Dataloop Applications",
+            "location": "applications/index.json"
+        }
+    ]
 }
 

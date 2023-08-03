@@ -1,0 +1,13 @@
+{
+    "name": "pipelines",
+    "title": "Pipelines",
+    "description": "Creating pipelines with the SDK",
+    "content": [
+        {
+            "displayName": "Create a Pipeline",
+            "description": "Create a Pipeline.",
+            "location": "pipelines/create_a_pipeline/chapter.md"
+        }
+    ]
+}
+
