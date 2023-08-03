@@ -116,9 +116,20 @@ def func13():
     ### Pause the service:
     We recommend pausing the service you created for this tutorial so it will not be triggered:
     """
-
-
 def func14():
+
+    """
+    ### Resume the service:
+    To resume the service you created for this tutorial:
+    """
+
+def func15():
+    """
+    ### Service information:
+    You can also view other information about your service, such as status and revision history:
+    """
+
+def func16():
     """
     Congratulations! You have successfully created, deployed, and tested Dataloop functions!
 
@@ -130,13 +141,13 @@ def func14():
     """
 
 
-def func15():
+def func17():
     """
     Create the package with your modules
     """
 
 
-def func16():
+def func18():
     """
     You will pass these modules as a param to packages.push()
     After that, when you deploy the package, you will need to specify the module name:

@@ -4,6 +4,11 @@
   "description": "Use Dataloop's Python SDK to integrate your data with your cloud-storage (GCS/S3/Azure), create datasets, upload/link your data items, manage your datasets, and download data.\n\nSee our SDK Getting Started guide at https://dataloop.ai/docs/sdk-register.\n",
   "content": [
     {
+      "displayName": "Integrations",
+      "description": "Add a new integration",
+      "location": "data_management/integrations/chapter.md"
+    },
+    {
       "displayName": "Cloud Storage",
       "description": "Setup storage integration with GCS/S3/Azure",
       "location": "data_management/cloud_storage/index.json"

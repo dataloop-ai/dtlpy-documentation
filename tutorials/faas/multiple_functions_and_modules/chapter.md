@@ -185,6 +185,20 @@ We recommend pausing the service you created for this tutorial so it will not be
 ```python
 service.pause()
 ```
+"""  
+### Resume the service:  
+To resume the service you created for this tutorial:  
+
+```python
+service.resume()
+```
+### Service information:  
+You can also view other information about your service, such as status and revision history:  
+
+```python
+service.status()
+service.revisions()
+```
 Congratulations! You have successfully created, deployed, and tested Dataloop functions!  
   
 ## Multiple Modules  

@@ -61,6 +61,7 @@ jupyter notebook tutorials
   *  [Upload and manage annotations](tutorials/data_management/upload_and_manage_annotations/chapter.ipynb)
   *  [Modalities](tutorials/data_management/modalities/chapter.ipynb)
   *  [Working with metadata](tutorials/data_management/working_with_metadata/chapter.ipynb)
+  *  [Integrations](tutorials/data_management/integrations/chapter.ipynb)
   *  [Upload and manage items](tutorials/data_management/upload_and_manage_items/chapter.ipynb)
   *  [Data versioning](tutorials/data_management/data_versioning/chapter.ipynb)
   * Cloud storage

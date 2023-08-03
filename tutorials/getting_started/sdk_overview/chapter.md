@@ -1,7 +1,7 @@
 # Dataloop SDK Overview
 
 
-Dataloop provides an end-to-end platform that supports the entire AI lifecycle, from development to production. 
+Dataloop provides an end-to-end platform that supports the entire AI lifecycle, from development to production.
 By leveraging both a data management and annotation platform, deep learning data generation is streamlined, resulting in
 accelerated automated pipeline production and reduced engineering time and costs.
 
@@ -22,16 +22,17 @@ The Getting Started guide provides the developer with an efficient SDK on-boardi
 2. [Login to the platform through SDK](#sdk-login)
 3. [Create a project](#to-create-a-new-project)
 4. [Get existing project](#to-select-the-new-project)
-5. [Create Dataset](#to-create-a-new-dataset)
-6. [Get Dataset](#to-select-the-dataset)
-7. [Upload items](#uploading-items)
-8. [Get items](#getting-items)
-9. [Annotate item (labels and classification)](#annotating-items)
-10. [Upload annotation](#classification)
-11. [Filter items](#creating-filters)
-12. [Working with Item Metadata](#working-with-item-metadata)
-13. [Create Task](#creating-tasks)
-14. [Logout](#logging-out)
+5. [Add & Update Members](#adding-and-updating-members)
+6. [Create Dataset](#to-create-a-new-dataset)
+7. [Get Dataset](#to-select-the-dataset)
+8. [Upload items](#uploading-items)
+9. [Get items](#getting-items)
+10. [Annotate item (labels and classification)](#annotating-items)
+11. [Upload annotation](#classification)
+12. [Filter items](#creating-filters)
+13. [Working with Item Metadata](#working-with-item-metadata)
+14. [Create Task](#creating-tasks)
+15. [Logout](#logging-out)
 
 ## Installing Prerequisite Software
 
@@ -124,16 +125,16 @@ A web browser login screen is displayed:
 Once your credentials have been verified a **confirmation message** is displayed:
 
 ![alt_text](../../../assets/log_in/login_successful.png "image_tooltip")
-  
-## Machine-to-Machine Login  
-Long-running SDK jobs require API authentication.  
-The M2M flow allows machines to obtain valid, signed JWT (authentication token) and automatically refresh it, without the need for a web browser login.  
-  
-M2M Login is recommended when you want to:  
-    - run commands on the platform without an ongoing internet connection  
-    - run API commands directly from an external system to Dataloop   
 
-> :information_source: This can be done with your email and password (signup with a password), or using project bots (which is NOT is the scope of this tutorial).  
+## Machine-to-Machine Login
+Long-running SDK jobs require API authentication.
+The M2M flow allows machines to obtain valid, signed JWT (authentication token) and automatically refresh it, without the need for a web browser login.
+
+M2M Login is recommended when you want to:
+    - run commands on the platform without an ongoing internet connection
+    - run API commands directly from an external system to Dataloop
+
+> :information_source: This can be done with your email and password (signup with a password), or using project bots (which is NOT is the scope of this tutorial).
 
 ```python
 dl.login_m2m(email=email, password=password)
@@ -190,7 +191,23 @@ project = dl.projects.get(project_id='e4a5e5b3-a22a-4b59-9b76-30417a0859d9')
 
 The new project is **selected**.
 
-The new dataset can now be created.
+### Adding & Updating Members
+
+Once your project is created, you can add members as well as their roles (Annotation Manager, Developer, Annotator):
+
+```python
+project.add_member(email='email-id', role=dl.MemberRole.Developer)
+```
+
+Similarly, you can update member's information or remove them altogether from the project:
+
+```python
+project.update_member(email='email-id', role=dl.MemberRole.Developer)
+project.remove_member(email='email-id')
+```
+
+To learn more about the different roles and hierarchy, visit our [documentation](https://dataloop.ai/docs/contributor-roles).
+
 
 ### To create a new dataset:
 
