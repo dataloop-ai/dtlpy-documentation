@@ -26,8 +26,8 @@ def func4():
     The following code consists of two image-manipulation methods: 
     * RGB to grayscale over an image
     * CLAHE Histogram Equalization over an image - Contrast Limited Adaptive Histogram Equalization (CLAHE) to equalize images
-    
-    To proceed with this tutorial, copy the following code and save it as a main.py file. 
+
+    To proceed with this tutorial, copy the following code and save it as a main.py file.
     """
 
 
@@ -35,7 +35,7 @@ def func5():
     """
     ### Define the module
     Multiple functions may be defined in a single package under a “module” entity. This way you will be able to use a single codebase for various services.
-    
+
     Here, we will create a module containing the two functions we discussed. The “main.py” file you downloaded is defined as the module entry point. Later, you will specify its directory file path.
     """
 
@@ -43,7 +43,7 @@ def func5():
 def func6():
     """
     ### Push the package
-    When you deployed the service in the previous tutorial (“Single Function”), a module and a package were automatically generated. 
+    When you deployed the service in the previous tutorial (“Single Function”), a module and a package were automatically generated.
 
     Now we will explicitly create and push the module as a package in the Dataloop FaaS library (application hub). For that, please specify the source path (src_path) of the “main.py” file you downloaded, and then run the following code:
     """
@@ -69,7 +69,7 @@ def func8():
     Event based trigger is related to a combination of resource and action. A resource can be any entity in our system (item, dataset, annotation, etc.) and the associated action will define a change in the resource that will prompt the trigger (update, create, delete). You can only have one resource per trigger.
 
 
-    The resource object that triggered the function will be passed as the function's parameter (input). 
+    The resource object that triggered the function will be passed as the function's parameter (input).
 
     Let’s set a trigger in the event a new item is created:
     """
@@ -98,7 +98,7 @@ def func11():
     Remote path is optional, images will go to the main directory by default.
 
     To see the original item, please click [here](https://raw.githubusercontent.com/dataloop-ai/dtlpy-documentation/main/assets/images/hamster.jpg).
-    
+
     ### Review the function's logs
     You can review the execution log history to check that your execution succeeded:
     """
@@ -106,7 +106,7 @@ def func11():
 
 def func12():
     """
-    The transformed image will be saved in your dataset. 
+    The transformed image will be saved in your dataset.
     Once you see in the log that the execution succeeded, you may open the item to see its transformation:
     """
 
@@ -120,6 +120,20 @@ def func13():
 
 def func14():
     """
+    ### Resume the service:
+    To resume the service you created for this tutorial:
+    """
+
+
+def func15():
+    """
+    ### Service information:
+    You can also view other information about your service, such as status and revision history:
+    """
+
+
+def func16():
+    """
     Congratulations! You have successfully created, deployed, and tested Dataloop functions!
 
     ## Multiple Modules
@@ -130,13 +144,13 @@ def func14():
     """
 
 
-def func15():
+def func17():
     """
     Create the package with your modules
     """
 
 
-def func16():
+def func18():
     """
     You will pass these modules as a param to packages.push()
     After that, when you deploy the package, you will need to specify the module name:
