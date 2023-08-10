@@ -24,11 +24,11 @@ In this tutorial we will cover the required Dataloop entities to create, compare
   
 #### Package  
   
-We will use the Package entity to save the architecture of the model (e.g Yolov5, Inception, SVM, etc.) and the model algorithm code.  
+We will use the Package entity to save the architecture of the model (e.g Yolov8, Inception, SVM, etc.) and the model algorithm code.  
   
-- In “online” mode (see “Model Comparison” below), Packages should include a Model Adapter to create the Dataloop API  
+- Packages should include a Model Adapter to create the Dataloop API  
   
-Model algorithms that are ready as-is to use can be found in the AI Library. All public packages listed in the AI Library are pretrained and include the model algorithm code and default configurations. Users can download the codebase of any packages pushed to the cloud.  
+Model algorithms that are ready as-is to use can be found in the AI Library. All public packages listed in the AI Library are pretrained and include the model algorithm code and default configurations.  
   
 #### Model  
   

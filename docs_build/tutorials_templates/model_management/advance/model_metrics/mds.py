@@ -1,8 +1,8 @@
 def func1():
     """
-    ## Offline model training, logging metrics in Dataloop
+    ## Logging metrics in Dataloop
 
-    Models can be trained offline (i.e. locally, without connecting the model to the platform) with only model metrics being uploaded to the Dataloop platform for versioning and comparisons.  This tutorial will walk you through how to upload metrics from model training via the SDK.
+     This tutorial will walk you through how to upload metrics from model training via the SDK.
 
     The Dataloop entities required are:
      - package
@@ -10,14 +10,14 @@ def func1():
      - model (with a valid dataset ID)
 
     ### Create Dataloop Entities
-    First you need to create a dummy package, a dummy codebase reference, and a model with a valid dataset ID. The code below shows how to do this, and remember to replace <project_name> and <dataset_id> with the appropriate strings to reference your project and dataset.
+    First we'll create a dummy package and a model with a valid dataset ID. The code below shows how to do this, and remember to replace <project_name> and <dataset_id> with the appropriate strings to reference your project and dataset.
 
     """
 
 
 def func2():
     """
-    Now that you’ve created the necessary Dataloop entities, metrics can be uploaded to the platform with `model.add_log_samples` function.
+    Now that you’ve created the necessary Dataloop entities, metrics can be uploaded to the platform with `model.metrics.create` and `dl.PlotSample`.
 
     Here is an example uploading some dummy training data:
 

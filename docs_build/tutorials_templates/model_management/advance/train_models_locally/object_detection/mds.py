@@ -1,10 +1,10 @@
 def func1():
     """
-    # Training an Object Detection Model with YOLOv5
+    # Training an Object Detection Model with YOLOv8
     In this tutorial we will download a public model from the AI library to inference and train on custom data locally.
-    Here we will use a YOLOv5 model.
+    Here we will use a YOLOv8 model.
 
-    Create a venv and install the requirements for the yolov5 package [here](https://github.com/dataloop-ai/yolov5/blob/master/requirements.txt/)
+    Create a venv and install the requirements for the yolov8 package [here](https://github.com/dataloop-ai-apps/yolov8/blob/master/requirements.txt/)
     Then, import the modules required for the scripts in this tutorial.
     """
 
@@ -28,7 +28,7 @@ def func4():
     """
     ## Clone the Public Model Into Your Project
     We'll get and clone the public yolo pretrained model (you can view the public models in the public Dataloop Github).
-    You can view all publicly available models by using a Filter. Here we will use a YOLOv5 model pretrained on the COCO dataset.
+    You can view all publicly available models by using a Filter. Here we will use a YOLOv8 model pretrained on the COCO dataset.
 
     """
 

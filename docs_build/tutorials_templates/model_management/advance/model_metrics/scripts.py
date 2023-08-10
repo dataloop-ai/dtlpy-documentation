@@ -6,7 +6,7 @@ def func1():
     import os
     project = dl.projects.get(project_name='<project_id>')
     package = project.packages.push(package_name='dummy-model-package',
-                                    codebase=dl.entities.LocalCodebase(os.getcwd()),
+                                    src_path=os.getcwd(),
                                     modules=[])
     model = package.models.create(model_name='My Model',
                                   description='model for offline model logging',

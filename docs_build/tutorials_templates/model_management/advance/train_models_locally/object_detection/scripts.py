@@ -31,15 +31,14 @@ def func4():
     filters.add(field='scope', values='public')
     dl.models.list(filters=filters).to_df()
     # get the public model
-    pretrained_model = dl.models.get(model_name='pretrained-yolo-v5-small')
+    pretrained_model = dl.models.get(model_name='pretrained-yolo-v8')
 
     model = pretrained_model.clone(model_name='fruits-model',
                                    dataset=dataset,
                                    project_id=project.id,
-                                   configuration={'batch_size': 16,
-                                                  'start_epoch': 0,
-                                                  'num_epochs': 2,
-                                                  'input_size': 256,
+                                   configuration={'epochs': 10,
+                                                  'batch_size': 4,
+                                                  'imgz': 640,
                                                   'id_to_label_map': {(v - 1): k for k, v in
                                                                       dataset.instance_map.items()}
                                                   })

@@ -1,8 +1,8 @@
-# Training an Object Detection Model with YOLOv5  
+# Training an Object Detection Model with YOLOv8  
 In this tutorial we will download a public model from the AI library to inference and train on custom data locally.  
-Here we will use a YOLOv5 model.  
+Here we will use a YOLOv8 model.  
   
-Create a venv and install the requirements for the yolov5 package [here](https://github.com/dataloop-ai/yolov5/blob/master/requirements.txt/)  
+Create a venv and install the requirements for the yolov8 package [here](https://github.com/dataloop-ai-apps/yolov8/blob/master/requirements.txt/)  
 Then, import the modules required for the scripts in this tutorial.  
 
 ```python
@@ -38,7 +38,7 @@ dataset.update(True)
 ```
 ## Clone the Public Model Into Your Project  
 We'll get and clone the public yolo pretrained model (you can view the public models in the public Dataloop Github).  
-You can view all publicly available models by using a Filter. Here we will use a YOLOv5 model pretrained on the COCO dataset.  
+You can view all publicly available models by using a Filter. Here we will use a YOLOv8 model pretrained on the COCO dataset.  
   
 
 ```python
@@ -47,14 +47,13 @@ filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
 filters.add(field='scope', values='public')
 dl.models.list(filters=filters).to_df()
 # get the public model
-pretrained_model = dl.models.get(model_name='pretrained-yolo-v5-small')
+pretrained_model = dl.models.get(model_name='pretrained-yolo-v8')
 model = pretrained_model.clone(model_name='fruits-model',
                                dataset=dataset,
                                project_id=project.id,
-                               configuration={'batch_size': 16,
-                                              'start_epoch': 0,
-                                              'num_epochs': 2,
-                                              'input_size': 256,
+                               configuration={'epochs': 10,
+                                              'batch_size': 4,
+                                              'imgz': 640,
                                               'id_to_label_map': {(v - 1): k for k, v in
                                                                   dataset.instance_map.items()}
                                               })
