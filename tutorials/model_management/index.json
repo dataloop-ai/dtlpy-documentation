@@ -21,7 +21,7 @@
         {
             "displayName": "Advanced Tutorials",
             "description": "More Model Management usage",
-            "location": "model_management/advance/index.jso"
+            "location": "model_management/advance/index.json"
         }
     ]
 }
