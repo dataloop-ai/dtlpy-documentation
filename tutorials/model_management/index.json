@@ -17,6 +17,11 @@
             "displayName": "Create a New Model",
             "description": "Create a model from scratch",
             "location": "model_management/create_new_model/chapter.md"
+        },
+        {
+            "displayName": "Advanced Tutorials",
+            "description": "More Model Management usage",
+            "location": "model_management/advance/index.jso"
         }
     ]
 }
