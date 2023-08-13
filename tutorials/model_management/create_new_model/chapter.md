@@ -6,17 +6,17 @@ In this tutorial you will learn how to create a basic model adapter to be able t
   
 ### Create a model adapter  
   
-In the example code below, the adapter is defined in a script saved as `adapter.py`. The SimpleModelAdapter class inherits from dl.BaseModelAdapter, which contains all the Dataloop methods required to interact with the Package and Model, as well as some helper functions that make it easier to use Dataloop entities (e.g. predict_items, predict_datasets).  
+In the example code below, the adapter is defined in a script saved as `adapter.py`. The SimpleModelAdapter class inherits from dl.BaseModelAdapter, which contains all the Dataloop methods required to interact with the Package and Model, as well as some helper functions that make it easier to use Dataloop entities (e.g. `predict\_items`, `predict\_datasets`).  
   
-The minimum required functions to implement for a model to inference are _load_ and _predict_.  
+The minimum required functions to implement for a model to inference are `load` and `predict`.  
   
 “Load” will load a model from a saved model weights file.  If the model is instantiated with a model entity (as it is here), the load function is expected to input the local path for the weights file.  
   
-If the weights file is a link, it can be uploaded as a LinkArtifact entity during model creation. If the file is saved locally, enter the appropriate name in the configurations (e.g. default_configuration=’weights_filename’ : ‘model.pth’). Helper functions in the BaseModelAdapter will download the weights file locally and load it based on the name listed here.  
+If the weights file is a link, it can be uploaded as a LinkArtifact entity during model creation. If the file is saved locally, enter the appropriate name in the configurations (e.g. `default\_configuration={"weights\_filename": "model.pth"}`). Helper functions in the `BaseModelAdapter` will download the weights file locally and load it based on the name listed here.  
   
 “Predict” is where the model will do its inference, and the predict function expects input images as ndarrays, and returns a list of dl.AnnotationCollection entities.  
   
-in adapter.py, add the following model adapter:  
+in `adapter.py`, add the following model adapter:  
 
 ```python
 import dtlpy as dl
@@ -84,7 +84,7 @@ package = project.packages.push(package_name='My-Package',
   
 Now you can create a model and upload pretrained model weights with an Artifact Item.  
 Here, the weights will be uploaded as an Item Artifact connected to the model.  
-You can upload any weights file here and use the artifact filename to update the ```weights_filename``` field in the model configuration.  
+You can upload any weights file here and use the artifact filename to update the `weights\_filename` field in the model configuration.  
   
   
 
