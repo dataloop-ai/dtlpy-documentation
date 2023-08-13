@@ -144,8 +144,8 @@ contents:
     pages:
     - label: Introduction
       page: tutorials/model_management/introduction/chapter.md
-    - label: Models Store
-      page: tutorials/model_management/models_from_store/chapter.md
+    - label: The AI Library
+      page: tutorials/model_management/ai_library/chapter.md
     - label: Create a New Model
       page: tutorials/model_management/create_new_model/chapter.md
     - expanded: false
@@ -158,7 +158,7 @@ contents:
       - label: Train Models Locally - Object Detection
         page: tutorials/model_management/advance/train_models_locally/object_detection/chapter.md
       - label: Using Dataloop's Dataset Generator
-        page: tutorials/model_management/advance/dataloop_dataloader/chapter.md
+        page: tutorials/model_management/advance/dataloop_dataset_generator/chapter.md
   - expanded: false
     group: Applications
     page: tutorials/applications.md

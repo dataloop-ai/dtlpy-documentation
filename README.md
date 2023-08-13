@@ -93,14 +93,14 @@ jupyter notebook tutorials
   *  [Ui toolbars](tutorials/faas/ui_toolbars/chapter.ipynb)
 * Model management
   * Advance
-    *  [Dataloop dataloader](tutorials/model_management/advance/dataloop_dataloader/chapter.ipynb)
+    *  [Dataloop dataset generator](tutorials/model_management/advance/dataloop_dataset_generator/chapter.ipynb)
     *  [Model metrics](tutorials/model_management/advance/model_metrics/chapter.ipynb)
     * Train models locally
       *  [Classification](tutorials/model_management/advance/train_models_locally/classification/chapter.ipynb)
       *  [Object detection](tutorials/model_management/advance/train_models_locally/object_detection/chapter.ipynb)
+  *  [Ai library](tutorials/model_management/ai_library/chapter.ipynb)
   *  [Create new model](tutorials/model_management/create_new_model/chapter.ipynb)
   *  [Introduction](tutorials/model_management/introduction/chapter.ipynb)
-  *  [Models from store](tutorials/model_management/models_from_store/chapter.ipynb)
 * Pipelines
   *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
 * Recipe and ontology

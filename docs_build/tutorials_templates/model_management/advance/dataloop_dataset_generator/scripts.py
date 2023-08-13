@@ -8,13 +8,12 @@ def func1():
 
 
 def func2():
-    for i in range(5):
-        datagen.visualize()
+    datagen.visualize(idx=10)
 
 
 def func3():
     for i in range(5):
-        datagen.visualize(10)
+        datagen.visualize()
 
 
 def func4():

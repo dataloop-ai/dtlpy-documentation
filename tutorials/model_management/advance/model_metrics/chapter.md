@@ -1,11 +1,12 @@
 ## Logging metrics in Dataloop  
   
- This tutorial will walk you through how to upload metrics from model training via the SDK.  
+This tutorial will walk you through how to upload metrics from model training via the SDK.  
+  
+NOTE: The models in our library already using and uploading metrics.  
   
 The Dataloop entities required are:  
- - package  
- - codebase reference  
- - model (with a valid dataset ID)  
+ - dl.Package  
+ - dl.Model (with a valid dataset ID)  
   
 ### Create Dataloop Entities  
 First we'll create a dummy package and a model with a valid dataset ID. The code below shows how to do this, and remember to replace <project_name> and <dataset_id> with the appropriate strings to reference your project and dataset.  
@@ -14,13 +15,13 @@ First we'll create a dummy package and a model with a valid dataset ID. The code
 ```python
 import dtlpy as dl
 import os
-project = dl.projects.get(project_name='<project_id>')
+project = dl.projects.get(project_name='<project-name>')
 package = project.packages.push(package_name='dummy-model-package',
                                 src_path=os.getcwd(),
                                 modules=[])
 model = package.models.create(model_name='My Model',
                               description='model for offline model logging',
-                              dataset_id='<dataset_id>',
+                              dataset_id='<dataset-id>',
                               labels=[])
 ```
 Now that you’ve created the necessary Dataloop entities, metrics can be uploaded to the platform with `model.metrics.create` and `dl.PlotSample`.  
@@ -52,4 +53,6 @@ You can list the metrics just like any other entity in the platform - using `lis
 samples = model.metrics.list()
 for sample in samples.all():
     print(sample.x, sample.y)
+# or retrieve it as a DataFrame
+df = model.metrics.list().to_df()
 ```

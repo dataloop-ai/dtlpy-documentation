@@ -2,12 +2,13 @@ def func1():
     """
     ## Logging metrics in Dataloop
 
-     This tutorial will walk you through how to upload metrics from model training via the SDK.
+    This tutorial will walk you through how to upload metrics from model training via the SDK.
+
+    NOTE: The models in our library already using and uploading metrics.
 
     The Dataloop entities required are:
-     - package
-     - codebase reference
-     - model (with a valid dataset ID)
+     - dl.Package
+     - dl.Model (with a valid dataset ID)
 
     ### Create Dataloop Entities
     First we'll create a dummy package and a model with a valid dataset ID. The code below shows how to do this, and remember to replace <project_name> and <dataset_id> with the appropriate strings to reference your project and dataset.

@@ -9,9 +9,9 @@
             "location": "model_management/introduction/chapter.md"
         },
         {
-            "displayName": "Models Store",
-            "description": "Inference and train models from our store",
-            "location": "model_management/models_from_store/chapter.md"
+            "displayName": "The AI Library",
+            "description": "Inference and train models from our library",
+            "location": "model_management/ai_library/chapter.md"
         },
         {
             "displayName": "Create a New Model",

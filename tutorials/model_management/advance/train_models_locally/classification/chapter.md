@@ -19,9 +19,9 @@ import json
 import dtlpy as dl
 from dtlpy.ml import train_utils
 ```
-## Create the Package and pretrained Model in your project  
+## Clone the Public Model Into Your Project  
   
-First, we create the Model entity for our project. You can view the public models in the public Dataloop Github.  
+First, we'll clone the Model entity to our project. You can view the public models in the public Dataloop Github.  
 You can view all publicly available models by using a Filter. Here we will use a ResNet50 model pretrained on the ImageNET dataset.  
 
 ```python

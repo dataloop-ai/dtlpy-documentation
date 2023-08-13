@@ -1,35 +1,36 @@
 def func1():
     """
-    # Dataloop dataloader
-    A dl.Dataset image and annotation generator for training and for items visualization
+    # Dataloop Dataset Generator
+    The DatasetGenerator is a helper class for the dl.Dataset object.
 
-    We can visualize the data with augmentation for debugging and exploration.
-    After that, we will use the Data Generator as an input to the training functions.
+    The generator will to list, get, batch and visualize images and annotations easily.
+
+    Here are some use-cases and some usage options for the DatasetGenerator:
     """
 
 
 def func2():
     """
     ## Object detection examples
-    We can visualize a random item from the dataset:
+    We can visualize a specific item using its index:
     """
 
 
 def func3():
     """
-    Or get the same item using its index:
+    Or visualize five random items from the dataset (if `idx` input is None) :
     """
 
 
 def func4():
     """
-    Adding augmentations using imgaug repository:
+    To add augmentations, we use [imgaug](https://github.com/aleju/imgaug):
     """
 
 
 def func5():
     """
-    All of the Data Generator options (from the function docstring):
+    All of the `DataGenerator` options (from the function docstring):
 
     :param dataset_entity: dl.Dataset entity
     :param annotation_type: dl.AnnotationType - type of annotation to load from the annotated dataset

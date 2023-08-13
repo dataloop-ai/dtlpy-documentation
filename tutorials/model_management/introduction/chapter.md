@@ -1,17 +1,11 @@
 # Model Management  
   
 ## Quick overview  
-Dataloop's model management allows machine learning engineers to manage their research and production processes in one centralized place.  
+Dataloop's model management centralizes model research and production processes for machine learning engineers in one place.  
   
-Models are run using a combination of Packages, Datasets, and Artifacts.  
+Models can be installed from pre-trained open source model architectures (e.g.ResNet, YOLO). These models can also be fine-tuned on custom datasets on the Dataloop platform.  
   
-Model architectures are pushed to the cloud via Packages. Packages are bundles of code that contain the codebase required for the model to run. Datasets will include the images being used for training or inference, and they also indicate which images are included within a dataset subset (e.g. train/validation/test, or dividing your datset in other ways to achieve specific model training objectives).  
-  
-Models can come from ready-to-go packages of open source algorithms (e.g. ResNet, Yolo). Models can also be created from pre-trained models for fine-tuning or transfer learning.  
-  
-You can also upload your own models and compare model performance by viewing training metrics.  
-  
-All models can be integrated into the Dataloop platform, connected to the UI via buttons or slots, or added to pipelines.  
+You can also upload your own models or and compare model performance through the model metrics interface.  
   
   
 ## Introduction  
@@ -24,11 +18,11 @@ In this tutorial we will cover the required Dataloop entities to create, compare
   
 #### Package  
   
-We will use the Package entity to save the architecture of the model (e.g Yolov8, Inception, SVM, etc.) and the model algorithm code.  
+We will use the Package entity to save the architecture of the model (e.g Yolov8, Inception, SVM, etc.) and any other function and modules.  
   
 - Packages should include a Model Adapter to create the Dataloop API  
   
-Model algorithms that are ready as-is to use can be found in the AI Library. All public packages listed in the AI Library are pretrained and include the model algorithm code and default configurations.  
+Models that are ready as-is to use can be found in the AI Library. All models listed in the AI Library are pretrained and include the model architecture code and default configurations.  
   
 #### Model  
   
@@ -63,18 +57,5 @@ The model adapter is a python class that creates a single API between Dataloop's
   
 All models can be viewed in one place, and different model versions can be compared and evaluated with user-selected metrics.  
   
-#### Offline vs online mode  
-  
-Model management can be used in two modes: offline (for local model training) or online (for integration into the Dataloop platform).  
-  
-In "offline" mode, users can run and train models on their local machine using local data, and can compare model configurations and metrics on the platform. “Offline” requires minimal platform integration, and can be used after dl.Package and dl.Model entities are created. This mode allows only visualizing metrics exported from the (local) model training session.  
-  
-In “offline” mode, code and weights are not saved anywhere in the Dataloop platform. Only model metrics are saved and viewable at a later time.  
-  
 ![An example of model metrics](../../../assets/images/model_management/metrics_example.png)  
   
-In "online" mode, models can be trained to be deployed anywhere on the platform. For example, you can easily create a button interface to use your model to inference on a new data item and view it on the platform.  
-  
-To do this, you need to create a ModelAdapter class and implement the required functions to build the Dataloop API.  
-  
-“Online” mode also includes all the platform features mentioned above in “offline” mode.  

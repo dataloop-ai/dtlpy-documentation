@@ -21,7 +21,7 @@
     {
       "displayName": "Using Dataloop's Dataset Generator",
       "description": "Use the SDK and the Dataset Tools to iterate, augment and serve the data to your model",
-      "location": "model_management/advance/dataloop_dataloader/chapter.md"
+      "location": "model_management/advance/dataloop_dataset_generator/chapter.md"
     }
   ]
 }

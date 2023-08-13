@@ -1,8 +1,9 @@
-# Dataloop dataloader  
-A dl.Dataset image and annotation generator for training and for items visualization  
+# Dataloop Dataset Generator  
+The DatasetGenerator is a helper class for the dl.Dataset object.  
   
-We can visualize the data with augmentation for debugging and exploration.  
-After that, we will use the Data Generator as an input to the training functions.  
+The generator will to list, get, batch and visualize images and annotations easily.  
+  
+Here are some use-cases and some usage options for the DatasetGenerator:  
 
 ```python
 from dtlpy.utilities import DatasetGenerator
@@ -13,19 +14,18 @@ datagen = DatasetGenerator(data_path='train',
                            annotation_type=dl.AnnotationType.BOX)
 ```
 ## Object detection examples  
-We can visualize a random item from the dataset:  
+We can visualize a specific item using its index:  
+
+```python
+datagen.visualize(idx=10)
+```
+Or visualize five random items from the dataset (if `idx` input is None) :  
 
 ```python
 for i in range(5):
     datagen.visualize()
 ```
-Or get the same item using its index:  
-
-```python
-for i in range(5):
-    datagen.visualize(10)
-```
-Adding augmentations using imgaug repository:  
+To add augmentations, we use [imgaug](https://github.com/aleju/imgaug):  
 
 ```python
 from imgaug import augmenters as iaa
@@ -49,7 +49,7 @@ datagen = DatasetGenerator(data_path='train',
 datagen.visualize()
 datagen.visualize(10)
 ```
-All of the Data Generator options (from the function docstring):  
+All of the `DataGenerator` options (from the function docstring):  
   
 :param dataset_entity: dl.Dataset entity  
 :param annotation_type: dl.AnnotationType - type of annotation to load from the annotated dataset  
