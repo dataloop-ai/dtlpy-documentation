@@ -14,8 +14,7 @@ def func1():
 
     In this tutorial we will cover the required Dataloop entities to create, compare, restore, manage, and deploy model training sessions and trained models.
 
-    <img src="../../../assets/images/model_management/model_diagram.jpg" width="50%" height="50%">
-
+    ![Arch diagram](../../../assets/images/model_management/model_diagram.jpg)
 
 
     ### Package and Model Entities
