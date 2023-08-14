@@ -7,7 +7,7 @@ def func1():
 
     Models can be installed from pre-trained open source model architectures (e.g.ResNet, YOLO). These models can also be fine-tuned on custom datasets on the Dataloop platform.
 
-    You can also upload your own models or and compare model performance through the model metrics interface.
+    You can also upload your own models and compare model performance through the model metrics interface.
 
 
     ## Introduction
