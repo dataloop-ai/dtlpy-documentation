@@ -12,7 +12,9 @@ You can also upload your own models or and compare model performance through the
   
 In this tutorial we will cover the required Dataloop entities to create, compare, restore, manage, and deploy model training sessions and trained models.  
   
-<img src="../../../assets/images/model_management/model_diagram.jpg" alt="drawing" width="600" height="300"/>  
+<img src="../../../assets/images/model_management/model_diagram.jpg" width="50%" height="50%">  
+  
+  
   
 ### Package and Model Entities  
   
