@@ -1,6 +1,4 @@
-# Chapter 10 - Beta!  Model Management
-
-**Model Management is currently in Beta**!  The below information is being shared at this time for your reference.  Complete documentation and examples on how to use Model Management will be published closer to General Availability (GA) of this feature.
+# Chapter 10 - Model Management
 
 The Model Management module in Dataloop provides a comprehensive solution for managing the entire lifecycle of your AI models. With this module, you have the flexibility to either use pre-existing public AI models or connect and utilize your own custom models.
 
