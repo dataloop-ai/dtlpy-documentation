@@ -29,7 +29,11 @@ filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
 filters.add(field='scope', values='public')
 dl.models.list(filters=filters).print()
 # get the public model
-model = dl.models.get(model_name='pretrained-resnet50')
+public_model = dl.models.get(model_name='pretrained-resnet50')
+# clone to your project
+project = dl.projects.get(project_name='<My proejct>')
+model = public_model.clone(model_name='my-model',
+                           project_id=project.id)
 ```
 ### Run a pretrained model  
 We will then "build" a model adapter to get the package code locally and create an instance of the ModelAdapter class. Then we will load the pretrained model and weights into the model adapter.  
@@ -37,6 +41,7 @@ We will then "build" a model adapter to get the package code locally and create 
 ```python
 package = dl.packages.get(package_id=model.package_id)
 adapter = package.build(module_name='model-adapter')
+# call the wrapper function
 adapter.load_from_model(model_entity=model)
 ```
 ### Predict on an item  

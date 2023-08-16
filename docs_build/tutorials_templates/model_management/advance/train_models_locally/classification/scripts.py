@@ -13,12 +13,17 @@ def func2():
     filters.add(field='scope', values='public')
     dl.models.list(filters=filters).print()
     # get the public model
-    model = dl.models.get(model_name='pretrained-resnet50')
+    public_model = dl.models.get(model_name='pretrained-resnet50')
+    # clone to your project
+    project = dl.projects.get(project_name='<My proejct>')
+    model = public_model.clone(model_name='my-model',
+                               project_id=project.id)
 
 
 def func3():
     package = dl.packages.get(package_id=model.package_id)
     adapter = package.build(module_name='model-adapter')
+    # call the wrapper function
     adapter.load_from_model(model_entity=model)
 
 
@@ -79,6 +84,7 @@ def func6():
                                                  subsets=subsets)
     # if you want to lock the dataset for future reproducibility, use:
     # cloned_dataset.set_readonly()
+
 
 def func7():
     new_model = model.clone(model_name='sheep-soft-augmentations',

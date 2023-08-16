@@ -51,10 +51,12 @@ def func6():
 
     """
 
+
 def func7():
     """
     After partitioning and cloning the data, we will clone the pretrained model to have a starting point for the fine-tuning. We create an artifact where we can save the model weights. We will also indicate the model's configuration will determine some runtime configurations, such as number of epochs. In this tutorial we will train for only 2 epochs.
     """
+
 
 def func8():
     """
