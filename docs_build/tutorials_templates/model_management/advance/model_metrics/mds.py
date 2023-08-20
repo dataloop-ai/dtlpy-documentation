@@ -29,7 +29,7 @@ def func3():
     """
     Metrics plots will appear under the “metrics” tab of your chosen model. The above code example will look like this:
 
-    ![Screenshot of model metrics plot](../../../assets/images/model_management/tutorial_model_metrics.png)
+    ![Screenshot of model metrics plot](../../../../assets/images/model_management/tutorial_model_metrics.png)
 
     Once you’ve uploaded multiple model metrics, you can compare them by checking all the relevant boxes on the left that you would like to compare.
 

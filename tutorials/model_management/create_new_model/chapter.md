@@ -2,19 +2,23 @@
   
 You can use your own model to use on the platform by creating Package and Model entities, and then use a model adapter to create an API with Dataloop.  
   
-In this tutorial you will learn how to create a basic model adapter to be able to inference with a pretrained model and how to fine-tune a pretrained model with your custom dataset.  
+In this tutorial you will learn how to create a basic model adapter to be able to inference on platform items.  
   
 ### Create a model adapter  
   
-In the example code below, the adapter is defined in a script saved as `adapter.py`. The SimpleModelAdapter class inherits from dl.BaseModelAdapter, which contains all the Dataloop methods required to interact with the Package and Model, as well as some helper functions that make it easier to use Dataloop entities (e.g. `predict\_items`, `predict\_datasets`).  
+In the example code below, the adapter is defined in a script saved as `adapter.py`. The SimpleModelAdapter class inherits from `dl.BaseModelAdapter`, which contains all the Dataloop methods required to interact with the Package and Model, as well as some some internal wrapper functions that make it easier to use Dataloop entities (e.g. `predict_items`, `predict_datasets`).  
   
 The minimum required functions to implement for a model to inference are `load` and `predict`.  
   
-“Load” will load a model from a saved model weights file.  If the model is instantiated with a model entity (as it is here), the load function is expected to input the local path for the weights file.  
+`load` is supposed to implement loading the model (e.g. from any weights.pth). The `load` takes a local path as input.  
   
-If the weights file is a link, it can be uploaded as a LinkArtifact entity during model creation. If the file is saved locally, enter the appropriate name in the configurations (e.g. `default\_configuration={"weights\_filename": "model.pth"}`). Helper functions in the `BaseModelAdapter` will download the weights file locally and load it based on the name listed here.  
+In the `dl.BaseModelAdapter` we have a `load_from_model` wrapper which will download the model artifacts locally and call the custom `load` with the path containing all the files.  
   
-“Predict” is where the model will do its inference, and the predict function expects input images as ndarrays, and returns a list of dl.AnnotationCollection entities.  
+`predict` is where the model will do its inference, and the predict function expects a preprocessed batch (e.g. ndarray for images), and returns a list of dl.AnnotationCollection entities.  
+  
+The wrapper for `predict` is `predict_items`, which takes a list of items from the platform and prepares everything for predicting. It uses the `prepare_item_func` to preprocess items into the a batch and calles the custom `predict`. After the prediction, it takes the ouput and uploads it to each item.  
+  
+NOTE: You can edit the preprocess function by simply override the `prepare_item_func` method. For example, to pass the items as-is you can just return the inputed item.  
   
 in `adapter.py`, add the following model adapter:  
 
@@ -84,7 +88,7 @@ package = project.packages.push(package_name='My-Package',
   
 Now you can create a model and upload pretrained model weights with an Artifact Item.  
 Here, the weights will be uploaded as an Item Artifact connected to the model.  
-You can upload any weights file here and use the artifact filename to update the `weights\_filename` field in the model configuration.  
+You can upload any weights file here and use the artifact filename to update the `weights_filename` field in the model configuration.  
   
   
 
@@ -122,8 +126,9 @@ If you get timeouts or error predicting, check that the service is up and is fun
   
 ### Via the SDK  
   
-To test whether your function was successfully uploaded and deployed onto the platform, you can use the `model.predict()` function to predict on a list of item IDs. The function will return an Execution entity, which you can use to check the status of the prediction execution.  
-  
+To test whether your function was successfully uploaded and deployed onto the platform, you can use the `model.predict()` function to predict on a list of item IDs.  
+The function will return an Execution entity, which you can use to check the status of the prediction execution.  
+Once the execution is completed, the annotation will be uploaded to each item.  
 
 ```python
 model = dl.models.get(model_id='<model_id>')

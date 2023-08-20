@@ -39,12 +39,8 @@ Some users may want to further customize their models, such as uploading their o
   
 #### Artifacts and Codebase  
   
-Artifacts are any additional files necessary for a given model to run on the cloud. For example, if a user wanted to upload their own weights to create a pre-trained model, the weights file would be included as an Artifact. These artifacts can be uploaded via one of the following:  
-  
-1. local directory or path  
-2. dl.Item  
-3. Git repository  
-4. other link  
+Artifacts are any additional files necessary for a given model to run on the cloud. For example, if a user wanted to upload their own weights to create a pre-trained model, the weights file would be included as an Artifact.  
+Artifacts can be uploaded from a local path (`model.artifacts.upload()`) or they can point to a remote link somewhere (`dl.LinkArtifact`)  
   
 #### The Model adapter  
   
