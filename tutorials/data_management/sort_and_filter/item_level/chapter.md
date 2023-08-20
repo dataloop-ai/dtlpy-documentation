@@ -111,7 +111,7 @@ print('Number of items in dataset: {}'.format(pages.items_count))
 ### Update User Metadata of Filtered Items  
 <b>Update Filtered Items</b> - The `update_value` must be a dictionary.  
 The dictionary will only update user metadata.  
-Understand more about user metadata <a href=https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/working_with_metadata/chapter.md/" target="_blank">here</a>.  
+Understand more about user metadata [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/working_with_metadata/chapter.md).  
 In this example, you will update/add user metadata (with the field "BlackDogs" and value True), to items in a specific folder 'dogs' with an attribute 'black'.  
   
 
