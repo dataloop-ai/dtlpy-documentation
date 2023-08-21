@@ -146,16 +146,21 @@ contents:
     pages:
     - label: Introduction
       page: tutorials/model_management/introduction/chapter.md
-    - label: Model Metrics Only
-      page: tutorials/model_management/model_metrics_only/chapter.md
-    - label: Train and Deploy Dataloop Models
-      page: tutorials/model_management/train_dataloop_models/chapter.md
-    - label: Train Models Locally
-      page: tutorials/model_management/train_models_locally/classification/chapter.md
+    - label: The AI Library
+      page: tutorials/model_management/ai_library/chapter.md
     - label: Create a New Model
       page: tutorials/model_management/create_new_model/chapter.md
-    - label: Using Dataloop's Dataset Generator
-      page: tutorials/model_management/dataloop_dataloader/chapter.md
+    - expanded: false
+      group: Advanced Tutorials
+      pages:
+      - label: Log Metrics
+        page: tutorials/model_management/advance/model_metrics/chapter.md
+      - label: Train Models Locally - Classification
+        page: tutorials/model_management/advance/train_models_locally/classification/chapter.md
+      - label: Train Models Locally - Object Detection
+        page: tutorials/model_management/advance/train_models_locally/object_detection/chapter.md
+      - label: Using Dataloop's Dataset Generator
+        page: tutorials/model_management/advance/dataloop_dataset_generator/chapter.md
   - expanded: false
     group: Applications
     page: tutorials/applications.md
@@ -166,6 +171,8 @@ contents:
       page: tutorials/applications/python_application/chapter.md
     - label: UI Toolbars
       page: tutorials/applications/toolbars/chapter.md
+    - label: Custom Pipeline Nodes
+      page: tutorials/applications/pipeline_library/chapter.md
     - label: Single Page Web Application
       page: tutorials/applications/single_page_application/chapter.md
     - label: Manifest Examples

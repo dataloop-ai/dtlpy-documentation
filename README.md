@@ -103,14 +103,25 @@ jupyter notebook tutorials
 * Pipelines
   *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
 * Model management
-  *  [Dataloop dataloader](tutorials/model_management/dataloop_dataloader/chapter.ipynb)
-  *  [Introduction](tutorials/model_management/introduction/chapter.ipynb)
-  *  [Train dataloop models](tutorials/model_management/train_dataloop_models/chapter.ipynb)
-  * Train models locally
-    *  [Classification](tutorials/model_management/train_models_locally/classification/chapter.ipynb)
-    *  [Object detection](tutorials/model_management/train_models_locally/object_detection/chapter.ipynb)
-  *  [Model metrics only](tutorials/model_management/model_metrics_only/chapter.ipynb)
+  * Advance
+    *  [Dataloop dataset generator](tutorials/model_management/advance/dataloop_dataset_generator/chapter.ipynb)
+    *  [Model metrics](tutorials/model_management/advance/model_metrics/chapter.ipynb)
+    * Train models locally
+      *  [Classification](tutorials/model_management/advance/train_models_locally/classification/chapter.ipynb)
+      *  [Object detection](tutorials/model_management/advance/train_models_locally/object_detection/chapter.ipynb)
+  *  [Ai library](tutorials/model_management/ai_library/chapter.ipynb)
   *  [Create new model](tutorials/model_management/create_new_model/chapter.ipynb)
+  *  [Introduction](tutorials/model_management/introduction/chapter.ipynb)
+* Pipelines
+  *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
+* Recipe and ontology
+  *  [Concepts](tutorials/recipe_and_ontology/concepts/chapter.ipynb)
+  *  [Ontology](tutorials/recipe_and_ontology/ontology/chapter.ipynb)
+  *  [Recipe](tutorials/recipe_and_ontology/recipe/chapter.ipynb)
+* Task workflows
+  *  [Create a task](tutorials/task_workflows/create_a_task/chapter.ipynb)
+  *  [Item status](tutorials/task_workflows/item_status/chapter.ipynb)
+  *  [Redistributing and reassigning a task](tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.ipynb)
 
 ## Code Examples
 

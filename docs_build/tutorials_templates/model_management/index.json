@@ -1,38 +1,28 @@
 {
-  "name": "model-mgmt-tutorial",
-  "title": "Model Management Tutorial",
-  "description": "Use Dataloop Python SDK to create, train, inference and manage ML Models.\n\nSee our SDK Getting Started guide at https://dataloop.ai/docs/sdk-register.\n",
-  "content": [
-    {
-      "displayName": "Introduction",
-      "description": "Getting started with Model Management",
-      "location": "model_management/introduction/chapter.md"
-    },
-    {
-      "displayName": "Model Metrics Only",
-      "description": "Track Metrics for Model Training",
-      "location": "model_management/model_metrics_only/chapter.md"
-    },
-    {
-      "displayName": "Train and Deploy Dataloop Models",
-      "description": "Train and Deploy Models from the AI Library",
-      "location": "model_management/train_dataloop_models/chapter.md"
-    },
-    {
-      "displayName": "Train Models Locally",
-      "description": "Download AI Library Models to Train Offline",
-      "location": "model_management/train_models_locally/classification/chapter.md"
-    },
-    {
-      "displayName": "Create a New Model",
-      "description": "Create a Custom Model",
-      "location": "model_management/create_new_model/chapter.md"
-    },
-    {
-      "displayName": "Using Dataloop's Dataset Generator",
-      "description": "Use the SDK and the Dataset Tools to iterate, augment and serve the data to your model",
-      "location": "model_management/dataloop_dataloader/chapter.md"
-    }
-  ]
+    "name": "model-mgmt-tutorial",
+    "title": "Model Management Tutorial",
+    "description": "Use Dataloop Python SDK to create, train, inference and manage ML Models.\n\nSee our SDK Getting Started guide at https://dataloop.ai/docs/sdk-register.\n",
+    "content": [
+        {
+            "displayName": "Introduction",
+            "description": "Getting started with Model Management",
+            "location": "model_management/introduction/chapter.md"
+        },
+        {
+            "displayName": "The AI Library",
+            "description": "Inference and train models from our library",
+            "location": "model_management/ai_library/chapter.md"
+        },
+        {
+            "displayName": "Create a New Model",
+            "description": "Create a model from scratch",
+            "location": "model_management/create_new_model/chapter.md"
+        },
+        {
+            "displayName": "Advanced Tutorials",
+            "description": "More Model Management usage",
+            "location": "model_management/advance/index.json"
+        }
+    ]
 }
 

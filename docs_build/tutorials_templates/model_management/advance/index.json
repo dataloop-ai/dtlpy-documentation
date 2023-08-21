@@ -1,0 +1,28 @@
+{
+  "name": "model-mgmt-tutorial",
+  "title": "Advanced Tutorial",
+  "description": "Use Dataloop Python SDK to create, train, inference and manage ML Models.\n\nSee our SDK Getting Started guide at https://dataloop.ai/docs/sdk-register.\n",
+  "content": [
+    {
+      "displayName": "Log Metrics",
+      "description": "Upload logs and metrics",
+      "location": "model_management/advance/model_metrics/chapter.md"
+    },
+    {
+      "displayName": "Train Models Locally - Classification",
+      "description": "Download AI Library Models to Train Offline",
+      "location": "model_management/advance/train_models_locally/classification/chapter.md"
+    },
+    {
+      "displayName": "Train Models Locally - Object Detection",
+      "description": "Download AI Library Models to Train Offline",
+      "location": "model_management/advance/train_models_locally/object_detection/chapter.md"
+    },
+    {
+      "displayName": "Using Dataloop's Dataset Generator",
+      "description": "Use the SDK and the Dataset Tools to iterate, augment and serve the data to your model",
+      "location": "model_management/advance/dataloop_dataset_generator/chapter.md"
+    }
+  ]
+}
+

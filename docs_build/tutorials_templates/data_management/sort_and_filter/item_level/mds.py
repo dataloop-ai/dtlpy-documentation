@@ -11,7 +11,7 @@ def section1():
 
     #### Filters - Field & Value
     Filter your items or annotations using the parameters in the JSON code that represent its data within our system.
-    Access your item/annotation JSON using <code>to_json()</code>.
+    Access your item/annotation JSON using `to_json()`.
     ##### Field
     Field refers to the attributes you filter by.
     
@@ -19,7 +19,7 @@ def section1():
 
     ##### Value
     Value refers to the input by which you want to filter.
-    For example, "/new_folder" can be the directory/folder name where the items you wish to filter are located.
+    For example, `/new_folder` can be the directory/folder name where the items you wish to filter are located.
     #### Sort - Field & Value
     ##### Field
     Field refers to the field you sort your items/annotations list by.
@@ -74,9 +74,9 @@ def section4():
 def section5():
     """
     ### Update User Metadata of Filtered Items
-    <b>Update Filtered Items</b> - The 'update_value' must be a dictionary.
+    <b>Update Filtered Items</b> - The `update_value` must be a dictionary.
     The dictionary will only update user metadata.
-    Understand more about user metadata <a href=https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/working_with_metadata/chapter.md/" target="_blank">here</a>.
+    Understand more about user metadata [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/working_with_metadata/chapter.md).
     In this example, you will update/add user metadata (with the field "BlackDogs" and value True), to items in a specific folder 'dogs' with an attribute 'black'.
 
     """
@@ -169,5 +169,5 @@ def section17():
 def section18():
     """
     ### Using Custom DQL Filter
-    If you have a DQL JSON copied from the platform you can create an SDK Filter directly with it using the "custom_filter" attribute:
+    If you have a DQL JSON copied from the platform you can create an SDK Filter directly with it using the `custom_filter` attribute:
     """
