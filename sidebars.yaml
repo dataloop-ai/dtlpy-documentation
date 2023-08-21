@@ -169,6 +169,8 @@ contents:
       page: tutorials/applications/python_application/chapter.md
     - label: UI Toolbars
       page: tutorials/applications/toolbars/chapter.md
+    - label: Custom Pipeline Nodes
+      page: tutorials/applications/pipeline_library/chapter.md
     - label: Single Page Web Application
       page: tutorials/applications/single_page_application/chapter.md
     - label: Manifest Examples
