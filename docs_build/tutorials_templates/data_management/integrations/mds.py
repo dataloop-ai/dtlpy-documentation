@@ -11,3 +11,10 @@ def func1():
     To add a new integration:
 
     """
+
+
+def func2():
+    """
+    For more information visit the next page (Cloud Storage), where you can learn more about create storage drivers.
+
+    """

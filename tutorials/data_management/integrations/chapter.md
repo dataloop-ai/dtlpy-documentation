@@ -13,6 +13,8 @@ To add a new integration:
 import dtlpy as dl
 project = dl.projects.get(project_name='My-Project')
 project.integrations.create(integrations_type=dl.ExternalStorage.S3,
-        name='S3ntegration',
-        options={key: "Access key ID", secret: "Secret access key"})
+                            name='S3ntegration',
+                            options={"key": "Access key ID", "secret": "Secret access key"})
 ```
+For more information visit the next page (Cloud Storage), where you can learn more about create storage drivers.  
+  
