@@ -132,8 +132,14 @@ def func12():
 def func13():
     service.pause()
 
-
 def func14():
+    service.resume()
+
+def func15():
+    service.status()
+    service.revisions()
+
+def func16():
     modules = [
         dl.PackageModule(
             name='first-module',
@@ -160,14 +166,14 @@ def func14():
     ]
 
 
-def func15():
+def func17():
     package = project.packages.push(package_name='two-modules-test',
                                     modules=modules,
                                     src_path='<path to where the entry point is located>'
                                     )
 
 
-def func16():
+def func18():
     service = package.deploy(
         module_name='first-module',
         service_name='first-module-test-service'
