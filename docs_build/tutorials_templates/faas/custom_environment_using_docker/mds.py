@@ -55,6 +55,22 @@ def func3():
 
     ## Using Private Docker Registry
 
-    To connect a private registry, you'll need to add the docker container registry credentials as an Organization Secret (ONLY in the UI) and just create use the runner image.
+    To connect a private registry, you'll need to add the docker container registry credentials as an Organization Secret and just create use the runner image.
+
+    ### Docker Hub
+    You'll need to create the organization secret with the following credentials and encode everything as follows:
+
+    """
+
+
+def func4():
+    """
+    Now create the integration secret for the organization
+    """
+
+
+def func5():
+    """
+    That's it, now you can just add the container url to the dl.Service (`runner_image` in the runtime class) and run the service.
 
     """
