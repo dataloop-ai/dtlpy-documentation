@@ -38,6 +38,12 @@
             "description": "Tutorials for annotating videos",
             "location": "annotations_video/index.json"
         },
+
+        {
+            "displayName": "Prompts Annotations",
+            "description": "Tutorials for the prompt items, annotations and studio",
+            "location": "annotations_prompts/index.json"
+        },
         {
             "displayName": "Recipe and Ontology",
             "description": "Tutorials for managing ontologies, labels, and recipes",

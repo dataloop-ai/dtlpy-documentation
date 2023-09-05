@@ -1,0 +1,18 @@
+{
+  "name": "annotations-prompts",
+  "title": "Prompts Annotations",
+  "description": "Use Dataloop's Python SDK to create and upload annotations for prompts and generative responses",
+  "content": [
+    {
+      "displayName": "Prompt Item",
+      "description": "Upload and work with prompt files",
+      "location": "annotations_prompts/prompt_item/chapter.md"
+    },
+        {
+      "displayName": "Prompt Generative Responses",
+      "description": "Create prompt responses",
+      "location": "annotations_prompts/responses/chapter.md"
+    }
+  ]
+}
+

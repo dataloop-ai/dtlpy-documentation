@@ -131,6 +131,14 @@ contents:
     - label: Video Annotations
       page: tutorials/annotations_video/video_annotations/chapter.md
   - expanded: false
+    group: Prompts Annotations
+    page: tutorials/annotations_prompts.md
+    pages:
+    - label: Prompt Item
+      page: tutorials/annotations_prompts/prompt_item/chapter.md
+    - label: Prompt Generative Responses
+      page: tutorials/annotations_prompts/responses/chapter.md
+  - expanded: false
     group: Recipe and Ontology
     page: tutorials/recipe_and_ontology.md
     pages:
