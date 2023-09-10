@@ -88,24 +88,6 @@ jupyter notebook tutorials
       *  [Classification](tutorials/model_management/advance/train_models_locally/classification/chapter.ipynb)
     *  [Dataloop dataset generator](tutorials/model_management/advance/dataloop_dataset_generator/chapter.ipynb)
 * Data management
-  * Cloud storage
-    * Aws
-      *  [Auto upstream sync](tutorials/data_management/cloud_storage/aws/auto_upstream_sync/chapter.ipynb)
-      *  [Integration](tutorials/data_management/cloud_storage/aws/integration/chapter.ipynb)
-      *  [Manual item upstream sync](tutorials/data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.ipynb)
-      *  [Storage driver](tutorials/data_management/cloud_storage/aws/storage_driver/chapter.ipynb)
-    * Azure
-      *  [Auto upstream sync](tutorials/data_management/cloud_storage/azure/auto_upstream_sync/chapter.ipynb)
-      *  [Integration](tutorials/data_management/cloud_storage/azure/integration/chapter.ipynb)
-      *  [Storage driver](tutorials/data_management/cloud_storage/azure/storage_driver/chapter.ipynb)
-    * Gcp
-      *  [Auto upstream sync](tutorials/data_management/cloud_storage/gcp/auto_upstream_sync/chapter.ipynb)
-      *  [Integration](tutorials/data_management/cloud_storage/gcp/integration/chapter.ipynb)
-      *  [Storage driver](tutorials/data_management/cloud_storage/gcp/storage_driver/chapter.ipynb)
-  *  [Data versioning](tutorials/data_management/data_versioning/chapter.ipynb)
-  *  [Integrations](tutorials/data_management/integrations/chapter.ipynb)
-  *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
-  *  [Modalities](tutorials/data_management/modalities/chapter.ipynb)
   * Sort and filter
     *  [Advanced sdk filters](tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.ipynb)
     *  [Annotation level](tutorials/data_management/sort_and_filter/annotation_level/chapter.ipynb)
@@ -127,6 +109,7 @@ jupyter notebook tutorials
       *  [Auto upstream sync](tutorials/data_management/cloud_storage/aws/auto_upstream_sync/chapter.ipynb)
       *  [Manual item upstream sync](tutorials/data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.ipynb)
   *  [Data versioning](tutorials/data_management/data_versioning/chapter.ipynb)
+  *  [Integrations](tutorials/data_management/integrations/chapter.ipynb)
   *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
   *  [Modalities](tutorials/data_management/modalities/chapter.ipynb)
   *  [Upload and manage items](tutorials/data_management/upload_and_manage_items/chapter.ipynb)
