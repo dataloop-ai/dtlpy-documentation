@@ -9,7 +9,7 @@ def create_multiple_tasks():
 
     project = dl.projects.create(project_name=project_name)
 
-    # Create a dataset to use with multiple recipes (you can also use an exisitng dataset)
+    # Create a dataset to use with multiple recipes (you can also use an existing dataset)
     dataset = project.datasets.create(dataset_name=dataset_name)
 
     # Create the label sets

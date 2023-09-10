@@ -13,6 +13,6 @@ title: Onboarding
 - [06 Versioning](06_data_versioning.md)
 - [07 Function as a Service](07_faas.md)
 - [08 Pipelines](08_pipelines.md)
-- [09 What's Next](09_next_steps.md)
-- [10 Model Management](10_model_management.md)
+- [09 Model Management](09_model_management.md)
+- [10 What's Next](10_next_steps.md)
 - [11 Onboarding Exercise](11_onboarding_exercise.md)

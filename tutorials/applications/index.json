@@ -19,6 +19,11 @@
             "location": "applications/toolbars/chapter.md"
         },
         {
+            "displayName": "Custom Pipeline Nodes",
+            "description": "Create custom pipeline nodes",
+            "location": "applications/pipeline_library/chapter.md"
+        },
+        {
             "displayName": "Single Page Web Application",
             "description": "Create a Panel in an Application",
             "location": "applications/single_page_application/chapter.md"

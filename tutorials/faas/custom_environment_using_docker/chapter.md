@@ -56,5 +56,45 @@ RUN pip3 install --user \
   
 ## Using Private Docker Registry  
   
-To connect a private registry, you'll need to add the docker container registry credentials as an Organization Secret (ONLY in the UI) and just create use the runner image.  
+To connect a private registry, you'll need to add the docker container registry credentials as an Organization Secret and just create use the runner image.  
+  
+### Docker Hub  
+You'll need to create the organization secret with the following credentials and encode everything as follows:  
+  
+
+```python
+import base64
+import json
+# Credentials
+username = '<dokcer hub user name>'
+password = '<docker hub password>'
+mail = '<email>'
+# Create auth token
+auth_decoded = username + ":" + password
+auth_decoded_bytes = auth_decoded.encode('ascii')
+base64_auth_message_bytes = base64.b64encode(auth_decoded_bytes)
+base64_auth_message = base64_auth_message_bytes.decode('ascii')
+cred_payload = {
+    "auths": {
+        "docker.io": {
+            "username": username,
+            "password": password,
+            "email": mail,
+            "auth": base64_auth_message
+        }
+    }
+}
+encoded_cred = base64.b64encode(json.dumps(cred_payload).encode()).decode()
+print(encoded_cred)
+```
+Now create the integration secret for the organization  
+
+```python
+org = dl.organizations.get(organization_name='<my organization name>')
+secret = org.integrations.create(integrations_type='private-registry',
+                                 name='<my dockerhub secret>',
+                                 options={"name": "_json_key",
+                                          "spec": {"password": encoded_cred}})
+```
+That's it, now you can just add the container url to the dl.Service (`runner_image` in the runtime class) and run the service.  
   
