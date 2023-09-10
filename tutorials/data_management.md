@@ -1,6 +1,7 @@
 # Tutorials
 
 ## Data Management Tutorial
+ - [Integrations](data_management/integrations/chapter.md)
  - Cloud Storage
 	 - Amazon Web Services
 		 - [Auto Upstream Sync with AWS](data_management/cloud_storage/aws/auto_upstream_sync/chapter.md)

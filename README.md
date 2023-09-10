@@ -107,6 +107,7 @@ jupyter notebook tutorials
       *  [Auto upstream sync](tutorials/data_management/cloud_storage/aws/auto_upstream_sync/chapter.ipynb)
       *  [Manual item upstream sync](tutorials/data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.ipynb)
   *  [Data versioning](tutorials/data_management/data_versioning/chapter.ipynb)
+  *  [Integrations](tutorials/data_management/integrations/chapter.ipynb)
   *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
   *  [Modalities](tutorials/data_management/modalities/chapter.ipynb)
   *  [Upload and manage items](tutorials/data_management/upload_and_manage_items/chapter.ipynb)

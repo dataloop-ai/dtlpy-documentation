@@ -70,7 +70,7 @@ for annotation in item.annotations.list():
 ## Create Frame Snapshots from Video  
   
 One of Dataloop video utilities enables creating a frame snapshot from a video item every X frames (frame_interval).  
-You will need FFmpeg needs to be installed on your system using <a href="https://ffmpeg.org/download.html" target="_blank">this official website</a>.  
+You will need FFmpeg needs to be installed on your system using [this official website](https://ffmpeg.org/download.html)  
   
 
 ```python

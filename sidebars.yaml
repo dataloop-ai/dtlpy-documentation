@@ -15,6 +15,8 @@ contents:
     group: Data Management Tutorial
     page: tutorials/data_management.md
     pages:
+    - label: Integrations
+      page: tutorials/data_management/integrations/chapter.md
     - expanded: false
       group: Cloud Storage
       pages:
@@ -169,6 +171,8 @@ contents:
       page: tutorials/applications/python_application/chapter.md
     - label: UI Toolbars
       page: tutorials/applications/toolbars/chapter.md
+    - label: Custom Pipeline Nodes
+      page: tutorials/applications/pipeline_library/chapter.md
     - label: Single Page Web Application
       page: tutorials/applications/single_page_application/chapter.md
     - label: Manifest Examples
@@ -197,10 +201,10 @@ contents:
     page: onboarding/07_faas.md
   - label: Pipelines
     page: onboarding/08_pipelines.md
-  - label: What's Next
-    page: onboarding/09_next_steps.md
   - label: Model Management
-    page: onboarding/10_model_management.md
+    page: onboarding/09_model_management.md
+  - label: What's Next
+    page: onboarding/10_next_steps.md
   - label: Onboarding Exercise
     page: onboarding/11_onboarding_exercise.md
 - expanded: false
