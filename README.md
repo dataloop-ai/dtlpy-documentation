@@ -149,9 +149,6 @@ jupyter notebook tutorials
   *  [Create pipeline](examples/pipelines/create_pipeline.py)
 * Reports
   *  [Create reports examples](examples/reports/create_reports_examples.py)
-* Scoring
-  *  [Create score](examples/scoring/create_score.py)
-  *  [Feature set with score](examples/scoring/feature_set_with_score.py)
 * Tasks
   *  [Recipe per task](examples/tasks/recipe_per_task.py)
 * Uploads
