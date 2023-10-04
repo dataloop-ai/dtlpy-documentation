@@ -90,6 +90,7 @@ jupyter notebook tutorials
   *  [Execution control](tutorials/faas/execution_control/chapter.ipynb)
   *  [Introduction](tutorials/faas/introduction/chapter.ipynb)
   *  [Multiple functions and modules](tutorials/faas/multiple_functions_and_modules/chapter.ipynb)
+  *  [Private git codebase](tutorials/faas/private_git_codebase/chapter.ipynb)
   *  [Single function rgb to gray](tutorials/faas/single_function_rgb_to_gray/chapter.ipynb)
   *  [Ui toolbars](tutorials/faas/ui_toolbars/chapter.ipynb)
 * Model management

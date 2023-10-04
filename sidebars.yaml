@@ -90,6 +90,8 @@ contents:
       page: tutorials/faas/execution_control/chapter.md
     - label: Custom Environment
       page: tutorials/faas/custom_environment_using_docker/chapter.md
+    - label: Private Git Codebase
+      page: tutorials/faas/private_git_codebase/chapter.md
     - label: Example - Auto/Pre Annotation service
       page: tutorials/faas/auto_annotate/chapter.md
   - expanded: false
