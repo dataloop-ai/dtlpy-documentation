@@ -43,6 +43,11 @@
             "description": "Create a docker to run your service",
             "location": "faas/custom_environment_using_docker/chapter.md"
         },
+                {
+            "displayName": "Private Git Codebase",
+            "description": "Use private git for a package",
+            "location": "faas/private_git_codebase/chapter.md"
+        },
         {
             "displayName": "Example - Auto/Pre Annotation service",
             "description": "Create and deploy a service with a trigger",

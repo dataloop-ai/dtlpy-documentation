@@ -51,7 +51,7 @@ def func6():
 
 def func7():
     ex = custom_model.train()
-    ex.log(follow=True)  # to stream the logs during training
+    ex.logs(follow=True)  # to stream the logs during training
     custom_model = dl.models.get(model_id=custom_model.id)
     print(custom_model.status)
 
