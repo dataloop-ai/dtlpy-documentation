@@ -226,7 +226,7 @@ contents:
     pages:
     - page: resources/rest_api/reference.page.yaml/*
   - label: Python SDK
-    page: resources/dtlpy/index.md
+    href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
     pages:
     - label: CLI
       page: resources/dtlpy/cli.md
