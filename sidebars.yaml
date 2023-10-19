@@ -229,13 +229,13 @@ contents:
     href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
     pages:
     - label: CLI
-      page: resources/dtlpy/cli.md
+      href: https://sdk-docs.dataloop.ai/en/latest/cli.html
     - label: Entities
-      page: resources/dtlpy/entities.md
+      href: https://sdk-docs.dataloop.ai/en/latest/repositories.html
     - label: Repositories
-      page: resources/dtlpy/repositories.md
+      href: https://sdk-docs.dataloop.ai/en/latest/repositories.html
     - label: Utilities
-      page: resources/dtlpy/utilities.md
+      href: https://sdk-docs.dataloop.ai/en/latest/utilities.html
   - label: JS SDK
     page: resources/dtljs/index.md
     pages:
