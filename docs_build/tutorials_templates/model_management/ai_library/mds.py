@@ -59,25 +59,30 @@ def func5():
 
     If you would like to customize the AI library model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels you want to use for model training.
 
-    """
-
-
-def func6():
-    """
-
     #### Define dataset subsets
-
-    Our AI library models require a train/validation split of the dataset for the training session. To avoid data leakage between training sessions and to make each training reproducible, we will define the data subsets and save the split type to the dataset entity (using a DQL). Using DQL filters you can subset the data however you like.
+    (train/validation split) of the dataset for the training session.
+    To avoid data leakage between training sessions and to make each training reproducible, we will define the data subsets and save the split type to the model entity (using a DQL). Using DQL filters you can subset the data however you like.
 
     For example, if your dataset is split between folders, you can use this DQL to add metadata for all items in the dataset
     """
 
 
-def func7():
+def func6():
     """
     This way, when the training starts, the sets will be downloaded using the DQL and any future training session on this dataset will have the same subsets of data.
 
     NOTE: In the future, this mechanism will be expanded to use a tagging system on items. This will allow more flexible data subsets and random data allocation.
+
+    #### Labels Mapping
+    We have two properties on the model:
+
+    ```python
+    model.id_to_label_map
+    model.label_to_id_map
+    ```
+
+    Models usually convert the string labels into some int ids. We save this mapping in the `model.configuration` in order to get the same labels convertion before and after training.
+    This mapping is required to convert the numbers to a label that is recognized in the dataset recipe.
 
     #### Train
 
@@ -86,7 +91,7 @@ def func7():
     """
 
 
-def func8():
+def func7():
     """
     #### Deploy the new model
 

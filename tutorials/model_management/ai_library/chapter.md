@@ -65,32 +65,36 @@ item.open_in_web()
   
 If you would like to customize the AI library model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels you want to use for model training.  
   
-
-```python
-custom_model = project.models.clone(from_model=public_model,
-                                    model_name='finetuning_mode',
-                                    dataset=dataset,
-                                    project_id=project.id,
-                                    labels=['label1', 'label2'])
-```
-  
 #### Define dataset subsets  
-  
-Our AI library models require a train/validation split of the dataset for the training session. To avoid data leakage between training sessions and to make each training reproducible, we will define the data subsets and save the split type to the dataset entity (using a DQL). Using DQL filters you can subset the data however you like.  
+(train/validation split) of the dataset for the training session.  
+To avoid data leakage between training sessions and to make each training reproducible, we will define the data subsets and save the split type to the model entity (using a DQL). Using DQL filters you can subset the data however you like.  
   
 For example, if your dataset is split between folders, you can use this DQL to add metadata for all items in the dataset  
 
 ```python
 train_filter = dl.Filters(field='dir', values='/train')
 validation_filter = dl.Filters(field='dir', values='/validation')
-dataset.metadata['system']['subsets'] = {'train': json.dumps(train_filter.prepare()),
-                                         'validation': json.dumps(validation_filter.prepare()),
-                                         }
-dataset.update(system_metadata=True)
+custom_model = project.models.clone(from_model=public_model,
+                                    model_name='finetuning_mode',
+                                    dataset=dataset,
+                                    project_id=project.id,
+                                    train_filter=train_filter,
+                                    validation_filter=validation_filter)
 ```
 This way, when the training starts, the sets will be downloaded using the DQL and any future training session on this dataset will have the same subsets of data.  
   
 NOTE: In the future, this mechanism will be expanded to use a tagging system on items. This will allow more flexible data subsets and random data allocation.  
+  
+#### Labels Mapping  
+We have two properties on the model:  
+  
+```python  
+model.id_to_label_map  
+model.label_to_id_map  
+```  
+  
+Models usually convert the string labels into some int ids. We save this mapping in the `model.configuration` in order to get the same labels convertion before and after training.  
+This mapping is required to convert the numbers to a label that is recognized in the dataset recipe.  
   
 #### Train  
   
@@ -98,7 +102,17 @@ To train the model on your custom data, simply use the `model.train()` function 
   
 
 ```python
-ex = custom_model.train()
+ex = custom_model.train(service_config={'runtime': {"podType": dl.INSTANCE_CATALOG_REGULAR_S}})
+# Or with a full service config:
+ex = custom_model.train(service_config={
+    'runtime': dl.KubernetesRuntime(pod_type=dl.INSTANCE_CATALOG_GPU_K80_S,
+                                    autoscaler=dl.KubernetesRabbitmqAutoscaler(
+                                        min_replicas=0,
+                                        max_replicas=1),
+                                    preemptible=False,
+                                    concurrency=1).to_json(),
+    'executionTimeout': 10000 * 3600
+})
 ex.logs(follow=True)  # to stream the logs during training
 custom_model = dl.models.get(model_id=custom_model.id)
 print(custom_model.status)

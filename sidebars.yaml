@@ -217,17 +217,17 @@ contents:
     group: REST API
     pages:
     - page: resources/rest_api/reference.page.yaml/*
-  - label: Python SDK
-    page: resources/dtlpy/index.md
+  - href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
+    label: Python SDK
     pages:
-    - label: CLI
-      page: resources/dtlpy/cli.md
-    - label: Entities
-      page: resources/dtlpy/entities.md
-    - label: Repositories
-      page: resources/dtlpy/repositories.md
-    - label: Utilities
-      page: resources/dtlpy/utilities.md
+    - href: https://sdk-docs.dataloop.ai/en/latest/cli.html
+      label: CLI
+    - href: https://sdk-docs.dataloop.ai/en/latest/repositories.html
+      label: Entities
+    - href: https://sdk-docs.dataloop.ai/en/latest/repositories.html
+      label: Repositories
+    - href: https://sdk-docs.dataloop.ai/en/latest/utilities.html
+      label: Utilities
   - label: JS SDK
     page: resources/dtljs/index.md
     pages:
