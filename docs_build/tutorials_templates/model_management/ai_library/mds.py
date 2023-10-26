@@ -71,9 +71,9 @@ def func6():
     """
     This way, when the training starts, the sets will be downloaded using the DQL and any future training session on this dataset will have the same subsets of data.
 
-    NOTE: In the future, this mechanism will be expanded to use a tagging system on items. This will allow more flexible data subsets and random data allocation.
+    **NOTE**: In the future, this mechanism will be expanded to use a tagging system on items. This will allow more flexible data subsets and random data allocation.
 
-    HINT: Check out [this example](../../../examples/items/random_split_to_folders.py) to move items randomly and quickly!
+    **HINT**: Check out [this example](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/examples/items/random_split_to_folders.py) to move items randomly and quickly!
 
     ### Labels Mapping
     We have two properties on the model:
