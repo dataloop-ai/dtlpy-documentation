@@ -47,6 +47,6 @@ def main():
         for i_item, item in enumerate(items):
             pool.submit(single_item, is_item_train=is_train[i_item], item=item, pbar=pbar)
 
-#
-# if __name__ == "__main__":
-#     main()
+
+if __name__ == "__main__":
+    main()
