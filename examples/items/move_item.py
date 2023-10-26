@@ -21,3 +21,4 @@ def main():
         for item in page:
             # move item
             item.move(new_path=dst_folder)
+

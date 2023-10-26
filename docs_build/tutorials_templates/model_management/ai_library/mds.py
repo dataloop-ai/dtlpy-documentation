@@ -73,6 +73,8 @@ def func6():
 
     NOTE: In the future, this mechanism will be expanded to use a tagging system on items. This will allow more flexible data subsets and random data allocation.
 
+    HINT: Check out [this example](../../../examples/items/random_split_to_folders.py) to move items randomly and quickly!
+
     ### Labels Mapping
     We have two properties on the model:
 

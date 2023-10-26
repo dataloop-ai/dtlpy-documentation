@@ -140,6 +140,7 @@ jupyter notebook tutorials
   *  [Add pdf viewer modality](examples/items/add_pdf_viewer_modality.py)
   *  [Filter by task status](examples/items/filter_by_task_status.py)
   *  [Move item](examples/items/move_item.py)
+  *  [Random split to folders](examples/items/random_split_to_folders.py)
 * Model mgmt
   * Snippets
     *  [Clone model](examples/model_mgmt/snippets/clone_model.py)
