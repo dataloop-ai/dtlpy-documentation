@@ -157,6 +157,8 @@ contents:
       pages:
       - label: Log Metrics
         page: tutorials/model_management/advance/model_metrics/chapter.md
+      - label: Model Annotations
+        page: tutorials/model_management/advance/model_annotations/chapter.md
       - label: Train Models Locally - Classification
         page: tutorials/model_management/advance/train_models_locally/classification/chapter.md
       - label: Train Models Locally - Object Detection

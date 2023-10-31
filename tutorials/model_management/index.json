@@ -18,6 +18,11 @@
             "description": "Create a model from scratch",
             "location": "model_management/create_new_model/chapter.md"
         },
+                {
+            "displayName": "New Model - Torchvision Example",
+            "description": "Full model adapter creation using torchvision",
+            "location": "model_management/new_model_torchvision/chapter.md"
+        },
         {
             "displayName": "Advanced Tutorials",
             "description": "More Model Management usage",
