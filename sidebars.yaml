@@ -152,6 +152,8 @@ contents:
       page: tutorials/model_management/ai_library/chapter.md
     - label: Create a New Model
       page: tutorials/model_management/create_new_model/chapter.md
+    - label: New Model - Torchvision Example
+      page: tutorials/model_management/new_model_torchvision_example/chapter.md
     - expanded: false
       group: Advanced Tutorials
       pages:

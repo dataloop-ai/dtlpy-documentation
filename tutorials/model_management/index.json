@@ -21,7 +21,7 @@
                 {
             "displayName": "New Model - Torchvision Example",
             "description": "Full model adapter creation using torchvision",
-            "location": "model_management/new_model_torchvision/chapter.md"
+            "location": "model_management/new_model_torchvision_example/chapter.md"
         },
         {
             "displayName": "Advanced Tutorials",
