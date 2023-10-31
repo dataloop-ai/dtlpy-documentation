@@ -8,6 +8,11 @@
       "description": "Upload logs and metrics",
       "location": "model_management/advance/model_metrics/chapter.md"
     },
+        {
+      "displayName": "Model Annotations",
+      "description": "Upload and filter model predictions annotations",
+      "location": "model_management/advance/model_annotations/chapter.md"
+    },
     {
       "displayName": "Train Models Locally - Classification",
       "description": "Download AI Library Models to Train Offline",

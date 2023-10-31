@@ -90,6 +90,8 @@ contents:
       page: tutorials/faas/execution_control/chapter.md
     - label: Custom Environment
       page: tutorials/faas/custom_environment_using_docker/chapter.md
+    - label: Private Git Codebase
+      page: tutorials/faas/private_git_codebase/chapter.md
     - label: Example - Auto/Pre Annotation service
       page: tutorials/faas/auto_annotate/chapter.md
   - expanded: false
@@ -150,11 +152,15 @@ contents:
       page: tutorials/model_management/ai_library/chapter.md
     - label: Create a New Model
       page: tutorials/model_management/create_new_model/chapter.md
+    - label: New Model - Torchvision Example
+      page: tutorials/model_management/new_model_torchvision_example/chapter.md
     - expanded: false
       group: Advanced Tutorials
       pages:
       - label: Log Metrics
         page: tutorials/model_management/advance/model_metrics/chapter.md
+      - label: Model Annotations
+        page: tutorials/model_management/advance/model_annotations/chapter.md
       - label: Train Models Locally - Classification
         page: tutorials/model_management/advance/train_models_locally/classification/chapter.md
       - label: Train Models Locally - Object Detection
@@ -215,17 +221,17 @@ contents:
     group: REST API
     pages:
     - page: resources/rest_api/reference.page.yaml/*
-  - label: Python SDK
-    page: resources/dtlpy/index.md
+  - href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
+    label: Python SDK
     pages:
-    - label: CLI
-      page: resources/dtlpy/cli.md
-    - label: Entities
-      page: resources/dtlpy/entities.md
-    - label: Repositories
-      page: resources/dtlpy/repositories.md
-    - label: Utilities
-      page: resources/dtlpy/utilities.md
+    - href: https://sdk-docs.dataloop.ai/en/latest/cli.html
+      label: CLI
+    - href: https://sdk-docs.dataloop.ai/en/latest/repositories.html
+      label: Entities
+    - href: https://sdk-docs.dataloop.ai/en/latest/repositories.html
+      label: Repositories
+    - href: https://sdk-docs.dataloop.ai/en/latest/utilities.html
+      label: Utilities
   - label: JS SDK
     page: resources/dtljs/index.md
     pages:

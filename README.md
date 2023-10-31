@@ -113,7 +113,38 @@ jupyter notebook tutorials
   *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
   *  [Modalities](tutorials/data_management/modalities/chapter.ipynb)
   *  [Upload and manage items](tutorials/data_management/upload_and_manage_items/chapter.ipynb)
-  *  [Upload and manage annotations](tutorials/data_management/upload_and_manage_annotations/chapter.ipynb)
+  *  [Working with metadata](tutorials/data_management/working_with_metadata/chapter.ipynb)
+* Faas
+  *  [Advance](tutorials/faas/advance/chapter.ipynb)
+  *  [Auto annotate](tutorials/faas/auto_annotate/chapter.ipynb)
+  *  [Concept](tutorials/faas/concept/chapter.ipynb)
+  *  [Custom environment using docker](tutorials/faas/custom_environment_using_docker/chapter.ipynb)
+  *  [Execution control](tutorials/faas/execution_control/chapter.ipynb)
+  *  [Introduction](tutorials/faas/introduction/chapter.ipynb)
+  *  [Multiple functions and modules](tutorials/faas/multiple_functions_and_modules/chapter.ipynb)
+  *  [Private git codebase](tutorials/faas/private_git_codebase/chapter.ipynb)
+  *  [Single function rgb to gray](tutorials/faas/single_function_rgb_to_gray/chapter.ipynb)
+  *  [Ui toolbars](tutorials/faas/ui_toolbars/chapter.ipynb)
+* Model management
+  * Advance
+    *  [Dataloop dataset generator](tutorials/model_management/advance/dataloop_dataset_generator/chapter.ipynb)
+    *  [Model metrics](tutorials/model_management/advance/model_metrics/chapter.ipynb)
+    * Train models locally
+      *  [Classification](tutorials/model_management/advance/train_models_locally/classification/chapter.ipynb)
+      *  [Object detection](tutorials/model_management/advance/train_models_locally/object_detection/chapter.ipynb)
+  *  [Ai library](tutorials/model_management/ai_library/chapter.ipynb)
+  *  [Create new model](tutorials/model_management/create_new_model/chapter.ipynb)
+  *  [Introduction](tutorials/model_management/introduction/chapter.ipynb)
+* Pipelines
+  *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
+* Recipe and ontology
+  *  [Concepts](tutorials/recipe_and_ontology/concepts/chapter.ipynb)
+  *  [Ontology](tutorials/recipe_and_ontology/ontology/chapter.ipynb)
+  *  [Recipe](tutorials/recipe_and_ontology/recipe/chapter.ipynb)
+* Task workflows
+  *  [Create a task](tutorials/task_workflows/create_a_task/chapter.ipynb)
+  *  [Item status](tutorials/task_workflows/item_status/chapter.ipynb)
+  *  [Redistributing and reassigning a task](tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.ipynb)
 
 ## Code Examples
 
@@ -141,13 +172,15 @@ jupyter notebook tutorials
   *  [Annotations convert to yolo](examples/converters/annotations_convert_to_yolo.py)
   *  [Annotations convert to voc](examples/converters/annotations_convert_to_voc.py)
   *  [Convert annotation types](examples/converters/convert_annotation_types.py)
-  *  [Converter](examples/converters/converter.py)
-* Reports
-  *  [Create reports examples](examples/reports/create_reports_examples.py)
-* Tasks
-  *  [Recipe per task](examples/tasks/recipe_per_task.py)
-* Pipelines
-  *  [Create pipeline](examples/pipelines/create_pipeline.py)
+* Datasets
+  *  [Add labels](examples/datasets/add_labels.py)
+  *  [Copy folder](examples/datasets/copy_folder.py)
+* Items
+  *  [Add metadata to item](examples/items/add_metadata_to_item.py)
+  *  [Add pdf viewer modality](examples/items/add_pdf_viewer_modality.py)
+  *  [Filter by task status](examples/items/filter_by_task_status.py)
+  *  [Move item](examples/items/move_item.py)
+  *  [Random split to folders](examples/items/random_split_to_folders.py)
 * Model mgmt
   * Snippets
     *  [Deploy model](examples/model_mgmt/snippets/deploy_model.py)
@@ -176,6 +209,7 @@ jupyter notebook tutorials
       *  [Create integration aws](examples/data_management/snippets/integrations/create_integration_aws.py)
       *  [Create integration gcp](examples/data_management/snippets/integrations/create_integration_gcp.py)
       *  [Create integration azure](examples/data_management/snippets/integrations/create_integration_azure.py)
+
 
 ## Resources
 
