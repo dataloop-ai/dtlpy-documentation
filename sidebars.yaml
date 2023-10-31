@@ -70,6 +70,8 @@ contents:
         page: tutorials/data_management/sort_and_filter/pagination/chapter.md
     - label: Working with Metadata
       page: tutorials/data_management/working_with_metadata/chapter.md
+    - label: Secrets
+      page: tutorials/data_management/secrets/chapter.md
   - expanded: false
     group: FaaS Tutorial
     page: tutorials/faas.md
