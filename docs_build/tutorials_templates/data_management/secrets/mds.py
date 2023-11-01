@@ -2,8 +2,8 @@ def section1():
     """
     # Secrets
 
-    If you already have your data managed and organized on a cloud storage service, such as S3, you may want to
-    utilize that with Dataloop, and not upload the binaries and create duplicates.
+    Our secrets manager is a powerful tool designed to provide secure and efficient management of secrets.
+    By creating and storing secrets and integrating them with Pipelines and FAAS, our platform offers a comprehensive solution for all your secret management needs.
 
 
     ### Create A key value secret
