@@ -61,6 +61,7 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
         comp_dict = dict()
         display_name = content['displayName']
         location = content['location']
+        page_location = mysubdir + "/" + location
         logger.info(f'Build redocly page for {location}')
         location_filepath = os.path.join(directory, location)
         md_file = "nofile"
@@ -75,9 +76,9 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
             str_for_list += f'| {display_name} | {content["description"]} | | |'
             gen_sub_dict(location_filepath, comp_dict, directory, mysubdir, level + 1, str_list)
         else:
-            comp_dict['label'] = content['displayName']
-            comp_dict['page'] = mysubdir + "/" + content['location']
-            str_for_list += f'| [{display_name}]({location}) | {content["description"]} | [Here]({location.replace(".md", ".ipynb")}) | [Here]({location.replace(".md", ".ipynb")}) |'
+            comp_dict['label'] = display_name
+            comp_dict['page'] = page_location
+            str_for_list += f'| [{display_name}]({location}) | {content["description"]} | [Here]({page_location}) | [Here]({page_location.replace(".md", ".ipynb")}) |'
         if level > 0:
             str_list.append(str_for_list)
         if level == 0:
