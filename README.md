@@ -74,6 +74,7 @@ jupyter notebook tutorials
   *  [Integrations](tutorials/data_management/integrations/chapter.ipynb)
   *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
   *  [Modalities](tutorials/data_management/modalities/chapter.ipynb)
+  *  [Secrets](tutorials/data_management/secrets/chapter.ipynb)
   * Sort and filter
     *  [Advanced sdk filters](tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.ipynb)
     *  [Annotation level](tutorials/data_management/sort_and_filter/annotation_level/chapter.ipynb)
@@ -132,14 +133,29 @@ jupyter notebook tutorials
   *  [Annotations convert to yolo](examples/converters/annotations_convert_to_yolo.py)
   *  [Converter](examples/converters/converter.py)
   *  [Convert annotation types](examples/converters/convert_annotation_types.py)
-* Datasets
-  *  [Add labels](examples/datasets/add_labels.py)
-  *  [Copy folder](examples/datasets/copy_folder.py)
+* Data management
+  * Snippets
+    * Datasets
+      *  [Add labels](examples/data_management/snippets/datasets/add_labels.py)
+      *  [Copy folder](examples/data_management/snippets/datasets/copy_folder.py)
+      *  [Create dataset external storage](examples/data_management/snippets/datasets/create_dataset_external_storage.py)
+      *  [Create dataset internal storage](examples/data_management/snippets/datasets/create_dataset_internal_storage.py)
+    * Integrations
+      *  [Create integration aws](examples/data_management/snippets/integrations/create_integration_aws.py)
+      *  [Create integration azure](examples/data_management/snippets/integrations/create_integration_azure.py)
+      *  [Create integration gcp](examples/data_management/snippets/integrations/create_integration_gcp.py)
+    * Secrets
+      *  [Create secret](examples/data_management/snippets/secrets/create_secret.py)
+    * Storage drivers
+      *  [Create storage driver blob](examples/data_management/snippets/storage_drivers/create_storage_driver_blob.py)
+      *  [Create storage driver gcs](examples/data_management/snippets/storage_drivers/create_storage_driver_gcs.py)
+      *  [Create storage driver s3](examples/data_management/snippets/storage_drivers/create_storage_driver_s3.py)
 * Items
   *  [Add metadata to item](examples/items/add_metadata_to_item.py)
   *  [Add pdf viewer modality](examples/items/add_pdf_viewer_modality.py)
   *  [Filter by task status](examples/items/filter_by_task_status.py)
   *  [Move item](examples/items/move_item.py)
+  *  [Random split to folders](examples/items/random_split_to_folders.py)
 * Model mgmt
   * Snippets
     *  [Clone model](examples/model_mgmt/snippets/clone_model.py)

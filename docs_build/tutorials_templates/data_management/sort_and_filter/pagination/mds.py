@@ -51,6 +51,7 @@ def section6():
     Visualizing the progress with tqdm progress bar:
     """
 
+
 def section7():
     """
     ### Set page_size

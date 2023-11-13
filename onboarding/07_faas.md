@@ -90,8 +90,7 @@ That's it for the FaaS Onboarding. If you want to find out more about FaaS and h
 
 1. [Dataloop's FaaS documentation](https://dataloop.ai/docs/faas);
 2. [Python SDK Cheat-Sheet Section](https://dataloop.ai/docs/sdk-cheatsheet)
-3. [Advanced Auto-annotation Service](https://dataloop.ai/docs/auto-annotation-service)
-4. [Pre-annotation service tutorial](https://dlportal-demo.redoc.ly/tutorials/faas/auto\_annotate/chapter/#model-and-weights-files);
-5. Tutorial and code for [extracting Exif (Exchangeable Image File Format) information](https://github.com/dataloop-ai/image-exif) from images and uploading it.
+3. [Advanced Auto-annotation Service](https://developers.dataloop.ai/tutorials/faas/auto_annotate/chapter)
+4. Tutorial and code for [extracting Exif (Exchangeable Image File Format) information](https://github.com/dataloop-ai/image-exif) from images and uploading it.
 
 Now that you have learned how to work with FaaS provided by Dataloop, let's move on and talk about Pipelines in the next chapter.

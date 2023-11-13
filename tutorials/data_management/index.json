@@ -44,6 +44,11 @@
       "displayName": "Working with Metadata",
       "description": "Working with Item's metadata",
       "location": "data_management/working_with_metadata/chapter.md"
+    },
+    {
+      "displayName": "Secrets",
+      "description": "Creating secrets in Dataloop",
+      "location": "data_management/secrets/chapter.md"
     }
 
   ]
