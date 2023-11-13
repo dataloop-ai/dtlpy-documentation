@@ -57,6 +57,7 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
     yaml_str_list = []
     for content in data['content']:
         str_for_list = "\t" * (level - 1)
+        str_for_list = ""
         comp_dict = dict()
         display_name = content['displayName']
         location = content['location']
@@ -71,18 +72,19 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
             comp_dict['group'] = content['displayName']
             comp_dict['expanded'] = False
             comp_dict['pages'] = []
-            str_for_list += f' - {display_name}'
-            if level > 0:
-                str_list.append(str_for_list)
+            str_for_list += f'| {display_name} | {content["description"]} | | |'
             gen_sub_dict(location_filepath, comp_dict, directory, mysubdir, level + 1, str_list)
         else:
             comp_dict['label'] = content['displayName']
             comp_dict['page'] = mysubdir + "/" + content['location']
-            str_for_list += f' - [{display_name}]({location})'
-            if level > 0:
-                str_list.append(str_for_list)
+            str_for_list += f'| [{display_name}]({location}) | {content["description"]} | [Here]({location.replace(".md", ".ipynb")}) | [Here]({location.replace(".md", ".ipynb")}) |'
+        if level > 0:
+            str_list.append(str_for_list)
         if level == 0:
-            md_file = gen_md_file('\n'.join(str_list), location, directory, content['displayName'])
+            table_lines = ['| Name | Description | Chapter | Notebook |']
+            table_lines.append('| --- | --- | --- | --- |')
+            table_lines.extend(str_list)
+            md_file = gen_md_file('\n'.join(table_lines), location, directory, content['displayName'])
             comp_dict['page'] = mysubdir + "/" + md_file
             str_list = []
         get_mdx_str(header=content['displayName'],

@@ -1,29 +1,31 @@
 # Tutorials
 
 ## Data Management Tutorial
- - [Integrations](data_management/integrations/chapter.md)
- - Cloud Storage
-	 - Amazon Web Services
-		 - [Auto Upstream Sync with AWS](data_management/cloud_storage/aws/auto_upstream_sync/chapter.md)
-		 - [Manual Upstream Sync with AWS](data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.md)
-		 - [Integrations with AWS](data_management/cloud_storage/aws/integration/chapter.md)
-		 - [S3 Bucket Storage Driver from AWS](data_management/cloud_storage/aws/storage_driver/chapter.md)
-	 - Microsoft Azure
-		 - [Auto Upstream Sync with Azure](data_management/cloud_storage/azure/auto_upstream_sync/chapter.md)
-		 - [Integrations with Azure](data_management/cloud_storage/azure/integration/chapter.md)
-		 - [Azure Blob container Storage Driver from Microsoft Azure](data_management/cloud_storage/azure/storage_driver/chapter.md)
-	 - Google Cloud Provider
-		 - [Auto Upstream Sync with GCP](data_management/cloud_storage/gcp/auto_upstream_sync/chapter.md)
-		 - [Integrations with GCP](data_management/cloud_storage/gcp/integration/chapter.md)
-		 - [GCS Bucket Storage Driver from GCP](data_management/cloud_storage/gcp/storage_driver/chapter.md)
- - [Manage Datasets](data_management/manage_datasets/chapter.md)
- - [Data Versioning](data_management/data_versioning/chapter.md)
- - [Upload and Manage Data and Metadata](data_management/upload_and_manage_items/chapter.md)
- - [Upload and Manage Annotations](data_management/upload_and_manage_annotations/chapter.md)
- - Sort and Filters
-	 - [Advance SDK Filters](data_management/sort_and_filter/advanced_sdk_filters/chapter.md)
-	 - [Annotation Level Filters](data_management/sort_and_filter/annotation_level/chapter.md)
-	 - [Item Level](data_management/sort_and_filter/item_level/chapter.md)
-	 - [Pagination](data_management/sort_and_filter/pagination/chapter.md)
- - [Working with Metadata](data_management/working_with_metadata/chapter.md)
- - [Secrets](data_management/secrets/chapter.md)
+| Name | Description | Chapter | Notebook |
+| --- | --- | --- | --- |
+| [Integrations](data_management/integrations/chapter.md) | Add a new integration | [Here](data_management/integrations/chapter.ipynb) | [Here](data_management/integrations/chapter.ipynb) |
+| [Auto Upstream Sync with AWS](data_management/cloud_storage/aws/auto_upstream_sync/chapter.md) | Auto Upstream Sync with AWS | [Here](data_management/cloud_storage/aws/auto_upstream_sync/chapter.ipynb) | [Here](data_management/cloud_storage/aws/auto_upstream_sync/chapter.ipynb) |
+| [Manual Upstream Sync with AWS](data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.md) | Manual Upstream Sync with AWS | [Here](data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.ipynb) | [Here](data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.ipynb) |
+| [Integrations with AWS](data_management/cloud_storage/aws/integration/chapter.md) | Integrations with AWS | [Here](data_management/cloud_storage/aws/integration/chapter.ipynb) | [Here](data_management/cloud_storage/aws/integration/chapter.ipynb) |
+| [S3 Bucket Storage Driver from AWS](data_management/cloud_storage/aws/storage_driver/chapter.md) | S3 Bucket Storage Driver from AWS | [Here](data_management/cloud_storage/aws/storage_driver/chapter.ipynb) | [Here](data_management/cloud_storage/aws/storage_driver/chapter.ipynb) |
+| Amazon Web Services | Amazon Cloud Provider | | |
+| [Auto Upstream Sync with Azure](data_management/cloud_storage/azure/auto_upstream_sync/chapter.md) | Auto Upstream Sync with Azure | [Here](data_management/cloud_storage/azure/auto_upstream_sync/chapter.ipynb) | [Here](data_management/cloud_storage/azure/auto_upstream_sync/chapter.ipynb) |
+| [Integrations with Azure](data_management/cloud_storage/azure/integration/chapter.md) | Integrations with Azure | [Here](data_management/cloud_storage/azure/integration/chapter.ipynb) | [Here](data_management/cloud_storage/azure/integration/chapter.ipynb) |
+| [Azure Blob container Storage Driver from Microsoft Azure](data_management/cloud_storage/azure/storage_driver/chapter.md) | Azure Blob container Storage Driver from Microsoft Azure | [Here](data_management/cloud_storage/azure/storage_driver/chapter.ipynb) | [Here](data_management/cloud_storage/azure/storage_driver/chapter.ipynb) |
+| Microsoft Azure | Azure Cloud provider | | |
+| [Auto Upstream Sync with GCP](data_management/cloud_storage/gcp/auto_upstream_sync/chapter.md) | Auto Upstream Sync with GCP | [Here](data_management/cloud_storage/gcp/auto_upstream_sync/chapter.ipynb) | [Here](data_management/cloud_storage/gcp/auto_upstream_sync/chapter.ipynb) |
+| [Integrations with GCP](data_management/cloud_storage/gcp/integration/chapter.md) | Integrations with GCP | [Here](data_management/cloud_storage/gcp/integration/chapter.ipynb) | [Here](data_management/cloud_storage/gcp/integration/chapter.ipynb) |
+| [GCS Bucket Storage Driver from GCP](data_management/cloud_storage/gcp/storage_driver/chapter.md) | GCS Bucket Storage Driver from GCP | [Here](data_management/cloud_storage/gcp/storage_driver/chapter.ipynb) | [Here](data_management/cloud_storage/gcp/storage_driver/chapter.ipynb) |
+| Google Cloud Provider | Google Cloud Provider | | |
+| Cloud Storage | Setup storage integration with GCS/S3/Azure | | |
+| [Manage Datasets](data_management/manage_datasets/chapter.md) | Create and manage Datasets and connect them with your cloud storage | [Here](data_management/manage_datasets/chapter.ipynb) | [Here](data_management/manage_datasets/chapter.ipynb) |
+| [Data Versioning](data_management/data_versioning/chapter.md) | How to manage versions | [Here](data_management/data_versioning/chapter.ipynb) | [Here](data_management/data_versioning/chapter.ipynb) |
+| [Upload and Manage Data and Metadata](data_management/upload_and_manage_items/chapter.md) | Upload data items and metadata | [Here](data_management/upload_and_manage_items/chapter.ipynb) | [Here](data_management/upload_and_manage_items/chapter.ipynb) |
+| [Upload and Manage Annotations](data_management/upload_and_manage_annotations/chapter.md) | Upload annotations into data items | [Here](data_management/upload_and_manage_annotations/chapter.ipynb) | [Here](data_management/upload_and_manage_annotations/chapter.ipynb) |
+| [Advance SDK Filters](data_management/sort_and_filter/advanced_sdk_filters/chapter.md) | More complex filters on items and annotations | [Here](data_management/sort_and_filter/advanced_sdk_filters/chapter.ipynb) | [Here](data_management/sort_and_filter/advanced_sdk_filters/chapter.ipynb) |
+| [Annotation Level Filters](data_management/sort_and_filter/annotation_level/chapter.md) | Create filter on annotations, use DQL on an annotation level attributes | [Here](data_management/sort_and_filter/annotation_level/chapter.ipynb) | [Here](data_management/sort_and_filter/annotation_level/chapter.ipynb) |
+| [Item Level](data_management/sort_and_filter/item_level/chapter.md) | Create filter on items, use DQL on an item level attributes | [Here](data_management/sort_and_filter/item_level/chapter.ipynb) | [Here](data_management/sort_and_filter/item_level/chapter.ipynb) |
+| [Pagination](data_management/sort_and_filter/pagination/chapter.md) | How to use pages and iteration over items | [Here](data_management/sort_and_filter/pagination/chapter.ipynb) | [Here](data_management/sort_and_filter/pagination/chapter.ipynb) |
+| Sort and Filters | DQL Filters a Pagination | | |
+| [Working with Metadata](data_management/working_with_metadata/chapter.md) | Working with Item's metadata | [Here](data_management/working_with_metadata/chapter.ipynb) | [Here](data_management/working_with_metadata/chapter.ipynb) |
+| [Secrets](data_management/secrets/chapter.md) | Creating secrets in Dataloop | [Here](data_management/secrets/chapter.ipynb) | [Here](data_management/secrets/chapter.ipynb) |
