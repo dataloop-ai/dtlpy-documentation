@@ -78,12 +78,11 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
         else:
             comp_dict['label'] = display_name
             comp_dict['page'] = page_location
-            str_for_list += f'| [{display_name}]({location}) | {content["description"]} | [Here]({page_location}) | [Here]({page_location.replace(".md", ".ipynb")}) |'
+            str_for_list += f'| [{display_name}]({location}) | {content["description"]} | [:book:]({page_location}) | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]({page_location.replace(".md", ".ipynb")}) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)]({page_location.replace(".md", ".ipynb")}) |'
         if level > 0:
             str_list.append(str_for_list)
         if level == 0:
-            table_lines = ['| Name | Description | Chapter | Notebook |']
-            table_lines.append('| --- | --- | --- | --- |')
+            table_lines = ['| Name | Description | Chapter | Notebook |', '| --- | --- | --- | --- |']
             table_lines.extend(str_list)
             md_file = gen_md_file('\n'.join(table_lines), location, directory, content['displayName'])
             comp_dict['page'] = mysubdir + "/" + md_file
