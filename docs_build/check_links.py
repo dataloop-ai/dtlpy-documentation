@@ -42,7 +42,7 @@ def check_dtlpy_links():
         res = re.findall(r'(https?://[a-zA-Z0-9./\-_#]+)', string)
         if res is not None:
             for url in res:
-                if 'local.dataloop.ai' in url:
+                if 'local.dataloop.ai' in url or 'gate.dataloop.ai':
                     continue
                 try:
                     resp = requests.get(url, timeout=3)
