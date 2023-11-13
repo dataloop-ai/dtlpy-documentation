@@ -78,7 +78,8 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
         else:
             comp_dict['label'] = display_name
             comp_dict['page'] = page_location
-            str_for_list += f'| [{display_name}]({location}) | {content["description"]} | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]({page_location.replace(".md", ".ipynb")}) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)]({page_location.replace(".md", ".ipynb")}) |'
+            notebook_url = "https://github.com/dataloop-ai/dtlpy-documentation/blob/main/" + page_location.replace(".md", ".ipynb")
+            str_for_list += f'| [{display_name}]({location}) | {content["description"]} | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]({notebook_url}) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)]({notebook_url}) |'
         if level > 0:
             str_list.append(str_for_list)
         if level == 0:

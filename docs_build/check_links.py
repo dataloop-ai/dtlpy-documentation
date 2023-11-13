@@ -6,6 +6,8 @@ import re
 def check_links():
     p = Path('./tutorials').glob('**/*.md')
     files = [x for x in p if x.is_file()]
+    p = Path('./onboarding').glob('**/*.md')
+    files.extend([x for x in p if x.is_file()])
     print(f'Found {len(files)} md files to check... ')
     for file in files:
         with open(file, 'r', encoding='UTF-8') as f:
