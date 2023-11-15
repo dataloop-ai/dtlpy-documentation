@@ -13,7 +13,8 @@ def main(project_name, dataset_name, item_path):
     item = dataset.items.upload(local_path=item_path)
 
     # modify metadata
-    item.metadata['user'] = dict()
+    if 'user' not in item.metadata:
+        item.metadata['user'] = dict()
     item.metadata['user']['MyKey'] = 'MyVal'
     # update and reclaim item
     item = item.update()
