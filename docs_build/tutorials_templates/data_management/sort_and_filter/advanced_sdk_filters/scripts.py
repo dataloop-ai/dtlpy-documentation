@@ -86,9 +86,10 @@ def section8():
 
 
 def section9():
-    import datetime, time
-    filters = dl.Filters()
-    # -- time filters -- must be in ISO format and in UTC (offset from local time). converting using datetime package as follows:
+    import datetime
+    import time
+
+    # NOTE: time filters must be in ISO format and in UTC (offset from local time). converting using datetime package as follows:
 
     earlier_timestamp = datetime.datetime(year=2018, month=1, day=1, hour=0, minute=0, second=0,
                                           tzinfo=datetime.timezone(
@@ -96,10 +97,9 @@ def section9():
     later_timestamp = datetime.datetime(year=2019, month=1, day=1, hour=0, minute=0, second=0,
                                         tzinfo=datetime.timezone(
                                             datetime.timedelta(seconds=-time.timezone))).isoformat()
+    filters = dl.Filters()
     filters.add(field='createdAt', values=earlier_timestamp, operator=dl.FiltersOperations.GREATER_THAN)
     filters.add(field='createdAt', values=later_timestamp, operator=dl.FiltersOperations.LESS_THAN)
-    # change method to OR
-    filters.method = dl.FiltersMethod.OR
     # Get filtered items list in a page object
     pages = dataset.items.list(filters=filters)
     # Count the items

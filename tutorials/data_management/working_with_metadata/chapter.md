@@ -19,7 +19,8 @@ Metadata is a dictionary attribute used with items, annotations, and other entit
 ### String  
 
 ```python
-item.metadata['user'] = dict()
+if 'user' not in item.metadata:
+    item.metadata['user'] = dict()
 item.metadata['user']['MyKey'] = 'MyValue'
 annotation.metadata['user']['MyKey'] = 'MyValue'
 ```
@@ -66,7 +67,8 @@ item = dataset.items.upload(local_path=local_path)
 # or get item
 item = dataset.items.get(item_id=item_id)
 # modify metadata
-item.metadata['user'] = dict()
+if 'user' not in item.metadata:
+    item.metadata['user'] = dict()
 item.metadata['user']['MyKey'] = 'MyValue'
 # update and reclaim item
 item = item.update()
@@ -124,7 +126,8 @@ item = dataset.items.upload(local_path=local_path)
 # or get item
 item = dataset.items.get(item_id=item_id)
 # modify metadata
-item.metadata['user'] = dict()
+if 'user' not in item.metadata:
+    item.metadata['user'] = dict()
 item.metadata['user']['MyKey'] = 'MyValue'
 # update and reclaim item
 item = item.update()

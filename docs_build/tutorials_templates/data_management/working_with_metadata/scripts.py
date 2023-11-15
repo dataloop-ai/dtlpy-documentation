@@ -70,7 +70,8 @@ class Scripts:
         annotation = self.annotation2
         # DTLPY-START
 
-        item.metadata['user'] = dict()
+        if 'user' not in item.metadata:
+            item.metadata['user'] = dict()
         item.metadata['user']['MyKey'] = 'MyValue'
         annotation.metadata['user']['MyKey'] = 'MyValue'
 
@@ -157,7 +158,8 @@ class Scripts:
         # or get item
         item = dataset.items.get(item_id=item_id)
         # modify metadata
-        item.metadata['user'] = dict()
+        if 'user' not in item.metadata:
+            item.metadata['user'] = dict()
         item.metadata['user']['MyKey'] = 'MyValue'
         # update and reclaim item
         item = item.update()
@@ -204,7 +206,8 @@ class Scripts:
         # or get item
         item = dataset.items.get(item_id=item_id)
         # modify metadata
-        item.metadata['user'] = dict()
+        if 'user' not in item.metadata:
+            item.metadata['user'] = dict()
         item.metadata['user']['MyKey'] = 'MyValue'
         # update and reclaim item
         item = item.update()

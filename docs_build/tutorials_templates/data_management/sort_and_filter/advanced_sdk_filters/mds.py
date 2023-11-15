@@ -82,7 +82,7 @@ def section9():
     """
     ### Full Examples
     #### How to filter items that were created between specific dates?
-    In this example, you will get all of the items that were created in 2018.
+    In this example, you will get all the items that were created in 2018.
     """
 
 
