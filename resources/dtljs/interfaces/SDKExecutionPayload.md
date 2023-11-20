@@ -12,7 +12,7 @@ SDKExecutionPayload
 
 ### Properties
 
-- [async](SDKExecutionPayload.md#async)
+- [sync](SDKExecutionPayload.md#sync)
 - [caption](SDKExecutionPayload.md#caption)
 - [functionName](SDKExecutionPayload.md#functionname)
 - [input](SDKExecutionPayload.md#input)
@@ -24,13 +24,20 @@ SDKExecutionPayload
 
 ## Properties
 
-### async
+### sync
 
-• `Optional` **async**: `boolean`
+• `Optional` **sync**: `boolean`
 
-If true, wait for the execution to finish on the platform
+Enabled by default, this feature ensures that the platform subscribes to changes and monitors the execution's status, consequently triggering events for execution status updates.
 
-___
+To track these changes from an application, you can subscribe to the `DlEvent.EXECUTION_STATUS` event.
+
+```typescript
+await dl.on(DlEvent.EXECUTION_STATUS, (payload: { execution: SDKExecution, status: 'created' | 'success' | 'failed' }) => {
+    console.log(`Execution ${payload.execution.id} status: ${payload.status}`)
+    console.log(`Execution output`, payload.execution.output)
+})
+```
 
 ### caption
 

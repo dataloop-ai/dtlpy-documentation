@@ -64,6 +64,13 @@ const execution = await dl.executions.create({
 })
 ```
 
+* To receive updates on the execution status, subscribe to the `DlEvent.EXECUTION_STATUS` event, which is triggered upon creation, success, and failure.
+```typescript
+await dl.on(DlEvent.EXECUTION_STATUS, (payload: { execution: SDKExecution, status: 'created' | 'success' | 'failed' }) => {
+    console.log(`Execution ${payload.execution.id} status: ${payload.status}`)
+    console.log(`Execution output`, payload.execution.output)
+})
+```
 #### Parameters
 
 | Name | Type | Description |
