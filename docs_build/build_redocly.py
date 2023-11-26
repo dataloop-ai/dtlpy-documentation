@@ -56,7 +56,6 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
         data = json.load(json_file)
     yaml_str_list = []
     for content in data['content']:
-        str_for_list = "\t" * (level - 1)
         str_for_list = ""
         comp_dict = dict()
         display_name = content['displayName']
@@ -73,15 +72,25 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
             comp_dict['group'] = content['displayName']
             comp_dict['expanded'] = False
             comp_dict['pages'] = []
-            str_for_list += f'| {display_name} | {content["description"]} | |'
-            gen_sub_dict(location_filepath, comp_dict, directory, mysubdir, level + 1, str_list)
+            tabs = '&nbsp;' * (level-1) * 8
+            str_for_list += f'| <h{level + 2}>{tabs}{display_name}</h{level + 2}> | {content["description"]} | |'
+            if level > 0:
+                str_list.append(str_for_list)
+            gen_sub_dict(myjson=location_filepath,
+                         mydict=comp_dict,
+                         directory=directory,
+                         mysubdir=mysubdir,
+                         level=level + 1,
+                         str_list=str_list)
         else:
             comp_dict['label'] = display_name
             comp_dict['page'] = page_location
-            notebook_url = "https://github.com/dataloop-ai/dtlpy-documentation/blob/main/" + page_location.replace(".md", ".ipynb")
-            colab_url = "https://colab.research.google.com/github/dataloop-ai/dtlpy-documentation/blob/main/" + page_location.replace(".md", ".ipynb")
-            str_for_list += f'| [{display_name}]({location}) | {content["description"]} | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]({notebook_url}) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)]({colab_url}) |'
-        if level > 0:
+            notebook_url = "https://github.com/dataloop-ai/dtlpy-documentation/blob/main/" + page_location.replace(
+                ".md", ".ipynb")
+            colab_url = "https://colab.research.google.com/github/dataloop-ai/dtlpy-documentation/blob/main/" + page_location.replace(
+                ".md", ".ipynb")
+            tabs = '&nbsp;' * (level-1) * 8
+            str_for_list += f'| <h{level + 2}>{tabs}[{display_name}]({location})</h{level + 2}> | {content["description"]} | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]({notebook_url}) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)]({colab_url}) |'
             str_list.append(str_for_list)
         if level == 0:
             table_lines = ['| Name | Description | Notebook |', '| --- | --- | --- |']
@@ -89,6 +98,9 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
             md_file = gen_md_file('\n'.join(table_lines), location, directory, content['displayName'])
             comp_dict['page'] = mysubdir + "/" + md_file
             str_list = []
+        # else:
+        #     str_list.append(str_for_list)
+
         get_mdx_str(header=content['displayName'],
                     md_file=md_file,
                     description=content['description'],
