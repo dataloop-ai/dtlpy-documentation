@@ -1374,15 +1374,6 @@
                     "metadata": {
                         "$ref": "#/components/schemas/APIMetadata"
                     },
-                    "parent": {
-                        "$ref": "#/components/schemas/APIAnnotationRequest"
-                    },
-                    "children": {
-                        "items": {
-                            "$ref": "#/components/schemas/APIAnnotationRequest"
-                        },
-                        "type": "array"
-                    },
                     "existingChildrenIds": {
                         "items": {
                             "type": "string"
@@ -1909,9 +1900,6 @@
                     "anyOf": [
                         {
                             "$ref": "#/components/schemas/OrderBy"
-                        },
-                        {
-                            "$ref": "#/components/schemas/SortQuery"
                         }
                     ]
                 }
@@ -3145,39 +3133,6 @@
                 ],
                 "type": "string"
             },
-            "Partial__ms-numberbytes%3Anumber__": {
-                "properties": {
-                    "ms": {
-                        "type": "number",
-                        "format": "double"
-                    },
-                    "bytes": {
-                        "type": "number",
-                        "format": "double"
-                    }
-                },
-                "type": "object",
-                "description": "Make all properties in T optional"
-            },
-            "Pick_DataStreamConfig_any_.maxConcurrentReaders-or-retention-or-compression_": {
-                "properties": {
-                    "maxConcurrentReaders": {
-                        "type": "number",
-                        "format": "double",
-                        "description": "max number of concurrent reader this stream allows"
-                    },
-                    "retention": {
-                        "$ref": "#/components/schemas/Partial__ms-numberbytes%3Anumber__"
-                    },
-                    "compression": {
-                        "type": "boolean",
-                        "description": "enables compression",
-                        "default": "true"
-                    }
-                },
-                "type": "object",
-                "description": "From T, pick a set of properties whose keys are in the union K"
-            },
             "GenerateDatasetOptions": {
                 "properties": {
                     "id": {
@@ -3295,17 +3250,6 @@
                         ],
                         "type": "object"
                     },
-                    "outputStream": {
-                        "properties": {
-                            "config": {
-                                "$ref": "#/components/schemas/Pick_DataStreamConfig_any_.maxConcurrentReaders-or-retention-or-compression_"
-                            },
-                            "recreate": {
-                                "type": "boolean"
-                            }
-                        },
-                        "type": "object"
-                    }
                 },
                 "required": [
                     "id",
@@ -16425,9 +16369,6 @@
                     "arguments": {
                         "type": "object",
                         "description": ""
-                    },
-                    "caller": {
-                        "$ref": "#/components/schemas/Function"
                     }
                 },
                 "type": "object",

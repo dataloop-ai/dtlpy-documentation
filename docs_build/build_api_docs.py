@@ -13,7 +13,8 @@ def check():
                 for id_val in id_generator(v):
                     yield id_val
 
-    path_refs = set([(lambda x: x.split('/')[-1])(x) for x in id_generator(data['paths'])])
+
+    path_refs = set([(lambda x: x.split('/')[-1])(x) for x in id_generator(data)])
     components_refs = set(list(data['components']['schemas'].keys()))
     path_refs.difference(components_refs)
     components_refs.difference(path_refs)
