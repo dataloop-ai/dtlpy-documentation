@@ -39,7 +39,7 @@ The Getting Started guide provides the developer with an efficient SDK on-boardi
 The **Dataloop SDK** requires several prerequisite software packages to be installed on your system before it can be
 used.
 
-> :information_source: The scope of this guide does not cover detailed external software installation issues. Please use the provided software vendor website links for further installation information and troubleshooting related to your OS.
+> ℹ️The scope of this guide does not cover detailed external software installation issues. Please use the provided software vendor website links for further installation information and troubleshooting related to your OS.
 
 ### **Python**
 
@@ -134,7 +134,7 @@ M2M Login is recommended when you want to:
     - run commands on the platform without an ongoing internet connection
     - run API commands directly from an external system to Dataloop
 
-> :information_source: This can be done with your email and password (signup with a password), or using project bots (which is NOT is the scope of this tutorial).
+> ℹ️This can be done with your email and password (signup with a password), or using project bots (which is NOT is the scope of this tutorial).
 
 ```python
 dl.login_m2m(email=email, password=password)
@@ -224,7 +224,7 @@ Confirmation of the successfully created dataset is **displayed**:
 Dataset(id='632c24ae3444a86f029acb47', url='https://gate.dataloop.ai/api/v1/datasets/632c1194120a7571664d0de3', name='My-First-Dataset', creator='JohnDoe@gmail.com', items_count=0, expiration_options=None, index_driver='v1', created_at='2022-09-22T07:41:08.324Z')
 ```
 
-> :information_source: Your Dataset ID will differ from the example above.
+> ℹ️Your Dataset ID will differ from the example above.
 
 ## Uploading items
 
@@ -261,7 +261,7 @@ The structure of the **Upload Item Command** is:
 dataset.items.upload(local_path='/path/to/file.extension')
 ```
 
-> :information_source: directory paths look different in Windows and in Linux, Windows require an "r" at the beginning.
+> ℹ️directory paths look different in Windows and in Linux, Windows require an "r" at the beginning.
 
 ### To upload an item to a dataset:
 
@@ -285,7 +285,7 @@ Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/'632c24ae3444a86f029a
 The **Item ID** of the uploaded file is 632dadf7b28a0c0da317dfc8. This ID is used when **Listing/Getting** items (
 See [Getting Items](#getting-items)).
 
-> :information_source: Your Item ID will differ from the example above.
+> ℹ️Your Item ID will differ from the example above.
 
 If the item to upload is not found, the following **error message** is **displayed**:
 
@@ -293,7 +293,7 @@ If the item to upload is not found, the following **error message** is **display
 dtlpy.exceptions.NotFound: ('404', 'Unknown local path: C:\\UploadDemo\\test1.jpg')
 ```
 
-> :information_source: By default, files are uploaded to the root directory. Items can be uploaded to an existing folder within a dataset using the remote_path argument (Not in the scope of this guide).
+> ℹ️By default, files are uploaded to the root directory. Items can be uploaded to an existing folder within a dataset using the remote_path argument (Not in the scope of this guide).
 
 ### <span style="text-decoration:underline;">Exercise 1</span>
 
@@ -321,7 +321,7 @@ item.print()
 item_1 = dataset.items.get(item_id='632c365b6002b1266e007830')
 ```
 
-> :information_source: Your Item ID will differ from the example above.
+> ℹ️Your Item ID will differ from the example above.
 
 2. **Run** the following command to print the specified item:
 
@@ -449,7 +449,7 @@ item_1.annotations.upload(builder)
 
 The label is annotated as 2 **Point Markers** to **item_1**.
 
-> :information_source:  Other Label Types include Box, Cube, Polygon etc.
+> ℹ️Other Label Types include Box, Cube, Polygon etc.
 
 ### <span style="text-decoration:underline;">Exercise 3</span>
 
@@ -493,7 +493,7 @@ my_filter.add_join(field='type', values='point')
 
 The **Filter Parameter** is created.
 
-> :information_source: Other Fields can be used as Filter Parameters including id, dataset_id, etc.
+> ℹ️Other Fields can be used as Filter Parameters including id, dataset_id, etc.
 
 Additional **Filter Parameter**s can be added to the **Filter Query.**
 
@@ -596,7 +596,7 @@ metadata** can be used for data filtering, sorting, etc.
 The following example will demonstrate adding a new user **metadata field** named **Date&Time** to the item named
 **test1**, which in this case has an **item ID** = 632dadf7b28a0c0da317dfc8
 
-> :information_source:  Your Item ID will differ from the example above. See Get a Single Item.
+> ℹ️Your Item ID will differ from the example above. See Get a Single Item.
 
 The first step is to **import** the **datetime** module.
 
