@@ -39,7 +39,10 @@ The Getting Started guide provides the developer with an efficient SDK on-boardi
 The **Dataloop SDK** requires several prerequisite software packages to be installed on your system before it can be
 used.
 
-> <h1>&#8505;</h1> The scope of this guide does not cover detailed external software installation issues. Please use the provided software vendor website links for further installation information and troubleshooting related to your OS.
+<section class="infoBox" style='background-color:#eff2f9'>
+<p style="display:inline;font-size:15px;color:#3452ff">&#9432;</p>
+<p style="display:inline;color:black">The scope of this guide does not cover detailed external software installation issues. Please use the provided software vendor website links for further installation information and troubleshooting related to your OS.</p>
+</section>
 
 ### **Python**
 

@@ -1,0 +1,23 @@
+{
+    "name": "annotations",
+    "title": "Annotations",
+    "description": "Tutorials for creating all types of annotations for file types",
+    "content": [
+        {
+            "displayName": "Image Annotations",
+            "description": "Tutorials for creating all types of image annotations",
+            "location": "annotations/image/index.json"
+        },
+        {
+            "displayName": "Video Annotations",
+            "description": "Upload and work with video annotations",
+            "location": "annotations/video/chapter.md"
+        },
+        {
+            "displayName": "Prompt Annotations",
+            "description": "Upload and work with prompts and annotations (responses)",
+            "location": "annotations/prompts/chapter.md"
+        }
+    ]
+}
+

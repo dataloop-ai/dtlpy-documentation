@@ -44,16 +44,16 @@ jupyter notebook tutorials
 
 ## Tutorials
 
-* Annotations image
-  *  [Advance tutorials](tutorials/annotations_image/advance_tutorials/chapter.ipynb)
-  *  [Bounding box and cuboid](tutorials/annotations_image/bounding_box_and_cuboid/chapter.ipynb)
-  *  [Classification point and pose](tutorials/annotations_image/classification_point_and_pose/chapter.ipynb)
-  *  [Ellipse and item description](tutorials/annotations_image/ellipse_and_item_description/chapter.ipynb)
-  *  [Polygon and polyline](tutorials/annotations_image/polygon_and_polyline/chapter.ipynb)
-  *  [Segmentation](tutorials/annotations_image/segmentation/chapter.ipynb)
-  *  [Setup](tutorials/annotations_image/setup/chapter.ipynb)
-* Annotations video
-  *  [Video annotations](tutorials/annotations_video/video_annotations/chapter.ipynb)
+* Annotations
+  * Image
+    *  [Advance tutorials](tutorials/annotations/image/advance_tutorials/chapter.ipynb)
+    *  [Bounding box and cuboid](tutorials/annotations/image/bounding_box_and_cuboid/chapter.ipynb)
+    *  [Classification point and pose](tutorials/annotations/image/classification_point_and_pose/chapter.ipynb)
+    *  [Ellipse and item description](tutorials/annotations/image/ellipse_and_item_description/chapter.ipynb)
+    *  [Polygon and polyline](tutorials/annotations/image/polygon_and_polyline/chapter.ipynb)
+    *  [Segmentation](tutorials/annotations/image/segmentation/chapter.ipynb)
+    *  [Setup](tutorials/annotations/image/setup/chapter.ipynb)
+  *  [Video](tutorials/annotations/video/chapter.ipynb)
 *  [Auto annotate service](tutorials/auto_annotate_service/chapter.ipynb)
 * Data management
   * Cloud storage

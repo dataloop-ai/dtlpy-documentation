@@ -1,6 +1,6 @@
 # Tutorials
 
-## Data Management Tutorial
+## Data Management
 | Name | Description | Notebook |
 | --- | --- | --- |
 | [Integrations](data_management/integrations/chapter.md) | Add a new integration | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/integrations/chapter.ipynb) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/integrations/chapter.ipynb) |

@@ -1,18 +1,12 @@
 contents:
-- label: Get Started
+- label: Getting Started
   page: tutorials/getting_started/sdk_overview/chapter.md
 - expanded: false
   group: Tutorials
   page: tutorials/tutorials.mdx
   pages:
   - expanded: false
-    group: Getting Started With Dataloop SDK
-    page: tutorials/getting_started.md
-    pages:
-    - label: SDK Overview
-      page: tutorials/getting_started/sdk_overview/chapter.md
-  - expanded: false
-    group: Data Management Tutorial
+    group: Data Management
     page: tutorials/data_management.md
     pages:
     - label: Integrations
@@ -73,6 +67,49 @@ contents:
     - label: Secrets
       page: tutorials/data_management/secrets/chapter.md
   - expanded: false
+    group: Annotations
+    page: tutorials/annotations.md
+    pages:
+    - expanded: false
+      group: Image Annotations
+      pages:
+      - label: Setup
+        page: tutorials/annotations/image/setup/chapter.md
+      - label: Classification, Point and Pose
+        page: tutorials/annotations/image/classification_point_and_pose/chapter.md
+      - label: Bounding Box and Cuboid
+        page: tutorials/annotations/image/bounding_box_and_cuboid/chapter.md
+      - label: Polygon and Polyline
+        page: tutorials/annotations/image/polygon_and_polyline/chapter.md
+      - label: Ellipse and Item Description
+        page: tutorials/annotations/image/ellipse_and_item_description/chapter.md
+      - label: Segmentation
+        page: tutorials/annotations/image/segmentation/chapter.md
+      - label: Advance Tutorials
+        page: tutorials/annotations/image/advance_tutorials/chapter.md
+    - label: Video Annotations
+      page: tutorials/annotations/video/chapter.md
+    - label: Prompt Annotations
+      page: tutorials/annotations/prompts/chapter.md
+  - expanded: false
+    group: Recipe and Ontology
+    page: tutorials/recipe_and_ontology.md
+    pages:
+    - label: Concepts
+      page: tutorials/recipe_and_ontology/concepts/chapter.md
+    - label: Ontology
+      page: tutorials/recipe_and_ontology/ontology/chapter.md
+    - label: Recipe
+      page: tutorials/recipe_and_ontology/recipe/chapter.md
+  - expanded: false
+    group: Task and Workflows
+    page: tutorials/task_workflows.md
+    pages:
+    - label: Create Tasks and Assignment
+      page: tutorials/task_workflows/create_a_task/chapter.md
+    - label: Managing Tasks and Assignments
+      page: tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.md
+  - expanded: false
     group: FaaS Tutorial
     page: tutorials/faas.md
     pages:
@@ -102,56 +139,6 @@ contents:
     pages:
     - label: Create a Pipeline
       page: tutorials/pipelines/create_a_pipeline/chapter.md
-  - expanded: false
-    group: Task Workflows
-    page: tutorials/task_workflows.md
-    pages:
-    - label: Create Tasks and Assignment
-      page: tutorials/task_workflows/create_a_task/chapter.md
-    - label: Managing Tasks and Assignments
-      page: tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.md
-  - expanded: false
-    group: Image Annotations
-    page: tutorials/annotations_image.md
-    pages:
-    - label: Setup
-      page: tutorials/annotations_image/setup/chapter.md
-    - label: Classification, Point and Pose
-      page: tutorials/annotations_image/classification_point_and_pose/chapter.md
-    - label: Bounding Box and Cuboid
-      page: tutorials/annotations_image/bounding_box_and_cuboid/chapter.md
-    - label: Polygon and Polyline
-      page: tutorials/annotations_image/polygon_and_polyline/chapter.md
-    - label: Ellipse and Item Description
-      page: tutorials/annotations_image/ellipse_and_item_description/chapter.md
-    - label: Segmentation
-      page: tutorials/annotations_image/segmentation/chapter.md
-    - label: Advance Tutorials
-      page: tutorials/annotations_image/advance_tutorials/chapter.md
-  - expanded: false
-    group: Video Annotations
-    page: tutorials/annotations_video.md
-    pages:
-    - label: Video Annotations
-      page: tutorials/annotations_video/video_annotations/chapter.md
-  - expanded: false
-    group: Prompts Annotations
-    page: tutorials/annotations_prompts.md
-    pages:
-    - label: Prompt Item
-      page: tutorials/annotations_prompts/prompt_item/chapter.md
-    - label: Prompt Generative Responses
-      page: tutorials/annotations_prompts/responses/chapter.md
-  - expanded: false
-    group: Recipe and Ontology
-    page: tutorials/recipe_and_ontology.md
-    pages:
-    - label: Concepts
-      page: tutorials/recipe_and_ontology/concepts/chapter.md
-    - label: Ontology
-      page: tutorials/recipe_and_ontology/ontology/chapter.md
-    - label: Recipe
-      page: tutorials/recipe_and_ontology/recipe/chapter.md
   - expanded: false
     group: Model Management
     page: tutorials/model_management.md

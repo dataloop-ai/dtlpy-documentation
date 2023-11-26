@@ -4,14 +4,24 @@
     "description": "All of Dataloop's tutorials!",
     "content": [
         {
-            "displayName": "Getting Started With Dataloop SDK",
-            "description": "Getting started with Dataloop SDK",
-            "location": "getting_started/index.json"
-        },
-        {
-            "displayName": "Data Management Tutorial",
+            "displayName": "Data Management",
             "description": "Tutorials for data management",
             "location": "data_management/index.json"
+        },
+        {
+            "displayName": "Annotations",
+            "description": "Tutorials for creating all types of annotations for file types",
+            "location": "annotations/index.json"
+        },
+        {
+            "displayName": "Recipe and Ontology",
+            "description": "Tutorials for managing ontologies, labels, and recipes",
+            "location": "recipe_and_ontology/index.json"
+        },
+        {
+            "displayName": "Task and Workflows",
+            "description": "Tutorials for workforce management",
+            "location": "task_workflows/index.json"
         },
         {
             "displayName": "FaaS Tutorial",
@@ -22,32 +32,6 @@
             "displayName": "Pipelines",
             "description": "Tutorials for creating pipelines with the SDK",
             "location": "pipelines/index.json"
-        },
-        {
-            "displayName": "Task Workflows",
-            "description": "Tutorials for workforce management",
-            "location": "task_workflows/index.json"
-        },
-        {
-            "displayName": "Image Annotations",
-            "description": "Tutorials for creating all types of image annotations",
-            "location": "annotations_image/index.json"
-        },
-        {
-            "displayName": "Video Annotations",
-            "description": "Tutorials for annotating videos",
-            "location": "annotations_video/index.json"
-        },
-
-        {
-            "displayName": "Prompts Annotations",
-            "description": "Tutorials for the prompt items, annotations and studio",
-            "location": "annotations_prompts/index.json"
-        },
-        {
-            "displayName": "Recipe and Ontology",
-            "description": "Tutorials for managing ontologies, labels, and recipes",
-            "location": "recipe_and_ontology/index.json"
         },
         {
             "displayName": "Model Management",
