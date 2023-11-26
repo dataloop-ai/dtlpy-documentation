@@ -34,3 +34,7 @@ class Scripts:
         execution = dl.executions.get(execution_id='')
         execution = execution.wait()
         print(f"Execution is done with status: {execution.latest_status['status']!r}, duration: {execution.duration:.2f}[s]")
+
+    def func6(self):
+        execution = dl.executions.get(execution_id='')
+        execution = execution.rerun()

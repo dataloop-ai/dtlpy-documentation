@@ -1,5 +1,5 @@
 def section1():
-    annotations_definition = dl.Segmentation(geo=geo, label=label)
+    annotations_definition = dl.Segmentation(geo=mask, label=label)
 
 
 def section2():

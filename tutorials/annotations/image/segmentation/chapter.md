@@ -5,7 +5,7 @@ Each annotation init receives the coordinates for the specific type, label, and 
   
 
 ```python
-annotations_definition = dl.Segmentation(geo=geo, label=label)
+annotations_definition = dl.Segmentation(geo=mask, label=label)
 ```
 ## Create a Semantic Segmentation Annotation  
   

@@ -73,8 +73,6 @@ contents:
     - expanded: false
       group: Image Annotations
       pages:
-      - label: Setup
-        page: tutorials/annotations/image/setup/chapter.md
       - label: Classification, Point and Pose
         page: tutorials/annotations/image/classification_point_and_pose/chapter.md
       - label: Bounding Box and Cuboid
@@ -115,8 +113,6 @@ contents:
     pages:
     - label: Concepts
       page: tutorials/faas/concept/chapter.md
-    - label: Introduction
-      page: tutorials/faas/introduction/chapter.md
     - label: Run Your First Function
       page: tutorials/faas/single_function_rgb_to_gray/chapter.md
     - label: Multiple Functions and Modules

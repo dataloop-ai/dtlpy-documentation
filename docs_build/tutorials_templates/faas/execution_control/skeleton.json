@@ -42,5 +42,9 @@
     {
         "type": "md",
         "name": "func6"
+    },
+    {
+        "type": "code",
+        "name": "func6"
     }
 ]

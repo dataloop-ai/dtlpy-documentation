@@ -4,11 +4,6 @@
   "description": "Use Dataloop's Python SDK to create and annotate images with all of our image annotations.",
   "content": [
     {
-      "displayName": "Setup",
-      "description": "Setup environment before starting",
-      "location": "annotations/image/setup/chapter.md"
-    },
-    {
       "displayName": "Classification, Point and Pose",
       "description": "Classification, Point and Pose annotations types",
       "location": "annotations/image/classification_point_and_pose/chapter.md"

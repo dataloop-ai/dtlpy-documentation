@@ -9,16 +9,6 @@ path/folder) as a storage resource.
 ### Create Drivers in the Platform (browser)  
 
 ```python
-# param name: the driver name
-# param driver_type: ExternalStorage.S3
-# param integration_id: the integration id
-# param bucket_name: the external bucket name
-# param project_id:
-# param allow_external_delete:
-# param region: the bucket region
-# param storage_class: relevant only for s3
-# param path: Optional. By default, path is the root folder. Path is case sensitive.
-# return: driver object
 import dtlpy as dl
 project = dl.projects.get('prject_name')
 driver = project.drivers.create(name='driver_name',

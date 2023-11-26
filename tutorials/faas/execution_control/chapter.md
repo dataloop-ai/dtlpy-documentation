@@ -58,3 +58,12 @@ print(f"Execution is done with status: {execution.latest_status['status']!r}, du
 ```
 The process will be suspended (with background polling) until there is a change in the execution status.  
   
+## Rerun  
+Using the `execution.rerun()` function you can trigger another run of the same execution (if it failed, or for any other reason).  
+Note that this will overwrite the `latest_status` of the execution (but will keep everything on the execution status log)  
+  
+
+```python
+execution = dl.executions.get(execution_id='')
+execution = execution.rerun()
+```

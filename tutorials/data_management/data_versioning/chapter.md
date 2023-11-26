@@ -14,7 +14,7 @@ dataset_id = 'my-dataset-id'
 clone_name = 'clone-name'
 dataset = project.datasets.get(dataset_id=dataset_id)
 dataset_clone = dataset.clone(clone_name=clone_name,
-                              filters=None,
+                              filters=dl.Filters(field='dir', values='/only-this-folder'),
                               with_items_annotations=True,
                               with_metadata=True)
 ```

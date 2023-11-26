@@ -9,11 +9,6 @@
             "location": "faas/concept/chapter.md"
         },
         {
-            "displayName": "Introduction",
-            "description": "Getting started with FaaS.",
-            "location": "faas/introduction/chapter.md"
-        },
-        {
             "displayName": "Run Your First Function",
             "description": "Create and run your first FaaS in the Dataloop platform",
             "location": "faas/single_function_rgb_to_gray/chapter.md"

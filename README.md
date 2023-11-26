@@ -52,7 +52,6 @@ jupyter notebook tutorials
     *  [Ellipse and item description](tutorials/annotations/image/ellipse_and_item_description/chapter.ipynb)
     *  [Polygon and polyline](tutorials/annotations/image/polygon_and_polyline/chapter.ipynb)
     *  [Segmentation](tutorials/annotations/image/segmentation/chapter.ipynb)
-    *  [Setup](tutorials/annotations/image/setup/chapter.ipynb)
   *  [Video](tutorials/annotations/video/chapter.ipynb)
 *  [Auto annotate service](tutorials/auto_annotate_service/chapter.ipynb)
 * Data management
@@ -89,7 +88,6 @@ jupyter notebook tutorials
   *  [Concept](tutorials/faas/concept/chapter.ipynb)
   *  [Custom environment using docker](tutorials/faas/custom_environment_using_docker/chapter.ipynb)
   *  [Execution control](tutorials/faas/execution_control/chapter.ipynb)
-  *  [Introduction](tutorials/faas/introduction/chapter.ipynb)
   *  [Multiple functions and modules](tutorials/faas/multiple_functions_and_modules/chapter.ipynb)
   *  [Private git codebase](tutorials/faas/private_git_codebase/chapter.ipynb)
   *  [Single function rgb to gray](tutorials/faas/single_function_rgb_to_gray/chapter.ipynb)
