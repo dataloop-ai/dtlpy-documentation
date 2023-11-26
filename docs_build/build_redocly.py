@@ -73,7 +73,7 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
             comp_dict['expanded'] = False
             comp_dict['pages'] = []
             tabs = '&nbsp;' * (level-1) * 8
-            str_for_list += f'| <h{level + 2}>{tabs}{display_name}</h{level + 2}> | {content["description"]} | |'
+            str_for_list += f'| <h{level + 3}>{tabs}{display_name}</h{level + 3}> | {content["description"]} | |'
             if level > 0:
                 str_list.append(str_for_list)
             gen_sub_dict(myjson=location_filepath,
@@ -90,7 +90,7 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
             colab_url = "https://colab.research.google.com/github/dataloop-ai/dtlpy-documentation/blob/main/" + page_location.replace(
                 ".md", ".ipynb")
             tabs = '&nbsp;' * (level-1) * 8
-            str_for_list += f'| <h{level + 2}>{tabs}[{display_name}]({location})</h{level + 2}> | {content["description"]} | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]({notebook_url}) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)]({colab_url}) |'
+            str_for_list += f'| <h{level + 3}>{tabs}[{display_name}]({location})</h{level + 3}> | {content["description"]} | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]({notebook_url}) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)]({colab_url}) |'
             str_list.append(str_for_list)
         if level == 0:
             table_lines = ['| Name | Description | Notebook |', '| --- | --- | --- |']
