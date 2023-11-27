@@ -6,7 +6,7 @@
 ```mermaid
 flowchart TD
     id1(load_from_model)-->
-    id2("download artifacts @ `local_path=~/.dataloop/models/model.name`")-->
+    id2("download artifacts @ \nlocal_path=~/.dataloop/models/model.name")-->
     id3("load(local_path)")-->
     id4(save_model)
 ```
@@ -25,7 +25,7 @@ DATALOOP_PATH
 flowchart TD
     id1("save_to_model")-->
     id2("save(local_path)")-->
-    id3("upload artifact @ `local_path/*`")
+    id3("upload artifact @ \nlocal_path/*")
 
 ```
 ### `prdict_items`
