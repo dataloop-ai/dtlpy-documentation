@@ -27,6 +27,11 @@
       "displayName": "Using Dataloop's Dataset Generator",
       "description": "Use the SDK and the Dataset Tools to iterate, augment and serve the data to your model",
       "location": "model_management/advance/dataloop_dataset_generator/chapter.md"
+    },
+    {
+      "displayName": "Model Adapter Methods and Flows",
+      "description": "Understand the wrapper function of the model adapter",
+      "location": "model_management/advance/model_adapter_flows/chapter.md"
     }
   ]
 }

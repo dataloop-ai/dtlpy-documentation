@@ -160,6 +160,8 @@ contents:
         page: tutorials/model_management/advance/train_models_locally/object_detection/chapter.md
       - label: Using Dataloop's Dataset Generator
         page: tutorials/model_management/advance/dataloop_dataset_generator/chapter.md
+      - label: Model Adapter Methods and Flows
+        page: tutorials/model_management/advance/model_adapter_flows/chapter.md
   - expanded: false
     group: Applications
     page: tutorials/applications.md
