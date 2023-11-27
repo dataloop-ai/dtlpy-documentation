@@ -13,6 +13,7 @@ def func1():
 
     """
 
+
 def func2():
     """
     ### Clone and deploy a model
@@ -23,7 +24,15 @@ def func2():
 
     """
 
+
 def func3():
+    """
+    ### Editing model configurations
+    Models might have different configurations for their training and validation hyperparameters, or for inference and evaluation. These configurations are stored in model.configuration. Check which configurations are supported by your specific model. Configurations can be changed by editing the dictionary.
+    """
+
+
+def func4():
     """
     ### Train on a custom dataset
 
@@ -31,7 +40,8 @@ def func3():
 
     """
 
-def func4():
+
+def func5():
     """
 
     #### Dataset subsets
@@ -40,7 +50,8 @@ def func4():
     For example, if your dataset is split between folders, you can use this DQL to add metadata for all items in the dataset
     """
 
-def func5():
+
+def func6():
     """
     This way, when the training starts, the sets will be downloaded using the DQL and any future training session on this dataset will have the same subsets of data.
 
@@ -50,7 +61,8 @@ def func5():
 
     """
 
-def func6():
+
+def func7():
     """
     #### Deploying the model
 
@@ -59,7 +71,8 @@ def func6():
     Once you have a model deployed, you can create a UI slot to inference on individual data items on the platform, or call the model to inference in a FaaS or pipelines.
     """
 
-def func7():
+
+def func8():
     """
     ### Predict on a single item
 
