@@ -29,16 +29,6 @@ model = project.models.clone(from_model=public_model,
                              project_id=project.id)
 model.deploy()
 ```
-### Editing model configurations  
-  
-Models might have different configurations for their training and validation hyperparameters, or for inference and evaluation. These configurations are stored in model.configuration. Check which configurations are supported by your specific model. Configurations can be changed by editing the dictionary.  
-  
-
-```python
-model = dl.models.get(model_id="<model_id>")
-model.configuration["epochs"] = 15
-model.update()
-```
 ### Train on a custom dataset  
   
 If you would like to customize the AI library model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels you want to use for model training.  

@@ -25,21 +25,13 @@ def func2():
 
 def func3():
     """
-    ### Editing model configurations
-
-    Models might have different configurations for their training and validation hyperparameters, or for inference and evaluation. These configurations are stored in model.configuration. Check which configurations are supported by your specific model. Configurations can be changed by editing the dictionary.
-
-    """
-
-def func4():
-    """
     ### Train on a custom dataset
 
     If you would like to customize the AI library model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels you want to use for model training.
 
     """
 
-def func5():
+def func4():
     """
 
     #### Dataset subsets
@@ -48,7 +40,7 @@ def func5():
     For example, if your dataset is split between folders, you can use this DQL to add metadata for all items in the dataset
     """
 
-def func6():
+def func5():
     """
     This way, when the training starts, the sets will be downloaded using the DQL and any future training session on this dataset will have the same subsets of data.
 
@@ -58,7 +50,7 @@ def func6():
 
     """
 
-def func7():
+def func6():
     """
     #### Deploying the model
 
@@ -67,7 +59,7 @@ def func7():
     Once you have a model deployed, you can create a UI slot to inference on individual data items on the platform, or call the model to inference in a FaaS or pipelines.
     """
 
-def func8():
+def func7():
     """
     ### Predict on a single item
 

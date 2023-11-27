@@ -18,12 +18,6 @@ def func2():
 
 
 def func3():
-    model = dl.models.get(model_id="<model_id>")
-    model.configuration["epochs"] = 15
-    model.update()
-
-
-def func4():
     custom_model = dl.models.clone(from_model=public_model,
                                    model_name='remote_custom_model',
                                    dataset=dataset,
@@ -31,7 +25,7 @@ def func4():
                                    labels=['label1', 'label2'])
 
 
-def func5():
+def func4():
     dataset.metadata['system']['subsets'] = {
         'train': json.dumps(dl.Filters(field='dir', values='/train').prepare()),
         'validation': json.dumps(dl.Filters(field='dir', values='/validation').prepare()),
@@ -39,14 +33,14 @@ def func5():
     dataset.update(system_metadata=True)
 
 
-def func6():
+def func5():
     custom_model.train()
     custom_model = dl.models.get(model_id=custom_model.id)
     print(custom_model.status)
 
-def func7():
+def func6():
     custom_model.deploy()
 
-def func8():
+def func7():
     model = dl.models.get(model_id=model.id)
     model.predict(item_ids=[item.id])
