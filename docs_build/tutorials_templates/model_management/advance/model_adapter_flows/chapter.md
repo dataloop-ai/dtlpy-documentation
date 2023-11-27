@@ -1,14 +1,16 @@
 # Wrappers Functions
 
-## `load_from_model`
+### `load_from_model`
 ```mermaid
 flowchart TD
     id1(load_from_model)-->
-    id2(create local_path\ndefault @\nDATALOOP_PATH/models/model.name)-->
-    id3(download model artifacts @ local_path)-->
+    id2(LOCAL_PATH: ~/.dataloop/models/model.name)-->
+    id3(download model artifacts to LOCAL_PATH)-->
     id4("load(local_path)")-->
     id5(save_model)
 ```
+
+The directory structure will be:
 
 ```shell
 Directory tree at this stage:
@@ -17,7 +19,7 @@ DATALOOP_PATH
 |   |-- model.name
 |      |-- artifacts
 ```
-## `save_to_model`
+### `save_to_model`
 ```mermaid
 flowchart TD
     id1("save_to_model")-->
@@ -25,10 +27,10 @@ flowchart TD
     id3("upload artifact @ local_path/*")
 
 ```
-## `prdict_items`
+### `prdict_items`
 
 ```mermaid
-flowchart LR
+flowchart TB
     id1(predict_items)-->
     id2(i_batch = next batch start)-->
     id3("batch = items[i: (i+batch_size)]")-->
@@ -36,13 +38,13 @@ flowchart LR
     id5("annotation = predict(batch)")-->
     id6("upload batch_collections for batch_items")-->
     id7("Is last batch?")
-    id8("done")
-    id7 -->|Yes| id3
-    id7 -->|No| id8
+    id8("return items and annotations list")
+    id7 -->|No| id3
+    id7 -->|Yes| id8
 
 ```
 
-## `train_model`
+### `train_model`
 
 When running a training session from the model adapter, we start by calling the `train_model` wrapper function
 
@@ -54,9 +56,11 @@ flowchart TD
     id4("train(data_path, out_path)")-->
     id5(save_model)-->
     id6(cleanup)
-    click id2 "./#load-from-model"
+    click id2 "./#load_from_model"
 
 ```
+
+Data and directory structure will be:
 
 ```shell
 Directory tree at convert_from_dtlpy (supposing train and validation subsets):
@@ -82,7 +86,7 @@ Directory tree at convert_from_dtlpy (supposing train and validation subsets):
                                |-- val_dir (from filter)
 
 ```
-# `evaludate_model`
+### `evaludate_model`
 ```mermaid
 flowchart TD
     id1(evaluate_model)-->
@@ -94,22 +98,24 @@ flowchart TD
 
 # User Function
 
-## `load`
+Those are the function that users must implement in order to run the model. For only prediction, must implement `load` and `predict`. For training - `train` and `save` are also required.
+
+### `load`
 After the wrapper function download all the model artifact to the local directory, users must implement this function to load the model (using the local files and the model config) and instantiate the model.
 
-## `save`
+### `save`
 Users need to implement this function to dump the model state to a local directory, e.g. `torch.save(model.state_dict(), PATH)`
 After that, the wrapper function will take care of the rest and will upload the files into the platform, update the model config, and save everything on to the model entity
 
-## `train`
+### `train`
 This function is called the wrapper function loads the model, downloads and prepare the data.
 Now everything is ready locally and this function implements the actual model training.
 When this is done, there's no need to do anything - the wrapper will take care of the saving and uploading.
 
-## `predict`
+### `predict`
 This function is called the load model, so now we have the model ready to predict.
 Each item goes through the `prepare_item_func` and a batch is ready to predict.
 After the model prediction, user will need to prepare the annotation is the Dataloop format using the DL annotations.
 
-## `prepare_item_func`
+### `prepare_item_func`
 Prepares each item for prediction. Bt default, images will be downloaded and loaded into a ndarray as a batch (NHWC)
