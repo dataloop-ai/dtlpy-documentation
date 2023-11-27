@@ -1,13 +1,14 @@
-# Wrappers Functions
+# Model Adapter Class Methods
+## Wrappers Functions
 
 ### `load_from_model`
+
 ```mermaid
 flowchart TD
     id1(load_from_model)-->
-    id2(LOCAL_PATH: ~/.dataloop/models/model.name)-->
-    id3(download model artifacts to LOCAL_PATH)-->
-    id4("load(local_path)")-->
-    id5(save_model)
+    id2("download artifacts @ `local_path=~/.dataloop/models/model.name`")-->
+    id3("load(local_path)")-->
+    id4(save_model)
 ```
 
 The directory structure will be:
@@ -24,7 +25,7 @@ DATALOOP_PATH
 flowchart TD
     id1("save_to_model")-->
     id2("save(local_path)")-->
-    id3("upload artifact @ local_path/*")
+    id3("upload artifact @ `local_path/*`")
 
 ```
 ### `prdict_items`
@@ -96,7 +97,7 @@ flowchart TD
 
 ```
 
-# User Function
+## User Function
 
 Those are the function that users must implement in order to run the model. For only prediction, must implement `load` and `predict`. For training - `train` and `save` are also required.
 
