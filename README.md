@@ -100,7 +100,10 @@ jupyter notebook tutorials
       *  [Classification](tutorials/model_management/advance/train_models_locally/classification/chapter.ipynb)
       *  [Object detection](tutorials/model_management/advance/train_models_locally/object_detection/chapter.ipynb)
   *  [Ai library](tutorials/model_management/ai_library/chapter.ipynb)
+  *  [Create model from platform](tutorials/model_management/create_model_from_platform/chapter.ipynb)
   *  [Create new model](tutorials/model_management/create_new_model/chapter.ipynb)
+  *  [Create new model sdk](tutorials/model_management/create_new_model_sdk/chapter.ipynb)
+  *  [Create new model ui](tutorials/model_management/create_new_model_ui/chapter.ipynb)
   *  [Introduction](tutorials/model_management/introduction/chapter.ipynb)
 * Pipelines
   *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)

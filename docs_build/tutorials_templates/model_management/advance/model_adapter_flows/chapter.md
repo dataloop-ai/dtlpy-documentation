@@ -31,7 +31,7 @@ flowchart TD
 ### `prdict_items`
 
 ```mermaid
-flowchart TB
+flowchart TD
     id1(predict_items)-->
     id2(i_batch = next batch start)-->
     id3("batch = items[i: (i+batch_size)]")-->
