@@ -1,17 +1,34 @@
 # Model Adapter Class Methods
+
+In this tutorial, we can see the flowcharts for the Model Adapter functiions. There are two main types of functions:
+
+* **Wrapper Functions**: Those are functions that come as part of the ```BaseModelAdapter``` class and perform most of the auxiliary tasks needed for adapting a machine learning model to the Dataloop format.
+* **User Functions**: Each wrapper function will call a user function, i.e. a function implemented by the user with the specific code related to the model they wish to adapt.
+
+In the following sections we will see explanations for each function of each category.
+
 ## Wrappers Functions
+
+Here we will see the flowcharts explaining the logic of the wrapper functions. The blocks in green show operations performed by the wrapper function, while blocks in yellow show a call to a user function, which will require implementation.
 
 ### `load_from_model`
 
 ```mermaid
-flowchart TD
+flowchart TD 
     id1(load_from_model)-->
-    id2("download artifacts @ \nlocal_path=~/.dataloop/models/model.name")-->
-    id3("load(local_path)")-->
-    id4(save_model)
+    id2("download artifacts @ \nlocal_path=~/.dataloop/models/{model.name}")-->
+    id3("load(local_path)")
+    style id1 fill:green, stroke:black
+    style id2 fill:green, stroke:black
+    style id3 fill:yellow, stroke:red
+    click id3 "./#load"
 ```
 
-The directory structure will be:
+The ```load_from_model``` function performs starts by downloading artifacts as seen in the ```download_artifacts``` block. It will define the variable ```local_path``` to the path ```~/.dataloop/models/{model.name}``` where ```{model.name}``` will be filled with the name of the model as defined during its creation. Inside this directory, the ```model.artifacts``` will be downloaded. Those usually include weight files, but can include any other auxiliary files needed by the model that were uploaded by the user. More information at [this page](https://developers-dev.redoc.ly/tutorials/model_management/introduction/chapter/#artifacts-and-codebase).
+
+Once all files are in ```local_path``` the user function ```load``` is invoked. Its explanation can be found [below](#load).
+
+The directory structure will be, considering that ```~/.dataloop``` is the default ```DATALOOP_PATH```:
 
 ```shell
 Directory tree at this stage:
@@ -20,15 +37,24 @@ DATALOOP_PATH
 |   |-- model.name
 |      |-- artifacts
 ```
+
 ### `save_to_model`
+
 ```mermaid
 flowchart TD
     id1("save_to_model")-->
     id2("save(local_path)")-->
     id3("upload artifact @ \nlocal_path/*")
-
+    style id1 fill:green, stroke:black
+    style id2 fill:yellow, stroke:red
+    style id3 fill:green, stroke:black
+    click id2 "./#save"
 ```
-### `prdict_items`
+
+
+The ```save_to_model``` function invokes the ```save``` user function explained [below](#save) and then uploads all the files in ```local_path``` as model artifacts, as described [here](https://developers-dev.redoc.ly/tutorials/model_management/introduction/chapter/#artifacts-and-codebase). 
+
+### `predict_items`
 
 ```mermaid
 flowchart TD
@@ -55,7 +81,7 @@ flowchart TD
     id2(load_from_model)-->
     id3(prepare_data)-->
     id4("train(data_path, out_path)")-->
-    id5(save_model)-->
+    id5(save_to_model)-->
     id6(cleanup)
     click id2 "./#load_from_model"
 
@@ -87,7 +113,7 @@ Directory tree at convert_from_dtlpy (supposing train and validation subsets):
                                |-- val_dir (from filter)
 
 ```
-### `evaludate_model`
+### `evaluate_model`
 ```mermaid
 flowchart TD
     id1(evaluate_model)-->
