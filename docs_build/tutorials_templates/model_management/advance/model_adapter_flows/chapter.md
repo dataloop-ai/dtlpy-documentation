@@ -20,9 +20,9 @@ flowchart TD
     id1(load_from_model)-->
     id2("download artifacts @ \nlocal_path=~/.dataloop/models/{model.name}")-->
     id3("load(local_path)")
-    style id1 fill:green, stroke:black
-    style id2 fill:green, stroke:black
-    style id3 fill:yellow, stroke:red
+    style id1 fill:#adebad, stroke:black
+    style id2 fill:#adebad, stroke:black
+    style id3 fill:#ffff99, stroke:red
     click id3 "./#load"
 ```
 
@@ -49,9 +49,9 @@ flowchart TD
     id1("save_to_model")-->
     id2("save(local_path)")-->
     id3("upload artifact @ \nlocal_path/*")
-    style id1 fill:green, stroke:black
-    style id2 fill:yellow, stroke:red
-    style id3 fill:green, stroke:black
+    style id1 fill:#adebad, stroke:black
+    style id2 fill:#ffff99, stroke:red
+    style id3 fill:#adebad, stroke:black
     click id2 "./#save"
 ```
 
@@ -74,14 +74,14 @@ flowchart TB
     id8("return items and annotations list")
     id7 -->|No| id3
     id7 -->|Yes| id8
-    style id1 fill:green, stroke: black
-    style id2 fill:green, stroke: black
-    style id3 fill:green, stroke: black
-    style id4 fill:yellow, stroke: red
-    style id5 fill:yellow, stroke: red
-    style id6 fill:green, stroke: black
-    style id7 fill:green, stroke: black
-    style id8 fill:green, stroke: black
+    style id1 fill:#adebad, stroke: black
+    style id2 fill:#adebad, stroke: black
+    style id3 fill:#adebad, stroke: black
+    style id4 fill:#ffff99, stroke: red
+    style id5 fill:#ffff99, stroke: red
+    style id6 fill:#adebad, stroke: black
+    style id7 fill:#adebad, stroke: black
+    style id8 fill:#adebad, stroke: black
     click id4 "./#prepare_item_func"
     click id5 "./#predict"
 ```
@@ -102,12 +102,12 @@ flowchart TD
     id4("train(data_path, out_path)")-->
     id5(save_to_model)-->
     id6(cleanup)
-    style id1 fill:green, stroke: black
-    style id2 fill:green, stroke: black
-    style id3 fill:green, stroke: black
-    style id4 fill:yellow, stroke: red
-    style id5 fill:green, stroke: black
-    style id6 fill:green, stroke: black
+    style id1 fill:#adebad, stroke: black
+    style id2 fill:#adebad, stroke: black
+    style id3 fill:#adebad, stroke: black
+    style id4 fill:#ffff99, stroke: red
+    style id5 fill:#adebad, stroke: black
+    style id6 fill:#adebad, stroke: black
     click id2 "./#load_from_model"
     click id4 "./#train"
     click id5 "./$save_to_model"
@@ -151,10 +151,10 @@ flowchart TD
     id2(load_from_model)-->
     id3(predict_dataset)-->
     id4("evaluate")
-    style id1 fill:green, stroke: black
-    style id2 fill:green, stroke: black
-    style id3 fill:green, stroke: black
-    style id4 fill:yellow, stroke: red
+    style id1 fill:#adebad, stroke: black
+    style id2 fill:#adebad, stroke: black
+    style id3 fill:#adebad, stroke: black
+    style id4 fill:#ffff99, stroke: red
     click id2 "./#load_from_model"
     click id3 "./#predict_items"
     click id4 "./#evaluate"
