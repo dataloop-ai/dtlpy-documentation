@@ -32,13 +32,15 @@ dataset = project.datasets.create(driver=driver, dataset_name=dataset_name)
   
 ## Retrieve Datasets  
   
-You can read all datasets that exist in a project, and then access the datasets by their ID (or name).  
+You can query over datasets with a DQL, filter over fields to get a project's datasets:  
   
 
 ```python
 dataset_id = 'my-dataset-id'
-datasets = project.datasets.list()
-dataset = project.datasets.get(dataset_id=dataset_id)
+filters = dl.Filters(resource=dl.FiltersResource.DATASET)
+filters.add(field='name', values='my dataset')
+datasets = project.datasets.list(filters=filters)
+datasets.print()
 ```
   
 ## Create Directory  

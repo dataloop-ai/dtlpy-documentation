@@ -28,7 +28,7 @@ def section3():
 
     ## Retrieve Datasets
 
-    You can read all datasets that exist in a project, and then access the datasets by their ID (or name).
+    You can query over datasets with a DQL, filter over fields to get a project's datasets:
 
     """
 

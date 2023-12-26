@@ -67,11 +67,13 @@ class Scripts:
         dataset_id = self.dataset_id3
         # DTLPY-START
 
-        datasets = project.datasets.list()
-        dataset = project.datasets.get(dataset_id=dataset_id)
+        filters = dl.Filters(resource=dl.FiltersResource.DATASET)
+        filters.add(field='name', values='my dataset')
+        datasets = project.datasets.list(filters=filters)
+        datasets.print()
 
         # DTLPY-STOP
-        self.dataset3 = dataset
+        self.dataset3 = None
 
     def section4(self):
         directory = '/directory/name'
