@@ -1,82 +1,202 @@
 # Dataloop JSON Examples
 
-* Examples for a `dataloop.json` file for developing stages ([Debug Applications](./index.md)).
-
-### Floating Window
-
-```json
-{
-  "components": {
-    "panels": [
-      {
-        "name": "reference-viewer",
-        "supportedSlots": [
-          {
-            "type": "floatingWindow",
-            "configuration": {
-              "layout": {
-                "width": 455,
-                "height": 340,
-                "resizeable": true,
-                "backgroundColor": "dl-color-studio-panel"
-              }
-            }
-          }
-        ],
-        "conditions": {
-          "resources": []
-        }
-      }
-    ]
-  }
-}
-```
-
-### Item Viewer
-
-```json
-
-{
-  "components": {
-    "panels": [
-      {
-        "name": "item-viewer",
-        "supportedSlots": [
-          {
-            "type": "itemViewer",
-            "configuration": {
-              "layout": {
-                "leftBar": false,
-                "rightBar": false,
-                "bottomBar": false
-              }
-            }
-          }
-        ],
-        "conditions": {
-          "resources": [
-            {
-              "entityType": "item",
-              "filter": {
-                "metadata.system.mimetype": "image/*"
-              }
-            }
-          ]
-        }
-      }
-    ]
-  }
-}
-```
+For end to end examples of Dataloop JSON files, Refer to
+the [Table of Contents](https://github.com/dataloop-ai-apps/table-of-contents).
 
 ### Pipeline Node
 
 ```json
 {
   "components": {
-    "panels": [
-      {
+    "my-pipeline-node": {
+      "type": "pipelineNode",
+      "spec": {
+        "name": "vision-face-detection-pipeline-node",
+        "invoke": {
+          "type": "function",
+          "namespace": "service-name.module-name.function_name"
+        },
+        "categories": [
+          "Node Category"
+        ],
+        "displayName": "Node Display Name",
+        "description": "Node Description",
+        "scope": "node",
+        "configuration": {
+          "fields": [
+            {
+              "name": "name",
+              "title": "Node Name",
+              "props": {
+                "title": true,
+                "type": "string",
+                "default": "Default Node Name",
+                "required": true,
+                "placeholder": "Insert node name"
+              },
+              "rules": [
+                {
+                  "type": "required",
+                  "effect": "error"
+                }
+              ],
+              "widget": "dl-input"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+### Module
+
+```json
+
+{
+  "my-module": {
+    "type": "module",
+    "spec": {
+      "name": "module-name",
+      "entryPoint": "path/to/main.py",
+      "className": "ClassName",
+      "computeConfig": "service-name",
+      "initInputs": [
+        {
+          "type": "String",
+          "name": "init_input_name"
+        }
+      ],
+      "functions": [
+        {
+          "name": "function_name",
+          "input": [
+            {
+              "type": "Item",
+              "name": "item"
+            }
+          ],
+          "output": [
+            {
+              "type": "Item",
+              "name": "item"
+            }
+          ],
+          "displayIcon": "display-icon"
+        }
+      ]
+    }
+  }
+}
+```
+
+### Compute Config / Service
+
+```json
+{
+  "gv-face-detection": {
+    "type": "computeConfig",
+    "spec": {
+      "name": "service-name",
+      "initParams": {
+        "init_input_name": ""
+      },
+      "runtime": {
+        "podType": "regular-xs",
+        "runnerImage": "dataloopai/dtlpy-agent:cpu.py3.8.opencv4.7",
+        "concurrency": 10,
+        "autoscaler": {
+          "type": "rabbitmq",
+          "minReplicas": 0,
+          "maxReplicas": 2,
+          "queueLength": 100
+        }
+      },
+      "executionTimeout": 600,
+      "onReset": "failed",
+      "maxAttempts": 3
+    }
+  }
+}
+```
+
+### Toolbars
+
+* *Invoke a panel or a function in an application*
+* Supported Location:
+    * `datasetsDashboard`
+    * `datasetBrowserApps`
+    * `datasetBrowserViewStyle`
+    * `datasetBrowserSearchOption`
+    * `datasetMenu`
+    * `taskMenu`
+    * `itemMenu`
+    * `toolPlugin`
+
+```json
+{
+  "components": {
+    "my-toolbar-panel": {
+      "displayName": "Run Dialog",
+      "invoke": {
+        "type": "panel",
+        "namespace": "dialogPanel"
+      },
+      "icon": "icon-dl-add",
+      "location": "datasetsDashboard",
+      "conditions": {
+        "resources": []
+      }
+    },
+    "my-toolbar-function": {
+      "displayName": "Run function",
+      "invoke": {
+        "type": "function",
+        "namespace": "module-name.function_name"
+      },
+      "icon": "icon-dl-edit",
+      "location": "itemMenu",
+      "conditions": {
+        "resources": []
+      }
+    }
+  }
+}
+```
+
+### Model
+
+```json
+{
+  "components": {
+    "models": {
+      "type": "model",
+      "spec": {
+        "name": "model-name",
+        "moduleName": "module-name",
+        "scope": "project",
+        "status": "",
+        "configuration": {},
+        "inputType": "",
+        "outputType": "",
+        "description": "Model Description"
+      }
+    }
+  }
+}
+```
+
+### Panel
+
+```json
+{
+  "components": {
+    "my-panel": {
+      "type": "panel",
+      "spec": {
         "name": "pipelineNodePanel",
+        "icon": "dataloop-icon",
         "supportedSlots": [
           {
             "type": "pipelineNodeConfig",
@@ -87,136 +207,8 @@
           "resources": []
         }
       }
-    ],
-    "pipelineNodes": [
-      {
-        "invoke": {
-          "type": "function",
-          "namespace": "custom_nodes.data_split"
-        },
-        "categories": [
-          "data"
-        ]
-      }
-    ],
-    "modules": [
-      {
-        "name": "custom_nodes",
-        "entryPoint": "modules/main.py",
-        "className": "Runner",
-        "initInputs": [],
-        "functions": [
-          {
-            "name": "data_split",
-            "description": "Data splitting custom node",
-            "input": [
-              {
-                "type": "Item",
-                "name": "item"
-              }
-            ],
-            "output": [
-              {
-                "type": "Item",
-                "name": "item"
-              }
-            ],
-            "displayIcon": "qa-sampling",
-            "displayName": "Data Split"
-          },
-          {
-            "name": "test",
-            "description": "Testing the waters",
-            "input": [],
-            "output": [],
-            "displayIcon": "node-train",
-            "displayName": "Test"
-          }
-        ]
-      }
-    ]
+    }
   }
 }
 ```
 
-### Toolbars
-
-* *Invoke a panel or a function in an application*
-
-```json
-{
-  "components": {
-    "panels": [
-      {
-        "name": "dialogPanel",
-        "supportedSlots": [
-          {
-            "type": "dialog",
-            "configuration": {
-              "layout": {
-                "position": "center",
-                "width": 455,
-                "height": 340
-              }
-            }
-          }
-        ],
-        "conditions": {
-          "resources": []
-        }
-      }
-    ],
-    "toolbars": [
-      {
-        "displayName": "Run Dialog",
-        "invoke": {
-          "type": "panel",
-          "namespace": "dialogPanel"
-        },
-        "icon": "icon-dl-add",
-        "location": "datasetsDashboard",
-        "conditions": {
-          "resources": []
-        }
-      },
-      {
-        "displayName": "Run function",
-        "invoke": {
-          "type": "function",
-          "namespace": "my_module.my_function"
-        },
-        "icon": "icon-dl-edit",
-        "location": "itemMenu",
-        "conditions": {
-          "resources": []
-        }
-      }
-    ],
-    "modules": [
-      {
-        "name": "my_module",
-        "entryPoint": "modules/main.py",
-        "className": "Runner",
-        "initInputs": [],
-        "functions": [
-          {
-            "name": "my_function",
-            "input": [
-              {
-                "type": "Item",
-                "name": "item"
-              }
-            ],
-            "output": [
-              {
-                "type": "Item",
-                "name": "item"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-}
-```
