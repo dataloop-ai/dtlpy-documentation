@@ -48,7 +48,7 @@ annotation = item.annotations.get(annotation_id="")
 annotation.metadata["system"].update(context)
 annotation.update(system_metadata=True)
 ```
-## Convert Annotations To COCO Format  
+## Convert Annotations From COCO Format  
   
 
 ```python
