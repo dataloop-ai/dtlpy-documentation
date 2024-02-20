@@ -50,6 +50,7 @@ execution.logs(follow=True)
 execution = execution.wait()
 print(execution.latest_status)
 ```
+## Batch Execution  
 For executing on multiple items (with a filter) use:  
 
 ```python

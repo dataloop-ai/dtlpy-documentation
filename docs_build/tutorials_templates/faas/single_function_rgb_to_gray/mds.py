@@ -31,6 +31,7 @@ def func4():
 
 def func5():
     """
+    ## Batch Execution
     For executing on multiple items (with a filter) use:
     """
 

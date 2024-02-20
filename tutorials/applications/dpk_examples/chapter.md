@@ -1,82 +1,26 @@
-# Dataloop JSON Examples
+# Dataloop Manifest
 
-* Examples for a `dataloop.json` file for developing stages ([Debug Applications](./index.md)).
+Here is an example of a complete DPK manifest
 
-### Floating Window
-
-```json
-{
-  "components": {
-    "panels": [
-      {
-        "name": "reference-viewer",
-        "supportedSlots": [
-          {
-            "type": "floatingWindow",
-            "configuration": {
-              "layout": {
-                "width": 455,
-                "height": 340,
-                "resizeable": true,
-                "backgroundColor": "dl-color-studio-panel"
-              }
-            }
-          }
-        ],
-        "conditions": {
-          "resources": []
-        }
-      }
-    ]
-  }
-}
-```
-
-### Item Viewer
-
-```json
-
-{
-  "components": {
-    "panels": [
-      {
-        "name": "item-viewer",
-        "supportedSlots": [
-          {
-            "type": "itemViewer",
-            "configuration": {
-              "layout": {
-                "leftBar": false,
-                "rightBar": false,
-                "bottomBar": false
-              }
-            }
-          }
-        ],
-        "conditions": {
-          "resources": [
-            {
-              "entityType": "item",
-              "filter": {
-                "metadata.system.mimetype": "image/*"
-              }
-            }
-          ]
-        }
-      }
-    ]
-  }
-}
-```
-
-### Pipeline Node
+NOTE: This is not supposed to be a real app, and publishing or installing it will probably result in some errors.
 
 ```json
 {
+  "name": "dpk-name",
+  "displayName": "DPK Display Name",
+  "version": "0.0.1",
+  "scope": "project",
+  "description": "Application description",
+  "codebase": {
+    "type": "git",
+    "gitUrl": "repo-url",
+    "gitTag": "0.0.1"
+  },
   "components": {
     "panels": [
       {
-        "name": "pipelineNodePanel",
+        "name": "PanelName",
+        "icon": "",
         "supportedSlots": [
           {
             "type": "pipelineNodeConfig",
@@ -88,135 +32,121 @@
         }
       }
     ],
-    "pipelineNodes": [
+    "computeConfigs": [
       {
-        "invoke": {
-          "type": "function",
-          "namespace": "custom_nodes.data_split"
-        },
-        "categories": [
-          "data"
-        ]
+        "name": "compute-configs1",
+        "runtime": {
+          "podType": "highmem-xs",
+          "concurrency": 1,
+          "autoscaler": {
+            "type": "rabbitmq",
+            "minReplicas": 0,
+            "maxReplicas": 2
+          }
+        }
       }
     ],
     "modules": [
       {
-        "name": "custom_nodes",
-        "entryPoint": "modules/main.py",
-        "className": "Runner",
-        "initInputs": [],
+        "name": "my-module",
+        "entryPoint": "my_entry_point.py",
+        "className": "ClassName",
+        "computeConfig": "compute-configs1",
+        "description": "Module Desciption",
+        "initInputs": [
+          {
+            "type": "DL Entity",
+            "name": "param name"
+          }
+        ],
         "functions": [
           {
-            "name": "data_split",
-            "description": "Data splitting custom node",
+            "name": "func1",
             "input": [
               {
-                "type": "Item",
-                "name": "item"
+                "type": "DL Entity",
+                "name": "param name"
               }
             ],
             "output": [
               {
-                "type": "Item",
-                "name": "item"
+                "type": "DL Entity",
+                "name": "param name"
               }
             ],
-            "displayIcon": "qa-sampling",
-            "displayName": "Data Split"
-          },
-          {
-            "name": "test",
-            "description": "Testing the waters",
-            "input": [],
-            "output": [],
-            "displayIcon": "node-train",
-            "displayName": "Test"
+            "displayName": "Function Display Name",
+            "displayIcon": "",
+            "description": "Function Description"
           }
         ]
       }
-    ]
-  }
-}
-```
-
-### Toolbars
-
-* *Invoke a panel or a function in an application*
-
-```json
-{
-  "components": {
-    "panels": [
+    ],
+    "models": [
       {
-        "name": "dialogPanel",
-        "supportedSlots": [
-          {
-            "type": "dialog",
-            "configuration": {
-              "layout": {
-                "position": "center",
-                "width": 455,
-                "height": 340
-              }
-            }
-          }
+        "name": "model-name",
+        "moduleName": "my-module",
+        "scope": "project",
+        "status": "trained",
+        "configuration": {},
+        "supportedMethods": {
+          "load": true,
+          "predict": true,
+          "train": true,
+          "evaluate": true
+        },
+        "description": "Model Description.",
+        "labels": []
+      }
+    ],
+    "pipelineNodes": [
+      {
+        "panel": "PanelName",
+        "name": "Node Name",
+        "invoke": {
+          "type": "function",
+          "namespace": "my-service.my-module.func1"
+        },
+        "categories": [
+          "categoryName"
         ],
-        "conditions": {
-          "resources": []
+        "scope": "node"
+      }
+    ],
+    "services": [
+      {
+        "name": "my-service",
+        "panelNames": [
+          "PanelName"
+        ],
+        "runtime": {
+          "podType": "regular-xs",
+          "concurrency": 10,
+          "autoscaler": {
+            "type": "rabbitmq",
+            "minReplicas": 0,
+            "maxReplicas": 2,
+            "queueLength": 10
+          }
         }
       }
     ],
     "toolbars": [
       {
-        "displayName": "Run Dialog",
-        "invoke": {
-          "type": "panel",
-          "namespace": "dialogPanel"
-        },
-        "icon": "icon-dl-add",
-        "location": "datasetsDashboard",
-        "conditions": {
-          "resources": []
-        }
-      },
-      {
-        "displayName": "Run function",
+        "displayName": "Toolbar Display Name",
         "invoke": {
           "type": "function",
-          "namespace": "my_module.my_function"
+          "namespace": "my-service.func1"
         },
-        "icon": "icon-dl-edit",
-        "location": "itemMenu",
-        "conditions": {
-          "resources": []
-        }
-      }
-    ],
-    "modules": [
-      {
-        "name": "my_module",
-        "entryPoint": "modules/main.py",
-        "className": "Runner",
-        "initInputs": [],
-        "functions": [
-          {
-            "name": "my_function",
-            "input": [
-              {
-                "type": "Item",
-                "name": "item"
-              }
-            ],
-            "output": [
-              {
-                "type": "Item",
-                "name": "item"
-              }
-            ]
-          }
-        ]
+        "location": "datasetBrowserApps",
+        "icon": ""
       }
     ]
   }
 }
 ```
+
+Here are some real DPKs example from our GitHub space, for more go check all our DPK repositories:
+- [Model - YOLOv8](https://github.com/dataloop-ai-apps/yolov8/blob/main/dataloop.json)
+- [Panel And Node - DataSplit](https://github.com/dataloop-ai-apps/data-split/blob/main/dataloop.json)
+- [Toolbars - Dtlpy-Converters](https://github.com/dataloop-ai-apps/yolov8/blob/main/dataloop.json)
+
