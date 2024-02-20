@@ -148,5 +148,5 @@ NOTE: This is not supposed to be a real app, and publishing or installing it wil
 Here are some real DPKs example from our GitHub space, for more go check all our DPK repositories:
 - [Model - YOLOv8](https://github.com/dataloop-ai-apps/yolov8/blob/main/dataloop.json)
 - [Panel And Node - DataSplit](https://github.com/dataloop-ai-apps/data-split/blob/main/dataloop.json)
-- [Toolbars - Dtlpy-Converters](https://github.com/dataloop-ai-apps/yolov8/blob/main/dataloop.json)
+- [Toolbars - Dtlpy-Converters](https://github.com/dataloop-ai-apps/dtlpy-converters/blob/main/dataloop.json)
 
