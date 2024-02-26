@@ -22,7 +22,7 @@ def section2a():
 
 def section3():
     """
-    ## Convert Annotations To COCO Format
+    ## Convert Annotations from COCO Format
 
     """
 
