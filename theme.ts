@@ -14,7 +14,7 @@ export const theme: ThemeInterface = {
   colors: {
     tonalOffset: 0.2,
     primary: {
-      main: '#CDE2F5',
+      main: '#4070a0',
       light: ({ colors }) => lighten(colors.tonalOffset, colors.primary.main),
       dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
       contrastText: ({ colors }) => readableColor(colors.primary.main),

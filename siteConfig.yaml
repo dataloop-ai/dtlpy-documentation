@@ -33,7 +33,7 @@ nav:
   #  page: developer-portal/index.md
 
   - label: Developers and support docs
-    icon: ./assets/site/dl_icon.png
+    icon: ./assets/site/dataloop-logo.png
     page: ./tutorials/tutorials.mdx
     #page: https://dataloop.ai/docs/welcome
 
