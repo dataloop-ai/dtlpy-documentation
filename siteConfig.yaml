@@ -28,7 +28,7 @@ stylesheets:
 nav:
 
   - label: Dataloop Platform
-    icon: ./assets/site/dl_icon.png
+    icon: ./assets/site/dataloop-logo.svg
     href: https://console.dataloop.ai
   #  page: developer-portal/index.md
 
@@ -38,7 +38,7 @@ nav:
     #page: https://dataloop.ai/docs/welcome
 
   - label: SDK and CLI docs
-    icon: ./assets/site/dl_icon.png
+    icon: ./assets/site/dataloop-logo.svg
     page: ./resources/resources.mdx
     #href: https://sdk-docs.dataloop.ai/en/latest/index.html
 
