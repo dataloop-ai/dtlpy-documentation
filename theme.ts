@@ -156,6 +156,7 @@ export const theme: ThemeInterface = {
     },
   },
   logo: {
+    height: '4rem'
     maxHeight: ({ sidebar }) => sidebar.width,
     maxWidth: ({ sidebar }) => sidebar.width,
     gutter: '2px',
