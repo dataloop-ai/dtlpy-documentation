@@ -28,7 +28,7 @@ def func1():
 
 def func2():
     """
-    Please see an example [here](https://github.com/dataloop-ai-apps/torch-models/blob/main/resnet_adapter.py) (for PyTroch's Resnet) in Github of a working model adapter and see how to construct Annotation Collections.
+    Please see an example [here](https://github.com/dataloop-ai-apps/torch-models/blob/main/adapters/resnet/resnet_adapter.py) (for PyTroch's Resnet) in Github of a working model adapter and see how to construct Annotation Collections.
 
     ### Push the package
 
