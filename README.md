@@ -95,6 +95,8 @@ jupyter notebook tutorials
 * Model management
   * Advance
     *  [Dataloop dataset generator](tutorials/model_management/advance/dataloop_dataset_generator/chapter.ipynb)
+    *  [Model adapter flows](tutorials/model_management/advance/model_adapter_flows/chapter.ipynb)
+    *  [Model annotations](tutorials/model_management/advance/model_annotations/chapter.ipynb)
     *  [Model metrics](tutorials/model_management/advance/model_metrics/chapter.ipynb)
     * Train models locally
       *  [Classification](tutorials/model_management/advance/train_models_locally/classification/chapter.ipynb)
@@ -103,6 +105,7 @@ jupyter notebook tutorials
   *  [Create new model sdk](tutorials/model_management/create_new_model_sdk/chapter.ipynb)
   *  [Create new model ui](tutorials/model_management/create_new_model_ui/chapter.ipynb)
   *  [Introduction](tutorials/model_management/introduction/chapter.ipynb)
+  *  [New model torchvision example](tutorials/model_management/new_model_torchvision_example/chapter.ipynb)
 * Pipelines
   *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
 * Recipe and ontology
