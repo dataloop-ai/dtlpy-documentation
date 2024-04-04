@@ -30,8 +30,8 @@ project.apps.install(dpk=dpk)
 
 
 ### Parts of an application
-#### DPK - Dataloop Package
-The Dataloop package is a zipped file of the entire application's code.
+#### DPK - Dataloop Package Kit
+The Dataloop package kit is a zipped file of the entire application's code.
 It holds all the required components of the application, the panels it is serving, the services it uses, and the source code of the application.
 The base folder structure of the package is:
 
