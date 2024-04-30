@@ -17,25 +17,28 @@ def func1():
     ![Arch diagram](../../../assets/images/model_management/model_diagram.jpg)
 
 
-    ### Package and Model Entities
+    ### DPK, Apps and Model Entities
 
-    #### Package
+    #### DPK
 
-    We will use the Package entity to save the architecture of the model (e.g Yolov8, Inception, SVM, etc.) and any other function and modules.
+    We will use the DPK entity to save the architecture of the model (e.g Yolov8, Inception, SVM, etc.) and any other function and modules.
 
-    - Packages should include a Model Adapter to create the Dataloop API
+    - The DPK code should include a Model Adapter to create the Dataloop API
 
-    Models that are ready as-is to use can be found in the AI Library. All models listed in the AI Library are pretrained and include the model architecture code and default configurations.
+    Models that are ready as-is to use can be found in the Market Place. All models listed in the Market Place are pretrained and include the model architecture code and default configurations.
+
+    #### Apps
+    Once the app is installed, it will clone the pretrained model into the project
 
     #### Model
 
-    Using the Package (code), Dataset and Ontology (data and labels) and configuration (a dictionary) we can now create a Model.
+    Using the App (code), Dataset and Ontology (data and labels) and configuration (a dictionary) we can now create a Model.
 
     The Model contains the weights and any other artifacts needed to load the trained model and inference.
 
     A Model can also be cloned to be a starting point for a new model (for fine-tuning or transfer learning).
 
-    ### Additional Package components
+    ### Additional Components
 
     Some users may want to further customize their models, such as uploading their own model weights or creating their own custom model. This can be achieved with Artifacts and a Model Adapter.
 
