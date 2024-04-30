@@ -33,9 +33,6 @@ def two():
     from torchvision.models.detection import fasterrcnn_resnet50_fpn_v2, FasterRCNN_ResNet50_FPN_V2_Weights
     import dtlpy as dl
 
-    @dl.Package.decorators.module(description='Model Adapter for FasterRCNN object detection',
-                                  name='model-adapter',
-                                  init_inputs={'model_entity': dl.Model})
     class FasterRCNNAdapter(dl.BaseModelAdapter):
         def load(self, local_path, **kwargs):
             # Step 1: Initialize model with the best available weights
@@ -70,46 +67,11 @@ def two():
             return batch_annotations
 
 
-def three():
-    project = dl.projects.get('FasterRCNN Example')
-    weights = FasterRCNN_ResNet50_FPN_V2_Weights.DEFAULT
-    metadata = dl.Package.get_ml_metadata(cls=FasterRCNNAdapter,
-                                          default_configuration={},
-                                          output_type=dl.AnnotationType.BOX)
-    module = dl.PackageModule.from_entry_point(entry_point='adapter.py')
-    package = project.packages.push(package_name='faster-rcnn',
-                                    src_path=os.getcwd(),
-                                    package_type='ml',
-                                    modules=[module],
-                                    service_config={
-                                        'runtime': dl.KubernetesRuntime(
-                                            pod_type=dl.INSTANCE_CATALOG_REGULAR_M,
-                                            autoscaler=dl.KubernetesRabbitmqAutoscaler(
-                                                min_replicas=0,
-                                                max_replicas=1
-                                            ),
-                                            concurrency=1
-                                        ).to_json()},
-                                    metadata=metadata
-                                    )
-    model = package.models.create(model_name='faster-rcnn',
-                                  description='faster-rcnn for object segmentation',
-                                  tags=['pretrained'],
-                                  scope='project',
-                                  status='trained',
-                                  configuration={
-                                      'id_to_label_map': {i: x.tag for i, x in enumerate(weights.meta["categories"])},
-                                  },
-                                  project_id=project.id,
-                                  labels=weights.meta["categories"],
-                                  output_type='box',
-                                  input_type='image'
-                                  )
-
-
 def four():
+    project = dl.projects.get("Test Project")
+    model = project.models.get("fasterrcnn")  # From the manifest's models.name
     model.deploy()
 
 
 def five():
-    ex = model.predict(item_ids=[''])
+    ex = model.predict(item_ids=['...'])
