@@ -309,12 +309,28 @@ To integrate your model adapter into Dataloop:
 ```  
 the labels have been cut short to save space, but the full manifest includes 80 labels.  
   
-4. Use the command line tool to install the app, running it from the model project directory:  
+4. To publish and install the model you can either:  
+  
+4.1. Use the command line tool to install the app, running it from the model project directory:  
   
 ```bash  
 dlp app publish --project-name "Test Project"  
 ```  
   
+and then find the published app in the Models Marketplace and click Install:  
+  
+![Marketplace Model Installation](../../../assets/images/model_management/market_place_install.png)  
+  
+4.2. Install from the SDK, running the following lines with python from the directory where the manifest is located:  
+  
+
+```python
+project = dl.projects.get("Test Project")
+# Publish the dpk
+fasterrcnn_dpk = project.dpks.publish()
+# Install the app:
+project.apps.install(fasterrcnn_dpk)
+```
   
 ## Deploy the model  
   

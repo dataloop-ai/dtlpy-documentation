@@ -67,6 +67,14 @@ def two():
             return batch_annotations
 
 
+def three():
+    project = dl.projects.get("Test Project")
+    # Publish the dpk
+    fasterrcnn_dpk = project.dpks.publish()
+    # Install the app:
+    project.apps.install(fasterrcnn_dpk)
+
+
 def four():
     project = dl.projects.get("Test Project")
     model = project.models.get("fasterrcnn")  # From the manifest's models.name
