@@ -79,6 +79,7 @@ jupyter notebook tutorials
     *  [Annotation level](tutorials/data_management/sort_and_filter/annotation_level/chapter.ipynb)
     *  [Item level](tutorials/data_management/sort_and_filter/item_level/chapter.ipynb)
     *  [Pagination](tutorials/data_management/sort_and_filter/pagination/chapter.ipynb)
+    *  [Saved filters](tutorials/data_management/sort_and_filter/saved_filters/chapter.ipynb)
   *  [Upload and manage annotations](tutorials/data_management/upload_and_manage_annotations/chapter.ipynb)
   *  [Upload and manage items](tutorials/data_management/upload_and_manage_items/chapter.ipynb)
   *  [Working with metadata](tutorials/data_management/working_with_metadata/chapter.ipynb)

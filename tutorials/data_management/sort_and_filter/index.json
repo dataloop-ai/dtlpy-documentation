@@ -1,28 +1,33 @@
 {
-  "name": "sort-and-filter",
-  "title": "Sort and Filter",
-  "description": "Use Dataloop's Python SDK to create DQL filter and iteration over items",
-  "content": [
-    {
-      "displayName": "Advance SDK Filters",
-      "description": "More complex filters on items and annotations",
-      "location": "data_management/sort_and_filter/advanced_sdk_filters/chapter.md"
-    },
-    {
-      "displayName": "Annotation Level Filters",
-      "description": "Create filter on annotations, use DQL on an annotation level attributes",
-      "location": "data_management/sort_and_filter/annotation_level/chapter.md"
-    },
-    {
-      "displayName": "Item Level",
-      "description": "Create filter on items, use DQL on an item level attributes",
-      "location": "data_management/sort_and_filter/item_level/chapter.md"
-    },
-    {
-      "displayName": "Pagination",
-      "description": "How to use pages and iteration over items",
-      "location": "data_management/sort_and_filter/pagination/chapter.md"
-    }
-  ]
+    "name": "sort-and-filter",
+    "title": "Sort and Filter",
+    "description": "Use Dataloop's Python SDK to create DQL filter and iteration over items",
+    "content": [
+        {
+            "displayName": "Item Level",
+            "description": "Create filter on items, use DQL on an item level attributes",
+            "location": "data_management/sort_and_filter/item_level/chapter.md"
+        },
+        {
+            "displayName": "Annotation Level Filters",
+            "description": "Create filter on annotations, use DQL on an annotation level attributes",
+            "location": "data_management/sort_and_filter/annotation_level/chapter.md"
+        },
+        {
+            "displayName": "Saved Filters",
+            "description": "Save, list and load saved DQL filters",
+            "location": "data_management/sort_and_filter/saved_filters/chapter.md"
+        },
+        {
+            "displayName": "Advance SDK Filters",
+            "description": "More complex filters on items and annotations",
+            "location": "data_management/sort_and_filter/advanced_sdk_filters/chapter.md"
+        },
+        {
+            "displayName": "Pagination",
+            "description": "How to use pages and iteration over items",
+            "location": "data_management/sort_and_filter/pagination/chapter.md"
+        }
+    ]
 }
 

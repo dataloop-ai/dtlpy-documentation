@@ -54,12 +54,14 @@ contents:
     - expanded: false
       group: Sort and Filters
       pages:
-      - label: Advance SDK Filters
-        page: tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md
-      - label: Annotation Level Filters
-        page: tutorials/data_management/sort_and_filter/annotation_level/chapter.md
       - label: Item Level
         page: tutorials/data_management/sort_and_filter/item_level/chapter.md
+      - label: Annotation Level Filters
+        page: tutorials/data_management/sort_and_filter/annotation_level/chapter.md
+      - label: Saved Filters
+        page: tutorials/data_management/sort_and_filter/saved_filters/chapter.md
+      - label: Advance SDK Filters
+        page: tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md
       - label: Pagination
         page: tutorials/data_management/sort_and_filter/pagination/chapter.md
     - label: Working with Metadata
