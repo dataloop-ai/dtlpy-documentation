@@ -1,25 +1,15 @@
 import dtlpy as dl
 
 
-def func1():
-    filters = dl.Filters(resource=dl.FiltersResource.MODEL, use_defaults=False)
-    filters.add(field='scope', values='public')
-    dl.models.list(filters=filters).print()
-
-
 def func2():
-    project = dl.projects.get("Models")
-    dataset = project.datasets.get("Resnet Classification")
+    project = dl.projects.create(project_name = "<project-name>")
+    dataset = project.datasets.create(dataset_name ="<dataset-name>")
     item = dataset.items.upload(
         'https://github.com/dataloop-ai/dtlpy-documentation/blob/f63d2c6ccefbde90255d7a00bdf9cda45f24cb6f/assets/images/hamster.jpg?raw=true')
 
 
 def func3():
-    public_model = dl.models.get(model_name="pretrained-resnet50")
-
-    model = project.models.clone(from_model=public_model,
-                                 model_name='resnet_50',
-                                 project_id=project.id)
+    model = project.models.get(model_name ="<model-name>")
     service = model.deploy(service_config={'runtime': {"podType": dl.INSTANCE_CATALOG_REGULAR_S}})
 
 
