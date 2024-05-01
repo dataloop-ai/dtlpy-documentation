@@ -1,4 +1,4 @@
-# Txt Item
+# Text Item
 
 To annotate text file by word or sentence you can use the `dl.Text` annotation.
 It uses start and end character location to label specific word, sentence or any other text block in the txt file.
@@ -22,6 +22,6 @@ builder.add(annotation_definition=dl.Text(text_type='block',
 item.annotations.upload(builder)
 ```
 
-When you open the item in the studio, the word will be annotate with the `Person` class:
-![AnnotatedItem](../../../assets/images/studio/text_studio.png)
+When you open the item in the studio, the word will be annotated with the `Person` class:
+![AnnotatedItem](../../../assets/images/studios/text_studio.png)
 
