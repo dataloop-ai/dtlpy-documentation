@@ -14,6 +14,11 @@
             "location": "annotations/video/chapter.md"
         },
         {
+            "displayName": "Text Annotations",
+            "description": "Upload text annotations by char location",
+            "location": "annotations/text/chapter.md"
+        },
+        {
             "displayName": "Prompt Annotations",
             "description": "Upload and work with prompts and annotations (responses)",
             "location": "annotations/prompts/chapter.md"

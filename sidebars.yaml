@@ -89,6 +89,8 @@ contents:
         page: tutorials/annotations/image/advance_tutorials/chapter.md
     - label: Video Annotations
       page: tutorials/annotations/video/chapter.md
+    - label: Text Annotations
+      page: tutorials/annotations/text/chapter.md
     - label: Prompt Annotations
       page: tutorials/annotations/prompts/chapter.md
   - expanded: false

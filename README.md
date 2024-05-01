@@ -52,6 +52,7 @@ jupyter notebook tutorials
     *  [Ellipse and item description](tutorials/annotations/image/ellipse_and_item_description/chapter.ipynb)
     *  [Polygon and polyline](tutorials/annotations/image/polygon_and_polyline/chapter.ipynb)
     *  [Segmentation](tutorials/annotations/image/segmentation/chapter.ipynb)
+  *  [Text](tutorials/annotations/text/chapter.ipynb)
   *  [Video](tutorials/annotations/video/chapter.ipynb)
 *  [Auto annotate service](tutorials/auto_annotate_service/chapter.ipynb)
 * Data management
