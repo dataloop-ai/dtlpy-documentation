@@ -157,7 +157,6 @@ flowchart TD
     style id4 fill:#ffff99, stroke: red
     click id2 "./#load_from_model"
     click id3 "./#predict_items"
-    click id4 "./#evaluate"
 ```
 
 It starts by invoking [```load_from_model```](#load_from_model) so it has the latest model artifacts and then calls ```predict_dataset``` which in turn calls ```predict_items``` for a whole dataset and a filter provided, which should determine a test set for this dataset. Finally, ```evaluate``` will compute metrics by comparing the model's predictions with the ground truth present in the test set.
