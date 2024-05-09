@@ -11,7 +11,10 @@ def func1():
     - Predicting from pretrained models.
     - Fine-tuning training on a custom dataset.
 
+    For More information on the using the models in the UI:
 
+    - [Marketplace Models](https://dataloop.ai/docs/startline-models)
+    - [Model Management Overview](https://dataloop.ai/docs/model-management-overview)
     """
 
 
