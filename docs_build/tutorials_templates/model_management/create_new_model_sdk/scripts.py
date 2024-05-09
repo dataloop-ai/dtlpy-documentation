@@ -28,51 +28,19 @@ def func1():
             return batch_annotations
 
 
-def func2():
-    import dtlpy as dl
-    from model_adapter import SimpleModelAdapter
-
-    project = dl.projects.get(project_name='<project_name>')
-    dataset = project.datasets.get(dataset_name='<dataset_name')
-
-    metadata = dl.Package.get_ml_metadata(cls=SimpleModelAdapter,
-                                          default_configuration={},
-                                          output_type=dl.AnnotationType.CLASSIFICATION
-                                          )
-    module = dl.PackageModule.from_entry_point(entry_point='model_adapter.py')
-
-
 def func3():
-    package = project.packages.push(package_name='My-Package',
-                                    src_path=os.getcwd(),
-                                    package_type='ml',
-                                    # codebase=codebase,
-                                    modules=[module],
-                                    service_config={
-                                        'runtime': dl.KubernetesRuntime(pod_type=dl.INSTANCE_CATALOG_GPU_K80_S,
-                                                                        autoscaler=dl.KubernetesRabbitmqAutoscaler(
-                                                                            min_replicas=0,
-                                                                            max_replicas=1),
-                                                                        concurrency=1).to_json()},
-                                    metadata=metadata)
+    project = dl.projects.get(project_name="<your-project-name>")
+    dpk = dl.dpks.get(dpk_name='<app-name>')
+    project.apps.install(dpk=dpk)
 
 
 def func4():
-    model = package.models.create(model_name='tutorial-model',
-                                  description='first model we are uploading',
-                                  tags=['pretrained', 'tutorial'],
-                                  dataset_id=None,
-                                  configuration={},
-                                  project_id=package.project.id,
-                                  labels=['car', 'fish', 'pizza']
-                                  )
+    project = dl.projects.get(project_name="<your-project-name>")
+    model = project.models.get("<model-name>")  # From the manifest's models.name
     artifact = model.artifacts.upload(filepath='/path/to/model_weights.pth')
     model.configuration['weights_filename'] = artifact.filename
 
-
-def func5():
-    model.status = 'trained'
-    model.update()
+    # to deploy the model
     model.deploy()
 
 

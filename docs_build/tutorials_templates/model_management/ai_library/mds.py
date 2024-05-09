@@ -1,17 +1,16 @@
 def func1():
     """
-    # Models from the AI Library
+    # Models from the Marketplace
 
-    Ready-to-use models are available in the Dataloop AI Library
+    Ready-to-use models are available in Dataloop Marketplace.
 
-    The AI library contains various algorithms and pretrained models that can be used for inference or fine-tuning via additional training on your custom datasets.
+    The Marketplace contains various algorithms and pretrained models that can be used for inference or fine-tuning via additional training on your custom datasets.
 
-    This tutorial will cover how to use AI library models for:
+    This tutorial will cover how to use Marketplace models apps for:
 
-    - predicting from pretrained models, and
-    - fine-tuning training on a custom dataset.
+    - Predicting from pretrained models.
+    - Fine-tuning training on a custom dataset.
 
-    To see all available models in the AI Library, use a filter to view all available models with a "public" scope"
 
     """
 
@@ -20,7 +19,7 @@ def func2():
     """
     ## Predicting
 
-    ### Clone and deploy a model
+    ### Install and deploy a model
 
     First we'll create a new project and dataset, and upload a new item:
 
@@ -29,12 +28,15 @@ def func2():
 
 def func3():
     """
+    Then, we can go to Marketplace and choose a global model to install from the Models tab:
+    ![Marketplace Model Public Models](../../../assets/images/model_management/marketplace-models.png)
 
-    We'll get the public model clone it into the new project.
+    After installing the public app, we can use the model in our project.
 
-    Only models that are trained (i.e. model.status = 'trained') can be deployed. Models from the AI library can be deployed directly.
+    Only models that are trained (i.e. model.status = 'trained') can be deployed. Models from Marketplace can be deployed directly.
 
-    Note: You can add any service configuration to override the default on the deployed service
+    Note:   1. The model created by installing the app can be found in "Models" section.
+            2.You can add any service configuration to override the default on the deployed service.
     """
 
 
