@@ -47,3 +47,13 @@ def section5():
 
 
     """
+
+
+def section6():
+    """
+    ## Create Semantic Segmentation annotations from an Instance Mask
+    The following script creates semantic segmentation annotations based on the given instance mask and
+    the instance map, and then upload them to the Dataloop platform.
+    Please notice that the instance map should be ordered by the mask values.
+
+    """
