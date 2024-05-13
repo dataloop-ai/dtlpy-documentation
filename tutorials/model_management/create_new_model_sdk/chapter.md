@@ -1,12 +1,13 @@
 ## Create your own model  
   
-You can use your own model to use on the platform by creating Package and Model entities, and then use a model adapter to create an API with Dataloop.  
+You can use your own model to use on the platform by creating an App and Model entities, and then use a model adapter to create an API with Dataloop.  
   
 In this tutorial you will learn how to create a basic model adapter to be able to inference on platform items.  
   
 ### Create a model adapter  
   
-In the example code below, the adapter is defined in a script saved as `adapter.py`. The SimpleModelAdapter class inherits from `dl.BaseModelAdapter`, which contains all the Dataloop methods required to interact with the Package and Model, as well as some some internal wrapper functions that make it easier to use Dataloop entities (e.g. `predict_items`, `predict_datasets`).  
+In the example code below, the adapter is defined in a script saved as `adapter.py`. The SimpleModelAdapter class inherits from `dl.BaseModelAdapter`, which contains  
+all the Dataloop methods required to interact with the App and Model, as well as some internal wrapper functions that make it easier to use Dataloop entities (e.g. `predict_items`, `predict_datasets`).  
   
 The minimum required functions to implement for a model to inference are `load` and `predict`.  
   
@@ -18,7 +19,7 @@ In the `dl.BaseModelAdapter` we have a `load_from_model` wrapper which will down
   
 The wrapper for `predict` is `predict_items`, which takes a list of items from the platform and prepares everything for predicting. It uses the `prepare_item_func` to preprocess items into the a batch and calles the custom `predict`. After the prediction, it takes the ouput and uploads it to each item.  
   
-NOTE: You can edit the preprocess function by simply override the `prepare_item_func` method. For example, to pass the items as-is you can just return the inputed item.  
+NOTE: You can edit the preprocess function by simply override the `prepare_item_func` method. For example, to pass the items as-is you can just return the inputted item.  
   
 in `adapter.py`, add the following model adapter:  
 
@@ -47,69 +48,235 @@ class SimpleModelAdapter(dl.BaseModelAdapter):
 ```
 Please see an example [here](https://github.com/dataloop-ai-apps/torch-models/blob/main/adapters/resnet/resnet_adapter.py) (for PyTroch's Resnet) in Github of a working model adapter and see how to construct Annotation Collections.  
   
-### Push the package  
+### Publish the App  
   
-To create our Package entity, we first need to retrieve the metadata and indicate where the entry point to the package is within the codebase.  
+In order to create the app for publishing, installing and using the model created from the Model Adapter, a DPK Manifest is required.  
+For more information regarding our apps please see the Applications chapter [here] (https://developers.dataloop.ai/tutorials/applications/).  
   
-
-```python
-import dtlpy as dl
-from model_adapter import SimpleModelAdapter
-project = dl.projects.get(project_name='<project_name>')
-dataset = project.datasets.get(dataset_name='<dataset_name')
-metadata = dl.Package.get_ml_metadata(cls=SimpleModelAdapter,
-                                      default_configuration={},
-                                      output_type=dl.AnnotationType.CLASSIFICATION
-                                      )
-module = dl.PackageModule.from_entry_point(entry_point='model_adapter.py')
-```
-Then we can push the package and all its components to the cloud.  
-  
-Service configs help define the dl.Service that will be created when deploying/training the model.  
+A Dataloop Manifest example:  
+``` json  
+    {  
+    "name": "<your app name>",  
+    "displayName": "<the app display name>",  
+    "version": "<current version>",  
+    "scope": "project",  
+    "description": "",  
+    "codebase": {  
+        "type": "git",  
+        "gitUrl": "<your-url>",  
+        "gitTag": ""  
+    },  
+    "components": {  
+        "computeConfigs": [  
+            {  
+                "name": "<service-name>",  
+                "runtime": {  
+                    "podType": "regular-xs",  
+                    "concurrency": 1,  
+                    "autoscaler": {  
+                        "type": "rabbitmq",  
+                        "minReplicas": 0,  
+                        "maxReplicas": 2,  
+                        "queueLength": 100  
+                    }  
+                }  
+            }  
+        ],  
+        "modules": [  
+            {  
+                "name": "<module-name>",  
+                "entryPoint": "model_adapter.py",  
+                "className": "Adapter",  
+                "computeConfig": "<service-name>",  
+                "description": "",  
+                "initInputs": [  
+                    {  
+                        "type": "Model",  
+                        "name": "model_entity"  
+                    }  
+                ],  
+                "functions": [  
+                    {  
+                        "name": "evaluate_model",  
+                        "input": [  
+                            {  
+                                "type": "Model",  
+                                "name": "model",  
+                                "description": "Dataloop Model Entity"  
+                            },  
+                            {  
+                                "type": "Dataset",  
+                                "name": "dataset",  
+                                "description": "Dataloop Dataset Entity"  
+                            }  
+                        ],  
+                        "output": [  
+                            {  
+                                "type": "Model",  
+                                "name": "model",  
+                                "description": "Dataloop Model Entity"  
+                            },  
+                            {  
+                                "type": "Dataset",  
+                                "name": "dataset",  
+                                "description": "Dataloop Dataset Entity"  
+                            }  
+                        ],  
+                        "displayName": "Evaluate a Model",  
+                        "displayIcon": "",  
+                        "description": "Function to evaluate model performance"  
+                    },  
+                    {  
+                        "name": "predict_items",  
+                        "input": [  
+                            {  
+                                "type": "Item[]",  
+                                "name": "items",  
+                                "description": "List of items to run inference on"  
+                            }  
+                        ],  
+                        "output": [  
+                            {  
+                                "type": "Item[]",  
+                                "name": "items",  
+                                "description": "The same input images for prediction."  
+                            },  
+                            {  
+                                "type": "Annotation[]",  
+                                "name": "annotations",  
+                                "description": "The predicted annotations."  
+                            }  
+                        ],  
+                        "displayName": "Predict Items",  
+                        "displayIcon": "",  
+                        "description": "Function to run inference on items"  
+                    },  
+                    {  
+                        "name": "predict_dataset",  
+                        "input": [  
+                            {  
+                                "type": "Dataset",  
+                                "name": "dataset",  
+                                "description": ""  
+                            },  
+                            {  
+                                "type": "Json",  
+                                "name": "filters",  
+                                "description": "Dataloop Filter DQL"  
+                            }  
+                        ],  
+                        "output": [],  
+                        "displayName": "Predict Dataset",  
+                        "displayIcon": "",  
+                        "description": "Function to run inference on a dataset."  
+                    },  
+                    {  
+                        "name": "train_model",  
+                        "input": [  
+                            {  
+                                "type": "Model",  
+                                "name": "model",  
+                                "description": "Dataloop Model Entity"  
+                            }  
+                        ],  
+                        "output": [  
+                            {  
+                                "type": "Model",  
+                                "name": "model",  
+                                "description": "Dataloop Model Entity"  
+                            }  
+                        ],  
+                        "displayName": "Train a Model",  
+                        "displayIcon": "",  
+                        "description": "Function to train model"  
+                    },  
+                    {  
+                        "name": "predict_dataset",  
+                        "input": [  
+                            {  
+                                "type": "Dataset",  
+                                "name": "dataset",  
+                                "description": ""  
+                            },  
+                            {  
+                                "type": "Json",  
+                                "name": "filters",  
+                                "description": "Dataloop Filter DQL"  
+                            }  
+                        ],  
+                        "output": [],  
+                        "displayName": "Predict Items",  
+                        "displayIcon": "",  
+                        "description": "Function to run inference on a whole dataset"  
+                    }  
+                ]  
+            }  
+        ],  
+        "models": [  
+             {  
+                "name": "<model name>",  
+                "moduleName": "<module name>",  
+                "scope": "project",  
+                "status": "pre-trained",  
+                "configuration": {  
+                    "weights_filename": "<weights file name>",  
+                    "epochs": 10,  
+                    "batch_size": 4,  
+                    "imgsz": 640,  
+                    "conf_thres": 0.25,  
+                    "iou_thres": 0.45,  
+                    "max_det": 1000  
+                },  
+                "inputType": "image",  
+                "outputType": "box",  
+                "supportedMethods": {  
+                    "load": true,  
+                    "predict": true,  
+                    "train": true,  
+                    "evaluate": true  
+                },  
+                "description": "",  
+                "labels": [< a list of your pre-trained labels>]  
+            }  
+        ]  
+    }  
+}  
+```  
   
 To change the service configurations, see the documentation on [service types](https://dataloop.ai/docs/service-runtime).  
   
+Then we can publish and install the app in our project.  
+  
+ ```bash  
+dlp app publish --project-name "<your project name>"  
+```  
+  
+To install the app from the UI, find the published app in the Models Marketplace and click Install:  
+  
+![Marketplace Model Installation](../../../assets/images/model_management/market_place_install.png)  
+  
+ To install from the SDK, running the following lines with python from the directory where the manifest is located:  
+  
 
 ```python
-package = project.packages.push(package_name='My-Package',
-                                src_path=os.getcwd(),
-                                package_type='ml',
-                                # codebase=codebase,
-                                modules=[module],
-                                service_config={
-                                    'runtime': dl.KubernetesRuntime(pod_type=dl.INSTANCE_CATALOG_GPU_K80_S,
-                                                                    autoscaler=dl.KubernetesRabbitmqAutoscaler(
-                                                                        min_replicas=0,
-                                                                        max_replicas=1),
-                                                                    concurrency=1).to_json()},
-                                metadata=metadata)
+project = dl.projects.get(project_name="<your-project-name>")
+dpk = dl.dpks.get(dpk_name='<app-name>')
+project.apps.install(dpk=dpk)
 ```
-### Create the model and upload artifacts  
+### Get the model and upload artifacts  
   
-Now you can create a model and upload pretrained model weights with an Artifact Item.  
+Now you can get the model created by installing the app and upload pretrained model weights with an Artifact Item.  
 Here, the weights will be uploaded as an Item Artifact connected to the model.  
-You can upload any weights file here and use the artifact filename to update the `weights_filename` field in the model configuration.  
+You can upload any weights file here and use the artifact filename to update the `weights_filename` field in the model configuration (in the manifest).  
   
   
 
 ```python
-model = package.models.create(model_name='tutorial-model',
-                              description='first model we are uploading',
-                              tags=['pretrained', 'tutorial'],
-                              dataset_id=None,
-                              configuration={},
-                              project_id=package.project.id,
-                              labels=['car', 'fish', 'pizza']
-                              )
+project = dl.projects.get(project_name="<your-project-name>")
+model = project.models.get("<model-name>")  # From the manifest's models.name
 artifact = model.artifacts.upload(filepath='/path/to/model_weights.pth')
 model.configuration['weights_filename'] = artifact.filename
-```
-To deploy a model we'll also update the status:  
-  
-
-```python
-model.status = 'trained'
-model.update()
+# to deploy the model
 model.deploy()
 ```
 ## Checking that your model works  
