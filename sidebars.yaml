@@ -93,6 +93,8 @@ contents:
       page: tutorials/annotations/text/chapter.md
     - label: Prompt Annotations
       page: tutorials/annotations/prompts/chapter.md
+    - label: Audio Annotations
+      page: tutorials/annotations/audio/chapter.md
   - expanded: false
     group: Recipe and Ontology
     page: tutorials/recipe_and_ontology.md
