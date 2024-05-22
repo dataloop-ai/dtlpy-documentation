@@ -19,11 +19,6 @@
             "location": "model_management/create_new_model_sdk/chapter.md"
         },
         {
-            "displayName": "Create a New Model UI",
-            "description": "Create a model from the UI",
-            "location": "model_management/create_new_model_ui/chapter.md"
-        },
-        {
             "displayName": "New Model - Torchvision Example",
             "description": "Full model adapter creation using torchvision",
             "location": "model_management/new_model_torchvision_example/chapter.md"

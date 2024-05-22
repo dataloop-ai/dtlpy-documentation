@@ -22,6 +22,11 @@
             "displayName": "Prompt Annotations",
             "description": "Upload and work with prompts and annotations (responses)",
             "location": "annotations/prompts/chapter.md"
+        },
+        {
+            "displayName": "Audio Annotations",
+            "description": "Upload audio annotations and transcriptions",
+            "location": "annotations/audio/chapter.md"
         }
     ]
 }
