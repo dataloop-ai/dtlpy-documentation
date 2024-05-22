@@ -197,6 +197,8 @@ filters.add(field=dl.KnownFields.TYPE,
             values=[dl.AnnotationType.SEGMENTATION, dl.AnnotationType.POLYGON],
             operator=dl.FiltersOperations.IN)
 annotations = item.annotations.list(filters=filters)
+if isinstance(annotations, dl.entities.PagedEntities):
+    annotations = annotations.all()
 # Merge all the annotations into masks
 final_masks = dict()
 for annotation in annotations:
