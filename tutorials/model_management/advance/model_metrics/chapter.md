@@ -2,7 +2,7 @@
   
 This tutorial will walk you through how to upload metrics from model training via the SDK.  
   
-NOTE: The models in our library already using and uploading metrics.  
+NOTE: The models in our marketplace already using and uploading metrics.  
   
 The Dataloop entities required are:  
  - dl.Package  
