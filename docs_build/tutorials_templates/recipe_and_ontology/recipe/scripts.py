@@ -14,6 +14,11 @@ def section2():
     recipe2 = recipe.clone(shallow=False)
 
 
+def section2a():
+    dataset = project.datasets.get(dataset_name="myDataSet")
+    recipe = dataset.switch_recipe(recipe_id="recipe_id")
+
+
 def section3():
     # as objects
     labels = dataset.labels

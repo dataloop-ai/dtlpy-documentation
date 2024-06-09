@@ -17,6 +17,14 @@ def section2():
     """
 
 
+def section2a():
+    """
+    ## Switch Dataset Recipe
+    Switch an existing dataset's recipe to a different one:
+
+    """
+
+
 def section3():
     """
     ## View Dataset Labels

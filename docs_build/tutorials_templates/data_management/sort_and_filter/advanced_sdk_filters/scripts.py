@@ -87,7 +87,6 @@ def section8():
 
 def section9():
     import datetime
-    import time
     # To filter absolute date (between 2-3, May 2024) use datetime directly
     earlier_timestamp = datetime.datetime(year=2024, month=5, day=2, hour=0, minute=0, second=0).isoformat()
     later_timestamp = datetime.datetime(year=2024, month=5, day=3, hour=0, minute=0, second=0).isoformat()

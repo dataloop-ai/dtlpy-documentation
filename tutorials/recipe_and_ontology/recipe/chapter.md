@@ -22,6 +22,14 @@ dataset = project.datasets.get(dataset_name="myDataSet")
 recipe = dataset.recipes.get(recipe_id="recipe_id")
 recipe2 = recipe.clone(shallow=False)
 ```
+## Switch Dataset Recipe  
+Switch an existing dataset's recipe to a different one:  
+  
+
+```python
+dataset = project.datasets.get(dataset_name="myDataSet")
+recipe = dataset.switch_recipe(recipe_id="recipe_id")
+```
 ## View Dataset Labels  
   
 
