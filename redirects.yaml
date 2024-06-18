@@ -1,3 +1,6 @@
 '/tutorials/model_management/ai_library/*':
   to: '/tutorials/model_management/marketplace/chapter'
   type: 301
+'/tutorials/model_management/create_new_model_ui/*':
+  to: '/tutorials/model_management/marketplace/chapter'
+  type: 301
