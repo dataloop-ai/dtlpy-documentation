@@ -162,35 +162,26 @@ def section7():
     # Merge all the annotations into masks
     final_masks = dict()
     for annotation in annotations:
-        # Get segmentation annotation mask and reference
+        # Get the segmentation annotation mask
         if annotation.type == dl.AnnotationType.SEGMENTATION:
             mask = annotation.geo
-            segmentation_ref = annotation
-        # Convert the polygon to segmentation and get its mask
+        # Convert the polygon to segmentation annotation and get its mask
         else:
             mask = dl.Segmentation.from_polygon(geo=annotation.geo,
                                                 label=annotation.label,
                                                 shape=(item.height, item.width)).geo
-            segmentation_ref = None
         # Merge the masks
         if annotation.label not in list(final_masks.keys()):
-            final_masks[annotation.label] = {"mask": mask, "segmentation_ref": segmentation_ref}
-        else:
-            final_masks[annotation.label]["mask"] = np.logical_or(final_masks[annotation.label]["mask"], mask)
-            if segmentation_ref is not None:
-                final_masks[annotation.label]["segmentation_ref"] = segmentation_ref
-    # Upload masks to the item
+            final_masks[annotation.label] = np.zeros(shape=(item.height, item.width))
+        final_masks[annotation.label] = np.logical_or(final_masks[annotation.label], mask)
+
+    # Create a builder instance and add the masks
     builder = item.annotations.builder()
     for label, mask in final_masks.items():
-        annotation = mask["segmentation_ref"]
-        if annotation is None:
-            builder.add(annotation_definition=dl.Segmentation(geo=mask["mask"], label=label))
-        else:
-            annotation.geo = mask["mask"]
-            annotation.update()
+        builder.add(annotation_definition=dl.Segmentation(geo=mask, label=label))
+    # Check if there are any annotations to upload
     if len(builder) > 0:
+        # Delete previous annotations
+        item.annotations.delete(filters=filters)
+        # Upload masks to the item
         builder.upload()
-        # Delete all the polygon annotations
-        polygon_filters = dl.Filters(resource=dl.FiltersResource.ANNOTATION)
-        polygon_filters.add(field=dl.KnownFields.TYPE, values=dl.AnnotationType.POLYGON)
-        item.annotations.delete(filters=polygon_filters)
