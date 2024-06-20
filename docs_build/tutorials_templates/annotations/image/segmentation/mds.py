@@ -65,10 +65,8 @@ def section7():
     The following script convert all the polygon annotations to segmentation annotations, merge them into one mask per
     label and then upload them to the Dataloop platform.
     Please notice the following things:
-    1. When the item have more than 2 annotations with the same label merging is required, otherwise only the first
-    existing/created annotation will be uploaded.
-    2. There is an option to upload the converted polygons without merging them to existing masks by setting a unique
-    object_id to each one of them.
-    3. The script assumes that the item has only up to one instance of semantic segmentation annotation per label.
+    1. All previous polygon and segmentation annotations will be deleted, and the new merged segmentation annotations
+       will be uploaded instead.
+    2. All the polygon and segmentation annotations attributes will be deleted.
 
     """
