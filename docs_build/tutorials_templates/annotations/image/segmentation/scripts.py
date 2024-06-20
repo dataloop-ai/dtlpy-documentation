@@ -136,8 +136,8 @@ def section6():
     # Create a builder instance
     builder = item.annotations.builder()
     # Create a random mask
-    mask = np.random.randint(2, size=(item.height, item.width))
-    instance_map = ["background", "foreground"]
+    mask = np.random.randint(low=0, high=2, size=(item.height, item.width))
+    instance_map = {"background": 0, "foreground": 1}
     # Add convert the instance mask to segmentation annotations
     builder.from_instance_mask(mask=mask, instance_map=instance_map)
     # Upload the annotations to the item
