@@ -43,8 +43,8 @@ For each directory, there's an index.json to build the structure of the chapters
 
 #### Build
 
-Run the `python docs_build/main.py` to collect all tutorials form the "tutorials_templates" and build the final "
-tutorials" directory.
+Run the `python docs_build/main.py` to collect all tutorials form the "docs_build/tutorials_templates" and build the final
+"tutorials" directory.
 
 *NOTE build the tutorials from the template directory will OVERRIDE the `tutorials` folder with the changes in the
 template!*

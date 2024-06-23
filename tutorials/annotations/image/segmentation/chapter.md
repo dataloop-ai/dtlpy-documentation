@@ -150,3 +150,35 @@ for i, color in enumerate(unique_colors):
     # upload all annotations
     item.annotations.upload(builder)
 ```
+## Create Semantic Segmentation annotations from an Instance Mask  
+The following script creates semantic segmentation annotations based on the given instance mask and  
+the instance map, and then upload them to the Dataloop platform.  
+Please notice that the instance map should be ordered by the mask values.  
+  
+
+```python
+import dtlpy as dl
+import numpy as np
+# Get project, dataset and item
+project = dl.projects.get(project_name='project_name')
+dataset = project.datasets.get(dataset_name='dataset_name')
+item = dataset.items.get(filepath='file_path')
+# Create a builder instance
+builder = item.annotations.builder()
+# Create a random mask
+mask = np.random.randint(low=0, high=2, size=(item.height, item.width))
+instance_map = {"background": 0, "foreground": 1}
+# Add convert the instance mask to segmentation annotations
+builder.from_instance_mask(mask=mask, instance_map=instance_map)
+# Upload the annotations to the item
+item.annotations.upload(annotations=builder)
+```
+## Convert and Merge Polygon Annotations to Segmentation Annotations  
+The following script convert all the polygon annotations to segmentation annotations, merge them into one mask per  
+label and then upload them to the Dataloop platform.  
+Please notice the following things:  
+1. All previous polygon and segmentation annotations will be deleted, and the new merged segmentation annotations  
+   will be uploaded instead.  
+2. All the polygon and segmentation annotations attributes will be deleted.  
+  
+Link: [polygon_to_segmentation_annotations.py](../../../../examples/annotations/polygon_to_segmentation_annotations.py)  
