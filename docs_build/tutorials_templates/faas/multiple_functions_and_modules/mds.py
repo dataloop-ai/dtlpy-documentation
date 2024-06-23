@@ -45,7 +45,7 @@ def func6():
     ### Push the package
     When you deployed the service in the previous tutorial (“Single Function”), a module and a package were automatically generated.
 
-    Now we will explicitly create and push the module as a package in the Dataloop FaaS library (application hub). For that, please specify the source path (src_path) of the “main.py” file you downloaded, and then run the following code:
+    Now we will explicitly create and push the module as a package in the Dataloop FaaS marketplace. For that, please specify the source path (src_path) of the “main.py” file you downloaded, and then run the following code:
     """
 
 

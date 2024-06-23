@@ -135,18 +135,19 @@ filters.pop_join(field='to-delete-annotation-field')
 ```
 ### Full Examples  
 #### How to filter items that were created between specific dates?  
-In this example, you will get all the items that were created in 2018.  
+Note that all the times in Dataloop's data bases are stored in UTC time, so when filtering by a relative time to your time zone, you'll need to adjust it to the UTC time.  
+Here are two examples:  
 
 ```python
 import datetime
-import time
-# NOTE: time filters must be in ISO format and in UTC (offset from local time). converting using datetime package as follows:
-earlier_timestamp = datetime.datetime(year=2018, month=1, day=1, hour=0, minute=0, second=0,
-                                      tzinfo=datetime.timezone(
-                                          datetime.timedelta(seconds=-time.timezone))).isoformat()
-later_timestamp = datetime.datetime(year=2019, month=1, day=1, hour=0, minute=0, second=0,
-                                    tzinfo=datetime.timezone(
-                                        datetime.timedelta(seconds=-time.timezone))).isoformat()
+# To filter absolute date (between 2-3, May 2024) use datetime directly
+earlier_timestamp = datetime.datetime(year=2024, month=5, day=2, hour=0, minute=0, second=0).isoformat()
+later_timestamp = datetime.datetime(year=2024, month=5, day=3, hour=0, minute=0, second=0).isoformat()
+# To filter relative time filtering, you'll need use utc time.
+# The following example will give only items uploaded in the last hour
+earlier_timestamp = (datetime.datetime.utcnow() - datetime.timedelta(hours=1)).isoformat()
+later_timestamp = datetime.datetime.utcnow().isoformat()
+# now we can construct the filter and send the request
 filters = dl.Filters()
 filters.add(field='createdAt', values=earlier_timestamp, operator=dl.FiltersOperations.GREATER_THAN)
 filters.add(field='createdAt', values=later_timestamp, operator=dl.FiltersOperations.LESS_THAN)

@@ -1,7 +1,7 @@
 def func1():
     """
     # Training an Object Detection Model with YOLOv8
-    In this tutorial we will download a public model from the AI library to inference and train on custom data locally.
+    In this tutorial we will download a public model from the marketplace to inference and train on custom data locally.
     Here we will use a YOLOv8 model.
 
     Create a venv and install the requirements for the yolov8 package [here](https://github.com/dataloop-ai-apps/yolov8/blob/master/requirements.txt/)

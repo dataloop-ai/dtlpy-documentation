@@ -82,7 +82,8 @@ def section9():
     """
     ### Full Examples
     #### How to filter items that were created between specific dates?
-    In this example, you will get all the items that were created in 2018.
+    Note that all the times in Dataloop's data bases are stored in UTC time, so when filtering by a relative time to your time zone, you'll need to adjust it to the UTC time.
+    Here are two examples:
     """
 
 

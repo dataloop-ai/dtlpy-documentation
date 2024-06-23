@@ -9,9 +9,9 @@
             "location": "model_management/introduction/chapter.md"
         },
         {
-            "displayName": "The AI Library",
-            "description": "Inference and train models from our library",
-            "location": "model_management/ai_library/chapter.md"
+            "displayName": "The AI Marketplace",
+            "description": "Install and easily use model from out marketplace",
+            "location": "model_management/marketplace/chapter.md"
         },
         {
             "displayName": "Create a New Model SDK",

@@ -62,7 +62,7 @@ def func5():
 
     ## Finetune on a custom dataset
 
-    If you would like to customize the AI library model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels you want to use for model training.
+    If you would like to customize the marketplace model (for transfer-learning or fine-tuning), you can indicate the new dataset and labels you want to use for model training.
 
     ### Define dataset subsets
     (train/validation split) of the dataset for the training session.

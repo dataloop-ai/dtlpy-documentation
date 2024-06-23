@@ -15,12 +15,12 @@
     },
     {
       "displayName": "Train Models Locally - Classification",
-      "description": "Download AI Library Models to Train Offline",
+      "description": "Use marketplace models to train offline",
       "location": "model_management/advance/train_models_locally/classification/chapter.md"
     },
     {
       "displayName": "Train Models Locally - Object Detection",
-      "description": "Download AI Library Models to Train Offline",
+      "description": "Use marketplace models to train offline",
       "location": "model_management/advance/train_models_locally/object_detection/chapter.md"
     },
     {

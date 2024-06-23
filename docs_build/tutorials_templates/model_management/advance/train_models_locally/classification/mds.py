@@ -1,7 +1,7 @@
 def func1():
     """
     # Training a classification model with ResNet
-    In this tutorial we will download a public model from the AI library to inference and train on custom data locally.
+    In this tutorial we will download a public model from the marketplace to inference and train on custom data locally.
     Here we will use a ResNet50 model.
 
     Start by installing the following packages if you don't have them installed already. The model adapter will use them later.

@@ -103,10 +103,9 @@ jupyter notebook tutorials
     * Train models locally
       *  [Classification](tutorials/model_management/advance/train_models_locally/classification/chapter.ipynb)
       *  [Object detection](tutorials/model_management/advance/train_models_locally/object_detection/chapter.ipynb)
-  *  [Ai library](tutorials/model_management/ai_library/chapter.ipynb)
   *  [Create new model sdk](tutorials/model_management/create_new_model_sdk/chapter.ipynb)
-  *  [Create new model ui](tutorials/model_management/create_new_model_ui/chapter.ipynb)
   *  [Introduction](tutorials/model_management/introduction/chapter.ipynb)
+  *  [Marketplace](tutorials/model_management/marketplace/chapter.ipynb)
   *  [New model torchvision example](tutorials/model_management/new_model_torchvision_example/chapter.ipynb)
 * Pipelines
   *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)

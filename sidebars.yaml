@@ -147,8 +147,8 @@ contents:
     pages:
     - label: Introduction
       page: tutorials/model_management/introduction/chapter.md
-    - label: The AI Library
-      page: tutorials/model_management/ai_library/chapter.md
+    - label: The AI Marketplace
+      page: tutorials/model_management/marketplace/chapter.md
     - label: Create a New Model SDK
       page: tutorials/model_management/create_new_model_sdk/chapter.md
     - label: New Model - Torchvision Example
