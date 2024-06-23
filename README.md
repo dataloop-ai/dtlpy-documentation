@@ -130,6 +130,7 @@ jupyter notebook tutorials
   *  [Delete annotations](examples/annotations/delete_annotations.py)
   *  [Download one by one](examples/annotations/download_one_by_one.py)
   *  [Play video annotation](examples/annotations/play_video_annotation.py)
+  *  [Polygon to segmentation annotations](examples/annotations/polygon_to_segmentation_annotations.py)
   *  [Show item and mask](examples/annotations/show_item_and_mask.py)
   *  [Upload annotation to dataset](examples/annotations/upload_annotation_to_dataset.py)
 * Converters

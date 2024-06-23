@@ -166,8 +166,8 @@ item = dataset.items.get(filepath='file_path')
 # Create a builder instance
 builder = item.annotations.builder()
 # Create a random mask
-mask = np.random.randint(2, size=(item.height, item.width))
-instance_map = ["background", "foreground"]
+mask = np.random.randint(low=0, high=2, size=(item.height, item.width))
+instance_map = {"background": 0, "foreground": 1}
 # Add convert the instance mask to segmentation annotations
 builder.from_instance_mask(mask=mask, instance_map=instance_map)
 # Upload the annotations to the item
@@ -177,61 +177,8 @@ item.annotations.upload(annotations=builder)
 The following script convert all the polygon annotations to segmentation annotations, merge them into one mask per  
 label and then upload them to the Dataloop platform.  
 Please notice the following things:  
-1. When the item have more than 2 annotations with the same label merging is required, otherwise only the first  
-existing/created annotation will be uploaded.  
-2. There is an option to upload the converted polygons without merging them to existing masks by setting a unique  
-object_id to each one of them.  
-3. The script assumes that the item has only up to one instance of semantic segmentation annotation per label.  
+1. All previous polygon and segmentation annotations will be deleted, and the new merged segmentation annotations  
+   will be uploaded instead.  
+2. All the polygon and segmentation annotations attributes will be deleted.  
   
-
-```python
-import dtlpy as dl
-import numpy as np
-# Get project, dataset and item
-project = dl.projects.get(project_name='project_name')
-dataset = project.datasets.get(dataset_name='dataset_name')
-item = dataset.items.get(filepath='filepath')
-# Get item semantic segmentation and polygon annotations
-filters = dl.Filters(resource=dl.FiltersResource.ANNOTATION)
-filters.add(field=dl.KnownFields.TYPE,
-            values=[dl.AnnotationType.SEGMENTATION, dl.AnnotationType.POLYGON],
-            operator=dl.FiltersOperations.IN)
-annotations = item.annotations.list(filters=filters)
-if isinstance(annotations, dl.entities.PagedEntities):
-    annotations = annotations.all()
-# Merge all the annotations into masks
-final_masks = dict()
-for annotation in annotations:
-    # Get segmentation annotation mask and reference
-    if annotation.type == dl.AnnotationType.SEGMENTATION:
-        mask = annotation.geo
-        segmentation_ref = annotation
-    # Convert the polygon to segmentation and get its mask
-    else:
-        mask = dl.Segmentation.from_polygon(geo=annotation.geo,
-                                            label=annotation.label,
-                                            shape=(item.height, item.width)).geo
-        segmentation_ref = None
-    # Merge the masks
-    if annotation.label not in list(final_masks.keys()):
-        final_masks[annotation.label] = {"mask": mask, "segmentation_ref": segmentation_ref}
-    else:
-        final_masks[annotation.label]["mask"] = np.logical_or(final_masks[annotation.label]["mask"], mask)
-        if segmentation_ref is not None:
-            final_masks[annotation.label]["segmentation_ref"] = segmentation_ref
-# Upload masks to the item
-builder = item.annotations.builder()
-for label, mask in final_masks.items():
-    annotation = mask["segmentation_ref"]
-    if annotation is None:
-        builder.add(annotation_definition=dl.Segmentation(geo=mask["mask"], label=label))
-    else:
-        annotation.geo = mask["mask"]
-        annotation.update()
-if len(builder) > 0:
-    builder.upload()
-    # Delete all the polygon annotations
-    polygon_filters = dl.Filters(resource=dl.FiltersResource.ANNOTATION)
-    polygon_filters.add(field=dl.KnownFields.TYPE, values=dl.AnnotationType.POLYGON)
-    item.annotations.delete(filters=polygon_filters)
-```
+Link: [polygon_to_segmentation_annotations.py](../../../../examples/annotations/polygon_to_segmentation_annotations.py)  

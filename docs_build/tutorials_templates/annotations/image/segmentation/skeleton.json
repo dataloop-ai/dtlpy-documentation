@@ -49,7 +49,6 @@
     },
     {
         "type": "md",
-        "name": "section7",
-        "location": "../../../../examples/annotations/polygon_to_segmentation_annotations.py"
+        "name": "section7"
     }
 ]
