@@ -47,3 +47,27 @@ def section5():
 
 
     """
+
+
+def section6():
+    """
+    ## Create Semantic Segmentation annotations from an Instance Mask
+    The following script creates semantic segmentation annotations based on the given instance mask and
+    the instance map, and then upload them to the Dataloop platform.
+    Please notice that the instance map should be ordered by the mask values.
+
+    """
+
+
+def section7():
+    """
+    ## Convert and Merge Polygon Annotations to Segmentation Annotations
+    The following script convert all the polygon annotations to segmentation annotations, merge them into one mask per
+    label and then upload them to the Dataloop platform.
+    Please notice the following things:
+    1. All previous polygon and segmentation annotations will be deleted, and the new merged segmentation annotations
+       will be uploaded instead.
+    2. All the polygon and segmentation annotations attributes will be deleted.
+
+    Link: [polygon_to_segmentation_annotations.py](../../../../examples/annotations/polygon_to_segmentation_annotations.py)
+    """

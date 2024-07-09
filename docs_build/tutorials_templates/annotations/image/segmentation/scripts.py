@@ -124,3 +124,21 @@ def section5():
                                                           label=str(i)))
         # upload all annotations
         item.annotations.upload(builder)
+
+
+def section6():
+    import dtlpy as dl
+    import numpy as np
+    # Get project, dataset and item
+    project = dl.projects.get(project_name='project_name')
+    dataset = project.datasets.get(dataset_name='dataset_name')
+    item = dataset.items.get(filepath='file_path')
+    # Create a builder instance
+    builder = item.annotations.builder()
+    # Create a random mask
+    mask = np.random.randint(low=0, high=2, size=(item.height, item.width))
+    instance_map = {"background": 0, "foreground": 1}
+    # Add convert the instance mask to segmentation annotations
+    builder.from_instance_mask(mask=mask, instance_map=instance_map)
+    # Upload the annotations to the item
+    item.annotations.upload(annotations=builder)
