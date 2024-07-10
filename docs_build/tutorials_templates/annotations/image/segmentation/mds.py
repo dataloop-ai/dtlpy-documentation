@@ -69,5 +69,5 @@ def section7():
        will be uploaded instead.
     2. All the polygon and segmentation annotations attributes will be deleted.
 
-    Link: [polygon_to_segmentation_annotations.py](../../../../examples/annotations/polygon_to_segmentation_annotations.py)
+    Link: [polygon to segmentation annotations.py](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/examples/annotations/polygon_to_segmentation_annotations.py)
     """
