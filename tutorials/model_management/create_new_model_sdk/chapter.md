@@ -229,12 +229,6 @@ A Dataloop Manifest example:
                 },  
                 "inputType": "image",  
                 "outputType": "box",  
-                "supportedMethods": {  
-                    "load": true,  
-                    "predict": true,  
-                    "train": true,  
-                    "evaluate": true  
-                },  
                 "description": "",  
                 "labels": [< a list of your pre-trained labels>]  
             }  

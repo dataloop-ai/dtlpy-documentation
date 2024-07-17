@@ -243,12 +243,6 @@ def three():
             },
             "inputType": "image",
             "outputType": "box",
-            "supportedMethods": {
-              "load": true,
-              "predict": true,
-              "train": true,
-              "evaluate": true
-            },
             "description": "State-of-the-art object detection networks depend on region proposal algorithms to hypothesize object locations. ",
             "labels": [
               "person",

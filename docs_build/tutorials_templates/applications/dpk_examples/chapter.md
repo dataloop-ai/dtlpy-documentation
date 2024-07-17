@@ -88,12 +88,6 @@ NOTE: This is not supposed to be a real app, and publishing or installing it wil
         "scope": "project",
         "status": "trained",
         "configuration": {},
-        "supportedMethods": {
-          "load": true,
-          "predict": true,
-          "train": true,
-          "evaluate": true
-        },
         "description": "Model Description.",
         "labels": []
       }
