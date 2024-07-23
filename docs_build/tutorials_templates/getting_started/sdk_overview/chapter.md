@@ -1,6 +1,5 @@
 # Dataloop SDK Overview
 
-
 Dataloop provides an end-to-end platform that supports the entire AI lifecycle, from development to production.
 By leveraging both a data management and annotation platform, deep learning data generation is streamlined, resulting in
 accelerated automated pipeline production and reduced engineering time and costs.
@@ -74,6 +73,7 @@ pip --version
 If **pip** isn’t already installed, you can bootstrap it from the standard library.
 
 #### To bootstrap pip:
+
 **Run** the following from the Command Line:
 
 ```
@@ -109,6 +109,7 @@ To log in to the Dataloop SDK:
 
 ```python
 import dtlpy as dl
+
 dl.login()
 ```
 
@@ -130,12 +131,14 @@ Once your credentials have been verified a **confirmation message** is displayed
 ![alt_text](../../../assets/log_in/login_successful.png "image_tooltip")
 
 ## Machine-to-Machine Login
+
 Long-running SDK jobs require API authentication.
-The M2M flow allows machines to obtain valid, signed JWT (authentication token) and automatically refresh it, without the need for a web browser login.
+The M2M flow allows machines to obtain valid, signed JWT (authentication token) and automatically refresh it, without
+the need for a web browser login.
 
 M2M Login is recommended when you want to:
-    - run commands on the platform without an ongoing internet connection
-    - run API commands directly from an external system to Dataloop
+- run commands on the platform without an ongoing internet connection
+- run API commands directly from an external system to Dataloop
 
 
 <section class="infoBox" style='background-color:#eff2f9'>
@@ -143,10 +146,25 @@ M2M Login is recommended when you want to:
 <p style="display:inline;color:black">This can be done with your email and password (signup with a password), or using project bots (which is NOT is the scope of this tutorial).</p>
 </section>
 
+## Login Using API Key
+
+You can also manage and create API keys in theplatform and login using that key from the SDK.
+Read more about API keys [here](https://docs.dataloop.ai/docs/rest-api-connection#api-keys), once you have an API key,
+perform login using the SDK:
 
 ```python
-dl.login_m2m(email=email, password=password)
+dl.login_api_key(api_key="<api_key>")
 ```
+
+Replace `<api_key>` with your generated key.
+Note that when using API keys in a Python script, it's recommended to store them as environment variables and access them using os.environ, rather than hardcoding them directly in your code, to enhance security and prevent accidental exposure.
+
+```python
+import os
+dl.login_api_key(api_key=os.environ['DTLPY_API_KEY'])
+```
+
+
 ## Datasets
 
 In Dataloop, a dataset is a collection of **items** (files), their respective **metadata**, and **annotations**.
@@ -214,13 +232,13 @@ project.update_member(email='email-id', role=dl.MemberRole.Developer)
 project.remove_member(email='email-id')
 ```
 
-To learn more about the different roles and hierarchy, visit our [documentation](https://dataloop.ai/docs/contributor-roles).
-
+To learn more about the different roles and hierarchy, visit
+our [documentation](https://dataloop.ai/docs/contributor-roles).
 
 ### To create a new dataset:
 
 **Run** the following command to create a new dataset named My-First-Dataset associated with the project
-  My-First-Project:
+My-First-Project:
 
 ```python
 project.datasets.create(dataset_name='My-First-Dataset')
@@ -229,7 +247,9 @@ project.datasets.create(dataset_name='My-First-Dataset')
 Confirmation of the successfully created dataset is **displayed**:
 
 ```python
-Dataset(id='632c24ae3444a86f029acb47', url='https://gate.dataloop.ai/api/v1/datasets/632c1194120a7571664d0de3', name='My-First-Dataset', creator='JohnDoe@gmail.com', items_count=0, expiration_options=None, index_driver='v1', created_at='2022-09-22T07:41:08.324Z')
+Dataset(id='632c24ae3444a86f029acb47', url='https://gate.dataloop.ai/api/v1/datasets/632c1194120a7571664d0de3',
+        name='My-First-Dataset', creator='JohnDoe@gmail.com', items_count=0, expiration_options=None, index_driver='v1',
+        created_at='2022-09-22T07:41:08.324Z')
 ```
 
 <section class="infoBox" style='background-color:#eff2f9'>
@@ -245,8 +265,9 @@ Individual items or entire folders can be uploaded.
 Before items can be uploaded, the dataset to which the items will be uploaded must be selected.
 
 ### To select the dataset:
+
 **Run** the following command to initialize a new instance **(dataset)** of the new dataset **(My-First-Dataset)** in
-  order to upload items:
+order to upload items:
 
 ```python
 dataset = project.datasets.get(dataset_name='My-First-Dataset')
@@ -276,7 +297,6 @@ dataset.items.upload(local_path='/path/to/file.extension')
 <p style="display:inline;font-size:15px;color:#3452ff">&#9432;</p>
 <p style="display:inline;color:black">Directory paths look different in Windows and in Linux, Windows require an "r" at the beginning.</p>
 </section>
-
 
 ### To upload an item to a dataset:
 
@@ -317,7 +337,6 @@ dtlpy.exceptions.NotFound: ('404', 'Unknown local path: C:\\UploadDemo\\test1.jp
 <p style="display:inline;color:black">By default, files are uploaded to the root directory. Items can be uploaded to an existing folder within a dataset using the remote_path argument (Not in the scope of this guide).</p>
 </section>
 
-
 ### <span style="text-decoration:underline;">Exercise 1</span>
 
 1. Write the commands to **Upload** a 2nd image (**test2.jpg**) file item to **My-First-Dataset.**
@@ -338,7 +357,8 @@ item.print()
 
 #### To get a single item:
 
-1. **Run** the following command to set an instance of a single item object (**item_1**) from the dataset (**My-First-Dataset**) by specifying an **item ID**:
+1. **Run** the following command to set an instance of a single item object (**item_1**) from the dataset (*
+   *My-First-Dataset**) by specifying an **item ID**:
 
 ```python
 item_1 = dataset.items.get(item_id='632c365b6002b1266e007830')
@@ -348,7 +368,6 @@ item_1 = dataset.items.get(item_id='632c365b6002b1266e007830')
 <p style="display:inline;font-size:15px;color:#3452ff">&#9432;</p>
 <p style="display:inline;color:black">Your Item ID will differ from the example above.</p>
 </section>
-
 
 2. **Run** the following command to print the specified item:
 
@@ -372,12 +391,12 @@ The item details are **displayed** including the following:
 <p style="display:inline;color:black">Remember: The ID of the item (Test2) must be identified first.</p>
 </section>
 
-
 ### Getting All Items
 
 All item details in a dataset can be printed using a loop.
 
 #### To get all items:
+
 Run the following command to loop through the dataset and print all item details:
 
 ```python
@@ -430,7 +449,8 @@ The label is created and its **Properties** are displayed.
 [Label(tag='Person', display_data={}, color='#0214a7', display_label='Person', attributes=[], children=[])]
 ```
 
-2. **Run** the following commands to **Annotate** and **Upload** the label (**Person**) as a **Classification** to the item (**item_1**):
+2. **Run** the following commands to **Annotate** and **Upload** the label (**Person**) as a **Classification** to the
+   item (**item_1**):
 
 ```python
 builder = item_1.annotations.builder()
@@ -485,17 +505,17 @@ The label is annotated as 2 **Point Markers** to **item_1**.
 <p style="display:inline;color:black">Other Label Types include Box, Cube, Polygon etc.</p>
 </section>
 
-
 ### <span style="text-decoration:underline;">Exercise 3</span>
 
-1. **Annotate** 3 items (use **item_2** from [Exercise 2](#span-styletext-decorationunderlineexercise-2span)) with the **Classification** of '**Face**'.
-2. **Annotate** 2 random **Point Marker** annotations with the label '**Eye**' to an item (use **item_2** from [Exercise 2](#span-styletext-decorationunderlineexercise-2span)).
+1. **Annotate** 3 items (use **item_2** from [Exercise 2](#span-styletext-decorationunderlineexercise-2span)) with the *
+   *Classification** of '**Face**'.
+2. **Annotate** 2 random **Point Marker** annotations with the label '**Eye**' to an item (use **item_2**
+   from [Exercise 2](#span-styletext-decorationunderlineexercise-2span)).
 
 <section class="infoBox" style='background-color:#eff2f9'>
 <img src="https://i.postimg.cc/6QyTynzr/bulb-on.png" id="bulb" width=9>
 <p style="display:inline;color:black">Remember: The label must first be added to the Recipe of the dataset.</p>
 </section>
-
 
 ## Working with Filters
 
@@ -524,7 +544,8 @@ Once the **Filter Query** is created, **Filter Parameters** can be added.
 
 #### To Add a Filter Parameter:
 
-2. **Run** the following command to add a **Filter Parameter** to **my_filter** that filters for all items that include **Point Marker Annotation** types:
+2. **Run** the following command to add a **Filter Parameter** to **my_filter** that filters for all items that include
+   **Point Marker Annotation** types:
 
 ```python
 my_filter.add_join(field='type', values='point')
@@ -578,7 +599,8 @@ Filters can be used to **Replace** existing item data. For example, you can **Cr
 that returns a **subset** of item data that includes a particular **Classification** such as ‘Person’ and **Replace** it
 with another value, such as ‘Adult’, across the entire **subset**.
 
-The first step is to **Create** a new **Filter Query** with a **Filter Parameter** that filters for all items that include a **Label** value of **‘Person’**.
+The first step is to **Create** a new **Filter Query** with a **Filter Parameter** that filters for all items that
+include a **Label** value of **‘Person’**.
 
 ### To Create the Replacement Filter Query:
 
@@ -623,8 +645,12 @@ All instances of the old label are replaced in each item with the **new label**.
 
 ### <span style="text-decoration:underline;">Exercise 4</span>
 
-1. **Create** and **Apply** a **Filter Query** (use **item_2** from [Exercise 3](#span-styletext-decorationunderlineexercise-3span)) that filters items and returns all items that include **Point Marker Annotations** that are labeled **‘Eye’**.
-2. **Create** and **Apply** a **Filter Query** (use **item_2** from [Exercise 3](#span-styletext-decorationunderlineexercise-3span)) that filters the items with the **‘Face’** classification, deletes the label, and replaces it with the label **‘Person’**.
+1. **Create** and **Apply** a **Filter Query** (use **item_2**
+   from [Exercise 3](#span-styletext-decorationunderlineexercise-3span)) that filters items and returns all items that
+   include **Point Marker Annotations** that are labeled **‘Eye’**.
+2. **Create** and **Apply** a **Filter Query** (use **item_2**
+   from [Exercise 3](#span-styletext-decorationunderlineexercise-3span)) that filters the items with the **‘Face’**
+   classification, deletes the label, and replaces it with the label **‘Person’**.
 
 ## Working with Item Metadata
 
@@ -667,7 +693,8 @@ item_1 = dataset.items.get(item_id='632dadf7b28a0c0da317dfc8')
 
 An instance of item **test1** named **item_1** is created.
 
-The current date can be **assigned** to a new field in the item’s metadata named **Date&Time** and the item can be **updated**.
+The current date can be **assigned** to a new field in the item’s metadata named **Date&Time** and the item can be *
+*updated**.
 
 #### To Assign the Current Date to a New Metadata Field:
 
@@ -689,7 +716,8 @@ The date is **assigned** to the new **metadata field** and the item is **updated
 
 #### To Create Metadata fields for Multiple Items using Filters:
 
-**Run** the following commands to **create metadata fields** for **a subset** of **items** that include the label **‘Person’** using a **filter**:
+**Run** the following commands to **create metadata fields** for **a subset** of **items** that include the label *
+*‘Person’** using a **filter**:
 
 ```python
 filters = dl.Filters()
@@ -698,20 +726,24 @@ now = datetime.datetime.now().isoformat()
 dataset.items.update(filters=filters, update_values={'user': {'dateTime': now}})
 ```
 
-The date is **assigned** to the new **metadata field** and **all items** that include the label **‘Person’** are **updated**.
+The date is **assigned** to the new **metadata field** and **all items** that include the label **‘Person’** are *
+*updated**.
 
 ### <span style="text-decoration:underline;">Exercise 5</span>
 
-1. For the filtered items with the **classification ‘Adult’** from [Exercise 4](#span-styletext-decorationunderlineexercise-4span), add a new
+1. For the filtered items with the **classification ‘Adult’**
+   from [Exercise 4](#span-styletext-decorationunderlineexercise-4span), add a new
    field called ‘date’ In the item’s **user metadata** and assign it the current date.
 
 ## Creating Tasks
 
-A **Task** is used to initiate annotations. A **Task** requires defining the included data items, the assignee(s), and other options such as due date, etc.
+A **Task** is used to initiate annotations. A **Task** requires defining the included data items, the assignee(s), and
+other options such as due date, etc.
 
 ### To Create a Task
 
-**Run** the following commands to **create** a **Task** containing items with the label **‘Person’** (from the previous example).
+**Run** the following commands to **create** a **Task** containing items with the label **‘Person’** (from the previous
+example).
 
 ```python
 task = dataset.tasks.create(task_name='test',
@@ -724,7 +756,8 @@ The task is **created**.
 
 ### <span style="text-decoration:underline;">Exercise 6</span>
 
-1. Create a **Task** that contains those items from [Exercise 5](#span-styletext-decorationunderlineexercise-5span), ie all the items **filtered**
+1. Create a **Task** that contains those items from [Exercise 5](#span-styletext-decorationunderlineexercise-5span), ie
+   all the items **filtered**
    for the classification **‘Adult’**
 
 ## Logging out
