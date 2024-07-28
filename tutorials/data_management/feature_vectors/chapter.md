@@ -14,23 +14,26 @@ These vectors can vary in length and capture essential characteristics of the en
 
 ### Examples
 
-1. Image Embedding
-   A pre-trained model like ResNet can generate a 1024-dimensional feature vector for an image, capturing its visual
+1. **Image Embedding** - a pre-trained model like ResNet can generate a 1024-dimensional feature vector for an image,
+   capturing its visual
    characteristics.
 
-2. Natural Language Processing (NLP)
-   Large Language Models (LLMs) like BERT and RoBERTa use embeddings to represent textual elements (words, phrases,
+2. **Natural Language Processing (NLP)** - Large Language Models (LLMs) like BERT and RoBERTa use embeddings to
+   represent textual elements (words, phrases,
    sentences) as dense vectors. These embeddings encapsulate semantic meaning and linguistic relationships.
 
-3. Custom Segmentation
-   In marketing and business analytics, customer data can be represented as feature vectors. For example, a customer's
+3. **Custom Segmentation** - in marketing and business analytics, for example, customer data can be represented as
+   feature vectors. For example, a customer's
    feature vector might include:
 
+```text
 Age: 35
 Annual Income: 75000
 Years as Customer: 5
 Number of Purchases: 20
 Average Purchase Value: 150
+```
+
 This feature vector [35, 75000, 5, 20, 150] represents key characteristics of the customer, which can be used for
 segmentation, personalized marketing, or predictive modeling without involving neural networks.
 
@@ -57,9 +60,6 @@ feature_set = project.feature_sets.create(name='rag_embeddings_BAAI_bge-large-en
 A Dataloop model entity can be connected directly to the feature set:
 
 ```python
-import dtlpy as dl
-
-project = dl.projects.get(project_id='60c8561b374417847ff59fba')
 feature_set = project.feature_sets.create(name='text-embedding-3',
                                           set_type='embeddings',
                                           entity_type=dl.FeatureEntityType.ITEM,
@@ -96,7 +96,7 @@ for item in items.all():
     pbar.update()
 ```
 
-After that, GET and DELETE are easy, same as all other SDK entities:
+After that, *GET* and *DELETE* are easy, same as all other SDK entities:
 
 ```python
 import dtlpy as dl
