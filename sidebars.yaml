@@ -68,6 +68,8 @@ contents:
       page: tutorials/data_management/working_with_metadata/chapter.md
     - label: Secrets
       page: tutorials/data_management/secrets/chapter.md
+    - label: Feature Vectors
+      page: tutorials/data_management/feature_vectors/chapter.md
   - expanded: false
     group: Annotations
     page: tutorials/annotations.md
