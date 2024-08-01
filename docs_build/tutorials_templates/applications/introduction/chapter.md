@@ -1,38 +1,18 @@
 # Introduction
+
 ## What are Dataloop Applications?
-Dataloop applications are extensions, which are add-ons that can work under the main platform of the Dataloop ecosystem (Dataloop OS) and receive access to the predefined panels and can useDataloop SDK and Components to create useful features for the end user.
-Using applications, users can work more productively and efficiently by incorporating their custom functionality with the underlying platform.
 
-### Start an App!
-The best way to start is to visit out [GitHub Apps Space](https://github.com/dataloop-ai-apps) and see real and working examples.
-However, if you want to start from scratch:
-1. Install the [Dataloop SDK](https://developers.dataloop.ai/tutorials/getting_started/sdk_overview/chapter/#installing-prerequisite-software)
-2. Create a directory where you wished to initialize the project in your terminal.
-3. In the terminal, type:
-```shell
-dlp app init
-```
-4. Follow the steps and question or leave them empty for defaults.
+Dataloop applications are extensions, which are add-ons that can work under the main platform of the Dataloop
+ecosystem (Dataloop OS) and receive access to the predefined panels and can useDataloop SDK and Components to create
+useful features for the end user.
+Using applications, users can work more productively and efficiently by incorporating their custom functionality with
+the underlying platform.
 
-5. The app is now ready for development!
+## Publish a DPK (Dataloop Package Kit)
 
-### Installing apps
-The Applications are installed into the platform (to a project or entire organization). To find an application, go to the App Store, search for an application by name, category, etc., select and click install.
-Now all the application's components should be available to use.
-You can change any settings or configuration (e.g. machine type, autoscaling) in the app settings.
-
-Installing an app is also available in the SDK and CLI, simply:
-```python
-project = dl.projects.get('Apps Project')
-dpk = dl.dpks.get(dpk_name='<app-name>')
-project.apps.install(dpk=dpk)
-```
-
-
-### Parts of an application
-#### DPK - Dataloop Package Kit
 The Dataloop package kit is a zipped file of the entire application's code.
-It holds all the required components of the application, the panels it is serving, the services it uses, and the source code of the application.
+It holds all the required components of the application, the panels it is serving, the services it uses, and the source
+code of the application.
 The base folder structure of the package is:
 
 ```
@@ -52,50 +32,139 @@ The base folder structure of the package is:
 └── requirements.txt
 ```
 
-#### Panels and toolbars
+The best way to start is to visit out GitHub Apps Space and see real and working examples. However, if you want to start
+from scratch:
+
+```python
+import dtlpy as dl
+
+project = dl.projects.get('Project Name')
+dpk = project.dpks.publish()
+
+```
+
+## Installing Apps
+
+### App Store
+
+The App Store serves as a central repository for saving and publishing some custom applications, varying from a metadata
+viewer application through audio recording on the website to a completely new UI for the item viewer.
+
+### Using SDK
+
+The Applications are installed into the platform (to a project or entire organization). To find an application, go to
+the App Store, search for an application by name, category, etc., select and click install.
+Now all the application's components should be available to use.
+You can change any settings or configuration (e.g. machine type, autoscaling) in the app settings.
+
+Installing an app is also available in the SDK and CLI, simply:
+
+```python
+import dtlpy as dl
+project = dl.projects.get('Apps Project')
+dpk = dl.dpks.get(dpk_name='<app-name>')
+project.apps.install(dpk=dpk)
+```
+
+## DPK Components
+
+### Scopes
+
+A DPK can be available for installation at either the Project or Organization level:
+
+* **Project Scope:** The DPK is only available for installation within the specific project where it’s published.
+* **Organization Scope:** The DPK is accessible across all projects within the organization but must be installed
+  individually for each project.
+
+This setup gives you control over where the DPK can be installed based on your specific requirements.
+The scope can be set in the manifest directly (see the examples below) or when publishing:
+```python
+import dtlpy as dl
+import json
+
+project = dl.projects.get('Project Name')
+with open('dataloop.json', 'r') as file:
+    manifest = json.load(file)
+
+dpk = dl.Dpk.from_json(_json=manifest,
+                       client_api=dl.client_api,
+                       project=project)
+dpk.scope = "project"  # or 'organization'
+dpk = project.dpks.publish(dpk)
+
+```
+
+Applications are installed within the scope of individual projects.
+If a DPK is set with `scope=organization`, it will be accessible for installation across all projects within the organization, but each project requires a separate installation.
+
+### Codebase
+Codebase can be either directly from git repo and tag, or using Dataloop's Item Codebase.
+Codebase can be set directly in the manifest file, or using the python SDK:
+
+```python
+import dtlpy as dl
+import json
+import os
+
+project = dl.projects.get('Project Name')
+with open('dataloop.json', 'r') as file:
+    manifest = json.load(file)
+
+dpk = dl.Dpk.from_json(_json=manifest,
+                       client_api=dl.client_api,
+                       project=project)
+
+# Local codebase
+codebase = project.codebases.pack(directory=os.getcwd(),
+                                  name=dpk.name,
+                                  description="some description")
+
+# Git codebase
+codebase = dl.GitCodebase(git_url='git_url',
+                          git_tag='git_tag')
+
+dpk.codebase = codebase
+dpk = project.dpks.publish(dpk)
+
+```
+
+### Panels and toolbars
+
 A Panel represents the view the user is going to see.
 The panel can be deployed into any available slot in the main platform, for example:
-* Item Viewer - Overrides the Item viewer content with a custom-made layout to view an item from the task browser or the dataset browser.
+
+* Item Viewer - Overrides the Item viewer content with a custom-made layout to view an item from the task browser or the
+  dataset browser.
 * Floating Window - create a new window on top of the platform, which can be dragged and resized, and shows the panel.
 * Data Browser - change the browsing view of items in a dataset
 * Item Side Panel - Add a new side panel to the Annotation and Info panels in the item viewer.
 
 A Toolbar is a panel that can be ***rendered*** into the platform slots and is NOT served, for example:
+
 * Buttons in the item studio, data browser, task menu, etc.
 * Configuration panels
 * Project widgets
 
+### Modules and Functions
 
-#### Modules and Functions
-Python functions and modules can be used in the app, they are defined in the "modules" directory. For more information about our python modules go [here](https://developers.dataloop.ai/tutorials/faas/single_function_rgb_to_gray/chapter/).
+Python functions and modules can be used in the app, they are defined in the "modules" directory. For more information
+about our python modules go [here](https://developers.dataloop.ai/tutorials/faas/single_function_rgb_to_gray/chapter/).
 
-#### Services
-Services are the carriers of the app panels and backend. A service is responsible for running a panel and managing its lifecycle. The dl.Service entity represents the service, for more information about services, click [here](https://developers.dataloop.ai/tutorials/faas/single_function_rgb_to_gray/chapter/).
+### Services
 
-#### All the Others
-You can use any other Dataloop entity (Models, Tasks, etc.) in the app. Simply define it in the manifest, and it will be created on installation.
+Services are the carriers of the app panels and backend. A service is responsible for running a panel and managing its
+lifecycle. The dl.Service entity represents the service, for more information about services,
+click [here](https://developers.dataloop.ai/tutorials/faas/single_function_rgb_to_gray/chapter/).
 
-### App Manifest - dataloop.json
-The json to describe the app is saved at the root of the app directory and is named dataloop.json. Is contains all the definitions of the app components.
-You can find real working manifests example in the [GitHub](https://github.com/dataloop-ai-apps)
+### All the Others
 
-### App Store
-The App Store serves as a central repository for saving and publishing some custom applications, varying from a metadata viewer application through audio recording on the website to a completely new UI for the item viewer.
+You can use any other Dataloop entity (Models, Tasks, etc.) in the app. Simply define it in the manifest, and it will be
+created on installation.
 
-## Typical Workflow
-1. Create an application (the FE and BE)
-2. Initialize the application using the command line/python SDK (and maybe a template in the future)
-3. Test your application locally, with the debugging tool in the platform
-4. Tweak in the process the dataloop.json file to accommodate your needs.
-5. Build your application and move the files into the appropriate panel directory. (NOTE: the application entry point is the index.html file)
-6. CURRENTLY: add the directory to the path of the generated js/CSS files
-7. Deploy your application.
-8. Sample script can be found here, run it in the root folder of your application.
+## App Manifest - dataloop.json
 
-
-Note: Changing the application configuration to build in the right directory (instead of the default ‘/dist’):
-Vue - change ‘vue.config.js’ outputDir property to the directory of the panel
-React - and .env file to the root folder of your project, and add BUILDPATH='PATHTO_PANEL'
-Angular - open the angular.json file and change projects.<APP_NAME>.architect.build.options.outputPath to the path of the panel.
-
+The json to describe the app is saved at the root of the app directory and is named dataloop.json. Is contains all the
+definitions of the app components.
+More example in [this page](https://developers.dataloop.ai/tutorials/applications/dpk_examples/chapter/), and you can
+find real working manifests example in the [GitHub](https://github.com/dataloop-ai-apps)
 
