@@ -45,22 +45,24 @@ dpk = project.dpks.publish()
 
 ## Installing Apps
 
-### App Store
+### Marketplace
 
-The App Store serves as a central repository for saving and publishing some custom applications, varying from a metadata
+The [Marketplace](https://docs.dataloop.ai/docs/marketplace) serves as a central repository for saving and publishing
+some custom applications, varying from a metadata
 viewer application through audio recording on the website to a completely new UI for the item viewer.
-
-### Using SDK
-
-The Applications are installed into the platform (to a project or entire organization). To find an application, go to
-the App Store, search for an application by name, category, etc., select and click install.
+The Applications are installed into the platform (to a project or entire organization).
+To find an application, go to the marketplace, search for an application by name, category, etc., select and click
+install.
 Now all the application's components should be available to use.
 You can change any settings or configuration (e.g. machine type, autoscaling) in the app settings.
 
-Installing an app is also available in the SDK and CLI, simply:
+### Using SDK
+
+Installing an app is also available in the SDK:
 
 ```python
 import dtlpy as dl
+
 project = dl.projects.get('Apps Project')
 dpk = dl.dpks.get(dpk_name='<app-name>')
 project.apps.install(dpk=dpk)
@@ -78,6 +80,7 @@ A DPK can be available for installation at either the Project or Organization le
 
 This setup gives you control over where the DPK can be installed based on your specific requirements.
 The scope can be set in the manifest directly (see the examples below) or when publishing:
+
 ```python
 import dtlpy as dl
 import json
@@ -95,9 +98,11 @@ dpk = project.dpks.publish(dpk)
 ```
 
 Applications are installed within the scope of individual projects.
-If a DPK is set with `scope=organization`, it will be accessible for installation across all projects within the organization, but each project requires a separate installation.
+If a DPK is set with `scope=organization`, it will be accessible for installation across all projects within the
+organization, but each project requires a separate installation.
 
 ### Codebase
+
 Codebase can be either directly from git repo and tag, or using Dataloop's Item Codebase.
 Codebase can be set directly in the manifest file, or using the python SDK:
 
