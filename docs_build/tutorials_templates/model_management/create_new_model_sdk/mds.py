@@ -220,7 +220,7 @@ def func2():
     }
     ```
 
-    To change the service configurations, see the documentation on [service types](https://dataloop.ai/docs/service-runtime).
+    To change the service configurations, see the documentation on [service types](https://docs.dataloop.ai/docs/service-runtime).
 
     """
 

@@ -328,7 +328,7 @@ contents:
         page: resources/dtljs/classes/SDKProject.md
       - label: SDKTask
         page: resources/dtljs/classes/SDKTask.md
-- href: https://dataloop.ai/docs/glossary-overview
+- href: https://docs.dataloop.ai/docs/glossary-overview
   label: Glossary
-- href: https://dataloop.ai/docs/sdk-cheatsheet
+- href: https://docs.dataloop.ai/docs/sdk-cheatsheet
   label: SDK Cheat Sheet

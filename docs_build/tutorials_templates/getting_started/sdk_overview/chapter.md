@@ -233,7 +233,7 @@ project.remove_member(email='email-id')
 ```
 
 To learn more about the different roles and hierarchy, visit
-our [documentation](https://dataloop.ai/docs/contributor-roles).
+our [documentation](https://docs.dataloop.ai/docs/contributor-roles).
 
 ### To create a new dataset:
 

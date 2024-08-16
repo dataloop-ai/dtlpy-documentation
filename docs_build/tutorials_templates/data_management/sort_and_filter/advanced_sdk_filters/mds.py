@@ -3,7 +3,7 @@ def section1():
     ## Advance SDK Filters
     To access the filters entity click <a href="https://sdk-docs.dataloop.ai/en/latest/entities.html#module-dtlpy.entities.filters" target="_blank">here</a>.
     ### Filter Operators
-    To understand more about filter operators please click <a href="https://dataloop.ai/docs/dql-operators" target="_blank">here</a>.
+    To understand more about filter operators please click <a href="https://docs.dataloop.ai/docs/dql-operators" target="_blank">here</a>.
 
     When adding a filter, several operators are available for use:
 

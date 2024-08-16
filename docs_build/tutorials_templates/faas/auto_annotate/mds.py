@@ -31,7 +31,7 @@ def func3():
 
     ##Package Requirements
     Our package's codebase uses 2 Python libraries that are not standard ones. Therefore, we need to make sure they are pre-installed before running the entry point. One way to do so is to use a custom Docker Image (information on this process can be found here. The other way is to add a requirements.txt file to the package codebase. To do so, simply add the following requirements.txt file in the same folder of the entry point (main.py):
-    https://dataloop.ai/docs/service-runtime#customimage
+    https://docs.dataloop.ai/docs/service-runtime#customimage
     """
 
 

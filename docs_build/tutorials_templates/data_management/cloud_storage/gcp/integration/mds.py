@@ -10,7 +10,7 @@ def section1():
 
     Access & Permissions - Creating an integration with GCP requires allowing dataloop specific permissions for accessing the resource
 
-    To learn more about setting up integrations, please visit our [Dataloop documentation](https://dataloop.ai/docs/storage-gcp)
+    To learn more about setting up integrations, please visit our [Dataloop documentation](https://docs.dataloop.ai/docs/storage-gcp)
 
     ### Create integration With Google Cloud Provider
     """

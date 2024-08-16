@@ -1,7 +1,7 @@
 {
   "name": "model-mgmt-tutorial",
   "title": "Advanced Tutorial",
-  "description": "Use Dataloop Python SDK to create, train, inference and manage ML Models.\n\nSee our SDK Getting Started guide at https://dataloop.ai/docs/sdk-register.\n",
+  "description": "Use Dataloop Python SDK to create, train, inference and manage ML Models.\n\nSee our SDK Getting Started guide at https://docs.dataloop.ai/docs/sdk-register.\n",
   "content": [
     {
       "displayName": "Log Metrics",

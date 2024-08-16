@@ -52,8 +52,8 @@ $examples
 
 ## Resources
 
-* [Dataloop Docs](https://dataloop.ai/docs)
-* [SDK Cheat Sheet](https://dataloop.ai/docs/sdk-cheatsheet?highlight=cheat)
+* [Dataloop Docs](https://docs.dataloop.ai/docs)
+* [SDK Cheat Sheet](https://docs.dataloop.ai/docs/sdk-cheatsheet?highlight=cheat)
 * [DTLPY source code](https://github.com/dataloop-ai/dtlpy)
 * [Platform](https://console.dataloop.ai/)
 

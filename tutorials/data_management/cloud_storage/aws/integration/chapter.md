@@ -1,16 +1,16 @@
-# Integrations  
-  
-If you already have your data managed and organized on a cloud storage service, such as S3, you may want to  
-utilize that with Dataloop, and not upload the binaries and create duplicates.  
-  
-### Amazon Web Services integration  
-  
-Access & Permissions - Creating an integration with AWS requires allowing dataloop specific permissions for accessing the resource  
-  
-To learn more about setting up integrations, please visit our [Dataloop documentation](https://dataloop.ai/docs/aws-cross-account-integration)  
-  
-  
-### Create AWS Access-Key integration  
+# Integrations
+
+If you already have your data managed and organized on a cloud storage service, such as S3, you may want to
+utilize that with Dataloop, and not upload the binaries and create duplicates.
+
+### Amazon Web Services integration
+
+Access & Permissions - Creating an integration with AWS requires allowing dataloop specific permissions for accessing the resource
+
+To learn more about setting up integrations, please visit our [Dataloop documentation](https://docs.dataloop.ai/docs/aws-cross-account-integration)
+
+
+### Create AWS Access-Key integration
 
 ```python
 import dtlpy as dl
@@ -20,15 +20,15 @@ organization = dl.organizations.get(organization_name='my-org')
 organization.integrations.create(name='S3integration', integrations_type=dl.ExternalStorage.S3,
                                  options={'key': "my_key", 'secret': "my_secret"})
 ```
-### Create AWS Cross Account integration  
-  
-Follow these steps:  
-1. Create an S3 bucket on your AWS account  
-2. Create an IAM policy on your AWS account  
-3. Create the integration and get an IAM user from Dataloop  
-To learn more about setting up integrations, please visit our [Dataloop documentation](https://dataloop.ai/docs/aws-cross-account-integration)  
-  
-To create the integration and get the IAM user follow this code snippet  
+### Create AWS Cross Account integration
+
+Follow these steps:
+1. Create an S3 bucket on your AWS account
+2. Create an IAM policy on your AWS account
+3. Create the integration and get an IAM user from Dataloop
+To learn more about setting up integrations, please visit our [Dataloop documentation](https://docs.dataloop.ai/docs/aws-cross-account-integration)
+
+To create the integration and get the IAM user follow this code snippet
 
 ```python
 import dtlpy as dl
@@ -51,12 +51,12 @@ for metadata in integration.meatadata:
 print('The IAM User ARN is: ', iam_user_arn_value)
 print('The Integration status is: ', integration_status)
 ```
-  
-4. Create an IAM role that can access the bucket on your AWS account  
-5. Add The IAM user to the trust relationship of the role  
-To learn more about setting up integrations, please visit our [Dataloop documentation](https://dataloop.ai/docs/aws-cross-account-integration)  
-  
-To update the integration and provide the IAM role ARN follow this code snippet  
+
+4. Create an IAM role that can access the bucket on your AWS account
+5. Add The IAM user to the trust relationship of the role
+To learn more about setting up integrations, please visit our [Dataloop documentation](https://docs.dataloop.ai/docs/aws-cross-account-integration)
+
+To update the integration and provide the IAM role ARN follow this code snippet
 
 ```python
 # After Adding the user ARN to your role trust relationship, continue and update the integration

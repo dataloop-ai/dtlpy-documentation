@@ -2,7 +2,7 @@ def section1():
     """
     To access the filters entity click <a href="https://sdk-docs.dataloop.ai/en/latest/entities.html#module-dtlpy.entities.filters" target="_blank">here</a>.
     ## The Dataloop Query Language - DQL
-    Using The <a href="https://dataloop.ai/docs/api-dql" target="_blank">Dataloop Query Language</a>, you may navigate through massive amounts of data.
+    Using The <a href="https://docs.dataloop.ai/docs/api-dql" target="_blank">Dataloop Query Language</a>, you may navigate through massive amounts of data.
 
     You can *filter*, *sort*, and *update* your metadata with it.
 
@@ -24,7 +24,7 @@ def section1():
     ##### Field
     Field refers to the field you sort your items/annotations list by.
     For example, if you sort by filename, you will get the item list sorted in alphabetical order by filename.
-    See the full list of the available fields <a href="https://dataloop.ai/docs/api-dql" target="_blank">here</a>.
+    See the full list of the available fields <a href="https://docs.dataloop.ai/docs/api-dql" target="_blank">here</a>.
     ##### Value
     Value refers to the list order direction. Either ascending or descending.
 

@@ -2,7 +2,7 @@
 
 Data Versioning is critical for data-centric AI and analytics applications to be effective. When files are added, removed, or modified in a Dataset, version control keeps track of the changes. This way, users can see how the data was changed, what changed, and who made the changes. This is important for a variety of reasons; from providing important insights for analytics and data-driven decision making, to enabling you to revert changes made to the dataset that reduced the performance of the AI model you trained.
 
-Dataloop provides data [versioning tools](https://dataloop.ai/docs/clone-merge-dataset?highlight=clone) to manage your data that you can use for:
+Dataloop provides data [versioning tools](https://docs.dataloop.ai/docs/clone-merge-dataset?highlight=clone) to manage your data that you can use for:
 
 1. Golden training dataset management;
 2. [Reproducibility](https://en.wikipedia.org/wiki/Reproducibility);
@@ -17,7 +17,7 @@ We already did this in the Dataset creation chapter.  As a reminder, this is how
 dataset = project.datasets.get(dataset_id='<dataset_id>')
 ```
 
-After you've confirmed that you've chosen the correct Dataset, you can make a `clone` of it. Cloning a Dataset results in the creation of a new Dataset that contains the same data sample files as the original, including item Metadata, and the Dataset [Recipe and Ontology](https://dataloop.ai/docs/ontology). The files in the cloned Dataset are actually a reference to the original file's binary rather than a new copy of the original, ensuring that your cloud data is safe and secure. When cloning a Dataset, you can specify the destination Dataset, remote file path, and other parameters.
+After you've confirmed that you've chosen the correct Dataset, you can make a `clone` of it. Cloning a Dataset results in the creation of a new Dataset that contains the same data sample files as the original, including item Metadata, and the Dataset [Recipe and Ontology](https://docs.dataloop.ai/docs/ontology). The files in the cloned Dataset are actually a reference to the original file's binary rather than a new copy of the original, ensuring that your cloud data is safe and secure. When cloning a Dataset, you can specify the destination Dataset, remote file path, and other parameters.
 
 ```python
 dataset.clone(clone_name='dataset_v2',
@@ -64,7 +64,7 @@ To find the Project ID, for all Projects, you can run the following code:
 dl.projects.list()
 ```
 
-Remember that for two Datasets to be merged, they need to have the same [Recipes](https://dataloop.ai/docs/ontology). To make things easy, we will just use the Dataset we just cloned named "dataset_v2" and merge it with the "My-First-Dataset".  Since they both have the same Recipe and Ontology we won't get any errors. Remember that a cloned Dataset will have the same Recipe and Ontology as the base Dataset.
+Remember that for two Datasets to be merged, they need to have the same [Recipes](https://docs.dataloop.ai/docs/ontology). To make things easy, we will just use the Dataset we just cloned named "dataset_v2" and merge it with the "My-First-Dataset".  Since they both have the same Recipe and Ontology we won't get any errors. Remember that a cloned Dataset will have the same Recipe and Ontology as the base Dataset.
 
 After gathering all of the IDs you need, you can now proceed to merge "My-First-Dataset" with "dataset_v2" into a new Dataset. You can do that using the code below:
 

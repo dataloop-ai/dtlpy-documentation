@@ -18,13 +18,13 @@ Services are set up with a runtime driver and configuration that determines how 
 
 To ensure zero downtime during Service updates, we use a rolling update approach. When a Service update is initiated, the backend selects a few Agents and instructs them to stop receiving new messages from RabbitMQ, wait for ongoing executions to finish, and then shut down. A new Agent with updated parameters is then created in place of the exiting one. If an Agent fails to shut down after being ordered to do so, it will be forcibly terminated even if it hasn't finished processing all its assigned executions.
 
-If you want to find out more about Services in the Python SDK, you can look at our [FaaS Service documentation](https://dataloop.ai/docs/service-runtime).
+If you want to find out more about Services in the Python SDK, you can look at our [FaaS Service documentation](https://docs.dataloop.ai/docs/service-runtime).
 
 #### Docker Images
 
 A [Docker](https://docs.docker.com/get-started/) image is a file that acts as a blueprint for creating Docker containers. It functions as a set of instructions that tell Docker how to build and set up the container environment. Essentially, the Docker image is the foundation for creating containers, much like a snapshot in virtual machine environments. In fact, a Docker image can be thought of as a template that provides the starting point for creating containers that can run code and perform specific tasks. The use of Docker images makes it easier to manage, version, and distribute applications, providing consistency and reliability when deploying across various environments.
 
-Dataloop enables you to deploy in the FaaS module a custom Docker image to enrich your Dataloop environment with literally anything required for your project. You can read more about [Dataloop's Docker image here](https://dataloop.ai/docs/faas-docker-images).
+Dataloop enables you to deploy in the FaaS module a custom Docker image to enrich your Dataloop environment with literally anything required for your project. You can read more about [Dataloop's Docker image here](https://docs.dataloop.ai/docs/faas-docker-images).
 
 ### Working with FaaS
 
@@ -88,8 +88,8 @@ item.open_in_web()
 
 That's it for the FaaS Onboarding. If you want to find out more about FaaS and how to use it in more advanced ways, here are some useful links:
 
-1. [Dataloop's FaaS documentation](https://dataloop.ai/docs/faas);
-2. [Python SDK Cheat-Sheet Section](https://dataloop.ai/docs/sdk-cheatsheet)
+1. [Dataloop's FaaS documentation](https://docs.dataloop.ai/docs/faas);
+2. [Python SDK Cheat-Sheet Section](https://docs.dataloop.ai/docs/sdk-cheatsheet)
 3. [Advanced Auto-annotation Service](https://developers.dataloop.ai/tutorials/faas/auto_annotate/chapter)
 4. Tutorial and code for [extracting Exif (Exchangeable Image File Format) information](https://github.com/dataloop-ai/image-exif) from images and uploading it.
 

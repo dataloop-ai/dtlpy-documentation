@@ -35,7 +35,7 @@ nav:
   - label: Developers and support docs
     icon: ./assets/site/dataloop-logo.png
     page: ./tutorials/tutorials.mdx
-    #page: https://dataloop.ai/docs/welcome
+    #page: https://docs.dataloop.ai/docs/welcome
 
   - label: SDK and CLI docs
     icon: ./assets/site/dataloop-logo.png
@@ -58,6 +58,6 @@ footer:
     - group: Support
       items:
         - label: FAQ
-          href: 'https://dataloop.ai/docs/help-getting-started'
+          href: 'https://docs.dataloop.ai/docs/help-getting-started'
         - label: Contact us
           href: 'https://dataloop.ai/contact/'

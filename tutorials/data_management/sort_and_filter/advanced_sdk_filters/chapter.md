@@ -1,15 +1,15 @@
-## Advance SDK Filters  
-To access the filters entity click <a href="https://sdk-docs.dataloop.ai/en/latest/entities.html#module-dtlpy.entities.filters" target="_blank">here</a>.  
-### Filter Operators  
-To understand more about filter operators please click <a href="https://dataloop.ai/docs/dql-operators" target="_blank">here</a>.  
-  
-When adding a filter, several operators are available for use:  
-  
-#### Equal  
-eq -> equal  
-(or dl.FiltersOperation.EQUAL)  
-  
-For example, filter items from a specific folder directory.  
+## Advance SDK Filters
+To access the filters entity click <a href="https://sdk-docs.dataloop.ai/en/latest/entities.html#module-dtlpy.entities.filters" target="_blank">here</a>.
+### Filter Operators
+To understand more about filter operators please click <a href="https://docs.dataloop.ai/docs/dql-operators" target="_blank">here</a>.
+
+When adding a filter, several operators are available for use:
+
+#### Equal
+eq -> equal
+(or dl.FiltersOperation.EQUAL)
+
+For example, filter items from a specific folder directory.
 
 ```python
 import dtlpy as dl
@@ -20,101 +20,101 @@ dataset = project.datasets.get(dataset_name='dataset_name')
 filters = dl.Filters()
 # Filter only items from a specific folder directory
 filters.add(field='dir', values='/DatasetFolderName', operator=dl.FILTERS_OPERATIONS_EQUAL)
-# optional - return results sorted by ascending file name 
+# optional - return results sorted by ascending file name
 filters.sort_by(field='filename')
 # Get filtered items list in a page object
 pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-#### Not Equal  
-ne -> not equal  
-(or dl.FiltersOperation.NOT_EQUAL)  
-  
-In this example, you will get all items that do not have ONLY a 'cat' label.  
-**Note**  
-This Operator is a better fit for filters of a single value because, for example, this filter will return items that have both 'cat' and 'dog' labels.  
-View an example of the solution [here](#how-to-filter-items-that-dont-have-a-specific-label).  
+#### Not Equal
+ne -> not equal
+(or dl.FiltersOperation.NOT_EQUAL)
+
+In this example, you will get all items that do not have ONLY a 'cat' label.
+**Note**
+This Operator is a better fit for filters of a single value because, for example, this filter will return items that have both 'cat' and 'dog' labels.
+View an example of the solution [here](#how-to-filter-items-that-dont-have-a-specific-label).
 
 ```python
 filters = dl.Filters()
 # Filter ONLY a cat label
 filters.add_join(field='label', values='cat', operator=dl.FILTERS_OPERATIONS_NOT_EQUAL)
-# optional - return results sorted by ascending file name 
+# optional - return results sorted by ascending file name
 filters.sort_by(field='filename')
 # Get filtered items list in a page object
 pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in the dataset: {}'.format(pages.items_count))
 ```
-#### Greater Than  
-gt -> greater than  
-(or dl.FiltersOperation.GREATER_THAN)  
-  
-You will get items with a greater height (in pixels) than the given value in this example.  
+#### Greater Than
+gt -> greater than
+(or dl.FiltersOperation.GREATER_THAN)
+
+You will get items with a greater height (in pixels) than the given value in this example.
 
 ```python
 filters = dl.Filters()
 # Filter images with a bigger height size
 filters.add(field='metadata.system.height', values=height_number_in_pixels,
             operator=dl.FILTERS_OPERATIONS_GREATER_THAN)
-# optional - return results sorted by ascending file name 
+# optional - return results sorted by ascending file name
 filters.sort_by(field='filename')
 # Get filtered items list in a page object
 pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-#### Less Than  
-lt -> less than  
-(or dl.FiltersOperation.LESS_THAN)  
-  
-You will get items with a width (in pixels) less than the given value in this example.  
+#### Less Than
+lt -> less than
+(or dl.FiltersOperation.LESS_THAN)
+
+You will get items with a width (in pixels) less than the given value in this example.
 
 ```python
 filters = dl.Filters()
 # Filter images with a bigger height size
 filters.add(field='metadata.system.width', values=width_number_in_pixels, operator=dl.FILTERS_OPERATIONS_LESS_THAN)
-# optional - return results sorted by ascending file name 
+# optional - return results sorted by ascending file name
 filters.sort_by(field='filename')
 # Get filtered items list in a page object
 pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-#### In a List  
-in -> is in a list (when using this expression, values should be a list).  
-(or dl.FiltersOperation.IN)  
-In this example, you will get items with dog OR cat labels.  
+#### In a List
+in -> is in a list (when using this expression, values should be a list).
+(or dl.FiltersOperation.IN)
+In this example, you will get items with dog OR cat labels.
 
 ```python
 filters = dl.Filters()
 # Filter items with dog OR cat labels
 filters.add_join(field='label', values=['dog', 'cat'], operator=dl.FILTERS_OPERATIONS_IN)
-# optional - return results sorted by ascending file name 
+# optional - return results sorted by ascending file name
 filters.sort_by(field='filename')
 # Get filtered items list in a page object
 pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-#### Exist  
-The filter param FILTERS_OPERATIONS_EXISTS checks if an attribute exists. The following example checks if there is an item with user metadata:  
+#### Exist
+The filter param FILTERS_OPERATIONS_EXISTS checks if an attribute exists. The following example checks if there is an item with user metadata:
 
 ```python
 filters = dl.Filters()
 filters.add(field='metadata.user', values=True, operator=dl.FILTERS_OPERATIONS_EXISTS)
 dataset.items.list(filters=filters)
 ```
-### SDK defaults  
-Filters ignore SDK defaults like hidden items and directories or note annotations as issues.  
-If you wish to change this behavior, you may do the following:  
+### SDK defaults
+Filters ignore SDK defaults like hidden items and directories or note annotations as issues.
+If you wish to change this behavior, you may do the following:
 
 ```python
 filters = dl.Filters(use_defaults=False)
 ```
-#### Hidden Items and Directories  
-If you wish to only show hidden items & directories in your filters use this code:  
+#### Hidden Items and Directories
+If you wish to only show hidden items & directories in your filters use this code:
 
 ```python
 filters = dl.Filters()
@@ -122,7 +122,7 @@ filters.add(field='type', values='dir')
 # or
 filters.pop(field='type')
 ```
-### Delete a Filter  
+### Delete a Filter
 
 ```python
 filters = dl.Filters()
@@ -133,10 +133,10 @@ filters.pop(field='to-delete-field')
 # or for items by their annotations
 filters.pop_join(field='to-delete-annotation-field')
 ```
-### Full Examples  
-#### How to filter items that were created between specific dates?  
-Note that all the times in Dataloop's data bases are stored in UTC time, so when filtering by a relative time to your time zone, you'll need to adjust it to the UTC time.  
-Here are two examples:  
+### Full Examples
+#### How to filter items that were created between specific dates?
+Note that all the times in Dataloop's data bases are stored in UTC time, so when filtering by a relative time to your time zone, you'll need to adjust it to the UTC time.
+Here are two examples:
 
 ```python
 import datetime
@@ -156,10 +156,10 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-#### How to filter items that don't have a specific label?  
-In this example, you will get all items that do not have a 'cat' label AT ALL.  
-<div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>  
-This filter will NOT return items that have both 'cat' and 'dog' labels.</div>  
+#### How to filter items that don't have a specific label?
+In this example, you will get all items that do not have a 'cat' label AT ALL.
+<div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>
+This filter will NOT return items that have both 'cat' and 'dog' labels.</div>
 
 ```python
 # Get all items

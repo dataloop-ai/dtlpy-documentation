@@ -13,8 +13,8 @@ def func1():
 
     For More information on the using the models in the UI:
 
-    - [Marketplace Models](https://dataloop.ai/docs/startline-models)
-    - [Model Management Overview](https://dataloop.ai/docs/model-management-overview)
+    - [Marketplace Models](https://docs.dataloop.ai/docs/startline-models)
+    - [Model Management Overview](https://docs.dataloop.ai/docs/model-management-overview)
     """
 
 

@@ -6,7 +6,7 @@ def section1():
     
     The page object divides a large list into pages (with a default of 1000 items) in order to save time when going over the items.
     
-    It is the same as we display it in the annotation platform, see example <a href="https://dataloop.ai/docs/organize-dataset#datastructuredisplay" target="_blank">here</a>.
+    It is the same as we display it in the annotation platform, see example <a href="https://docs.dataloop.ai/docs/organize-dataset#datastructuredisplay" target="_blank">here</a>.
 
     You can redefine the number of items on a page with the page_size attribute.
     When we go over the items we use nested loops to first go to the pages and then go over the items for each page.
