@@ -1,6 +1,6 @@
 # Class: Contributors
 
-[repositories](./repositories.md).Contributors
+[appLib/SDKDrivers/xFrameDriver/contributors](../modules/appLib_SDKDrivers_xFrameDriver_contributors.md).Contributors
 
 Contributors repository.
 
@@ -8,26 +8,28 @@ The Contributors class allows the user to manage contributors.
 
 ## Hierarchy
 
-- [`Repository`](Repository.md)
+- [`Repository`](appLib_SDKDrivers_xFrameDriver_repository.Repository.md)
 
   ↳ **`Contributors`**
 
 ## Implements
 
-- [`IBundle`](../interfaces/IBundle.md)<[`SDKContributor`](SDKContributor.md)>
+- [`IBundle`](../interfaces/sdkApi_interfaces_bundles.IBundle.md)<[`SDKContributor`](sdkApi_interfaces_entities_iUser.SDKContributor.md)\>
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](Contributors.md#constructor)
+- [constructor](appLib_SDKDrivers_xFrameDriver_contributors.Contributors.md#constructor)
 
 ### Methods
 
-- [create](Contributors.md#create)
-- [delete](Contributors.md#delete)
-- [get](Contributors.md#get)
-- [query](Contributors.md#query)
+- [create](appLib_SDKDrivers_xFrameDriver_contributors.Contributors.md#create)
+- [crudReq](appLib_SDKDrivers_xFrameDriver_contributors.Contributors.md#crudreq)
+- [crudReqSync](appLib_SDKDrivers_xFrameDriver_contributors.Contributors.md#crudreqsync)
+- [delete](appLib_SDKDrivers_xFrameDriver_contributors.Contributors.md#delete)
+- [get](appLib_SDKDrivers_xFrameDriver_contributors.Contributors.md#get)
+- [query](appLib_SDKDrivers_xFrameDriver_contributors.Contributors.md#query)
 
 ## Constructors
 
@@ -45,14 +47,13 @@ Creates an instance of Repository.
 
 #### Inherited from
 
-[Repository](Repository.md)
-.[constructor](Repository.md#constructor)
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[constructor](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#constructor)
 
 ## Methods
 
 ### create
 
-▸ **create**(`payload`): `Promise`<[`SDKContributor`](SDKContributor.md)>
+▸ **create**(`payload`): `Promise`<[`SDKContributor`](sdkApi_interfaces_entities_iUser.SDKContributor.md)\>
 
 Adds a contributor to the project.
 
@@ -60,8 +61,8 @@ Adds a contributor to the project.
 
 ```ts
 const contributor = await dl.contributors.create({
-    email: 'user@dataloop.ai',
-    role: 'annotator'
+     email: 'user@dataloop.ai',
+     role: 'annotator'
 })
 ```
 
@@ -75,15 +76,65 @@ const contributor = await dl.contributors.create({
 
 #### Returns
 
-`Promise`<[`SDKContributor`](SDKContributor.md)>
+`Promise`<[`SDKContributor`](sdkApi_interfaces_entities_iUser.SDKContributor.md)\>
 
 - A promise that resolves to the added contributor.
+
+#### Implementation of
+
+IBundle.create
+
+___
+
+### crudReq
+
+▸ **crudReq**(`data`): `void`
+
+Sends a CRUD request to the xFrame.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `any` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[crudReq](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#crudreq)
+
+___
+
+### crudReqSync
+
+▸ **crudReqSync**(`data`, `options?`): `Promise`<`any`\>
+
+Sends a CRUD request to the xFrame.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | `any` | The data to send. |
+| `options` | `Object` |  |
+| `options.timeout?` | `number` | an option to set the timeout for the request. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Inherited from
+
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[crudReqSync](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#crudreqsync)
 
 ___
 
 ### delete
 
-▸ **delete**(`id`): `Promise`<`void`>
+▸ **delete**(`id`): `Promise`<`void`\>
 
 Removes a contributor from the project.
 
@@ -101,13 +152,17 @@ await dl.contributors.delete('user@dataloop.ai')
 
 #### Returns
 
-`Promise`<`void`>
+`Promise`<`void`\>
+
+#### Implementation of
+
+IBundle.delete
 
 ___
 
 ### get
 
-▸ **get**(`contributorId?`): `Promise`<[`SDKContributor`](SDKContributor.md)>
+▸ **get**(`contributorId?`): `Promise`<[`SDKContributor`](sdkApi_interfaces_entities_iUser.SDKContributor.md)\>
 
 Retrieves a contributor.
 
@@ -125,15 +180,19 @@ const contributor = await dl.contributors.get('user@dataloop.ai')
 
 #### Returns
 
-`Promise`<[`SDKContributor`](SDKContributor.md)>
+`Promise`<[`SDKContributor`](sdkApi_interfaces_entities_iUser.SDKContributor.md)\>
 
 - A promise that resolves to the retrieved contributor.
+
+#### Implementation of
+
+IBundle.get
 
 ___
 
 ### query
 
-▸ **query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKContributor`](SDKContributor.md)>>
+▸ **query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)<[`SDKContributor`](sdkApi_interfaces_entities_iUser.SDKContributor.md)\>\>
 
 Lists all the contributors of the active project.
 
@@ -152,6 +211,10 @@ const contributors = pagedResponse.items
 
 #### Returns
 
-`Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKContributor`](SDKContributor.md)>>
+`Promise`<[`IPagedResponse`](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)<[`SDKContributor`](sdkApi_interfaces_entities_iUser.SDKContributor.md)\>\>
 
 Returns a Promise that resolves to a paged response object of contributors.
+
+#### Implementation of
+
+IBundle.query

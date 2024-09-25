@@ -1,6 +1,6 @@
 # Class: SDKFunctionExecution
 
-[entities](./entities.md).SDKFunctionExecution
+[sdkApi/interfaces/entities/iExecution](../modules/sdkApi_interfaces_entities_iExecution.md).SDKFunctionExecution
 
 A representation of a function execution
 
@@ -8,19 +8,19 @@ A representation of a function execution
 
 ### Constructors
 
-- [constructor](SDKFunctionExecution.md#constructor)
+- [constructor](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#constructor)
 
 ### Properties
 
-- [app](SDKFunctionExecution.md#app)
-- [createdAt](SDKFunctionExecution.md#createdat)
-- [duration](SDKFunctionExecution.md#duration)
-- [functionName](SDKFunctionExecution.md#functionname)
-- [id](SDKFunctionExecution.md#id)
-- [latestStatus](SDKFunctionExecution.md#lateststatus)
-- [projectId](SDKFunctionExecution.md#projectid)
-- [serviceId](SDKFunctionExecution.md#serviceid)
-- [time](SDKFunctionExecution.md#time)
+- [app](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#app)
+- [createdAt](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#createdat)
+- [duration](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#duration)
+- [functionName](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#functionname)
+- [id](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#id)
+- [latestStatus](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#lateststatus)
+- [projectId](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#projectid)
+- [serviceId](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#serviceid)
+- [time](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#time)
 
 ## Constructors
 
@@ -34,7 +34,7 @@ Creates an instance of SDKFunctionExecution.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `execution?` | `Partial`<[`SDKFunctionExecution`](SDKFunctionExecution.md) | The execution to create |
+| `execution?` | `Partial`<[`SDKFunctionExecution`](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md)\> | The execution to create |
 
 ## Properties
 
@@ -42,7 +42,7 @@ Creates an instance of SDKFunctionExecution.
 
 • **app**: `string`
 
-The app the function is associated with
+The name of the app the function is associated with
 
 ___
 

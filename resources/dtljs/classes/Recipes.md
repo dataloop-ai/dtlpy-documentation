@@ -1,35 +1,45 @@
 # Class: Recipes
 
-[repositories](./repositories.md).Recipes
+[appLib/SDKDrivers/xFrameDriver/recipes](../modules/appLib_SDKDrivers_xFrameDriver_recipes.md).Recipes
 
 Recipes repository --- *currently not supported*
 
 The Recipe class allows you to manage the recipes of the app.
 
+**`Implements`**
+
+IBundle<APIRecipeV2>
+
 ## Hierarchy
 
-- [`Repository`](Repository.md)
+- [`Repository`](appLib_SDKDrivers_xFrameDriver_repository.Repository.md)
 
   ↳ **`Recipes`**
 
 ## Implements
 
-- [`IBundle`](../interfaces/IBundle.md)<`APIRecipeV2`>
+- [`IBundle`](../interfaces/sdkApi_interfaces_bundles.IBundle.md)<`APIRecipeV2`\>
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](Recipes.md#constructor)
+- [constructor](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#constructor)
 
 ### Methods
 
-- [clone](Recipes.md#clone)
-- [create](Recipes.md#create)
-- [delete](Recipes.md#delete)
-- [get](Recipes.md#get)
-- [query](Recipes.md#query)
-- [update](Recipes.md#update)
+- [calcLabelsHaveAttributes](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#calclabelshaveattributes)
+- [clone](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#clone)
+- [create](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#create)
+- [crudReq](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#crudreq)
+- [crudReqSync](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#crudreqsync)
+- [delete](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#delete)
+- [doesLabelHaveAttributes](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#doeslabelhaveattributes)
+- [get](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#get)
+- [getLabelAttributes](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#getlabelattributes)
+- [missingRequiredAttribute](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#missingrequiredattribute)
+- [query](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#query)
+- [update](appLib_SDKDrivers_xFrameDriver_recipes.Recipes.md#update)
 
 ## Constructors
 
@@ -47,14 +57,45 @@ Creates an instance of Repository.
 
 #### Inherited from
 
-[Repository](Repository.md)
-.[constructor](Repository.md#constructor)
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[constructor](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#constructor)
 
 ## Methods
 
+### calcLabelsHaveAttributes
+
+▸ **calcLabelsHaveAttributes**(`payload`): `Promise`<`void`\>
+
+Calculates the labels that have attributes on the studio's side.
+
+**`Example`**
+
+```ts
+await dl.recipes.calcLabelsHaveAttributes({ label: 'label-1' })
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `payload` | `Object` |  |
+| `payload.label` | `string` | The label to check. |
+| `payload.recipeId?` | `string` | The id of the recipe to check. |
+
+#### Returns
+
+`Promise`<`void`\>
+
+- A promise that resolves when the calculation is done.
+
+#### Implementation of
+
+IBundle.calcLabelsHaveAttributes
+
+___
+
 ### clone
 
-▸ **clone**(`recipeId`): `Promise`<`APIRecipeV2`>
+▸ **clone**(`recipeId`): `Promise`<`APIRecipeV2`\>
 
 Clones a recipe.
 
@@ -72,7 +113,7 @@ const recipe = await dl.recipes.clone('recipeId-1')
 
 #### Returns
 
-`Promise`<`APIRecipeV2`>
+`Promise`<`APIRecipeV2`\>
 
 - A promise that resolves to the cloned recipe.
 
@@ -80,7 +121,7 @@ ___
 
 ### create
 
-▸ **create**(`payload`): `Promise`<`APIRecipeV2`>
+▸ **create**(`payload`): `Promise`<`APIRecipeV2`\>
 
 Creates a new recipe.
 
@@ -88,7 +129,7 @@ Creates a new recipe.
 
 ```ts
 const recipe = await dl.recipes.create({
-    title: 'My recipe'
+ title: 'My recipe'
 })
 ```
 
@@ -96,19 +137,69 @@ const recipe = await dl.recipes.create({
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `payload` | `Partial`<`APIRecipeV2`> | The payload to create the recipe. |
+| `payload` | `any` | The payload to create the recipe. |
 
 #### Returns
 
-`Promise`<`APIRecipeV2`>
+`Promise`<`APIRecipeV2`\>
 
 - A promise that resolves to the created recipe.
+
+#### Implementation of
+
+IBundle.create
+
+___
+
+### crudReq
+
+▸ **crudReq**(`data`): `void`
+
+Sends a CRUD request to the xFrame.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `any` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[crudReq](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#crudreq)
+
+___
+
+### crudReqSync
+
+▸ **crudReqSync**(`data`, `options?`): `Promise`<`any`\>
+
+Sends a CRUD request to the xFrame.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | `any` | The data to send. |
+| `options` | `Object` |  |
+| `options.timeout?` | `number` | an option to set the timeout for the request. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Inherited from
+
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[crudReqSync](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#crudreqsync)
 
 ___
 
 ### delete
 
-▸ **delete**(`recipeId`): `Promise`<`void`>
+▸ **delete**(`recipeId`): `Promise`<`void`\>
 
 Deletes a specific recipe by its id.
 
@@ -126,15 +217,51 @@ await dl.recipes.delete('recipeId-1')
 
 #### Returns
 
-`Promise`<`void`>
+`Promise`<`void`\>
 
 - A promise that resolves when the recipe has been deleted.
+
+#### Implementation of
+
+IBundle.delete
+
+___
+
+### doesLabelHaveAttributes
+
+▸ **doesLabelHaveAttributes**(`payload`): `Promise`<`boolean`\>
+
+Checks if a label has attributes.
+
+**`Example`**
+
+```ts
+const hasAttributes = await dl.recipes.doesLabelHaveAttributes({ label: 'label-1' })
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `payload` | `Object` |  |
+| `payload.label` | `string` | The label to check. |
+| `payload.recipeId?` | `string` | The id of the recipe to check. |
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+- A promise that resolves to a boolean indicating if the label has attributes.
+
+#### Implementation of
+
+IBundle.doesLabelHaveAttributes
 
 ___
 
 ### get
 
-▸ **get**(`id`): `Promise`<`APIRecipeV2`>
+▸ **get**(`id?`): `Promise`<`APIRecipeV2`\>
 
 Retrieves a recipe by id.
 
@@ -156,11 +283,11 @@ const recipe = await dl.recipes.get('recipeId-1')
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `id` | `string` | The id of the recipe to get. |
+| `id?` | `string` | The id of the recipe to get. |
 
 #### Returns
 
-`Promise`<`APIRecipeV2`>
+`Promise`<`APIRecipeV2`\>
 
 - A promise that resolves to the queried recipe.
 
@@ -170,10 +297,65 @@ IBundle.get
 
 ___
 
+### getLabelAttributes
+
+▸ **getLabelAttributes**(`label`): `Promise`<`SDKAttributeInstruction`[]\>
+
+Gets the attributes of a label.
+
+**`Example`**
+
+```ts
+const attributes = await dl.recipes.getLabelAttributes('label-1')
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `label` | `string` | The label to get the attributes of. |
+
+#### Returns
+
+`Promise`<`SDKAttributeInstruction`[]\>
+
+- A promise that resolves to the attributes of the label.
+
+___
+
+### missingRequiredAttribute
+
+▸ **missingRequiredAttribute**(`annotationId`): `Promise`<`boolean`\>
+
+Checks if an annotation is missing a required attribute.
+
+**`Example`**
+
+```ts
+const missing = await dl.recipes.missingRequiredAttribute('clientId-1')
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `annotationId` | `string` | The clientId of the annotation to check. |
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+- A promise that resolves to a boolean indicating if the annotation is missing a required attribute.
+
+#### Implementation of
+
+IBundle.missingRequiredAttribute
+
+___
+
 ### query
 
-▸ **query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<`APIRecipeV2`
-> >
+▸ **query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)<`APIRecipeV2`\>\>
 
 Lists all recipes.
 
@@ -188,11 +370,11 @@ const recipes = pagedResponse.items
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `payload?` | `Partial`<`APIRecipeV2`> | An Object containing the possible projectIds filter. |
+| `payload?` | `Partial`<`APIRecipeV2`\> | An Object containing the possible projectIds filter. |
 
 #### Returns
 
-`Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<`APIRecipeV2`>>
+`Promise`<[`IPagedResponse`](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)<`APIRecipeV2`\>\>
 
 - A promise that resolves to a paged response with the queried recipes.
 
@@ -204,7 +386,7 @@ ___
 
 ### update
 
-▸ **update**(`payload`): `Promise`<`APIRecipeV2`>
+▸ **update**(`payload`): `Promise`<`APIRecipeV2`\>
 
 Updates a recipe.
 
@@ -212,8 +394,8 @@ Updates a recipe.
 
 ```ts
 const recipe = await dl.recipes.update({
-    id: 'recipeId-1',
-    title: 'My updated recipe'
+     id: 'recipeId-1',
+     title: 'My updated recipe'
 })
 console.log(recipe.title) // 'My updated recipe'
 ```
@@ -222,11 +404,11 @@ console.log(recipe.title) // 'My updated recipe'
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `payload` | `Partial`<`APIRecipeV2`> | The payload to update the recipe. |
+| `payload` | `Partial`<`APIRecipeV2`\> | The payload to update the recipe. |
 
 #### Returns
 
-`Promise`<`APIRecipeV2`>
+`Promise`<`APIRecipeV2`\>
 
 - A promise that resolves to the updated recipe.
 

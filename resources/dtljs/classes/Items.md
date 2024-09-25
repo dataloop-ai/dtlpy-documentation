@@ -1,6 +1,6 @@
 # Class: Items
 
-[repositories](./repositories.md).Items
+[appLib/SDKDrivers/xFrameDriver/items](../modules/appLib_SDKDrivers_xFrameDriver_items.md).Items
 
 Items repository.
 
@@ -8,29 +8,33 @@ The Items class allows you to manage items in datasets.
 
 ## Hierarchy
 
-- [`Repository`](Repository.md)
+- [`Repository`](appLib_SDKDrivers_xFrameDriver_repository.Repository.md)
 
   ↳ **`Items`**
 
 ## Implements
 
-- [`IBundle`](../interfaces/IBundle.md)<[`SDKItem`](SDKItem.md)>
+- [`IBundle`](../interfaces/sdkApi_interfaces_bundles.IBundle.md)<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\>
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](Items.md#constructor)
+- [constructor](appLib_SDKDrivers_xFrameDriver_items.Items.md#constructor)
 
 ### Methods
 
-- [create](Items.md#create)
-- [delete](Items.md#delete)
-- [fetch](Items.md#fetch)
-- [get](Items.md#get)
-- [query](Items.md#query)
-- [stream](Items.md#stream)
-- [update](Items.md#update)
+- [countByQuery](appLib_SDKDrivers_xFrameDriver_items.Items.md#countbyquery)
+- [create](appLib_SDKDrivers_xFrameDriver_items.Items.md#create)
+- [crudReq](appLib_SDKDrivers_xFrameDriver_items.Items.md#crudreq)
+- [crudReqSync](appLib_SDKDrivers_xFrameDriver_items.Items.md#crudreqsync)
+- [delete](appLib_SDKDrivers_xFrameDriver_items.Items.md#delete)
+- [fetch](appLib_SDKDrivers_xFrameDriver_items.Items.md#fetch)
+- [get](appLib_SDKDrivers_xFrameDriver_items.Items.md#get)
+- [getByName](appLib_SDKDrivers_xFrameDriver_items.Items.md#getbyname)
+- [query](appLib_SDKDrivers_xFrameDriver_items.Items.md#query)
+- [stream](appLib_SDKDrivers_xFrameDriver_items.Items.md#stream)
+- [update](appLib_SDKDrivers_xFrameDriver_items.Items.md#update)
 
 ## Constructors
 
@@ -48,55 +52,152 @@ Creates an instance of Repository.
 
 #### Inherited from
 
-[Repository](Repository.md)
-.[constructor](Repository.md#constructor)
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[constructor](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#constructor)
 
 ## Methods
 
+### countByQuery
+
+▸ **countByQuery**(`query`, `options?`): `Promise`<`number`\>
+
+Counts the number of items by query.
+
+**`Example`**
+
+```ts
+await dl.items.countByQuery({
+  "resource": "items",
+  "filter": {
+    "$and": [
+      {
+        "annotated": true
+      },
+      {
+        "hidden": false
+      },
+      {
+        "type": "file"
+      }
+    ]
+  }
+})
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `query` | `DqlObj` | The query to count by. |
+| `options` | `Object` | - |
+| `options.timeout?` | `number` | - |
+
+#### Returns
+
+`Promise`<`number`\>
+
+#### Implementation of
+
+IBundle.countByQuery
+
+___
+
 ### create
 
-▸ **create**(`payload`): `Promise`<[`SDKItem`](SDKItem.md)>
+▸ **create**(`payload`, `options?`): `Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\>
 
 Creates a new item in the Items repository.
 
 **`Example`**
 
 ```ts
-const file = new File(['content'], 'filename.txt', { type: 'text/plain' })
-const binariesItemPayload = {
-    file: file,
-    path: 'path/to/item',
-    metadata: {
-        key: 'value'
-    },
-    binaries: true
-}
+const file = new File(['content'], 'filename.txt', { type: 'text/plain' });
+const itemPayload = {
+   file: file,
+   path: 'path/to/item',
+   metadata: {
+      key: 'value'
+   },
+   binaries: true
+};
 
-const item = await sdk.items.create(binariesItemPayload)
+const item = await sdk.items.create(itemPayload);
 ```
 
 #### Parameters
 
-| Name                 | Type      | Description                                         |
-| :------------------- | :-------- | :-------------------------------------------------- |
-| `payload`            | `Object`  | The payload for the item.                           |
-| `payload.binaries?`  | `boolean` | Whether to upload the item to the Binaries dataset. |
-| `payload.datasetId?` | `string`  | The id of the dataset to create the item in.        |
-| `payload.file`       | `File`    | The file to upload.                                 |
-| `payload.metadata?`  | `any`     | The metadata to add to the item.                    |
-| `payload.path?`      | `string`  | The path to the item.                               |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `payload` | `Object` | The payload for the item. |
+| `payload.binaries?` | `boolean` | Whether to upload the item to the Binaries dataset. |
+| `payload.datasetId?` | `string` | The id of the dataset to create the item in. |
+| `payload.file` | `File` | The file to upload. |
+| `payload.metadata?` | `any` | The metadata to add to the item. |
+| `payload.overwrite?` | `boolean` | Whether to overwrite the item if it already exists. |
+| `payload.path?` | `string` | The path to the item. |
+| `options` | `Object` |  |
+| `options.timeout?` | `number` | an option to set the timeout for the request. |
 
 #### Returns
 
-`Promise`<[`SDKItem`](SDKItem.md)>
+`Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\>
 
 - A promise that resolves with the created item.
+
+#### Implementation of
+
+IBundle.create
+
+___
+
+### crudReq
+
+▸ **crudReq**(`data`): `void`
+
+Sends a CRUD request to the xFrame.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `any` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[crudReq](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#crudreq)
+
+___
+
+### crudReqSync
+
+▸ **crudReqSync**(`data`, `options?`): `Promise`<`any`\>
+
+Sends a CRUD request to the xFrame.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | `any` | The data to send. |
+| `options` | `Object` |  |
+| `options.timeout?` | `number` | an option to set the timeout for the request. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Inherited from
+
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[crudReqSync](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#crudreqsync)
 
 ___
 
 ### delete
 
-▸ **delete**(`payload?`): `Promise`<`void`>
+▸ **delete**(`payload?`): `Promise`<`void`\>
 
 Deletes an item from the repository.
 If the itemId is not provided, the active itemId is used.
@@ -119,7 +220,7 @@ await dl.items.delete({ itemId: 'item1', datasetId: 'dataset1' });
 
 #### Returns
 
-`Promise`<`void`>
+`Promise`<`void`\>
 
 - A promise that resolves once the item is deleted.
 
@@ -131,7 +232,7 @@ ___
 
 ### fetch
 
-▸ **fetch**(`id?`): `Promise`<`any`>
+▸ **fetch**(`id?`, `options?`): `Promise`<`any`\>
 
 Fetches the raw contents of an item by id. When the id is not provided, it uses the active item.
 
@@ -149,10 +250,12 @@ console.log(rawItem)
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `id?` | `string` | The id of the item to be fetched. |
+| `options` | `Object` |  |
+| `options.timeout?` | `number` | an option to set the timeout for the request. |
 
 #### Returns
 
-`Promise`<`any`>
+`Promise`<`any`\>
 
 - A promise that resolves to the content data.
 
@@ -164,7 +267,7 @@ ___
 
 ### get
 
-▸ **get**(`id?`): `Promise`<[`SDKItem`](SDKItem.md)>
+▸ **get**(`id?`, `options?`): `Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\>
 
 Gets an item by id. When the id is not provided, it returns the active item.
 
@@ -185,10 +288,13 @@ const item = await dl.items.get('item-id-123')
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `id?` | `string` | The id of the item to retrieve. |
+| `options` | `Object` |  |
+| `options.signed?` | `boolean` | an option to fetch the item stream by signed url. |
+| `options.timeout?` | `number` | an option to set the timeout for the request. |
 
 #### Returns
 
-`Promise`<[`SDKItem`](SDKItem.md)>
+`Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\>
 
 - A promise that resolves to the item data.
 
@@ -198,9 +304,36 @@ IBundle.get
 
 ___
 
+### getByName
+
+▸ **getByName**(`name?`, `options?`): `Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\>
+
+Gets an item by name. When the name is not provided, it returns the active item.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name?` | `string` | The name of the item to retrieve. |
+| `options` | `Object` | - |
+| `options.binaries?` | `boolean` | get the item from the binaries dataset. |
+| `options.timeout?` | `number` | an option to set the timeout for the request. |
+
+#### Returns
+
+`Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\>
+
+- A promise that resolves to the item data.
+
+#### Implementation of
+
+IBundle.getByName
+
+___
+
 ### query
 
-▸ **query**(`payload?`): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKItem`](SDKItem.md)>>
+▸ **query**(`payload?`, `options?`): `Promise`<[`IPagedResponse`](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\>\>
 
 Lists all items by filter.
 When no payload is provided, it returns all the items in the active dataset.
@@ -217,11 +350,13 @@ const itemsArray = pagedResponse.items
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `payload?` | `Object` | contains DQL filter. |
-| `payload.filter` | `DQL`<[`SDKItem`](SDKItem.md)> | - |
+| `payload.filter` | `DQL`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\> | - |
+| `options` | `Object` |  |
+| `options.timeout?` | `number` | an option to set the timeout for the request. |
 
 #### Returns
 
-`Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKItem`](SDKItem.md)>>
+`Promise`<[`IPagedResponse`](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\>\>
 
 - Returns a Promise that resolves to a paged response object of items.
 
@@ -233,7 +368,7 @@ ___
 
 ### stream
 
-▸ **stream**(`url?`): `Promise`<`string`>
+▸ **stream**(`url?`, `options?`): `Promise`<`string`\>
 
 Retrieves the stream of an item by an item's stream URL.
 
@@ -248,10 +383,13 @@ const stream = await dl.items.stream('https://gate.dataloop.ai/api/v1/items/item
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `url?` | `string` | The stream url of the item. |
+| `options` | `Object` |  |
+| `options.signed?` | `boolean` | an option to fetch the item stream by signed url. |
+| `options.timeout?` | `number` | - |
 
 #### Returns
 
-`Promise`<`string`>
+`Promise`<`string`\>
 
 - A promise that resolves to the stream's string.
 
@@ -263,7 +401,7 @@ ___
 
 ### update
 
-▸ **update**(`fieldsToUpdate`): `Promise`<[`SDKItem`](SDKItem.md)>
+▸ **update**(`fieldsToUpdate`, `options?`): `Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\>
 
 Update an existing item.
 
@@ -271,8 +409,8 @@ Update an existing item.
 
 ```ts
 const updatedItem = await dl.items.update({
-    id: "item-1",
-    name: "Updated item name"
+  id: "item-1",
+  name: "Updated item name"
 })
 ```
 
@@ -280,33 +418,16 @@ const updatedItem = await dl.items.update({
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `fieldsToUpdate` | `Partial`<[`SDKItem`](SDKItem.md)> | The fields to update on the item. |
+| `fieldsToUpdate` | `Partial`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\> & { `system?`: `boolean`  } | The fields to update on the item. |
+| `options` | `Object` |  |
+| `options.timeout?` | `number` | an option to set the timeout for the request. |
 
 #### Returns
 
-`Promise`<[`SDKItem`](SDKItem.md)>
+`Promise`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\>
 
 - The updated item.
 
 #### Implementation of
 
 IBundle.update
-
-**Note:** To update the `system` object in `metadata` field, one needs to pass `system: true` in the updated item object.
-
-**`Example`**
-
-```ts
-const updatedItem = await dl.items.update({
-    id: "item-1",
-    name: "Updated item name",
-    system: true,
-    metadata: {
-       system: {
-           audioSpeakers: { "Label 1": "Label 1 New Value" } 
-       }
-    }
-})
-```
-
-In this example, we are updating `audioSpeakers` value of the system object by passing `system: true` at the top level of the updated item object.

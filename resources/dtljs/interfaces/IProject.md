@@ -1,6 +1,6 @@
 # Interface: IProject
 
-[interfaces](./index.md).IProject
+[sdkApi/interfaces/entities/iProject](../modules/sdkApi_interfaces_entities_iProject.md).IProject
 
 An interface representing a Project object, extending the IEntity interface.
 
@@ -10,34 +10,34 @@ IProject
 
 ## Hierarchy
 
-- [`IEntity`](IEntity.md)
+- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
 
   ↳ **`IProject`**
 
 ## Implemented by
 
-- [`SDKProject`](../classes/SDKProject.md)
+- [`SDKProject`](../classes/sdkApi_interfaces_entities_iProject.SDKProject.md)
 
 ## Table of contents
 
 ### Properties
 
-- [account](IProject.md#account)
-- [accountId](IProject.md#accountid)
-- [clientId](IProject.md#clientid)
-- [contributors](IProject.md#contributors)
-- [createdAt](IProject.md#createdat)
-- [creator](IProject.md#creator)
-- [datasetsCount](IProject.md#datasetscount)
-- [groups](IProject.md#groups)
-- [id](IProject.md#id)
-- [isBlocked](IProject.md#isblocked)
-- [name](IProject.md#name)
-- [org](IProject.md#org)
-- [orgId](IProject.md#orgid)
-- [role](IProject.md#role)
-- [updatedAt](IProject.md#updatedat)
-- [updatedBy](IProject.md#updatedby)
+- [account](sdkApi_interfaces_entities_iProject.IProject.md#account)
+- [accountId](sdkApi_interfaces_entities_iProject.IProject.md#accountid)
+- [clientId](sdkApi_interfaces_entities_iProject.IProject.md#clientid)
+- [contributors](sdkApi_interfaces_entities_iProject.IProject.md#contributors)
+- [createdAt](sdkApi_interfaces_entities_iProject.IProject.md#createdat)
+- [creator](sdkApi_interfaces_entities_iProject.IProject.md#creator)
+- [datasetsCount](sdkApi_interfaces_entities_iProject.IProject.md#datasetscount)
+- [groups](sdkApi_interfaces_entities_iProject.IProject.md#groups)
+- [id](sdkApi_interfaces_entities_iProject.IProject.md#id)
+- [isBlocked](sdkApi_interfaces_entities_iProject.IProject.md#isblocked)
+- [name](sdkApi_interfaces_entities_iProject.IProject.md#name)
+- [org](sdkApi_interfaces_entities_iProject.IProject.md#org)
+- [orgId](sdkApi_interfaces_entities_iProject.IProject.md#orgid)
+- [role](sdkApi_interfaces_entities_iProject.IProject.md#role)
+- [updatedAt](sdkApi_interfaces_entities_iProject.IProject.md#updatedat)
+- [updatedBy](sdkApi_interfaces_entities_iProject.IProject.md#updatedby)
 
 ## Properties
 
@@ -65,7 +65,7 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
 
 ___
 
@@ -85,7 +85,7 @@ The creation date.
 
 #### Overrides
 
-[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
 
 ___
 
@@ -97,7 +97,7 @@ The creator of the Entity.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[creator](IEntity.md#creator)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
 
 ___
 
@@ -125,7 +125,7 @@ A globally unique identifier for the Entity.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[id](IEntity.md#id)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
 
 ___
 
@@ -177,7 +177,7 @@ The last update date.
 
 #### Overrides
 
-[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
 
 ___
 
@@ -189,4 +189,4 @@ The user who last updated the Entity.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)

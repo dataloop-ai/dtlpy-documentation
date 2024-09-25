@@ -1,40 +1,42 @@
 # Class: SDKTask
 
-[entities](./entities.md).SDKTask
+[sdkApi/interfaces/entities/iTask](../modules/sdkApi_interfaces_entities_iTask.md).SDKTask
 
 A class representing a Task object.
 
+**`Implements`**
+
 ## Implements
 
-- [`ITask`](../interfaces/ITask.md)
+- [`ITask`](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](SDKTask.md#constructor)
+- [constructor](sdkApi_interfaces_entities_iTask.SDKTask.md#constructor)
 
 ### Properties
 
-- [assignmentIds](SDKTask.md#assignmentids)
-- [createdAt](SDKTask.md#createdat)
-- [creator](SDKTask.md#creator)
-- [datasetId](SDKTask.md#datasetid)
-- [dueDate](SDKTask.md#duedate)
-- [forReview](SDKTask.md#forreview)
-- [hasParent](SDKTask.md#hasparent)
-- [id](SDKTask.md#id)
-- [issues](SDKTask.md#issues)
-- [itemStatus](SDKTask.md#itemstatus)
-- [name](SDKTask.md#name)
-- [progress](SDKTask.md#progress)
-- [projectId](SDKTask.md#projectid)
-- [query](SDKTask.md#query)
-- [recipeId](SDKTask.md#recipeid)
-- [spec](SDKTask.md#spec)
-- [status](SDKTask.md#status)
-- [taskOwner](SDKTask.md#taskowner)
-- [updatedAt](SDKTask.md#updatedat)
+- [assignmentIds](sdkApi_interfaces_entities_iTask.SDKTask.md#assignmentids)
+- [createdAt](sdkApi_interfaces_entities_iTask.SDKTask.md#createdat)
+- [creator](sdkApi_interfaces_entities_iTask.SDKTask.md#creator)
+- [datasetId](sdkApi_interfaces_entities_iTask.SDKTask.md#datasetid)
+- [dueDate](sdkApi_interfaces_entities_iTask.SDKTask.md#duedate)
+- [forReview](sdkApi_interfaces_entities_iTask.SDKTask.md#forreview)
+- [hasParent](sdkApi_interfaces_entities_iTask.SDKTask.md#hasparent)
+- [id](sdkApi_interfaces_entities_iTask.SDKTask.md#id)
+- [issues](sdkApi_interfaces_entities_iTask.SDKTask.md#issues)
+- [itemStatus](sdkApi_interfaces_entities_iTask.SDKTask.md#itemstatus)
+- [name](sdkApi_interfaces_entities_iTask.SDKTask.md#name)
+- [progress](sdkApi_interfaces_entities_iTask.SDKTask.md#progress)
+- [projectId](sdkApi_interfaces_entities_iTask.SDKTask.md#projectid)
+- [query](sdkApi_interfaces_entities_iTask.SDKTask.md#query)
+- [recipeId](sdkApi_interfaces_entities_iTask.SDKTask.md#recipeid)
+- [spec](sdkApi_interfaces_entities_iTask.SDKTask.md#spec)
+- [status](sdkApi_interfaces_entities_iTask.SDKTask.md#status)
+- [taskOwner](sdkApi_interfaces_entities_iTask.SDKTask.md#taskowner)
+- [updatedAt](sdkApi_interfaces_entities_iTask.SDKTask.md#updatedat)
 
 ## Constructors
 
@@ -58,6 +60,10 @@ Creates an instance of SDKTask.
 
 The IDs of the assignments associated with the task.
 
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[assignmentIds](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#assignmentids)
+
 ___
 
 ### createdAt
@@ -65,6 +71,10 @@ ___
 • **createdAt**: `Date`
 
 The date and time when the task was created.
+
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[createdAt](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#createdat)
 
 ___
 
@@ -74,6 +84,10 @@ ___
 
 The creator of the task.
 
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[creator](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#creator)
+
 ___
 
 ### datasetId
@@ -81,6 +95,10 @@ ___
 • **datasetId**: `string`
 
 The ID of the dataset the task belongs to.
+
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[datasetId](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#datasetid)
 
 ___
 
@@ -90,6 +108,10 @@ ___
 
 The due date of the task.
 
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[dueDate](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#duedate)
+
 ___
 
 ### forReview
@@ -97,6 +119,10 @@ ___
 • **forReview**: `number`
 
 The number of items that need to be reviewed.
+
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[forReview](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#forreview)
 
 ___
 
@@ -106,6 +132,10 @@ ___
 
 Whether the task has a parent task.
 
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[hasParent](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#hasparent)
+
 ___
 
 ### id
@@ -114,6 +144,10 @@ ___
 
 The unique identifier of the task.
 
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[id](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#id)
+
 ___
 
 ### issues
@@ -121,6 +155,10 @@ ___
 • **issues**: `number`
 
 The number of issues associated with the task.
+
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[issues](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#issues)
 
 ___
 
@@ -138,6 +176,10 @@ The status of the items associated with the task.
 | `completed?` | `number` |
 | `remaining` | `number` |
 
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[itemStatus](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#itemstatus)
+
 ___
 
 ### name
@@ -145,6 +187,10 @@ ___
 • **name**: `string`
 
 The name of the task.
+
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[name](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#name)
 
 ___
 
@@ -154,6 +200,10 @@ ___
 
 The progress of the task.
 
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[progress](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#progress)
+
 ___
 
 ### projectId
@@ -161,6 +211,10 @@ ___
 • **projectId**: `string`
 
 The ID of the project the task belongs to.
+
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[projectId](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#projectid)
 
 ___
 
@@ -170,6 +224,10 @@ ___
 
 The query associated with the task.
 
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[query](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#query)
+
 ___
 
 ### recipeId
@@ -177,6 +235,10 @@ ___
 • **recipeId**: `string`
 
 The ID of the recipe associated with the task.
+
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[recipeId](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#recipeid)
 
 ___
 
@@ -186,6 +248,10 @@ ___
 
 The task's spec.
 
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[spec](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#spec)
+
 ___
 
 ### status
@@ -193,6 +259,10 @@ ___
 • **status**: `string`
 
 The status of the task.
+
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[status](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#status)
 
 ___
 
@@ -202,6 +272,10 @@ ___
 
 The task owner.
 
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[taskOwner](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#taskowner)
+
 ___
 
 ### updatedAt
@@ -209,3 +283,7 @@ ___
 • **updatedAt**: `Date`
 
 The date and time when the task was last updated.
+
+#### Implementation of
+
+[ITask](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md).[updatedAt](../interfaces/sdkApi_interfaces_entities_iTask.ITask.md#updatedat)

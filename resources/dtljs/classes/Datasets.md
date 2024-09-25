@@ -1,6 +1,6 @@
 # Class: Datasets
 
-[repositories](./repositories.md).Datasets
+[appLib/SDKDrivers/xFrameDriver/datasets](../modules/appLib_SDKDrivers_xFrameDriver_datasets.md).Datasets
 
 Datasets repository.
 
@@ -8,27 +8,29 @@ The Datasets class allows the user to manage datasets.
 
 ## Hierarchy
 
-- [`Repository`](Repository.md)
+- [`Repository`](appLib_SDKDrivers_xFrameDriver_repository.Repository.md)
 
   ↳ **`Datasets`**
 
 ## Implements
 
-- [`IBundle`](../interfaces/IBundle.md)<[`SDKDataset`](SDKDataset.md)>
+- [`IBundle`](../interfaces/sdkApi_interfaces_bundles.IBundle.md)<[`SDKDataset`](sdkApi_interfaces_entities_iDataset.SDKDataset.md)\>
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](Datasets.md#constructor)
+- [constructor](appLib_SDKDrivers_xFrameDriver_datasets.Datasets.md#constructor)
 
 ### Methods
 
-- [create](Datasets.md#create)
-- [delete](Datasets.md#delete)
-- [get](Datasets.md#get)
-- [query](Datasets.md#query)
-- [update](Datasets.md#update)
+- [create](appLib_SDKDrivers_xFrameDriver_datasets.Datasets.md#create)
+- [crudReq](appLib_SDKDrivers_xFrameDriver_datasets.Datasets.md#crudreq)
+- [crudReqSync](appLib_SDKDrivers_xFrameDriver_datasets.Datasets.md#crudreqsync)
+- [delete](appLib_SDKDrivers_xFrameDriver_datasets.Datasets.md#delete)
+- [get](appLib_SDKDrivers_xFrameDriver_datasets.Datasets.md#get)
+- [query](appLib_SDKDrivers_xFrameDriver_datasets.Datasets.md#query)
+- [update](appLib_SDKDrivers_xFrameDriver_datasets.Datasets.md#update)
 
 ## Constructors
 
@@ -46,14 +48,13 @@ Creates an instance of Repository.
 
 #### Inherited from
 
-[Repository](Repository.md)
-.[constructor](Repository.md#constructor)
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[constructor](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#constructor)
 
 ## Methods
 
 ### create
 
-▸ **create**(`payload`): `Promise`<[`SDKDataset`](SDKDataset.md)>
+▸ **create**(`payload`): `Promise`<[`SDKDataset`](sdkApi_interfaces_entities_iDataset.SDKDataset.md)\>
 
 Creates a new dataset.
 
@@ -61,8 +62,8 @@ Creates a new dataset.
 
 ```ts
 const dataset = await dl.datasets.create({
-    name: 'My Dataset'
-})
+ name: 'My Dataset'
+ })
 ```
 
 #### Parameters
@@ -74,15 +75,65 @@ const dataset = await dl.datasets.create({
 
 #### Returns
 
-`Promise`<[`SDKDataset`](SDKDataset.md)>
+`Promise`<[`SDKDataset`](sdkApi_interfaces_entities_iDataset.SDKDataset.md)\>
 
 - A promise that resolves to the created dataset.
+
+#### Implementation of
+
+IBundle.create
+
+___
+
+### crudReq
+
+▸ **crudReq**(`data`): `void`
+
+Sends a CRUD request to the xFrame.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `any` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[crudReq](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#crudreq)
+
+___
+
+### crudReqSync
+
+▸ **crudReqSync**(`data`, `options?`): `Promise`<`any`\>
+
+Sends a CRUD request to the xFrame.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | `any` | The data to send. |
+| `options` | `Object` |  |
+| `options.timeout?` | `number` | an option to set the timeout for the request. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Inherited from
+
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[crudReqSync](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#crudreqsync)
 
 ___
 
 ### delete
 
-▸ **delete**(`datasetId`): `Promise`<`void`>
+▸ **delete**(`datasetId`): `Promise`<`void`\>
 
 Deletes a dataset by id.
 
@@ -100,15 +151,19 @@ await dl.datasets.delete('datasetId-123')
 
 #### Returns
 
-`Promise`<`void`>
+`Promise`<`void`\>
 
 - A promise that resolves when the dataset is deleted.
+
+#### Implementation of
+
+IBundle.delete
 
 ___
 
 ### get
 
-▸ **get**(`datasetId?`): `Promise`<[`SDKDataset`](SDKDataset.md)>
+▸ **get**(`datasetId?`): `Promise`<[`SDKDataset`](sdkApi_interfaces_entities_iDataset.SDKDataset.md)\>
 
 Retrieves a dataset by id.
 
@@ -134,15 +189,19 @@ const dataset = await dl.datasets.get('datasetId-123')
 
 #### Returns
 
-`Promise`<[`SDKDataset`](SDKDataset.md)>
+`Promise`<[`SDKDataset`](sdkApi_interfaces_entities_iDataset.SDKDataset.md)\>
 
 - A promise that resolves to the retrieved dataset.
+
+#### Implementation of
+
+IBundle.get
 
 ___
 
 ### query
 
-▸ **query**(): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKDataset`](SDKDataset.md)>>
+▸ **query**(): `Promise`<[`IPagedResponse`](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)<[`SDKDataset`](sdkApi_interfaces_entities_iDataset.SDKDataset.md)\>\>
 
 Retrieves a list of datasets.
 
@@ -155,15 +214,19 @@ const datasets = pagedResponse.items
 
 #### Returns
 
-`Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKDataset`](SDKDataset.md)>>
+`Promise`<[`IPagedResponse`](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)<[`SDKDataset`](sdkApi_interfaces_entities_iDataset.SDKDataset.md)\>\>
 
 - Returns a Promise that resolves to a paged response object of datasets.
+
+#### Implementation of
+
+IBundle.query
 
 ___
 
 ### update
 
-▸ **update**(`payload`): `Promise`<[`SDKDataset`](SDKDataset.md)>
+▸ **update**(`payload`): `Promise`<[`SDKDataset`](sdkApi_interfaces_entities_iDataset.SDKDataset.md)\>
 
 Updates a dataset --- *currently not supported*.
 
@@ -171,10 +234,14 @@ Updates a dataset --- *currently not supported*.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `payload` | `Partial`<[`SDKDataset`](SDKDataset.md)> | The fields to update on the dataset. |
+| `payload` | `Partial`<[`SDKDataset`](sdkApi_interfaces_entities_iDataset.SDKDataset.md)\> | The fields to update on the dataset. |
 
 #### Returns
 
-`Promise`<[`SDKDataset`](SDKDataset.md)>
+`Promise`<[`SDKDataset`](sdkApi_interfaces_entities_iDataset.SDKDataset.md)\>
 
 - A promise that resolves to the updated dataset.
+
+#### Implementation of
+
+IBundle.update

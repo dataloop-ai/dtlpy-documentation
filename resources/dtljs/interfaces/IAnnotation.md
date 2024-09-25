@@ -1,6 +1,6 @@
 # Interface: IAnnotation
 
-[interfaces](./index.md).IAnnotation
+[sdkApi/interfaces/entities/iAnnotation](../modules/sdkApi_interfaces_entities_iAnnotation.md).IAnnotation
 
 An interface representing an Annotation object, extending the IEntity interface.
 
@@ -10,31 +10,31 @@ IAnnotation
 
 ## Hierarchy
 
-- [`IEntity`](IEntity.md)
+- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
 
   ↳ **`IAnnotation`**
 
 ## Implemented by
 
-- [`SDKAnnotation`](../classes/SDKAnnotation.md)
+- [`SDKAnnotation`](../classes/sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md)
 
 ## Table of contents
 
 ### Properties
 
-- [clientId](IAnnotation.md#clientid)
-- [coordinates](IAnnotation.md#coordinates)
-- [createdAt](IAnnotation.md#createdat)
-- [creator](IAnnotation.md#creator)
-- [datasetId](IAnnotation.md#datasetid)
-- [id](IAnnotation.md#id)
-- [itemId](IAnnotation.md#itemid)
-- [label](IAnnotation.md#label)
-- [labelSuggestions](IAnnotation.md#labelsuggestions)
-- [metadata](IAnnotation.md#metadata)
-- [type](IAnnotation.md#type)
-- [updatedAt](IAnnotation.md#updatedat)
-- [updatedBy](IAnnotation.md#updatedby)
+- [clientId](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#clientid)
+- [coordinates](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#coordinates)
+- [createdAt](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#createdat)
+- [creator](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#creator)
+- [datasetId](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#datasetid)
+- [id](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#id)
+- [itemId](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#itemid)
+- [label](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#label)
+- [labelSuggestions](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#labelsuggestions)
+- [metadata](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#metadata)
+- [type](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#type)
+- [updatedAt](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#updatedat)
+- [updatedBy](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#updatedby)
 
 ## Properties
 
@@ -46,7 +46,7 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
 
 ___
 
@@ -66,7 +66,7 @@ The date and time the annotation was created.
 
 #### Overrides
 
-[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
 
 ___
 
@@ -78,7 +78,7 @@ The creator of the Entity.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[creator](IEntity.md#creator)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
 
 ___
 
@@ -98,7 +98,7 @@ A globally unique identifier for the Entity.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[id](IEntity.md#id)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
 
 ___
 
@@ -154,7 +154,7 @@ The date and time the annotation was last updated.
 
 #### Overrides
 
-[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
 
 ___
 
@@ -166,4 +166,4 @@ The user who last updated the annotation.
 
 #### Overrides
 
-[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)

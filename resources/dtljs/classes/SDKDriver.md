@@ -1,37 +1,41 @@
 # Class: SDKDriver
 
-[entities](./entities.md).SDKDriver
+[sdkApi/interfaces/entities/iDriver](../modules/sdkApi_interfaces_entities_iDriver.md).SDKDriver
 
 A class representing a driver configuration object.
 
+**`Implements`**
+
+IDriver
+
 ## Implements
 
-- [`IDriver`](../interfaces/IDriver.md)
+- [`IDriver`](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](SDKDriver.md#constructor)
+- [constructor](sdkApi_interfaces_entities_iDriver.SDKDriver.md#constructor)
 
 ### Properties
 
-- [allowExternalDelete](SDKDriver.md#allowexternaldelete)
-- [allowExternalModification](SDKDriver.md#allowexternalmodification)
-- [bucket](SDKDriver.md#bucket)
-- [bucketName](SDKDriver.md#bucketname)
-- [containerName](SDKDriver.md#containername)
-- [createdAt](SDKDriver.md#createdat)
-- [creator](SDKDriver.md#creator)
-- [id](SDKDriver.md#id)
-- [integrationId](SDKDriver.md#integrationid)
-- [integrationType](SDKDriver.md#integrationtype)
-- [metadata](SDKDriver.md#metadata)
-- [name](SDKDriver.md#name)
-- [path](SDKDriver.md#path)
-- [region](SDKDriver.md#region)
-- [storageClass](SDKDriver.md#storageclass)
-- [type](SDKDriver.md#type)
+- [allowExternalDelete](sdkApi_interfaces_entities_iDriver.SDKDriver.md#allowexternaldelete)
+- [allowExternalModification](sdkApi_interfaces_entities_iDriver.SDKDriver.md#allowexternalmodification)
+- [bucket](sdkApi_interfaces_entities_iDriver.SDKDriver.md#bucket)
+- [bucketName](sdkApi_interfaces_entities_iDriver.SDKDriver.md#bucketname)
+- [containerName](sdkApi_interfaces_entities_iDriver.SDKDriver.md#containername)
+- [createdAt](sdkApi_interfaces_entities_iDriver.SDKDriver.md#createdat)
+- [creator](sdkApi_interfaces_entities_iDriver.SDKDriver.md#creator)
+- [id](sdkApi_interfaces_entities_iDriver.SDKDriver.md#id)
+- [integrationId](sdkApi_interfaces_entities_iDriver.SDKDriver.md#integrationid)
+- [integrationType](sdkApi_interfaces_entities_iDriver.SDKDriver.md#integrationtype)
+- [metadata](sdkApi_interfaces_entities_iDriver.SDKDriver.md#metadata)
+- [name](sdkApi_interfaces_entities_iDriver.SDKDriver.md#name)
+- [path](sdkApi_interfaces_entities_iDriver.SDKDriver.md#path)
+- [region](sdkApi_interfaces_entities_iDriver.SDKDriver.md#region)
+- [storageClass](sdkApi_interfaces_entities_iDriver.SDKDriver.md#storageclass)
+- [type](sdkApi_interfaces_entities_iDriver.SDKDriver.md#type)
 
 ## Constructors
 
@@ -57,7 +61,7 @@ Indicates if the driver allows external delete.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[allowExternalDelete](../interfaces/IDriver.md#allowexternaldelete)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[allowExternalDelete](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#allowexternaldelete)
 
 ___
 
@@ -69,7 +73,7 @@ Indicates if the driver allows external modification.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[allowExternalModification](../interfaces/IDriver.md#allowexternalmodification)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[allowExternalModification](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#allowexternalmodification)
 
 ___
 
@@ -81,7 +85,7 @@ The bucket.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[bucket](../interfaces/IDriver.md#bucket)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[bucket](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#bucket)
 
 ___
 
@@ -93,7 +97,7 @@ The bucket name.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[bucketName](../interfaces/IDriver.md#bucketname)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[bucketName](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#bucketname)
 
 ___
 
@@ -105,7 +109,7 @@ The container name.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[containerName](../interfaces/IDriver.md#containername)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[containerName](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#containername)
 
 ___
 
@@ -117,7 +121,7 @@ The creation date.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[createdAt](../interfaces/IDriver.md#createdat)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[createdAt](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#createdat)
 
 ___
 
@@ -129,7 +133,7 @@ The driver creator.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[creator](../interfaces/IDriver.md#creator)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[creator](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#creator)
 
 ___
 
@@ -141,7 +145,7 @@ The driver ID.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[id](../interfaces/IDriver.md#id)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[id](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#id)
 
 ___
 
@@ -153,7 +157,7 @@ The integration ID.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[integrationId](../interfaces/IDriver.md#integrationid)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[integrationId](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#integrationid)
 
 ___
 
@@ -165,7 +169,7 @@ The integration type.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[integrationType](../interfaces/IDriver.md#integrationtype)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[integrationType](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#integrationtype)
 
 ___
 
@@ -177,7 +181,7 @@ The driver metadata.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[metadata](../interfaces/IDriver.md#metadata)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[metadata](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#metadata)
 
 ___
 
@@ -189,7 +193,7 @@ The driver name.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[name](../interfaces/IDriver.md#name)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[name](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#name)
 
 ___
 
@@ -201,7 +205,7 @@ The path.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[path](../interfaces/IDriver.md#path)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[path](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#path)
 
 ___
 
@@ -213,7 +217,7 @@ The region.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[region](../interfaces/IDriver.md#region)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[region](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#region)
 
 ___
 
@@ -225,7 +229,7 @@ The storage class.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[storageClass](../interfaces/IDriver.md#storageclass)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[storageClass](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#storageclass)
 
 ___
 
@@ -237,4 +241,4 @@ The driver type.
 
 #### Implementation of
 
-[IDriver](../interfaces/IDriver.md).[type](../interfaces/IDriver.md#type)
+[IDriver](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md).[type](../interfaces/sdkApi_interfaces_entities_iDriver.IDriver.md#type)

@@ -1,46 +1,65 @@
-# Class: SDKAnnotation
+# Class: SDKAnnotation<T\>
 
-[entities](./entities.md).SDKAnnotation
+[sdkApi/interfaces/entities/iAnnotation](../modules/sdkApi_interfaces_entities_iAnnotation.md).SDKAnnotation
 
 Represents an annotation instance within the SDK.
 
+**`Implements`**
+
+## Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
+
 ## Implements
 
-- [`IAnnotation`](../interfaces/IAnnotation.md)
+- [`IAnnotation`](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](SDKAnnotation.md#constructor)
+- [constructor](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#constructor)
 
 ### Properties
 
-- [annotationId](SDKAnnotation.md#annotationid)
-- [attributes](SDKAnnotation.md#attributes)
-- [clientId](SDKAnnotation.md#clientid)
-- [coordinates](SDKAnnotation.md#coordinates)
-- [createdAt](SDKAnnotation.md#createdat)
-- [creator](SDKAnnotation.md#creator)
-- [data](SDKAnnotation.md#data)
-- [datasetId](SDKAnnotation.md#datasetid)
-- [description](SDKAnnotation.md#description)
-- [id](SDKAnnotation.md#id)
-- [itemId](SDKAnnotation.md#itemid)
-- [label](SDKAnnotation.md#label)
-- [labelSuggestions](SDKAnnotation.md#labelsuggestions)
-- [metadata](SDKAnnotation.md#metadata)
-- [type](SDKAnnotation.md#type)
-- [updatedAt](SDKAnnotation.md#updatedat)
-- [updatedBy](SDKAnnotation.md#updatedby)
+- [annotationId](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#annotationid)
+- [attributes](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#attributes)
+- [clientId](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#clientid)
+- [coordinates](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#coordinates)
+- [createdAt](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#createdat)
+- [creator](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#creator)
+- [data](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#data)
+- [datasetId](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#datasetid)
+- [description](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#description)
+- [id](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#id)
+- [itemId](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#itemid)
+- [label](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#label)
+- [labelSuggestions](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#labelsuggestions)
+- [metadata](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#metadata)
+- [snapshots](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#snapshots)
+- [type](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#type)
+- [updatedAt](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#updatedat)
+- [updatedBy](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#updatedby)
+
+### Methods
+
+- [toJSON](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#tojson)
 
 ## Constructors
 
 ### constructor
 
-• **new SDKAnnotation**(`annotation`)
+• **new SDKAnnotation**<`T`\>(`annotation`)
 
 Creates an instance of SDKAnnotation.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 #### Parameters
 
@@ -72,6 +91,10 @@ ___
 
 The client ID of the annotation.
 
+#### Implementation of
+
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[clientId](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#clientid)
+
 ___
 
 ### coordinates
@@ -79,6 +102,10 @@ ___
 • `Optional` **coordinates**: `any`
 
 The coordinates of the annotation.
+
+#### Implementation of
+
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[coordinates](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#coordinates)
 
 ___
 
@@ -88,6 +115,10 @@ ___
 
 The creation date of the annotation.
 
+#### Implementation of
+
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[createdAt](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#createdat)
+
 ___
 
 ### creator
@@ -96,11 +127,15 @@ ___
 
 The creator of the annotation.
 
+#### Implementation of
+
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[creator](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#creator)
+
 ___
 
 ### data
 
-• `Optional` **data**: `any`
+• `Optional` **data**: `T`
 
 The data of the annotation.
 
@@ -111,6 +146,10 @@ ___
 • **datasetId**: `string`
 
 The ID of the dataset the annotation belongs to.
+
+#### Implementation of
+
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[datasetId](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#datasetid)
 
 ___
 
@@ -130,8 +169,7 @@ The ID of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/IAnnotation.md)
-.[id](../interfaces/IAnnotation.md#id)
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[id](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#id)
 
 ___
 
@@ -143,8 +181,7 @@ The item ID of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/IAnnotation.md)
-.[itemId](../interfaces/IAnnotation.md#itemid)
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[itemId](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#itemid)
 
 ___
 
@@ -156,8 +193,7 @@ The label of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/IAnnotation.md)
-.[label](../interfaces/IAnnotation.md#label)
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[label](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#label)
 
 ___
 
@@ -173,8 +209,7 @@ The label suggestions for the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/IAnnotation.md)
-.[labelSuggestions](../interfaces/IAnnotation.md#labelsuggestions)
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[labelSuggestions](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#labelsuggestions)
 
 ___
 
@@ -186,8 +221,15 @@ The metadata of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/IAnnotation.md)
-.[metadata](../interfaces/IAnnotation.md#metadata)
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[metadata](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#metadata)
+
+___
+
+### snapshots
+
+• **snapshots**: `SnapshotService`<`T`\>
+
+The snapshots of the annotation.
 
 ___
 
@@ -199,8 +241,7 @@ The type of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/IAnnotation.md)
-.[type](../interfaces/IAnnotation.md#type)
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[type](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#type)
 
 ___
 
@@ -212,8 +253,7 @@ The last update date of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/IAnnotation.md)
-.[updatedAt](../interfaces/IAnnotation.md#updatedat)
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[updatedAt](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#updatedat)
 
 ___
 
@@ -225,5 +265,36 @@ The last updater of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/IAnnotation.md)
-.[updatedBy](../interfaces/IAnnotation.md#updatedby)
+[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[updatedBy](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#updatedby)
+
+## Methods
+
+### toJSON
+
+▸ **toJSON**(): `Object`
+
+Returns the annotation as a JSON object.
+
+#### Returns
+
+`Object`
+
+| Name | Type |
+| :------ | :------ |
+| `attributes` | `string`[] |
+| `clientId` | `string` |
+| `coordinates` | `any` |
+| `createdAt` | `IDate` |
+| `creator` | `string` |
+| `data` | `T` |
+| `datasetId` | `string` |
+| `description` | `string` |
+| `id` | `string` |
+| `itemId` | `string` |
+| `label` | `string` |
+| `labelColor` | `string` |
+| `labelSuggestions` | { `[p: string]`: `number`;  } |
+| `metadata` | `any` |
+| `type` | `string` |
+| `updatedAt` | `IDate` |
+| `updatedBy` | `string` |

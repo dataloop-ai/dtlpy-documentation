@@ -1,6 +1,6 @@
 # Interface: IDataset
 
-[interfaces](./index.md).IDataset
+[sdkApi/interfaces/entities/iDataset](../modules/sdkApi_interfaces_entities_iDataset.md).IDataset
 
 An interface representing a Dataset object.
 
@@ -10,39 +10,39 @@ IDataset
 
 ## Hierarchy
 
-- [`IEntity`](IEntity.md)
+- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
 
   ↳ **`IDataset`**
 
 ## Implemented by
 
-- [`SDKDataset`](../classes/SDKDataset.md)
+- [`SDKDataset`](../classes/sdkApi_interfaces_entities_iDataset.SDKDataset.md)
 
 ## Table of contents
 
 ### Properties
 
-- [annotated](IDataset.md#annotated)
-- [clientId](IDataset.md#clientid)
-- [createdAt](IDataset.md#createdat)
-- [creator](IDataset.md#creator)
-- [directoryTree](IDataset.md#directorytree)
-- [driver](IDataset.md#driver)
-- [error](IDataset.md#error)
-- [export](IDataset.md#export)
-- [id](IDataset.md#id)
-- [indexDriver](IDataset.md#indexdriver)
-- [items](IDataset.md#items)
-- [itemsCount](IDataset.md#itemscount)
-- [metadata](IDataset.md#metadata)
-- [name](IDataset.md#name)
-- [projects](IDataset.md#projects)
-- [readableType](IDataset.md#readabletype)
-- [readonly](IDataset.md#readonly)
-- [shareLevel](IDataset.md#sharelevel)
-- [updatedAt](IDataset.md#updatedat)
-- [updatedBy](IDataset.md#updatedby)
-- [url](IDataset.md#url)
+- [annotated](sdkApi_interfaces_entities_iDataset.IDataset.md#annotated)
+- [clientId](sdkApi_interfaces_entities_iDataset.IDataset.md#clientid)
+- [createdAt](sdkApi_interfaces_entities_iDataset.IDataset.md#createdat)
+- [creator](sdkApi_interfaces_entities_iDataset.IDataset.md#creator)
+- [directoryTree](sdkApi_interfaces_entities_iDataset.IDataset.md#directorytree)
+- [driver](sdkApi_interfaces_entities_iDataset.IDataset.md#driver)
+- [error](sdkApi_interfaces_entities_iDataset.IDataset.md#error)
+- [export](sdkApi_interfaces_entities_iDataset.IDataset.md#export)
+- [id](sdkApi_interfaces_entities_iDataset.IDataset.md#id)
+- [indexDriver](sdkApi_interfaces_entities_iDataset.IDataset.md#indexdriver)
+- [items](sdkApi_interfaces_entities_iDataset.IDataset.md#items)
+- [itemsCount](sdkApi_interfaces_entities_iDataset.IDataset.md#itemscount)
+- [metadata](sdkApi_interfaces_entities_iDataset.IDataset.md#metadata)
+- [name](sdkApi_interfaces_entities_iDataset.IDataset.md#name)
+- [projects](sdkApi_interfaces_entities_iDataset.IDataset.md#projects)
+- [readableType](sdkApi_interfaces_entities_iDataset.IDataset.md#readabletype)
+- [readonly](sdkApi_interfaces_entities_iDataset.IDataset.md#readonly)
+- [shareLevel](sdkApi_interfaces_entities_iDataset.IDataset.md#sharelevel)
+- [updatedAt](sdkApi_interfaces_entities_iDataset.IDataset.md#updatedat)
+- [updatedBy](sdkApi_interfaces_entities_iDataset.IDataset.md#updatedby)
+- [url](sdkApi_interfaces_entities_iDataset.IDataset.md#url)
 
 ## Properties
 
@@ -62,7 +62,7 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
 
 ___
 
@@ -74,7 +74,7 @@ The date the dataset was created
 
 #### Overrides
 
-[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
 
 ___
 
@@ -86,7 +86,7 @@ The dataset creator
 
 #### Overrides
 
-[IEntity](IEntity.md).[creator](IEntity.md#creator)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
 
 ___
 
@@ -137,7 +137,7 @@ The unique identifier of the dataset
 
 #### Overrides
 
-[IEntity](IEntity.md).[id](IEntity.md#id)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
 
 ___
 
@@ -221,7 +221,7 @@ The date and time when the Entity was last updated.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
 
 ___
 
@@ -233,7 +233,7 @@ The user who last updated the Entity.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)
 
 ___
 

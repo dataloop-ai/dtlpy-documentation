@@ -1,6 +1,6 @@
 # Class: Projects
 
-[repositories](./repositories.md).Projects
+[appLib/SDKDrivers/xFrameDriver/projects](../modules/appLib_SDKDrivers_xFrameDriver_projects.md).Projects
 
 Projects repository.
 
@@ -8,27 +8,29 @@ The Projects class allows the user to manage projects and their properties.
 
 ## Hierarchy
 
-- [`Repository`](Repository.md)
+- [`Repository`](appLib_SDKDrivers_xFrameDriver_repository.Repository.md)
 
   ↳ **`Projects`**
 
 ## Implements
 
-- [`IBundle`](../interfaces/IBundle.md)<[`SDKProject`](SDKProject.md)>
+- [`IBundle`](../interfaces/sdkApi_interfaces_bundles.IBundle.md)<[`SDKProject`](sdkApi_interfaces_entities_iProject.SDKProject.md)\>
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](Projects.md#constructor)
+- [constructor](appLib_SDKDrivers_xFrameDriver_projects.Projects.md#constructor)
 
 ### Methods
 
-- [create](Projects.md#create)
-- [delete](Projects.md#delete)
-- [get](Projects.md#get)
-- [query](Projects.md#query)
-- [update](Projects.md#update)
+- [create](appLib_SDKDrivers_xFrameDriver_projects.Projects.md#create)
+- [crudReq](appLib_SDKDrivers_xFrameDriver_projects.Projects.md#crudreq)
+- [crudReqSync](appLib_SDKDrivers_xFrameDriver_projects.Projects.md#crudreqsync)
+- [delete](appLib_SDKDrivers_xFrameDriver_projects.Projects.md#delete)
+- [get](appLib_SDKDrivers_xFrameDriver_projects.Projects.md#get)
+- [query](appLib_SDKDrivers_xFrameDriver_projects.Projects.md#query)
+- [update](appLib_SDKDrivers_xFrameDriver_projects.Projects.md#update)
 
 ## Constructors
 
@@ -46,14 +48,13 @@ Creates an instance of Repository.
 
 #### Inherited from
 
-[Repository](Repository.md)
-.[constructor](Repository.md#constructor)
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[constructor](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#constructor)
 
 ## Methods
 
 ### create
 
-▸ **create**(`payload`): `Promise`<[`SDKProject`](SDKProject.md)>
+▸ **create**(`payload`): `Promise`<[`SDKProject`](sdkApi_interfaces_entities_iProject.SDKProject.md)\>
 
 Creates a new project.
 
@@ -61,7 +62,7 @@ Creates a new project.
 
 ```ts
 const project = await dl.projects.create({
-    name: 'My Project'
+  name: 'My Project'
 })
 ```
 
@@ -74,15 +75,65 @@ const project = await dl.projects.create({
 
 #### Returns
 
-`Promise`<[`SDKProject`](SDKProject.md)>
+`Promise`<[`SDKProject`](sdkApi_interfaces_entities_iProject.SDKProject.md)\>
 
 - A promise that resolves to the created project.
+
+#### Implementation of
+
+IBundle.create
+
+___
+
+### crudReq
+
+▸ **crudReq**(`data`): `void`
+
+Sends a CRUD request to the xFrame.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `any` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[crudReq](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#crudreq)
+
+___
+
+### crudReqSync
+
+▸ **crudReqSync**(`data`, `options?`): `Promise`<`any`\>
+
+Sends a CRUD request to the xFrame.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | `any` | The data to send. |
+| `options` | `Object` |  |
+| `options.timeout?` | `number` | an option to set the timeout for the request. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Inherited from
+
+[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[crudReqSync](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#crudreqsync)
 
 ___
 
 ### delete
 
-▸ **delete**(`projectId`): `Promise`<`void`>
+▸ **delete**(`projectId`): `Promise`<`void`\>
 
 Deletes a project.
 
@@ -100,15 +151,19 @@ await dl.projects.delete('projectId-123')
 
 #### Returns
 
-`Promise`<`void`>
+`Promise`<`void`\>
 
 - A promise that resolves when the project is deleted.
+
+#### Implementation of
+
+IBundle.delete
 
 ___
 
 ### get
 
-▸ **get**(`projectId?`): `Promise`<[`SDKProject`](SDKProject.md)>
+▸ **get**(`projectId?`): `Promise`<[`SDKProject`](sdkApi_interfaces_entities_iProject.SDKProject.md)\>
 
 Gets a project by project id.
 
@@ -129,7 +184,7 @@ const activeProject = await dl.projects.get()
 
 #### Returns
 
-`Promise`<[`SDKProject`](SDKProject.md)>
+`Promise`<[`SDKProject`](sdkApi_interfaces_entities_iProject.SDKProject.md)\>
 
 - A promise that resolves to the project.
 
@@ -141,7 +196,7 @@ ___
 
 ### query
 
-▸ **query**(): `Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKProject`](SDKProject.md)>>
+▸ **query**(): `Promise`<[`IPagedResponse`](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)<[`SDKProject`](sdkApi_interfaces_entities_iProject.SDKProject.md)\>\>
 
 Lists all projects.
 
@@ -154,7 +209,7 @@ const projects = pagedResponse.items
 
 #### Returns
 
-`Promise`<[`IPagedResponse`](../interfaces/IPagedResponse.md)<[`SDKProject`](SDKProject.md)>>
+`Promise`<[`IPagedResponse`](../interfaces/sdkApi_interfaces_entities_iQuery.IPagedResponse.md)<[`SDKProject`](sdkApi_interfaces_entities_iProject.SDKProject.md)\>\>
 
 - Returns a Promise that resolves to a paged response object of projects.
 
@@ -166,7 +221,7 @@ ___
 
 ### update
 
-▸ **update**(`payload`): `Promise`<[`SDKProject`](SDKProject.md)>
+▸ **update**(`payload`): `Promise`<[`SDKProject`](sdkApi_interfaces_entities_iProject.SDKProject.md)\>
 
 Updates a project.
 
@@ -174,8 +229,8 @@ Updates a project.
 
 ```ts
 const project = await dl.projects.update({
-    id: 'projectId-123',
-    name: 'New Project Name'
+ id: 'projectId-123',
+ name: 'New Project Name'
 })
 ```
 
@@ -189,7 +244,7 @@ const project = await dl.projects.update({
 
 #### Returns
 
-`Promise`<[`SDKProject`](SDKProject.md)>
+`Promise`<[`SDKProject`](sdkApi_interfaces_entities_iProject.SDKProject.md)\>
 
 - A promise that resolves to the updated project.
 

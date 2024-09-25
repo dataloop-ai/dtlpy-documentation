@@ -1,6 +1,6 @@
 # Interface: IItem
 
-[interfaces](./index.md).IItem
+[sdkApi/interfaces/entities/iItem](../modules/sdkApi_interfaces_entities_iItem.md).IItem
 
 An interface representing an Item object, extending the IEntity interface.
 
@@ -10,36 +10,36 @@ IItem
 
 ## Hierarchy
 
-- [`IEntity`](IEntity.md)
+- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
 
   ↳ **`IItem`**
 
 ## Implemented by
 
-- [`SDKItem`](../classes/SDKItem.md)
+- [`SDKItem`](../classes/sdkApi_interfaces_entities_iItem.SDKItem.md)
 
 ## Table of contents
 
 ### Properties
 
-- [annotated](IItem.md#annotated)
-- [annotations](IItem.md#annotations)
-- [clientId](IItem.md#clientid)
-- [createdAt](IItem.md#createdat)
-- [creator](IItem.md#creator)
-- [datasetId](IItem.md#datasetid)
-- [dir](IItem.md#dir)
-- [filename](IItem.md#filename)
-- [hidden](IItem.md#hidden)
-- [id](IItem.md#id)
-- [metadata](IItem.md#metadata)
-- [name](IItem.md#name)
-- [stream](IItem.md#stream)
-- [thumbnail](IItem.md#thumbnail)
-- [type](IItem.md#type)
-- [updatedAt](IItem.md#updatedat)
-- [updatedBy](IItem.md#updatedby)
-- [url](IItem.md#url)
+- [annotated](sdkApi_interfaces_entities_iItem.IItem.md#annotated)
+- [annotations](sdkApi_interfaces_entities_iItem.IItem.md#annotations)
+- [clientId](sdkApi_interfaces_entities_iItem.IItem.md#clientid)
+- [createdAt](sdkApi_interfaces_entities_iItem.IItem.md#createdat)
+- [creator](sdkApi_interfaces_entities_iItem.IItem.md#creator)
+- [datasetId](sdkApi_interfaces_entities_iItem.IItem.md#datasetid)
+- [dir](sdkApi_interfaces_entities_iItem.IItem.md#dir)
+- [filename](sdkApi_interfaces_entities_iItem.IItem.md#filename)
+- [hidden](sdkApi_interfaces_entities_iItem.IItem.md#hidden)
+- [id](sdkApi_interfaces_entities_iItem.IItem.md#id)
+- [metadata](sdkApi_interfaces_entities_iItem.IItem.md#metadata)
+- [name](sdkApi_interfaces_entities_iItem.IItem.md#name)
+- [stream](sdkApi_interfaces_entities_iItem.IItem.md#stream)
+- [thumbnail](sdkApi_interfaces_entities_iItem.IItem.md#thumbnail)
+- [type](sdkApi_interfaces_entities_iItem.IItem.md#type)
+- [updatedAt](sdkApi_interfaces_entities_iItem.IItem.md#updatedat)
+- [updatedBy](sdkApi_interfaces_entities_iItem.IItem.md#updatedby)
+- [url](sdkApi_interfaces_entities_iItem.IItem.md#url)
 
 ## Properties
 
@@ -68,7 +68,7 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
 
 ___
 
@@ -80,7 +80,7 @@ The date and time when the Item was created.
 
 #### Overrides
 
-[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
 
 ___
 
@@ -92,7 +92,7 @@ The creator of the Entity.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[creator](IEntity.md#creator)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
 
 ___
 
@@ -136,7 +136,7 @@ A globally unique identifier for the Entity.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[id](IEntity.md#id)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
 
 ___
 
@@ -188,7 +188,7 @@ The date and time when the Entity was last updated.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
 
 ___
 
@@ -200,7 +200,7 @@ The user who last updated the Entity.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)
 
 ___
 

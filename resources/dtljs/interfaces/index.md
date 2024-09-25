@@ -1,18 +1,16 @@
-# Interfaces
+# Index of interfaces
 
-[main](../index.md).interfaces
-
-- [IBundle](../interfaces/IBundle.md)
-- [IEntity](../interfaces/IEntity.md)
-- [IAnnotation](../interfaces/IAnnotation.md)
-- [IDataset](../interfaces/IDataset.md)
-- [IDriver](../interfaces/IDriver.md)
-- [IItem](../interfaces/IItem.md)
-- [IProject](../interfaces/IProject.md)
-- [ITask](../interfaces/ITask.md)
-- [IContributor](../interfaces/IContributor.md)
-
----
-
-- [IPagedResponse](../interfaces/IPagedResponse.md)
-- [SDKExecutionPayload](../interfaces/SDKExecutionPayload.md)
+- [IAnnotation.md](IAnnotation.md)
+- [IAppNavigator.md](IAppNavigator.md)
+- [IBundle.md](IBundle.md)
+- [IContributor.md](IContributor.md)
+- [IDataset.md](IDataset.md)
+- [IDriver.md](IDriver.md)
+- [IEntity.md](IEntity.md)
+- [IIntegration.md](IIntegration.md)
+- [IItem.md](IItem.md)
+- [IPagedResponse.md](IPagedResponse.md)
+- [IProject.md](IProject.md)
+- [ITask.md](ITask.md)
+- [SDKExecutionPayload.md](SDKExecutionPayload.md)
+- [SDKUpdateTaskAssigneesPayload.md](SDKUpdateTaskAssigneesPayload.md)

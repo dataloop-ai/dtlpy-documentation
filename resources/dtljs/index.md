@@ -1,11 +1,7 @@
-# @dataloop-ai/jssdk
+# Index of new-docs
 
-## Table of contents
-
-### Modules
-- [xFrame](./xFrame/index.md)
-- [xFrameDriver (dl)](./classes/xFrameDriver.md)
-- [Repositories](./classes/repositories.md)
-- [Interfaces](./interfaces/index.md)
-- [Entities](./classes/entities.md)
-- [Enums](./enums/index.md)
+- [modules.md](modules.md)
+- [classes/](./classes\index.md)
+- [enums/](./enums\index.md)
+- [interfaces/](./interfaces\index.md)
+- [modules/](./modules\index.md)

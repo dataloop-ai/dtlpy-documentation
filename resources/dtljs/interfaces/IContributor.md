@@ -1,6 +1,6 @@
 # Interface: IContributor
 
-[interfaces](./index.md).IContributor
+[sdkApi/interfaces/entities/iUser](../modules/sdkApi_interfaces_entities_iUser.md).IContributor
 
 An interface representing a Contributor object, extending the IEntity interface.
 
@@ -10,39 +10,39 @@ IContributor
 
 ## Hierarchy
 
-- [`IEntity`](IEntity.md)
+- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
 
   ↳ **`IContributor`**
 
 ## Implemented by
 
-- [`SDKContributor`](../classes/SDKContributor.md)
+- [`SDKContributor`](../classes/sdkApi_interfaces_entities_iUser.SDKContributor.md)
 
 ## Table of contents
 
 ### Properties
 
-- [\_org](IContributor.md#_org)
-- [avatar](IContributor.md#avatar)
-- [boarded](IContributor.md#boarded)
-- [clientId](IContributor.md#clientid)
-- [createdAt](IContributor.md#createdat)
-- [creator](IContributor.md#creator)
-- [email](IContributor.md#email)
-- [firstName](IContributor.md#firstname)
-- [groupRole](IContributor.md#grouprole)
-- [id](IContributor.md#id)
-- [interest](IContributor.md#interest)
-- [inviteStatus](IContributor.md#invitestatus)
-- [lastLogin](IContributor.md#lastlogin)
-- [lastName](IContributor.md#lastname)
-- [orgRole](IContributor.md#orgrole)
-- [project](IContributor.md#project)
-- [role](IContributor.md#role)
-- [timezone](IContributor.md#timezone)
-- [type](IContributor.md#type)
-- [updatedAt](IContributor.md#updatedat)
-- [updatedBy](IContributor.md#updatedby)
+- [\_org](sdkApi_interfaces_entities_iUser.IContributor.md#_org)
+- [avatar](sdkApi_interfaces_entities_iUser.IContributor.md#avatar)
+- [boarded](sdkApi_interfaces_entities_iUser.IContributor.md#boarded)
+- [clientId](sdkApi_interfaces_entities_iUser.IContributor.md#clientid)
+- [createdAt](sdkApi_interfaces_entities_iUser.IContributor.md#createdat)
+- [creator](sdkApi_interfaces_entities_iUser.IContributor.md#creator)
+- [email](sdkApi_interfaces_entities_iUser.IContributor.md#email)
+- [firstName](sdkApi_interfaces_entities_iUser.IContributor.md#firstname)
+- [groupRole](sdkApi_interfaces_entities_iUser.IContributor.md#grouprole)
+- [id](sdkApi_interfaces_entities_iUser.IContributor.md#id)
+- [interest](sdkApi_interfaces_entities_iUser.IContributor.md#interest)
+- [inviteStatus](sdkApi_interfaces_entities_iUser.IContributor.md#invitestatus)
+- [lastLogin](sdkApi_interfaces_entities_iUser.IContributor.md#lastlogin)
+- [lastName](sdkApi_interfaces_entities_iUser.IContributor.md#lastname)
+- [orgRole](sdkApi_interfaces_entities_iUser.IContributor.md#orgrole)
+- [project](sdkApi_interfaces_entities_iUser.IContributor.md#project)
+- [role](sdkApi_interfaces_entities_iUser.IContributor.md#role)
+- [timezone](sdkApi_interfaces_entities_iUser.IContributor.md#timezone)
+- [type](sdkApi_interfaces_entities_iUser.IContributor.md#type)
+- [updatedAt](sdkApi_interfaces_entities_iUser.IContributor.md#updatedat)
+- [updatedBy](sdkApi_interfaces_entities_iUser.IContributor.md#updatedby)
 
 ## Properties
 
@@ -78,7 +78,7 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
 
 ___
 
@@ -90,7 +90,7 @@ The date and time when the contributor was created
 
 #### Overrides
 
-[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
 
 ___
 
@@ -102,7 +102,7 @@ The creator of the Entity.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[creator](IEntity.md#creator)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
 
 ___
 
@@ -138,13 +138,13 @@ The unique identifier of the contributor (email)
 
 #### Overrides
 
-[IEntity](IEntity.md).[id](IEntity.md#id)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
 
 ___
 
 ### interest
 
-• **interest**: `UserInterestType`
+• **interest**: `string`
 
 The areas of interest of the contributor (e.g. "dataManagement")
 
@@ -222,7 +222,7 @@ The date and time when the Entity was last updated.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
 
 ___
 
@@ -234,4 +234,4 @@ The user who last updated the Entity.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)

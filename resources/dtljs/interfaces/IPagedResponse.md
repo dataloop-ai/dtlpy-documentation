@@ -1,6 +1,6 @@
-# Interface: IPagedResponse<T>
+# Interface: IPagedResponse<T\>
 
-[interfaces](./index.md).IPagedResponse
+[sdkApi/interfaces/entities/iQuery](../modules/sdkApi_interfaces_entities_iQuery.md).IPagedResponse
 
 An interface representing an entity's PagedResponse object.
 
@@ -18,10 +18,10 @@ IPagedResponse
 
 ### Properties
 
-- [hasNextPage](IPagedResponse.md#hasnextpage)
-- [items](IPagedResponse.md#items)
-- [totalItemsCount](IPagedResponse.md#totalitemscount)
-- [totalPagesCount](IPagedResponse.md#totalpagescount)
+- [hasNextPage](sdkApi_interfaces_entities_iQuery.IPagedResponse.md#hasnextpage)
+- [items](sdkApi_interfaces_entities_iQuery.IPagedResponse.md#items)
+- [totalItemsCount](sdkApi_interfaces_entities_iQuery.IPagedResponse.md#totalitemscount)
+- [totalPagesCount](sdkApi_interfaces_entities_iQuery.IPagedResponse.md#totalpagescount)
 
 ## Properties
 

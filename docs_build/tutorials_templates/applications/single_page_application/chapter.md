@@ -17,7 +17,7 @@ A single page application for dataloop platform can be created by utilising vari
 
 We prefer Vue.js for our application development because we have an open source design-system and icons library that matches our platform’s theme.
 
-To get started, go to this [template repo](https://github.com/dataloop-ai-apps/application-template-vue2) and click on the `Use this template` button.
+To get started, go to this [example application](https://github.com/dataloop-ai-apps/item-viewer), clone, and follow the README to run.
 
 ![](../../../assets/apps/template_repo.png)
 

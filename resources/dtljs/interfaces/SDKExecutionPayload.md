@@ -1,8 +1,8 @@
 # Interface: SDKExecutionPayload
 
-[interfaces](./index.md).SDKExecutionPayload
+[sdkApi/interfaces/entities/iExecution](../modules/sdkApi_interfaces_entities_iExecution.md).SDKExecutionPayload
 
-The payload for creating an execution.
+The payload for creating an execution
 
 **`Interface`**
 
@@ -12,32 +12,19 @@ SDKExecutionPayload
 
 ### Properties
 
-- [sync](SDKExecutionPayload.md#sync)
-- [caption](SDKExecutionPayload.md#caption)
-- [functionName](SDKExecutionPayload.md#functionname)
-- [input](SDKExecutionPayload.md#input)
-- [notification](SDKExecutionPayload.md#notification)
-- [projectId](SDKExecutionPayload.md#projectid)
-- [serviceName](SDKExecutionPayload.md#servicename)
-- [successMessage](SDKExecutionPayload.md#successmessage)
-- [title](SDKExecutionPayload.md#title)
+- [caption](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#caption)
+- [functionName](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#functionname)
+- [input](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#input)
+- [notification](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#notification)
+- [onFailureEvent](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#onfailureevent)
+- [onSuccessEvent](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#onsuccessevent)
+- [projectId](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#projectid)
+- [serviceName](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#servicename)
+- [successMessage](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#successmessage)
+- [sync](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#sync)
+- [title](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#title)
 
 ## Properties
-
-### sync
-
-• `Optional` **sync**: `boolean`
-
-Enabled by default, this feature ensures that the platform subscribes to changes and monitors the execution's status, consequently triggering events for execution status updates.
-
-To track these changes from an application, you can subscribe to the `DlEvent.EXECUTION_STATUS` event.
-
-```typescript
-await dl.on(DlEvent.EXECUTION_STATUS, (payload: { execution: SDKExecution, status: 'created' | 'success' | 'failed' }) => {
-    console.log(`Execution ${payload.execution.id} status: ${payload.status}`)
-    console.log(`Execution output`, payload.execution.output)
-})
-```
 
 ### caption
 
@@ -71,6 +58,22 @@ Add a notification to the execution
 
 ___
 
+### onFailureEvent
+
+• `Optional` **onFailureEvent**: `EventPayload`
+
+An event to be triggered on execution failure
+
+___
+
+### onSuccessEvent
+
+• `Optional` **onSuccessEvent**: `EventPayload`
+
+An event to be triggered on execution success
+
+___
+
 ### projectId
 
 • `Optional` **projectId**: `string`
@@ -95,8 +98,17 @@ A success toast message string
 
 ___
 
+### sync
+
+• `Optional` **sync**: `boolean`
+
+Enabled by default, this feature ensures that the platform subscribes to changes and monitors the execution's status, consequently triggering events for execution status updates.
+To track these changes from an application, you can subscribe to the `DlEvent.EXECUTION_STATUS` event.
+
+___
+
 ### title
 
 • `Optional` **title**: `string`
 
-The notification's title
+The notification title

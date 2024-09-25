@@ -1,6 +1,6 @@
 # Interface: ITask
 
-[interfaces](./index.md).ITask
+[sdkApi/interfaces/entities/iTask](../modules/sdkApi_interfaces_entities_iTask.md).ITask
 
 An interface representing a Task object, extending the IEntity interface.
 
@@ -10,43 +10,43 @@ ITask
 
 ## Hierarchy
 
-- [`IEntity`](IEntity.md)
+- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
 
   ↳ **`ITask`**
 
 ## Implemented by
 
-- [`SDKTask`](../classes/SDKTask.md)
+- [`SDKTask`](../classes/sdkApi_interfaces_entities_iTask.SDKTask.md)
 
 ## Table of contents
 
 ### Properties
 
-- [assignmentIds](ITask.md#assignmentids)
-- [availableActions](ITask.md#availableactions)
-- [clientId](ITask.md#clientid)
-- [createdAt](ITask.md#createdat)
-- [creator](ITask.md#creator)
-- [datasetId](ITask.md#datasetid)
-- [dueDate](ITask.md#duedate)
-- [error](ITask.md#error)
-- [forReview](ITask.md#forreview)
-- [hasParent](ITask.md#hasparent)
-- [id](ITask.md#id)
-- [issues](ITask.md#issues)
-- [itemStatus](ITask.md#itemstatus)
-- [metadata](ITask.md#metadata)
-- [name](ITask.md#name)
-- [priority](ITask.md#priority)
-- [progress](ITask.md#progress)
-- [projectId](ITask.md#projectid)
-- [query](ITask.md#query)
-- [recipeId](ITask.md#recipeid)
-- [spec](ITask.md#spec)
-- [status](ITask.md#status)
-- [taskOwner](ITask.md#taskowner)
-- [updatedAt](ITask.md#updatedat)
-- [updatedBy](ITask.md#updatedby)
+- [assignmentIds](sdkApi_interfaces_entities_iTask.ITask.md#assignmentids)
+- [availableActions](sdkApi_interfaces_entities_iTask.ITask.md#availableactions)
+- [clientId](sdkApi_interfaces_entities_iTask.ITask.md#clientid)
+- [createdAt](sdkApi_interfaces_entities_iTask.ITask.md#createdat)
+- [creator](sdkApi_interfaces_entities_iTask.ITask.md#creator)
+- [datasetId](sdkApi_interfaces_entities_iTask.ITask.md#datasetid)
+- [dueDate](sdkApi_interfaces_entities_iTask.ITask.md#duedate)
+- [error](sdkApi_interfaces_entities_iTask.ITask.md#error)
+- [forReview](sdkApi_interfaces_entities_iTask.ITask.md#forreview)
+- [hasParent](sdkApi_interfaces_entities_iTask.ITask.md#hasparent)
+- [id](sdkApi_interfaces_entities_iTask.ITask.md#id)
+- [issues](sdkApi_interfaces_entities_iTask.ITask.md#issues)
+- [itemStatus](sdkApi_interfaces_entities_iTask.ITask.md#itemstatus)
+- [metadata](sdkApi_interfaces_entities_iTask.ITask.md#metadata)
+- [name](sdkApi_interfaces_entities_iTask.ITask.md#name)
+- [priority](sdkApi_interfaces_entities_iTask.ITask.md#priority)
+- [progress](sdkApi_interfaces_entities_iTask.ITask.md#progress)
+- [projectId](sdkApi_interfaces_entities_iTask.ITask.md#projectid)
+- [query](sdkApi_interfaces_entities_iTask.ITask.md#query)
+- [recipeId](sdkApi_interfaces_entities_iTask.ITask.md#recipeid)
+- [spec](sdkApi_interfaces_entities_iTask.ITask.md#spec)
+- [status](sdkApi_interfaces_entities_iTask.ITask.md#status)
+- [taskOwner](sdkApi_interfaces_entities_iTask.ITask.md#taskowner)
+- [updatedAt](sdkApi_interfaces_entities_iTask.ITask.md#updatedat)
+- [updatedBy](sdkApi_interfaces_entities_iTask.ITask.md#updatedby)
 
 ## Properties
 
@@ -74,7 +74,7 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
 
 ___
 
@@ -86,7 +86,7 @@ The date and time when the task was created.
 
 #### Overrides
 
-[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
 
 ___
 
@@ -98,7 +98,7 @@ The creator of the task.
 
 #### Overrides
 
-[IEntity](IEntity.md).[creator](IEntity.md#creator)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
 
 ___
 
@@ -150,7 +150,7 @@ The unique identifier of the task.
 
 #### Overrides
 
-[IEntity](IEntity.md).[id](IEntity.md#id)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
 
 ___
 
@@ -266,7 +266,7 @@ The date and time when the task was last updated.
 
 #### Overrides
 
-[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
 
 ___
 
@@ -278,4 +278,4 @@ The user who last updated the Entity.
 
 #### Inherited from
 
-[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
+[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)

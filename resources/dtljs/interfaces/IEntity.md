@@ -1,6 +1,6 @@
 # Interface: IEntity
 
-[interfaces](./index.md).IEntity
+[sdkApi/interfaces/entities/base](../modules/sdkApi_interfaces_entities_base.md).IEntity
 
 An interface representing an Entity object.
 
@@ -12,30 +12,32 @@ IEntity
 
 - **`IEntity`**
 
-  ↳ [`IAnnotation`](IAnnotation.md)
+  ↳ [`IAnnotation`](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md)
 
-  ↳ [`IDataset`](IDataset.md)
+  ↳ [`IDataset`](sdkApi_interfaces_entities_iDataset.IDataset.md)
 
-  ↳ [`IDriver`](IDriver.md)
+  ↳ [`IDriver`](sdkApi_interfaces_entities_iDriver.IDriver.md)
 
-  ↳ [`IItem`](IItem.md)
+  ↳ [`IIntegration`](sdkApi_interfaces_entities_iIntegration.IIntegration.md)
 
-  ↳ [`IProject`](IProject.md)
+  ↳ [`IItem`](sdkApi_interfaces_entities_iItem.IItem.md)
 
-  ↳ [`ITask`](ITask.md)
+  ↳ [`IProject`](sdkApi_interfaces_entities_iProject.IProject.md)
 
-  ↳ [`IContributor`](IContributor.md)
+  ↳ [`ITask`](sdkApi_interfaces_entities_iTask.ITask.md)
+
+  ↳ [`IContributor`](sdkApi_interfaces_entities_iUser.IContributor.md)
 
 ## Table of contents
 
 ### Properties
 
-- [clientId](IEntity.md#clientid)
-- [createdAt](IEntity.md#createdat)
-- [creator](IEntity.md#creator)
-- [id](IEntity.md#id)
-- [updatedAt](IEntity.md#updatedat)
-- [updatedBy](IEntity.md#updatedby)
+- [clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
+- [createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
+- [creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
+- [id](sdkApi_interfaces_entities_base.IEntity.md#id)
+- [updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
+- [updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)
 
 ## Properties
 
