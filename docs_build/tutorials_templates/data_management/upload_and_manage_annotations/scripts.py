@@ -16,7 +16,6 @@ def section2():
 
 
 def section2a():
-    import dtlpy as dl
     item = dl.items.get(item_id="")
 
     # Get the entities to add to the context
@@ -47,15 +46,24 @@ def section2a():
     annotation.update(system_metadata=True)
 
 
+# TODO: update here
 def section3():
-    converter = dl.Converter()
-    converter.upload_local_dataset(
-        from_format=dl.AnnotationFormat.COCO,
-        dataset=dataset,
-        local_items_path=r'C:/path/to/items',
-        # Please make sure the names of the items are the same as written in the COCO JSON file
-        local_annotations_path=r'C:/path/to/annotations/file/coco.json'
-    )
+    from dtlpyconverters.uploaders import ConvertersUploader
+
+    dataset_id = 'my_dataset_id'
+    coco_dataset = dl.datasets.get(dataset_id=dataset_id)
+
+    converter = ConvertersUploader()
+    loop = converter._get_event_loop()
+    loop.run_until_complete(converter.coco_to_dataloop(dataset=coco_dataset,
+                                                       input_items_path=r'C:/path/to/coco/items',
+                                                       input_annotations_path=r'C:/path/to/coco/items/annotations',
+                                                       # Please make sure the names of the items are the same as written in the COCO JSON file
+                                                       coco_json_filename='annotations.json',
+                                                       annotation_options=[dl.AnnotationType.BOX,
+                                                                           dl.AnnotationType.SEGMENTATION],
+                                                       upload_items=True,
+                                                       to_polygon=True)
 
 
 def section4():
@@ -202,20 +210,37 @@ def section16():
                   annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 
 
+# TODO: in progress
 def section17():
+    import dtlpy as dl
+    from dtlpyconverters.services import DataloopConverters
+
+    dataset_id = 'my_dataset_id'
+    dataset = dl.datasets.get(dataset_id=dataset_id)
+
     # Filter items from "folder_name" directory
-    item_filters = dl.Filters(resource='items', field='dir', values='/dog_name')
+    filters = dl.Filters(resource=dl.FiltersResource.ITEM, field='dir', values='/dog_name')
     # Filter items with dog annotations
-    annotation_filters = dl.Filters(resource='annotations', field='label', values='dog')
-    converter = dl.Converter()
-    converter.convert_dataset(dataset=dataset,
-                              # Use the converter of choice
-                              # to_format='yolo',
-                              # to_format='voc',
-                              to_format='coco',
-                              local_path=r'C:/home/coco_annotations',
-                              filters=item_filters,
-                              annotation_filters=annotation_filters)
+    # annotation_filters = dl.Filters(resource='annotations', field='label', values='dog')
+    query = filters.prepare()
+
+    converter = DataloopConverters()
+
+    # Use the converter of choice
+    converter.dataloop_to_coco(dataset=dataset,
+                               query=query,
+                               download_items=False,
+                               download_annotations=True)
+
+    # converter.dataloop_to_yolo(dataset=dataset,
+    #                            query=query,
+    #                            download_items=False,
+    #                            download_annotations=True)
+    #
+    # converter.dataloop_to_voc(dataset=dataset,
+    #                           query=query,
+    #                           download_items=False,
+    #                           download_annotations=True)
 
 
 def section18():

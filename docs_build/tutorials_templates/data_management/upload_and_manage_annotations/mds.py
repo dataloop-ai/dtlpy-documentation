@@ -24,6 +24,9 @@ def section3():
     """
     ## Convert Annotations from COCO Format
 
+    To convert and upload annotations from COCO format to Dataloop format:
+    1. Download the following git repository: [dtlpy-converters](https://github.com/dataloop-ai-apps/dtlpy-converters).
+    2. Update and run the following script:
     """
 
 
