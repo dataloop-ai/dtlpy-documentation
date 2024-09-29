@@ -198,7 +198,18 @@ def section19():
     ## Download NdArray with Numpy
 
     - only images that have .jpg or .png formats are supported
+    - save_localy=False - means it returns a buffer
+    - to_array - means it returns the buffer as an array
+
+    """
+
+
+def section20():
+    """
+
+    ## Download Json and open it without saving it to disk
+
+    - only for .json files
     - save_localy=False means it returns a buffer
-    - to_arraymeans it returns the buffer as an array
 
     """

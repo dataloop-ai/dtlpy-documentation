@@ -160,11 +160,27 @@
     "name": "section17"
   },
   {
-    "type": "code",
+    "type": "md",
     "name": "section18"
   },
   {
     "type": "code",
+    "name": "section18"
+  },
+  {
+    "type": "md",
     "name": "section19"
+  },
+  {
+    "type": "code",
+    "name": "section19"
+  },
+    {
+    "type": "md",
+    "name": "section20"
+  },
+  {
+    "type": "code",
+    "name": "section20"
   }
 ]

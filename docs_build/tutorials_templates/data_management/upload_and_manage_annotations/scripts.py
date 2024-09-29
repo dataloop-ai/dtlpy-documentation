@@ -246,7 +246,7 @@ def section17():
 def section18():
     # Param export_version will be set to ExportVersion.V1 by default.
     dataset.download(local_path='/path',
-                     annotation_options='json',
+                     annotation_options=dl.ViewAnnotationOptions.JSON,
                      export_version=dl.ExportVersion.V2)
 
 
@@ -257,3 +257,10 @@ def section19():
     # Check out the downloaded Ndarray with these commands - optional
     image = Image.fromarray(array)
     image.save(r'C:/home/project/images.jpg')
+
+
+def section20():
+    import json
+    item = dl.items.get(item_id='my-item-id')
+    json_data = json.loads(item.download(save_locally=False).getvalue())
+    print(json_data)
