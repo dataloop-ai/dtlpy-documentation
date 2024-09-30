@@ -51,19 +51,36 @@ def section3():
     from dtlpyconverters.uploaders import ConvertersUploader
 
     dataset_id = 'my_dataset_id'
-    coco_dataset = dl.datasets.get(dataset_id=dataset_id)
+    dataset = dl.datasets.get(dataset_id=dataset_id)
 
     converter = ConvertersUploader()
     loop = converter._get_event_loop()
-    loop.run_until_complete(converter.coco_to_dataloop(dataset=coco_dataset,
+
+    # Use the converter of choice
+    loop.run_until_complete(converter.coco_to_dataloop(dataset=dataset,
                                                        input_items_path=r'C:/path/to/coco/items',
                                                        input_annotations_path=r'C:/path/to/coco/items/annotations',
-                                                       # Please make sure the names of the items are the same as written in the COCO JSON file
+                                                       # Please make sure the filenames of the items are the same as written in the COCO json file
                                                        coco_json_filename='annotations.json',
                                                        annotation_options=[dl.AnnotationType.BOX,
                                                                            dl.AnnotationType.SEGMENTATION],
                                                        upload_items=True,
-                                                       to_polygon=True)
+                                                       to_polygon=True))
+
+    # loop.run_until_complete(converter.yolo_to_dataloop(dataset=dataset,
+    #                                                    input_items_path=r'C:/path/to/yolo/items',
+    #                                                    # Please make sure the filenames of the items are the same as the YOLO txt filenames
+    #                                                    input_annotations_path=r'C:/path/to/yolo/items/annotations',
+    #                                                    upload_items=True,
+    #                                                    add_labels_to_recipe=True,
+    #                                                    labels_txt_filepath=r'C:/path/to/yolo/items/labels/labels.txt'))
+
+    # loop.run_until_complete(converter.voc_to_dataloop(dataset=dataset,
+    #                                                   input_items_path=r'C:/path/to/voc/items',
+    #                                                   # Please make sure the filenames of the items are the same as the VOC xml filenames
+    #                                                   input_annotations_path=r'C:/path/to/voc/items/annotations',
+    #                                                   upload_items=True,
+    #                                                   add_labels_to_recipe=True))
 
 
 def section4():
@@ -212,7 +229,6 @@ def section16():
 
 # TODO: in progress
 def section17():
-    import dtlpy as dl
     from dtlpyconverters.services import DataloopConverters
 
     dataset_id = 'my_dataset_id'
