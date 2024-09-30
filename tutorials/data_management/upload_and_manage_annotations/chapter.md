@@ -2,8 +2,8 @@
 
 ```python
 import dtlpy as dl
-item = dl.items.get(item_id="")
-annotation = item.annotations.get(annotation_id="")
+item = dl.items.get(item_id="item_id")
+annotation = item.annotations.get(annotation_id="annotation_id")
 annotation.metadata["user"] = True
 annotation.update()
 ```
@@ -11,65 +11,84 @@ annotation.update()
 To upload annotations from JSON and include the user metadata, add the parameter local_annotation_path to the dataset.items.upload function, like so:  
 
 ```python
-project = dl.projects.get(project_name='project_name')
-dataset = project.datasets.get(dataset_name='dataset_name')
-dataset.items.upload(local_path=r'<items path>',
-                     local_annotations_path=r'<annotation json file path>',
+project = dl.projects.get(project_name="project_name")
+dataset = project.datasets.get(dataset_name="dataset_name")
+dataset.items.upload(local_path=r"<items path>",
+                     local_annotations_path=r"<annotation json file path>",
                      item_metadata=dl.ExportMetadata.FROM_JSON,
                      overwrite=True)
 ```
 ## Upload with Task and Recipe Context  
   
 Annotation can be uploaded or edited with a context. The Recipe, Task and Assignment IDs can be add to the system metadata:  
-  
 
 ```python
-import dtlpy as dl
-item = dl.items.get(item_id="")
+item = dl.items.get(item_id="item_id")
 # Get the entities to add to the context
-assignment = dl.assignments.get(assignment_id="")
-task = dl.tasks.get(task_id="")
+assignment = dl.assignments.get(assignment_id="assignment_id")
+task = dl.tasks.get(task_id="task_id")
 # OR
 task = assignment.task
-recipe = dl.recipes.get(recipe_id="")
+recipe = dl.recipes.get(recipe_id="recipe_id")
 # OR
 recipe = dl.recipes.get(recipe_id=task.recipe_id)
 # Context dictionary
-context = {'taskId': task.id,
-           'assignmentId': assignment.id,
-           'recipeId': recipe.id}
+context = {"taskId": task.id,
+           "assignmentId": assignment.id,
+           "recipeId": recipe.id}
 # Create the annotation
 collection = item.annotations.builder()
-collection.add(annotation_definition=dl.Classification(label='Komodo Dragon'),
-               metadata={'system': context})
+collection.add(annotation_definition=dl.Classification(label="Komodo Dragon"),
+               metadata={"system": context})
 item.annotations.upload(annotations=collection)
 # Or Update existing one
-annotation = item.annotations.get(annotation_id="")
+annotation = item.annotations.get(annotation_id="annotation_id")
 annotation.metadata["system"].update(context)
 annotation.update(system_metadata=True)
 ```
-## Convert Annotations from COCO Format  
+## Convert and Upload annotations from COCO/YOLO/VOC format to Dataloop  
   
+To convert and upload annotations from COCO/YOLO/VOC format to Dataloop format:  
+1. Download the following git repository: [dtlpy-converters](https://github.com/dataloop-ai-apps/dtlpy-converters).  
+2. Update and run the following script:  
 
 ```python
-converter = dl.Converter()
-converter.upload_local_dataset(
-    from_format=dl.AnnotationFormat.COCO,
-    dataset=dataset,
-    local_items_path=r'C:/path/to/items',
-    # Please make sure the names of the items are the same as written in the COCO JSON file
-    local_annotations_path=r'C:/path/to/annotations/file/coco.json'
-)
+from dtlpyconverters.uploaders import ConvertersUploader
+dataset = dl.datasets.get(dataset_id="dataset_id")
+converter = ConvertersUploader()
+loop = converter._get_event_loop()
+# Use the converter of choice
+loop.run_until_complete(converter.coco_to_dataloop(dataset=dataset,
+                                                   input_items_path=r"C:/path/to/coco/items",
+                                                   input_annotations_path=r"C:/path/to/coco/items/annotations",
+                                                   # Please make sure the filenames of the items are the same as written in the COCO json file
+                                                   coco_json_filename="annotations.json",
+                                                   annotation_options=[dl.AnnotationType.BOX,
+                                                                       dl.AnnotationType.SEGMENTATION],
+                                                   upload_items=True,
+                                                   to_polygon=True))
+# loop.run_until_complete(converter.yolo_to_dataloop(dataset=dataset,
+#                                                    input_items_path=r"C:/path/to/yolo/items",
+#                                                    # Please make sure the filenames of the items are the same as the YOLO txt filenames
+#                                                    input_annotations_path=r"C:/path/to/yolo/items/annotations",
+#                                                    upload_items=True,
+#                                                    add_labels_to_recipe=True,
+#                                                    labels_txt_filepath=r"C:/path/to/yolo/items/labels/labels.txt"))
+# loop.run_until_complete(converter.voc_to_dataloop(dataset=dataset,
+#                                                   input_items_path=r"C:/path/to/voc/items",
+#                                                   # Please make sure the filenames of the items are the same as the VOC xml filenames
+#                                                   input_annotations_path=r"C:/path/to/voc/items/annotations",
+#                                                   upload_items=True,
+#                                                   add_labels_to_recipe=True))
 ```
-## Upload Entire Directory and their Corresponding  Dataloop JSON Annotations  
-  
+## Upload Entire Directory and their Corresponding Dataloop JSON Annotations  
 
 ```python
 # Local path to the items folder
-# If you wish to upload items with your directory tree use : r'C:/home/project/images_folder' 
-local_items_path = r'C:/home/project/images_folder/*'
+# If you wish to upload items with your directory tree use : r"C:/home/project/images_folder"
+local_items_path = r"C:/home/project/images_folder/*"
 # Local path to the corresponding annotations - make sure the file names fit
-local_annotations_path = r'C:/home/project/annotations_folder'
+local_annotations_path = r"C:/home/project/annotations_folder"
 dataset.items.upload(local_path=local_items_path,
                      local_annotations_path=local_annotations_path)
 ```
@@ -78,60 +97,57 @@ Uploading annotations to video items needs to consider spanning between frames, 
 In this file there is a single 'person' box annotation that begins on frame number 20, disappears on frame number 41, reappears on frame number 51 and ends on frame number 90.  
   
 [Video_annotations_example.CSV](https://cdn.document360.io/53f32fe9-1937-4652-8526-90c1bc78d3f8/Images/Documentation/video_annotation_example.csv)  
-  
 
 ```python
 import pandas as pd
 # Read CSV file
-df = pd.read_csv(r'C:/file.csv')
+df = pd.read_csv(r"C:/file.csv")
 # Get item
-item = dataset.items.get(item_id='my_item_id')
+item = dataset.items.get(item_id="item_id")
 builder = item.annotations.builder()
 # Read line by line from the csv file
 for i_row, row in df.iterrows():
     # Create box annotation from csv rows and add it to a builder
-    builder.add(annotation_definition=dl.Box(top=row['top'],
-                                             left=row['left'],
-                                             bottom=row['bottom'],
-                                             right=row['right'],
-                                             label=row['label']),
-                object_visible=row['visible'],  # Support hidden annotations on the visible row
-                object_id=row['annotation id'],  # Numbering system that separates different annotations
-                frame_num=row['frame'])
+    builder.add(annotation_definition=dl.Box(top=row["top"],
+                                             left=row["left"],
+                                             bottom=row["bottom"],
+                                             right=row["right"],
+                                             label=row["label"]),
+                object_visible=row["visible"],  # Support hidden annotations on the visible row
+                object_id=row["annotation id"],  # Numbering system that separates different annotations
+                frame_num=row["frame"])
 # Upload all created annotations
 item.annotations.upload(annotations=builder)
 ```
 ## Upload Annotations In VTT Format  
 The Dataloop builder support VTT files, for uploading Web Text Tracks for video transcription.  
-  
 
 ```python
-project = dl.projects.get(project_name='project_name')
-dataset = project.datasets.get(dataset_name='dataset_name')
+project = dl.projects.get(project_name="project_name")
+dataset = project.datasets.get(dataset_name="dataset_name")
 # local path to item
-local_item_path = r'/Users/local/path/to/item.png'
+local_item_path = r"/Users/local/path/to/item.png"
 # local path to vtt
-local_vtt_path = r'/Users/local/path/to/subtitles.vtt'
+local_vtt_path = r"/Users/local/path/to/subtitles.vtt"
 # upload item
 item = dataset.items.upload(local_path=local_item_path)
-# upload VTT file - wait until the item finishs uploading
+# upload VTT file - wait until the item finishes uploading
 builder = item.annotations.builder()
 builder.from_vtt_file(filepath=local_vtt_path)
 item.annotations.upload(builder)
 ```
 ## Upload Audio Annotation to an Audio File  
-  
 
 ```python
-project = dl.projects.get(project_name='project_name')
-dataset = project.datasets.get(dataset_name='dataset_name')
-item = dataset.items.get(filepath='/my_item.mp4')
+project = dl.projects.get(project_name="project_name")
+dataset = project.datasets.get(dataset_name="dataset_name")
+item = dataset.items.get(filepath="/my_item.mp4")
 # Using annotation builder
 builder = item.annotations.builder()
-builder.add(annotation_definition=dl.Subtitle(label='<label>',
-                                              text='<text>'),
-            start_time='<start>',
-            end_time='<end>')
+builder.add(annotation_definition=dl.Subtitle(label="<label>",
+                                              text="<text>"),
+            start_time="<start>",
+            end_time="<end>")
 ```
 ## Set Attributes On Annotations  
   
@@ -140,36 +156,35 @@ You can set attributes on annotations in hte platform using the SDK. Since Datal
 ### Free Text Attribute  
 
 ```python
-dl.use_attributes_2(True)
+dl.use_attributes_2(state=True)
 annotation.attributes.update({"ID of the attribute": "value of the attribute"})
-annotation = annotation.update(True)
+annotation = annotation.update(system_metadata=True)
 ```
 ### Range Attributes (Slider in UI)  
-  
 
 ```python
-dl.use_attributes_2(True)
+dl.use_attributes_2(state=True)
 annotation.attributes.update({"<attribute-id>": number_on_range})
 annotation = annotation.update(system_metadata=True)
 ```
 ### CheckBox Attribute (Multiple choice)  
 
 ```python
-dl.use_attributes_2(True)
+dl.use_attributes_2(state=True)
 annotation.attributes.update({"<attribute-id>": ["selection", "selection"]})
 annotation = annotation.update(system_metadata=True)
 ```
 ### Radio Button Attribute (Single Choice)  
 
 ```python
-dl.use_attributes_2(True)
+dl.use_attributes_2(state=True)
 annotation.attributes.update({"<attribute-id>": "selection"})
 annotation = annotation.update(system_metadata=True)
 ```
 ### Yes/No Attribute  
 
 ```python
-dl.use_attributes_2(True)
+dl.use_attributes_2(state=True)
 annotation.attributes.update({"<attribute-id>": True / False})
 annotation = annotation.update(system_metadata=True)
 ```
@@ -177,33 +192,29 @@ annotation = annotation.update(system_metadata=True)
 After uploading items and annotations with their metadata, you might want to see some of them and perform visual validation.  
   
 To see only the annotations, use the annotation type *show* option.  
-  
 
 ```python
 # Use the show function for all annotation types
 box = dl.Box()
 # Must provide all inputs
-box.show(image='',
-         thickness='',
-         with_text='',
-         height='',
-         width='',
-         annotation_format='',
-         color='')
+box.show(image="",
+         thickness="",
+         with_text="",
+         height="",
+         width="",
+         annotation_format="",
+         color="")
 ```
-  
 To see the item itself with all annotations, use the Annotations option.  
-  
 
 ```python
 # Must input an image or height and width
-annotation.show(image='',
-                height='', width='',
-                annotation_format='dl.ViewAnnotationOptions.*',
-                thickness='',
-                with_text='')
+annotation.show(image="",
+                height="", width="",
+                annotation_format="dl.ViewAnnotationOptions.*",
+                thickness="",
+                with_text="")
 ```
-  
 # Download Data, Annotations & Metadata  
 The item ID for a specific file can be found in the platform UI - Click BROWSE for a dataset, click on the selected file, and the file information will be displayed in the right-side panel. The item ID is detailed, and can be copied in a single click.  
   
@@ -216,93 +227,112 @@ To list the download annotation option use `dl.ViewAnnotationOptions`:
 4. ANNOTATION_ON_IMAGE: Saves a PNG with the annotation drawn on top of the image.  
 5. VTT: Save `subtitle` annotation type in a VTT format.  
 6. OBJECT_ID: Save a PNG with the object ID as the pixel value.  
-  
 
 ```python
-dataset.download(local_path=r'C:/home/project/images',  # The default value is ".dataloop" folder
+dataset.download(local_path=r"C:/home/project/images",  # The default value is ".dataloop" folder
                  annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 ```
 NOTE: The annotation option can also be a list to download multiple options:  
-  
 
 ```python
 dataset.download(local_path=r'C:/home/project/images',  # The default value is ".dataloop" folder
-                 annotation_options=[dl.VIEW_ANNOTATION_OPTIONS_MASK,
-                                     dl.VIEW_ANNOTATION_OPTIONS_JSON,
+                 annotation_options=[dl.ViewAnnotationOptions.MASK,
+                                     dl.ViewAnnotationOptions.JSON,
                                      dl.ViewAnnotationOptions.INSTANCE])
 ```
-  
 ## Filter by Item and/or Annotation  
 * **Items filter** - download filtered items based on multiple parameters, like their directory.  
 You can also download items based on different filters. Learn all about item filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md/).  
 * **Annotation filter** - download filtered annotations based on multiple parameters like their label.  
 You can also download items annotations based on different filters, learn all about annotation filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/annotation_level/chapter.md/).  
 This example will download items and JSONS from a dog folder of the label 'dog'.  
-  
-  
 
 ```python
 # Filter items from "folder_name" directory
-item_filters = dl.Filters(resource='items', field='dir', values='/dog_name')
+item_filters = dl.Filters(resource=dl.FiltersResource.ITEM, field=dl.FiltersKnownFields.DIR, values='/dog_name')
 # Filter items with dog annotations
-annotation_filters = dl.Filters(resource=dl.FiltersResource.ANNOTATION, field='label', values='dog')
+annotation_filters = dl.Filters(resource=dl.FiltersResource.ANNOTATION, field=dl.FiltersKnownFields.LABEL, values='dog')
 dataset.download(local_path=r'C:/home/project/images',  # The default value is ".dataloop" folder
                  filters=item_filters,
                  annotation_filters=annotation_filters,
                  annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 ```
-  
 ## Filter by Annotations  
 * **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/annotation_level/chapter.md/).  
-  
-  
 
 ```python
 item = dataset.items.get(item_id="item_id")  # Get item from dataset to be able to view the dataset colors on Mask
 # Filter items with dog annotations
-annotation_filters = dl.Filters(resource='annotations', field='label', values='dog')
+annotation_filters = dl.Filters(resource=dl.FiltersResource.ANNOTATION, field=dl.FiltersKnownFields.LABEL, values='dog')
 item.download(local_path=r'C:/home/project/images',  # the default value is ".dataloop" folder
               annotation_filters=annotation_filters,
               annotation_options=dl.VIEW_ANNOTATION_OPTIONS_JSON)
 ```
-  
 ## Download Annotations in COCO/YOLO/VOC Format  
   
 * **Items filter** - download filtered items based on multiple parameters like their directory. You can also download items based on different filters, learn all about item filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md/).  
 * **Annotation filter** - download filtered annotations based on multiple parameters like their label. You can also download items annotations based on different filters, learn all about annotation filters [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/annotation_level/chapter.md/).  
   
 This example will download COCO from a dog items folder of the label 'dog' (edit the script to change to YOLO/VOC).  
-  
-  
 
 ```python
+from dtlpyconverters.services import DataloopConverters
+dataset = dl.datasets.get(dataset_id="dataset_id")
 # Filter items from "folder_name" directory
-item_filters = dl.Filters(resource='items', field='dir', values='/dog_name')
-# Filter items with dog annotations
-annotation_filters = dl.Filters(resource='annotations', field='label', values='dog')
-converter = dl.Converter()
-converter.convert_dataset(dataset=dataset,
-                          # Use the converter of choice
-                          # to_format='yolo',
-                          # to_format='voc',
-                          to_format='coco',
-                          local_path=r'C:/home/coco_annotations',
-                          filters=item_filters,
-                          annotation_filters=annotation_filters)
+filters = dl.Filters(resource=dl.FiltersResource.ITEM, field=dl.FiltersKnownFields.DIR, values='/dog_name')
+# Filter items with dog annotations (add_join is used to filter by resource annotation)
+filters.add_join(field=dl.FiltersKnownFields.LABEL, values='dog')
+query = filters.prepare()
+converter = DataloopConverters()
+# Use the converter of choice
+converter.dataloop_to_coco(dataset=dataset,
+                           query=query,
+                           download_items=False,
+                           download_annotations=True)
+# converter.dataloop_to_yolo(dataset=dataset,
+#                            query=query,
+#                            download_items=False,
+#                            download_annotations=True)
+#
+# converter.dataloop_to_voc(dataset=dataset,
+#                           query=query,
+#                           download_items=False,
+#                           download_annotations=True)
 ```
+## Exporting Files with File Extension as Part of the Filename  
+  
+Files can be exported from a dataset with their file extension as part of the exported filename. The export_version param in dataset.download can be set to ExportVersion.V1 or ExportVersion.V2 to avoid duplication of files with different extensions. This allows items with the same filename and different extensions in the dataset to be saved as different items.  
+* **Old functionality (V1)** – abc.jpg → annotations are saved as abc.png and the JSON is saved as abc.json  
+* **New functionality (V2)** – abc.jpg → annotations are saved as abc.jpg.png and JSON is saved as abc.jpg.json  
 
 ```python
 # Param export_version will be set to ExportVersion.V1 by default.
 dataset.download(local_path='/path',
-                 annotation_options='json',
+                 annotation_options=dl.ViewAnnotationOptions.JSON,
                  export_version=dl.ExportVersion.V2)
 ```
+## Download NdArray with Numpy  
+  
+- only images that have .jpg or .png formats are supported  
+- save_localy=False - means it returns a buffer  
+- to_array - means it returns the buffer as an array  
 
 ```python
 from PIL import Image
-item = dl.items.get(item_id='my-item-id')
+item = dl.items.get(item_id="item_id")
 array = item.download(save_locally=False, to_array=True)
 # Check out the downloaded Ndarray with these commands - optional
 image = Image.fromarray(array)
-image.save(r'C:/home/project/images.jpg')
+image.save(r"C:/home/project/images.jpg")
+```
+## Download Json and open it without saving it to disk  
+  
+- only for .json files  
+- save_localy=False means it returns a buffer  
+
+```python
+import json
+item = dl.items.get(item_id="item_id")
+json_data = json.loads(item.download(save_locally=False).getvalue())
+print(json_data)
 ```
