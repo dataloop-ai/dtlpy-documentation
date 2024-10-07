@@ -250,7 +250,7 @@ def section17():
     #                            download_items=False,
     #                            download_annotations=False,
     #                            export_locally=True)
-    #
+
     # converter.dataloop_to_voc(dataset=dataset,
     #                           query=query,
     #                           download_items=False,
