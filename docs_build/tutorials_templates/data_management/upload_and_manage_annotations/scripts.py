@@ -242,17 +242,20 @@ def section17():
     converter.dataloop_to_coco(dataset=dataset,
                                query=query,
                                download_items=False,
-                               download_annotations=True)
+                               download_annotations=False,
+                               export_locally=True)
 
     # converter.dataloop_to_yolo(dataset=dataset,
     #                            query=query,
     #                            download_items=False,
-    #                            download_annotations=True)
+    #                            download_annotations=False,
+    #                            export_locally=True)
     #
     # converter.dataloop_to_voc(dataset=dataset,
     #                           query=query,
     #                           download_items=False,
-    #                           download_annotations=True)
+    #                           download_annotations=False,
+    #                           export_locally=True)
 
 
 def section18():
