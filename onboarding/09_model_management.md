@@ -25,7 +25,7 @@ Model Management is also available both in the UI web version of the Dataloop pl
 You can find more about how to use models in our [documentation on Model Management](https://dlportal-demo.redoc.ly/tutorials/model_management/) or [our Python SDK-focused documentation](https://sdk-docs.dataloop.ai/en/latest/tutorials.html#model-management).
 
 Additionally, here are some code snippets that may be useful:
-1. Clone a model;
+1. Clone a model
 ```python
 import dtlpy as dl
 
@@ -36,7 +36,7 @@ model = pretrained_model.clone(model_name='my pretrained',
                                description='pretrained cloned in to my project',
                                project_id="$PROJECT_ID")
 ```
-2. Deploy a model;
+2. Deploy a model
 ```python
 import dtlpy as dl
 
@@ -47,7 +47,7 @@ dataset = dl.datasets.get(dataset_id='datasetId')
 
 model.evaluate(dataset=dataset)
 ```
-3. Evaluate a model;
+3. Evaluate a model
 ```python
 import dtlpy as dl
 
