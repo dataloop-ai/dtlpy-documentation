@@ -48,8 +48,8 @@ To leverage M2M login, you first need to create a bot user with a unique name:
 ```python
 import dtlpy as dl
 dl.login() # use browser login to create the bot
-project = dl.projects.get(project_name='myProject') # get your project
-bot = project.bots.create(name='my-unique-name', return_credentials=True)
+project = dl.projects.get(project_name='<my-project>') # get your project
+bot = project.bots.create(name='<my-unique-name>', return_credentials=True)
 ```
 
 **Note:**  As a best practice, you should create only the number of bots you need for a given set of uses within a Dataloop project.  It can be leveraged across multiple needs so start with one bot and only create additional bots as the need dictates.
