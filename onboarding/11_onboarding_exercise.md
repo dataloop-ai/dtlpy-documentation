@@ -4,7 +4,7 @@ Welcome to the second step of Dataloop’s Python SDK onboarding process. If you
 
 If you haven’t yet checked the initial onboarding, you can [find it here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/onboarding/01_sdk_installation.md). 
 
-Also, you can [visit the Dataloop Developer Community Getting Started repository]([https://github.com/dataloop-ai](https://github.com/dataloop-ai-apps/dataloop-devs) to get a look at Dataloop’s documentation, suggested tools, etc. and Open Source Solution repository.
+Also, you can [visit the Dataloop Developer Community Getting Started repository](https://github.com/dataloop-ai) to get a look at Dataloop’s documentation, suggested tools, etc. and Open Source Solution repository.
 
 This Onboarding exercise will take you through an interactive and fun guide meant to teach you how to use Dataloop to solve a “real-world” problem. 
 Without further ado, you will now learn how to use Dataloop to find and categorize some escaped magical animals and then train a model to classify them.
