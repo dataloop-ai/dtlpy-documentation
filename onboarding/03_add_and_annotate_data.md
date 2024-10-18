@@ -39,7 +39,7 @@ For which you should get the following output:
 +----+-------------+------------+-----------+--------+--------------------------+----------+-------+--------------------+-------------------------------------------------------------------+--------------------------+--------------------------+---------------------+
 ```
 
-Or, you can just print that Item's details unsing the print function:
+Or, you can just print that Item's details using the print function:
 
 ```python
 print(item)
@@ -157,6 +157,6 @@ After this, you can open the sample in web view, to see the new labels you have 
 item.open_in_web()
 ```
 
-Congratulations, you just learned how to create and select a dataset, add data samples to it and then anotate those items.
+Congratulations, you just learned how to create and select a dataset, add data samples to it and then annotate those items.
 
 In the next chapter, you will learn the basics of filtering the data Items within your Dataset, which is extremely helpful when you have a high number of data sample files.

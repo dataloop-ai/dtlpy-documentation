@@ -42,11 +42,11 @@ dataset = project.datasets.create(dataset_name='Creatures')
 # "get" the new dataset
 dataset = project.datasets.get(dataset_name='Creatures')
 ```
-Now that you've created the  project and dataset, you need to download our "magical creatures" dataset. It contains aprox. 100 samples for each of the 10 classes of magical creatures that escaped from the zoo.
+Now that you've created the  project and dataset, you need to download our "magical creatures" dataset. It contains approx. 100 samples for each of the 10 classes of magical creatures that escaped from the zoo.
 
 [Download the dataset from here](https://drive.google.com/drive/u/0/folders/1eIHZgN0iHWG3vlmxQD7rvNhSeFg7BLPM).
 
-After downloading these images, add them to an easily accesible folder as you will need to let the platform know where those images are. Then, you can copy and run the code below, after making sure you set the right path to the dataset. Make a folder called "MagicalCreatures" and then create 2 folders in it, one called "images_folder" which will contain the dataset images, and another called "annotations_folder" which will have the data you will annotate". The example below is for a windows path.
+After downloading these images, add them to an easily accessible folder as you will need to let the platform know where those images are. Then, you can copy and run the code below, after making sure you set the right path to the dataset. Make a folder called "MagicalCreatures" and then create 2 folders in it, one called "images_folder" which will contain the dataset images, and another called "annotations_folder" which will have the data you will annotate". The example below is for a windows path.
 ```python
 #set local path (the location of the images) - Set your own path
 local_items_path = r'C:\Users\User\Desktop\MagicalCreatures\images_folder\*'
@@ -65,7 +65,7 @@ filters = dl.Filters(field='<annotated>', values=False)
 
 You can now create an annotation task and optionally assign yourself or other annotators to work the task.  We suggest you just assign yourself for this exercise, so just replace <annotator1@dataloop.ai> with your Dataloop user id then delete `, '<annotator2@dataloop.ai>'` from the code example.
 ```python
-#create a task for the annotation of the imagaes
+#create a task for the annotation of the images
 import datetime
 task = dataset.tasks.create(
     task_name='annotate_creatures',
@@ -88,7 +88,7 @@ dl.projects.open_in_web(project_name="CreatureHunt")
 After executing that line of code, you may have to log in to the platform again. Just use your e-mail and password used to create your Dataloop account to log into the platform. You will then see the screen below:
 ![image](https://user-images.githubusercontent.com/58508793/218433304-084f12ed-3ce0-441c-92fd-992f20fa0a5f.png)
 
-If you hover with your mouse on the left-side of your screen, a pannel should open up and you should have the active project "CreatureHunt", as seen below:
+If you hover with your mouse on the left-side of your screen, a panel should open up and you should have the active project "CreatureHunt", as seen below:
 ![image](https://user-images.githubusercontent.com/58508793/218434388-8bbf991a-7bd3-4d93-bed4-bb655268e098.png)
 
 ## Annotating Your Data
