@@ -20,6 +20,26 @@ Example for a json prompt file:
 	}
 }
 ```
+An example of a prompt containing both text and an image (change to your item id):
+```json
+
+{
+    "shebang": "dataloop",
+    "metadata": {
+        "dltype": "prompt"
+    },
+    "prompts": {
+        "1": [{
+                "mimetype": "image/*",
+                "value": "https://gate.dataloop.ai/api/v1/items/<item-id>/stream"
+            },{
+                "mimetype": "application/text",
+                "value": "What's in these images?"
+            }
+        ]
+    }
+}
+```
 
 The `prompts` are a list to support multiple prompts in a single file.
 
@@ -27,26 +47,27 @@ Each prompt can contains multiple sections, e.g. text and image.
 
 ## Creating a Prompt
 
-First we creat a project and a dataset
+First we create a project and a dataset
 ```python
-project = dl.projects.get('COCO ors')
-dataset = project.datasets.get('prompts')
+project = dl.projects.get(project_name='<project name>')
+dataset = project.datasets.get(dataset_name='prompts')
 ```
 
-Now we create a single prompt with multiple elements. The name of the file is the PromptItem `name`:
+Now we can create a single prompt with multiple elements. The name of the file is the PromptItem `name`:
 ```python
-# crteate a prompt item entity
-prompts = dl.PromptItem(name='conversation_#1')
+# Crteate a prompt item entity
+prompt_item = dl.PromptItem(name='<your prompt item name>')
 
-# create the prompt with ID
-prompt1 = dl.Prompt(key='prompt#1')
-# add a text component
-prompt1.add(mimetype=dl.PromptType.TEXT, value='who are you')
-# add an image component
-prompt1.add(mimetype=dl.PromptType.IMAGE, value=dl.items.get(item_id='64f5bd67a9163562961377f5').stream)
+# Create the prompt with ID
+prompt1 = dl.Prompt(key='<your-key>')
+# Add a text component
+prompt1.add_element(mimetype=dl.PromptType.TEXT, value='who are you')
+# Add an image component
+prompt1.add_element(mimetype=dl.PromptType.IMAGE, value=dl.items.get(item_id='64f5bd67a9163562961377f5').stream)
 
-# add the prompt to the promptItem
-prompts.add(prompt=prompt1)
+# Add the prompt to the promptItem
+prompt_item.prompts.append(prompt)
+
 ```
 
 For conversation, we can add multiple prompts with unique IDs:
@@ -54,16 +75,16 @@ For conversation, we can add multiple prompts with unique IDs:
 ```python
 
 prompt2 = dl.Prompt(key='2')
-prompt2.add(mimetype=dl.PromptType.TEXT, value='where are you from')
-prompt2.add(mimetype=dl.PromptType.AUDIO, value='http://item.jpg')
+prompt2.add_element(mimetype=dl.PromptType.TEXT, value='where are you from')
+prompt2.add_element(mimetype=dl.PromptType.AUDIO, value='http://item.jpg')
 
-# add the second prompt to the prompt item
-prompts.add(prompt=prompt2)
+# Add the second prompt to the prompt item
+prompt_item.prompts.append(prompt2)
 ```
 
 And just upload the prompt item:
 ```python
-item: dl.Item = dataset.items.upload(prompts, overwrite=True)
+item: dl.Item = dataset.items.upload(prompt_item, overwrite=True)
 ```
 
 You can upload prompt same as all other files/entities.
@@ -96,14 +117,15 @@ To upload text response for a prompt you need to connect the annotation to the p
 
 ```python
 item = dl.items.get(item_id='<prompt item id>')
-# add annotations
-annotation_collection: dl.AnnotationCollection = item.annotations.builder()
+prompt_item = dl.PromptItem.from_item(item)
 
-annotation_collection.add(annotation_definition=dl.FreeText(text='My name is botman'),
-                          prompt_id='prompt#1',
-                          model_info={'name': 'llama2',
-                                      'confidence': 0.96})
-item.annotations.upload(annotation_collection)
+# Add annotations
+prompt_item.add(message={"role": "assistant",
+                         "content": [{"mimetype": dl.PromptType.TEXT,
+                                      "value": 'My name is botman'}]},
+                model_info={'name': '<model name>',
+                            'confidence': 1.0,
+                            'model_id': '<model id>'})
 
 ```
 
@@ -118,10 +140,10 @@ import dtlpy as dl
 
 item = dl.items.get(item_id='64f6e6010871e45536fc5e8f')
 dataset = item.dataset
-# upload the image you want to reference
+# Upload the image you want to reference
 output = dataset.items.upload(local_path=r"E:\TypesExamples\troy_and_abed.jpeg",
                               remote_path=f'/annotations/{item.id}')
-# add annotations
+# Add annotations
 annotation_collection: dl.AnnotationCollection = item.annotations.builder()
 
 annotation_collection.add(annotation_definition=dl.RefImage(ref=output.id,
@@ -130,6 +152,7 @@ annotation_collection.add(annotation_definition=dl.RefImage(ref=output.id,
                           model_info={'name': 'stable-diffusion',
                                       'confidence': 0.96})
 item.annotations.upload(annotation_collection)
+
 ```
 
 Same structure could be applied for url reference:
