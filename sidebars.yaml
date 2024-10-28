@@ -214,8 +214,6 @@ contents:
     page: onboarding/09_model_management.md
   - label: What's Next
     page: onboarding/10_next_steps.md
-  - label: Onboarding Exercise
-    page: onboarding/11_onboarding_exercise.md
 - expanded: false
   group: Resources
   page: resources/resources.mdx

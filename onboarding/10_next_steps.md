@@ -2,8 +2,6 @@
 
 We hope that this onboarding guide introduced you to all the main features of Dataloop, and more specifically, the Dataloop Python SDK.  Our aim was to provide you an overall picture of what value our platform can bring to your AI data development and production flows.
 
-We highly recommend that you go through our [Advanced Onboarding Exercise](https://github.com/StefanSilver/dtlpy-documentation/blob/main/onboarding/11.%20Onboarding_Exercise.md).  Taking this additional step will make real all of the concepts you learned during this Onboarding with some fun and different Datasets.
-
 We welcome you to continue your journey with Dataloop by using the following links:
 
 1. [Dataloop Python SDK Release Notes](https://docs.dataloop.ai/docs/sdk-release-notes)
