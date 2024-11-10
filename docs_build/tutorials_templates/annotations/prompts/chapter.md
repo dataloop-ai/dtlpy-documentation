@@ -1,14 +1,14 @@
 # Prompt Item
 
-### What is Prompt Item
+### What is a Prompt Item
 
 Prompt item allows working with Dataloop's [RLHF studio](https://docs.dataloop.ai/docs/rlhf?highlight=RLHF).
 It allows to edit and rate annotations, follow a conversation and choose between responses.
 
 ### SDK usage
 
-`dtlpy` SDK includes a class to connect between Dataloop platform and VLMs and LLMs.
-This class allows an easy way to create / edit / and annotate Prompt items.
+The `dtlpy` SDK includes a class that connects the Dataloop platform with Vision Language Models (VLMs) and Large Language
+Models (LLMs). This class provides an easy way to create, edit, and annotate Prompt items.
 
 ## Creating a Prompt by uploading a json file
 
