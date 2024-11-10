@@ -1,43 +1,61 @@
 # Prompt Item
 
-We use prompts and conversations using json files. In those files you can create prompts of all kinds and add multiple prompts to simulate a conversation.
-Example for a json prompt file:
+### What is Prompt Item
+
+Prompt item allows working with Dataloop's [RLHF studio](https://docs.dataloop.ai/docs/rlhf?highlight=RLHF).
+It allows to edit and rate annotations, follow a conversation and choose between responses.
+
+### SDK usage
+
+`dtlpy` SDK includes a class to connect between Dataloop platform and VLMs and LLMs.
+This class allows an easy way to create / edit / and annotate Prompt items.
+
+## Creating a Prompt by uploading a json file
+
+We use prompts and conversations using json files. In those files you can create prompts of all kinds and add multiple
+prompts to simulate a conversation.
+
+Example for a json prompt file - to be supported on the RLHF studio:
+
 ```json
 
 {
-	"shebang": "dataloop",
-	"metadata": {
-		"dltype": "prompt"
-	},
-	"prompts": {
-		"prompt#1": [
-			{
-				"mimetype": "application/text",
-				"value": "please generate image of a donkey"
-			}
-
-		]
-	}
+  "shebang": "dataloop",
+  "metadata": {
+    "dltype": "prompt"
+  },
+  "prompts": {
+    "prompt#1": [
+      {
+        "mimetype": "application/text",
+        "value": "please generate image of a donkey"
+      }
+    ]
+  }
 }
 ```
+
 An example of a prompt containing both text and an image (change to your item id):
+
 ```json
 
 {
-    "shebang": "dataloop",
-    "metadata": {
-        "dltype": "prompt"
-    },
-    "prompts": {
-        "1": [{
-                "mimetype": "image/*",
-                "value": "https://gate.dataloop.ai/api/v1/items/<item-id>/stream"
-            },{
-                "mimetype": "application/text",
-                "value": "What's in these images?"
-            }
-        ]
-    }
+  "shebang": "dataloop",
+  "metadata": {
+    "dltype": "prompt"
+  },
+  "prompts": {
+    "1": [
+      {
+        "mimetype": "image/*",
+        "value": "https://gate.dataloop.ai/api/v1/items/<item-id>/stream"
+      },
+      {
+        "mimetype": "application/text",
+        "value": "What's in these images?"
+      }
+    ]
+  }
 }
 ```
 
@@ -45,15 +63,18 @@ The `prompts` are a list to support multiple prompts in a single file.
 
 Each prompt can contains multiple sections, e.g. text and image.
 
-## Creating a Prompt
+## Creating a Prompt via SDK
 
 First we create a project and a dataset
+
 ```python
+import dtlpy as dl
 project = dl.projects.get(project_name='<project name>')
 dataset = project.datasets.get(dataset_name='prompts')
 ```
 
 Now we can create a single prompt with multiple elements. The name of the file is the PromptItem `name`:
+
 ```python
 # Crteate a prompt item entity
 prompt_item = dl.PromptItem(name='<your prompt item name>')
@@ -83,18 +104,21 @@ prompt_item.prompts.append(prompt2)
 ```
 
 And just upload the prompt item:
+
 ```python
 item: dl.Item = dataset.items.upload(prompt_item, overwrite=True)
 ```
 
 You can upload prompt same as all other files/entities.
 For example, using a list of prompts items:
+
 ```python
 items = dataset.items.upload([prompts_item_1,
                               prompts_item_2,
                               prompts_item_3,
                               prompts_item_4])
 ```
+
 Or an entire directory of prompts json files:
 
 ```python
@@ -113,6 +137,7 @@ We introduce those annotations type:
 
 ## FreeText
 
+This annotation type is used to annotate prompt with a textual response.
 To upload text response for a prompt you need to connect the annotation to the prompt key:
 
 ```python
@@ -163,9 +188,9 @@ annotation_collection: dl.AnnotationCollection = item.annotations.builder()
 annotation_collection.add(annotation_definition=dl.RefImage(
     ref='https://en.wikipedia.org/wiki/Pinky_and_the_Brain#/media/File:PinkyandtheBrain.Pinky.png',
     mimetype='image/png'),
-                          prompt_id='prompt#2',
-                          model_info={'name': 'stable-diffusion',
-                                      'confidence': 0.96})
+    prompt_id='prompt#2',
+    model_info={'name': 'stable-diffusion',
+                'confidence': 0.96})
 item.annotations.upload(annotation_collection)
 
 ```
