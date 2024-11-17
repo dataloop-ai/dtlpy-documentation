@@ -1,10 +1,10 @@
 # Chapter 2 - Login, project and dataset creation
 
-### Sign up and log in to Dataloop
+### Sign Up and log in to Dataloop
 
 To be able to use our Python SDK or our other tools such as our API, you must first create an account on the Dataloop platform and then log in.  To get started, you can create a Free account which you can upgrade later to a paid account should you desire.
 
-To create an account you can [click here](https://dataloop-production.auth0.com/login?state=hKFo2SBYdnBxZUVLTHRhQlpRTXM5bXdDYWxQdWpOUE9KZFNabqFupWxvZ2luo3RpZNkgNjg3YnRKem5yV2NwSmJVN29UVnBTbGJtYUJFSURRNnCjY2lk2SBGckcwSFpnYTFDSzVVVlVTSkp1RGtTRHFJdFBpZVdHVw\&client=FrG0HZga1CK5UVUSJJuDkSDqItPieWGW\&protocol=oauth2\&response\_type=id\_token%20code\&response\_mode=form\_post\&redirect\_uri=https%3A%2F%2Fgate.dataloop.ai%2Fadmit%3Fdefault\&scope=openid%20email%20profile%20offline\_access\&nonce=wy9u651zOeGnuAqKxk\~-AfeIKo9hL9AP\&auth0Client=eyJuYW1lIjoiYXV0aDAuanMiLCJ2ZXJzaW9uIjoiOS4xMS4zIn0%3D). You will be redirected to a Sign up/Login page, which you can use to create an account using your e-mail or Google sign-in as an option.
+To create an account you can [click here](https://dataloop-production.auth0.com/login?state=hKFo2SBYdnBxZUVLTHRhQlpRTXM5bXdDYWxQdWpOUE9KZFNabqFupWxvZ2luo3RpZNkgNjg3YnRKem5yV2NwSmJVN29UVnBTbGJtYUJFSURRNnCjY2lk2SBGckcwSFpnYTFDSzVVVlVTSkp1RGtTRHFJdFBpZVdHVw\&client=FrG0HZga1CK5UVUSJJuDkSDqItPieWGW\&protocol=oauth2\&response\_type=id\_token%20code\&response\_mode=form\_post\&redirect\_uri=https%3A%2F%2Fgate.dataloop.ai%2Fadmit%3Fdefault\&scope=openid%20email%20profile%20offline\_access\&nonce=wy9u651zOeGnuAqKxk\~-AfeIKo9hL9AP\&auth0Client=eyJuYW1lIjoiYXV0aDAuanMiLCJ2ZXJzaW9uIjoiOS4xMS4zIn0%3D). You will be redirected to a Sign Up/Login page, which you can use to create an account using your e-mail or Google sign-in as an option.
 
 Once you do that, we can go on and try to log in to the platform using the Python SDK. To accomplish this, you need to either open Python in your console or open an IDE where you can run the Python code. Some examples of IDEs are [PyCharm](https://www.jetbrains.com/pycharm/) and [VisualStudio Code](https://code.visualstudio.com/).
 
@@ -48,8 +48,8 @@ To leverage M2M login, you first need to create a bot user with a unique name:
 ```python
 import dtlpy as dl
 dl.login() # use browser login to create the bot
-project = dl.projects.get(project_name='myProject') # get your project
-bot = project.bots.create(name='my-unique-name', return_credentials=True)
+project = dl.projects.get(project_name='<my-project>') # get your project
+bot = project.bots.create(name='<my-unique-name>', return_credentials=True)
 ```
 
 **Note:**  As a best practice, you should create only the number of bots you need for a given set of uses within a Dataloop project.  It can be leveraged across multiple needs so start with one bot and only create additional bots as the need dictates.
