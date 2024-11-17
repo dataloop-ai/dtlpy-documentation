@@ -315,22 +315,22 @@ filters = dl.Filters(resource=dl.FiltersResource.ITEM, field=dl.FiltersKnownFiel
 filters.add_join(field=dl.FiltersKnownFields.LABEL, values='dog')
 # Use the converter of choice
 coco_dataset = dl.datasets.get(dataset_id='')
-coco_converter = coco_converters.DataloopToCoco(input_annotations_path=r'./input_coco',
-                                                output_annotations_path=r'./output_coco',
+coco_converter = coco_converters.DataloopToCoco(input_annotations_path=r'C:/input/coco',
+                                                output_annotations_path=r'C:/output/coco',
                                                 download_annotations=True,
                                                 filters=filters,
                                                 dataset=coco_dataset)
 loop.run_until_complete(coco_converter.convert_dataset())
 yolo_dataset = dl.datasets.get(dataset_id='')
-yolo_converter = yolo_converters.DataloopToYolo(input_annotations_path=r'./input_yolo',
-                                                output_annotations_path=r'./output_yolo',
+yolo_converter = yolo_converters.DataloopToYolo(input_annotations_path=r'C:/input/yolo',
+                                                output_annotations_path=r'C:/output/yolo',
                                                 download_annotations=True,
                                                 filters=filters,
                                                 dataset=yolo_dataset)
 loop.run_until_complete(yolo_converter.convert_dataset())
 voc_dataset = dl.datasets.get(dataset_id='')
-voc_converter = voc_converters.DataloopToVoc(input_annotations_path=r'./input_voc',
-                                             output_annotations_path=r'./output_voc',
+voc_converter = voc_converters.DataloopToVoc(input_annotations_path=r'C:/input/voc',
+                                             output_annotations_path=r'C:/output/voc',
                                              download_annotations=True,
                                              filters=filters,
                                              dataset=voc_dataset)
