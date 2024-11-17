@@ -48,15 +48,15 @@ def section2a():
 
 
 def section3():
+    import dtlpy as dl
     from dtlpyconverters.uploaders import ConvertersUploader
-
-    dataset = dl.datasets.get(dataset_id="dataset_id")
 
     converter = ConvertersUploader()
     loop = converter._get_event_loop()
 
     # Use the converter of choice
-    loop.run_until_complete(converter.coco_to_dataloop(dataset=dataset,
+    coco_dataset = dl.datasets.get(dataset_id="dataset_id")
+    loop.run_until_complete(converter.coco_to_dataloop(dataset=coco_dataset,
                                                        input_items_path=r"C:/path/to/coco/items",
                                                        input_annotations_path=r"C:/path/to/coco/items/annotations",
                                                        # Please make sure the filenames of the items are the same as written in the COCO json file
@@ -66,20 +66,22 @@ def section3():
                                                        upload_items=True,
                                                        to_polygon=True))
 
-    # loop.run_until_complete(converter.yolo_to_dataloop(dataset=dataset,
-    #                                                    input_items_path=r"C:/path/to/yolo/items",
-    #                                                    # Please make sure the filenames of the items are the same as the YOLO txt filenames
-    #                                                    input_annotations_path=r"C:/path/to/yolo/items/annotations",
-    #                                                    upload_items=True,
-    #                                                    add_labels_to_recipe=True,
-    #                                                    labels_txt_filepath=r"C:/path/to/yolo/items/labels/labels.txt"))
+    yolo_dataset = dl.datasets.get(dataset_id="dataset_id")
+    loop.run_until_complete(converter.yolo_to_dataloop(dataset=yolo_dataset,
+                                                       input_items_path=r"C:/path/to/yolo/items",
+                                                       # Please make sure the filenames of the items are the same as the YOLO txt filenames
+                                                       input_annotations_path=r"C:/path/to/yolo/items/annotations",
+                                                       upload_items=True,
+                                                       add_labels_to_recipe=True,
+                                                       labels_txt_filepath=r"C:/path/to/yolo/items/labels/labels.txt"))
 
-    # loop.run_until_complete(converter.voc_to_dataloop(dataset=dataset,
-    #                                                   input_items_path=r"C:/path/to/voc/items",
-    #                                                   # Please make sure the filenames of the items are the same as the VOC xml filenames
-    #                                                   input_annotations_path=r"C:/path/to/voc/items/annotations",
-    #                                                   upload_items=True,
-    #                                                   add_labels_to_recipe=True))
+    voc_dataset = dl.datasets.get(dataset_id='dataset_id')
+    loop.run_until_complete(converter.voc_to_dataloop(dataset=voc_dataset,
+                                                      input_items_path=r"C:/path/to/voc/items",
+                                                      # Please make sure the filenames of the items are the same as the VOC xml filenames
+                                                      input_annotations_path=r"C:/path/to/voc/items/annotations",
+                                                      upload_items=True,
+                                                      add_labels_to_recipe=True))
 
 
 def section4():
@@ -227,36 +229,46 @@ def section16():
 
 
 def section17():
+    import dtlpy as dl
     from dtlpyconverters.services import DataloopConverters
+    from dtlpyconverters import coco_converters, yolo_converters, voc_converters
 
-    dataset = dl.datasets.get(dataset_id="dataset_id")
+    converter = DataloopConverters()
+    loop = converter._get_event_loop()
+
+    # DQL Query is optional
+    filters = dl.Filters()
+    query = filters.prepare()
 
     # Filter items from "folder_name" directory
     filters = dl.Filters(resource=dl.FiltersResource.ITEM, field=dl.FiltersKnownFields.DIR, values='/dog_name')
     # Filter items with dog annotations (add_join is used to filter by resource annotation)
     filters.add_join(field=dl.FiltersKnownFields.LABEL, values='dog')
-    query = filters.prepare()
-
-    converter = DataloopConverters()
 
     # Use the converter of choice
-    converter.dataloop_to_coco(dataset=dataset,
-                               query=query,
-                               download_items=False,
-                               download_annotations=False,
-                               export_locally=True)
+    coco_dataset = dl.datasets.get(dataset_id='')
+    coco_converter = coco_converters.DataloopToCoco(input_annotations_path=r'./input_coco',
+                                                    output_annotations_path=r'./output_coco',
+                                                    download_annotations=True,
+                                                    filters=filters,
+                                                    dataset=coco_dataset)
+    loop.run_until_complete(coco_converter.convert_dataset())
 
-    # converter.dataloop_to_yolo(dataset=dataset,
-    #                            query=query,
-    #                            download_items=False,
-    #                            download_annotations=False,
-    #                            export_locally=True)
+    yolo_dataset = dl.datasets.get(dataset_id='')
+    yolo_converter = yolo_converters.DataloopToYolo(input_annotations_path=r'./input_yolo',
+                                                    output_annotations_path=r'./output_yolo',
+                                                    download_annotations=True,
+                                                    filters=filters,
+                                                    dataset=yolo_dataset)
+    loop.run_until_complete(yolo_converter.convert_dataset())
 
-    # converter.dataloop_to_voc(dataset=dataset,
-    #                           query=query,
-    #                           download_items=False,
-    #                           download_annotations=False,
-    #                           export_locally=True)
+    voc_dataset = dl.datasets.get(dataset_id='')
+    voc_converter = voc_converters.DataloopToVoc(input_annotations_path=r'./input_voc',
+                                                 output_annotations_path=r'./output_voc',
+                                                 download_annotations=True,
+                                                 filters=filters,
+                                                 dataset=voc_dataset)
+    loop.run_until_complete(voc_converter.convert_dataset())
 
 
 def section18():
