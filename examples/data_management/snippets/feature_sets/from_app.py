@@ -13,7 +13,7 @@ dpk_models = dpk.components.models
 models_names = [model.get("name") for model in dpk_models]
 
 # Get the embedder model
-embedder = project.models.get(model_name=models_names[0])
+embedder = project.models.get(model_name=dpk.components.models[0])  # get the first model
 
 # Embed the entire dataset
 items = dataset.items.get_all_items()
