@@ -144,6 +144,9 @@ jupyter notebook tutorials
       *  [Copy folder](examples/data_management/snippets/datasets/copy_folder.py)
       *  [Create dataset external storage](examples/data_management/snippets/datasets/create_dataset_external_storage.py)
       *  [Create dataset internal storage](examples/data_management/snippets/datasets/create_dataset_internal_storage.py)
+    * Feature sets
+      *  [From app](examples/data_management/snippets/feature_sets/from_app.py)
+      *  [From external](examples/data_management/snippets/feature_sets/from_external.py)
     * Integrations
       *  [Create integration aws](examples/data_management/snippets/integrations/create_integration_aws.py)
       *  [Create integration azure](examples/data_management/snippets/integrations/create_integration_azure.py)

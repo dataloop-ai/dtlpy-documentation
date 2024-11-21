@@ -12,6 +12,16 @@
             "displayName": "Managing Tasks and Assignments",
             "description": "Managing Tasks and Assignments",
             "location": "task_workflows/redistributing_and_reassigning_a_task/chapter.md"
+        },
+        {
+            "displayName": "Quality Control Task Types",
+            "description": "Honeypot, Qualification and Consensus tasks",
+            "location": "task_workflows/quality_control/chapter.md"
+        },
+        {
+            "displayName": "Item Status in Tasks",
+            "description": "Setting status from item in tasks",
+            "location": "task_workflows/item_status/chapter.md"
         }
     ]
 }
