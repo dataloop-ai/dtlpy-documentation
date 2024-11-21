@@ -1,8 +1,8 @@
 # Creating Consensus, Honeypot, and Qualification Tasks
 
 Consensus tasks in Dataloop are a critical feature for ensuring annotation qualitThey enable validation, skill
-assessment, and collaborative annotations by involving multiple annotators in various task types: **Honeypot**, *
-*Qualification**, and **Consensus**. Each type serves distinct purposes and methodologies, as outlined below.
+assessment, and collaborative annotations by involving multiple annotators in various task types: **Honeypot**,
+**Qualification**, and **Consensus**. Each type serves distinct purposes and methodologies, as outlined below.
 
 ## Comparison of Consensus Task Types
 
@@ -39,7 +39,8 @@ task = dataset.tasks.create(
 
 ## Honeypot Tasks
 
-Read more about Honeypot Tasks [here](https://docs.dataloop.ai/docs/qualification-honeypot#honeypot)
+Read more about Honeypot Tasks [here](https://docs.dataloop.ai/docs/qualification-honeypot#honeypot).
+.
 Honeypot tasks are designed for continuous monitoring of annotators' performance during their regular work by planting
 items with known ground truth among raw data.
 These tasks help assess annotators' accuracy and ensure ongoing quality control.
@@ -60,7 +61,8 @@ task = dataset.tasks.create(
 
 ## Qualification Tasks
 
-Read more about Qualification Tasks [here](https://docs.dataloop.ai/docs/qualification-honeypot#qualification)
+Read more about Qualification Tasks [here](https://docs.dataloop.ai/docs/qualification-honeypot#qualification).
+
 Qualification tasks evaluate annotators' skills before assigning them to production tasks.
 These tasks simulate a test environment where annotators work on items with hidden ground truth.
 Qualification tasks create an assignment **over entire selected data for each of the assignees**.
