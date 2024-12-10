@@ -93,14 +93,15 @@ from dtlpymetrics.scoring import calc_task_score
 # Calculate scores for all items in a task
 task = calc_task_score(
     task=task,
-    score_types=[ScoreType.ANNOTATION_IOU] # By default, uses all available score types
+    score_types=[ScoreType.ANNOTATION_IOU, ScoreType.ANNOTATION_LABEL],
 )
+
 
 # Calculate scores for a specific item
 item_scores = calc_task_item_score(
     item=item,
     task=task,
-    score_types=[ScoreType.ANNOTATION_IOU, ScoreType.ANNOTATION_LABEL],
+    # By omitting the score_types parameter, it defaults to scoring all available score types
     upload=True  # Set to False to not upload scores to platform
 )
 ```
