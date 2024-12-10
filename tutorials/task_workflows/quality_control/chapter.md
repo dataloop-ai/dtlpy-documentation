@@ -78,3 +78,58 @@ task = dataset.tasks.create(
     consensus_task_type=dl.entities.ConsensusTaskType.QUALIFICATION
 )
 ```
+
+## Retrieving Task Scores
+
+After a consensus task is completed, you can retrieve and analyze the scores using the provided scoring functions:
+
+### Calculate Task Scores
+
+```python
+# Import the scoring functions
+from dtlpymetrics.dtlpy_scores import Score, ScoreType
+from dtlpymetrics.scoring import calc_task_score
+
+# Calculate scores for all items in a task
+task = calc_task_score(
+    task=task,
+    score_types=[ScoreType.ANNOTATION_IOU, ScoreType.ANNOTATION_LABEL],
+)
+
+
+# Calculate scores for a specific item
+item_scores = calc_task_item_score(
+    item=item,
+    task=task,
+    # By omitting the score_types parameter, it defaults to scoring all available score types
+    upload=True  # Set to False to not upload scores to platform
+)
+```
+
+### Available Score Types
+The system supports several score types:
+- `ScoreType.ANNOTATION_IOU` - Intersection over Union for annotations
+- `ScoreType.ANNOTATION_LABEL` - Label matching scores
+- `ScoreType.ANNOTATION_ATTRIBUTE` - Attribute matching scores
+- `ScoreType.ANNOTATION_OVERALL` - Overall annotation score
+- `ScoreType.ITEM_OVERALL` - Overall item score
+- `ScoreType.USER_CONFUSION` - User confusion matrix
+- `ScoreType.LABEL_CONFUSION` - Label confusion matrix
+
+### Accessing Scores
+Scores are uploaded to the platform by default. If you want to save them locally instead:
+
+```python
+# Set environment variable to the folder to save scores locally
+import os
+os.environ['SCORES_DEBUG_PATH'] = '/path/to/save/scores'
+
+# Calculate scores without uploading
+item_scores = calc_task_item_score(
+    item=item,
+    task=task,
+    upload=False
+)
+```
+
+The scores will be saved as JSON files in the specified directory, organized by task ID and item ID.
