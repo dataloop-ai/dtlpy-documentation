@@ -36,7 +36,7 @@ print(f"Username integration id: {username_integration.id}")
 print(f"Password integration id: {password_integration.id}")
 ```
 
-## Update the DPKS Manifest
+## Update the DPK's Manifest
 
 Copy the integration ID values to the Codebase object in the DPK manifest:
 
