@@ -116,7 +116,17 @@ print(f'This item has {len(items_features)} feature vectors')
 
 ## Querying and Nearest Neighbours
 
-We can query over feature vectors distance:
+We can query over feature vectors distance.
+
+First we will define the vector to query on.
+
+Note: The vector should be the same size as the feature set.
+
+```python
+vector = [3, 1, 4, 1, 5, ..., 9]
+```
+
+Then we will query the feature set for the nearest neighbours:
 
 ```python
 
@@ -134,7 +144,7 @@ custom_filter = {
         'filter': {
             'value': {
                 '$euclid': {
-                    'input': [5, 5],
+                    'input': vector,
                     '$euclidSort': {'eu_dist': 'ascending'}
                 }
             },
@@ -142,17 +152,21 @@ custom_filter = {
         },
     }
 }
+
+# Filter items by feature vector distance
 filters = dl.Filters(custom_filter=custom_filter,
                      resource=dl.FiltersResource.ITEM)
 
 res = dataset.items.list(filters=filters)
 print(res.items_count)
 
-for i, f in enumerate(res.items):
-    filt = dl.Filters(resource=dl.FiltersResource.FEATURE, field='entityId', values=f.id)
-    p = list(feature_set.features.list(filters=filt).all())
-    print(p[0].value)
-    if i == 10:
+for i_item, item in enumerate(res.items):
+    print(item.name)
+    # get the feature vector value for the item
+    filt = dl.Filters(resource=dl.FiltersResource.FEATURE, field='entityId', values=item.id)
+    vector = list(feature_set.features.list(filters=filt).all())
+    print(vector[0].value)
+    if i_item == 10:
         break
 
 ```
