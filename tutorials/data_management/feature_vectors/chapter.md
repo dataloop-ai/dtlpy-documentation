@@ -118,12 +118,14 @@ print(f'This item has {len(items_features)} feature vectors')
 
 We can query over feature vectors distance.
 
-First we will define the vector to query on.
+First we will define the vector to query on. Since the filter returns sorted results by the distance, we can use the
+`page_size` as the number of nearest neighbours we want to get (`k`).
 
 Note: The vector should be the same size as the feature set.
 
 ```python
 vector = [3, 1, 4, 1, 5, ..., 9]
+k = 100
 ```
 
 Then we will query the feature set for the nearest neighbours:
@@ -133,7 +135,7 @@ Then we will query the feature set for the nearest neighbours:
 custom_filter = {
     'filter': {'$and': [{'hidden': False}, {'type': 'file'}]},
     'page': 0,
-    'pageSize': 1000,
+    'pageSize': k,
     'resource': 'items',
     'join': {
         'on': {
@@ -170,3 +172,38 @@ for i_item, item in enumerate(res.items):
         break
 
 ```
+
+## Query Using Distance Threshold
+
+We can also query using a distance threshold.
+This will return all items that are within the threshold distance from the query vector.
+
+```python
+custom_filter = {
+    'filter': {'$and': [{'hidden': False}, {'type': 'file'}]},
+    'page': 0,
+    'pageSize': 1000,
+    'resource': 'items',
+    'join': {
+        'on': {
+            'resource': 'feature_vectors',
+            'local': 'entityId',
+            'forigen': 'id'
+        },
+        'filter': {
+            'value': {
+                '$euclid': {
+                    'input': "string || number[], // feature vector ID || actual vectors value",
+                    '$euclidFilter': {
+                        "optional - $eq || $lte || otherSupportedOperators": "number - other vector's value to calculate distance between them"
+                    },
+                    '$euclidSort': {'eu_dist': 'ascending'}
+                }
+            },
+            'featureSetId': feature_set.id
+        },
+    }
+}
+```
+
+
