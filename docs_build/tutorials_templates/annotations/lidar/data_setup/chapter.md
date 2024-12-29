@@ -131,7 +131,8 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
 
     dataset = dl.datasets.get(dataset_id='dataset-id')
     mapping_item = dataset.items.get(filepath="/mapping.json")
-    LidarFileMappingParser().parse_data(mapping_item=mapping_item)
+    frames_item = LidarFileMappingParser().parse_data(mapping_item=mapping_item)
+    frames_item.open_in_web()
     ```
 
 3. The output item will be a frame.json, a LiDAR video file, with all the point cloud and image files stitched together, where each frame contains the following information:
