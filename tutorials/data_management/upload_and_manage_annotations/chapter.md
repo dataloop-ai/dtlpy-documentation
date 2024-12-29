@@ -48,25 +48,50 @@ annotation = item.annotations.get(annotation_id="")
 annotation.metadata["system"].update(context)
 annotation.update(system_metadata=True)
 ```
-## Convert Annotations from COCO Format  
+## Convert and Upload annotations from COCO/YOLO/VOC format to Dataloop  
   
+To convert and upload annotations from COCO/YOLO/VOC format to Dataloop format:  
+1. Download the following git repository: [dtlpy-converters](https://github.com/dataloop-ai-apps/dtlpy-converters).  
+2. Update and run the following script:  
 
 ```python
-converter = dl.Converter()
-converter.upload_local_dataset(
-    from_format=dl.AnnotationFormat.COCO,
-    dataset=dataset,
-    local_items_path=r'C:/path/to/items',
-    # Please make sure the names of the items are the same as written in the COCO JSON file
-    local_annotations_path=r'C:/path/to/annotations/file/coco.json'
-)
+import dtlpy as dl
+from dtlpyconverters.uploaders import ConvertersUploader
+converter = ConvertersUploader()
+loop = converter._get_event_loop()
+# Use the converter of choice
+coco_dataset = dl.datasets.get(dataset_id="dataset_id")
+loop.run_until_complete(converter.coco_to_dataloop(dataset=coco_dataset,
+                                                   input_items_path=r"C:/path/to/coco/items",
+                                                   input_annotations_path=r"C:/path/to/coco/items/annotations",
+                                                   # Please make sure the filenames of the items are the same as written in the COCO json file
+                                                   coco_json_filename="annotations.json",
+                                                   annotation_options=[dl.AnnotationType.BOX,
+                                                                       dl.AnnotationType.SEGMENTATION],
+                                                   upload_items=True,
+                                                   to_polygon=True))
+yolo_dataset = dl.datasets.get(dataset_id="dataset_id")
+loop.run_until_complete(converter.yolo_to_dataloop(dataset=yolo_dataset,
+                                                   input_items_path=r"C:/path/to/yolo/items",
+                                                   # Please make sure the filenames of the items are the same as the YOLO txt filenames
+                                                   input_annotations_path=r"C:/path/to/yolo/items/annotations",
+                                                   upload_items=True,
+                                                   add_labels_to_recipe=True,
+                                                   labels_txt_filepath=r"C:/path/to/yolo/items/labels/labels.txt"))
+voc_dataset = dl.datasets.get(dataset_id='dataset_id')
+loop.run_until_complete(converter.voc_to_dataloop(dataset=voc_dataset,
+                                                  input_items_path=r"C:/path/to/voc/items",
+                                                  # Please make sure the filenames of the items are the same as the VOC xml filenames
+                                                  input_annotations_path=r"C:/path/to/voc/items/annotations",
+                                                  upload_items=True,
+                                                  add_labels_to_recipe=True))
 ```
 ## Upload Entire Directory and their Corresponding  Dataloop JSON Annotations  
   
 
 ```python
 # Local path to the items folder
-# If you wish to upload items with your directory tree use : r'C:/home/project/images_folder' 
+# If you wish to upload items with your directory tree use : r'C:/home/project/images_folder'
 local_items_path = r'C:/home/project/images_folder/*'
 # Local path to the corresponding annotations - make sure the file names fit
 local_annotations_path = r'C:/home/project/annotations_folder'
@@ -271,20 +296,48 @@ This example will download COCO from a dog items folder of the label 'dog' (edit
   
 
 ```python
+import dtlpy as dl
+from dtlpyconverters.services import DataloopConverters
+from dtlpyconverters import coco_converters, yolo_converters, voc_converters
+converter = DataloopConverters()
+loop = converter._get_event_loop()
+# DQL Query is optional
+filters = dl.Filters()
+query = filters.prepare()
 # Filter items from "folder_name" directory
-item_filters = dl.Filters(resource='items', field='dir', values='/dog_name')
-# Filter items with dog annotations
-annotation_filters = dl.Filters(resource='annotations', field='label', values='dog')
-converter = dl.Converter()
-converter.convert_dataset(dataset=dataset,
-                          # Use the converter of choice
-                          # to_format='yolo',
-                          # to_format='voc',
-                          to_format='coco',
-                          local_path=r'C:/home/coco_annotations',
-                          filters=item_filters,
-                          annotation_filters=annotation_filters)
+filters = dl.Filters(resource=dl.FiltersResource.ITEM, field=dl.FiltersKnownFields.DIR, values='/dog_name')
+# Filter items with dog annotations (add_join is used to filter by resource annotation)
+filters.add_join(field=dl.FiltersKnownFields.LABEL, values='dog')
+# Use the converter of choice
+coco_dataset = dl.datasets.get(dataset_id='')
+coco_converter = coco_converters.DataloopToCoco(input_annotations_path=r'C:/input/coco',
+                                                output_annotations_path=r'C:/output/coco',
+                                                download_annotations=True,
+                                                filters=filters,
+                                                dataset=coco_dataset)
+loop.run_until_complete(coco_converter.convert_dataset())
+yolo_dataset = dl.datasets.get(dataset_id='')
+yolo_converter = yolo_converters.DataloopToYolo(input_annotations_path=r'C:/input/yolo',
+                                                output_annotations_path=r'C:/output/yolo',
+                                                download_annotations=True,
+                                                filters=filters,
+                                                dataset=yolo_dataset)
+loop.run_until_complete(yolo_converter.convert_dataset())
+voc_dataset = dl.datasets.get(dataset_id='')
+voc_converter = voc_converters.DataloopToVoc(input_annotations_path=r'C:/input/voc',
+                                             output_annotations_path=r'C:/output/voc',
+                                             download_annotations=True,
+                                             filters=filters,
+                                             dataset=voc_dataset)
+loop.run_until_complete(voc_converter.convert_dataset())
 ```
+  
+## Exporting Files with File Extension as Part of the Filename  
+  
+Files can be exported from a dataset with their file extension as part of the exported filename. The export_version param in dataset.download can be set to ExportVersion.V1 or ExportVersion.V2 to avoid duplication of files with different extensions. This allows items with the same filename and different extensions in the dataset to be saved as different items.  
+* **Old functionality (V1)** – abc.jpg → annotations are saved as abc.png and the JSON is saved as abc.json  
+* **New functionality (V2)** – abc.jpg → annotations are saved as abc.jpg.png and JSON is saved as abc.jpg.json  
+  
 
 ```python
 # Param export_version will be set to ExportVersion.V1 by default.
@@ -292,6 +345,12 @@ dataset.download(local_path='/path',
                  annotation_options='json',
                  export_version=dl.ExportVersion.V2)
 ```
+## Download NdArray with Numpy  
+  
+- only images that have .jpg or .png formats are supported  
+- save_localy=False - means it returns a buffer  
+- to_array=True - means it returns the buffer as an array  
+  
 
 ```python
 from PIL import Image
