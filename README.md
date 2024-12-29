@@ -54,7 +54,6 @@ jupyter notebook tutorials
     *  [Segmentation](tutorials/annotations/image/segmentation/chapter.ipynb)
   * Lidar
     *  [Cuboid](tutorials/annotations/lidar/cuboid/chapter.ipynb)
-    *  [Data setup](tutorials/annotations/lidar/data_setup/chapter.ipynb)
   *  [Text](tutorials/annotations/text/chapter.ipynb)
   *  [Video](tutorials/annotations/video/chapter.ipynb)
 *  [Auto annotate service](tutorials/auto_annotate_service/chapter.ipynb)
