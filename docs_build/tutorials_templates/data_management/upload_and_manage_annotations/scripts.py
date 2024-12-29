@@ -229,6 +229,7 @@ def section17():
     from dtlpyconverters import coco_converters, yolo_converters, voc_converters
 
     converter = DataloopConverters()
+    # TODO: warp or change to non private method
     loop = converter._get_event_loop()
 
     # DQL Query is optional
