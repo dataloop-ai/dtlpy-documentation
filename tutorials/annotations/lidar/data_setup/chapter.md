@@ -135,7 +135,7 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
     ```
 
 3. The output item will be a frame.json, a LiDAR video file, with all the point cloud and image files stitched together, where each frame contains the following information:
-   - **PCD file:** For further information about how a PCD file must look, refer to [Why a new file format?](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
+   - **PCD file:** The point cloud data of the 3D scene for the given frame.
    - **JPEG/PNG files:** The images of the available cameras for the given frame.
 
 4. (Optional) Once all files are ready, contact Dataloop to execute the Ground Detection - on each provided .pcd file to enable the Ground Detection Toggle on the Lidar Studio.
