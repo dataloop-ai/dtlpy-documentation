@@ -2,8 +2,8 @@
 
 ## Overview
 
-It is the process of preparing and configuring Dataloop system to effectively utilize LiDAR data.
-Setting up LIDAR data involves several key steps:
+In this process we will prepare and configure the Dataloop system to effectively utilize LiDAR data. \
+Setting up the LiDAR data involves several key steps:
 
 1. Files Setup
 2. Calibration Data Setup
