@@ -82,8 +82,7 @@ def func6():
     cloned_dataset = train_utils.prepare_dataset(dataset=dataset,
                                                  filters=None,
                                                  subsets=subsets)
-    # if you want to lock the dataset for future reproducibility, use:
-    # cloned_dataset.set_readonly()
+
 
 
 def func7():

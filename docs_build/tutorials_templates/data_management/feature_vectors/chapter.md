@@ -116,10 +116,69 @@ print(f'This item has {len(items_features)} feature vectors')
 
 ## Querying and Nearest Neighbours
 
-We can query over feature vectors distance:
+We can query over feature vectors distance.
+
+First we will define the vector to query on. Since the filter returns sorted results by the distance, we can use the
+`page_size` as the number of nearest neighbours we want to get (`k`).
+
+Note: The vector should be the same size as the feature set.
+
+```python
+vector = [3, 1, 4, 1, 5, ..., 9]
+k = 100
+```
+
+Then we will query the feature set for the nearest neighbours:
 
 ```python
 
+custom_filter = {
+    'filter': {'$and': [{'hidden': False}, {'type': 'file'}]},
+    'page': 0,
+    'pageSize': k,
+    'resource': 'items',
+    'join': {
+        'on': {
+            'resource': 'feature_vectors',
+            'local': 'entityId',
+            'forigen': 'id'
+        },
+        'filter': {
+            'value': {
+                '$euclid': {
+                    'input': vector,
+                    '$euclidSort': {'eu_dist': 'ascending'}
+                }
+            },
+            'featureSetId': feature_set.id
+        },
+    }
+}
+
+# Filter items by feature vector distance
+filters = dl.Filters(custom_filter=custom_filter,
+                     resource=dl.FiltersResource.ITEM)
+
+res = dataset.items.list(filters=filters)
+print(res.items_count)
+
+for i_item, item in enumerate(res.items):
+    print(item.name)
+    # get the feature vector value for the item
+    filt = dl.Filters(resource=dl.FiltersResource.FEATURE, field='entityId', values=item.id)
+    vector = list(feature_set.features.list(filters=filt).all())
+    print(vector[0].value)
+    if i_item == 10:
+        break
+
+```
+
+## Query Using Distance Threshold
+
+We can also query using a distance threshold.
+This will return all items that are within the threshold distance from the query vector.
+
+```python
 custom_filter = {
     'filter': {'$and': [{'hidden': False}, {'type': 'file'}]},
     'page': 0,
@@ -134,7 +193,10 @@ custom_filter = {
         'filter': {
             'value': {
                 '$euclid': {
-                    'input': [5, 5],
+                    'input': "string || number[], // feature vector ID || actual vectors value",
+                    '$euclidFilter': {
+                        "optional - $eq || $lte || otherSupportedOperators": "number - other vector's value to calculate distance between them"
+                    },
                     '$euclidSort': {'eu_dist': 'ascending'}
                 }
             },
@@ -142,17 +204,6 @@ custom_filter = {
         },
     }
 }
-filters = dl.Filters(custom_filter=custom_filter,
-                     resource=dl.FiltersResource.ITEM)
-
-res = dataset.items.list(filters=filters)
-print(res.items_count)
-
-for i, f in enumerate(res.items):
-    filt = dl.Filters(resource=dl.FiltersResource.FEATURE, field='entityId', values=f.id)
-    p = list(feature_set.features.list(filters=filt).all())
-    print(p[0].value)
-    if i == 10:
-        break
-
 ```
+
+

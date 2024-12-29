@@ -165,7 +165,6 @@ You can set attributes on annotations in hte platform using the SDK. Since Datal
 ### Free Text Attribute  
 
 ```python
-dl.use_attributes_2(True)
 annotation.attributes.update({"ID of the attribute": "value of the attribute"})
 annotation = annotation.update(True)
 ```
@@ -173,28 +172,24 @@ annotation = annotation.update(True)
   
 
 ```python
-dl.use_attributes_2(True)
 annotation.attributes.update({"<attribute-id>": number_on_range})
 annotation = annotation.update(system_metadata=True)
 ```
 ### CheckBox Attribute (Multiple choice)  
 
 ```python
-dl.use_attributes_2(True)
 annotation.attributes.update({"<attribute-id>": ["selection", "selection"]})
 annotation = annotation.update(system_metadata=True)
 ```
 ### Radio Button Attribute (Single Choice)  
 
 ```python
-dl.use_attributes_2(True)
 annotation.attributes.update({"<attribute-id>": "selection"})
 annotation = annotation.update(system_metadata=True)
 ```
 ### Yes/No Attribute  
 
 ```python
-dl.use_attributes_2(True)
 annotation.attributes.update({"<attribute-id>": True / False})
 annotation = annotation.update(system_metadata=True)
 ```

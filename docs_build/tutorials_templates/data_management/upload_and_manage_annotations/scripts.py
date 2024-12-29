@@ -145,31 +145,26 @@ def section5b():
 
 
 def section6():
-    dl.use_attributes_2(True)
     annotation.attributes.update({"ID of the attribute": "value of the attribute"})
     annotation = annotation.update(True)
 
 
 def section7():
-    dl.use_attributes_2(True)
     annotation.attributes.update({"<attribute-id>": number_on_range})
     annotation = annotation.update(system_metadata=True)
 
 
 def section8():
-    dl.use_attributes_2(True)
     annotation.attributes.update({"<attribute-id>": ["selection", "selection"]})
     annotation = annotation.update(system_metadata=True)
 
 
 def section9():
-    dl.use_attributes_2(True)
     annotation.attributes.update({"<attribute-id>": "selection"})
     annotation = annotation.update(system_metadata=True)
 
 
 def section10():
-    dl.use_attributes_2(True)
     annotation.attributes.update({"<attribute-id>": True / False})
     annotation = annotation.update(system_metadata=True)
 

@@ -115,6 +115,10 @@ contents:
       page: tutorials/task_workflows/create_a_task/chapter.md
     - label: Managing Tasks and Assignments
       page: tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.md
+    - label: Quality Control Task Types
+      page: tutorials/task_workflows/quality_control/chapter.md
+    - label: Item Status in Tasks
+      page: tutorials/task_workflows/item_status/chapter.md
   - expanded: false
     group: FaaS Tutorial
     page: tutorials/faas.md
