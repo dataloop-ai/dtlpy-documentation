@@ -30,7 +30,7 @@
         },
         {
             "displayName": "Lidar Annotations",
-            "description": "Tutorials for setup and annotate LiDAR scene",
+            "description": "Tutorials for LiDAR scene annotations",
             "location": "annotations/lidar/index.json"
         }
     ]
