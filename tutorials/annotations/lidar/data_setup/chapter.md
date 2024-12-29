@@ -16,10 +16,10 @@ The supported files are:
 
 1. **PCD Files:** Point Cloud Data files used for generating the 3D scenes. \
    Both single PCD file and multiple PCD files are supported. \
-   For more details on why PCD files are preferred, please refer to the [PCD file format documentation](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
+   For more details about why PCD files are preferred, please refer to the [PCD file format documentation](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
 
 2. **JPEG/PNG Image Files:** Usually showing the angle and viewport of the cameras that captured the main scene. \
-   These images will have real-time projections of 3D objects annotated in the main point-cloud scene.
+   These images will have real-time projections of the 3D objects annotated in the main point-cloud scene.
 
 
 ## 1. Files Setup
@@ -40,7 +40,7 @@ Setup or stitching of point cloud files with camera images is performed by arran
 
    1. The folder contains subfolders with names of the available cameras.
 
-   2. For each available camera folder, the image filenames correspond directly to the PCD filenames.
+   2. For each available camera folder, the image filenames correspond directly to the PCD filenames. \
       Therefore, the images filenames need to match the 0-N numerical order.
 
    3. The alphabet order of the camera subfolders will dictate the order in which camera images will be displayed in each frame in the Lidar Studio.
@@ -134,7 +134,7 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
     frames_item.open_in_web()
     ```
 
-3. The output item will be a frame.json, a LiDAR video file, with all the point cloud and image files stitched together, where each frame contains the following information:
+3. The output item will be the `frame.json` file, a LiDAR video file with all the point cloud and image files stitched together, where each frame contains the following information:
    - **PCD file:** The point cloud data of the 3D scene for the given frame.
    - **JPEG/PNG files:** The images of the available cameras for the given frame.
 
