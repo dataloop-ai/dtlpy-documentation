@@ -27,6 +27,11 @@
             "displayName": "Audio Annotations",
             "description": "Upload audio annotations and transcriptions",
             "location": "annotations/audio/chapter.md"
+        },
+        {
+            "displayName": "Lidar Annotations",
+            "description": "Tutorials for setup and annotate LiDAR scene",
+            "location": "annotations/lidar/index.json"
         }
     ]
 }
