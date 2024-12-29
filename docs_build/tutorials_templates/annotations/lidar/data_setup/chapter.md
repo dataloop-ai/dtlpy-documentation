@@ -30,13 +30,13 @@ Setup or stitching of point cloud files with camera images is performed by arran
 
 1. Since every point cloud file is a frame, they must be first organized/prepared - the file names should be numbers starting from 0, which will define the order of the frames in the 3D scene.
 
-<image>
+![LidarFolder](../../../../assets/images/lidar/Lidar_folder_1.png)
 
-2. lidar folder - All .pcd files are placed in a folder named lidar.
+2. **lidar** folder - All .pcd files are placed in a folder named lidar.
 
-<image>
+![FramesFolder](../../../../assets/images/lidar/Frame_folder_2.png)
 
-3. camera folder - This folder contains subfolders, each with JPEG/PNG images per frame.
+3. **frames** folder - This folder contains subfolders, each with JPEG/PNG images per frame.
 
    1. The folder contains subfolders with names of the available cameras.
 
@@ -48,7 +48,7 @@ Setup or stitching of point cloud files with camera images is performed by arran
 
 ### Example of arranging the files in a selected folder inside the dataset:
 
-<image>
+![LidarFolderSetupExample](../../../../assets/images/lidar/Lidar_folder_setup_example.png)
 
 The same structure as in the example of arranging the files in the root of the dataset should be kept inside the selected folder.
 
@@ -56,7 +56,7 @@ The same structure as in the example of arranging the files in the root of the d
 ## 2. Calibration Data Setup
 
 To build the LiDAR video file, the calibration data is required to align the point cloud data with the camera images. \
-Extract your dataset calibration data into a `mapping.json` file, in the following format,
+Extract your dataset calibration data into a `mapping.json` file, in format provided below,
 and upload it to the dataset in the same directory where the `lidar` and `frames` folders are located at.
 
 For a detailed explanation about the parameters required in the `mapping.json` file, please refer to the [Camera Calibration Parameters](https://www.mathworks.com/help/vision/ug/camera-calibration.html#Camera_Calibration_Parameters).
