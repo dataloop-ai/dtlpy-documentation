@@ -121,7 +121,10 @@ For a detailed explanation about the parameters required in the `mapping.json` f
 
 Once all files are ready, to create the LiDAR video file (of all the PCD files stitched together), do as follows:
 
-1. Download to your local python environment the [Dataloop LiDAR SDK](https://github.com/dataloop-ai-apps/dtlpy-lidar).
+1. Install [Dataloop LiDAR SDK](https://github.com/dataloop-ai-apps/dtlpy-lidar) to your local python environment, using the command:
+    ```bash
+    pip install git+https://github.com/dataloop-ai-apps/dtlpy-lidar.git
+    ```
 
 2. Use the following code snippet to create the LiDAR video file:
     ```python
