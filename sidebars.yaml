@@ -108,8 +108,6 @@ contents:
     - expanded: false
       group: Lidar Annotations
       pages:
-      - label: Data Setup
-        page: tutorials/annotations/lidar/data_setup/chapter.md
       - label: Cuboid
         page: tutorials/annotations/lidar/cuboid/chapter.md
   - expanded: false
