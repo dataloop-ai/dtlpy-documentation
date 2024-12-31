@@ -1,11 +1,12 @@
 # Data setup
 
-## Step 1 + 2: Data Preparation
 
-Follow steps 1 and 2 on the guide on [LiDAR Data Setup](https://docs.dataloop.ai/docs/lidar-data-setup).
+## Files and Calibration Data Setup
+
+To prepare a dataset for LiDAR video creation, please ensure that you complete the prerequisite steps outlined in the [LiDAR Data Setup](https://docs.dataloop.ai/docs/lidar-data-setup) documentation.
 
 
-## Step 3: Create the LiDAR Video File
+## Create the LiDAR Video File
 
 Once all files are ready, to create the LiDAR video file (of all the PCD files stitched together), do as follows:
 
@@ -19,8 +20,8 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
     import dtlpy as dl
     from dtlpylidar.parsers.base_parser import LidarFileMappingParser
 
-    dataset = dl.datasets.get(dataset_id='dataset-id')
-    mapping_item = dataset.items.get(filepath="/mapping.json")
+    dataset = dl.datasets.get(dataset_id="<dataset id>")
+    mapping_item = dataset.items.get(item_id="<mapping.json item id>")
     frames_item = LidarFileMappingParser().parse_data(mapping_item=mapping_item)
     frames_item.open_in_web()
     ```
@@ -31,7 +32,8 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
 
 4. (Optional) Once all files are ready, contact Dataloop to execute the Ground Detection - on each provided .pcd file to enable the Ground Detection Toggle on the Lidar Studio.
 
-## Step 4: Upload Framed Annotations
+
+## Upload Framed Annotations
 
 Check out how to upload different type of annotations to the LiDAR video:
 
