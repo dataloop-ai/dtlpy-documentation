@@ -41,3 +41,13 @@ def section5():
     You can upload items as a table using a Pandas DataFrame that will let you upload items with info (annotations, metadata such as confidence, filename, etc.) attached to it.
 
     """
+
+def section6():
+    """
+    ## Upload Numpy Arrays Directly
+    You can upload numpy arrays directly to Dataloop.
+    NOTE: You will have to specify the `remote_name`, otherwise the upload will fail.
+
+    Load the image using cv2 or Pillow (or create one using Python) and then upload it to a Dataset:
+
+    """

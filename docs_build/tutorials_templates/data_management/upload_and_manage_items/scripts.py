@@ -161,3 +161,19 @@ class Scripts:
 
         # DTLPY-STOP
         self.items5 = items
+
+    def section6(self):
+        import cv2
+        import numpy as np
+        from PIL import Image
+
+        # Load image with cv2
+        img = cv2.imread("/home/tmp/saturn.jpg")
+
+        # Load image with PIL
+        img = np.asarray(Image.open("/home/tmp/saturn.jpg"))
+
+        # Get dataset
+        dataset = dl.datasets.get(dataset_id='<dataset id>')
+        item = dataset.items.upload(local_path=img, remote_name='saturn.jpg')
+        item.open_in_web()
