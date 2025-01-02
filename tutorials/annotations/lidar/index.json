@@ -4,11 +4,6 @@
   "description": "Use Dataloop's Python SDK to setup and annotate LiDAR scenes.",
   "content": [
     {
-      "displayName": "Data Setup",
-      "description": "LiDAR Data Setup",
-      "location": "annotations/lidar/data_setup/chapter.md"
-    },
-    {
       "displayName": "Cuboid",
       "description": "Cuboid annotations types",
       "location": "annotations/lidar/cuboid/chapter.md"

@@ -9,6 +9,14 @@ contents:
     group: Data Management
     page: tutorials/data_management.md
     pages:
+    - expanded: false
+      group: Data Types
+      pages:
+      - expanded: false
+        group: LiDAR
+        pages:
+        - label: Data setup
+          page: tutorials/data_management/data_types/lidar/data_setup/chapter.md
     - label: Integrations
       page: tutorials/data_management/integrations/chapter.md
     - expanded: false
@@ -98,10 +106,8 @@ contents:
     - label: Audio Annotations
       page: tutorials/annotations/audio/chapter.md
     - expanded: false
-      group: Lidar Annotations
+      group: LiDAR Annotations
       pages:
-      - label: Data Setup
-        page: tutorials/annotations/lidar/data_setup/chapter.md
       - label: Cuboid
         page: tutorials/annotations/lidar/cuboid/chapter.md
   - expanded: false
