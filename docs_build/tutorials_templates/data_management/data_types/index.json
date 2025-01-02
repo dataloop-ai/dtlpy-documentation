@@ -5,7 +5,7 @@
     "content": [
         {
             "displayName": "LiDAR",
-            "description": "How to use pages and iteration over items",
+            "description": "Upload and work with LiDAR video files",
             "location": "data_management/data_types/lidar/index.json"
         }
     ]
