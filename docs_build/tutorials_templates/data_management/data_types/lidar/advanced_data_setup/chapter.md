@@ -1,17 +1,16 @@
-# Advanced Data Setup (Using custom base parser)
+# Advanced Data Setup (Using AdvancedBaseParser)
 
 
 ## Brief explanation
 
-This notebook provides a guide about how to set up a LiDAR scene dataset on the Dataloop platform (Using [PandaSet](https://www.kaggle.com/datasets/usharengaraju/pandaset-dataset) as an example). \
-This example can be extended to support custom LiDAR scenes by modifying the available Customizable methods as needed.
+This notebook provides an advanced guide about how to set up a LiDAR scene dataset on the Dataloop platform
+for any file structure as long as the files are from the following data types:
+1. `3D scene files` - Point Cloud Data files in `.pcd` **ASCII** format.
+2. `2D camera views files` - Image files in JPEG/PNG formats.
+3. `Calibration data files` - Any file format with the required [Camera Calibration Parameters](https://www.mathworks.com/help/vision/ug/camera-calibration.html#:~:text=the%20intrinsics%20parameters.-,Camera%20Calibration%20Parameters,-The%20calibration%20algorithm).
 
-__Important Notes:__
-
-* __File Format Assumptions:__ \
-  The converter assumes that the remote dataset already has PandaSet `.pkl` files converted into `.pcd` files for the point cloud data. For more details on why .pcd files are preferred, please refer to the [PCD file format documentation](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
-* __Conversion Scripts:__ \
-  You can find helpful scripts for converting `.pkl` files to `.pcd` in the `dtlpylidar/utilities/converters` directory.
+In this notebook we will show an example of modifying the parser to support the [PandaSet](https://www.kaggle.com/datasets/usharengaraju/pandaset-dataset)
+dataset, but this parser can be extended to support custom LiDAR scenes by modifying the available `Customizable` methods as needed.
 
 
 ## Step 1: Files Setup
@@ -26,11 +25,19 @@ Create a dataset on the Dataloop platform and upload the following required LiDA
 
 To prepare the PandaSet dataset, do as follows:
 1. Go to [PandaSet Kaggle Page](https://www.kaggle.com/datasets/usharengaraju/pandaset-dataset).
-2. Download the dataset and extract the files from the zip files.
+2. Download the dataset and extract the files from the `.zip` file.
 3. Open a project on the Dataloop platform and create a new dataset for it.
-4. Select a scene folder from the extracted files and upload it to the dataset, as follows:
+4. Select a scene folder from the extracted files in the `.zip` file and upload it to the dataset, as follows:
    1. The `lidar` folder with the `.ply` files converted to `.pcd` files.
    2. The `camera` folder in the same structure.
+
+__Important Notes:__
+
+* __File Format Assumptions:__ \
+  The converter requires that the remote dataset already has PandaSet `.pkl` files converted into `.pcd` files for the point cloud data. \
+  For more details on why `.pcd` files are preferred, please refer to the [PCD file format documentation](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
+* __Conversion Scripts:__ \
+  You can find helpful scripts for converting `.pkl` files to `.pcd` in the `dtlpylidar/utilities/converters` directory.
 
 #### Dataset structure explanation
 
