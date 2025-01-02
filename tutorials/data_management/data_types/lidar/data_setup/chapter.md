@@ -37,7 +37,7 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
 
 ## Upload Framed Annotations
 
-Check out how to upload different types of framed annotations to the LiDAR video item, in the [Annotations](https://developers.dataloop.ai/tutorials/annotations/) page under **LiDAR Annotations** section.
+See how to upload different types of framed annotations to the LiDAR video item in the [Annotations](https://developers.dataloop.ai/tutorials/annotations/) page, under **LiDAR Annotations** section.
 
 **Notice:** Make sure that the `frames.json` file includes the `fps` key in its metadata. \
 Set it to a default value of `1` if it is not already present.
