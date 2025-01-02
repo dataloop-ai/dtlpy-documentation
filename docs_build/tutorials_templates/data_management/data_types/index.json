@@ -4,7 +4,7 @@
     "description": "Supported data types of items in Dataloop",
     "content": [
         {
-            "displayName": "Lidar",
+            "displayName": "LiDAR",
             "description": "How to use pages and iteration over items",
             "location": "data_management/data_types/lidar/index.json"
         }

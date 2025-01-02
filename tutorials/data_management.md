@@ -4,7 +4,7 @@
 | Name | Description | Notebook |
 | --- | --- | --- |
 | <div>Data Types</div> | Supported data types of items in Dataloop | |
-| <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lidar</div> | How to use pages and iteration over items | |
+| <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LiDAR</div> | How to use pages and iteration over items | |
 | <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Data setup](data_management/data_types/lidar/data_setup/chapter.md)</div> | Preparing and configuring Dataloop system to utilize LiDAR data | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/data_types/lidar/data_setup/chapter.ipynb) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/data_types/lidar/data_setup/chapter.ipynb) |
 | <div>[Integrations](data_management/integrations/chapter.md)</div> | Add a new integration | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/integrations/chapter.ipynb) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/integrations/chapter.ipynb) |
 | <div>Cloud Storage</div> | Setup storage integration with GCS/S3/Azure | |

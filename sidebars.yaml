@@ -13,7 +13,7 @@ contents:
       group: Data Types
       pages:
       - expanded: false
-        group: Lidar
+        group: LiDAR
         pages:
         - label: Data setup
           page: tutorials/data_management/data_types/lidar/data_setup/chapter.md
@@ -106,7 +106,7 @@ contents:
     - label: Audio Annotations
       page: tutorials/annotations/audio/chapter.md
     - expanded: false
-      group: Lidar Annotations
+      group: LiDAR Annotations
       pages:
       - label: Cuboid
         page: tutorials/annotations/lidar/cuboid/chapter.md

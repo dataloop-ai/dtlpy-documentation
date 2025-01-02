@@ -30,11 +30,9 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
    - **PCD file:** The point cloud data of the 3D scene for the given frame.
    - **JPEG/PNG files:** The images of the available cameras for the given frame.
 
-4. (Optional) Once all files are ready, contact Dataloop to execute the Ground Detection - on each provided .pcd file to enable the Ground Detection Toggle on the Lidar Studio.
+4. (Optional) Once all files are ready, contact Dataloop to execute the Ground Detection - on each provided .pcd file to enable the Ground Detection Toggle on the LiDAR Studio.
 
 
 ## Upload Framed Annotations
 
-Check out how to upload different type of framed annotations to the LiDAR video:
-
-* [Cuboid Annotations](https://developers.dataloop.ai/tutorials/annotations/lidar/cuboid/chapter/)
+Check out how to upload different types of framed annotations to the LiDAR video item, in the [Annotations](https://developers.dataloop.ai/tutorials/annotations/) page under **LiDAR Annotations** section.
