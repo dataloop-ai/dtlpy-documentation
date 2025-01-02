@@ -7,6 +7,11 @@
             "displayName": "Data setup",
             "description": "Preparing and configuring Dataloop system to utilize LiDAR data",
             "location": "data_management/data_types/lidar/data_setup/chapter.md"
+        },
+        {
+            "displayName": "Advanced data setup",
+            "description": "Setup custom Base Parser to prepare a LiDAR dataset",
+            "location": "data_management/data_types/lidar/advanced_data_setup/chapter.md"
         }
     ]
 }
