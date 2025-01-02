@@ -1,32 +1,32 @@
 To access the filters entity click <a href="https://sdk-docs.dataloop.ai/en/latest/entities.html#module-dtlpy.entities.filters" target="_blank">here</a>.  
-## The Dataloop Query Language - DQL  
+# The Dataloop Query Language - DQL  
 Using The <a href="https://docs.dataloop.ai/docs/api-dql" target="_blank">Dataloop Query Language</a>, you may navigate through massive amounts of data.  
   
 You can *filter*, *sort*, and *update* your metadata with it.  
   
-### Filters  
+## Filters  
 Using filters, you can filter items and get a generator of the filtered items. The filters entity is used to build such filters.  
   
-#### Filters - Field & Value  
+### Filters - Field & Value  
 Filter your items or annotations using the parameters in the JSON code that represent its data within our system.  
 Access your item/annotation JSON using `to_json()`.  
-##### Field  
+#### Field  
 Field refers to the attributes you filter by.  
   
 For example, "dir" would be used if you wish to filter items by their folder/directory.  
   
-##### Value  
+#### Value  
 Value refers to the input by which you want to filter.  
 For example, `/new_folder` can be the directory/folder name where the items you wish to filter are located.  
-#### Sort - Field & Value  
-##### Field  
+### Sort - Field & Value  
+#### Field  
 Field refers to the field you sort your items/annotations list by.  
 For example, if you sort by filename, you will get the item list sorted in alphabetical order by filename.  
 See the full list of the available fields <a href="https://docs.dataloop.ai/docs/api-dql" target="_blank">here</a>.  
-##### Value  
+#### Value  
 Value refers to the list order direction. Either ascending or descending.  
   
-### Filter Items  
+## Filter Items  
 Filter items by the item's JSON fields.  
 In this example, you will get all annotated items in a dataset sorted by the filename.  
 <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>  
@@ -49,7 +49,7 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-### Filter Items by the Items' Annotations  
+## Filter Items by the Items' Annotations  
 <code>add_join</code> - filter items by the items' annotations JSON fields. For example, filter only items with 'box' annotations.  
 <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Note</b><br>  
 See all of the items iterator options on the <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/pagination/chapter.md#iterator-of-items" target="_blank">Iterator of Items</a> page.</div>  
@@ -69,11 +69,11 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-### Filters Method - "Or" and "And"  
+## Filters Method - "Or" and "And"  
 <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>Filters Operators</b><br>  
 For more advanced filters operators visit the <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md" target="_blank">Advanced SDK Filters</a> page.</div>  
   
-#### And  
+### And  
 If you wish to filter annotations with the "and" logical operator, you can do so by specifying which filters will be checked with "and".  
 <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;"><b>  
 AND is the default value and can be used without specifying the method.</b></div>  
@@ -91,7 +91,7 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-#### Or  
+### Or  
 If you wish to filter annotations with the "or" logical operator, you can do so by specifying which filters will be checked with "or".  
 In this example, you will get a list of items that are either on "folder1" or "folder2" directories.  
   
@@ -108,7 +108,7 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-### Update User Metadata of Filtered Items  
+## Update User Metadata of Filtered Items  
 <b>Update Filtered Items</b> - The `update_value` must be a dictionary.  
 The dictionary will only update user metadata.  
 Understand more about user metadata [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/working_with_metadata/chapter.md).  
@@ -128,7 +128,7 @@ update_values = {'BlackDogs': True}
 # update
 pages = dataset.items.update(filters=filters, update_values=update_values)
 ```
-### Delete Filtered Items  
+## Delete Filtered Items  
 In this example, you will delete items that were created on 30/8/2020 at 8:17 AM.  
   
 
@@ -138,8 +138,8 @@ filters = dl.Filters()
 filters.add(field='createdAt', values="2020-08-30T08:17:08.000Z")
 dataset.items.delete(filters=filters)
 ```
-### Item Filtering Fields  
-#### More Filter Options  
+## Item Filtering Fields  
+### More Filter Options  
 <div style="background-color: lightblue; color: black; width: 50%; padding: 10px; border-radius: 15px 5px 5px 5px;">  
 Use a dot to access parameters within curly brackets.  
 For example use field='metadata.system.originalname' to filter by the item's original name.</div>  
@@ -209,8 +209,8 @@ For example use field='metadata.system.originalname' to filter by the item's ori
     "annotations": "https://gate.dataloop.ai/api/v1/items/5f4b60848ced1d50c3df114a/annotations"
 }
 ```
-### Full Examples  
-#### How to filter items by their annotations label?  
+## Full Examples  
+### How to filter items by their annotations label?  
   
 
 ```python
@@ -220,7 +220,7 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of filtered items in dataset: {}'.format(pages.items_count))
 ```
-#### How to filter items by completed and approved status?  
+### How to filter items by completed and approved status?  
 
 ```python
 filters = dl.Filters()
@@ -229,7 +229,7 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-#### How to filter items by completed status (with items who are approved as well)?  
+### How to filter items by completed status (with items who are approved as well)?  
 
 ```python
 filters = dl.Filters()
@@ -239,7 +239,7 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-#### How to filter items by only completed status?  
+### How to filter items by only completed status?  
 
 ```python
 filters = dl.Filters()
@@ -248,7 +248,7 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-#### How to filter unassigned items?  
+### How to filter unassigned items?  
 
 ```python
 filters = dl.Filters()
@@ -257,7 +257,7 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-#### How to filter items by a specific folder?  
+### How to filter items by a specific folder?  
 
 ```python
 filters = dl.Filters()
@@ -266,7 +266,7 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of items in dataset: {}'.format(pages.items_count))
 ```
-#### Get all items named foo.bar  
+### Get all items named foo.bar  
 
 ```python
 filters = dl.Filters()
@@ -276,7 +276,7 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of filtered items in dataset: {}'.format(pages.items_count))
 ```
-#### Sort files of size 0-5 MB by name, in ascending order  
+### Sort files of size 0-5 MB by name, in ascending order  
 
 ```python
 filters = dl.Filters()
@@ -288,7 +288,7 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of filtered items in dataset: {}'.format(pages.items_count))
 ```
-#### Sort with multiple fields: Sort Items by labels ascending and createdAt descending  
+### Sort with multiple fields: Sort Items by labels ascending and createdAt descending  
 
 ```python
 filters = dl.Filters()
@@ -302,10 +302,10 @@ pages = dataset.items.list(filters=filters)
 # Count the items
 print('Number of filtered items in dataset: {}'.format(pages.items_count))
 ```
-### Advanced Filtering Operators  
+## Advanced Filtering Operators  
 Explore advanced filtering options on <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md/" target="_blank">this page</a>.  
   
-### Response to DQL Query  
+## Response to DQL Query  
 A typical response to a DQL query will look like the following:  
 
 ```python
@@ -338,7 +338,7 @@ A typical response to a DQL query will look like the following:
     ]
 }
 ```
-### Using Custom DQL Filter  
+## Using Custom DQL Filter  
 If you have a DQL JSON copied from the platform you can create an SDK Filter directly with it using the `custom_filter` attribute:  
 
 ```python
@@ -348,4 +348,12 @@ filters = dl.Filters(custom_filter={"$and": [{"hidden": False},
                      )
 pages = dataset.items.list(filters=filters)
 print('Number of filtered items in dataset: {}'.format(pages.items_count))
+```
+## Open a Filter in the UI  
+You can open a filter in the platform UI using the `open_in_web` method:  
+
+```python
+filters = dl.Filters()
+filters.add(field='annotated', values=True)
+filters.open_in_web(dataset)
 ```

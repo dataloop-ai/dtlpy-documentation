@@ -137,9 +137,9 @@ The M2M flow allows machines to obtain valid, signed JWT (authentication token) 
 the need for a web browser login.
 
 M2M Login is recommended when you want to:
+
 - run commands on the platform without an ongoing internet connection
 - run API commands directly from an external system to Dataloop
-
 
 <section class="infoBox" style='background-color:#eff2f9'>
 <p style="display:inline;font-size:15px;color:#3452ff">&#9432;</p>
@@ -157,13 +157,15 @@ dl.login_api_key(api_key="<api_key>")
 ```
 
 Replace `<api_key>` with your generated key.
-Note that when using API keys in a Python script, it's recommended to store them as environment variables and access them using os.environ, rather than hardcoding them directly in your code, to enhance security and prevent accidental exposure.
+Note that when using API keys in a Python script, it's recommended to store them as environment variables and access
+them using os.environ, rather than hardcoding them directly in your code, to enhance security and prevent accidental
+exposure.
 
 ```python
 import os
+
 dl.login_api_key(api_key=os.environ['DTLPY_API_KEY'])
 ```
-
 
 ## Datasets
 
@@ -591,6 +593,16 @@ The **Filter Query** is **applied** to the **dataset**and the filtered item(s) d
 Iterate Pages:   0%|                                                                                                                                                                        | 0/1 [00:00<?, ?it/s]Item(dataset_url='https://gate.dataloop.ai/api/v1/datasets/632c24ae3444a86f029acb47', created_at='2022-09-23T13:00:39.000Z', dataset_id='632c24ae3444a86f029acb47', filename='/test1.jpg', name='test1.jpg', type='file', id='632dadf7b28a0c0da317dfc8', spec=None, creator='JohnDoe@gmail.com', _description=None, annotations_count=7)
 Iterate Pages: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 169.70it/s]
 >>>
+```
+
+#### Open Filter in the UI
+
+The dl.Filter object can be opened in the UI by running the following command:
+
+```python
+filters = dl.Filters(field='annotated', values=True)
+dataset = project.datasets.get(dataset_name='My-First-Dataset')
+filters.open_in_web(resource=dataset)
 ```
 
 ## Using Filters to Replace Data

@@ -265,3 +265,7 @@ def section18():
     pages = dataset.items.list(filters=filters)
     print('Number of filtered items in dataset: {}'.format(pages.items_count))
 
+def section19():
+    filters = dl.Filters()
+    filters.add(field='annotated', values=True)
+    filters.open_in_web(dataset)

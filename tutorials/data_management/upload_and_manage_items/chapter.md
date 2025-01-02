@@ -1,8 +1,8 @@
-# Upload & Manage Data & Metadata
-
-## Upload Specific Files
-
-When you have specific files you want to upload, you can upload them all into a dataset using this script:
+# Upload & Manage Data & Metadata  
+  
+## Upload Specific Files  
+  
+When you have specific files you want to upload, you can upload them all into a dataset using this script:  
 
 ```python
 project_name = 'project_name'
@@ -19,13 +19,13 @@ dataset = project.datasets.get(dataset_name=dataset_name)
 dataset.items.upload(local_path=local_path,
                      remote_path=remote_path)  # Remote path is optional, images will go to the root directory by default
 ```
-
-
-## Upload All Files in a Folder
-
-
-If you want to upload all files from a folder, you can do that by just specifying the folder name:
-
+  
+  
+## Upload All Files in a Folder  
+  
+  
+If you want to upload all files from a folder, you can do that by just specifying the folder name:  
+  
 
 ```python
 project_name = 'project_name'
@@ -40,9 +40,9 @@ dataset = project.datasets.get(dataset_name=dataset_name)
 dataset.items.upload(local_path=local_path,
                      remote_path=remote_path)  # Remote path is optional, images will go to the root directory by default
 ```
-
-## Upload Items From URL Links
-You can provide Dataloop with the link to the item, and not necessarily the item itself.
+  
+## Upload Items From URL Links  
+You can provide Dataloop with the link to the item, and not necessarily the item itself.  
 
 ```python
 dataset_name = 'dataset_name'
@@ -54,15 +54,15 @@ link = dl.UrlLink(ref=url_path, mimetype='image', name=file_name)
 # Upload link
 item = dataset.items.upload(local_path=link)
 ```
-
-You can open an item uploaded to Dataloop by opening it in a viewer.
+  
+You can open an item uploaded to Dataloop by opening it in a viewer.  
 
 ```python
 item.open_in_web()
 ```
-## Upload Items with Metadata
-You can upload items as a table using a Pandas DataFrame that will let you upload items with info (annotations, metadata such as confidence, filename, etc.) attached to it.
-
+## Upload Items with Metadata  
+You can upload items as a table using a Pandas DataFrame that will let you upload items with info (annotations, metadata such as confidence, filename, etc.) attached to it.  
+  
 
 ```python
 dataset_id = 'id'
@@ -98,12 +98,12 @@ df = pandas.DataFrame(to_upload)  # Make data into DF table
 items = dataset.items.upload(local_path=df,
                              overwrite=True)  # Upload DF to platform
 ```
-## Upload Numpy Arrays Directly
-You can upload numpy arrays directly to Dataloop.
-NOTE: You will have to specify the `remote_name`, otherwise the upload will fail.
-
-Load the image using cv2 or Pillow (or create one using Python) and then upload it to a Dataset:
-
+## Upload Numpy Arrays Directly  
+You can upload numpy arrays directly to Dataloop.  
+NOTE: You will have to specify the `remote_name`, otherwise the upload will fail.  
+  
+Load the image using cv2 or Pillow (or create one using Python) and then upload it to a Dataset:  
+  
 
 ```python
 import cv2
