@@ -1,0 +1,13 @@
+{
+    "name": "data-types",
+    "title": "Data Types",
+    "description": "Supported data types of items in Dataloop",
+    "content": [
+        {
+            "displayName": "LiDAR",
+            "description": "Upload and work with LiDAR video files",
+            "location": "data_management/data_types/lidar/index.json"
+        }
+    ]
+}
+
