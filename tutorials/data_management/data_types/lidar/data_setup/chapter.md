@@ -35,6 +35,6 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
 
 ## Upload Framed Annotations
 
-Check out how to upload different type of annotations to the LiDAR video:
+Check out how to upload different type of framed annotations to the LiDAR video:
 
 * [Cuboid Annotations](https://developers.dataloop.ai/tutorials/annotations/lidar/cuboid/chapter/)

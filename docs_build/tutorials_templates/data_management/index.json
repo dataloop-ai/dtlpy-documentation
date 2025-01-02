@@ -5,7 +5,7 @@
     "content": [
         {
             "displayName": "Data Types",
-            "description": "Add a new integration",
+            "description": "Supported data types of items in Dataloop",
             "location": "data_management/data_types/index.json"
         },
         {
