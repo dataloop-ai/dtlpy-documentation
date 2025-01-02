@@ -4,21 +4,21 @@
 ## Brief explanation
 
 This notebook provides an advanced guide about how to set up a LiDAR scene dataset on the Dataloop platform
-for any file structure as long as the files are in the following data types:
-1. `3D scene files` - Point Cloud Data files in `.pcd` **ASCII** format.
-2. `2D camera views files` - Image files in JPEG/PNG formats.
-3. `Calibration data files` - Any file format that contains the required [Camera Calibration Parameters](https://www.mathworks.com/help/vision/ug/camera-calibration.html#:~:text=the%20intrinsics%20parameters.-,Camera%20Calibration%20Parameters,-The%20calibration%20algorithm).
+for any directory structure of a LiDAR scene, as long as the files are in the following formats:
+1. **3D Scene Files** - Point Cloud Data files in `.pcd` **ASCII** format.
+2. **2D Camera Views Files** - Image files in JPEG/PNG formats.
+3. **Calibration Data Files** - Any file format that contains the required [Camera Calibration Parameters](https://www.mathworks.com/help/vision/ug/camera-calibration.html#:~:text=the%20intrinsics%20parameters.-,Camera%20Calibration%20Parameters,-The%20calibration%20algorithm).
 
-In this notebook we will show an example of modifying the parser to support the [PandaSet](https://www.kaggle.com/datasets/usharengaraju/pandaset-dataset) dataset. \
+In this notebook we will show an example of modifying the `AdvancedBaseParser` to support the [PandaSet](https://www.kaggle.com/datasets/usharengaraju/pandaset-dataset) dataset. \
 However, this parser can be extended to support custom LiDAR scenes by modifying the available `Customizable` methods as needed.
 
 
 ## Step 1: Files Setup
 
 Create a dataset on the Dataloop platform and upload the following required LiDAR files to the dataset:
-1. **PCD Files:** Point Cloud Data files used for generating the 3D scenes.
-2. **JPEG/PNG Image Files:** Usually showing the angle and viewport of the cameras that captured the main scene.
-3. **Calibration Files:** Any type of files that contains all required information to align the point cloud data with the camera images. \
+1. **3D Scene Files** - Point Cloud Data files used for generating the 3D scenes.
+2. **2D Camera Views Files** - Usually showing the angle and viewport of the cameras that captured the main scene.
+3. **Calibration Data Files** Any type of files that contains all required information to align the point cloud data with the camera images. \
    For a detailed explanation about the parameters required in the mapping.json file, please refer to the Camera Calibration Parameters.
 
 ### Example of arranging the files with PandaSet
@@ -37,7 +37,7 @@ __Important Notes:__
   The converter requires that the remote dataset will already have the PandaSet 3D scene files in `.pkl` format to converted into `.pcd` format. \
   For more details on why `.pcd` files are preferred, please refer to the [PCD file format documentation](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
 * __Conversion Scripts:__ \
-  You can find helpful scripts for converting `.pkl` files to `.pcd` in the `dtlpylidar/utilities/converters` directory.
+  You can find helpful scripts for converting `.pkl` files to `.pcd` in the `dtlpylidar/utilities/converters` directory, on [Dataloop LiDAR SDK](https://github.com/dataloop-ai-apps/dtlpy-lidar).
 
 #### Dataset structure explanation
 
@@ -88,7 +88,13 @@ Each object refer to a different frame.
 
 ## Step 2: Build the Advanced Base Parser
 
-The overall structure of the custom base parser is as follows:
+Once all files are ready, all the data available in the dataset needs to be merged in order to create the LiDAR video file (`frames.json` file).
+
+To do that the `AdvancedBaseParser` methods needs to be implemented to parse the **Calibration data** from the dataset
+and build the `frames.json` file.
+
+**Notice:** In the next section we will show an example on how to implement the function to support the PandaSet dataset,
+and explain for what each method is used for.
 
 ```python
 from dtlpylidar.parser_base import extrinsic_calibrations
@@ -111,7 +117,7 @@ class AdvancedBaseParser(dl.BaseServiceRunner):
         """
         Download the required data for the parser
         :param dataset: Input dataset
-        :param remote_path: Path to the remote folder where the Lidar data is uploaded
+        :param remote_path: Path to the remote folder where the LiDAR data is uploaded
         :param download_path: Path to the downloaded data
         :return: (items_path, json_path) Paths to the downloaded items and annotations JSON files directories
         """
@@ -121,7 +127,7 @@ class AdvancedBaseParser(dl.BaseServiceRunner):
     @staticmethod
     def parse_lidar_data(items_path: str, json_path: str) -> dict:
         """
-        Parse the Lidar Calibration data to build all the scene LidarPcdData objects
+        Parse the LiDAR Calibration data to build all the scene LidarPcdData objects
         :param items_path: Paths to the downloaded items directory
         :param json_path: Paths to the downloaded annotations JSON files directory
         :return: lidar_data: Dictionary containing mapping of frame number to LidarPcdData object
@@ -179,7 +185,7 @@ class AdvancedBaseParser(dl.BaseServiceRunner):
         """
         Run the parser
         :param dataset: Input dataset
-        :param remote_path: Path to the remote folder where the Lidar data is uploaded
+        :param remote_path: Path to the remote folder where the LiDAR data is uploaded
         :return: frames_item: dl.Item entity of the uploaded frames.json
         """
         if remote_path.startswith("/"):
@@ -223,6 +229,9 @@ class AdvancedBaseParser(dl.BaseServiceRunner):
 
 ### Example functions implementation for PandaSet:
 
+In this section we will show an example implementation of each method in the `AdvancedBaseParser` to support parsing the PandaSet dataset
+`Calibration data` and creating the LiDAR video file.
+
 #### Download data (Customizable)
 
 A method to specify the required binaries and JSON annotations that need to be downloaded for use in subsequent parsing functions.
@@ -233,7 +242,7 @@ def download_data(dataset: dl.Dataset, remote_path: str, download_path: str) -> 
     """
     Download the required data for the parser
     :param dataset: Input dataset
-    :param remote_path: Path to the remote folder where the lidar data is uploaded
+    :param remote_path: Path to the remote folder where the LiDAR data is uploaded
     :param download_path: Path to the downloaded data
     :return: (items_path, json_path) Paths to the downloaded items and annotations JSON files directories
     """
@@ -244,7 +253,7 @@ def download_data(dataset: dl.Dataset, remote_path: str, download_path: str) -> 
     dataset.download_annotations(local_path=download_path, filters=filters)
 
     # Download required binaries (Calibrations Data)
-    # Pandaset Calibration Data is saved in JSON files (Like: poses.json, intrinsics.json, timestamps.json)
+    # PandaSet Calibration Data is saved in JSON files (Like: poses.json, intrinsics.json, timestamps.json)
     filters = dl.Filters(field="metadata.system.mimetype", values="*json*")
     dataset.items.download(local_path=download_path, filters=filters)
 
@@ -253,7 +262,7 @@ def download_data(dataset: dl.Dataset, remote_path: str, download_path: str) -> 
     return items_path, json_path
 ```
 
-#### Parse lidar data (Customizable)
+#### Parse LiDAR data (Customizable)
 
 A method to parse LiDAR sensor data from the downloaded files
 (Extrinsic and Timestamps).
@@ -266,7 +275,7 @@ A method to parse LiDAR sensor data from the downloaded files
 @staticmethod
 def parse_lidar_data(items_path: str, json_path: str) -> dict:
     """
-    Parse the lidar calibration data to build all the scene LidarPcdData objects
+    Parse the LiDAR Calibration data to build all the scene LidarPcdData objects
     :param items_path: Paths to the downloaded items directory
     :param json_path: Paths to the downloaded annotations JSON files directory
     :return: lidar_data: Dictionary containing mapping of frame number to LidarPcdData object
@@ -433,7 +442,7 @@ def parse_cameras_data(items_path: str, json_path: str) -> dict:
     return cameras_data
 ```
 
-#### Build lidar scene
+#### Build LiDAR scene
 
 A method to combine the `lidar_data` and `cameras_data` to construct the `frames.json` file, which represents a LiDAR video containing all point cloud and image files seamlessly integrated. Each frame includes the following information:
 
@@ -488,7 +497,7 @@ def run(self, dataset: dl.Dataset, remote_path: str = "/") -> dl.Item:
     """
     Run the parser
     :param dataset: Input dataset
-    :param remote_path: Path to the remote folder where the Lidar data is uploaded
+    :param remote_path: Path to the remote folder where the LiDAR data is uploaded
     :return: frames_item: dl.Item entity of the uploaded frames.json
     """
     if remote_path.startswith("/"):
@@ -533,7 +542,8 @@ def run(self, dataset: dl.Dataset, remote_path: str = "/") -> dl.Item:
 
 ## Step 3: Run the Advanced Base Parser
 
-After implementing all the required functions, run the following snippet to trigger the parser:
+After implementing all the required functions in the `AdvancedBaseParser`, run the following code snippet to run the parser
+to create and upload the `frames.json` file to the dataset:
 
 ```python
 def run_parser():
