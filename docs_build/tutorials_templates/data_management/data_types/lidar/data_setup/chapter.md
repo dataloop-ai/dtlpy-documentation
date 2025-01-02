@@ -26,9 +26,11 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
     frames_item.open_in_web()
     ```
 
-3. The output item will be the `frame.json` file, a LiDAR video file with all the point cloud and image files stitched together, where each frame contains the following information:
+3. The output item will be a `frame.json` file (the LiDAR video file) with all the PCD files stitched together,
+   where each frame contains the following information:
    - **PCD file:** The point cloud data of the 3D scene for the given frame.
    - **JPEG/PNG files:** The images of the available cameras for the given frame.
+   - **Calibration data:** The calibration data of the LiDAR sensor and the cameras for the given frame (as was specified in the `mapping.json` file).
 
 4. (Optional) Once all files are ready, contact Dataloop to execute the Ground Detection - on each provided .pcd file to enable the Ground Detection Toggle on the LiDAR Studio.
 
@@ -36,3 +38,23 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
 ## Upload Framed Annotations
 
 Check out how to upload different types of framed annotations to the LiDAR video item, in the [Annotations](https://developers.dataloop.ai/tutorials/annotations/) page under **LiDAR Annotations** section.
+
+**Notice:** Make sure that the `frames.json` file includes the `fps` key in its metadata. \
+Set it to a default value of `1` if it is not already present.
+```json
+{
+    "system":   {
+        "originalname": "frames.json",
+        "size": 32712,
+        "encoding": "7bit",
+        "shebang": {
+            "dltype": "PCDFrames"
+        },
+        "taskStatusLog": [],
+        "mimetype": "application/json",
+        "isBinary": false,
+        "refs": []
+    },
+    "fps": 1
+}
+```
