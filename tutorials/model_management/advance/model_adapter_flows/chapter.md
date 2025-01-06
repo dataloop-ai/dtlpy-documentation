@@ -1,6 +1,6 @@
 # Model Adapter Class Methods  
   
-In this tutorial, we can see the flowcharts for the Model Adapter functiions. There are two main types of functions:  
+In this tutorial, we can see the flowcharts for the Model Adapter functions. There are two main types of functions:  
   
 * **Wrapper Functions**: Those are functions that come as part of the ```BaseModelAdapter``` class and perform most of the auxiliary tasks needed for adapting a machine learning model to the Dataloop format.  
 * **User Functions**: Each wrapper function will call a user function, i.e. a function implemented by the user in their ```ModelAdapter``` with the specific code related to the model they wish to adapt.  
@@ -23,7 +23,7 @@ flowchart TD
     style id1 fill:#adebad, stroke:black  
     style id2 fill:#adebad, stroke:black  
     style id3 fill:#ffff99, stroke:red  
-    click id3 "./#load"  
+    click id3 "./#load"
 ```  
   
 The ```load_from_model``` function performs starts by downloading artifacts as seen in the ```download_artifacts``` block. It will define the variable ```local_path``` to the path ```~/.dataloop/models/{model.name}``` where ```{model.name}``` will be filled with the name of the model as defined during its creation. Inside this directory, the ```model.artifacts``` will be downloaded. Those usually include weight files, but can include any other auxiliary files needed by the model that were uploaded by the user. More information at [this page](https://developers-dev.redoc.ly/tutorials/model_management/introduction/chapter/#artifacts-and-codebase).  
@@ -52,7 +52,7 @@ flowchart TD
     style id1 fill:#adebad, stroke:black  
     style id2 fill:#ffff99, stroke:red  
     style id3 fill:#adebad, stroke:black  
-    click id2 "./#save"  
+    click id2 "./#save"
 ```  
   
   
@@ -82,8 +82,8 @@ flowchart TD
     style id6 fill:#adebad, stroke: black  
     style id7 fill:#adebad, stroke: black  
     style id8 fill:#adebad, stroke: black  
-    click id4 "./#prepare_item_func"  
-    click id5 "./#predict"  
+    click id4 "./#prepare_item_func"
+    click id5 "./#predict"
 ```  
   
 The ```predict_items``` function will prepare batches of items with ```batch_size``` being defined in the model's configurations. For each batch it will call [```prepare_item_func```](#prepare_item_func) which will preprocess the batch's items before they can be used as input to the model in the [```predict(batch)```](#predict) which will have the predictions stored in ```annotation```. The annotations are then stored in ```batch_collections``` and uploaded as annotations for all the items in the batch.  
@@ -108,14 +108,14 @@ flowchart TD
     style id4 fill:#ffff99, stroke: red  
     style id5 fill:#adebad, stroke: black  
     style id6 fill:#adebad, stroke: black  
-    click id2 "./#load_from_model"  
-    click id4 "./#train"  
-    click id5 "./$save_to_model"  
+    click id2 "./#load_from_model"
+    click id4 "./#train"
+    click id5 "./$save_to_model"
 ```  
   
 Train model starts by [loading the model](#load_from_model), prepares the data by downloading it according to the directory structure shown below. It then invokes the [```train```](#train) function implemented by the user and saves the result of training by calling [```save_to_model```](#save_to_model). Lastly, it does a ```cleanup``` by deleting all the local copies of the dataset files used for training.  
   
-When creating the model, train and validation subsets should be defined for the dataset as shown [here](https://developers.dataloop.ai/tutorials/model_management/create_new_model_ui/chapter/#creating-a-model-from-a-public-architecture). The ```prepare_data``` function will create the directory structure shown below and in the ```data_path``` it will download the training data in the directories seen in this schema. The data will be divided according to the model's subset filters, and ```items``` will hold the data items themselves while ```json``` has the annotation jsons associated to each item. Keep that in mind when preprocessing the data in the ```train``` function.  
+When creating the model, train and validation subsets should be defined for the dataset as shown [here](https://developers.dataloop.ai/tutorials/model_management/create_new_model_ui/chapter/#creating-a-model-from-a-public-architecture). The ```prepare_data``` function will create the directory structure shown below and in the ```data_path``` it will download the training data in the directories seen in this schema. The data will be divided according to the model's subset filters, and ```items``` will hold the data items themselves while ```json``` has the annotation JSONs associated to each item. Keep that in mind when preprocessing the data in the ```train``` function.  
   
 ```shell  
 Directory tree at convert_from_dtlpy (supposing train and validation subsets):  
@@ -155,9 +155,9 @@ flowchart TD
     style id2 fill:#adebad, stroke: black  
     style id3 fill:#adebad, stroke: black  
     style id4 fill:#ffff99, stroke: red  
-    click id2 "./#load_from_model"  
-    click id3 "./#predict_items"  
-    click id4 "./#evaluate"  
+    click id2 "./#load_from_model"
+    click id3 "./#predict_items"
+    click id4 "./#evaluate"
 ```  
   
 It starts by invoking [```load_from_model```](#load_from_model) so it has the latest model artifacts and then calls ```predict_dataset``` which in turn calls ```predict_items``` for a whole dataset and a filter provided, which should determine a test set for this dataset. Finally, ```evaluate``` will compute metrics by comparing the model's predictions with the ground truth present in the test set.  
@@ -184,4 +184,4 @@ Each item goes through the `prepare_item_func` and a batch is ready to predict.
 After the model prediction, user will need to prepare the annotation is the Dataloop format using the DL annotations.  
   
 ### `prepare_item_func`  
-Prepares each item for prediction. Bt default, images will be downloaded and loaded into a ndarray as a batch (NHWC)  
+Prepares each item for prediction. Bt default, images will be downloaded and loaded into a NDarray as a batch (NHWC)  

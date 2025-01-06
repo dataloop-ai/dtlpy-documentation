@@ -1,6 +1,3 @@
-import dtlpy as dl
-if dl.token_expired():
-    dl.login()
 def section1():
     import dtlpy as dl
     if dl.token_expired():
