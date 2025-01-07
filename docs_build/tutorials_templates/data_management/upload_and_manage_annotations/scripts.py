@@ -48,40 +48,40 @@ def section2a():
 
 
 def section3():
+    import asyncio
     import dtlpy as dl
     from dtlpyconverters.uploaders import ConvertersUploader
 
     converter = ConvertersUploader()
-    loop = converter._get_event_loop()
 
     # Use the converter of choice
     coco_dataset = dl.datasets.get(dataset_id="dataset_id")
-    loop.run_until_complete(converter.coco_to_dataloop(dataset=coco_dataset,
-                                                       input_items_path=r"C:/path/to/coco/items",
-                                                       input_annotations_path=r"C:/path/to/coco/items/annotations",
-                                                       # Please make sure the filenames of the items are the same as written in the COCO json file
-                                                       coco_json_filename="annotations.json",
-                                                       annotation_options=[dl.AnnotationType.BOX,
-                                                                           dl.AnnotationType.SEGMENTATION],
-                                                       upload_items=True,
-                                                       to_polygon=True))
+    asyncio.run(converter.coco_to_dataloop(dataset=coco_dataset,
+                                           input_items_path=r"C:/path/to/coco/items",
+                                           input_annotations_path=r"C:/path/to/coco/items/annotations",
+                                           # Please make sure the filenames of the items are the same as written in the COCO json file
+                                           coco_json_filename="annotations.json",
+                                           annotation_options=[dl.AnnotationType.BOX,
+                                                               dl.AnnotationType.SEGMENTATION],
+                                           upload_items=True,
+                                           to_polygon=True))
 
     yolo_dataset = dl.datasets.get(dataset_id="dataset_id")
-    loop.run_until_complete(converter.yolo_to_dataloop(dataset=yolo_dataset,
-                                                       input_items_path=r"C:/path/to/yolo/items",
-                                                       # Please make sure the filenames of the items are the same as the YOLO txt filenames
-                                                       input_annotations_path=r"C:/path/to/yolo/items/annotations",
-                                                       upload_items=True,
-                                                       add_labels_to_recipe=True,
-                                                       labels_txt_filepath=r"C:/path/to/yolo/items/labels/labels.txt"))
+    asyncio.run(converter.yolo_to_dataloop(dataset=yolo_dataset,
+                                           input_items_path=r"C:/path/to/yolo/items",
+                                           # Please make sure the filenames of the items are the same as the YOLO txt filenames
+                                           input_annotations_path=r"C:/path/to/yolo/items/annotations",
+                                           upload_items=True,
+                                           add_labels_to_recipe=True,
+                                           labels_txt_filepath=r"C:/path/to/yolo/items/labels/labels.txt"))
 
     voc_dataset = dl.datasets.get(dataset_id='dataset_id')
-    loop.run_until_complete(converter.voc_to_dataloop(dataset=voc_dataset,
-                                                      input_items_path=r"C:/path/to/voc/items",
-                                                      # Please make sure the filenames of the items are the same as the VOC xml filenames
-                                                      input_annotations_path=r"C:/path/to/voc/items/annotations",
-                                                      upload_items=True,
-                                                      add_labels_to_recipe=True))
+    asyncio.run(converter.voc_to_dataloop(dataset=voc_dataset,
+                                          input_items_path=r"C:/path/to/voc/items",
+                                          # Please make sure the filenames of the items are the same as the VOC xml filenames
+                                          input_annotations_path=r"C:/path/to/voc/items/annotations",
+                                          upload_items=True,
+                                          add_labels_to_recipe=True))
 
 
 def section4():
