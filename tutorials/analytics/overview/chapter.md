@@ -2,15 +2,9 @@
 
 In the Dataloop platform, we have an analytics screen where different metrics like Active users, Annotator's performance, Total working time, Item annotation time, etc. can be tracked at a project, dataset, or task level which would help the business.
 
-## Analytics API Overview
+To retrieve metrics from the API, you'll need to send a JSON payload containing the desired metrics and time period for analysis. This payload is essential for specifying which analytics data you want to track and analyze.
 
-The Analytics API has 3 parameters to be passed to it, and it’s a POST request type.
-
-- **endpoint**: API endpoint that needs to be called.
-- **headers**: Authentication to the API endpoint. This would remain the same.
-- **json**: JSON payload needs to be passed, which would contain the list of metrics that the user wants to extract within a specific period. JSON payload is the key parameter for tracking the metrics.
-
-### Example of Fetching Active Users in a Project
+## Example of Fetching Active Users in a Project
 
 ```python
 import dtlpy as dl
@@ -29,7 +23,7 @@ success, resp = dl.client_api.gen_request(req_type="post",
 samples = resp.json()
 ```
 
-### Understanding the Payload
+## Understanding the Payload
 
 The JSON payload mainly has 4 keys:
 
@@ -142,9 +136,11 @@ payload = {
         "datasetId": [dataset.id]
     },
     "measures": [
-        {"measureType": "countItemInAnnotationTimeBucket", 
+        {
+            "measureType": "countItemInAnnotationTimeBucket", 
             "sortDirection": "descending", 
-            "timeGranularity": ["hour", "day"]}
+            "timeGranularity": ["hour", "day"]
+            }
     ]
 }
 
