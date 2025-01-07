@@ -306,7 +306,7 @@ query = filters.prepare()
 filters = dl.Filters(resource=dl.FiltersResource.ITEM, field=dl.FiltersKnownFields.DIR, values='/dog_name')
 # Filter items with dog annotations (add_join is used to filter by resource annotation)
 filters.add_join(field=dl.FiltersKnownFields.LABEL, values='dog')
-# Use the converter of choice (Notice: convert_dataset is an async function)
+# Use the converter of choice (Notice: The converter download functions are async functions)
 coco_dataset = dl.datasets.get(dataset_id='')
 coco_converter = coco_converters.DataloopToCoco(input_annotations_path=r'C:/input/coco',
                                                 output_annotations_path=r'C:/output/coco',
