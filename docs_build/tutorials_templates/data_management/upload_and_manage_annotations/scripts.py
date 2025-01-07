@@ -48,19 +48,45 @@ def section2a():
 
 
 def section3():
-    converter = dl.Converter()
-    converter.upload_local_dataset(
-        from_format=dl.AnnotationFormat.COCO,
-        dataset=dataset,
-        local_items_path=r'C:/path/to/items',
-        # Please make sure the names of the items are the same as written in the COCO JSON file
-        local_annotations_path=r'C:/path/to/annotations/file/coco.json'
-    )
+    import asyncio
+    import dtlpy as dl
+    from dtlpyconverters.uploaders import ConvertersUploader
+
+    converter = ConvertersUploader()
+
+    # Use the converter of choice (Notice: The converter upload functions are async functions)
+    coco_dataset = dl.datasets.get(dataset_id="dataset_id")
+    asyncio.run(converter.coco_to_dataloop(dataset=coco_dataset,
+                                           input_items_path=r"C:/path/to/coco/items",
+                                           input_annotations_path=r"C:/path/to/coco/items/annotations",
+                                           # Please make sure the filenames of the items are the same as written in the COCO json file
+                                           coco_json_filename="annotations.json",
+                                           annotation_options=[dl.AnnotationType.BOX,
+                                                               dl.AnnotationType.SEGMENTATION],
+                                           upload_items=True,
+                                           to_polygon=True))
+
+    yolo_dataset = dl.datasets.get(dataset_id="dataset_id")
+    asyncio.run(converter.yolo_to_dataloop(dataset=yolo_dataset,
+                                           input_items_path=r"C:/path/to/yolo/items",
+                                           # Please make sure the filenames of the items are the same as the YOLO txt filenames
+                                           input_annotations_path=r"C:/path/to/yolo/items/annotations",
+                                           upload_items=True,
+                                           add_labels_to_recipe=True,
+                                           labels_txt_filepath=r"C:/path/to/yolo/items/labels/labels.txt"))
+
+    voc_dataset = dl.datasets.get(dataset_id='dataset_id')
+    asyncio.run(converter.voc_to_dataloop(dataset=voc_dataset,
+                                          input_items_path=r"C:/path/to/voc/items",
+                                          # Please make sure the filenames of the items are the same as the VOC xml filenames
+                                          input_annotations_path=r"C:/path/to/voc/items/annotations",
+                                          upload_items=True,
+                                          add_labels_to_recipe=True))
 
 
 def section4():
     # Local path to the items folder
-    # If you wish to upload items with your directory tree use : r'C:/home/project/images_folder' 
+    # If you wish to upload items with your directory tree use : r'C:/home/project/images_folder'
     local_items_path = r'C:/home/project/images_folder/*'
     # Local path to the corresponding annotations - make sure the file names fit
     local_annotations_path = r'C:/home/project/annotations_folder'
@@ -198,19 +224,43 @@ def section16():
 
 
 def section17():
+    import asyncio
+    import dtlpy as dl
+    from dtlpyconverters import coco_converters, yolo_converters, voc_converters
+
+    # DQL Query is optional
+    filters = dl.Filters()
+    query = filters.prepare()
+
     # Filter items from "folder_name" directory
-    item_filters = dl.Filters(resource='items', field='dir', values='/dog_name')
-    # Filter items with dog annotations
-    annotation_filters = dl.Filters(resource='annotations', field='label', values='dog')
-    converter = dl.Converter()
-    converter.convert_dataset(dataset=dataset,
-                              # Use the converter of choice
-                              # to_format='yolo',
-                              # to_format='voc',
-                              to_format='coco',
-                              local_path=r'C:/home/coco_annotations',
-                              filters=item_filters,
-                              annotation_filters=annotation_filters)
+    filters = dl.Filters(resource=dl.FiltersResource.ITEM, field=dl.FiltersKnownFields.DIR, values='/dog_name')
+    # Filter items with dog annotations (add_join is used to filter by resource annotation)
+    filters.add_join(field=dl.FiltersKnownFields.LABEL, values='dog')
+
+    # Use the converter of choice (Notice: The converter download functions are async functions)
+    coco_dataset = dl.datasets.get(dataset_id='')
+    coco_converter = coco_converters.DataloopToCoco(input_annotations_path=r'C:/input/coco',
+                                                    output_annotations_path=r'C:/output/coco',
+                                                    download_annotations=True,
+                                                    filters=filters,
+                                                    dataset=coco_dataset)
+    asyncio.run(coco_converter.convert_dataset())
+
+    yolo_dataset = dl.datasets.get(dataset_id='')
+    yolo_converter = yolo_converters.DataloopToYolo(input_annotations_path=r'C:/input/yolo',
+                                                    output_annotations_path=r'C:/output/yolo',
+                                                    download_annotations=True,
+                                                    filters=filters,
+                                                    dataset=yolo_dataset)
+    asyncio.run(yolo_converter.convert_dataset())
+
+    voc_dataset = dl.datasets.get(dataset_id='')
+    voc_converter = voc_converters.DataloopToVoc(input_annotations_path=r'C:/input/voc',
+                                                 output_annotations_path=r'C:/output/voc',
+                                                 download_annotations=True,
+                                                 filters=filters,
+                                                 dataset=voc_dataset)
+    asyncio.run(voc_converter.convert_dataset())
 
 
 def section18():

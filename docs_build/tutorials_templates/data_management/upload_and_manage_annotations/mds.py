@@ -22,8 +22,11 @@ def section2a():
 
 def section3():
     """
-    ## Convert Annotations from COCO Format
+    ## Convert and Upload annotations from COCO/YOLO/VOC format to Dataloop
 
+    To convert and upload annotations from COCO/YOLO/VOC format to Dataloop format:
+    1. Download the following git repository: [dtlpy-converters](https://github.com/dataloop-ai-apps/dtlpy-converters).
+    2. Update and run the following script:
     """
 
 
@@ -191,11 +194,10 @@ def section18():
 
 def section19():
     """
-
     ## Download NdArray with Numpy
 
     - only images that have .jpg or .png formats are supported
-    - save_localy=False means it returns a buffer
-    - to_arraymeans it returns the buffer as an array
+    - save_localy=False - means it returns a buffer
+    - to_array=True - means it returns the buffer as an array
 
     """
