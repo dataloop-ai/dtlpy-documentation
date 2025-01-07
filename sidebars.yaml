@@ -125,6 +125,14 @@ contents:
     - label: Item Status in Tasks
       page: tutorials/task_workflows/item_status/chapter.md
   - expanded: false
+    group: Analytics
+    page: tutorials/analytics.md
+    pages:
+    - label: Overview
+      page: tutorials/analytics/overview/chapter.md
+    - label: Extract Analytics
+      page: tutorials/analytics/extract_analytics/chapter.md
+  - expanded: false
     group: FaaS Tutorial
     page: tutorials/faas.md
     pages:

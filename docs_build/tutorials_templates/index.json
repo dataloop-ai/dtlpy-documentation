@@ -24,6 +24,11 @@
             "location": "task_workflows/index.json"
         },
         {
+            "displayName": "Analytics",
+            "description": "Extract and Analyze Analytics",
+            "location": "analytics/index.json"
+        },
+        {
             "displayName": "FaaS Tutorial",
             "description": "Tutorials for FaaS",
             "location": "faas/index.json"
@@ -45,4 +50,3 @@
         }
     ]
 }
-
