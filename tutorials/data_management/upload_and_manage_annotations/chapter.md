@@ -296,11 +296,9 @@ This example will download COCO from a dog items folder of the label 'dog' (edit
   
 
 ```python
+import asyncio
 import dtlpy as dl
-from dtlpyconverters.services import DataloopConverters
 from dtlpyconverters import coco_converters, yolo_converters, voc_converters
-converter = DataloopConverters()
-loop = converter._get_event_loop()
 # DQL Query is optional
 filters = dl.Filters()
 query = filters.prepare()
@@ -308,28 +306,28 @@ query = filters.prepare()
 filters = dl.Filters(resource=dl.FiltersResource.ITEM, field=dl.FiltersKnownFields.DIR, values='/dog_name')
 # Filter items with dog annotations (add_join is used to filter by resource annotation)
 filters.add_join(field=dl.FiltersKnownFields.LABEL, values='dog')
-# Use the converter of choice
+# Use the converter of choice (Notice: convert_dataset is an async function)
 coco_dataset = dl.datasets.get(dataset_id='')
 coco_converter = coco_converters.DataloopToCoco(input_annotations_path=r'C:/input/coco',
                                                 output_annotations_path=r'C:/output/coco',
                                                 download_annotations=True,
                                                 filters=filters,
                                                 dataset=coco_dataset)
-loop.run_until_complete(coco_converter.convert_dataset())
+asyncio.run(coco_converter.convert_dataset())
 yolo_dataset = dl.datasets.get(dataset_id='')
 yolo_converter = yolo_converters.DataloopToYolo(input_annotations_path=r'C:/input/yolo',
                                                 output_annotations_path=r'C:/output/yolo',
                                                 download_annotations=True,
                                                 filters=filters,
                                                 dataset=yolo_dataset)
-loop.run_until_complete(yolo_converter.convert_dataset())
+asyncio.run(yolo_converter.convert_dataset())
 voc_dataset = dl.datasets.get(dataset_id='')
 voc_converter = voc_converters.DataloopToVoc(input_annotations_path=r'C:/input/voc',
                                              output_annotations_path=r'C:/output/voc',
                                              download_annotations=True,
                                              filters=filters,
                                              dataset=voc_dataset)
-loop.run_until_complete(voc_converter.convert_dataset())
+asyncio.run(voc_converter.convert_dataset())
 ```
   
 ## Exporting Files with File Extension as Part of the Filename  
