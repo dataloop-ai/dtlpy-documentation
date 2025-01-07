@@ -1,0 +1,648 @@
+# Analytics API Documentation
+
+In the Dataloop platform, we have an analytics screen where different metrics like Active users, Annotator's performance, Total working time, Item annotation time, etc. can be tracked at a project, dataset, or task level which would help the business.
+
+**List of Contents**:
+- Analytics API Overview
+- Metrics at Dataset Level - Performance
+
+## Analytics API Overview
+
+The Analytics API has 3 parameters to be passed to it, and it’s a POST request type.
+
+- **endpoint**: API endpoint that needs to be called.
+- **headers**: Authentication to the API endpoint. This would remain the same.
+- **json**: JSON payload needs to be passed, which would contain the list of metrics that the user wants to extract within a specific period. JSON payload is the key parameter for tracking the metrics.
+
+### Example of Fetching Active Users in a Project
+
+```python
+import requests
+import dtlpy as dl
+
+dl.setenv('prod')
+project = dl.projects.get(project_name = 'project_name')
+start_time = project.created_at
+end_time = None
+
+payload = {
+    "startTime": start_time,
+    "endTime": end_time,
+    "context": {"projectId": [project.id]},
+    "measures": [{"measureType": "activeUsers"}]
+}
+
+data = requests.post(dl.environment() + '/analytics/query',
+                     headers=dl.client_api.auth,
+                     json=payload)
+```
+
+### Example Using Postman (API Client)
+
+1. Pass the API URL and select the request type as `POST`.
+2. Select the Bearer Token in Authorization and pass the token.
+3. Select `raw → JSON` in Body and pass in the payload.
+
+### Understanding the Payload
+
+The JSON payload mainly has 4 keys:
+
+- **startTime**: A mandatory key representing the time from which the metrics need to be fetched. The API throws an error if this key is missing.
+- **endTime**: An optional key. If not provided, the API uses the `current_timestamp` by default.
+- **context**: The context refers to the dimensions for which the metrics need to be fetched. Below is the list of dimensions that can be passed to the API for fetching the metrics. These dimensions are optional and may vary from query to query depending on the use case. The dimensions must be passed as a list of strings; otherwise, the API will throw an ERROR..
+
+    **Dimensions for Context**
+
+    - `userId`: string[]
+    - `orgId`: string[]
+    - `projectId`: string[]
+    - `accountId`: string[]
+    - `datasetId`: string[]
+    - `taskId`: string[]
+    - `assignmentId`: string[]
+    - `itemId`: string[]
+    - `serviceId`: string[]
+    - `podId`: string[]
+    - `modelId`: string[]
+    - `snapshotId`: string[]
+    - `pipelineId`: string[]
+    - `triggerId`: string[]
+    - `pipelineExecutionId`: string[]
+    - `nodeId`: string[]
+    - `ontologyId`: string[]
+
+- **measures**: Specifies the metrics the users wish to fetch. It includes keys like `measureType`, `params`, `page`, `pageSize`, `sortDirection`, and `timeGranularity`.
+
+    **TimeGranularity Type**
+
+    - SECOND = 'second'
+    - MINUTE = 'minute'
+    - HOUR = 'hour'
+    - DAY = 'day'
+    - WEEK = 'week'
+    - MONTH = 'month'
+
+    **List of Measure Types**
+
+    - ANNOTATION_TIMELINE = 'annotationTimeline'
+    - ITEM_STATUS_TIMELINE = 'itemStatusTimeline'
+    - AVG_ANNOTATION_TIME_PER_LABEL = 'avgAnnotationTimePerLabel'
+    - ITEM_ANNOTATION_DURATION = 'itemAnnotationDuration'
+    - COUNT_ITEM_IN_ANNOTATION_TIME_BUCKET = 'countItemInAnnotationTimeBucket'
+    - AVG_ITEM_ANNOTATION_TIME_PER_ANNOTATOR = 'avgItemAnnotationTimePerAnnotator'
+    - ASSIGNMENT_STATS_COMPLETED_STATUS = 'assignmentStatsCompletedStatus'
+    - ASSIGNMENT_STATS_ITEM_ACTIVE_TIME_STATS = 'assignmentStatsItemActiveTimeStats'
+    - ASSIGNMENT_STATS_ITEM_TOTAL_TIME = 'assignmentStatsItemTotalTime'
+    - ASSIGNMENT_STATS_ANNOTATION_ACTION_TIME_STATS = 'assignmentStatsAnnotationActionTimeStats'
+    - ASSIGNMENT_STATS_ANNOTATION_CLASSIFY_BULK_STATS = 'assignmentStatsAnnotationClassifyBulkStats'
+    - ASSIGNMENT_STATS_ACTIVE_TIME = 'assignmentStatsActiveTime'
+    - ASSIGNMENT_STATS_STUDIO_ACTIVE_TIME = 'assignmentStatsStudioActiveTime'
+    - ASSIGNMENT_START_TIME = 'assignmentStartTime'
+    - ACTIVE_USERS = 'activeUsers'
+    - LABELING_COUNTERS = 'labelingCounters'
+    - LABELING_ACTION_PER_LABEL = 'labelingActionsPerLabel'
+    - LABELING_TIME_PER_LABEL = 'labelingTimePerLabel'
+    - LABELING_AVG_TIME_PER_LABEL = 'labelingAvgTimePerLabel'
+    - USER_STATS_TASK_ACTIVITY_TIME = 'userStatsTaskActivityTime'
+    - USER_STATS_ACTIVITY_TIME = 'userStatsActivityTime'
+    - USER_STATS_ACTIVITY_TIME_BY_ROLE = 'userStatsActivityTimeByRole'
+    - USER_STATS_ACTIVITY_TIME_BY_FIELD = 'userStatsActivityTimeByField'
+    - USER_STATS_TOTAL_ACTIVITY_TIME = 'userStatsTotalActivityTime'
+    - USER_STATS_STUDIO_TIME = 'userStatsStudioTime'
+    - ISSUE_COUNTERS = 'issueCounters'
+    - ISSUE_CORRECTION_TIME = 'issueCorrectionTime'
+    - ISSUE_RAISE_TIME = 'issueRaiseTime'
+    - ISSUE_RESOLVE_TIME = 'issueResolveTime'
+    - ISSUE_APPROVAL_TIME = 'issueApprovalTime'
+    - ISSUE_TIMELINE = 'issueTimeline'
+    - ISSUE_PER_LABEL = 'issuePerLabel'
+    - ISSUE_PER_ANNOTATOR = 'issuePerAnnotator'
+    - SERVICE_REPLICA_STATUS = 'serviceReplicaStatus'
+    - SERVICE_QUEUE_SIZE = 'serviceQueueSize'
+    - SERVICE_NUMBER_OF_REPLICAS = 'serviceNumberOfReplicas'
+    - SERVICE_USAGE = 'serviceUsage'
+    - SERVICE_USAGE_PROJECTS = 'serviceUsageProjects'
+    - SNAPSHOT_DATA = 'snapshotData'
+    - EXECUTION_OVER_TIME = 'executionOverTime'
+    - EXECUTION_DURATION = 'executionDuration'
+    - EXECUTION_COUNT_BY_FUNCTIONS = 'executionCountByFunction'
+    - EXECUTION_AVG_DURATION_BY_NODE = 'executionAvgDurationByNode'
+    - PIPELINE_EXECUTION_AVG_DURATION = 'pipelineExecutionAvgDuration'
+
+## Metrics at Dataset Level - Performance
+
+### Total Working Time
+
+Total working time is derived by summing up the measure types `userStatsStudioTime` and `annotationClassifyBulkTime`.
+
+Below is an example of tracking the total working time at the dataset level.
+
+**Note**: Grouping is not supported for this metric in the payload, and dimensions must be passed in the context itself. If multiple dimensions, such as userId or datasetId, are passed in the context, the API will return aggregated data based on the provided dimensions.
+
+**Code Description**
+
+The following code is used to extract the total working time shown in the image above. In the `payload`, `datasetId` and `userId` are optional parameters.
+
+- If neither parameter is provided: The aggregated data will be fetched for all datasets and users available in the `projectId`.
+
+- If both parameters are provided: The aggregated data will be extracted specifically based on the given parameters.
+
+#### Code Example
+
+```python
+import requests
+import dtlpy as dl
+
+if __name__ == '__main__':
+
+    if dl.token_expired():
+        dl.login()
+
+    dl.verbose.print_error_logs = True
+    project = dl.projects.get(project_name='exploration')
+    dataset = project.datasets.get(dataset_name='test')
+    start_time = project.created_at
+
+    payload = {
+        "startTime": start_time,
+        "endTime": None,
+        "context": {
+            "projectId": [project.id],
+            "datasetId": [dataset.id]
+        },
+        "measures": [
+            {"measureType": "userStatsStudioTime", "pageSize": 0},
+            {"measureType": "annotationClassifyBulkTime", "pageSize": 0}
+        ]
+    }
+
+    try:
+        samples = requests.post(dl.environment() + '/analytics/query',
+                                headers=dl.client_api.auth,
+                                json=payload)
+
+        samples = samples.json()
+        total_time = 0
+        studio_time = samples[0]
+        bulk_time = samples[1]
+
+        if studio_time['response']:
+            total_time += studio_time['response'][0]['activityDuration']
+
+        if bulk_time['response']:
+            total_time += bulk_time['response'][0]['totalTime']
+
+        print('total_time in minutes:', int(total_time / (1000 * 60)))
+    except Exception as e:
+        print('analytics report: Error: {}'.format(e))
+```
+
+### Additional Metrics - Net Annotation Time | Avg Annotation on Item | Avg Annotation Time | Avg Annotation per Items | Total Annotation Time
+
+The `annotationCounters` measureType is used for tracking the following metrics:
+
+- **Net annotation time**
+- **Average item time**
+- **Average annotation time**
+- **Annotations per item** (available in UI)
+
+The `annotationWholeTime` measureType is used for tracking:
+
+- **Total annotation time** (available in UI)
+
+## Tracking Metrics at a Dataset Level
+
+**Note**: Grouping is not supported for these metrics in the payload, and dimensions must be passed in the context. 
+
+- If multiple dimensions such as `userId`, `datasetId`, etc., are passed in the context, the response will return aggregated data for the provided dimensions.
+- If the parameters `datasetId` and `userId` are not passed, the aggregated data will be fetched for all datasets and users available in the `projectId`.
+
+The following code is used to extract the metrics shown in the image above. In the payload, `datasetId` and `userId` are optional parameters.
+
+- **If neither parameter is provided**: The aggregated data will be fetched for all datasets and users available in the `projectId`.
+
+- **If both parameters are provided**: The aggregated data will be extracted specifically based on the given parameters.
+
+#### Code Example
+
+```python
+import requests
+import dtlpy as dl
+import math
+
+if __name__ == '__main__':
+
+    if dl.token_expired():
+        dl.login()
+
+    dl.verbose.print_error_logs = True
+    project = dl.projects.get(project_name='exploration')
+    dataset = project.datasets.get(dataset_name='test')
+    start_time = project.created_at
+
+    payload = {
+        "startTime": start_time,
+        "endTime": None,
+        "context": {
+            "projectId": [project.id],
+            "datasetId": [dataset.id]
+        },
+        "measures": [
+            {"measureType": "annotationCounters", "pageSize": 0},
+            {"measureType": "annotationWholeTime", "pageSize": 0}
+        ]
+    }
+
+    try:
+        samples = requests.post(dl.environment() + '/analytics/query',
+                                headers=dl.client_api.auth,
+                                json=payload)
+
+        samples = samples.json()
+        net_annotation_time = 0
+        avg_item_time = 0
+        avg_annotation_time = 0
+        avg_annotations_per_item = 0
+        annotation_whole_time = 0
+
+        annotation_counters = samples[0]
+        annotation_wholetime = samples[1]
+
+        if annotation_counters['response']:
+            net_annotation_time += annotation_counters['response'][0]['totalTime']
+            avg_item_time += annotation_counters['response'][0]['avgItemAnnotationTime']
+            avg_annotation_time += annotation_counters['response'][0]['avgAnnotationTime']
+            avg_annotations_per_item += annotation_counters['response'][0]['avgAnnotationCountPerItem']
+
+        if annotation_wholetime['response']:
+            annotation_whole_time += annotation_wholetime['response'][0]['totalTime']
+
+        print(f'net_annotation_time in minutes: {int(net_annotation_time/(1000*60))} \n'
+              f'avg_item_time in minutes: {int(avg_item_time/(1000*60))} \n'
+              f'avg_annotation_time in minutes: {int(avg_annotation_time/(1000*60))} \n'
+              f'avg_annotations_per_item: {math.ceil(avg_annotations_per_item)} \n'
+              f'annotation_whole_time in minutes: {int(annotation_whole_time/(1000*60))}')
+    except Exception as e:
+        print('analytics report: Error: {}'.format(e))
+```
+
+### AVG ANNOTATION TIME PER LABEL
+
+`avgAnnotationTimePerLabel` measureType is used for tracking average annotation time per label.
+
+Below code is an example of tracking the average annotation time per label at the dataset level.
+
+**Note:** Grouping is not supported for this metric in the payload, and dimensions must be passed in the context itself.
+
+**Code Description**
+
+The following code is used to extract the metrics shown in the image above. In the payload, `datasetId` and `userId` are optional parameters.
+
+- **If neither parameter is provided**: The data will be fetched for all labels available in the datasets for the `projectId`.
+
+- **If both parameters are provided**: The data will be extracted specifically based on the given parameters.
+
+#### Code Example
+
+```python
+import requests
+import dtlpy as dl
+import pandas as pd
+
+if __name__ == '__main__':
+
+    if dl.token_expired():
+        dl.login()
+
+    dl.verbose.print_error_logs = True
+    project = dl.projects.get(project_name='exploration')
+    dataset = project.datasets.get(dataset_name='test')
+    start_time = project.created_at
+
+    payload = {
+        "startTime": start_time,
+        "endTime": None,
+        "context": {
+            "projectId": [project.id],
+            "datasetId": [dataset.id],
+            "userId": ["e714acd9f43445e73c0a03752454c262e5d43f7a7a97542988b5d874190635af"]
+        },
+        "measures": [
+            {"measureType": "avgAnnotationTimePerLabel", "sortDirection": "descending"}
+        ]
+    }
+
+    try:
+        samples = requests.post(dl.environment() + '/analytics/query',
+                                headers=dl.client_api.auth,
+                                json=payload)
+        samples = samples.json()
+        if samples[0]['response']:
+            data = samples[0]['response']
+            df = pd.DataFrame.from_dict(data=data)
+    except KeyError as r:
+        print('analytics report: Error: {}'.format(r))
+```
+
+```python
+import requests
+import dtlpy as dl
+import pandas as pd
+
+if __name__ == '__main__':
+
+    if dl.token_expired():
+        dl.login()
+
+    dl.verbose.print_error_logs = True
+    project = dl.projects.get(project_name='exploration')
+    dataset = project.datasets.get(dataset_name='sdk-test')
+    start_time = project.created_at
+    
+    payload = {
+               "startTime": start_time,
+               "endTime": None,
+               "context": {
+                           "projectId": [project.id],
+                           "datasetId": [dataset.id],
+                           "userId": ["e714acd9f43445e73c0a03752454c262e5d43f7a7a97542988b5d874190635af"]
+               },
+               "measures": [
+                   {"measureType": "itemAnnotationDuration",
+                    "sortDirection": "descending"}
+                   ]
+               }
+
+    try:
+        samples = requests.post(dl.environment() + '/analytics/query',
+                            headers=dl.client_api.auth,
+                            json=payload)
+        samples = samples.json()
+        if samples[0]['response']:
+          data = samples[0]['response']
+          df = pd.DataFrame.from_dict(data=data)
+    except KeyError as r:
+        print('analytics report: Error: {}'.format(r))
+```
+
+### ANNOTATION TIMELINE
+
+The `annotationTimeline` measureType is used for tracking the annotation timeline.
+
+Below is an example of tracking the annotation timeline at the dataset level.
+
+**Note:** Grouping is not supported for this metric in the payload, and dimensions must be passed in the context itself.
+
+### Code Description
+
+The following code is used to extract the metrics shown in the image above. In the payload, `datasetId` and `userId` are optional parameters.
+
+- **If `timeGranularity` is not provided**:  
+  By default, it will pick "hour" as the `timeGranularity`. In the example code below, "hour" and "day" are passed as `timeGranularity`, and the response will include both hour-level and day-level data.
+
+- **If neither `datasetId` nor `userId` is provided**: The data will be fetched for all items available in the datasets for the `projectId`.
+
+- **If both parameters are provided**: The data will be extracted specifically based on the given parameters.
+
+#### Code Example
+
+```python
+import requests
+import dtlpy as dl
+import pandas as pd
+
+if __name__ == '__main__':
+
+    if dl.token_expired():
+        dl.login()
+
+    dl.verbose.print_error_logs = True
+    project = dl.projects.get(project_name='exploration')
+    dataset = project.datasets.get(dataset_name='test')
+    start_time = project.created_at
+
+    payload = {
+        "startTime": start_time,
+        "endTime": None,
+        "context": {
+            "projectId": [project.id],
+            "datasetId": [dataset.id]
+        },
+        "measures": [
+            {"measureType": "annotationTimeline", 
+             "sortDirection": "descending", 
+             "timeGranularity": ["hour", "day"]}
+        ]
+    }
+
+    try:
+        samples = requests.post(dl.environment() + '/analytics/query',
+                                headers=dl.client_api.auth,
+                                json=payload)
+        samples = samples.json()
+        if samples[0]['response']:
+            hour_data = samples[0]['response']
+            hour_df = pd.DataFrame.from_dict(data=hour_data)
+
+        if samples[1]['response']:
+            day_data = samples[1]['response']
+            day_df = pd.DataFrame.from_dict(data=day_data)
+
+    except KeyError as r:
+        print('analytics report: Error: {}'.format(r))
+```
+
+### ITEM STATUS TIMELINE
+
+The `itemStatusTimeline` measureType is used for tracking the item status timeline.
+
+Below is an example of tracking the Item Status Timeline at the dataset level.
+
+**Note:** Grouping is not supported for this metric in the payload, and dimensions must be passed in the context itself.
+
+### Code Description
+The following code is used to extract the metrics shown in the image above. In the payload, `datasetId` and `userId` are optional parameters.
+
+- **If `timeGranularity` is not provided**:  
+  By default, it will pick "hour" as the `timeGranularity`. In the example code below, "hour" and "day" are passed as `timeGranularity`, and the response will include both hour-level and day-level data.
+
+- **If neither `datasetId` nor `userId` is provided**:  
+  The data will be fetched for all items available in the datasets for the `projectId`.
+
+- **If both parameters are provided**:  
+  The data will be extracted specifically based on the given parameters.
+
+#### Code Example
+
+```python
+import requests
+import dtlpy as dl
+import pandas as pd
+
+if __name__ == '__main__':
+
+    if dl.token_expired():
+        dl.login()
+
+    dl.verbose.print_error_logs = True
+    project = dl.projects.get(project_name='exploration')
+    dataset = project.datasets.get(dataset_name='test')
+    start_time = project.created_at
+
+    payload = {
+        "startTime": start_time,
+        "endTime": None,
+        "context": {
+            "projectId": [project.id],
+            "datasetId": [dataset.id]
+        },
+        "measures": [
+            {"measureType": "itemStatusTimeline", 
+             "sortDirection": "descending", 
+             "timeGranularity": ["hour", "day"]}
+        ]
+    }
+
+    try:
+        samples = requests.post(dl.environment() + '/analytics/query',
+                                headers=dl.client_api.auth,
+                                json=payload)
+        samples = samples.json()
+        if samples[0]['response']:
+            hour_data = samples[0]['response']
+            hour_df = pd.DataFrame.from_dict(data=hour_data)
+
+        if samples[1]['response']:
+            day_data = samples[1]['response']
+            day_df = pd.DataFrame.from_dict(data=day_data)
+
+    except KeyError as r:
+        print('analytics report: Error: {}'.format(r))
+```
+
+### AVG ANNOTATION TIME PER ANNOTATOR
+
+The `avgItemAnnotationTimePerAnnotator` measureType is used for tracking the average annotation time per annotator.
+
+Below is an example of tracking the Average Annotation Time Per Annotator at the dataset level.
+
+**Note:** Grouping is not supported for this metric in the payload, and dimensions must be passed in the context itself.
+
+### Code Description
+The following code is used to extract the metrics shown in the image above. In the payload, `datasetId` and `userId` are optional parameters.
+
+- **If neither `datasetId` nor `userId` is provided**: The data will be fetched for all items available in the datasets for the `projectId`.
+
+- **If both parameters are provided**: The data will be extracted specifically based on the given parameters.
+
+#### Code Example
+
+
+```python
+import requests
+import dtlpy as dl
+import pandas as pd
+
+if __name__ == '__main__':
+
+    if dl.token_expired():
+        dl.login()
+
+    dl.verbose.print_error_logs = True
+    project = dl.projects.get(project_name='exploration')
+    dataset = project.datasets.get(dataset_name='test')
+    start_time = project.created_at
+
+    payload = {
+        "startTime": start_time,
+        "endTime": None,
+        "context": {
+            "projectId": [project.id],
+            "datasetId": [dataset.id]
+        },
+        "measures": [
+            {"measureType": "avgItemAnnotationTimePerAnnotator", 
+             "sortDirection": "descending"}
+        ]
+    }
+
+    try:
+        samples = requests.post(dl.environment() + '/analytics/query',
+                                headers=dl.client_api.auth,
+                                json=payload)
+        samples = samples.json()
+        if samples[0]['response']:
+            data = samples[0]['response']
+            df = pd.DataFrame.from_dict(data=data)
+    except KeyError as r:
+        print('analytics report: Error: {}'.format(r))
+```
+
+### COUNT ITEMS IN THE ANNOTATION TIME BUCKET
+
+## Count Items in Annotation Time Bucket Tracking
+
+The `countItemInAnnotationTimeBucket` measureType is used for tracking the count of items in annotation time buckets.
+
+Below is an example of tracking the Count Items in Annotation Time Bucket at the dataset level.
+
+**Note:** Grouping is not supported for this metric in the payload, and dimensions must be passed in the context itself.
+
+### Code Description
+
+The following code is used to extract the metrics shown in the image above. In the payload, `datasetId` and `userId` are optional parameters.
+
+- **If `timeGranularity` is not provided**:  
+  By default, it will pick "hour" as the `timeGranularity`. In the example code below, "hour" and "day" are passed as `timeGranularity`, and the response will include both hour-level and day-level data.
+
+- **If neither `datasetId` nor `userId` is provided**: The data will be fetched for all items available in the datasets for the `projectId`.
+
+- **If both parameters are provided**: The data will be extracted specifically based on the given parameters.
+
+#### Code Example
+
+```python
+import requests
+import dtlpy as dl
+import pandas as pd
+
+if __name__ == '__main__':
+
+    if dl.token_expired():
+        dl.login()
+
+    dl.verbose.print_error_logs = True
+    project = dl.projects.get(project_name='exploration')
+    dataset = project.datasets.get(dataset_name='test')
+    start_time = project.created_at
+
+    payload = {
+        "startTime": start_time,
+        "endTime": None,
+        "context": {
+            "projectId": [project.id],
+            "datasetId": [dataset.id]
+        },
+        "measures": [
+            {"measureType": "countItemInAnnotationTimeBucket", 
+             "sortDirection": "descending", 
+             "timeGranularity": ["hour", "day"]}
+        ]
+    }
+
+    try:
+        samples = requests.post(dl.environment() + '/analytics/query',
+                                headers=dl.client_api.auth,
+                                json=payload)
+        samples = samples.json()
+        if samples[0]['response']:
+            hour_data = samples[0]['response']
+            hour_df = pd.DataFrame.from_dict(data=hour_data)
+
+        if samples[1]['response']:
+            day_data = samples[1]['response']
+            day_df = pd.DataFrame.from_dict(data=day_data)
+
+    except KeyError as r:
+        print('analytics report: Error: {}'.format(r))
+```
