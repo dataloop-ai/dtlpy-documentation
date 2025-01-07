@@ -54,7 +54,7 @@ def section3():
 
     converter = ConvertersUploader()
 
-    # Use the converter of choice
+    # Use the converter of choice (Notice: The converter upload functions are async functions)
     coco_dataset = dl.datasets.get(dataset_id="dataset_id")
     asyncio.run(converter.coco_to_dataloop(dataset=coco_dataset,
                                            input_items_path=r"C:/path/to/coco/items",
