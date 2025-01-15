@@ -7,7 +7,7 @@ utilize that with Dataloop, and not upload the binaries and create duplicates.
   
 Access & Permissions - Creating an integration with AWS requires allowing dataloop specific permissions for accessing the resource  
   
-To learn more about setting up integrations, please visit our [Dataloop documentation](https://docs.dataloop.ai/docs/aws-cross-account-integration)  
+To learn more about setting up integrations, please visit our [Dataloop documentation](https://docs.dataloop.ai/docs/integrations-overview)  
   
   
 ### Create AWS Access-Key integration  
@@ -68,3 +68,39 @@ for metadata in updated_integration.meatadata:
         if metadata['value'] != 'trust-established':
             raise ValueError('ERROR: Integration was not setup correctly - please check the trust relationship in your IAM Role')
 ```
+
+### Elastic Container Registry (ECR) Integration
+
+Follow these steps: 
+
+1. Create an S3 bucket on your AWS account  
+2. Create an IAM policy on your AWS account  
+3. Create the integration and get an IAM user from Dataloop  
+To learn more about setting up integrations, please visit our [Dataloop documentation](https://docs.dataloop.ai/docs/aws-elastic-container-registry)
+
+To use the ECR repository in the Dataloop platform, configure an integration using the Dataloop SDK:
+
+```python
+import dtlpy as dl
+org_id = 'your_organization_id'  # Replace with your organization ID
+org = dl.organizations.get(organization_id=org_id)
+integration = org.integrations.create(
+    integrations_type=dl.IntegrationType.PRIVATE_REGISTRY,
+    name='aws-ecr-integration',
+    options={
+        "name": "AWS",
+        "spec": {
+            "accessKeyId": "your_access_key_id",
+            "secretAccessKey": "your_secret_access_key",
+            "account": "your_aws_account_id",
+            "region": "your_aws_region"
+        }
+    },
+    metadata={"provider": 'aws'}
+)
+```
+
+For the `accessKeyId`, `secretAccessKey`, `account`, and `region`, refer to the [Dataloop documentation](https://docs.dataloop.ai/docs/aws-elastic-container-registry#prerequisites) section for the details.
+
+3. Verify that the integration is listed in the platform’s UI under Integrations.
+
