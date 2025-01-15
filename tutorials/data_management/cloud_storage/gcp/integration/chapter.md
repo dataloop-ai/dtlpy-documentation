@@ -53,7 +53,7 @@ To learn more about setting up integrations, please visit our [Dataloop document
 Follow these steps:  
 
 1. Create and Configure a GCP Google Artifacts Registry on your GCP account.
-2. Integrate GAR with the Dataloop Platform
+2. Integrate GAR with the Dataloop Platform.
 To learn more about setting up integrations, please visit our [Dataloop documentation](https://docs.dataloop.ai/docs/google-artifacts-registry).
 
 ### Google Container Registry Integration
