@@ -1,7 +1,7 @@
 # Integrations  
 Integrations enable Dataloop organizations to define secrets for accessing external resources  
 in their project including cloud storage (GCP, S3, or Azure), Secure Token Service (STS),  
-container registry services (ECR/GCR), and others.  
+Docker registry services, such as AWS Elastic Container Registry (ECR), Google Container Registry (GCR) & Google Artifacts Registry (GAR), and others.  
   
 With a cloud-storage driver, setting up an integration to a cloud provider is the first step,  
 enabling the access token to the service.  
