@@ -27,9 +27,15 @@ To prepare the PandaSet dataset, do as follows:
 1. Go to [PandaSet Kaggle Page](https://www.kaggle.com/datasets/usharengaraju/pandaset-dataset).
 2. Download the dataset and extract the files from the `.zip` file.
 3. Open a project on the Dataloop platform and create a new dataset for it.
-4. Select a scene folder from the extracted files in the `.zip` file and upload it the folders to the dataset, as follows:
+4. Select a scene folder from the extracted files in the `.zip` file keep the following folders:
    1. The `lidar` folder with the `.ply` files converted to `.pcd` files.
    2. The `camera` folder in the same structure.
+5. **Normalize the data**, by updating the folders files through the following steps:
+   1. Locate the `extrinsic.json` file in the `lidar` folder and open it.
+   2. Convert the PCD files from `.ply` to `.pcd` format, and apply the transformations from the `extrinsic.json` file to the PCD files.
+   3. (NEED TO CHECK WHAT'S BETTER) Apply the lidar extrinsic transformations on sand apply its transformations to the Cameras related `extrinsic.json` files.
+   4. (NEED TO CHECK WHAT'S BETTER) Reset the `extrinsic.json` files to have the identity transformation.
+6. Upload the folders with the updated files to the dataset on the Dataloop platform.
 
 __Important Notes:__
 
