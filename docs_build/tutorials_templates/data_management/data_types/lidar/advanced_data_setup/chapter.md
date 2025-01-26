@@ -33,8 +33,6 @@ To prepare the PandaSet dataset, do as follows:
 5. **Normalize the data**, by updating the folders files through the following steps:
    1. Locate the `poses.json` file in the `lidar` folder and open it.
    2. Convert the PCD files from `.ply` to `.pcd` format, and apply the transformations from the `poses.json` file to the PCD files.
-   3. (NEED TO CHECK WHAT'S BETTER) Apply the lidar extrinsic transformations on sand apply its transformations to the Cameras related `extrinsic.json` files.
-   4. (NEED TO CHECK WHAT'S BETTER) Reset the `poses.json` files to have the identity transformation.
 6. Upload the folders with the updated files to the dataset on the Dataloop platform.
 
 __Important Notes:__
@@ -43,7 +41,8 @@ __Important Notes:__
   The converter requires that the remote dataset will already have the PandaSet 3D scene files in `.pkl` format to converted into `.pcd` format. \
   For more details on why `.pcd` files are preferred, please refer to the [PCD file format documentation](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
 * __Conversion Scripts:__ \
-  You can find helpful scripts for converting `.pkl` files to `.pcd` in the `dtlpylidar/utilities/converters` directory, on [Dataloop LiDAR SDK](https://github.com/dataloop-ai-apps/dtlpy-lidar).
+  You can find helpful scripts for converting `.pkl` files to `.pcd` in the `dtlpylidar/utilities/converters` directory, on [Dataloop LiDAR SDK](https://github.com/dataloop-ai-apps/dtlpy-lidar),
+  or you can use the provided example in the section (Upload PandaSet to Dataloop) for uploading the PandaSet dataset with the updated files.
 
 #### Dataset structure explanation
 
@@ -91,7 +90,7 @@ Each object refer to a different frame.
 ]
 ```
 
-### Upload the files to the dataset
+### Upload PandaSet to Dataloop
 
 To upload the files to the dataset, you can use the following function to upload the scene folder to the dataset on the Dataloop platform.
 
