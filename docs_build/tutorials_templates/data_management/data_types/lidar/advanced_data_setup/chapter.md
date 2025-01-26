@@ -181,6 +181,7 @@ def upload_pandaset_to_dataloop(dataset: dl.Dataset, scene_folder: str, remote_p
         os.remove(pkl_filepath)
 
     # Upload the updated scene folder to the dataset
+    updated_scene_folder = os.path.join(updated_scene_folder, "*")
     dataset.items.upload(local_path=updated_scene_folder, remote_path=remote_path, overwrite=True)
 
 upload_pandaset_to_dataloop(dataset=dataset, scene_folder=scene_folder, remote_path=remote_path)
