@@ -93,7 +93,8 @@ Each object refer to a different frame.
 
 ### Upload the files to the dataset
 
-
+```python
+```
 
 ## Step 2: Build the Advanced Base Parser
 
@@ -106,8 +107,6 @@ and build the `frames.json` file.
 and explain for what each method is used for.
 
 ```python
-from dtlpylidar.parser_base import extrinsic_calibrations
-from dtlpylidar.parser_base import images_and_pcds, camera_calibrations, lidar_frame, lidar_scene
 import dtlpy as dl
 import os
 import json
@@ -115,6 +114,11 @@ import uuid
 import logging
 import shutil
 import pathlib
+import numpy as np
+
+from dtlpylidar.parser_base import (extrinsic_calibrations, images_and_pcds, camera_calibrations, lidar_frame,
+                                    lidar_scene)
+from dtlpylidar.utilities import transformations
 
 logger = logging.Logger(name="advanced_base_parser")
 
@@ -294,11 +298,6 @@ def parse_lidar_data(items_path: str, json_path: str) -> dict:
     lidar_json_path = os.path.join(json_path, "lidar")
     lidar_items_path = os.path.join(items_path, "lidar")
 
-    # Opening the poses.json file to get the Extrinsic (Translation and Rotation) of the Lidar Scene per frame
-    poses_json = os.path.join(lidar_items_path, "poses.json")
-    with open(poses_json, 'r') as f:
-        poses_json_data: list = json.load(f)
-
     # Opening the poses.json file to get the Timestamps of the Lidar Scene per frame
     timestamps_json = os.path.join(lidar_items_path, "timestamps.json")
     with open(timestamps_json, 'r') as f:
@@ -314,17 +313,8 @@ def parse_lidar_data(items_path: str, json_path: str) -> dict:
 
         ground_map_id = lidar_json_data.get("metadata", dict()).get("user", dict()).get(
             "lidar_ground_detection", dict()).get("groundMapId", None)
-        lidar_translation = extrinsic_calibrations.Translation(
-            x=poses_json_data[lidar_frame_idx].get("position", dict()).get("x", 0),
-            y=poses_json_data[lidar_frame_idx].get("position", dict()).get("y", 0),
-            z=poses_json_data[lidar_frame_idx].get("position", dict()).get("z", 0),
-        )
-        lidar_rotation = extrinsic_calibrations.QuaternionRotation(
-            x=poses_json_data[lidar_frame_idx].get("heading", dict()).get("x", 0),
-            y=poses_json_data[lidar_frame_idx].get("heading", dict()).get("y", 0),
-            z=poses_json_data[lidar_frame_idx].get("heading", dict()).get("z", 0),
-            w=poses_json_data[lidar_frame_idx].get("heading", dict()).get("w", 1)
-        )
+        lidar_translation = extrinsic_calibrations.Translation(x=0, y=0, z=0)
+        lidar_rotation = extrinsic_calibrations.QuaternionRotation(x=0, y=0, z=0, w=1)
         lidar_timestamp = str(timestamps_json_data[lidar_frame_idx])
 
         lidar_pcd_data = images_and_pcds.LidarPcdData(
@@ -362,6 +352,40 @@ def parse_cameras_data(items_path: str, json_path: str) -> dict:
     :return: lidar_data: Dictionary containing mapping of camera and frame number
     to LidarCameraData and LidarImageData objects
     """
+    # Get lidar transforms for all the frames
+    lidar_transform_list = list()
+
+    lidar_items_path = os.path.join(items_path, "lidar")
+    lidar_json_path = os.path.join(json_path, "lidar")
+
+    poses_json = os.path.join(lidar_items_path, "poses.json")
+    with open(poses_json, 'r') as f:
+        poses_json_data: list = json.load(f)
+
+    # Get count of all the lidar JSONs
+    lidar_jsons = pathlib.Path(lidar_json_path).rglob('*.json')
+    lidar_jsons_count = len(list(lidar_jsons))
+
+    for idx in range(lidar_jsons_count):
+        lidar_position_idx = [
+            poses_json_data[idx].get("position", dict()).get("x", 0),
+            poses_json_data[idx].get("position", dict()).get("y", 0),
+            poses_json_data[idx].get("position", dict()).get("z", 0)
+        ]
+        lidar_heading_idx = [
+            poses_json_data[idx].get("heading", dict()).get("x", 0),
+            poses_json_data[idx].get("heading", dict()).get("y", 0),
+            poses_json_data[idx].get("heading", dict()).get("z", 0),
+            poses_json_data[idx].get("heading", dict()).get("w", 1)
+        ]
+        lidar_rotation_idx = transformations.rotation_matrix_from_quaternion(*lidar_heading_idx)
+        lidar_transform_idx = transformations.calc_transform_matrix(
+            rotation=lidar_rotation_idx,
+            position=lidar_position_idx
+        )
+        lidar_transform_list.append(lidar_transform_idx)
+
+    # Get all the cameras data
     cameras_data = dict()
 
     camera_json_path = os.path.join(json_path, "camera")
@@ -405,17 +429,44 @@ def parse_cameras_data(items_path: str, json_path: str) -> dict:
                 cx=intrinsics_json_data.get("cx", 0),
                 cy=intrinsics_json_data.get("cy", 0)
             )
-            camera_rotation = extrinsic_calibrations.QuaternionRotation(
-                x=poses_json_data[camera_frame_idx].get("heading", dict()).get("x", 0),
-                y=poses_json_data[camera_frame_idx].get("heading", dict()).get("y", 0),
-                z=poses_json_data[camera_frame_idx].get("heading", dict()).get("z", 0),
-                w=poses_json_data[camera_frame_idx].get("heading", dict()).get("w", 1)
+
+            # Get lidar transform for the current camera frame
+            lidar_transform_idx = lidar_transform_list[camera_frame_idx]
+
+            # Get camera transform for the current camera frame
+            camera_position_idx = [
+                poses_json_data[camera_frame_idx].get("position", dict()).get("x", 0),
+                poses_json_data[camera_frame_idx].get("position", dict()).get("y", 0),
+                poses_json_data[camera_frame_idx].get("position", dict()).get("z", 0)
+            ]
+            camera_heading_idx = [
+                poses_json_data[camera_frame_idx].get("heading", dict()).get("x", 0),
+                poses_json_data[camera_frame_idx].get("heading", dict()).get("y", 0),
+                poses_json_data[camera_frame_idx].get("heading", dict()).get("z", 0),
+                poses_json_data[camera_frame_idx].get("heading", dict()).get("w", 1)
+            ]
+
+            # Calculate updated camera transform
+            camera_rotation_idx = transformations.rotation_matrix_from_quaternion(*camera_heading_idx)
+            camera_transform_idx = transformations.calc_transform_matrix(
+                rotation=camera_rotation_idx,
+                position=camera_position_idx
             )
-            camera_translation = extrinsic_calibrations.Translation(
-                x=poses_json_data[camera_frame_idx].get("position", dict()).get("x", 0),
-                y=poses_json_data[camera_frame_idx].get("position", dict()).get("y", 0),
-                z=poses_json_data[camera_frame_idx].get("position", dict()).get("z", 0)
+            camera_updated_transform_idx = np.dot(lidar_transform_idx, camera_transform_idx)
+            camera_updated_position_idx = transformations.translation_vector_from_transform_matrix(
+                transform_matrix=camera_updated_transform_idx
             )
+
+            # Extracting the updated camera translation and rotation
+            camera_updated_rotation_idx = transformations.rotation_matrix_from_transform_matrix(
+                transform_matrix=camera_updated_transform_idx
+            )
+            camera_updated_heading_idx = transformations.quaternion_from_rotation_matrix(
+                rotation_matrix=camera_updated_rotation_idx
+            )
+
+            camera_translation = extrinsic_calibrations.Translation(*camera_updated_position_idx)
+            camera_rotation = extrinsic_calibrations.QuaternionRotation(*camera_updated_heading_idx)
             camera_distortion = camera_calibrations.Distortion(
                 k1=0,
                 k2=0,
