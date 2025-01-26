@@ -92,10 +92,24 @@ Each object refer to a different frame.
 
 ### Upload PandaSet to Dataloop
 
-To upload the files to the dataset, you can use the following function to upload the scene folder to the dataset on the Dataloop platform.
+To upload the files to the dataset, you can use the following scripts to upload the scene folder to the dataset on the Dataloop platform:
+
+1. Define the `dataset_id`, `scene_folder` path, `remote_path` on the Dataloop dataset.
 
 ```python
 import dtlpy as dl
+
+# Set the dataset id and the scene folder path
+dataset_id = "dataset-id"
+scene_folder = "path/to/scene/folder"
+remote_path = "/"
+
+dataset = dl.datasets.get(dataset_id=dataset_id)
+```
+
+2. Run the following function to upload the scene folder to the dataset on the Dataloop platform.
+
+```python
 import os
 import json
 import pathlib
@@ -168,20 +182,10 @@ def upload_pandaset_to_dataloop(dataset: dl.Dataset, scene_folder: str, remote_p
 
     # Upload the updated scene folder to the dataset
     dataset.items.upload(local_path=updated_scene_folder, remote_path=remote_path, overwrite=True)
-```
 
-To use the function, run the following code snippet:
-
-```python
-# Set the dataset id and the scene folder path
-dataset_id = "dataset-id"
-scene_folder = "path/to/scene/folder"
-remote_path = "/"
-
-# Get the dataset and upload the scene folder
-dataset = dl.datasets.get(dataset_id=dataset_id)
 upload_pandaset_to_dataloop(dataset=dataset, scene_folder=scene_folder, remote_path=remote_path)
 ```
+
 
 ## Step 2: Build the Advanced Base Parser
 
