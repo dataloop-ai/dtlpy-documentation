@@ -93,7 +93,95 @@ Each object refer to a different frame.
 
 ### Upload the files to the dataset
 
+To upload the files to the dataset, you can use the following function to upload the scene folder to the dataset on the Dataloop platform.
+
 ```python
+import dtlpy as dl
+import os
+import json
+import pathlib
+import pickle
+import pandas as pd
+import open3d as o3d
+import shutil
+
+from dtlpylidar.utilities import transformations
+
+
+def upload_pandaset_to_dataloop(dataset: dl.Dataset, scene_folder: str, remote_path = "/"):
+    lidar_folder = os.path.join(scene_folder, "lidar")
+    camera_folder = os.path.join(scene_folder, "camera")
+
+    # Create new folder for the updated scene
+    updated_scene_folder = os.path.join(scene_folder, "updated_scene")
+    updated_scene_lidar_folder = os.path.join(updated_scene_folder, "lidar")
+    updated_scene_camera_folder = os.path.join(updated_scene_folder, "camera")
+    os.makedirs(updated_scene_lidar_folder, exist_ok=True)
+    os.makedirs(updated_scene_camera_folder, exist_ok=True)
+
+    # Copy the scene folder to the updated scene folder
+    shutil.copytree(lidar_folder, updated_scene_lidar_folder, dirs_exist_ok=True)
+    shutil.copytree(camera_folder, updated_scene_camera_folder, dirs_exist_ok=True)
+
+    # Open the poses.json file to get the poses data
+    with open(os.path.join(updated_scene_lidar_folder, "poses.json"), 'r') as f:
+        poses_json_data: list = json.load(f)
+
+    # Convert all the PCD files from .pkl to .pcd format and apply the transformations
+    pkl_filepaths = sorted(pathlib.Path(updated_scene_lidar_folder).rglob('*.pkl'))
+    for idx, pkl_filepath in enumerate(pkl_filepaths):
+        with open(pkl_filepath, 'rb') as file:
+            data = pickle.load(file)
+
+        # Convert data to DataFrame if needed
+        if isinstance(data, pd.DataFrame):
+            df = data
+        else:
+            df = pd.DataFrame(data)
+
+        # Extract x, y, z coordinates
+        points = df[['x', 'y', 'z']].to_numpy()
+
+        # Create Open3D PointCloud object
+        point_cloud = o3d.geometry.PointCloud()
+        point_cloud.points = o3d.utility.Vector3dVector(points)
+
+        # Apply transformation
+        position = [
+            poses_json_data[idx].get("position", dict()).get("x", 0),
+            poses_json_data[idx].get("position", dict()).get("y", 0),
+            poses_json_data[idx].get("position", dict()).get("z", 0)
+        ]
+        heading = [
+            poses_json_data[idx].get("heading", dict()).get("x", 0),
+            poses_json_data[idx].get("heading", dict()).get("y", 0),
+            poses_json_data[idx].get("heading", dict()).get("z", 0),
+            poses_json_data[idx].get("heading", dict()).get("w", 0)
+        ]
+        rotation = transformations.rotation_matrix_from_quaternion(*heading)
+        transform = transformations.calc_transform_matrix(rotation=rotation, position=position)
+        point_cloud.transform(transform)
+
+        # Save the PCD data in .pcd format
+        pcd_filepath = pkl_filepath.with_suffix(".pcd")
+        o3d.io.write_point_cloud(pcd_filepath, point_cloud)
+        os.remove(pkl_filepath)
+
+    # Upload the updated scene folder to the dataset
+    dataset.items.upload(local_path=updated_scene_folder, remote_path=remote_path, overwrite=True)
+```
+
+To use the function, run the following code snippet:
+
+```python
+# Set the dataset id and the scene folder path
+dataset_id = "dataset-id"
+scene_folder = "path/to/scene/folder"
+remote_path = "/"
+
+# Get the dataset and upload the scene folder
+dataset = dl.datasets.get(dataset_id=dataset_id)
+upload_pandaset_to_dataloop(dataset=dataset, scene_folder=scene_folder, remote_path=remote_path)
 ```
 
 ## Step 2: Build the Advanced Base Parser
