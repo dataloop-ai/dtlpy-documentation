@@ -94,7 +94,7 @@ Each object refer to a different frame.
 
 To upload the files to the dataset, you can use the following scripts to upload the scene folder to the dataset on the Dataloop platform:
 
-1. Define the `dataset_id`, `scene_folder` path, `remote_path` on the Dataloop dataset.
+1. Define the `dataset_id`, `scene_folder` path, `remote_path` on the Dataloop dataset, and run the script to upload the scene folder to the dataset.
 
 ```python
 import dtlpy as dl
