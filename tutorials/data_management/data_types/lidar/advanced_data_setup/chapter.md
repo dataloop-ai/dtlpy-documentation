@@ -177,7 +177,7 @@ def upload_pandaset_to_dataloop(dataset: dl.Dataset, scene_folder: str, remote_p
 
         # Save the PCD data in .pcd format
         pcd_filepath = pkl_filepath.with_suffix(".pcd")
-        o3d.io.write_point_cloud(pcd_filepath, point_cloud)
+        o3d.io.write_point_cloud(str(pcd_filepath), point_cloud)
         os.remove(pkl_filepath)
 
     # Upload the updated scene folder to the dataset
