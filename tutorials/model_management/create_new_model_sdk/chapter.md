@@ -3,6 +3,13 @@
 You can use your own model to use on the platform by creating an App and Model entities, and then use a model adapter to create an API with Dataloop.  
   
 In this tutorial you will learn how to create a basic model adapter to be able to inference on platform items.  
+
+*Note: You can also use the [Dataloop UI](https://docs.dataloop.ai/docs/models-overview#using-the-dataloop-ui) to create and integrate your own model. To dp this, follow these steps:*
+
+*1. **Integrate Your Docker Registry**: Connect your AWS [ECR](https://docs.dataloop.ai/docs/aws-elastic-container-registry) or GCP [GCR](https://docs.dataloop.ai/docs/google-container-registry)/[GAR](https://docs.dataloop.ai/docs/google-artifacts-registry) docker registry to the application.*
+
+*2. [Create a Model Application](https://docs.dataloop.ai/docs/marketplace-applications#how-to-create-an-application) and Link Your Docker Registry: Navigate to the Dataloop platform and create a new application.
+	- **Link Your Docker Image**: Provide the URL of your Docker image and link it to the application while creating the application . This enables Dataloop to use your custom model for tasks such as predictions, training, and workflows.*
   
 ### Create a model adapter  
   
