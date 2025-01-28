@@ -29,7 +29,7 @@
             "location": "annotations/audio/chapter.md"
         },
         {
-            "displayName": "Lidar Annotations",
+            "displayName": "LiDAR Annotations",
             "description": "Tutorials for LiDAR scene annotations",
             "location": "annotations/lidar/index.json"
         }
