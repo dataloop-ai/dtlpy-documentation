@@ -19,21 +19,18 @@ import {
   NavBar,
 } from '@redocly/developer-portal/ui';
 
-import icon1 from '../assets/site/icon1.png';
-import launchFastIcon from '../assets/site/launch-fast.svg';
-import icon3 from '../assets/site/icon3.png';
-import bookManagementIcon from '../assets/site/book-management.svg';
-import foundOrPrivate from '../assets/site/found-or-private.svg';
+import pythonSdkIcon from '../assets/site/icons/python-sdk.svg';
+import jsSdkIcon from '../assets/site/icons/js-sdk.svg';
 
 export default LandingLayout;
 
 <Box my={25}>
   <FlexSection justifyContent="space-around" flexWrap="wrap">
-    <ThinTile to="https://sdk-docs.dataloop.ai/en/latest/_modules/index.html" icon={launchFastIcon} header="Python SDK">
+    <WideTile to="https://sdk-docs.dataloop.ai/en/latest/_modules/index.html" icon={pythonSdkIcon} header="Python SDK">
         python
-    </ThinTile>
-    <ThinTile to="dtljs/index.md" icon={icon3} header="JS SDK">
+    </WideTile>
+    <WideTile to="dtljs/index.md" icon={jsSdkIcon} header="JS SDK">
         javascript
-    </ThinTile>
+    </WideTile>
   </FlexSection>
 </Box>
