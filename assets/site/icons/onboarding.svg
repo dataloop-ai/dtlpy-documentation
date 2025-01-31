@@ -1,0 +1,58 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="onboardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3452FF"/>
+      <stop offset="100%" style="stop-color:#8896FF"/>
+    </linearGradient>
+    <linearGradient id="stepGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#BDD0FB"/>
+      <stop offset="100%" style="stop-color:#3452FF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Main container -->
+  <g transform="translate(20, 20)">
+    <!-- Steps path -->
+    <path d="M40 100 C40 60, 80 60, 80 100
+             C80 140, 120 140, 120 100
+             C120 60, 160 60, 160 100" 
+          fill="none" 
+          stroke="url(#stepGradient)" 
+          stroke-width="4"
+          stroke-linecap="round"/>
+
+    <!-- Milestone points -->
+    <g>
+      <!-- Step 1 -->
+      <circle cx="40" cy="100" r="15" 
+              fill="url(#onboardGradient)"/>
+      <text x="35" y="105" 
+            font-family="Arial" 
+            font-size="14" 
+            fill="white">1</text>
+      
+      <!-- Step 2 -->
+      <circle cx="100" cy="100" r="15" 
+              fill="url(#onboardGradient)"/>
+      <text x="95" y="105" 
+            font-family="Arial" 
+            font-size="14" 
+            fill="white">2</text>
+      
+      <!-- Step 3 -->
+      <circle cx="160" cy="100" r="15" 
+              fill="url(#onboardGradient)"/>
+      <text x="155" y="105" 
+            font-family="Arial" 
+            font-size="14" 
+            fill="white">3</text>
+    </g>
+
+    <!-- Progress lines -->
+    <g stroke="url(#onboardGradient)" stroke-width="2">
+      <line x1="40" y1="60" x2="40" y2="80"/>
+      <line x1="100" y1="120" x2="100" y2="140"/>
+      <line x1="160" y1="60" x2="160" y2="80"/>
+    </g>
+  </g>
+</svg> 

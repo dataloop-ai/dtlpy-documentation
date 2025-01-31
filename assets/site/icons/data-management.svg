@@ -1,0 +1,56 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+<defs>
+    <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3452FF"/>
+      <stop offset="100%" style="stop-color:#8896FF"/>
+    </linearGradient>
+    <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#BDD0FB"/>
+      <stop offset="100%" style="stop-color:#91B3FA"/>
+</linearGradient>
+</defs>
+
+  <!-- Main container -->
+  <g transform="translate(20, 20)">
+    <!-- Background circle -->
+    <circle cx="100" cy="100" r="90" 
+            fill="url(#orbitGradient)" 
+            opacity="0.2"/>
+
+    <!-- Central data sphere -->
+    <circle cx="100" cy="100" r="40" 
+            fill="url(#dataGradient)" 
+            opacity="0.9"/>
+    
+    <!-- Database rings -->
+    <path d="M60 80 Q100 60 140 80 Q100 100 60 80Z" 
+          fill="url(#dataGradient)" 
+          opacity="0.7"/>
+    <path d="M60 100 Q100 80 140 100 Q100 120 60 100Z" 
+          fill="url(#dataGradient)" 
+          opacity="0.8"/>
+    <path d="M60 120 Q100 100 140 120 Q100 140 60 120Z" 
+          fill="url(#dataGradient)" 
+          opacity="0.9"/>
+
+    <!-- Orbital paths -->
+    <ellipse cx="100" cy="100" rx="75" ry="25" 
+             fill="none" 
+             stroke="#3452FF" 
+             stroke-width="2" 
+             opacity="0.5"
+             transform="rotate(45 100 100)"/>
+    
+    <ellipse cx="100" cy="100" rx="75" ry="25" 
+             fill="none" 
+             stroke="#3452FF" 
+             stroke-width="2" 
+             opacity="0.5"
+             transform="rotate(-45 100 100)"/>
+
+    <!-- Data nodes -->
+    <circle cx="160" cy="60" r="10" fill="#3452FF"/>
+    <circle cx="40" cy="140" r="10" fill="#3452FF"/>
+    <circle cx="140" cy="160" r="10" fill="#3452FF"/>
+  </g>
+</svg>

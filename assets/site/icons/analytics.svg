@@ -1,0 +1,51 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="analyticsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3452FF"/>
+      <stop offset="100%" style="stop-color:#8896FF"/>
+    </linearGradient>
+    <linearGradient id="chartGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#BDD0FB"/>
+      <stop offset="100%" style="stop-color:#3452FF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Main container -->
+  <g transform="translate(20, 20)">
+    <!-- Background grid -->
+    <g stroke="#BDD0FB" stroke-width="1" opacity="0.2">
+      <line x1="20" y1="20" x2="20" y2="180"/>
+      <line x1="60" y1="20" x2="60" y2="180"/>
+      <line x1="100" y1="20" x2="100" y2="180"/>
+      <line x1="140" y1="20" x2="140" y2="180"/>
+      <line x1="180" y1="20" x2="180" y2="180"/>
+      
+      <line x1="20" y1="20" x2="180" y2="20"/>
+      <line x1="20" y1="60" x2="180" y2="60"/>
+      <line x1="20" y1="100" x2="180" y2="100"/>
+      <line x1="20" y1="140" x2="180" y2="140"/>
+      <line x1="20" y1="180" x2="180" y2="180"/>
+    </g>
+
+    <!-- Chart elements -->
+    <g transform="translate(20, 20)">
+      <!-- Bar chart -->
+      <rect x="20" y="80" width="20" height="80" fill="url(#chartGradient)" opacity="0.8"/>
+      <rect x="50" y="40" width="20" height="120" fill="url(#chartGradient)" opacity="0.8"/>
+      <rect x="80" y="60" width="20" height="100" fill="url(#chartGradient)" opacity="0.8"/>
+      
+      <!-- Line chart -->
+      <path d="M120 120 L140 80 L160 100 L180 60" 
+            fill="none" 
+            stroke="url(#analyticsGradient)" 
+            stroke-width="3"
+            stroke-linecap="round"/>
+      
+      <!-- Data points -->
+      <circle cx="120" cy="120" r="4" fill="url(#analyticsGradient)"/>
+      <circle cx="140" cy="80" r="4" fill="url(#analyticsGradient)"/>
+      <circle cx="160" cy="100" r="4" fill="url(#analyticsGradient)"/>
+      <circle cx="180" cy="60" r="4" fill="url(#analyticsGradient)"/>
+    </g>
+  </g>
+</svg> 
