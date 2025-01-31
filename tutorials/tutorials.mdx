@@ -23,36 +23,48 @@ import launchFastIcon from '../assets/site/launch-fast.svg';
 import icon3 from '../assets/site/icon3.png';
 import bookManagementIcon from '../assets/site/book-management.svg';
 import foundOrPrivate from '../assets/site/found-or-private.svg';
+import tutorialsIcon from '../assets/site/icons/tutorials.svg';
+import dataManagementIcon from '../assets/site/icons/data-management.svg';
+import annotationsIcon from '../assets/site/icons/annotations.svg';
+import recipeOntologyIcon from '../assets/site/icons/recipe-ontology.svg';
+import taskWorkflowsIcon from '../assets/site/icons/task-workflows.svg';
+import analyticsIcon from '../assets/site/icons/analytics.svg';
+import faasIcon from '../assets/site/icons/faas.svg';
+import pipelinesIcon from '../assets/site/icons/pipelines.svg';
+import modelManagementIcon from '../assets/site/icons/model-management.svg';
+import applicationsIcon from '../assets/site/icons/applications.svg';
+import onboardingIcon from '../assets/site/icons/onboarding.svg';
+import resourcesIcon from '../assets/site/icons/resources.svg';
 
 export default LandingLayout;
 
 <Box my={25}>
   <FlexSection justifyContent="space-around" flexWrap="wrap">
-    <WideTile header="Data Management" to="data_management.md" icon={launchFastIcon}>
+    <WideTile header="Data Management" to="data_management.md" icon={dataManagementIcon}>
           Tutorials for data management
     </WideTile>
-    <WideTile header="Annotations" to="annotations.md" icon={icon3}>
+    <WideTile header="Annotations" to="annotations.md" icon={annotationsIcon}>
           Tutorials for creating all types of annotations for file types
     </WideTile>
-    <WideTile header="Recipe and Ontology" to="recipe_and_ontology.md" icon={icon1}>
+    <WideTile header="Recipe and Ontology" to="recipe_and_ontology.md" icon={recipeOntologyIcon}>
           Tutorials for managing ontologies, labels, and recipes
     </WideTile>
-    <WideTile header="Task and Workflows" to="task_workflows.md" icon={icon3}>
+    <WideTile header="Task and Workflows" to="task_workflows.md" icon={taskWorkflowsIcon}>
           Tutorials for workforce management
     </WideTile>
-    <WideTile header="Analytics" to="analytics.md" icon={icon1}>
+    <WideTile header="Analytics" to="analytics.md" icon={analyticsIcon}>
           Extract and Analyze Analytics
     </WideTile>
-    <WideTile header="FaaS Tutorial" to="faas.md" icon={launchFastIcon}>
+    <WideTile header="FaaS Tutorial" to="faas.md" icon={faasIcon}>
           Tutorials for FaaS
     </WideTile>
-    <WideTile header="Pipelines" to="pipelines.md" icon={icon1}>
+    <WideTile header="Pipelines" to="pipelines.md" icon={pipelinesIcon}>
           Tutorials for creating pipelines with the SDK
     </WideTile>
-    <WideTile header="Model Management" to="model_management.md" icon={icon3}>
+    <WideTile header="Model Management" to="model_management.md" icon={modelManagementIcon}>
           Tutorials for creating and managing ML model
     </WideTile>
-    <WideTile header="Applications" to="applications.md" icon={icon1}>
+    <WideTile header="Applications" to="applications.md" icon={applicationsIcon}>
           Developing and working with the Dataloop Applications
     </WideTile>
   </FlexSection>

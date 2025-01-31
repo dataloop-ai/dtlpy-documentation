@@ -18,11 +18,15 @@ import {
   NavBar,
 } from '@redocly/developer-portal/ui';
 
-import icon1 from './assets/site/icon1.png';
+import icon1 from './assets/site/icons/tutorials.svg';
 import launchFastIcon from './assets/site/launch-fast.svg';
-import icon3 from './assets/site/icon3.png';
+import dataManagementIcon from './assets/site/icons/data-management.svg';
+import annotationsIcon from './assets/site/icons/annotations.svg';
 import bookManagementIcon from './assets/site/book-management.svg';
 import foundOrPrivate from './assets/site/found-or-private.svg';
+import tutorialsIcon from './assets/site/icons/tutorials.svg';
+import onboardingIcon from './assets/site/icons/onboarding.svg';
+import resourcesIcon from './assets/site/icons/resources.svg';
 
 export default LandingLayout;
 
@@ -38,15 +42,15 @@ export default LandingLayout;
 </Jumbotron>
 <Box my={25}>
   <FlexSection justifyContent="space-around" flexWrap="wrap">
-    <ThinTile to="tutorials/tutorials.mdx" icon={icon1} header="Tutorials">
-        Our Great Tutorials in one place
-    </ThinTile>
-    <ThinTile to="onboarding/onboarding.md" icon={launchFastIcon} header="Onboarding">
-        All aboard!
-    </ThinTile>
-    <ThinTile to="resources/resources.mdx" icon={icon3} header="Resources">
-        More resources for you
-    </ThinTile>
+    <WideTile to="tutorials" icon={tutorialsIcon} header="Tutorials">
+      Step-by-step guides to get started with Dataloop
+    </WideTile>
+    <WideTile to="onboarding" icon={onboardingIcon} header="Onboarding">
+      Get up and running with Dataloop platform
+    </WideTile>
+    <WideTile to="resources" icon={resourcesIcon} header="Resources">
+      SDKs, APIs and developer tools
+    </WideTile>
   </FlexSection>
 </Box>
 

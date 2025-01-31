@@ -110,10 +110,25 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
 
 
 def get_mdx_str(header, md_file, description, str_list):
-    icons = {1: "launchFastIcon",
-             2: "icon1",
-             3: "icon3"}
-    icon = icons[random.randint(1, 3)]
+    # Map headers to their corresponding icons
+    icon_mapping = {
+        "Data Management": "dataManagementIcon",
+        "Annotations": "annotationsIcon",
+        "Recipe and Ontology": "recipeOntologyIcon",
+        "Task and Workflows": "taskWorkflowsIcon",
+        "Analytics": "analyticsIcon",
+        "FaaS Tutorial": "faasIcon",
+        "Pipelines": "pipelinesIcon",
+        "Model Management": "modelManagementIcon",
+        "Applications": "applicationsIcon",
+        "Tutorials": "tutorialsIcon",
+        "Resources": "resourcesIcon",
+        "Onboarding": "onboardingIcon"
+    }
+    
+    # Get the corresponding icon or use a default
+    icon = icon_mapping.get(header, "tutorialsIcon")
+    
     str_list.append(f'    <WideTile header="{header}" to="{md_file}" icon={{{icon}}}>\n')
     str_list.append(f'          {description}\n')
     str_list.append(f'    </WideTile>\n')
