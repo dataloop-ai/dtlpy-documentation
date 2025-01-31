@@ -61,3 +61,9 @@ footer:
           href: 'https://docs.dataloop.ai/docs/help-getting-started'
         - label: Contact us
           href: 'https://dataloop.ai/contact/'
+
+pages:
+  - page: index.mdx
+  - page: tutorials/tutorials.mdx
+  - page: onboarding/onboarding.md
+  - page: resources/resources.mdx
