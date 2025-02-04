@@ -41,7 +41,7 @@
     
     - group: JavaScript SDK
       items:
-        - page: dtljs/index.md
+        - page: resources/dtljs/index.md
           label: Documentation
     
     - group: REST API
