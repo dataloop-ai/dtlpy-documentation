@@ -28,8 +28,8 @@ markdown:
   toc:
     depth: 8
 logo:
-  image: 
-  srcSet: "https://dataloop.ai/wp-content/uploads/2024/02/dataloop-logo-main.svg light, ./assets/site/dl_logo-removebg-preview.png dark"
+  image: ./assets/site/dataloop-logo-main.svg
+  srcSet: "./assets/site/dataloop-logo-main.svg light, ./assets/site/dl_logo-removebg-preview.png dark"
   link: "/"
   altText: Dataloop's Developers
 footer:
