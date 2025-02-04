@@ -1,8 +1,0 @@
-label: Onboarding
-items:
-  - label: Installation
-    page: installation.md
-  - label: Authentication
-    page: authentication.md
-  - label: Quick Start Guide
-    page: quickstart.md 
