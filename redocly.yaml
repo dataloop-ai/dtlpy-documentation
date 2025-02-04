@@ -29,7 +29,7 @@ markdown:
   toc:
     depth: 2
 logo:
-  image: images/logo.svg
+  image: assets/site/logo.svg
   link: /
 footer:
   copyrightText: Copyleft © Redocly Inc. No rights reserved.
