@@ -12,6 +12,8 @@ contents:
   - group: Tutorials
     expanded: false
     pages:
+      - page: tutorials/getting_started/sdk_overview/chapter.md
+        label: SDK Overview
       - page: tutorials/data_management.md
         label: Data Management
       - page: tutorials/annotations.md
@@ -31,10 +33,45 @@ contents:
       - page: tutorials/applications.md
         label: Applications
 
+  - group: Onboarding
+    expanded: false
+    pages:
+      - page: onboarding/installation.md
+        label: Installation
+      - page: onboarding/authentication.md
+        label: Authentication
+      - page: onboarding/quickstart.md
+        label: Quick Start Guide
+
   - group: Resources
     expanded: false
     pages:
-      - href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
-        label: Python SDK
-      - page: dtljs/index.md
-        label: JS SDK
+      - group: Python SDK
+        expanded: false
+        pages:
+          - href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
+            label: Documentation
+          - page: resources/python/examples.md
+            label: Examples
+          - page: resources/python/api-reference.md
+            label: API Reference
+      
+      - group: JavaScript SDK
+        expanded: false
+        pages:
+          - page: dtljs/index.md
+            label: Documentation
+          - page: resources/js/examples.md
+            label: Examples
+          - page: resources/js/api-reference.md
+            label: API Reference
+      
+      - group: REST API
+        expanded: false
+        pages:
+          - page: resources/rest_api/overview.md
+            label: Overview
+          - page: resources/rest_api/authentication.md
+            label: Authentication
+          - page: resources/rest_api/reference.md
+            label: API Reference
