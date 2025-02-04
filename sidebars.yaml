@@ -8,7 +8,7 @@
       label: Onboarding
 
 - group: Tutorials
-  page: tutorials/index.mdx
+  page: tutorials/tutorials.mdx
   items:
     - page: tutorials/getting_started/sdk_overview/chapter.md
       label: SDK Overview
