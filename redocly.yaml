@@ -28,7 +28,6 @@ markdown:
   toc:
     depth: 8
 logo:
-  image: ./assets/site/dataloop-logo-main.svg
   srcSet: "./assets/site/dataloop-logo-main.svg light, ./assets/site/dl_logo-removebg-preview.png dark"
   link: "/"
   altText: Dataloop's Developers
