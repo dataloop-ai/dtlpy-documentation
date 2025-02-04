@@ -29,6 +29,7 @@ markdown:
     depth: 8
 logo:
   image: ./assets/site/dl_logo-removebg-preview.png
+  link: /
   altText: Dataloop's Developers
 footer:
   copyrightText: Copyright © Dataloop Ltd. 2023
