@@ -24,7 +24,6 @@ navbar:
     - label: SDK and CLI docs
       icon: ./assets/site/dataloop-logo.png
       page: ./resources/resources.mdx
-    - search: true
 markdown:
   toc:
     depth: 8
