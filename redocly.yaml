@@ -28,7 +28,7 @@ markdown:
   toc:
     depth: 8
 logo:
-  srcSet: "./assets/site/dataloop-logo-main.png light, ./assets/site/dl_logo-removebg-preview.png dark"
+  srcSet: "assets/site/dataloop-logo-main.png light, assets/site/dl_logo-removebg-preview.png dark"
   link: "/"
   altText: Dataloop's Developers
 footer:
