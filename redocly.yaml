@@ -48,9 +48,3 @@ footer:
           href: 'https://docs.dataloop.ai/docs/help-getting-started'
         - label: Contact us
           href: 'https://dataloop.ai/contact/'
-linkChecker:
-  severity: warning
-  options:
-    CheckExternal: false
-oasDefinitions:
-  restapi: ./resources/rest_api/openapi.json
