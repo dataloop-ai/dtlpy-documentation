@@ -8,34 +8,50 @@ links:
   - href: https://fonts.googleapis.com/css2?family=VT323&display=swap
   - href: https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap
 seo:
-  title: Warp API
-  description: Warp is the groundbreaking API that allows you to navigate, manipulate, and control time.
+  title: Dataloop's Developers
+  description: Drive your AI to production with end-to-end data management, automation pipelines and a quality-first data labeling platform.
+  siteUrl: https://developers.dataloop.ai
+  keywords: dataloop developer portal, api portal starter, api reference docs
+  lang: en-US
 navbar:
   items:
-    - page: tutorials/index.md
-      label: Missions
-    - page: guides/index.md
-      label: Guides
-    - page: apis/index.yaml
-      label: API Reference
-    - page: tools/index.md
-      label: Tools
-    - page: changelog.md
-      label: Changelog
-    - page: about.md
-      label: About this template
+    - label: Dataloop Platform
+      icon: ./assets/site/dataloop-logo.png
+      href: https://console.dataloop.ai
+    - label: Developers and support docs
+      icon: ./assets/site/dataloop-logo.png
+      page: ./tutorials/tutorials.mdx
+    - label: SDK and CLI docs
+      icon: ./assets/site/dataloop-logo.png
+      page: ./resources/resources.mdx
+    - search: true
 markdown:
   toc:
-    depth: 2
+    depth: 8
 logo:
-  image: assets/site/logo.svg
-  link: /
+  image: ./assets/site/dl_logo-removebg-preview.png
+  altText: Dataloop's Developers
 footer:
-  copyrightText: Copyleft © Redocly Inc. No rights reserved.
-  items:
-    - page: legal/terms.md
-      label: Terms
-    - page: legal/responsible-use.md
-      label: Responsible Use
-    - href: /
-      label: Cookies
+  copyrightText: Copyright © Dataloop Ltd. 2023
+  columns:
+    - group: Legal
+      items:
+        - label: Terms of Use
+          href: 'https://dataloop.ai/terms/'
+        - label: Privacy Notice
+          href: 'https://dataloop.ai/privacy-policy/'
+        - label: Cookie Notice
+          href: 'https://dataloop.ai/privacy-policy/'
+    - group: Support
+      items:
+        - label: FAQ
+          href: 'https://docs.dataloop.ai/docs/help-getting-started'
+        - label: Contact us
+          href: 'https://dataloop.ai/contact/'
+showNextButton: true
+linkChecker:
+  severity: warning
+  options:
+    CheckExternal: false
+oasDefinitions:
+  restapi: ./resources/rest_api/openapi.json
