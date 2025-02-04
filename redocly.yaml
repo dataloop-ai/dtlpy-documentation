@@ -32,7 +32,7 @@ logo:
   altText: Dataloop's Developers
 footer:
   copyrightText: Copyright © Dataloop Ltd. 2023
-  columns:
+  items:
     - group: Legal
       items:
         - label: Terms of Use
