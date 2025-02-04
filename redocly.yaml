@@ -28,8 +28,9 @@ markdown:
   toc:
     depth: 8
 logo:
-  image: ./assets/site/dl_logo-removebg-preview.png
-  link: /
+  image: 
+  srcSet: "https://dataloop.ai/wp-content/uploads/2024/02/dataloop-logo-main.svg light, ./assets/site/dl_logo-removebg-preview.png dark"
+  link: "/"
   altText: Dataloop's Developers
 footer:
   copyrightText: Copyright © Dataloop Ltd. 2023
