@@ -1,41 +1,40 @@
-sidebar:
-  contents:
-    - group: Getting Started
-      expanded: true
-      pages:
-        - page: tutorials/tutorials.mdx
-          label: Tutorials
-        - page: onboarding/onboarding.md
-          label: Onboarding
-        - page: resources/resources.mdx
-          label: Resources
-          
-    - group: Tutorials
-      expanded: false
-      pages:
-        - page: tutorials/data_management.md
-          label: Data Management
-        - page: tutorials/annotations.md
-          label: Annotations
-        - page: tutorials/recipe_and_ontology.md
-          label: Recipe and Ontology
-        - page: tutorials/task_workflows.md
-          label: Task and Workflows
-        - page: tutorials/analytics.md
-          label: Analytics
-        - page: tutorials/faas.md
-          label: FaaS Tutorial
-        - page: tutorials/pipelines.md
-          label: Pipelines
-        - page: tutorials/model_management.md
-          label: Model Management
-        - page: tutorials/applications.md
-          label: Applications
+contents:
+  - group: Getting Started
+    expanded: true
+    pages:
+      - page: tutorials/tutorials.mdx
+        label: Tutorials
+      - page: onboarding/onboarding.md
+        label: Onboarding
+      - page: resources/resources.mdx
+        label: Resources
+        
+  - group: Tutorials
+    expanded: false
+    pages:
+      - page: tutorials/data_management.md
+        label: Data Management
+      - page: tutorials/annotations.md
+        label: Annotations
+      - page: tutorials/recipe_and_ontology.md
+        label: Recipe and Ontology
+      - page: tutorials/task_workflows.md
+        label: Task and Workflows
+      - page: tutorials/analytics.md
+        label: Analytics
+      - page: tutorials/faas.md
+        label: FaaS Tutorial
+      - page: tutorials/pipelines.md
+        label: Pipelines
+      - page: tutorials/model_management.md
+        label: Model Management
+      - page: tutorials/applications.md
+        label: Applications
 
-    - group: Resources
-      expanded: false
-      pages:
-        - href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
-          label: Python SDK
-        - page: dtljs/index.md
-          label: JS SDK
+  - group: Resources
+    expanded: false
+    pages:
+      - href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
+        label: Python SDK
+      - page: dtljs/index.md
+        label: JS SDK

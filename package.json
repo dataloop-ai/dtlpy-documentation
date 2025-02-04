@@ -1,15 +1,12 @@
 {
-  "name": "dataloop-portal",
+  "name": "warp",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.1",
-  "description": "Dataloop.ai Developers' Portal",
-  "license": "MIT",
+  "type": "module",
   "scripts": {
-    "start": "redocly-portal develop -p 3000",
-    "build": "redocly-portal build",
-    "clean": "redocly-portal clean"
+    "start": "npx @redocly/cli preview"
   },
   "dependencies": {
-    "@redocly/developer-portal": "1.1.0-beta.122"
+    "@redocly/realm": "*"
   }
 }

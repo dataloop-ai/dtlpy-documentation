@@ -1,5 +1,5 @@
 ---
-title: Tutorials
+title: Resources
 ---
 
 import {
@@ -22,15 +22,19 @@ import {
 import pythonSdkIcon from '../assets/site/icons/python-sdk.svg';
 import jsSdkIcon from '../assets/site/icons/js-sdk.svg';
 
-export default LandingLayout;
+const ResourcesPage = () => (
+  <LandingLayout>
+    <Box my={25}>
+      <FlexSection justifyContent="space-around" flexWrap="wrap">
+        <WideTile to="https://sdk-docs.dataloop.ai/en/latest/_modules/index.html" icon={pythonSdkIcon} header="Python SDK">
+          python
+        </WideTile>
+        <WideTile to="dtljs/index.md" icon={jsSdkIcon} header="JS SDK">
+          javascript
+        </WideTile>
+      </FlexSection>
+    </Box>
+  </LandingLayout>
+);
 
-<Box my={25}>
-  <FlexSection justifyContent="space-around" flexWrap="wrap">
-    <WideTile to="https://sdk-docs.dataloop.ai/en/latest/_modules/index.html" icon={pythonSdkIcon} header="Python SDK">
-        python
-    </WideTile>
-    <WideTile to="dtljs/index.md" icon={jsSdkIcon} header="JS SDK">
-        javascript
-    </WideTile>
-  </FlexSection>
-</Box>
+export default ResourcesPage;
