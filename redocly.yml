@@ -1,0 +1,40 @@
+# reunite:
+  # ignoreLint: true
+  # ignoreLinkChecker: true
+extends:
+  - minimal
+links:
+  - href: https://fonts.googleapis.com/css2?family=VT323&display=swap
+  - href: https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap
+seo:
+  title: Warp API
+  description: Warp is the groundbreaking API that allows you to navigate, manipulate, and control time.
+navbar:
+  items:
+    - page: tutorials/index.md
+      label: Missions
+    - page: guides/index.md
+      label: Guides
+    - page: apis/index.yaml
+      label: API Reference
+    - page: tools/index.md
+      label: Tools
+    - page: changelog.md
+      label: Changelog
+    - page: about.md
+      label: About this template
+markdown:
+  toc:
+    depth: 2
+logo:
+  image: images/logo.svg
+  link: /
+footer:
+  copyrightText: Copyleft © Redocly Inc. No rights reserved.
+  items:
+    - page: legal/terms.md
+      label: Terms
+    - page: legal/responsible-use.md
+      label: Responsible Use
+    - href: /
+      label: Cookies

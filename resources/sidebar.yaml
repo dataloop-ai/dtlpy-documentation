@@ -1,0 +1,28 @@
+label: Resources
+items:
+  - label: Python SDK
+    items:
+      - label: Documentation
+        href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
+      - label: Examples
+        page: python/examples.md
+      - label: API Reference
+        page: python/api-reference.md
+  
+  - label: JavaScript SDK
+    items:
+      - label: Documentation
+        page: dtljs/index.md
+      - label: Examples
+        page: js/examples.md
+      - label: API Reference
+        page: js/api-reference.md
+  
+  - label: REST API
+    items:
+      - label: Overview
+        page: rest_api/overview.md
+      - label: Authentication
+        page: rest_api/authentication.md
+      - label: API Reference
+        page: rest_api/reference.md 
