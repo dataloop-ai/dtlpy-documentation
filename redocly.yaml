@@ -48,7 +48,6 @@ footer:
           href: 'https://docs.dataloop.ai/docs/help-getting-started'
         - label: Contact us
           href: 'https://dataloop.ai/contact/'
-showNextButton: true
 linkChecker:
   severity: warning
   options:
