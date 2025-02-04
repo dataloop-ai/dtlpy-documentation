@@ -224,7 +224,8 @@
   items:
     - group: REST API
       items:
-        - page: resources/rest_api/reference.page.yaml/*
+        - href: https://gate.dataloop.ai/api/v1/docs
+          label: Swagger
 
     - group: Python SDK
       href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
