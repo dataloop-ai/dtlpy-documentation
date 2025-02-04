@@ -1,67 +1,66 @@
-contents:
-  - page: tutorials/tutorials.mdx
-    label: Tutorials
-  
-  - group: Getting Started
-    page: onboarding/onboarding.md
-    items:
-      - page: onboarding/installation.md
-        label: Installation
-      - page: onboarding/authentication.md
-        label: Authentication
-      - page: onboarding/quickstart.md
-        label: Quick Start Guide
+- page: tutorials/tutorials.mdx
+  label: Tutorials
 
-  - group: Tutorials
-    page: tutorials/index.md
-    items:
-      - page: tutorials/getting_started/sdk_overview/chapter.md
-        label: SDK Overview
-      - page: tutorials/data_management.md
-        label: Data Management
-      - page: tutorials/annotations.md
-        label: Annotations
-      - page: tutorials/recipe_and_ontology.md
-        label: Recipe and Ontology
-      - page: tutorials/task_workflows.md
-        label: Task and Workflows
-      - page: tutorials/analytics.md
-        label: Analytics
-      - page: tutorials/faas.md
-        label: FaaS Tutorial
-      - page: tutorials/pipelines.md
-        label: Pipelines
-      - page: tutorials/model_management.md
-        label: Model Management
-      - page: tutorials/applications.md
-        label: Applications
+- group: Getting Started
+  page: onboarding/onboarding.md
+  items:
+    - page: onboarding/installation.md
+      label: Installation
+    - page: onboarding/authentication.md
+      label: Authentication
+    - page: onboarding/quickstart.md
+      label: Quick Start Guide
 
-  - group: Resources
-    page: resources/resources.mdx
-    items:
-      - group: Python SDK
-        items:
-          - href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
-            label: Documentation
-          - page: resources/python/examples.md
-            label: Examples
-          - page: resources/python/api-reference.md
-            label: API Reference
-      
-      - group: JavaScript SDK
-        items:
-          - page: dtljs/index.md
-            label: Documentation
-          - page: resources/js/examples.md
-            label: Examples
-          - page: resources/js/api-reference.md
-            label: API Reference
-      
-      - group: REST API
-        items:
-          - page: resources/rest_api/overview.md
-            label: Overview
-          - page: resources/rest_api/authentication.md
-            label: Authentication
-          - page: resources/rest_api/reference.md
-            label: API Reference
+- group: Tutorials
+  page: tutorials/index.md
+  items:
+    - page: tutorials/getting_started/sdk_overview/chapter.md
+      label: SDK Overview
+    - page: tutorials/data_management.md
+      label: Data Management
+    - page: tutorials/annotations.md
+      label: Annotations
+    - page: tutorials/recipe_and_ontology.md
+      label: Recipe and Ontology
+    - page: tutorials/task_workflows.md
+      label: Task and Workflows
+    - page: tutorials/analytics.md
+      label: Analytics
+    - page: tutorials/faas.md
+      label: FaaS Tutorial
+    - page: tutorials/pipelines.md
+      label: Pipelines
+    - page: tutorials/model_management.md
+      label: Model Management
+    - page: tutorials/applications.md
+      label: Applications
+
+- group: Resources
+  page: resources/resources.mdx
+  items:
+    - group: Python SDK
+      items:
+        - href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
+          label: Documentation
+        - page: resources/python/examples.md
+          label: Examples
+        - page: resources/python/api-reference.md
+          label: API Reference
+    
+    - group: JavaScript SDK
+      items:
+        - page: dtljs/index.md
+          label: Documentation
+        - page: resources/js/examples.md
+          label: Examples
+        - page: resources/js/api-reference.md
+          label: API Reference
+    
+    - group: REST API
+      items:
+        - page: resources/rest_api/overview.md
+          label: Overview
+        - page: resources/rest_api/authentication.md
+          label: Authentication
+        - page: resources/rest_api/reference.md
+          label: API Reference

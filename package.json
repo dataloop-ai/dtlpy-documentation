@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "npx @redocly/cli preview"
+    "start": "npx @redocly/cli preview",
+    "build": "npx @redocly/cli build-docs"
   },
   "dependencies": {
     "@redocly/realm": "*"
