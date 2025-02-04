@@ -1,7 +1,8 @@
 reunite:
+  ignoreMarkdocErrors: true
   ignoreLinkChecker: true
   ignoreLint: true
-  ignoreMarkdocErrors: true
+  ignoreMarkdocWarnings: true
 extends:
   - minimal
 links:
