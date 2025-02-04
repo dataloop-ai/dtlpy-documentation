@@ -4,15 +4,11 @@
 - group: Getting Started
   page: onboarding/onboarding.md
   items:
-    - page: onboarding/installation.md
-      label: Installation
-    - page: onboarding/authentication.md
-      label: Authentication
-    - page: onboarding/quickstart.md
-      label: Quick Start Guide
+    - page: onboarding/onboarding.md
+      label: Onboarding
 
 - group: Tutorials
-  page: tutorials/index.md
+  page: tutorials/index.mdx
   items:
     - page: tutorials/getting_started/sdk_overview/chapter.md
       label: SDK Overview
@@ -42,25 +38,13 @@
       items:
         - href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
           label: Documentation
-        - page: resources/python/examples.md
-          label: Examples
-        - page: resources/python/api-reference.md
-          label: API Reference
     
     - group: JavaScript SDK
       items:
         - page: dtljs/index.md
           label: Documentation
-        - page: resources/js/examples.md
-          label: Examples
-        - page: resources/js/api-reference.md
-          label: API Reference
     
     - group: REST API
       items:
-        - page: resources/rest_api/overview.md
-          label: Overview
-        - page: resources/rest_api/authentication.md
-          label: Authentication
-        - page: resources/rest_api/reference.md
-          label: API Reference
+        - href: https://gate.dataloop.ai/api/v1/docs
+          label: Swagger
