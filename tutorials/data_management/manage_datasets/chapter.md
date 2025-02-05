@@ -240,13 +240,13 @@ This SDK code demonstrates how to filter dataset items, split them into ML subse
 filters = dl.Filters(field='type', values='file')
 dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').split_ml_subsets(
     items_query=filters,
-    percentages={'train': 20, 'validation': 20, 'test': 60}
+    percentages={'train': 60, 'validation': 20, 'test': 20}
 )
 
 ```
 
 * Creates a filter (filters) to select only items of type ‘file’ in the dataset.
-* Uses split_ml_subsets() to distribute these items into Train (20%), Validation (20%), and Test (60%) subsets.
+* Uses split_ml_subsets() to distribute these items into Train (60%), Validation (20%), and Test (20%) subsets.
 * Ensures balanced dataset partitioning for ML training.
 
 **2. Assigning a Specific Item to the ‘Train’ Subset**
