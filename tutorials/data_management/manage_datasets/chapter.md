@@ -98,8 +98,6 @@ for page in pages:
         if copy_annotations:
             new_item.annotations.upload(item.annotations.list())
 ```
-<<<<<<< Updated upstream
-=======
 
 ## Collections
 
@@ -226,5 +224,59 @@ Below are practical examples demonstrating how to use the SDK for collection man
 	dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').items.get(item_id='678fa1490d9f072defec6c5e').unassign_collection(collections=['my_collection'])
 	```
 
+## ML Subsets
 
->>>>>>> Stashed changes
+The ML Subsets View in Dataloop's Data Browser is a dedicated feature designed to enhance machine learning workflows by organizing and managing your dataset effectively. It allows you to classify and filter dataset items based on their ML Subset assignments, such as train, validation, and test, which are commonly used in the ML lifecycle for model development and evaluation.
+
+To learn more about setting up ML Subsets, please visit our [Dataloop documentation](https://docs.dataloop.ai/docs/data-browser#ml-subsets)
+
+### Manage ML Subsets in a Dataset
+
+This SDK code demonstrates how to filter dataset items, split them into ML subsets, assign specific items to a subset, remove an item from a subset, and retrieve items missing an ML subset in Dataloop.
+
+**1. Filtering Items of Type ‘File’ and Splitting into ML Subsets**
+
+```
+filters = dl.Filters(field='type', values='file')
+dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').split_ml_subsets(
+    items_query=filters,
+    percentages={'train': 20, 'validation': 20, 'test': 60}
+)
+
+```
+
+* Creates a filter (filters) to select only items of type ‘file’ in the dataset.
+* Uses split_ml_subsets() to distribute these items into Train (20%), Validation (20%), and Test (60%) subsets.
+* Ensures balanced dataset partitioning for ML training.
+
+**2. Assigning a Specific Item to the ‘Train’ Subset**
+
+```
+filters = dl.Filters()
+filters.add(field='id', values=['678fa1490d9f072defec6c5e'], operator=dl.FiltersOperations.IN)
+dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').assign_subset_to_items(subset='train', items_query=filters)
+```
+
+* Creates an empty filter (filters) and adds a condition to select an item by its ID ('678fa1490d9f072defec6c5e').
+* Uses assign_subset_to_items() to assign the selected item to the ‘train’ subset.
+
+3. Removing an Item from Its ML Subset
+
+```
+filters = dl.Filters()
+filters.add(field='id', values=['678fa1490d9f072defec6c5e'], operator=dl.FiltersOperations.IN)
+dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').remove_subset_from_items(items_query=filters)
+```
+
+* Filters an item by its ID ('678fa1490d9f072defec6c5e').
+* Uses remove_subset_from_items() to remove the item from any assigned ML subset.
+* The item will no longer belong to Train, Validation, or Test subsets.
+
+4.  Retrieving Items Without an Assigned ML Subset
+
+```
+dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').get_items_missing_ml_subset()
+```
+
+* Fetches all dataset items that are not assigned to any ML subset.
+* Useful for validating dataset completeness before training an ML model.
