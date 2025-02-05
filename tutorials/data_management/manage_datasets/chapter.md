@@ -98,3 +98,128 @@ for page in pages:
         if copy_annotations:
             new_item.annotations.upload(item.annotations.list())
 ```
+
+## Collections
+
+Use Collections to efficiently tag, group, and organize your data. Streamline labeling tasks, manage large datasets effectively, and structure your data for optimized model training, ensuring better control and usability.
+
+### Manage Collections in a Dataset
+
+Leverage the Dataloop SDK to create, update, delete, and manage collections at both the dataset and item levels.
+
+**Dataset Level Methods**
+
+These methods operate on collections within a dataset, allow you to perform collection-level operations within a dataset, such as creating, updating, deleting, and retrieving collections.
+
+1. Create a new collection in the dataset. The dataset can have a maximum of 10 collections. The collection name must be unique within the dataset.
+
+	```
+	dataset.collections.create(name: str)
+	```
+
+2. Rename an existing collection. The new collection name must be unique.
+
+	```
+	dataset.collections.update(collection_id: str, new_name: str): 
+	```
+
+3. Delete an existing collection. When deleted, the collection is automatically removed from all items assigned to it.
+
+	```
+	dataset.collections.delete(collection_id: str): 
+	```
+
+4. Clone an existing collection. The total number of collections in the dataset cannot exceed 10.
+
+	```
+	dataset.collections.clone(collection_id: str): 
+	```
+
+5. Retrieve a list of all collections within the dataset.
+
+	```
+	dataset.collections.list()
+	```
+
+6. List all item IDs in the dataset that are not assigned to any collections.
+
+	```
+	dataset.collections.list_unassigned_items(): 
+	```
+
+
+**Item Level Methods**
+
+These methods work at the individual item level for managing collections. These methods allow direct manipulation of collections at the item level, including assigning, unassigning, and retrieving collection details.
+
+1. Assign an item to a specific collection. If the specified collection does not exist, it is created (subject to validation rules like maximum collections and unique names).
+	
+	```
+	item.assign_collection(item_id: str, collection_name: str)
+	```
+
+2. Remove an item from a specific collection.
+
+	```
+	item.unassign_collection(item_id: str, collection_id: str)
+	```
+
+3. Retrieve all collections that an item is currently assigned to.
+
+	```
+	item.list_collections(item_id: str)
+	```
+
+**Code Examples**: Using Collection Management Methods in the SDK
+
+Below are practical examples demonstrating how to use the SDK for collection management.
+
+1. List all collections in a dataset
+
+	```
+	dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').collections.list_all_collections()
+	```
+
+2. Create a new collection:
+	
+	```
+	dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').collections.create(collection='my_collection')
+	```
+
+3. Clone a collection:
+
+	```
+	dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').collections.clone(collection_name='my_collection_copy')
+	```
+
+4. Delete a collection
+
+	```
+	dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').collections.delete(collection_name='my_collection_copy')
+	```
+
+5. Rename a collection
+
+	```
+	dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').collections.update(collection_name='my_collection')
+	```
+
+6. List unassigned items
+
+	```
+	dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').collections.list_unassigned_items()
+	```
+
+7. Assign an item to a collection
+
+	```
+	dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').items.get(item_id='678fa1490d9f072defec6c5e').assign_collection(collections=['my_collection'])
+	```
+
+8. Unassign an item from a collection
+
+	```
+	dl.datasets.get(dataset_id='6785013bd25c9851e76313fd').items.get(item_id='678fa1490d9f072defec6c5e').unassign_collection(collections=['my_collection'])
+	```
+
+
