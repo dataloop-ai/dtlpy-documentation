@@ -22,7 +22,7 @@ Let's meet our cast of characters!
 
 ### `load_from_model`: The Setup Crew 📦
 
-![image](../../../../assets/images/model_management/model_adapter_flows/load_from_model.png)
+![image](../../../../assets/images/model_management/flows/load_from_model.png)
 
 What happens:
 1. 📥 Downloads your model's artifacts
