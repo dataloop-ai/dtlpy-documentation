@@ -7,6 +7,8 @@ import { ArrowRightIcon, Button } from "@redocly/theme";
 
 const Container = styled.div`
     padding: 2rem;
+    background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 const Header = styled.div`
@@ -17,32 +19,37 @@ const Header = styled.div`
 const Title = styled.h1`
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 const Subtitle = styled.h2`
     font-size: 1.5rem;
     font-weight: normal;
     margin-bottom: 2rem;
+    color: ${({ theme }) => theme.colors.text.secondary};
 `;
 
 const CardSection = styled.section`
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2rem;
     text-decoration: none;
-    color: inherit;
+    color: ${({ theme }) => theme.colors.text.primary};
     cursor: pointer;
     transition: transform 0.2s;
-    border: 1px solid #e0e0e0;
+    border: 1px solid ${({ theme }) => theme.colors.border.dark};
     border-radius: 8px;
     margin-bottom: 1rem;
-    background: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: ${({ theme }) => theme.colors.background};
+    box-shadow: 0 2px 4px ${({ theme }) => theme.colors.border.dark}1A;
 
     &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px ${({ theme }) => theme.colors.border.dark}26;
     }
 `;
 
@@ -52,6 +59,7 @@ const DlCard = styled.div`
 
     h3 {
         margin: 0.5rem 0;
+        color: ${({ theme }) => theme.colors.text.primary};
     }
 `;
 
@@ -59,8 +67,13 @@ const CardIcon = styled.div`
     margin-bottom: 0.5rem;
     
     img {
-        width: 256px;
-        height: 256px;
+        width: 128px;
+        height: 128px;
+        transition: filter 0.3s ease;
+        
+        :root.dark & {
+            filter: invert(1) brightness(100%);
+        }
     }
 `;
 
@@ -79,6 +92,11 @@ const CardsContainer = styled.div`
     max-width: 800px;
     margin: 0 auto;
     padding: 0 1rem;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints?.medium || '768px'}) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export default function HomePage() {
