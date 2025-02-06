@@ -1,3 +1,6 @@
+import tutorialsIcon from './assets/site/icons/tutorials.svg';
+import onboardingIcon from './assets/site/icons/onboarding.svg';
+import resourcesIcon from './assets/site/icons/resources.svg';
 import {
   LandingLayout,
   Button,
@@ -5,22 +8,23 @@ import {
   FlexSection,
   Flex,
   Jumbotron,
-  ThinTile,
   WideTile,
-  Emphasis,
   H1,
   H2,
-  SectionHeader,
   NavBar,
 } from '@redocly/developer-portal/ui';
 
-import tutorialsIcon from './assets/site/icons/tutorials.svg';
-import onboardingIcon from './assets/site/icons/onboarding.svg';
-import resourcesIcon from './assets/site/icons/resources.svg';
+interface HomePageProps {
+  location: {
+    pathname: string;
+    search: string;
+    hash: string;
+  };
+}
 
-export default function HomePage({ location }) {
+export default function HomePage({ location }: HomePageProps) {
   return (
-    <>
+    <LandingLayout>
       <Jumbotron>
         <NavBar location={location} standalone={false} />
         <H1>Dataloop Developers Portal</H1>
@@ -44,7 +48,7 @@ export default function HomePage({ location }) {
           </WideTile>
         </FlexSection>
       </Box>
-    </>
+    </LandingLayout>
   );
 }
 

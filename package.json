@@ -8,6 +8,7 @@
     "build": "npx @redocly/cli build-docs"
   },
   "dependencies": {
-    "@redocly/realm": "*"
+    "@redocly/realm": "*",
+    "@redocly/developer-portal": "*"
   }
 }
