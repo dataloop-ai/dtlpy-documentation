@@ -7,4 +7,4 @@ if __name__ == "__main__":
     build_tutorials()
     # check_links() # commented until SSL on docs page is fixed
     build_readme()
-    build_redocly()
+    # build_redocly()

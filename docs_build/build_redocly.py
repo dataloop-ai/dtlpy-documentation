@@ -193,4 +193,5 @@ if __name__ == "__main__":
     Building MD files and MDX files
     and update sidebar.yaml
     """
-    build_redocly()
+    ...
+    # build_redocly()

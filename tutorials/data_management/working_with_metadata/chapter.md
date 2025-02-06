@@ -1,4 +1,6 @@
-# Working with Metadata  
+# Working with Metadata: Your Data's Personal Diary 📝
+
+Let's start by getting our project and dataset ready for some metadata magic:
 
 ```python
 import dtlpy as dl
@@ -8,148 +10,91 @@ dataset_name = 'dataset_name'
 project = dl.projects.get(project_name=project_name)
 dataset = project.datasets.get(dataset_name=dataset_name)
 ```
-## User Metadata  
-As a powerful tool to manage data based on your categories and information, you can add any keys and values to both the item’s and annotations’ user-metadata sections using the Dataloop SDK. Then, you can use your user-metadata for data filtering, sorting, etc.  
-  
-Note  
-When adding metadata to the same item, the new metadata might overwrite existing metadata. To avoid overwriting a field or the entire metadata, use the [list](#list) data type.  
-  
-### Metadata Data Types  
-Metadata is a dictionary attribute used with items, annotations, and other entities of the Dataloop system (task, recipe, and more). As such, it can be used with string, number, boolean, list or null types.  
-### String  
+
+## What's Metadata? Think of it as Your Data's Personality! 🎭
+
+Metadata is like a sticky note system for your data - you can attach any information you want to both items and annotations. It's super powerful for organizing, filtering, and finding your data later. Think of it as giving your data its own social media profile! 
+
+> ⚠️ **Heads Up**: When adding new metadata to an item, it might overwrite existing metadata - kind of like updating your status!
+
+### The Metadata Type Family 👨‍👩‍👧‍👦
+
+Metadata can be stored in different formats, just like how you can express yourself in different ways. Here's the family:
+
+1. 📝 **Strings** 
+```python
+item.metadata['user'] = {'message': 'Hello, World!'}
+annotation.metadata['user'] = {'mood': 'Happy'}
+```
+
+1. 🔢 **Numbers**
+```python
+item.metadata['user'] = {'lucky_number': 42}
+annotation.metadata['user'] = {'confidence_score': 0.95}
+```
+
+1. ✅ **Booleans**
+```python
+item.metadata['user'] = {'is_verified': True}
+annotation.metadata['user'] = {'needs_review': False}
+```
+
+1. 👻 **Null**
+```python
+item.metadata['user'] = {'secret': None}
+```
+
+### Adding Metadata to Items 🏷️
+
+Here's how to give your items some personality:
 
 ```python
+# Get your item (either by uploading or fetching)
+local_path = r'C:/home/project/images/item.mimetype'
+item = dataset.items.upload(local_path=local_path)
+# or get existing item
+# item = dataset.items.get(item_id='your-item-id')
+
+# Add some metadata flair
 if 'user' not in item.metadata:
     item.metadata['user'] = dict()
-item.metadata['user']['MyKey'] = 'MyValue'
-annotation.metadata['user']['MyKey'] = 'MyValue'
-```
-### Number  
+item.metadata['user']['mood'] = 'fantastic'
 
-```python
-item.metadata['user']['MyKey'] = 3
-annotation.metadata['user']['MyKey'] = 3
-```
-### Boolean  
-
-```python
-item.metadata['user']['MyKey'] = True
-annotation.metadata['user']['MyKey'] = True
-```
-### Null – add metadata with no information  
-
-```python
-item.metadata['user']['MyKey'] = None
-annotation.metadata['user']['MyKey'] = None
-```
-### List  
-
-```python
-# add metadata of a list (can contain elements of different types).
-item.metadata['user']['MyKey'] = ["A", 2, False]
-annotation.metadata['user']['MyKey'] = ["A", 2, False]
-```
-### Add new metadata to a list without losing existing data  
-
-```python
-item.metadata['user']['MyKey'].append(3)
+# Save the changes
 item = item.update()
-annotation.metadata['user']['MyKey'].append(3)
+```
+
+### Annotating Your Annotations 🎯
+
+Your annotations can have metadata too:
+
+```python
+annotation = dl.annotations.get(annotation_id='your-annotation-id')
+annotation.metadata['user'] = {'confidence': 'high', 'reviewed': True}
 annotation = annotation.update()
 ```
-### Add metadata to an item's user metadata  
+
+### Finding Items with Metadata Magic ✨
+
+Want to find all your 'fantastic' items? Here's how:
 
 ```python
-local_path = r'C:/home/project/images/item.mimetype'
-item_id = 'write-your-id-number'
-# upload and claim item
-item = dataset.items.upload(local_path=local_path)
-# or get item
-item = dataset.items.get(item_id=item_id)
-# modify metadata
-if 'user' not in item.metadata:
-    item.metadata['user'] = dict()
-item.metadata['user']['MyKey'] = 'MyValue'
-# update and reclaim item
-item = item.update()
-```
-  
-### Modify an existing user metadata field  
+# Create your search spell
+filters = dl.Filters(resource = dl.FiltersResource.ITEM)
+filters.add(field='metadata.user.mood', values='fantastic')
 
-```python
-local_path = r'C:/home/project/images/item.mimetype'
-item_id = 'write-your-id-number'
-# upload and claim item
-item = dataset.items.upload(local_path=local_path)
-# or get item
-item = dataset.items.get(item_id=item_id)
-# modify metadata
-if 'user' not in item.metadata:
-    item.metadata['user'] = dict()
-item.metadata['user']['MyKey'] = 'MyValue'
-# update and reclaim item
-item = item.update()
-```
-Item in platform should have section 'user' in metadata with field 'MyKey' and value 'MyValue'.  
-  
-### Add metadata to annotations' user metadata  
-
-```python
-annotation_id = 'my-annotation-id'
-# Get annotation
-annotation = dl.annotations.get(annotation_id=annotation_id)
-# modify metadata
-annotation.metadata['user'] = dict()
-annotation.metadata['user']['red'] = True
-# update and reclaim annotation
-annotation = annotation.update()
-```
-annotation in platform should have section 'user' in metadata with field 'red' and value True  
-  
-### Filter items by user metadata  
-#### 1. Get your dataset  
-
-```python
-project_name = 'project_name'
-dataset_name = 'dataset_name'
-project = dl.projects.get(project_name=project_name)
-dataset = project.datasets.get(dataset_name=dataset_name)
-```
-#### 2. Add metadata to an item  
-You can also <a href="https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/data_management/sort_and_filter/item_level/chapter.md/" target="_blank">add metadata to filtered items</a>  
-
-```python
-local_path = r'C:/home/project/images/item.mimetype'
-item_id = 'write-your-id-number'
-# upload and claim item
-item = dataset.items.upload(local_path=local_path)
-# or get item
-item = dataset.items.get(item_id=item_id)
-# modify metadata
-if 'user' not in item.metadata:
-    item.metadata['user'] = dict()
-item.metadata['user']['MyKey'] = 'MyValue'
-# update and reclaim item
-item = item.update()
-```
-#### 3. Create a filter  
-
-```python
-filters = dl.Filters()
-# set resource - optional - default is item
-filters.resource = dl.FiltersResource.ITEM
-```
-#### 4. Filter by your written key  
-
-```python
-filters.add(field='metadata.user.Key', values='Value')
-```
-#### 5. Get filtered items  
-
-```python
+# Find your treasures
 pages = dataset.items.list(filters=filters)
-# Go over all item and print the properties
 for page in pages:
     for item in page:
-        item.print()
+        print(f"Found a fantastic item: {item.name}")
 ```
+
+## Pro Tips 💡
+
+1. Keep your metadata organized - think of it as a well-maintained filing system
+2. Use consistent keys and values to make filtering easier
+3. Don't go overboard - metadata should help you find things, not become a data dump
+4. Remember to update your items after changing metadata
+
+Now go forth and make your data more organized and discoverable! 🚀
