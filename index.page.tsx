@@ -45,7 +45,7 @@ export default function HomePage() {
             </Header>
             <Cards>
                 <Card title="Tutorials" to="/tutorials" icon={tutorialsIcon}>
-                    Step-by-step guides to get started with Dataloop
+                    <h2>Step-by-step guides to get started with Dataloop</h2>
                 </Card>
                 <Card
                     title="Onboarding"
