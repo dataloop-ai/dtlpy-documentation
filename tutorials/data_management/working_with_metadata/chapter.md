@@ -4,11 +4,9 @@ Let's start by getting our project and dataset ready for some metadata magic:
 
 ```python
 import dtlpy as dl
-project_name = 'project_name'
-dataset_name = 'dataset_name'
 # Get project and dataset
-project = dl.projects.get(project_name=project_name)
-dataset = project.datasets.get(dataset_name=dataset_name)
+project = dl.projects.get(project_name="your-project-name")
+dataset = project.datasets.get(dataset_name="your-dataset-name")
 ```
 
 ## What's Metadata? Think of it as Your Data's Personality! 🎭
