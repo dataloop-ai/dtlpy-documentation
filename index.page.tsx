@@ -27,15 +27,7 @@ const Subtitle = styled.h2`
   margin-bottom: 2rem;
 `;
 
-interface HomePageProps {
-  location: {
-    pathname: string;
-    search: string;
-    hash: string;
-  };
-}
-
-export default function HomePage({ location }: HomePageProps) {
+export default function HomePage() {
   return (
     <Container>
       <Header>
@@ -46,13 +38,13 @@ export default function HomePage({ location }: HomePageProps) {
         </Button>
       </Header>
       <Cards>
-        <Card title="Tutorials" to="tutorials/index.page.tsx" icon={tutorialsIcon}>
+        <Card title="Tutorials" to="tutorials" icon={tutorialsIcon}>
           Step-by-step guides to get started with Dataloop
         </Card>
         <Card title="Onboarding" to="onboarding/onboarding.md" icon={onboardingIcon}>
           Get up and running with Dataloop platform
         </Card>
-        <Card title="Resources" to="resources/index.page.tsx" icon={resourcesIcon}>
+        <Card title="Resources" to="resources" icon={resourcesIcon}>
           SDKs, APIs and developer tools
         </Card>
       </Cards>
