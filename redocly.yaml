@@ -34,17 +34,13 @@ logo:
 footer:
   copyrightText: Copyright © Dataloop Ltd. 2023
   items:
-    - group: Legal
-      items:
-        - label: Terms of Use
-          href: 'https://dataloop.ai/terms/'
-        - label: Privacy Notice
-          href: 'https://dataloop.ai/privacy-policy/'
-        - label: Cookie Notice
-          href: 'https://dataloop.ai/privacy-policy/'
-    - group: Support
-      items:
-        - label: FAQ
-          href: 'https://docs.dataloop.ai/docs/help-getting-started'
-        - label: Contact us
-          href: 'https://dataloop.ai/contact/'
+    - label: Terms of Use
+      href: 'https://dataloop.ai/terms/'
+    - label: Privacy Notice
+      href: 'https://dataloop.ai/privacy-policy/'
+    - label: Cookie Notice
+      href: 'https://dataloop.ai/privacy-policy/'
+    - label: FAQ
+      href: 'https://docs.dataloop.ai/docs/help-getting-started'
+    - label: Contact us
+      href: 'https://dataloop.ai/contact/'
