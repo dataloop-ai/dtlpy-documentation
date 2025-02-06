@@ -1,7 +1,3 @@
----
-title: Tutorials
----
-
 import React from 'react';
 import styled from 'styled-components';
 import { Card } from '@redocly/theme/markdoc/components/Cards/Card';
