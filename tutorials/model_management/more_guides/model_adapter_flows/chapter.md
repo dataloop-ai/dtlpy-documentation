@@ -39,7 +39,7 @@ DATALOOP_PATH/
 
 ### `save_to_model`: The Preservation Expert 💾
 
-![image](../../../../assets/images/model_management/model_adapter_flows/save_to_model.png)
+![image](../../../../assets/images/model_management/flows/save_to_model.png)
 What happens:
 1. 💾 Calls your `save` function to package up the model
 2. ☁️ Uploads everything to Dataloop's cloud
@@ -47,7 +47,7 @@ What happens:
 
 ### `predict_items`: The Performance Director 🎯
 
-![image](../../../../assets/images/model_management/model_adapter_flows/predict_items.png)
+![image](../../../../assets/images/model_management/flows/predict_items.png)
 
 The show must go on! Here's how:
 1. 🎬 Creates batches of items
@@ -58,7 +58,7 @@ The show must go on! Here's how:
 
 ### `train_model`: The Training Coach 🏋️‍♂️
 
-![image](../../../../assets/images/model_management/model_adapter_flows/train_from_model.png)
+![image](../../../../assets/images/model_management/flows/train_from_model.png)
 
 
 Your model's training journey:
@@ -90,7 +90,7 @@ DATALOOP_PATH/
 
 ### `evaluate_model`: The Performance Reviewer 📊
 
-![image](../../../../assets/images/model_management/model_adapter_flows/evaluate_model.png)
+![image](../../../../assets/images/model_management/flows/evaluate_model.png)
 
 How your model gets its report card:
 1. 📥 Loads the latest model version
