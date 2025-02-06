@@ -16,7 +16,7 @@ const ResourcesPage = () => (
       <Card title="Python SDK" to="https://sdk-docs.dataloop.ai/en/latest/_modules/index.html" icon={pythonSdkIcon}>
         Complete Python SDK documentation and API reference
       </Card>
-      <Card title="JavaScript SDK" to="dtljs/index.md" icon={jsSdkIcon}>
+      <Card title="JavaScript SDK" to="/resources/dtljs/index" icon={jsSdkIcon}>
         Complete JavaScript SDK documentation and API reference
       </Card>
       <Card title="REST API" to="https://docs.dataloop.ai/reference/rest-api" icon={jsSdkIcon}>
