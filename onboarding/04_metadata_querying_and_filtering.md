@@ -134,6 +134,6 @@ dataset.items.update(filters=filters, update_values={'user': {'dateTime': now}})
 
 If all works well, you should have updated all of the Items labeled 'Adult' with the current date and time and filtered them using the date and time as a Filter Parameter. You should also get a list of details for the Dataset and the Items modified after running the command above. You can the save the `dateTime` code you used and apply it to various operations you may need to do in the future, such as querying and filtering, or to track changes done to the Dataset.
 
-If you want to see more examples of how you can work with Metadata, look at our [Metadata Python SDK Documentation](https://sdk-docs.dataloop.ai/en/latest/tutorials/data_management/working_with_metadata/chapter.html).
+If you want to see more examples of how you can work with Metadata, look at our [Metadata Python SDK Documentation](/tutorials/data_management/working_with_metadata/chapter.md).
 
 Now you know how to use Metadata, Queries and Filters. In the next chapter, you will learn about how to create Tasks.
