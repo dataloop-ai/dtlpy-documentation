@@ -1,4 +1,4 @@
-![LOGO](assets/site/logo.svg)
+![LOGO](./assets/site/logo.svg)
 [![Documentation Status](https://readthedocs.org/projects/dtlpy/badge/?version=latest)](https://sdk-docs.dataloop.ai/en/latest/?badge=latest)
 [![pypi](https://img.shields.io/pypi/v/dtlpy.svg)](https://pypi.org/project/dtlpy/)
 [![versions](https://img.shields.io/pypi/pyversions/dtlpy.svg)](https://github.com/dataloop-ai/dtlpy)
@@ -10,11 +10,13 @@ The following repository will gather Dataloop's SDK examples and best practices.
 
 ## Table of Content
 
-1. [Installation](#installation)
-1. [Tutorials](#tutorials)
-1. [Code Examples](#code-examples)
-1. [Other Resources](#resources)
-1. [Contributions](#contributes)
+- [SDK Documentations and Tutorials for Dataloop's SDK](#sdk-documentations-and-tutorials-for-dataloops-sdk)
+  - [Table of Content](#table-of-content)
+  - [Installation](#installation)
+  - [Tutorials](#tutorials)
+  - [Code Examples](#code-examples)
+  - [Resources](#resources)
+  - [Contributes](#contributes)
 
 ## Installation
 

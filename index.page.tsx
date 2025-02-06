@@ -4,7 +4,6 @@ import tutorialsIcon from './assets/site/icons/tutorials.svg';
 import onboardingIcon from './assets/site/icons/onboarding.svg';
 import resourcesIcon from './assets/site/icons/resources.svg';
 import { ArrowRightIcon, Button } from '@redocly/theme';
-import { CardWithCode } from './@theme/components/CardWithCode/CardWithCode';
 import { Card } from '@redocly/theme/markdoc/components/Cards/Card';
 import { Cards } from '@redocly/theme/markdoc/components/Cards/Cards';
 
