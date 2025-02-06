@@ -46,13 +46,13 @@ export default function HomePage({ location }: HomePageProps) {
         </Button>
       </Header>
       <Cards>
-        <Card title="Tutorials" to="tutorials/tutorials.mdx" icon={tutorialsIcon}>
+        <Card title="Tutorials" to="tutorials/index.page.tsx" icon={tutorialsIcon}>
           Step-by-step guides to get started with Dataloop
         </Card>
         <Card title="Onboarding" to="onboarding/onboarding.md" icon={onboardingIcon}>
           Get up and running with Dataloop platform
         </Card>
-        <Card title="Resources" to="resources/resources.mdx" icon={resourcesIcon}>
+        <Card title="Resources" to="resources/index.page.tsx" icon={resourcesIcon}>
           SDKs, APIs and developer tools
         </Card>
       </Cards>
