@@ -20,8 +20,8 @@ def build_redocly():
     sidebars_yaml = os.path.join(root, "sidebars.yaml")
     update_yaml_file(tut_dict, sidebars_yaml)
 
-    mdx_file = os.path.join(root, 'tutorials/tutorials.mdx')
-    update_mdx_file(mdx_lines, mdx_file)
+    # mdx_file = os.path.join(root, 'tutorials/tutorials.mdx')
+    # update_mdx_file(mdx_lines, mdx_file)
 
 
 def update_tutorials_redocly(root, sub_folders_list):
@@ -41,9 +41,9 @@ def update_tutorials_redocly(root, sub_folders_list):
 
             myjson = os.path.join(directory, myjson[0])
             mydict.update({'group': 'Tutorials',
-                           'page': sub_folder + "/" + sub_folder + ".mdx",
+                           'page': sub_folder + "/" + sub_folder + ".md",
                            'expanded': False,
-                           'pages': []})
+                           'items': []})
             mdx_str = gen_sub_dict(myjson, mydict, directory, sub_folder, 0, mylist)
             superdict['contents'].append(mydict)
         else:
@@ -71,7 +71,7 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
         if file_extension == ".json":
             comp_dict['group'] = content['displayName']
             comp_dict['expanded'] = False
-            comp_dict['pages'] = []
+            comp_dict['items'] = []
             tabs = '&nbsp;' * (level-1) * 8
             str_for_list += f'| <div>{tabs}{display_name}</div> | {content["description"]} | |'
             if level > 0:
@@ -105,7 +105,7 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
                     md_file=md_file,
                     description=content['description'],
                     str_list=yaml_str_list)
-        mydict['pages'].append(comp_dict)
+        mydict['items'].append(comp_dict)
     return yaml_str_list
 
 
@@ -154,14 +154,14 @@ def get_yaml_data(yaml_filepath):
 
 def update_yaml_file(tut_dict, yaml_filepath):
     data = get_yaml_data(yaml_filepath=yaml_filepath)
-    for i in range(len(data['contents'])):
-        mydict = data['contents'][i]
+    for i in range(len(data)):
+        mydict = data[i]
         if 'group' in mydict:
             if mydict['group'] == 'Tutorials':
-                data['contents'][i] = tut_dict
+                data[i] = tut_dict
                 break
     with open(yaml_filepath, 'w') as file:
-        yaml.dump(data, file)
+        yaml.dump(data, file, indent=2)
 
 
 def update_mdx_file(mdx_lines, mdx_file):
@@ -193,5 +193,4 @@ if __name__ == "__main__":
     Building MD files and MDX files
     and update sidebar.yaml
     """
-    ...
-    # build_redocly()
+    build_redocly()

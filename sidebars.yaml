@@ -1,339 +1,331 @@
 - group: Getting Started
+  items:
+  - label: Useful Information
+    page: onboarding/00_useful_information.md
+  - label: Installation
+    page: onboarding/01_python_sdk_installation.md
+  - label: Login, Projects and Datasets
+    page: onboarding/02_login_and_project_and_dataset_creation.md
+  - label: Items and Annotations
+    page: onboarding/03_add_and_annotate_data.md
+  - label: Querying
+    page: onboarding/04_metadata_querying_and_filtering.md
+  - label: Tasks and Assignments
+    page: onboarding/05_task_assignments.md
+  - label: Versioning
+    page: onboarding/06_data_versioning.md
+  - label: Function as a Service
+    page: onboarding/07_faas.md
+  - label: Pipelines
+    page: onboarding/08_pipelines.md
+  - label: Model Management
+    page: onboarding/09_model_management.md
+  - label: What's Next
+    page: onboarding/10_next_steps.md
   page: tutorials/getting_started/sdk_overview/chapter.md
+- expanded: false
+  group: Tutorials
   items:
-    - page: onboarding/00_useful_information.md
-      label: Useful Information
-    - page: onboarding/01_python_sdk_installation.md
-      label: Installation
-    - page: onboarding/02_login_and_project_and_dataset_creation.md
-      label: Login, Projects and Datasets
-    - page: onboarding/03_add_and_annotate_data.md
-      label: Items and Annotations
-    - page: onboarding/04_metadata_querying_and_filtering.md
-      label: Querying
-    - page: onboarding/05_task_assignments.md
-      label: Tasks and Assignments
-    - page: onboarding/06_data_versioning.md
-      label: Versioning
-    - page: onboarding/07_faas.md
-      label: Function as a Service
-    - page: onboarding/08_pipelines.md
-      label: Pipelines
-    - page: onboarding/09_model_management.md
-      label: Model Management
-    - page: onboarding/10_next_steps.md
-      label: What's Next
-
-- group: Tutorials
-  page: tutorials/tutorials.mdx
-  items:
-    - group: Data Management
-      page: tutorials/data_management.md
+  - expanded: false
+    group: Data Management
+    items:
+    - label: Integrations
+      page: tutorials/data_management/integrations/chapter.md
+    - expanded: false
+      group: Cloud Storage
       items:
-        - page: tutorials/data_management/integrations/chapter.md
-          label: Integrations
-        - group: Cloud Storage
-          items:
-            - group: Amazon Web Services
-              items:
-                - page: tutorials/data_management/cloud_storage/aws/auto_upstream_sync/chapter.md
-                  label: Auto Upstream Sync with AWS
-                - page: tutorials/data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.md
-                  label: Manual Upstream Sync with AWS
-                - page: tutorials/data_management/cloud_storage/aws/integration/chapter.md
-                  label: Integrations with AWS
-                - page: tutorials/data_management/cloud_storage/aws/storage_driver/chapter.md
-                  label: S3 Bucket Storage Driver from AWS
-            - group: Microsoft Azure
-              items:
-                - page: tutorials/data_management/cloud_storage/azure/auto_upstream_sync/chapter.md
-                  label: Auto Upstream Sync with Azure
-                - page: tutorials/data_management/cloud_storage/azure/integration/chapter.md
-                  label: Integrations with Azure
-                - page: tutorials/data_management/cloud_storage/azure/storage_driver/chapter.md
-                  label: Azure Blob container Storage Driver from Microsoft Azure
-            - group: Google Cloud Provider
-              items:
-                - page: tutorials/data_management/cloud_storage/gcp/auto_upstream_sync/chapter.md
-                  label: Auto Upstream Sync with GCP
-                - page: tutorials/data_management/cloud_storage/gcp/integration/chapter.md
-                  label: Integrations with GCP
-                - page: tutorials/data_management/cloud_storage/gcp/storage_driver/chapter.md
-                  label: GCS Bucket Storage Driver from GCP
-        - page: tutorials/data_management/manage_datasets/chapter.md
-          label: Manage Datasets
-        - page: tutorials/data_management/data_versioning/chapter.md
-          label: Data Versioning
-        - page: tutorials/data_management/upload_and_manage_items/chapter.md
-          label: Upload and Manage Data and Metadata
-        - page: tutorials/data_management/upload_and_manage_annotations/chapter.md
-          label: Upload and Manage Annotations
-        - group: Sort and Filters
-          items:
-            - page: tutorials/data_management/sort_and_filter/item_level/chapter.md
-              label: Item Level
-            - page: tutorials/data_management/sort_and_filter/annotation_level/chapter.md
-              label: Annotation Level Filters
-            - page: tutorials/data_management/sort_and_filter/saved_filters/chapter.md
-              label: Saved Filters
-            - page: tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md
-              label: Advance SDK Filters
-            - page: tutorials/data_management/sort_and_filter/pagination/chapter.md
-              label: Pagination
-        - page: tutorials/data_management/working_with_metadata/chapter.md
-          label: Working with Metadata
-        - page: tutorials/data_management/secrets/chapter.md
-          label: Secrets
-        - page: tutorials/data_management/feature_vectors/chapter.md
-          label: Feature Vectors
-
-    - group: Annotations
-      page: tutorials/annotations.md
+      - expanded: false
+        group: Amazon Web Services
+        items:
+        - label: Auto Upstream Sync with AWS
+          page: tutorials/data_management/cloud_storage/aws/auto_upstream_sync/chapter.md
+        - label: Manual Upstream Sync with AWS
+          page: tutorials/data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.md
+        - label: Integrations with AWS
+          page: tutorials/data_management/cloud_storage/aws/integration/chapter.md
+        - label: S3 Bucket Storage Driver from AWS
+          page: tutorials/data_management/cloud_storage/aws/storage_driver/chapter.md
+      - expanded: false
+        group: Microsoft Azure
+        items:
+        - label: Auto Upstream Sync with Azure
+          page: tutorials/data_management/cloud_storage/azure/auto_upstream_sync/chapter.md
+        - label: Integrations with Azure
+          page: tutorials/data_management/cloud_storage/azure/integration/chapter.md
+        - label: Azure Blob container Storage Driver from Microsoft Azure
+          page: tutorials/data_management/cloud_storage/azure/storage_driver/chapter.md
+      - expanded: false
+        group: Google Cloud Provider
+        items:
+        - label: Auto Upstream Sync with GCP
+          page: tutorials/data_management/cloud_storage/gcp/auto_upstream_sync/chapter.md
+        - label: Integrations with GCP
+          page: tutorials/data_management/cloud_storage/gcp/integration/chapter.md
+        - label: GCS Bucket Storage Driver from GCP
+          page: tutorials/data_management/cloud_storage/gcp/storage_driver/chapter.md
+    - label: Manage Datasets
+      page: tutorials/data_management/manage_datasets/chapter.md
+    - label: Data Versioning
+      page: tutorials/data_management/data_versioning/chapter.md
+    - label: Upload and Manage Data and Metadata
+      page: tutorials/data_management/upload_and_manage_items/chapter.md
+    - label: Upload and Manage Annotations
+      page: tutorials/data_management/upload_and_manage_annotations/chapter.md
+    - expanded: false
+      group: Sort and Filters
       items:
-        - group: Image Annotations
-          items:
-            - page: tutorials/annotations/image/classification_point_and_pose/chapter.md
-              label: Classification, Point and Pose
-            - page: tutorials/annotations/image/bounding_box_and_cuboid/chapter.md
-              label: Bounding Box and Cuboid
-            - page: tutorials/annotations/image/polygon_and_polyline/chapter.md
-              label: Polygon and Polyline
-            - page: tutorials/annotations/image/ellipse_and_item_description/chapter.md
-              label: Ellipse and Item Description
-            - page: tutorials/annotations/image/segmentation/chapter.md
-              label: Segmentation
-            - page: tutorials/annotations/image/advance_tutorials/chapter.md
-              label: Advance Tutorials
-        - page: tutorials/annotations/video/chapter.md
-          label: Video Annotations
-        - page: tutorials/annotations/text/chapter.md
-          label: Text Annotations
-        - page: tutorials/annotations/prompts/chapter.md
-          label: Prompt Annotations
-        - page: tutorials/annotations/audio/chapter.md
-          label: Audio Annotations
-        - group: Lidar Annotations
-          items:
-            - page: tutorials/annotations/lidar/cuboid/chapter.md
-              label: Cuboid
-
-    - group: Recipe and Ontology
-      page: tutorials/recipe_and_ontology.md
+      - label: Item Level
+        page: tutorials/data_management/sort_and_filter/item_level/chapter.md
+      - label: Annotation Level Filters
+        page: tutorials/data_management/sort_and_filter/annotation_level/chapter.md
+      - label: Saved Filters
+        page: tutorials/data_management/sort_and_filter/saved_filters/chapter.md
+      - label: Advance SDK Filters
+        page: tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md
+      - label: Pagination
+        page: tutorials/data_management/sort_and_filter/pagination/chapter.md
+    - label: Working with Metadata
+      page: tutorials/data_management/working_with_metadata/chapter.md
+    - label: Secrets
+      page: tutorials/data_management/secrets/chapter.md
+    - label: Feature Vectors
+      page: tutorials/data_management/feature_vectors/chapter.md
+    page: tutorials/data_management.md
+  - expanded: false
+    group: Annotations
+    items:
+    - expanded: false
+      group: Image Annotations
       items:
-        - page: tutorials/recipe_and_ontology/concepts/chapter.md
-          label: Concepts
-        - page: tutorials/recipe_and_ontology/ontology/chapter.md
-          label: Ontology
-        - page: tutorials/recipe_and_ontology/recipe/chapter.md
-          label: Recipe
-
-    - group: Task and Workflows
-      page: tutorials/task_workflows.md
+      - label: Classification, Point and Pose
+        page: tutorials/annotations/image/classification_point_and_pose/chapter.md
+      - label: Bounding Box and Cuboid
+        page: tutorials/annotations/image/bounding_box_and_cuboid/chapter.md
+      - label: Polygon and Polyline
+        page: tutorials/annotations/image/polygon_and_polyline/chapter.md
+      - label: Ellipse and Item Description
+        page: tutorials/annotations/image/ellipse_and_item_description/chapter.md
+      - label: Segmentation
+        page: tutorials/annotations/image/segmentation/chapter.md
+      - label: Advance Tutorials
+        page: tutorials/annotations/image/advance_tutorials/chapter.md
+    - label: Video Annotations
+      page: tutorials/annotations/video/chapter.md
+    - label: Text Annotations
+      page: tutorials/annotations/text/chapter.md
+    - label: Prompt Annotations
+      page: tutorials/annotations/prompts/chapter.md
+    - label: Audio Annotations
+      page: tutorials/annotations/audio/chapter.md
+    - expanded: false
+      group: Lidar Annotations
       items:
-        - page: tutorials/task_workflows/create_a_task/chapter.md
-          label: Create Tasks and Assignment
-        - page: tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.md
-          label: Managing Tasks and Assignments
-        - page: tutorials/task_workflows/quality_control/chapter.md
-          label: Quality Control Task Types
-        - page: tutorials/task_workflows/item_status/chapter.md
-          label: Item Status in Tasks
-
-    - group: Analytics
-      page: tutorials/analytics.md
-      items:
-        - page: tutorials/analytics/overview/chapter.md
-          label: Overview
-        - page: tutorials/analytics/extract_analytics/chapter.md
-          label: Extract Analytics
-
-    - group: FaaS Tutorial
-      page: tutorials/faas.md
-      items:
-        - page: tutorials/faas/concept/chapter.md
-          label: Concepts
-        - page: tutorials/faas/single_function_rgb_to_gray/chapter.md
-          label: Run Your First Function
-        - page: tutorials/faas/multiple_functions_and_modules/chapter.md
-          label: Multiple Functions and Modules
-        - page: tutorials/faas/advance/chapter.md
-          label: Advance Guides
-        - page: tutorials/faas/ui_toolbars/chapter.md
-          label: UI Toolbars
-        - page: tutorials/faas/execution_control/chapter.md
-          label: Execution Control
-        - page: tutorials/faas/custom_environment_using_docker/chapter.md
-          label: Custom Environment
-        - page: tutorials/faas/private_git_codebase/chapter.md
-          label: Private Git Codebase
-        - page: tutorials/faas/auto_annotate/chapter.md
-          label: Example - Auto/Pre Annotation service
-
-    - group: Pipelines
-      page: tutorials/pipelines.md
-      items:
-        - page: tutorials/pipelines/create_a_pipeline/chapter.md
-          label: Create a Pipeline
-
-    - group: Model Management
-      page: tutorials/model_management.md
-      items:
-        - page: tutorials/model_management/introduction/chapter.md
-          label: Introduction
-        - page: tutorials/model_management/marketplace/chapter.md
-          label: The AI Marketplace
-        - page: tutorials/model_management/create_new_model_sdk/chapter.md
-          label: Create a New Model SDK
-        - page: tutorials/model_management/new_model_torchvision_example/chapter.md
-          label: New Model - Torchvision Example
-        - group: Advanced Tutorials
-          items:
-            - page: tutorials/model_management/advance/model_metrics/chapter.md
-              label: Log Metrics
-            - page: tutorials/model_management/advance/model_annotations/chapter.md
-              label: Model Annotations
-            - page: tutorials/model_management/advance/train_models_locally/classification/chapter.md
-              label: Train Models Locally - Classification
-            - page: tutorials/model_management/advance/train_models_locally/object_detection/chapter.md
-              label: Train Models Locally - Object Detection
-            - page: tutorials/model_management/advance/dataloop_dataset_generator/chapter.md
-              label: Using Dataloop's Dataset Generator
-            - page: tutorials/model_management/advance/model_adapter_flows/chapter.md
-              label: Model Adapter Methods and Flows
-
-    - group: Applications
-      page: tutorials/applications.md
-      items:
-        - page: tutorials/applications/introduction/chapter.md
-          label: Introduction
-        - page: tutorials/applications/python_application/chapter.md
-          label: Python Applications
-        - page: tutorials/applications/toolbars/chapter.md
-          label: UI Toolbars
-        - page: tutorials/applications/pipeline_library/chapter.md
-          label: Custom Pipeline Nodes
-        - page: tutorials/applications/single_page_application/chapter.md
-          label: Single Page Web Application
-        - page: tutorials/applications/dpk_examples/chapter.md
-          label: Manifest Examples
-        - page: tutorials/applications/faq/chapter.md
-          label: Frequently Asked Questions
-
+      - label: Cuboid
+        page: tutorials/annotations/lidar/cuboid/chapter.md
+    page: tutorials/annotations.md
+  - expanded: false
+    group: Recipe and Ontology
+    items:
+    - label: Concepts
+      page: tutorials/recipe_and_ontology/concepts/chapter.md
+    - label: Ontology
+      page: tutorials/recipe_and_ontology/ontology/chapter.md
+    - label: Recipe
+      page: tutorials/recipe_and_ontology/recipe/chapter.md
+    page: tutorials/recipe_and_ontology.md
+  - expanded: false
+    group: Task and Workflows
+    items:
+    - label: Create Tasks and Assignment
+      page: tutorials/task_workflows/create_a_task/chapter.md
+    - label: Managing Tasks and Assignments
+      page: tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.md
+    - label: Quality Control Task Types
+      page: tutorials/task_workflows/quality_control/chapter.md
+    - label: Item Status in Tasks
+      page: tutorials/task_workflows/item_status/chapter.md
+    page: tutorials/task_workflows.md
+  - expanded: false
+    group: Analytics
+    items:
+    - label: Overview
+      page: tutorials/analytics/overview/chapter.md
+    - label: Extract Analytics
+      page: tutorials/analytics/extract_analytics/chapter.md
+    page: tutorials/analytics.md
+  - expanded: false
+    group: FaaS Tutorial
+    items:
+    - label: Concepts
+      page: tutorials/faas/concept/chapter.md
+    - label: Run Your First Function
+      page: tutorials/faas/single_function_rgb_to_gray/chapter.md
+    - label: Multiple Functions and Modules
+      page: tutorials/faas/multiple_functions_and_modules/chapter.md
+    - label: Advance Guides
+      page: tutorials/faas/advance/chapter.md
+    - label: UI Toolbars
+      page: tutorials/faas/ui_toolbars/chapter.md
+    - label: Execution Control
+      page: tutorials/faas/execution_control/chapter.md
+    - label: Custom Environment
+      page: tutorials/faas/custom_environment_using_docker/chapter.md
+    - label: Private Git Codebase
+      page: tutorials/faas/private_git_codebase/chapter.md
+    - label: Example - Auto/Pre Annotation service
+      page: tutorials/faas/auto_annotate/chapter.md
+    page: tutorials/faas.md
+  - expanded: false
+    group: Pipelines
+    items:
+    - label: Create a Pipeline
+      page: tutorials/pipelines/create_a_pipeline/chapter.md
+    page: tutorials/pipelines.md
+  - expanded: false
+    group: Model Management
+    items:
+    - label: Introduction
+      page: tutorials/model_management/introduction/chapter.md
+    - label: The AI Marketplace
+      page: tutorials/model_management/marketplace/chapter.md
+    - label: Create a New Model SDK
+      page: tutorials/model_management/create_new_model_sdk/chapter.md
+    - label: New Model - Torchvision Example
+      page: tutorials/model_management/new_model_torchvision_example/chapter.md
+    - expanded: false
+      group: More Guides
+      items: []
+    page: tutorials/model_management.md
+  - expanded: false
+    group: Applications
+    items:
+    - label: Introduction
+      page: tutorials/applications/introduction/chapter.md
+    - label: Python Applications
+      page: tutorials/applications/python_application/chapter.md
+    - label: UI Toolbars
+      page: tutorials/applications/toolbars/chapter.md
+    - label: Custom Pipeline Nodes
+      page: tutorials/applications/pipeline_library/chapter.md
+    - label: Single Page Web Application
+      page: tutorials/applications/single_page_application/chapter.md
+    - label: Manifest Examples
+      page: tutorials/applications/dpk_examples/chapter.md
+    - label: Frequently Asked Questions
+      page: tutorials/applications/faq/chapter.md
+    page: tutorials/applications.md
+  page: tutorials/tutorials.md
 - group: Resources
-  page: resources/resources.mdx
   items:
-    - group: REST API
+  - group: REST API
+    items:
+    - href: https://gate.dataloop.ai/api/v1/docs
+      label: Swagger
+  - group: Python SDK
+    href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
+    items:
+    - href: https://sdk-docs.dataloop.ai/en/latest/cli.html
+      label: CLI
+    - href: https://sdk-docs.dataloop.ai/en/latest/repositories.html
+      label: Entities
+    - href: https://sdk-docs.dataloop.ai/en/latest/repositories.html
+      label: Repositories
+    - href: https://sdk-docs.dataloop.ai/en/latest/utilities.html
+      label: Utilities
+  - group: JS SDK
+    items:
+    - group: xFrame
       items:
-        - href: https://gate.dataloop.ai/api/v1/docs
-          label: Swagger
-
-    - group: Python SDK
-      href: https://sdk-docs.dataloop.ai/en/latest/_modules/index.html
+      - label: API
+        page: resources/dtljs/xFrame/api.md
+      - label: Design
+        page: resources/dtljs/xFrame/design.md
+      page: resources/dtljs/xFrame/index.md
+    - label: xFrameDriver
+      page: resources/dtljs/classes/xFrameDriver.md
+    - group: Interfaces
       items:
-        - href: https://sdk-docs.dataloop.ai/en/latest/cli.html
-          label: CLI
-        - href: https://sdk-docs.dataloop.ai/en/latest/repositories.html
-          label: Entities
-        - href: https://sdk-docs.dataloop.ai/en/latest/repositories.html
-          label: Repositories
-        - href: https://sdk-docs.dataloop.ai/en/latest/utilities.html
-          label: Utilities
-
-    - group: JS SDK
-      page: resources/dtljs/index.md
+      - label: IBundle
+        page: resources/dtljs/interfaces/IBundle.md
+      - label: IEntity
+        page: resources/dtljs/interfaces/IEntity.md
+      - label: IAnnotation
+        page: resources/dtljs/interfaces/IAnnotation.md
+      - label: IDataset
+        page: resources/dtljs/interfaces/IDataset.md
+      - label: IDriver
+        page: resources/dtljs/interfaces/IDriver.md
+      - label: IItem
+        page: resources/dtljs/interfaces/IItem.md
+      - label: IProject
+        page: resources/dtljs/interfaces/IProject.md
+      - label: ITask
+        page: resources/dtljs/interfaces/ITask.md
+      - label: IContributor
+        page: resources/dtljs/interfaces/IContributor.md
+      - label: IPagedResponse
+        page: resources/dtljs/interfaces/IPagedResponse.md
+      - label: SDKExecutionPayload
+        page: resources/dtljs/interfaces/SDKExecutionPayload.md
+      page: resources/dtljs/interfaces/index.md
+    - group: Enums
       items:
-        - group: xFrame
-          page: resources/dtljs/xFrame/index.md
-          items:
-            - page: resources/dtljs/xFrame/api.md
-              label: API
-            - page: resources/dtljs/xFrame/design.md
-              label: Design
-        - page: resources/dtljs/classes/xFrameDriver.md
-          label: xFrameDriver
-        - group: Interfaces
-          page: resources/dtljs/interfaces/index.md
-          items:
-            - page: resources/dtljs/interfaces/IBundle.md
-              label: IBundle
-            - page: resources/dtljs/interfaces/IEntity.md
-              label: IEntity
-            - page: resources/dtljs/interfaces/IAnnotation.md
-              label: IAnnotation
-            - page: resources/dtljs/interfaces/IDataset.md
-              label: IDataset
-            - page: resources/dtljs/interfaces/IDriver.md
-              label: IDriver
-            - page: resources/dtljs/interfaces/IItem.md
-              label: IItem
-            - page: resources/dtljs/interfaces/IProject.md
-              label: IProject
-            - page: resources/dtljs/interfaces/ITask.md
-              label: ITask
-            - page: resources/dtljs/interfaces/IContributor.md
-              label: IContributor
-            - page: resources/dtljs/interfaces/IPagedResponse.md
-              label: IPagedResponse
-            - page: resources/dtljs/interfaces/SDKExecutionPayload.md
-              label: SDKExecutionPayload
-        - group: Enums
-          page: resources/dtljs/enums/index.md
-          items:
-            - page: resources/dtljs/enums/DlEvent.md
-              label: DlEvent
-            - page: resources/dtljs/enums/DlFrameEvent.md
-              label: DlFrameEvent
-        - group: Repositories
-          page: resources/dtljs/classes/repositories.md
-          items:
-            - page: resources/dtljs/classes/Annotations.md
-              label: Annotations
-            - page: resources/dtljs/classes/Contributors.md
-              label: Contributors
-            - page: resources/dtljs/classes/Datasets.md
-              label: Datasets
-            - page: resources/dtljs/classes/Drivers.md
-              label: Drivers
-            - page: resources/dtljs/classes/Items.md
-              label: Items
-            - page: resources/dtljs/classes/Labels.md
-              label: Labels
-            - page: resources/dtljs/classes/Ontologies.md
-              label: Ontologies
-            - page: resources/dtljs/classes/Projects.md
-              label: Projects
-            - page: resources/dtljs/classes/Recipes.md
-              label: Recipes
-            - page: resources/dtljs/classes/AppSettings.md
-              label: Settings
-            - page: resources/dtljs/classes/Tasks.md
-              label: Tasks
-            - page: resources/dtljs/classes/Executions.md
-              label: Executions
-        - group: Entities
-          page: resources/dtljs/classes/entities.md
-          items:
-            - page: resources/dtljs/classes/SDKAnnotation.md
-              label: SDKAnnotation
-            - page: resources/dtljs/classes/SDKAnnotationEvent.md
-              label: SDKAnnotationEvent
-            - page: resources/dtljs/classes/SDKContributor.md
-              label: SDKContributor
-            - page: resources/dtljs/classes/SDKDataset.md
-              label: SDKDataset
-            - page: resources/dtljs/classes/SDKDriver.md
-              label: SDKDriver
-            - page: resources/dtljs/classes/SDKFunctionExecution.md
-              label: SDKFunctionExecution
-            - page: resources/dtljs/classes/SDKItem.md
-              label: SDKItem
-            - page: resources/dtljs/classes/SDKProject.md
-              label: SDKProject
-            - page: resources/dtljs/classes/SDKTask.md
-              label: SDKTask
-
+      - label: DlEvent
+        page: resources/dtljs/enums/DlEvent.md
+      - label: DlFrameEvent
+        page: resources/dtljs/enums/DlFrameEvent.md
+      page: resources/dtljs/enums/index.md
+    - group: Repositories
+      items:
+      - label: Annotations
+        page: resources/dtljs/classes/Annotations.md
+      - label: Contributors
+        page: resources/dtljs/classes/Contributors.md
+      - label: Datasets
+        page: resources/dtljs/classes/Datasets.md
+      - label: Drivers
+        page: resources/dtljs/classes/Drivers.md
+      - label: Items
+        page: resources/dtljs/classes/Items.md
+      - label: Labels
+        page: resources/dtljs/classes/Labels.md
+      - label: Ontologies
+        page: resources/dtljs/classes/Ontologies.md
+      - label: Projects
+        page: resources/dtljs/classes/Projects.md
+      - label: Recipes
+        page: resources/dtljs/classes/Recipes.md
+      - label: Settings
+        page: resources/dtljs/classes/AppSettings.md
+      - label: Tasks
+        page: resources/dtljs/classes/Tasks.md
+      - label: Executions
+        page: resources/dtljs/classes/Executions.md
+      page: resources/dtljs/classes/repositories.md
+    - group: Entities
+      items:
+      - label: SDKAnnotation
+        page: resources/dtljs/classes/SDKAnnotation.md
+      - label: SDKAnnotationEvent
+        page: resources/dtljs/classes/SDKAnnotationEvent.md
+      - label: SDKContributor
+        page: resources/dtljs/classes/SDKContributor.md
+      - label: SDKDataset
+        page: resources/dtljs/classes/SDKDataset.md
+      - label: SDKDriver
+        page: resources/dtljs/classes/SDKDriver.md
+      - label: SDKFunctionExecution
+        page: resources/dtljs/classes/SDKFunctionExecution.md
+      - label: SDKItem
+        page: resources/dtljs/classes/SDKItem.md
+      - label: SDKProject
+        page: resources/dtljs/classes/SDKProject.md
+      - label: SDKTask
+        page: resources/dtljs/classes/SDKTask.md
+      page: resources/dtljs/classes/entities.md
+    page: resources/dtljs/index.md
+  page: resources/resources.mdx
 - href: https://docs.dataloop.ai/docs/glossary-overview
   label: Glossary
-
 - href: https://docs.dataloop.ai/docs/sdk-cheatsheet
   label: SDK Cheat Sheet
