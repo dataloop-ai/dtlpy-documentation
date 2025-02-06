@@ -59,8 +59,8 @@ const CardIcon = styled.div`
     margin-bottom: 0.5rem;
     
     img {
-        width: 32px;
-        height: 32px;
+        width: 256px;
+        height: 256px;
     }
 `;
 
@@ -74,7 +74,7 @@ const CardLink = styled.a`
 
 const CardsContainer = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     max-width: 800px;
     margin: 0 auto;
