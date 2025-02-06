@@ -33,7 +33,7 @@ export default function HomePage() {
       <Header>
         <Title>Dataloop Developers Portal</Title>
         <Subtitle>A developer portal for beginners and advanced users</Subtitle>
-        <Button variant="outlined" size="xlarge" to="/tutorials/getting_started/sdk_overview/chapter.md">
+        <Button variant="outlined" size="xlarge" to="/tutorials/getting_started/sdk_overview/chapter">
           Get started <ArrowRightIcon />
         </Button>
       </Header>
@@ -41,7 +41,7 @@ export default function HomePage() {
         <Card title="Tutorials" to="/tutorials" icon={tutorialsIcon}>
           Step-by-step guides to get started with Dataloop
         </Card>
-        <Card title="Onboarding" to="/onboarding/onboarding.md" icon={onboardingIcon}>
+        <Card title="Onboarding" to="/onboarding/onboarding" icon={onboardingIcon}>
           Get up and running with Dataloop platform
         </Card>
         <Card title="Resources" to="/resources" icon={resourcesIcon}>
