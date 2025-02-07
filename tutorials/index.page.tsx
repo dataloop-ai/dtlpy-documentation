@@ -136,10 +136,10 @@ const TutorialsPage = () => (
         onClick={() => window.location.href = '/tutorials/analytics'}
       />
       <DlCard 
-        title="FaaS Tutorial"
+        title="FaaS Applications"
         description="Functions as a Service: Your serverless superpower for scalable AI operations"
         icon={faasIcon}
-        onClick={() => window.location.href = '/tutorials/faas'}
+        onClick={() => window.location.href = '/tutorials/faas_applications'}
       />
       <DlCard 
         title="Pipelines"
