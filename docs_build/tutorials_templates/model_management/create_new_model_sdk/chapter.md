@@ -312,4 +312,4 @@ You've just created your own custom model in Dataloop! Remember:
 
 Happy modeling! 🚀
 
-> 🎓 **Need More Help?** Check our [documentation](https://docs.dataloop.ai) or join our community!
+> 🎓 **Need More Help?** Check our [documentation](https://docs.dataloop.ai)

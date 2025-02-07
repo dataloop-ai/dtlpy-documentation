@@ -255,6 +255,5 @@ item.open_in_web()
 
 - 🔍 Check the [full example on GitHub](https://github.com/dataloop-ai-apps/torch-models)
 - 📚 Read our [Model Management docs](https://docs.dataloop.ai/docs/model-management-overview)
-- 💬 Join our community for support
 
 Happy modeling! May your predictions be accurate and your deployments smooth! 🚀

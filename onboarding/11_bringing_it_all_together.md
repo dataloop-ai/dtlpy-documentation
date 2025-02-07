@@ -88,12 +88,7 @@ pipeline = project.pipelines.create(
    - [Pipeline Automation](https://docs.dataloop.ai/docs/pipelines-overview)
    - [FaaS Development](https://docs.dataloop.ai/docs/faas-overview)
 
-2. **Join the Community**
-   - Share your solutions
-   - Learn from others
-   - Get support when needed
-
-3. **Build Something Amazing**
+2. **Build Something Amazing**
    - Start with templates
    - Customize for your needs
    - Scale with confidence
@@ -103,4 +98,3 @@ Remember: The best way to learn is by doing. Take what you've learned and start 
 > 🔍 **Need Help?** 
 > - Documentation: [docs.dataloop.ai](https://docs.dataloop.ai)
 > - Support: [support@dataloop.ai](mailto:support@dataloop.ai)
-> - Community: [Join our Discord](https://discord.gg/dataloop)

@@ -157,7 +157,7 @@ Once your environment is ready:
 2. Create your first project
 3. Start exploring Dataloop's features
 
-> 🔍 **Need Help?** Check our [troubleshooting guide](https://docs.dataloop.ai/docs/troubleshooting) or join our community forum!
+> 🔍 **Need Help?** Check our [troubleshooting guide](https://docs.dataloop.ai/docs/troubleshooting)
 
 ## Pro Tips 💡
 
