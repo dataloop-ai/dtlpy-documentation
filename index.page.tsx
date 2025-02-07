@@ -106,19 +106,19 @@ export default function HomePage() {
             <Cards>
                 <DlCard
                     title="Tutorials"
-                    description="Level up your skills with our hands-on guides! From basics to advanced AI wizardry 🎓"
+                    description="Level up your skills with our hands-on guides! From basics to advanced AI wizardry"
                     icon={tutorialsIcon}
                     onClick={() => window.location.href = '/tutorials'}
                 />
                 <DlCard
                     title="Onboarding"
-                    description="Zero to hero: Your fast track to mastering the Dataloop platform 🏃‍♂️"
+                    description="Zero to hero: Your fast track to mastering the Dataloop platform "
                     icon={onboardingIcon}
                     onClick={() => window.location.href = '/onboarding/onboarding'}
                 />
                 <DlCard
                     title="Resources"
-                    description="Your toolbox of SDKs, APIs, and developer goodies to build something amazing 🛠️"
+                    description="Your toolbox of SDKs, APIs, and developer goodies to build something amazing"
                     icon={resourcesIcon}
                     onClick={() => window.location.href = '/resources'}
                 />

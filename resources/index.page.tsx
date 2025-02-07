@@ -103,19 +103,19 @@ const ResourcesPage = () => (
     <CardsGrid>
       <DlCard
         title="Python SDK"
-        description="Master our powerful Python SDK! Complete documentation and API reference for building robust AI applications 🐍"
+        description="Master our powerful Python SDK! Complete documentation and API reference for building robust AI applications"
         icon={pythonSdkIcon}
         onClick={() => window.location.href = 'https://sdk-docs.dataloop.ai/en/latest/_modules/index.html'}
       />
       <DlCard
         title="JavaScript SDK"
-        description="Build dynamic web applications with our JavaScript SDK. Full API reference and interactive examples ⚡"
+        description="Build dynamic web applications with our JavaScript SDK. Full API reference and interactive examples"
         icon={jsSdkIcon}
         onClick={() => window.location.href = '/resources/dtljs'}
       />
       <DlCard
         title="REST API"
-        description="Direct access to Dataloop's API endpoints. Perfect for custom integrations and advanced workflows 🔌"
+        description="Direct access to Dataloop's API endpoints. Perfect for custom integrations and advanced workflows"
         icon={restApiIcon}
         onClick={() => window.location.href = 'https://gate.dataloop.ai/api/v1/docs'}
       />
