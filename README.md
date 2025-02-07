@@ -46,18 +46,6 @@ jupyter notebook tutorials
 
 ## Tutorials
 
-* Annotations
-  * Image
-    *  [Advance tutorials](tutorials/annotations/image/advance_tutorials/chapter.ipynb)
-    *  [Bounding box and cuboid](tutorials/annotations/image/bounding_box_and_cuboid/chapter.ipynb)
-    *  [Classification point and pose](tutorials/annotations/image/classification_point_and_pose/chapter.ipynb)
-    *  [Ellipse and item description](tutorials/annotations/image/ellipse_and_item_description/chapter.ipynb)
-    *  [Polygon and polyline](tutorials/annotations/image/polygon_and_polyline/chapter.ipynb)
-    *  [Segmentation](tutorials/annotations/image/segmentation/chapter.ipynb)
-  * Lidar
-    *  [Cuboid](tutorials/annotations/lidar/cuboid/chapter.ipynb)
-  *  [Text](tutorials/annotations/text/chapter.ipynb)
-  *  [Video](tutorials/annotations/video/chapter.ipynb)
 *  [Auto annotate service](tutorials/auto_annotate_service/chapter.ipynb)
 * Data management
   * Cloud storage

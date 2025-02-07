@@ -94,21 +94,8 @@
   - expanded: false
     group: Annotations
     items:
-    - expanded: false
-      group: Image Annotations
-      items:
-      - label: Classification, Point and Pose
-        page: tutorials/annotations/image/classification_point_and_pose/chapter.md
-      - label: Bounding Box and Cuboid
-        page: tutorials/annotations/image/bounding_box_and_cuboid/chapter.md
-      - label: Polygon and Polyline
-        page: tutorials/annotations/image/polygon_and_polyline/chapter.md
-      - label: Ellipse and Item Description
-        page: tutorials/annotations/image/ellipse_and_item_description/chapter.md
-      - label: Segmentation
-        page: tutorials/annotations/image/segmentation/chapter.md
-      - label: Advance Tutorials
-        page: tutorials/annotations/image/advance_tutorials/chapter.md
+    - label: Image Annotations
+      page: tutorials/annotations/image/chapter.md
     - label: Video Annotations
       page: tutorials/annotations/video/chapter.md
     - label: Text Annotations
@@ -117,11 +104,8 @@
       page: tutorials/annotations/prompts/chapter.md
     - label: Audio Annotations
       page: tutorials/annotations/audio/chapter.md
-    - expanded: false
-      group: Lidar Annotations
-      items:
-      - label: Cuboid
-        page: tutorials/annotations/lidar/cuboid/chapter.md
+    - label: LiDAR Annotations
+      page: tutorials/annotations/lidar/chapter.md
     page: tutorials/annotations.md
   - expanded: false
     group: Recipe and Ontology

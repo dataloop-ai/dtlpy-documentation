@@ -1,37 +1,37 @@
 {
     "name": "annotations",
     "title": "Annotations",
-    "description": "Tutorials for creating all types of annotations for file types",
+    "description": "Master the art of data annotation with our comprehensive tutorials for all file types",
     "content": [
         {
             "displayName": "Image Annotations",
-            "description": "Tutorials for creating all types of image annotations",
-            "location": "annotations/image/index.json"
+            "description": "Learn to create powerful image annotations - from simple boxes to complex segmentation masks, with best practices for AI training and data analysis",
+            "location": "annotations/image/chapter.md"
         },
         {
             "displayName": "Video Annotations",
-            "description": "Upload and work with video annotations",
+            "description": "Master video annotation techniques - track objects across frames, create temporal annotations, and handle complex motion sequences",
             "location": "annotations/video/chapter.md"
         },
         {
             "displayName": "Text Annotations",
-            "description": "Upload text annotations by char location",
+            "description": "Explore text annotation techniques - mark spans, entities, and relationships in documents with precision character-level control",
             "location": "annotations/text/chapter.md"
         },
         {
             "displayName": "Prompt Annotations",
-            "description": "Upload and work with prompts and annotations (responses)",
+            "description": "Create and manage AI prompts and responses - build conversational datasets with multi-modal content for advanced AI training",
             "location": "annotations/prompts/chapter.md"
         },
         {
             "displayName": "Audio Annotations",
-            "description": "Upload audio annotations and transcriptions",
+            "description": "Learn audio annotation techniques - from transcription to sound event detection, with support for timestamps and multiple speakers",
             "location": "annotations/audio/chapter.md"
         },
         {
-            "displayName": "Lidar Annotations",
-            "description": "Tutorials for LiDAR scene annotations",
-            "location": "annotations/lidar/index.json"
+            "displayName": "LiDAR Annotations",
+            "description": "Master 3D point cloud annotations - create precise object detection and segmentation in LiDAR scenes with advanced spatial tools",
+            "location": "annotations/lidar/chapter.md"
         }
     ]
 }

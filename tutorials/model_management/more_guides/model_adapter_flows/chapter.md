@@ -167,4 +167,4 @@ def prepare_item_func(self, item):
    - Follow the function signatures
    - Test each component thoroughly
 
-Need more help? Check out our [example implementations](https://github.com/dataloop-ai-apps/torch-models) 🚀
+Need more help? Check out our [example implementations](https://github.com/dataloop-ai-apps/torch-models)🚀
