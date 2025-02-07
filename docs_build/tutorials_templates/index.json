@@ -29,9 +29,9 @@
             "location": "analytics/index.json"
         },
         {
-            "displayName": "FaaS Tutorial",
-            "description": "Tutorials for FaaS",
-            "location": "faas/index.json"
+            "displayName": "FaaS Applications",
+            "description": "Tutorials for FaaS Applications and DPKs",
+            "location": "faas_applications/index.json"
         },
         {
             "displayName": "Pipelines",

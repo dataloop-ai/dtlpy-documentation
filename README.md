@@ -76,16 +76,6 @@ jupyter notebook tutorials
   *  [Upload and manage annotations](tutorials/data_management/upload_and_manage_annotations/chapter.ipynb)
   *  [Upload and manage items](tutorials/data_management/upload_and_manage_items/chapter.ipynb)
   *  [Working with metadata](tutorials/data_management/working_with_metadata/chapter.ipynb)
-* Faas
-  *  [Advance](tutorials/faas/advance/chapter.ipynb)
-  *  [Auto annotate](tutorials/faas/auto_annotate/chapter.ipynb)
-  *  [Concept](tutorials/faas/concept/chapter.ipynb)
-  *  [Custom environment using docker](tutorials/faas/custom_environment_using_docker/chapter.ipynb)
-  *  [Execution control](tutorials/faas/execution_control/chapter.ipynb)
-  *  [Multiple functions and modules](tutorials/faas/multiple_functions_and_modules/chapter.ipynb)
-  *  [Private git codebase](tutorials/faas/private_git_codebase/chapter.ipynb)
-  *  [Single function rgb to gray](tutorials/faas/single_function_rgb_to_gray/chapter.ipynb)
-  *  [Ui toolbars](tutorials/faas/ui_toolbars/chapter.ipynb)
 * Pipelines
   *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
 * Recipe and ontology

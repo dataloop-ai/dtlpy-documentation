@@ -1,0 +1,38 @@
+{
+    "name": "faas",
+    "title": "Functions as a Service (FaaS)",
+    "description": "Master serverless computing with Dataloop's FaaS - from simple functions to complex applications",
+    "content": [
+        {
+            "displayName": "Your First FaaS Application - Hello World",
+            "description": "Create your first serverless function - learn to build, package, and deploy a simple DPK application",
+            "location": "faas_applications/building_an_app/chapter.md"
+        },
+        {
+            "displayName": "Service Configurations and Autoscaling",
+            "description": "Learn how to configure your FaaS service to optimize performance and security",
+            "location": "faas_applications/service_configurations/chapter.md"
+        },
+        {
+            "displayName": "Execution Control",
+            "description": "Master function execution - triggers, scheduling, and execution management",
+            "location": "faas_applications/execution_control/chapter.md"
+        },
+        {
+            "displayName": "Custom Docker Environments and Private Git Integration",
+            "description": "Create custom runtime environments using Docker for specialized dependencies",
+            "location": "faas_applications/using_docker_and_private_registries/chapter.md"
+        },
+        {
+            "displayName": "UI Toolbars",
+            "description": "Create custom UI extensions and toolbars for the Dataloop platform",
+            "location": "faas_applications/ui_toolbars/chapter.md"
+        },
+        {
+            "displayName": "Real-World DPK Examples",
+            "description": "Explore real-world applications of FaaS - from image processing to AI inference",
+            "location": "faas_applications/github_examples/chapter.md"
+        }
+    ]
+}
+

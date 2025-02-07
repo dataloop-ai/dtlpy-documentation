@@ -138,27 +138,21 @@
       page: tutorials/analytics/extract_analytics/chapter.md
     page: tutorials/analytics.md
   - expanded: false
-    group: FaaS Tutorial
+    group: FaaS Applications
     items:
-    - label: Concepts
-      page: tutorials/faas/concept/chapter.md
-    - label: Run Your First Function
-      page: tutorials/faas/single_function_rgb_to_gray/chapter.md
-    - label: Multiple Functions and Modules
-      page: tutorials/faas/multiple_functions_and_modules/chapter.md
-    - label: Advance Guides
-      page: tutorials/faas/advance/chapter.md
-    - label: UI Toolbars
-      page: tutorials/faas/ui_toolbars/chapter.md
+    - label: Your First FaaS Application - Hello World
+      page: tutorials/faas_applications/building_an_app/chapter.md
+    - label: Service Configurations and Autoscaling
+      page: tutorials/faas_applications/service_configurations/chapter.md
     - label: Execution Control
-      page: tutorials/faas/execution_control/chapter.md
-    - label: Custom Environment
-      page: tutorials/faas/custom_environment_using_docker/chapter.md
-    - label: Private Git Codebase
-      page: tutorials/faas/private_git_codebase/chapter.md
-    - label: Example - Auto/Pre Annotation service
-      page: tutorials/faas/auto_annotate/chapter.md
-    page: tutorials/faas.md
+      page: tutorials/faas_applications/execution_control/chapter.md
+    - label: Custom Docker Environments and Private Git Integration
+      page: tutorials/faas_applications/using_docker_and_private_registries/chapter.md
+    - label: UI Toolbars
+      page: tutorials/faas_applications/ui_toolbars/chapter.md
+    - label: Real-World DPK Examples
+      page: tutorials/faas_applications/github_examples/chapter.md
+    page: tutorials/faas_applications.md
   - expanded: false
     group: Pipelines
     items:
