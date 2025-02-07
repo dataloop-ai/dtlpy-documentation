@@ -1,6 +1,34 @@
 # Your First Steps in Dataloop 🎯
 
-Let's get you started with Dataloop by setting up your authentication and creating your first project!
+## What Can You Do? 🌟
+
+With our powerful Python SDK, you'll have full control over your entire AI development lifecycle:
+
+### Core Resources 📊
+- 📁 **Projects** - Your high-level workspaces
+- 📊 **Datasets** - Your data collections
+- 🖼️ **Items** - Your individual files
+- ✏️ **Annotations** - Your data labels
+- 📝 **Metadata** - Your custom data attributes
+
+### Advanced Features 🚀
+- 🤖 **Model Management** - Train, deploy, and monitor ML models
+- 🔄 **Pipelines** - Build automated AI workflows
+- ⚡ **FaaS (Function as a Service)** - Deploy serverless functions
+- 📦 **DPKs (Dataloop Package Kit)** - Package and share your solutions
+- 🎯 **Tasks** - Manage annotation and review workflows
+
+### AI Development Tools 🧠
+- 🔍 **Model Zoo** - Access pre-trained models
+- 🎓 **Transfer Learning** - Fine-tune existing models
+- 📈 **Model Metrics** - Track performance and metrics
+- 🔄 **Data Versioning** - Manage dataset versions
+
+### Automation & Integration 🔗
+- 🔄 **Webhooks** - Set up event-driven workflows
+- 🌐 **REST API** - Integrate with external systems
+- 🔌 **Plugins** - Extend platform functionality
+- 🤝 **Team Collaboration** - Manage users and roles
 
 ## Authentication & Security 🔐
 

@@ -9,20 +9,20 @@ Welcome to the Dataloop SDK onboarding guide! This comprehensive tutorial will w
 ## Chapters
 
 ### Getting Started
-- [00 Before You Begin](01_before_you_begin.md)
-- [01 Your First Steps](02_first_steps.md)
+- [01 Before You Begin](01_before_you_begin.md)
+- [02 Your First Steps](02_first_steps.md)
 
 ### Core Functionality
-- [02 Data Management](03_data_management.md)
-- [03 Data Versioning](04_data_versioning.md)
-- [04 Annotations](05_annotations.md)
-- [05 Task Management](06_task_management.md)
+- [03 Data Management](03_data_management.md)
+- [04 Data Versioning](04_data_versioning.md)
+- [05 Annotations](05_annotations.md)
+- [06 Task Management](06_task_management.md)
 
 ### Advanced Features
-- [06 Model Management](07_metadata_and_filtering.md)
-- [07 DPKs, Applications and Functions as a Service (FaaS)](08_apps_and_faas.md)
-- [08 Model Management](09_model_management.md)
-- [09 Pipelines and Automation](10_pipelines_and_automation.md)
+- [07 Model Management](07_metadata_and_filtering.md)
+- [08 DPKs, Applications and Functions as a Service (FaaS)](08_apps_and_faas.md)
+- [09 Model Management](09_model_management.md)
+- [10 Pipelines and Automation](10_pipelines_and_automation.md)
 
 ### Conclusion
 - [11 Putting It All Together](11_putting_it_all_together.md)
