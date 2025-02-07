@@ -42,7 +42,7 @@ item.annotations.upload(builder)
 
 Another example:
 
-``python
+```python
 import webvtt
 import datetime
 filepath = '/home/subtitles.vtt'
