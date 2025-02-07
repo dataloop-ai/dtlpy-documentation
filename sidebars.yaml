@@ -20,8 +20,8 @@
     page: onboarding/09_model_management.md
   - label: Pipelines and Automation
     page: onboarding/10_pipelines_and_automation.md
-  - label: Putting It All Together
-    page: onboarding/11_putting_it_all_together.md
+  - label: Bringing It All Together
+    page: onboarding/11_bringing_it_all_together.md
   page: onboarding/onboarding.md
 - expanded: false
   group: Tutorials

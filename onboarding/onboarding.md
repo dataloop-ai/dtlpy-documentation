@@ -25,7 +25,7 @@ Welcome to the Dataloop SDK onboarding guide! This comprehensive tutorial will w
 - [10 Pipelines and Automation](10_pipelines_and_automation.md)
 
 ### Conclusion
-- [11 Putting It All Together](11_putting_it_all_together.md)
+- [11 Dataloop in Action: Bringing It All Together](11_bringing_it_all_together.md)
 
 ## Additional Resources
 
