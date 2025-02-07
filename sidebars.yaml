@@ -1,26 +1,26 @@
 - group: Getting Started
   items:
-  - label: Useful Information
+  - label: Before You Begin
     page: onboarding/01_before_you_begin.md
-  - label: Installation
+  - label: Your First Steps
     page: onboarding/02_first_steps.md
-  - label: Login, Projects and Datasets
+  - label: Data Management
     page: onboarding/03_data_management.md
-  - label: Items and Annotations
+  - label: Data Versioning
     page: onboarding/04_data_versioning.md
-  - label: Querying
-    page: onboarding/05_annotations.md
-  - label: Tasks and Assignments
-    page: onboarding/06_task_management.md
-  - label: Versioning
-    page: onboarding/07_metadata_and_filtering.md
-  - label: Function as a Service
+  - label: Metadata and Filtering
+    page: onboarding/05_metadata_and_filtering.md
+  - label: Annotations
+    page: onboarding/06_annotations.md
+  - label: Task Management
+    page: onboarding/07_task_management.md
+  - label: Applications and Functions as a Service
     page: onboarding/08_apps_and_faas.md
-  - label: Pipelines
-    page: onboarding/09_model_management.md
   - label: Model Management
+    page: onboarding/09_model_management.md
+  - label: Pipelines and Automation
     page: onboarding/10_pipelines_and_automation.md
-  - label: What's Next
+  - label: Putting It All Together
     page: onboarding/11_putting_it_all_together.md
   page: onboarding/onboarding.md
 - expanded: false
