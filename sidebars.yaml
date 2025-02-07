@@ -1,28 +1,28 @@
 - group: Getting Started
   items:
   - label: Useful Information
-    page: onboarding/00_useful_information.md
+    page: onboarding/01_before_you_begin.md
   - label: Installation
-    page: onboarding/01_python_sdk_installation.md
+    page: onboarding/02_first_steps.md
   - label: Login, Projects and Datasets
-    page: onboarding/02_login_and_project_and_dataset_creation.md
+    page: onboarding/03_data_management.md
   - label: Items and Annotations
-    page: onboarding/03_add_and_annotate_data.md
+    page: onboarding/04_data_versioning.md
   - label: Querying
-    page: onboarding/04_metadata_querying_and_filtering.md
+    page: onboarding/05_annotations.md
   - label: Tasks and Assignments
-    page: onboarding/05_task_assignments.md
+    page: onboarding/06_task_management.md
   - label: Versioning
-    page: onboarding/06_data_versioning.md
+    page: onboarding/07_metadata_and_filtering.md
   - label: Function as a Service
-    page: onboarding/07_faas.md
+    page: onboarding/08_apps_and_faas.md
   - label: Pipelines
-    page: onboarding/08_pipelines.md
-  - label: Model Management
     page: onboarding/09_model_management.md
+  - label: Model Management
+    page: onboarding/10_pipelines_and_automation.md
   - label: What's Next
-    page: onboarding/10_next_steps.md
-  page: tutorials/getting_started/sdk_overview/chapter.md
+    page: onboarding/11_putting_it_all_together.md
+  page: onboarding/onboarding.md
 - expanded: false
   group: Tutorials
   items:
@@ -180,6 +180,8 @@
     items:
     - label: Create a Pipeline
       page: tutorials/pipelines/create_a_pipeline/chapter.md
+    - label: Pipeline Executions
+      page: tutorials/pipelines/pipeline_executions/chapter.md
     page: tutorials/pipelines.md
   - expanded: false
     group: Model Management
