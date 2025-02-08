@@ -29,8 +29,8 @@ Create the DPK manifest file (`dataloop.json`):
     "modules": [
       {
         "name": "hello-world",
-        "type": "function",
         "entrypoint": "hello_world.py",
+        "className": "HelloWorld",
         "functions": [
           {
             "name": "hello_world",
@@ -67,8 +67,8 @@ Add the service configuration to the DPK manifest file (`dataloop.json`):
     "modules": [
       {
         "name": "hello-world",
-        "type": "function",
         "entrypoint": "hello_world.py",
+        "className": "HelloWorld",
         "functions": [
           {
             "name": "hello_world",

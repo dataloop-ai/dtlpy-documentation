@@ -53,7 +53,11 @@ def update_tutorials_redocly(root, sub_folders_list):
 
 def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
     with open(myjson) as json_file:
-        data = json.load(json_file)
+        try:
+            data = json.load(json_file)
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed loading json file: {myjson}")
+            raise ValueError(f"Error decoding JSON: {e}")
     yaml_str_list = []
     for content in data['content']:
         str_for_list = ""

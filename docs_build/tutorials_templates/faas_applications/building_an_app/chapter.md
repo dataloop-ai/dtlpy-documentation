@@ -41,8 +41,8 @@ Create a file named `dataloop.json` with your package configuration:
     "modules": [
       {
         "name": "hello-world",
-        "type": "function",
         "entrypoint": "hello_world.py",
+        "className": "HelloWorld",
         "functions": [
           {
             "name": "hello_world",

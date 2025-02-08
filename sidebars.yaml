@@ -185,17 +185,15 @@
   - expanded: false
     group: Applications
     items:
-    - label: Introduction
+    - label: Introduction to Applications
       page: tutorials/applications/introduction/chapter.md
     - label: Python Applications
       page: tutorials/applications/python_application/chapter.md
-    - label: UI Toolbars
-      page: tutorials/applications/toolbars/chapter.md
-    - label: Custom Pipeline Nodes
+    - label: Web Applications
+      page: tutorials/applications/web_application/chapter.md
+    - label: Pipeline Nodes & Templates
       page: tutorials/applications/pipeline_library/chapter.md
-    - label: Single Page Web Application
-      page: tutorials/applications/single_page_application/chapter.md
-    - label: Manifest Examples
+    - label: DPK Examples & Templates
       page: tutorials/applications/dpk_examples/chapter.md
     - label: Frequently Asked Questions
       page: tutorials/applications/faq/chapter.md

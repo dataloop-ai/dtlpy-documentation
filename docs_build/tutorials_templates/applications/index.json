@@ -1,41 +1,36 @@
 {
     "name": "applications",
-    "title": "Creating Dataloop Application",
-    "description": "Developing application on theDataloop platform, both web and python",
+    "title": "Creating Dataloop Applications",
+    "description": "Master the art of developing powerful applications for the Dataloop platform, from Python services to web interfaces",
     "content": [
         {
-            "displayName": "Introduction",
-            "description": "Introduction",
+            "displayName": "Introduction to Applications",
+            "description": "Learn about Dataloop applications, DPKs, and how to extend the platform's capabilities",
             "location": "applications/introduction/chapter.md"
         },
         {
             "displayName": "Python Applications",
-            "description": "Create python applications",
+            "description": "Create powerful Python applications with FaaS, custom services, and pre-launch scripts",
             "location": "applications/python_application/chapter.md"
         },
         {
-            "displayName": "UI Toolbars",
-            "description": "Toolbars tutorial",
-            "location": "applications/toolbars/chapter.md"
+            "displayName": "Web Applications",
+            "description": "Build interactive web applications, custom panels, and UI components for the Dataloop platform",
+            "location": "applications/web_application/chapter.md"
         },
         {
-            "displayName": "Custom Pipeline Nodes",
-            "description": "Create custom pipeline nodes",
+            "displayName": "Pipeline Nodes & Templates",
+            "description": "Create custom pipeline nodes and reusable templates for automated data processing workflows",
             "location": "applications/pipeline_library/chapter.md"
         },
         {
-            "displayName": "Single Page Web Application",
-            "description": "Create a Panel in an Application",
-            "location": "applications/single_page_application/chapter.md"
-        },
-        {
-            "displayName": "Manifest Examples",
-            "description": "A few manifest examples",
+            "displayName": "DPK Examples & Templates",
+            "description": "Explore real-world examples of DPK manifests, from AI models to data processing applications",
             "location": "applications/dpk_examples/chapter.md"
         },
         {
             "displayName": "Frequently Asked Questions",
-            "description": "frequently asked questions",
+            "description": "Find answers to common questions about application development, deployment, and best practices",
             "location": "applications/faq/chapter.md"
         }
     ]
