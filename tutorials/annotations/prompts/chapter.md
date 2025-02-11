@@ -185,7 +185,7 @@ prompt_item.add(
 	model_info={
 		'name': 'gpt-4o-mini',
 		'confidence': 1.0,
-		'model_id': 'model-123'
+		'model_id': '<model id>'
 	}
 )
 
@@ -209,7 +209,7 @@ prompt_item.add(
 	model_info={
 		'name': 'gpt-4o-mini',
 		'confidence': 1.0,
-		'model_id': 'model-123'
+		'model_id': '<model id>'
 	}
 )
 ```
