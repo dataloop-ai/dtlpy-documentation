@@ -217,6 +217,7 @@
     - href: https://sdk-docs.dataloop.ai/en/latest/utilities.html
       label: Utilities
   - group: JS SDK
+    page: /resources/dtljs/index.md
     items:
     - label: README
       page: resources/dtljs/README.md
