@@ -1,7 +1,5 @@
 # Interface: SDKExecutionPayload
 
-[sdkApi/interfaces/entities/iExecution](../modules/sdkApi_interfaces_entities_iExecution.md).SDKExecutionPayload
-
 The payload for creating an execution
 
 **`Interface`**
@@ -12,33 +10,25 @@ SDKExecutionPayload
 
 ### Properties
 
-- [caption](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#caption)
-- [functionName](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#functionname)
-- [input](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#input)
-- [notification](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#notification)
-- [onFailureEvent](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#onfailureevent)
-- [onSuccessEvent](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#onsuccessevent)
-- [projectId](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#projectid)
-- [serviceName](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#servicename)
-- [successMessage](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#successmessage)
-- [sync](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#sync)
-- [title](sdkApi_interfaces_entities_iExecution.SDKExecutionPayload.md#title)
+- [serviceName](SDKExecutionPayload.md#servicename)
+- [input](SDKExecutionPayload.md#input)
+- [functionName](SDKExecutionPayload.md#functionname)
+- [sync](SDKExecutionPayload.md#sync)
+- [projectId](SDKExecutionPayload.md#projectid)
+- [notification](SDKExecutionPayload.md#notification)
+- [title](SDKExecutionPayload.md#title)
+- [caption](SDKExecutionPayload.md#caption)
+- [successMessage](SDKExecutionPayload.md#successmessage)
+- [onSuccessEvent](SDKExecutionPayload.md#onsuccessevent)
+- [onFailureEvent](SDKExecutionPayload.md#onfailureevent)
 
 ## Properties
 
-### caption
+### serviceName
 
-• `Optional` **caption**: `string`
+• **serviceName**: `string`
 
-The notification caption
-
-___
-
-### functionName
-
-• **functionName**: `string`
-
-The name of the function
+The name of the service
 
 ___
 
@@ -50,51 +40,11 @@ The function's inputs as a dictionary
 
 ___
 
-### notification
+### functionName
 
-• `Optional` **notification**: `boolean`
+• **functionName**: `string`
 
-Add a notification to the execution
-
-___
-
-### onFailureEvent
-
-• `Optional` **onFailureEvent**: `EventPayload`
-
-An event to be triggered on execution failure
-
-___
-
-### onSuccessEvent
-
-• `Optional` **onSuccessEvent**: `EventPayload`
-
-An event to be triggered on execution success
-
-___
-
-### projectId
-
-• `Optional` **projectId**: `string`
-
-The project id
-
-___
-
-### serviceName
-
-• **serviceName**: `string`
-
-The name of the service
-
-___
-
-### successMessage
-
-• `Optional` **successMessage**: `string`
-
-A success toast message string
+The name of the function
 
 ___
 
@@ -107,8 +57,56 @@ To track these changes from an application, you can subscribe to the `DlEvent.EX
 
 ___
 
+### projectId
+
+• `Optional` **projectId**: `string`
+
+The project id
+
+___
+
+### notification
+
+• `Optional` **notification**: `boolean`
+
+Add a notification to the execution
+
+___
+
 ### title
 
 • `Optional` **title**: `string`
 
 The notification title
+
+___
+
+### caption
+
+• `Optional` **caption**: `string`
+
+The notification caption
+
+___
+
+### successMessage
+
+• `Optional` **successMessage**: `string`
+
+A success toast message string
+
+___
+
+### onSuccessEvent
+
+• `Optional` **onSuccessEvent**: [`EventPayload`](EventPayload.md)
+
+An event to be triggered on execution success
+
+___
+
+### onFailureEvent
+
+• `Optional` **onFailureEvent**: [`EventPayload`](EventPayload.md)
+
+An event to be triggered on execution failure

@@ -1,81 +1,31 @@
 # Enumeration: DlFrameEvent
 
-[appLib/SDKDrivers/xFrameDriver/events](../modules/appLib_SDKDrivers_xFrameDriver_events.md).DlFrameEvent
-
 Events that are emitted from the frame (SDK) to the host (platform)
 
 ## Table of contents
 
 ### Enumeration Members
 
-- [CLIPBOARD\_WRITE](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#clipboard_write)
-- [CLOSE\_DIALOG](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#close_dialog)
-- [INVOKE\_PANEL](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#invoke_panel)
-- [REDO](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#redo)
-- [REFRESH\_DATA](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#refresh_data)
-- [SET\_HEIGHT](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#set_height)
-- [TOAST\_MESSAGE](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#toast_message)
-- [TOGGLE\_ACTION\_LOCK](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#toggle_action_lock)
-- [UNDO](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#undo)
-- [UPDATE\_NODE\_CONFIG](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#update_node_config)
-- [UPDATE\_TIME\_SERVICE\_SETTINGS](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#update_time_service_settings)
-- [UPDATE\_VIEWER\_SETTINGS](appLib_SDKDrivers_xFrameDriver_events.DlFrameEvent.md#update_viewer_settings)
+- [UPDATE\_NODE\_CONFIG](DlFrameEvent.md#update_node_config)
+- [TOGGLE\_ACTION\_LOCK](DlFrameEvent.md#toggle_action_lock)
+- [CLOSE\_DIALOG](DlFrameEvent.md#close_dialog)
+- [REDO](DlFrameEvent.md#redo)
+- [UNDO](DlFrameEvent.md#undo)
+- [TOAST\_MESSAGE](DlFrameEvent.md#toast_message)
+- [INVOKE\_PANEL](DlFrameEvent.md#invoke_panel)
+- [SET\_HEIGHT](DlFrameEvent.md#set_height)
+- [UPDATE\_TIME\_SERVICE\_SETTINGS](DlFrameEvent.md#update_time_service_settings)
+- [UPDATE\_VIEWER\_SETTINGS](DlFrameEvent.md#update_viewer_settings)
+- [CLIPBOARD\_WRITE](DlFrameEvent.md#clipboard_write)
+- [REFRESH\_DATA](DlFrameEvent.md#refresh_data)
 
 ## Enumeration Members
 
-### CLIPBOARD\_WRITE
+### UPDATE\_NODE\_CONFIG
 
-• **CLIPBOARD\_WRITE** = ``"app:clipboardWrite"``
+• **UPDATE\_NODE\_CONFIG** = ``"updateNodeConfig"``
 
-Copy to clipboard
-
-___
-
-### CLOSE\_DIALOG
-
-• **CLOSE\_DIALOG** = ``"app:closeDialog"``
-
-Closes dialog slot
-
-___
-
-### INVOKE\_PANEL
-
-• **INVOKE\_PANEL** = ``"invokePanel"``
-
-Invokes another panel from the app
-
-___
-
-### REDO
-
-• **REDO** = ``"redo"``
-
-Redo action
-
-___
-
-### REFRESH\_DATA
-
-• **REFRESH\_DATA** = ``"app:refreshData"``
-
-Refresh page data
-
-___
-
-### SET\_HEIGHT
-
-• **SET\_HEIGHT** = ``"app:setHeight"``
-
-Sets iframe height
-
-___
-
-### TOAST\_MESSAGE
-
-• **TOAST\_MESSAGE** = ``"app:toastMessage"``
-
-Toast message (info, warning, error, success)
+Updates the node configuration
 
 ___
 
@@ -87,6 +37,22 @@ Toggles the action lock
 
 ___
 
+### CLOSE\_DIALOG
+
+• **CLOSE\_DIALOG** = ``"app:closeDialog"``
+
+Closes dialog slot
+
+___
+
+### REDO
+
+• **REDO** = ``"redo"``
+
+Redo action
+
+___
+
 ### UNDO
 
 • **UNDO** = ``"undo"``
@@ -95,11 +61,27 @@ Undo action
 
 ___
 
-### UPDATE\_NODE\_CONFIG
+### TOAST\_MESSAGE
 
-• **UPDATE\_NODE\_CONFIG** = ``"updateNodeConfig"``
+• **TOAST\_MESSAGE** = ``"app:toastMessage"``
 
-Updates the node configuration
+Toast message (info, warning, error, success)
+
+___
+
+### INVOKE\_PANEL
+
+• **INVOKE\_PANEL** = ``"invokePanel"``
+
+Invokes another panel from the app
+
+___
+
+### SET\_HEIGHT
+
+• **SET\_HEIGHT** = ``"app:setHeight"``
+
+Sets iframe height
 
 ___
 
@@ -116,3 +98,19 @@ ___
 • **UPDATE\_VIEWER\_SETTINGS** = ``"app:updateViewerSettings"``
 
 Sets the settings values of the top bar controls based on the values provided by the app.
+
+___
+
+### CLIPBOARD\_WRITE
+
+• **CLIPBOARD\_WRITE** = ``"app:clipboardWrite"``
+
+Copy to clipboard
+
+___
+
+### REFRESH\_DATA
+
+• **REFRESH\_DATA** = ``"app:refreshData"``
+
+Refresh page data

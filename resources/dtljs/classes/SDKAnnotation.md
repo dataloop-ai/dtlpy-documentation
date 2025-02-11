@@ -1,7 +1,5 @@
 # Class: SDKAnnotation<T\>
 
-[sdkApi/interfaces/entities/iAnnotation](../modules/sdkApi_interfaces_entities_iAnnotation.md).SDKAnnotation
-
 Represents an annotation instance within the SDK.
 
 **`Implements`**
@@ -14,38 +12,39 @@ Represents an annotation instance within the SDK.
 
 ## Implements
 
-- [`IAnnotation`](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md)
+- [`IAnnotation`](../interfaces/IAnnotation.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#constructor)
+- [constructor](SDKAnnotation.md#constructor)
 
 ### Properties
 
-- [annotationId](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#annotationid)
-- [attributes](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#attributes)
-- [clientId](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#clientid)
-- [coordinates](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#coordinates)
-- [createdAt](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#createdat)
-- [creator](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#creator)
-- [data](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#data)
-- [datasetId](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#datasetid)
-- [description](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#description)
-- [id](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#id)
-- [itemId](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#itemid)
-- [label](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#label)
-- [labelSuggestions](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#labelsuggestions)
-- [metadata](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#metadata)
-- [snapshots](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#snapshots)
-- [type](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#type)
-- [updatedAt](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#updatedat)
-- [updatedBy](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#updatedby)
+- [clientId](SDKAnnotation.md#clientid)
+- [coordinates](SDKAnnotation.md#coordinates)
+- [createdAt](SDKAnnotation.md#createdat)
+- [creator](SDKAnnotation.md#creator)
+- [datasetId](SDKAnnotation.md#datasetid)
+- [annotationId](SDKAnnotation.md#annotationid)
+- [id](SDKAnnotation.md#id)
+- [itemId](SDKAnnotation.md#itemid)
+- [label](SDKAnnotation.md#label)
+- [labelSuggestions](SDKAnnotation.md#labelsuggestions)
+- [metadata](SDKAnnotation.md#metadata)
+- [type](SDKAnnotation.md#type)
+- [updatedAt](SDKAnnotation.md#updatedat)
+- [updatedBy](SDKAnnotation.md#updatedby)
+- [attributes](SDKAnnotation.md#attributes)
+- [description](SDKAnnotation.md#description)
+- [data](SDKAnnotation.md#data)
+- [labelColor](SDKAnnotation.md#labelcolor)
+- [snapshots](SDKAnnotation.md#snapshots)
 
 ### Methods
 
-- [toJSON](sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md#tojson)
+- [toJSON](SDKAnnotation.md#tojson)
 
 ## Constructors
 
@@ -69,22 +68,6 @@ Creates an instance of SDKAnnotation.
 
 ## Properties
 
-### annotationId
-
-• `Optional` **annotationId**: `string`
-
-The annotation ID of the annotation.
-
-___
-
-### attributes
-
-• **attributes**: `string`[]
-
-The attributes of the annotation.
-
-___
-
 ### clientId
 
 • **clientId**: `string`
@@ -93,7 +76,7 @@ The client ID of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[clientId](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#clientid)
+[IAnnotation](../interfaces/IAnnotation.md).[clientId](../interfaces/IAnnotation.md#clientid)
 
 ___
 
@@ -105,19 +88,19 @@ The coordinates of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[coordinates](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#coordinates)
+[IAnnotation](../interfaces/IAnnotation.md).[coordinates](../interfaces/IAnnotation.md#coordinates)
 
 ___
 
 ### createdAt
 
-• **createdAt**: `IDate`
+• **createdAt**: [`IDate`](../modules.md#idate)
 
 The creation date of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[createdAt](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#createdat)
+[IAnnotation](../interfaces/IAnnotation.md).[createdAt](../interfaces/IAnnotation.md#createdat)
 
 ___
 
@@ -129,15 +112,7 @@ The creator of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[creator](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#creator)
-
-___
-
-### data
-
-• `Optional` **data**: `T`
-
-The data of the annotation.
+[IAnnotation](../interfaces/IAnnotation.md).[creator](../interfaces/IAnnotation.md#creator)
 
 ___
 
@@ -149,15 +124,15 @@ The ID of the dataset the annotation belongs to.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[datasetId](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#datasetid)
+[IAnnotation](../interfaces/IAnnotation.md).[datasetId](../interfaces/IAnnotation.md#datasetid)
 
 ___
 
-### description
+### annotationId
 
-• `Optional` **description**: `string`
+• `Optional` **annotationId**: `string`
 
-The description of the annotation.
+The annotation ID of the annotation.
 
 ___
 
@@ -169,7 +144,7 @@ The ID of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[id](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#id)
+[IAnnotation](../interfaces/IAnnotation.md).[id](../interfaces/IAnnotation.md#id)
 
 ___
 
@@ -181,7 +156,7 @@ The item ID of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[itemId](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#itemid)
+[IAnnotation](../interfaces/IAnnotation.md).[itemId](../interfaces/IAnnotation.md#itemid)
 
 ___
 
@@ -193,7 +168,7 @@ The label of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[label](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#label)
+[IAnnotation](../interfaces/IAnnotation.md).[label](../interfaces/IAnnotation.md#label)
 
 ___
 
@@ -209,7 +184,7 @@ The label suggestions for the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[labelSuggestions](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#labelsuggestions)
+[IAnnotation](../interfaces/IAnnotation.md).[labelSuggestions](../interfaces/IAnnotation.md#labelsuggestions)
 
 ___
 
@@ -221,15 +196,7 @@ The metadata of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[metadata](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#metadata)
-
-___
-
-### snapshots
-
-• **snapshots**: `SnapshotService`<`T`\>
-
-The snapshots of the annotation.
+[IAnnotation](../interfaces/IAnnotation.md).[metadata](../interfaces/IAnnotation.md#metadata)
 
 ___
 
@@ -241,19 +208,19 @@ The type of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[type](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#type)
+[IAnnotation](../interfaces/IAnnotation.md).[type](../interfaces/IAnnotation.md#type)
 
 ___
 
 ### updatedAt
 
-• **updatedAt**: `IDate`
+• **updatedAt**: [`IDate`](../modules.md#idate)
 
 The last update date of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[updatedAt](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#updatedat)
+[IAnnotation](../interfaces/IAnnotation.md).[updatedAt](../interfaces/IAnnotation.md#updatedat)
 
 ___
 
@@ -265,7 +232,45 @@ The last updater of the annotation.
 
 #### Implementation of
 
-[IAnnotation](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md).[updatedBy](../interfaces/sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#updatedby)
+[IAnnotation](../interfaces/IAnnotation.md).[updatedBy](../interfaces/IAnnotation.md#updatedby)
+
+___
+
+### attributes
+
+• **attributes**: `string`[]
+
+The attributes of the annotation.
+
+___
+
+### description
+
+• `Optional` **description**: `string`
+
+The description of the annotation.
+
+___
+
+### data
+
+• `Optional` **data**: `T`
+
+The data of the annotation.
+
+___
+
+### labelColor
+
+• `Optional` **labelColor**: `string`
+
+___
+
+### snapshots
+
+• **snapshots**: [`SnapshotService`](SnapshotService.md)<`T`\>
+
+The snapshots of the annotation.
 
 ## Methods
 
@@ -281,20 +286,20 @@ Returns the annotation as a JSON object.
 
 | Name | Type |
 | :------ | :------ |
-| `attributes` | `string`[] |
 | `clientId` | `string` |
 | `coordinates` | `any` |
-| `createdAt` | `IDate` |
+| `createdAt` | [`IDate`](../modules.md#idate) |
 | `creator` | `string` |
-| `data` | `T` |
 | `datasetId` | `string` |
-| `description` | `string` |
 | `id` | `string` |
 | `itemId` | `string` |
 | `label` | `string` |
-| `labelColor` | `string` |
 | `labelSuggestions` | { `[p: string]`: `number`;  } |
 | `metadata` | `any` |
 | `type` | `string` |
-| `updatedAt` | `IDate` |
+| `updatedAt` | [`IDate`](../modules.md#idate) |
 | `updatedBy` | `string` |
+| `attributes` | `string`[] |
+| `description` | `string` |
+| `labelColor` | `string` |
+| `data` | `T` |

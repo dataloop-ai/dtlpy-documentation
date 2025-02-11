@@ -1,7 +1,5 @@
 # Interface: ITask
 
-[sdkApi/interfaces/entities/iTask](../modules/sdkApi_interfaces_entities_iTask.md).ITask
-
 An interface representing a Task object, extending the IEntity interface.
 
 **`Interface`**
@@ -10,61 +8,45 @@ ITask
 
 ## Hierarchy
 
-- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
+- [`IEntity`](IEntity.md)
 
   ↳ **`ITask`**
 
 ## Implemented by
 
-- [`SDKTask`](../classes/sdkApi_interfaces_entities_iTask.SDKTask.md)
+- [`SDKTask`](../classes/SDKTask.md)
 
 ## Table of contents
 
 ### Properties
 
-- [assignmentIds](sdkApi_interfaces_entities_iTask.ITask.md#assignmentids)
-- [availableActions](sdkApi_interfaces_entities_iTask.ITask.md#availableactions)
-- [clientId](sdkApi_interfaces_entities_iTask.ITask.md#clientid)
-- [createdAt](sdkApi_interfaces_entities_iTask.ITask.md#createdat)
-- [creator](sdkApi_interfaces_entities_iTask.ITask.md#creator)
-- [datasetId](sdkApi_interfaces_entities_iTask.ITask.md#datasetid)
-- [dueDate](sdkApi_interfaces_entities_iTask.ITask.md#duedate)
-- [error](sdkApi_interfaces_entities_iTask.ITask.md#error)
-- [forReview](sdkApi_interfaces_entities_iTask.ITask.md#forreview)
-- [hasParent](sdkApi_interfaces_entities_iTask.ITask.md#hasparent)
-- [id](sdkApi_interfaces_entities_iTask.ITask.md#id)
-- [issues](sdkApi_interfaces_entities_iTask.ITask.md#issues)
-- [itemStatus](sdkApi_interfaces_entities_iTask.ITask.md#itemstatus)
-- [metadata](sdkApi_interfaces_entities_iTask.ITask.md#metadata)
-- [name](sdkApi_interfaces_entities_iTask.ITask.md#name)
-- [priority](sdkApi_interfaces_entities_iTask.ITask.md#priority)
-- [progress](sdkApi_interfaces_entities_iTask.ITask.md#progress)
-- [projectId](sdkApi_interfaces_entities_iTask.ITask.md#projectid)
-- [query](sdkApi_interfaces_entities_iTask.ITask.md#query)
-- [recipeId](sdkApi_interfaces_entities_iTask.ITask.md#recipeid)
-- [spec](sdkApi_interfaces_entities_iTask.ITask.md#spec)
-- [status](sdkApi_interfaces_entities_iTask.ITask.md#status)
-- [taskOwner](sdkApi_interfaces_entities_iTask.ITask.md#taskowner)
-- [updatedAt](sdkApi_interfaces_entities_iTask.ITask.md#updatedat)
-- [updatedBy](sdkApi_interfaces_entities_iTask.ITask.md#updatedby)
+- [clientId](ITask.md#clientid)
+- [updatedBy](ITask.md#updatedby)
+- [id](ITask.md#id)
+- [creator](ITask.md#creator)
+- [taskOwner](ITask.md#taskowner)
+- [createdAt](ITask.md#createdat)
+- [updatedAt](ITask.md#updatedat)
+- [datasetId](ITask.md#datasetid)
+- [recipeId](ITask.md#recipeid)
+- [projectId](ITask.md#projectid)
+- [hasParent](ITask.md#hasparent)
+- [name](ITask.md#name)
+- [dueDate](ITask.md#duedate)
+- [query](ITask.md#query)
+- [status](ITask.md#status)
+- [assignmentIds](ITask.md#assignmentids)
+- [metadata](ITask.md#metadata)
+- [itemStatus](ITask.md#itemstatus)
+- [spec](ITask.md#spec)
+- [progress](ITask.md#progress)
+- [forReview](ITask.md#forreview)
+- [issues](ITask.md#issues)
+- [error](ITask.md#error)
+- [availableActions](ITask.md#availableactions)
+- [priority](ITask.md#priority)
 
 ## Properties
-
-### assignmentIds
-
-• **assignmentIds**: `string`[]
-
-The IDs of the assignments associated with the task.
-
-___
-
-### availableActions
-
-• `Optional` **availableActions**: `any`[]
-
-Available actions for the task.
-
-___
 
 ### clientId
 
@@ -74,71 +56,19 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
+[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
 
 ___
 
-### createdAt
+### updatedBy
 
-• **createdAt**: `Date`
+• `Optional` **updatedBy**: `string`
 
-The date and time when the task was created.
+The user who last updated the Entity.
 
-#### Overrides
+#### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
-
-___
-
-### creator
-
-• **creator**: `string`
-
-The creator of the task.
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
-
-___
-
-### datasetId
-
-• **datasetId**: `string`
-
-The ID of the dataset the task belongs to.
-
-___
-
-### dueDate
-
-• **dueDate**: `number`
-
-The due date of the task.
-
-___
-
-### error
-
-• `Optional` **error**: `any`
-
-Task error.
-
-___
-
-### forReview
-
-• **forReview**: `number`
-
-The number of items that need to be reviewed.
-
-___
-
-### hasParent
-
-• **hasParent**: `boolean`
-
-Whether the task has a parent task.
+[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
 
 ___
 
@@ -150,15 +80,131 @@ The unique identifier of the task.
 
 #### Overrides
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
+[IEntity](IEntity.md).[id](IEntity.md#id)
 
 ___
 
-### issues
+### creator
 
-• **issues**: `number`
+• **creator**: `string`
 
-The number of issues associated with the task.
+The creator of the task.
+
+#### Overrides
+
+[IEntity](IEntity.md).[creator](IEntity.md#creator)
+
+___
+
+### taskOwner
+
+• **taskOwner**: `string`
+
+The owner of the task.
+
+___
+
+### createdAt
+
+• **createdAt**: `Date`
+
+The date and time when the task was created.
+
+#### Overrides
+
+[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)
+
+___
+
+### updatedAt
+
+• **updatedAt**: `Date`
+
+The date and time when the task was last updated.
+
+#### Overrides
+
+[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
+
+___
+
+### datasetId
+
+• **datasetId**: `string`
+
+The ID of the dataset the task belongs to.
+
+___
+
+### recipeId
+
+• **recipeId**: `string`
+
+The ID of the recipe associated with the task.
+
+___
+
+### projectId
+
+• **projectId**: `string`
+
+The ID of the project the task belongs to.
+
+___
+
+### hasParent
+
+• **hasParent**: `boolean`
+
+Whether the task has a parent task.
+
+___
+
+### name
+
+• **name**: `string`
+
+The name of the task.
+
+___
+
+### dueDate
+
+• **dueDate**: `number`
+
+The due date of the task.
+
+___
+
+### query
+
+• **query**: `string`
+
+The query associated with the task.
+
+___
+
+### status
+
+• **status**: `string`
+
+The status of the task.
+
+___
+
+### assignmentIds
+
+• **assignmentIds**: `string`[]
+
+The IDs of the assignments associated with the task.
+
+___
+
+### metadata
+
+• `Optional` **metadata**: `any`
+
+The task's metadata.
 
 ___
 
@@ -178,27 +224,11 @@ The status of the items associated with the task.
 
 ___
 
-### metadata
+### spec
 
-• `Optional` **metadata**: `any`
+• **spec**: `any`
 
-The task's metadata.
-
-___
-
-### name
-
-• **name**: `string`
-
-The name of the task.
-
-___
-
-### priority
-
-• `Optional` **priority**: `number`
-
-Task priority.
+The task's spec.
 
 ___
 
@@ -210,72 +240,40 @@ The progress of the task.
 
 ___
 
-### projectId
+### forReview
 
-• **projectId**: `string`
+• **forReview**: `number`
 
-The ID of the project the task belongs to.
-
-___
-
-### query
-
-• **query**: `string`
-
-The query associated with the task.
+The number of items that need to be reviewed.
 
 ___
 
-### recipeId
+### issues
 
-• **recipeId**: `string`
+• **issues**: `number`
 
-The ID of the recipe associated with the task.
-
-___
-
-### spec
-
-• **spec**: `any`
-
-The task's spec.
+The number of issues associated with the task.
 
 ___
 
-### status
+### error
 
-• **status**: `string`
+• `Optional` **error**: `any`
 
-The status of the task.
-
-___
-
-### taskOwner
-
-• **taskOwner**: `string`
-
-The owner of the task.
+Task error.
 
 ___
 
-### updatedAt
+### availableActions
 
-• **updatedAt**: `Date`
+• `Optional` **availableActions**: `any`[]
 
-The date and time when the task was last updated.
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
+Available actions for the task.
 
 ___
 
-### updatedBy
+### priority
 
-• `Optional` **updatedBy**: `string`
+• `Optional` **priority**: `number`
 
-The user who last updated the Entity.
-
-#### Inherited from
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)
+Task priority.

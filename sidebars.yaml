@@ -218,96 +218,21 @@
       label: Utilities
   - group: JS SDK
     items:
-    - group: xFrame
-      items:
-      - label: API
-        page: resources/dtljs/xFrame/api.md
-      - label: Design
-        page: resources/dtljs/xFrame/design.md
-      page: resources/dtljs/xFrame/index.md
+    - label: README
+      page: resources/dtljs/README.md
+    - label: Classes
+      page: resources/dtljs/classes/index.md
+    - label: Interfaces
+      page: resources/dtljs/interfaces/index.md
+    - label: Enums
+      page: resources/dtljs/enums/index.md
+    - label: Repositories
+      page: resources/dtljs/repositories/index.md
+    - label: Entities
+      page: resources/dtljs/entities/index.md
     - label: xFrameDriver
       page: resources/dtljs/classes/xFrameDriver.md
-    - group: Interfaces
-      items:
-      - label: IBundle
-        page: resources/dtljs/interfaces/IBundle.md
-      - label: IEntity
-        page: resources/dtljs/interfaces/IEntity.md
-      - label: IAnnotation
-        page: resources/dtljs/interfaces/IAnnotation.md
-      - label: IDataset
-        page: resources/dtljs/interfaces/IDataset.md
-      - label: IDriver
-        page: resources/dtljs/interfaces/IDriver.md
-      - label: IItem
-        page: resources/dtljs/interfaces/IItem.md
-      - label: IProject
-        page: resources/dtljs/interfaces/IProject.md
-      - label: ITask
-        page: resources/dtljs/interfaces/ITask.md
-      - label: IContributor
-        page: resources/dtljs/interfaces/IContributor.md
-      - label: IPagedResponse
-        page: resources/dtljs/interfaces/IPagedResponse.md
-      - label: SDKExecutionPayload
-        page: resources/dtljs/interfaces/SDKExecutionPayload.md
-      page: resources/dtljs/interfaces/index.md
-    - group: Enums
-      items:
-      - label: DlEvent
-        page: resources/dtljs/enums/DlEvent.md
-      - label: DlFrameEvent
-        page: resources/dtljs/enums/DlFrameEvent.md
-      page: resources/dtljs/enums/index.md
-    - group: Repositories
-      items:
-      - label: Annotations
-        page: resources/dtljs/classes/Annotations.md
-      - label: Contributors
-        page: resources/dtljs/classes/Contributors.md
-      - label: Datasets
-        page: resources/dtljs/classes/Datasets.md
-      - label: Drivers
-        page: resources/dtljs/classes/Drivers.md
-      - label: Items
-        page: resources/dtljs/classes/Items.md
-      - label: Labels
-        page: resources/dtljs/classes/Labels.md
-      - label: Ontologies
-        page: resources/dtljs/classes/Ontologies.md
-      - label: Projects
-        page: resources/dtljs/classes/Projects.md
-      - label: Recipes
-        page: resources/dtljs/classes/Recipes.md
-      - label: Settings
-        page: resources/dtljs/classes/AppSettings.md
-      - label: Tasks
-        page: resources/dtljs/classes/Tasks.md
-      - label: Executions
-        page: resources/dtljs/classes/Executions.md
-      page: resources/dtljs/classes/repositories.md
-    - group: Entities
-      items:
-      - label: SDKAnnotation
-        page: resources/dtljs/classes/SDKAnnotation.md
-      - label: SDKAnnotationEvent
-        page: resources/dtljs/classes/SDKAnnotationEvent.md
-      - label: SDKContributor
-        page: resources/dtljs/classes/SDKContributor.md
-      - label: SDKDataset
-        page: resources/dtljs/classes/SDKDataset.md
-      - label: SDKDriver
-        page: resources/dtljs/classes/SDKDriver.md
-      - label: SDKFunctionExecution
-        page: resources/dtljs/classes/SDKFunctionExecution.md
-      - label: SDKItem
-        page: resources/dtljs/classes/SDKItem.md
-      - label: SDKProject
-        page: resources/dtljs/classes/SDKProject.md
-      - label: SDKTask
-        page: resources/dtljs/classes/SDKTask.md
-      page: resources/dtljs/classes/entities.md
-    page: resources/dtljs/index.md
+   
   page: resources/resources.mdx
 - href: https://docs.dataloop.ai/docs/glossary-overview
   label: Glossary

@@ -1,7 +1,5 @@
 # Interface: SDKUpdateTaskAssigneesPayload
 
-[sdkApi/interfaces/entities/iTask](../modules/sdkApi_interfaces_entities_iTask.md).SDKUpdateTaskAssigneesPayload
-
 An interface representing the payload for updating task assignees.
 
 **`Interface`**
@@ -12,12 +10,20 @@ SDKUpdateTaskAssigneesPayload
 
 ### Properties
 
-- [action](sdkApi_interfaces_entities_iTask.SDKUpdateTaskAssigneesPayload.md#action)
-- [assignees](sdkApi_interfaces_entities_iTask.SDKUpdateTaskAssigneesPayload.md#assignees)
-- [groups](sdkApi_interfaces_entities_iTask.SDKUpdateTaskAssigneesPayload.md#groups)
-- [taskId](sdkApi_interfaces_entities_iTask.SDKUpdateTaskAssigneesPayload.md#taskid)
+- [taskId](SDKUpdateTaskAssigneesPayload.md#taskid)
+- [action](SDKUpdateTaskAssigneesPayload.md#action)
+- [assignees](SDKUpdateTaskAssigneesPayload.md#assignees)
+- [groups](SDKUpdateTaskAssigneesPayload.md#groups)
 
 ## Properties
+
+### taskId
+
+• **taskId**: `string`
+
+The ID of the task.
+
+___
 
 ### action
 
@@ -40,11 +46,3 @@ ___
 • `Optional` **groups**: `string`[]
 
 The groups to add or remove.
-
-___
-
-### taskId
-
-• **taskId**: `string`
-
-The ID of the task.

@@ -1,7 +1,5 @@
 # Class: AppSettings
 
-[appLib/SDKDrivers/xFrameDriver/appSettings](../modules/appLib_SDKDrivers_xFrameDriver_appSettings.md).AppSettings
-
 Settings repository.
 
 The Settings class allows you to manage the settings of the app.
@@ -12,95 +10,31 @@ IBundle<iAppSettings>
 
 ## Hierarchy
 
-- [`Repository`](appLib_SDKDrivers_xFrameDriver_repository.Repository.md)
+- `Repository`
 
   ↳ **`AppSettings`**
 
 ## Implements
 
-- [`IBundle`](../interfaces/sdkApi_interfaces_bundles.IBundle.md)<`iAppSettings`\>
+- [`IBundle`](../interfaces/IBundle.md)<[`iAppSettings`](../interfaces/iAppSettings.md)\>
 
 ## Table of contents
 
-### Constructors
-
-- [constructor](appLib_SDKDrivers_xFrameDriver_appSettings.AppSettings.md#constructor)
-
 ### Methods
 
-- [crudReq](appLib_SDKDrivers_xFrameDriver_appSettings.AppSettings.md#crudreq)
-- [crudReqSync](appLib_SDKDrivers_xFrameDriver_appSettings.AppSettings.md#crudreqsync)
-- [get](appLib_SDKDrivers_xFrameDriver_appSettings.AppSettings.md#get)
+- [get](AppSettings.md#get)
+- [crudReqSync](AppSettings.md#crudreqsync)
+- [crudReq](AppSettings.md#crudreq)
 
-## Constructors
+### Constructors
 
-### constructor
-
-• **new AppSettings**(`agent`)
-
-Creates an instance of Repository.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `agent` | `PeerAgent` |
-
-#### Inherited from
-
-[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[constructor](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#constructor)
+- [constructor](AppSettings.md#constructor)
 
 ## Methods
 
-### crudReq
-
-▸ **crudReq**(`data`): `void`
-
-Sends a CRUD request to the xFrame.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `data` | `any` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[crudReq](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#crudreq)
-
-___
-
-### crudReqSync
-
-▸ **crudReqSync**(`data`, `options?`): `Promise`<`any`\>
-
-Sends a CRUD request to the xFrame.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `data` | `any` | The data to send. |
-| `options` | `Object` |  |
-| `options.timeout?` | `number` | an option to set the timeout for the request. |
-
-#### Returns
-
-`Promise`<`any`\>
-
-#### Inherited from
-
-[Repository](appLib_SDKDrivers_xFrameDriver_repository.Repository.md).[crudReqSync](appLib_SDKDrivers_xFrameDriver_repository.Repository.md#crudreqsync)
-
-___
-
 ### get
 
-▸ **get**(`setting?`): `Promise`<`iAppSettings`\>
+▸ **get**(`setting?`): `Promise`<[`iAppSettings`](../interfaces/iAppSettings.md)\>
 
 Retrieves the settings of your app.
 
@@ -125,10 +59,74 @@ const setting = await dl.settings.get('userSettingName')
 
 #### Returns
 
-`Promise`<`iAppSettings`\>
+`Promise`<[`iAppSettings`](../interfaces/iAppSettings.md)\>
 
 - A promise that resolves to the settings of the app.
 
 #### Implementation of
 
 IBundle.get
+
+___
+
+### crudReqSync
+
+▸ **crudReqSync**(`data`, `options?`): `Promise`<`any`\>
+
+Sends a CRUD request to the xFrame.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | `any` | The data to send. |
+| `options` | `Object` |  |
+| `options.timeout?` | `number` | an option to set the timeout for the request. |
+
+#### Returns
+
+`Promise`<`any`\>
+
+#### Inherited from
+
+Repository.crudReqSync
+
+___
+
+### crudReq
+
+▸ **crudReq**(`data`): `void`
+
+Sends a CRUD request to the xFrame.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `any` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+Repository.crudReq
+
+## Constructors
+
+### constructor
+
+• **new AppSettings**(`agent`)
+
+Creates an instance of Repository.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `agent` | [`PeerAgent`](PeerAgent.md) |
+
+#### Inherited from
+
+Repository.constructor

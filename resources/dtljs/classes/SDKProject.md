@@ -1,7 +1,5 @@
 # Class: SDKProject
 
-[sdkApi/interfaces/entities/iProject](../modules/sdkApi_interfaces_entities_iProject.md).SDKProject
-
 Represents a project instance within the SDK.
 
 **`Implements`**
@@ -10,33 +8,33 @@ IProject
 
 ## Implements
 
-- [`IProject`](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md)
+- [`IProject`](../interfaces/IProject.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](sdkApi_interfaces_entities_iProject.SDKProject.md#constructor)
+- [constructor](SDKProject.md#constructor)
 
 ### Properties
 
-- [account](sdkApi_interfaces_entities_iProject.SDKProject.md#account)
-- [contributors](sdkApi_interfaces_entities_iProject.SDKProject.md#contributors)
-- [createdAt](sdkApi_interfaces_entities_iProject.SDKProject.md#createdat)
-- [creator](sdkApi_interfaces_entities_iProject.SDKProject.md#creator)
-- [datasetsCount](sdkApi_interfaces_entities_iProject.SDKProject.md#datasetscount)
-- [groups](sdkApi_interfaces_entities_iProject.SDKProject.md#groups)
-- [id](sdkApi_interfaces_entities_iProject.SDKProject.md#id)
-- [isBlocked](sdkApi_interfaces_entities_iProject.SDKProject.md#isblocked)
-- [name](sdkApi_interfaces_entities_iProject.SDKProject.md#name)
-- [org](sdkApi_interfaces_entities_iProject.SDKProject.md#org)
-- [role](sdkApi_interfaces_entities_iProject.SDKProject.md#role)
-- [updatedAt](sdkApi_interfaces_entities_iProject.SDKProject.md#updatedat)
+- [creator](SDKProject.md#creator)
+- [id](SDKProject.md#id)
+- [name](SDKProject.md#name)
+- [createdAt](SDKProject.md#createdat)
+- [updatedAt](SDKProject.md#updatedat)
+- [contributors](SDKProject.md#contributors)
+- [groups](SDKProject.md#groups)
+- [datasetsCount](SDKProject.md#datasetscount)
+- [role](SDKProject.md#role)
+- [org](SDKProject.md#org)
+- [account](SDKProject.md#account)
+- [isBlocked](SDKProject.md#isblocked)
 
 ### Accessors
 
-- [accountId](sdkApi_interfaces_entities_iProject.SDKProject.md#accountid)
-- [orgId](sdkApi_interfaces_entities_iProject.SDKProject.md#orgid)
+- [accountId](SDKProject.md#accountid)
+- [orgId](SDKProject.md#orgid)
 
 ## Constructors
 
@@ -54,42 +52,6 @@ Creates an instance of SDKProject.
 
 ## Properties
 
-### account
-
-• `Optional` **account**: `IAccount`
-
-The account associated with the project.
-
-#### Implementation of
-
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[account](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#account)
-
-___
-
-### contributors
-
-• `Optional` **contributors**: `IUser`[]
-
-The project contributors.
-
-#### Implementation of
-
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[contributors](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#contributors)
-
-___
-
-### createdAt
-
-• **createdAt**: `IDate`
-
-The creation date.
-
-#### Implementation of
-
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[createdAt](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#createdat)
-
-___
-
 ### creator
 
 • **creator**: `string`
@@ -98,31 +60,7 @@ The project creator.
 
 #### Implementation of
 
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[creator](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#creator)
-
-___
-
-### datasetsCount
-
-• `Optional` **datasetsCount**: `number`
-
-The amount of datasets associated with the project.
-
-#### Implementation of
-
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[datasetsCount](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#datasetscount)
-
-___
-
-### groups
-
-• `Optional` **groups**: `IGroup`[]
-
-The project groups.
-
-#### Implementation of
-
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[groups](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#groups)
+[IProject](../interfaces/IProject.md).[creator](../interfaces/IProject.md#creator)
 
 ___
 
@@ -134,19 +72,7 @@ The project ID.
 
 #### Implementation of
 
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[id](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#id)
-
-___
-
-### isBlocked
-
-• **isBlocked**: `boolean`
-
-Indicates if the project is blocked.
-
-#### Implementation of
-
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[isBlocked](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#isblocked)
+[IProject](../interfaces/IProject.md).[id](../interfaces/IProject.md#id)
 
 ___
 
@@ -158,19 +84,67 @@ The project name.
 
 #### Implementation of
 
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[name](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#name)
+[IProject](../interfaces/IProject.md).[name](../interfaces/IProject.md#name)
 
 ___
 
-### org
+### createdAt
 
-• `Optional` **org**: `IOrg`
+• **createdAt**: [`IDate`](../modules.md#idate)
 
-The organization associated with the project.
+The creation date.
 
 #### Implementation of
 
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[org](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#org)
+[IProject](../interfaces/IProject.md).[createdAt](../interfaces/IProject.md#createdat)
+
+___
+
+### updatedAt
+
+• **updatedAt**: [`IDate`](../modules.md#idate)
+
+The last update date.
+
+#### Implementation of
+
+[IProject](../interfaces/IProject.md).[updatedAt](../interfaces/IProject.md#updatedat)
+
+___
+
+### contributors
+
+• `Optional` **contributors**: [`IUser`](../interfaces/IUser.md)[]
+
+The project contributors.
+
+#### Implementation of
+
+[IProject](../interfaces/IProject.md).[contributors](../interfaces/IProject.md#contributors)
+
+___
+
+### groups
+
+• `Optional` **groups**: [`IGroup`](../interfaces/IGroup.md)[]
+
+The project groups.
+
+#### Implementation of
+
+[IProject](../interfaces/IProject.md).[groups](../interfaces/IProject.md#groups)
+
+___
+
+### datasetsCount
+
+• `Optional` **datasetsCount**: `number`
+
+The amount of datasets associated with the project.
+
+#### Implementation of
+
+[IProject](../interfaces/IProject.md).[datasetsCount](../interfaces/IProject.md#datasetscount)
 
 ___
 
@@ -182,19 +156,43 @@ The role of the project.
 
 #### Implementation of
 
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[role](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#role)
+[IProject](../interfaces/IProject.md).[role](../interfaces/IProject.md#role)
 
 ___
 
-### updatedAt
+### org
 
-• **updatedAt**: `IDate`
+• `Optional` **org**: [`IOrg`](../interfaces/IOrg.md)
 
-The last update date.
+The organization associated with the project.
 
 #### Implementation of
 
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[updatedAt](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#updatedat)
+[IProject](../interfaces/IProject.md).[org](../interfaces/IProject.md#org)
+
+___
+
+### account
+
+• `Optional` **account**: [`IAccount`](../interfaces/IAccount.md)
+
+The account associated with the project.
+
+#### Implementation of
+
+[IProject](../interfaces/IProject.md).[account](../interfaces/IProject.md#account)
+
+___
+
+### isBlocked
+
+• **isBlocked**: `boolean`
+
+Indicates if the project is blocked.
+
+#### Implementation of
+
+[IProject](../interfaces/IProject.md).[isBlocked](../interfaces/IProject.md#isblocked)
 
 ## Accessors
 
@@ -210,7 +208,7 @@ Gets the account ID associated with the project.
 
 #### Implementation of
 
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[accountId](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#accountid)
+[IProject](../interfaces/IProject.md).[accountId](../interfaces/IProject.md#accountid)
 
 ___
 
@@ -226,4 +224,4 @@ Gets the organization ID associated with the project.
 
 #### Implementation of
 
-[IProject](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md).[orgId](../interfaces/sdkApi_interfaces_entities_iProject.IProject.md#orgid)
+[IProject](../interfaces/IProject.md).[orgId](../interfaces/IProject.md#orgid)

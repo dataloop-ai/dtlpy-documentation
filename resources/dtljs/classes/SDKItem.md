@@ -1,40 +1,38 @@
 # Class: SDKItem
 
-[sdkApi/interfaces/entities/iItem](../modules/sdkApi_interfaces_entities_iItem.md).SDKItem
-
 Represents an item instance within the SDK.
 
 **`Implements`**
 
 ## Implements
 
-- [`IItem`](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md)
+- [`IItem`](../interfaces/IItem.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](sdkApi_interfaces_entities_iItem.SDKItem.md#constructor)
+- [constructor](SDKItem.md#constructor)
 
 ### Properties
 
-- [annotated](sdkApi_interfaces_entities_iItem.SDKItem.md#annotated)
-- [annotations](sdkApi_interfaces_entities_iItem.SDKItem.md#annotations)
-- [createdAt](sdkApi_interfaces_entities_iItem.SDKItem.md#createdat)
-- [creator](sdkApi_interfaces_entities_iItem.SDKItem.md#creator)
-- [dataset](sdkApi_interfaces_entities_iItem.SDKItem.md#dataset)
-- [datasetId](sdkApi_interfaces_entities_iItem.SDKItem.md#datasetid)
-- [description](sdkApi_interfaces_entities_iItem.SDKItem.md#description)
-- [dir](sdkApi_interfaces_entities_iItem.SDKItem.md#dir)
-- [executions](sdkApi_interfaces_entities_iItem.SDKItem.md#executions)
-- [filename](sdkApi_interfaces_entities_iItem.SDKItem.md#filename)
-- [id](sdkApi_interfaces_entities_iItem.SDKItem.md#id)
-- [metadata](sdkApi_interfaces_entities_iItem.SDKItem.md#metadata)
-- [name](sdkApi_interfaces_entities_iItem.SDKItem.md#name)
-- [stream](sdkApi_interfaces_entities_iItem.SDKItem.md#stream)
-- [thumbnail](sdkApi_interfaces_entities_iItem.SDKItem.md#thumbnail)
-- [type](sdkApi_interfaces_entities_iItem.SDKItem.md#type)
-- [url](sdkApi_interfaces_entities_iItem.SDKItem.md#url)
+- [annotated](SDKItem.md#annotated)
+- [annotations](SDKItem.md#annotations)
+- [createdAt](SDKItem.md#createdat)
+- [creator](SDKItem.md#creator)
+- [dataset](SDKItem.md#dataset)
+- [datasetId](SDKItem.md#datasetid)
+- [dir](SDKItem.md#dir)
+- [filename](SDKItem.md#filename)
+- [id](SDKItem.md#id)
+- [metadata](SDKItem.md#metadata)
+- [name](SDKItem.md#name)
+- [stream](SDKItem.md#stream)
+- [thumbnail](SDKItem.md#thumbnail)
+- [type](SDKItem.md#type)
+- [url](SDKItem.md#url)
+- [executions](SDKItem.md#executions)
+- [description](SDKItem.md#description)
 
 ## Constructors
 
@@ -48,7 +46,7 @@ Creates an instance of SDKItem.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `item` | `Partial`<[`SDKItem`](sdkApi_interfaces_entities_iItem.SDKItem.md)\> | The item properties. |
+| `item` | `Partial`<[`SDKItem`](SDKItem.md)\> | The item properties. |
 
 ## Properties
 
@@ -60,7 +58,7 @@ Indicates whether the item has been annotated or discarded.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[annotated](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#annotated)
+[IItem](../interfaces/IItem.md).[annotated](../interfaces/IItem.md#annotated)
 
 ___
 
@@ -72,7 +70,7 @@ The URL of the Item's annotations.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[annotations](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#annotations)
+[IItem](../interfaces/IItem.md).[annotations](../interfaces/IItem.md#annotations)
 
 ___
 
@@ -84,7 +82,7 @@ The date and time the item was created.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[createdAt](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#createdat)
+[IItem](../interfaces/IItem.md).[createdAt](../interfaces/IItem.md#createdat)
 
 ___
 
@@ -96,7 +94,7 @@ The creator of the item.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[creator](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#creator)
+[IItem](../interfaces/IItem.md).[creator](../interfaces/IItem.md#creator)
 
 ___
 
@@ -116,15 +114,7 @@ The ID of the dataset the item belongs to.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[datasetId](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#datasetid)
-
-___
-
-### description
-
-• `Optional` **description**: `string`
-
-Item description.
+[IItem](../interfaces/IItem.md).[datasetId](../interfaces/IItem.md#datasetid)
 
 ___
 
@@ -136,15 +126,7 @@ The directory the item is located in.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[dir](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#dir)
-
-___
-
-### executions
-
-• `Optional` **executions**: [`SDKFunctionExecution`](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md)[]
-
-The list of function executions associated with the item.
+[IItem](../interfaces/IItem.md).[dir](../interfaces/IItem.md#dir)
 
 ___
 
@@ -156,7 +138,7 @@ The filename of the item.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[filename](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#filename)
+[IItem](../interfaces/IItem.md).[filename](../interfaces/IItem.md#filename)
 
 ___
 
@@ -168,7 +150,7 @@ The unique ID of the item.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[id](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#id)
+[IItem](../interfaces/IItem.md).[id](../interfaces/IItem.md#id)
 
 ___
 
@@ -180,7 +162,7 @@ The metadata associated with the item.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[metadata](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#metadata)
+[IItem](../interfaces/IItem.md).[metadata](../interfaces/IItem.md#metadata)
 
 ___
 
@@ -192,7 +174,7 @@ The name of the item.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[name](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#name)
+[IItem](../interfaces/IItem.md).[name](../interfaces/IItem.md#name)
 
 ___
 
@@ -204,7 +186,7 @@ The URL of the Item's stream.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[stream](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#stream)
+[IItem](../interfaces/IItem.md).[stream](../interfaces/IItem.md#stream)
 
 ___
 
@@ -216,7 +198,7 @@ The URL of the item's thumbnail image.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[thumbnail](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#thumbnail)
+[IItem](../interfaces/IItem.md).[thumbnail](../interfaces/IItem.md#thumbnail)
 
 ___
 
@@ -228,7 +210,7 @@ The type of the item, either 'file' or 'dir'.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[type](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#type)
+[IItem](../interfaces/IItem.md).[type](../interfaces/IItem.md#type)
 
 ___
 
@@ -240,4 +222,20 @@ The URL of the item.
 
 #### Implementation of
 
-[IItem](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md).[url](../interfaces/sdkApi_interfaces_entities_iItem.IItem.md#url)
+[IItem](../interfaces/IItem.md).[url](../interfaces/IItem.md#url)
+
+___
+
+### executions
+
+• `Optional` **executions**: [`SDKFunctionExecution`](SDKFunctionExecution.md)[]
+
+The list of function executions associated with the item.
+
+___
+
+### description
+
+• `Optional` **description**: `string`
+
+Item description.

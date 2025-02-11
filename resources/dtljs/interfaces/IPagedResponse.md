@@ -1,7 +1,5 @@
 # Interface: IPagedResponse<T\>
 
-[sdkApi/interfaces/entities/iQuery](../modules/sdkApi_interfaces_entities_iQuery.md).IPagedResponse
-
 An interface representing an entity's PagedResponse object.
 
 **`Interface`**
@@ -18,18 +16,18 @@ IPagedResponse
 
 ### Properties
 
-- [hasNextPage](sdkApi_interfaces_entities_iQuery.IPagedResponse.md#hasnextpage)
-- [items](sdkApi_interfaces_entities_iQuery.IPagedResponse.md#items)
-- [totalItemsCount](sdkApi_interfaces_entities_iQuery.IPagedResponse.md#totalitemscount)
-- [totalPagesCount](sdkApi_interfaces_entities_iQuery.IPagedResponse.md#totalpagescount)
+- [totalItemsCount](IPagedResponse.md#totalitemscount)
+- [items](IPagedResponse.md#items)
+- [totalPagesCount](IPagedResponse.md#totalpagescount)
+- [hasNextPage](IPagedResponse.md#hasnextpage)
 
 ## Properties
 
-### hasNextPage
+### totalItemsCount
 
-• **hasNextPage**: `boolean`
+• **totalItemsCount**: `number`
 
-Whether there is a next page.
+The total number of items.
 
 ___
 
@@ -41,16 +39,16 @@ The list of entity items.
 
 ___
 
-### totalItemsCount
-
-• **totalItemsCount**: `number`
-
-The total number of items.
-
-___
-
 ### totalPagesCount
 
 • **totalPagesCount**: `number`
 
 The total number of pages.
+
+___
+
+### hasNextPage
+
+• **hasNextPage**: `boolean`
+
+Whether there is a next page.
