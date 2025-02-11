@@ -42,10 +42,23 @@ const CardWrapper = styled.div`
   border-radius: 8px;
   transition: transform 0.2s, box-shadow 0.2s;
   margin-bottom: 16px;
+  position: relative;
 
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .hidden-link {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 `;
 
@@ -76,8 +89,11 @@ const Description = styled.p`
 `;
 
 export const DlCard = ({ title, description, icon, onClick }: CardWithCodeProps) => {
+  const url = onClick.toString().match(/window\.location\.href = '([^']+)'/)?.[1] || '';
+  
   return (
     <CardWrapper onClick={onClick}>
+      <a href={url} className="hidden-link" aria-hidden="true">{title}</a>
       <TopRow>
         <img src={icon} alt={title} />
         <h4>{title}</h4>
