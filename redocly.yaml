@@ -45,5 +45,7 @@ footer:
     - label: Contact us
       href: 'https://dataloop.ai/contact/'
 redirects:
-  '/onboarding/0*':
+  '/tutorials/faas':
+    to: '/tutorials/faas_applications'
+  '/onboarding/03_add_and_annotate_data':
     to: '/onboarding/onboarding'
