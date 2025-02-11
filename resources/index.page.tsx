@@ -111,7 +111,7 @@ const ResourcesPage = () => (
         title="JavaScript SDK"
         description="Build dynamic web applications with our JavaScript SDK. Full API reference and interactive examples"
         icon={jsSdkIcon}
-        onClick={() => window.location.href = '/resources/dtljs'}
+        onClick={() => window.location.href = '/resources/dtljs/index'}
       />
       <DlCard
         title="REST API"

@@ -210,7 +210,7 @@
     items:
     - href: https://sdk-docs.dataloop.ai/en/latest/cli.html
       label: CLI
-    - href: https://sdk-docs.dataloop.ai/en/latest/repositories.html
+    - href: https://sdk-docs.dataloop.ai/en/latest/entities.html
       label: Entities
     - href: https://sdk-docs.dataloop.ai/en/latest/repositories.html
       label: Repositories
@@ -226,10 +226,6 @@
       page: resources/dtljs/interfaces/index.md
     - label: Enums
       page: resources/dtljs/enums/index.md
-    - label: Repositories
-      page: resources/dtljs/repositories/index.md
-    - label: Entities
-      page: resources/dtljs/entities/index.md
     - label: xFrameDriver
       page: resources/dtljs/classes/xFrameDriver.md
    
