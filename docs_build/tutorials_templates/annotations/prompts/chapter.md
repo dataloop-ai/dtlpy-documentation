@@ -174,7 +174,7 @@ image = dataset.items.upload(
 
 # Add the image response to the prompt item
 prompt_item.add(
-    prompt_key='1',
+    prompt_key='<prompt key>',
 	message={
 		"role": "assistant",
 		"content": [{
@@ -183,7 +183,7 @@ prompt_item.add(
 		}]
 	},
 	model_info={
-		'name': 'gpt-3',
+		'name': 'gpt-4o-mini',
 		'confidence': 1.0,
 		'model_id': 'model-123'
 	}
@@ -195,22 +195,23 @@ prompt_item.add(
 You can also reference external images:
 
 ```python
-annotation_collection = item.annotations.builder()
 
-# Add external image reference
-annotation_collection.add(
-	annotation_definition=dl.RefImage(
-		ref='https://example.com/image.png',
-		mimetype='image/png'
-	),
-	prompt_id='prompt#2',
+# Add the image response to the prompt item
+prompt_item.add(
+    prompt_key='<prompt key>',
+	message={
+		"role": "assistant",
+		"content": [{
+			"mimetype": dl.PromptType.IMAGE,
+			"value":"https://example.com/image.png"
+		}]
+	},
 	model_info={
-		'name': 'stable-diffusion',
-		'confidence': 0.96
+		'name': 'gpt-4o-mini',
+		'confidence': 1.0,
+		'model_id': 'model-123'
 	}
 )
-
-item.annotations.upload(annotation_collection)
 ```
 
 # 💡 Pro Tips

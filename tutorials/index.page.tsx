@@ -15,6 +15,7 @@ type CardWithCodeProps = {
   description: string;
   icon: string;
   onClick: () => void;
+  url: string;
 };
 
 const Container = styled.div`
@@ -97,9 +98,7 @@ const CardsGrid = styled.div`
   padding: 1rem;
 `;
 
-const DlCard = ({ title, description, icon, onClick }: CardWithCodeProps) => {
-  const url = onClick.toString().match(/window\.location\.href = '([^']+)'/)?.[1] || '';
-  
+const DlCard = ({ title, description, icon, onClick, url }: CardWithCodeProps) => {
   return (
     <CardWrapper onClick={onClick}>
       <a href={url} className="hidden-link" aria-hidden="true">{title}</a>
@@ -126,54 +125,63 @@ const TutorialsPage = () => (
         description="Master the art of data wrangling! Learn to organize, version, and manage your AI datasets like a pro"
         icon={dataManagementIcon}
         onClick={() => window.location.href = '/tutorials/data_management'}
+        url='/tutorials/data_management'
       />
       <DlCard 
         title="Annotations"
         description="Turn raw data into AI gold! Discover all the ways to annotate and label your datasets with precision"
         icon={annotationsIcon}
         onClick={() => window.location.href = '/tutorials/annotations'}
+        url='/tutorials/annotations'
       />
       <DlCard 
         title="Recipe and Ontology"
         description="Create the perfect recipe for your AI success! Design powerful ontologies and labeling schemes"
         icon={recipeOntologyIcon}
         onClick={() => window.location.href = '/tutorials/recipe_and_ontology'}
+        url='/tutorials/recipe_and_ontology'
       />
       <DlCard 
         title="Task and Workflows"
         description="Orchestrate your team like a symphony! Master task management and workflow automation"
         icon={taskWorkflowsIcon}
         onClick={() => window.location.href = '/tutorials/task_workflows'}
+        url='/tutorials/task_workflows'
       />
       <DlCard 
         title="Analytics"
         description="Unlock insights from your data! Dive deep into metrics, trends, and performance analysis"
         icon={analyticsIcon}
         onClick={() => window.location.href = '/tutorials/analytics'}
+        url='/tutorials/analytics'
       />
       <DlCard 
         title="FaaS Applications"
         description="Functions as a Service: Your serverless superpower for scalable AI operations"
         icon={faasIcon}
         onClick={() => window.location.href = '/tutorials/faas_applications'}
-      />
+        url='/tutorials/faas_applications'
+        />
       <DlCard 
         title="Pipelines"
         description="Build automated AI workflows that flow like magic! Connect, automate, and orchestrate"
         icon={pipelinesIcon}
         onClick={() => window.location.href = '/tutorials/pipelines'}
+        url='/tutorials/pipelines'
       />
       <DlCard 
         title="Model Management"
         description="Train, deploy, and monitor your AI models with style! From experiment to production"
         icon={modelManagementIcon}
         onClick={() => window.location.href = '/tutorials/model_management'}
+        url='/tutorials/model_management'
       />
       <DlCard 
         title="Applications"
         description="Create powerful AI apps that wow! Extend Dataloop with custom applications and integrations"
         icon={applicationsIcon}
         onClick={() => window.location.href = '/tutorials/applications'}
+        url='/tutorials/applications'
       />
     </CardsGrid>
   </Container>

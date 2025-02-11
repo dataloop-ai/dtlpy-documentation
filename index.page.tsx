@@ -7,6 +7,7 @@ import { ArrowRightIcon, Button } from "@redocly/theme";
 import { Cards } from "@redocly/theme/markdoc/components/Cards/Cards";
 
 type CardWithCodeProps = {
+  url: string;
   title: string;
   description: string;
   icon: string;
@@ -88,9 +89,7 @@ const Description = styled.p`
   line-height: 24px;
 `;
 
-export const DlCard = ({ title, description, icon, onClick }: CardWithCodeProps) => {
-  const url = onClick.toString().match(/window\.location\.href = '([^']+)'/)?.[1] || '';
-  
+export const DlCard = ({ url, title, description, icon, onClick }: CardWithCodeProps) => {
   return (
     <CardWrapper onClick={onClick}>
       <a href={url} className="hidden-link" aria-hidden="true">{title}</a>
@@ -125,18 +124,21 @@ export default function HomePage() {
                     description="Level up your skills with our hands-on guides! From basics to advanced AI wizardry"
                     icon={tutorialsIcon}
                     onClick={() => window.location.href = '/tutorials'}
+                    url='/tutorials'    
                 />
                 <DlCard
                     title="Onboarding"
                     description="Zero to hero: Your fast track to mastering the Dataloop platform "
                     icon={onboardingIcon}
                     onClick={() => window.location.href = '/onboarding/onboarding'}
+                    url='/onboarding/onboarding'
                 />
                 <DlCard
                     title="Resources"
                     description="Your toolbox of SDKs, APIs, and developer goodies to build something amazing"
                     icon={resourcesIcon}
                     onClick={() => window.location.href = '/resources'}
+                    url='/resources'
                 />
             </Cards>
         </Container>

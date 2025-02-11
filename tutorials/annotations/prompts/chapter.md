@@ -17,7 +17,7 @@ Prompts in Dataloop are stored as JSON files with a specific structure. Here's a
 		"prompt#1": [
 			{
 				"mimetype": "application/text",
-				"value": "please generate image of a donkey"
+				"value": "Please generate an image of a donkey"
 			}
 		]
 	}
@@ -58,7 +58,7 @@ import dtlpy as dl
 
 # Get your project and dataset ready
 project = dl.projects.get(project_name='<project name>')
-dataset = project.datasets.get(dataset_name='prompts')
+dataset = project.datasets.get(dataset_name='<dataset name>')
 ```
 
 ## Creating a Single Prompt
@@ -146,6 +146,7 @@ prompt_item = dl.PromptItem.from_item(item)
 
 # Add a text response
 prompt_item.add(
+    prompt_key='<prompt key>',
 	message={
 		"role": "assistant",
 		"content": [{
@@ -166,51 +167,51 @@ Want to respond with an image? Here's how:
 
 ```python
 # First, upload the response image
-output = dataset.items.upload(
+image = dataset.items.upload(
 	local_path="path/to/response.jpg",
 	remote_path=f'/annotations/{item.id}'
 )
 
-# Create annotation collection
-annotation_collection = item.annotations.builder()
-
-# Add image reference annotation
-annotation_collection.add(
-	annotation_definition=dl.RefImage(
-		ref=output.id,
-		mimetype=output.mimetype
-	),
-	prompt_id='prompt#2',
+# Add the image response to the prompt item
+prompt_item.add(
+    prompt_key='<prompt key>',
+	message={
+		"role": "assistant",
+		"content": [{
+			"mimetype": dl.PromptType.IMAGE,
+			"value": dl.items.get(item_id=image.id).stream
+		}]
+	},
 	model_info={
-		'name': 'stable-diffusion',
-		'confidence': 0.96
+		'name': 'gpt-4o-mini',
+		'confidence': 1.0,
+		'model_id': 'model-123'
 	}
 )
 
-# Upload the annotation
-item.annotations.upload(annotation_collection)
 ```
 
 ## Using External Image URLs
 You can also reference external images:
 
 ```python
-annotation_collection = item.annotations.builder()
 
-# Add external image reference
-annotation_collection.add(
-	annotation_definition=dl.RefImage(
-		ref='https://example.com/image.png',
-		mimetype='image/png'
-	),
-	prompt_id='prompt#2',
+# Add the image response to the prompt item
+prompt_item.add(
+    prompt_key='<prompt key>',
+	message={
+		"role": "assistant",
+		"content": [{
+			"mimetype": dl.PromptType.IMAGE,
+			"value":"https://example.com/image.png"
+		}]
+	},
 	model_info={
-		'name': 'stable-diffusion',
-		'confidence': 0.96
+		'name': 'gpt-4o-mini',
+		'confidence': 1.0,
+		'model_id': 'model-123'
 	}
 )
-
-item.annotations.upload(annotation_collection)
 ```
 
 # 💡 Pro Tips
