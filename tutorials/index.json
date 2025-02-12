@@ -19,9 +19,9 @@
             "location": "recipe_and_ontology/index.json"
         },
         {
-            "displayName": "Task and Workflows",
-            "description": "Tutorials for workforce management",
-            "location": "task_workflows/index.json"
+            "displayName": "Labeling Workflows",
+            "description": "Tutorials for labeling workflows",
+            "location": "labeling_workflows/index.json"
         },
         {
             "displayName": "Analytics",

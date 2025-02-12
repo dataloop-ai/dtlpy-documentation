@@ -78,17 +78,9 @@
       page: tutorials/recipe_and_ontology/instructions_and_validations/chapter.md
     page: tutorials/recipe_and_ontology.md
   - expanded: false
-    group: Task and Workflows
-    items:
-    - label: Create Tasks and Assignment
-      page: tutorials/task_workflows/create_a_task/chapter.md
-    - label: Managing Tasks and Assignments
-      page: tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.md
-    - label: Quality Control Task Types
-      page: tutorials/task_workflows/quality_control/chapter.md
-    - label: Item Status in Tasks
-      page: tutorials/task_workflows/item_status/chapter.md
-    page: tutorials/task_workflows.md
+    group: Labeling Workflows
+    items: []
+    page: tutorials/labeling_workflows.md
   - expanded: false
     group: Analytics
     items:

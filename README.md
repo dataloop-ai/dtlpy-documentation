@@ -49,10 +49,6 @@ jupyter notebook tutorials
 *  [Auto annotate service](tutorials/auto_annotate_service/chapter.ipynb)
 * Pipelines
   *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
-* Task workflows
-  *  [Create a task](tutorials/task_workflows/create_a_task/chapter.ipynb)
-  *  [Item status](tutorials/task_workflows/item_status/chapter.ipynb)
-  *  [Redistributing and reassigning a task](tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.ipynb)
 
 ## Code Examples
 
