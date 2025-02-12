@@ -47,35 +47,6 @@ jupyter notebook tutorials
 ## Tutorials
 
 *  [Auto annotate service](tutorials/auto_annotate_service/chapter.ipynb)
-* Data management
-  * Cloud storage
-    * Aws
-      *  [Auto upstream sync](tutorials/data_management/cloud_storage/aws/auto_upstream_sync/chapter.ipynb)
-      *  [Integration](tutorials/data_management/cloud_storage/aws/integration/chapter.ipynb)
-      *  [Manual item upstream sync](tutorials/data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.ipynb)
-      *  [Storage driver](tutorials/data_management/cloud_storage/aws/storage_driver/chapter.ipynb)
-    * Azure
-      *  [Auto upstream sync](tutorials/data_management/cloud_storage/azure/auto_upstream_sync/chapter.ipynb)
-      *  [Integration](tutorials/data_management/cloud_storage/azure/integration/chapter.ipynb)
-      *  [Storage driver](tutorials/data_management/cloud_storage/azure/storage_driver/chapter.ipynb)
-    * Gcp
-      *  [Auto upstream sync](tutorials/data_management/cloud_storage/gcp/auto_upstream_sync/chapter.ipynb)
-      *  [Integration](tutorials/data_management/cloud_storage/gcp/integration/chapter.ipynb)
-      *  [Storage driver](tutorials/data_management/cloud_storage/gcp/storage_driver/chapter.ipynb)
-  *  [Data versioning](tutorials/data_management/data_versioning/chapter.ipynb)
-  *  [Integrations](tutorials/data_management/integrations/chapter.ipynb)
-  *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
-  *  [Modalities](tutorials/data_management/modalities/chapter.ipynb)
-  *  [Secrets](tutorials/data_management/secrets/chapter.ipynb)
-  * Sort and filter
-    *  [Advanced sdk filters](tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.ipynb)
-    *  [Annotation level](tutorials/data_management/sort_and_filter/annotation_level/chapter.ipynb)
-    *  [Item level](tutorials/data_management/sort_and_filter/item_level/chapter.ipynb)
-    *  [Pagination](tutorials/data_management/sort_and_filter/pagination/chapter.ipynb)
-    *  [Saved filters](tutorials/data_management/sort_and_filter/saved_filters/chapter.ipynb)
-  *  [Upload and manage annotations](tutorials/data_management/upload_and_manage_annotations/chapter.ipynb)
-  *  [Upload and manage items](tutorials/data_management/upload_and_manage_items/chapter.ipynb)
-  *  [Working with metadata](tutorials/data_management/working_with_metadata/chapter.ipynb)
 * Pipelines
   *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
 * Recipe and ontology

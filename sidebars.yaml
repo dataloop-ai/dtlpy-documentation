@@ -29,67 +29,29 @@
   - expanded: false
     group: Data Management
     items:
-    - label: Integrations
-      page: tutorials/data_management/integrations/chapter.md
+    - label: Datasets and Versioning
+      page: tutorials/data_management/datasets_and_versioning/chapter.md
     - expanded: false
-      group: Cloud Storage
+      group: External Storage
       items:
-      - expanded: false
-        group: Amazon Web Services
-        items:
-        - label: Auto Upstream Sync with AWS
-          page: tutorials/data_management/cloud_storage/aws/auto_upstream_sync/chapter.md
-        - label: Manual Upstream Sync with AWS
-          page: tutorials/data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.md
-        - label: Integrations with AWS
-          page: tutorials/data_management/cloud_storage/aws/integration/chapter.md
-        - label: S3 Bucket Storage Driver from AWS
-          page: tutorials/data_management/cloud_storage/aws/storage_driver/chapter.md
-      - expanded: false
-        group: Microsoft Azure
-        items:
-        - label: Auto Upstream Sync with Azure
-          page: tutorials/data_management/cloud_storage/azure/auto_upstream_sync/chapter.md
-        - label: Integrations with Azure
-          page: tutorials/data_management/cloud_storage/azure/integration/chapter.md
-        - label: Azure Blob container Storage Driver from Microsoft Azure
-          page: tutorials/data_management/cloud_storage/azure/storage_driver/chapter.md
-      - expanded: false
-        group: Google Cloud Provider
-        items:
-        - label: Auto Upstream Sync with GCP
-          page: tutorials/data_management/cloud_storage/gcp/auto_upstream_sync/chapter.md
-        - label: Integrations with GCP
-          page: tutorials/data_management/cloud_storage/gcp/integration/chapter.md
-        - label: GCS Bucket Storage Driver from GCP
-          page: tutorials/data_management/cloud_storage/gcp/storage_driver/chapter.md
-    - label: Manage Datasets
-      page: tutorials/data_management/manage_datasets/chapter.md
-    - label: Data Versioning
-      page: tutorials/data_management/data_versioning/chapter.md
-    - label: Upload and Manage Data and Metadata
-      page: tutorials/data_management/upload_and_manage_items/chapter.md
-    - label: Upload and Manage Annotations
-      page: tutorials/data_management/upload_and_manage_annotations/chapter.md
-    - expanded: false
-      group: Sort and Filters
-      items:
-      - label: Item Level
-        page: tutorials/data_management/sort_and_filter/item_level/chapter.md
-      - label: Annotation Level Filters
-        page: tutorials/data_management/sort_and_filter/annotation_level/chapter.md
-      - label: Saved Filters
-        page: tutorials/data_management/sort_and_filter/saved_filters/chapter.md
-      - label: Advance SDK Filters
-        page: tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md
-      - label: Pagination
-        page: tutorials/data_management/sort_and_filter/pagination/chapter.md
-    - label: Working with Metadata
-      page: tutorials/data_management/working_with_metadata/chapter.md
-    - label: Secrets
-      page: tutorials/data_management/secrets/chapter.md
+      - label: Amazon Web Services (S3)
+        page: tutorials/data_management/external_storage_drivers/aws_s3/chapter.md
+      - label: Microsoft Azure Blob Storage
+        page: tutorials/data_management/external_storage_drivers/azure_blob/chapter.md
+      - label: Google Cloud Storage
+        page: tutorials/data_management/external_storage_drivers/gcs/chapter.md
+    - label: 'Items and Annotations: Introduction'
+      page: tutorials/data_management/items_and_annotations/introduction/chapter.md
+    - label: 'Items and Annotations: More Examples'
+      page: tutorials/data_management/items_and_annotations/more_examples/chapter.md
+    - label: 'Dataloop Query Language: Introduction'
+      page: tutorials/data_management/dataloop_query_language/introduction/chapter.md
+    - label: 'Dataloop Query Language: More Examples'
+      page: tutorials/data_management/dataloop_query_language/more_examples/chapter.md
     - label: Feature Vectors
       page: tutorials/data_management/feature_vectors/chapter.md
+    - label: Integrations and Secrets
+      page: tutorials/data_management/integrations_and_secrets/chapter.md
     page: tutorials/data_management.md
   - expanded: false
     group: Annotations
@@ -217,7 +179,6 @@
     - href: https://sdk-docs.dataloop.ai/en/latest/utilities.html
       label: Utilities
   - group: JS SDK
-    page: /resources/dtljs/index.md
     items:
     - label: README
       page: resources/dtljs/README.md
@@ -229,7 +190,7 @@
       page: resources/dtljs/enums/index.md
     - label: xFrameDriver
       page: resources/dtljs/classes/xFrameDriver.md
-   
+    page: /resources/dtljs/index.md
   page: resources/resources.mdx
 - href: https://docs.dataloop.ai/docs/glossary-overview
   label: Glossary

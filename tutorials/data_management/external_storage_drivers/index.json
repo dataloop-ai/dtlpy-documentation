@@ -1,0 +1,23 @@
+{
+  "name": "external-storage",
+  "title": "External Storage",
+  "description": "Learn how to seamlessly connect and sync your cloud storage with Dataloop",
+  "content": [
+    {
+      "displayName": "Amazon Web Services (S3)",
+      "description": "Connect and sync your AWS S3 buckets with Dataloop, including automatic syncing via Lambda functions",
+      "location": "data_management/external_storage_drivers/aws_s3/chapter.md"
+    },
+    {
+      "displayName": "Microsoft Azure Blob Storage",
+      "description": "Connect and sync your Azure Blob Storage with Dataloop, including automatic syncing via Azure Functions",
+      "location": "data_management/external_storage_drivers/azure_blob/chapter.md"
+    },
+    {
+      "displayName": "Google Cloud Storage",
+      "description": "Connect and sync your Google Cloud Storage with Dataloop, including automatic syncing via Cloud Functions",
+      "location": "data_management/external_storage_drivers/gcs/chapter.md"
+    }
+  ]
+}
+
