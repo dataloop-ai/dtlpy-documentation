@@ -49,10 +49,6 @@ jupyter notebook tutorials
 *  [Auto annotate service](tutorials/auto_annotate_service/chapter.ipynb)
 * Pipelines
   *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
-* Recipe and ontology
-  *  [Concepts](tutorials/recipe_and_ontology/concepts/chapter.ipynb)
-  *  [Ontology](tutorials/recipe_and_ontology/ontology/chapter.ipynb)
-  *  [Recipe](tutorials/recipe_and_ontology/recipe/chapter.ipynb)
 * Task workflows
   *  [Create a task](tutorials/task_workflows/create_a_task/chapter.ipynb)
   *  [Item status](tutorials/task_workflows/item_status/chapter.ipynb)

@@ -72,12 +72,10 @@
   - expanded: false
     group: Recipe and Ontology
     items:
-    - label: Concepts
-      page: tutorials/recipe_and_ontology/concepts/chapter.md
-    - label: Ontology
-      page: tutorials/recipe_and_ontology/ontology/chapter.md
-    - label: Recipe
-      page: tutorials/recipe_and_ontology/recipe/chapter.md
+    - label: 'Recipes and Ontologies: Introduction'
+      page: tutorials/recipe_and_ontology/introduction/chapter.md
+    - label: Instructions and Validations
+      page: tutorials/recipe_and_ontology/instructions_and_validations/chapter.md
     page: tutorials/recipe_and_ontology.md
   - expanded: false
     group: Task and Workflows

@@ -1,23 +1,17 @@
 {
-  "name": "recipe-and-ontology",
-  "title": "Recipe and Ontology",
-  "description": "Use Dataloop's Python SDK to integrate your data with your cloud-storage (GCS/S3/Azure), create datasets, upload/link your data items, manage your datasets, and download data.\n\nSee our SDK Getting Started guide at https://docs.dataloop.ai/docs/sdk-register.\n",
-  "content": [
-    {
-      "displayName": "Concepts",
-      "description": "What are Recipe and Ontology",
-      "location": "recipe_and_ontology/concepts/chapter.md"
-    },
-    {
-      "displayName": "Ontology",
-      "description": "Create and manage Ontology, Labels and Attributes",
-      "location": "recipe_and_ontology/ontology/chapter.md"
-    },
-    {
-      "displayName": "Recipe",
-      "description": "Create and manage Recipe and Annotations Instructions",
-      "location": "recipe_and_ontology/recipe/chapter.md"
-    }
-  ]
+    "name": "recipe-and-ontology",
+    "title": "Recipe and Ontology",
+    "description": "Learn how to create and manage recipes and ontologies in Dataloop, from basic concepts to advanced techniques.",
+    "content": [
+        {
+            "displayName": "Recipes and Ontologies: Introduction",
+            "description": "Learn the basics of recipes and ontologies, including creating labels, attributes, and basic operations",
+            "location": "recipe_and_ontology/introduction/chapter.md"
+        },
+        {
+            "displayName": "Instructions and Validations",
+            "description": "Learn how to add PDF instructions and JavaScript validations to your recipes",
+            "location": "recipe_and_ontology/instructions_and_validations/chapter.md"
+        }
+    ]
 }
-

@@ -8,7 +8,7 @@ Think of integrations as secure bridges between Dataloop and your external resou
 
 - Cloud Storage (AWS S3, Azure Blob, GCP) ☁️
 - Container Registries (ECR/GCR) 🐳
-- Secure Token Services (STS) 🎟️
+- Git Repositories (GitHub, GitLab, Bitbucket) 🎟️
 - And more! 
 
 ## Setting Up Integrations 🛠️
