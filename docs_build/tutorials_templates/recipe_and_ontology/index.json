@@ -4,7 +4,7 @@
     "description": "Learn how to create and manage recipes and ontologies in Dataloop, from basic concepts to advanced techniques.",
     "content": [
         {
-            "displayName": "Recipes and Ontologies: Introduction",
+            "displayName": "Introduction",
             "description": "Learn the basics of recipes and ontologies, including creating labels, attributes, and basic operations",
             "location": "recipe_and_ontology/introduction/chapter.md"
         },

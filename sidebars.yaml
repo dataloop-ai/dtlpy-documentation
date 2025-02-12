@@ -72,7 +72,7 @@
   - expanded: false
     group: Recipe and Ontology
     items:
-    - label: 'Recipes and Ontologies: Introduction'
+    - label: Introduction
       page: tutorials/recipe_and_ontology/introduction/chapter.md
     - label: Instructions and Validations
       page: tutorials/recipe_and_ontology/instructions_and_validations/chapter.md
