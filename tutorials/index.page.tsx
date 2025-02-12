@@ -142,11 +142,11 @@ const TutorialsPage = () => (
         url='/tutorials/recipe_and_ontology'
       />
       <DlCard 
-        title="Task and Workflows"
-        description="Orchestrate your team like a symphony! Master task management and workflow automation"
+        title="Labeling Workflows"
+        description="Orchestrate your team like a symphony! Master task and assignment management to create labeling workflows"
         icon={taskWorkflowsIcon}
-        onClick={() => window.location.href = '/tutorials/task_workflows'}
-        url='/tutorials/task_workflows'
+        onClick={() => window.location.href = '/tutorials/labeling_workflows'}
+        url='/tutorials/labeling_workflows'
       />
       <DlCard 
         title="Analytics"

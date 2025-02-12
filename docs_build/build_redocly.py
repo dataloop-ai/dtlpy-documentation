@@ -119,7 +119,7 @@ def get_mdx_str(header, md_file, description, str_list):
         "Data Management": "dataManagementIcon",
         "Annotations": "annotationsIcon",
         "Recipe and Ontology": "recipeOntologyIcon",
-        "Task and Workflows": "taskWorkflowsIcon",
+        "Labeling Workflows": "labelingWorkflowsIcon",
         "Analytics": "analyticsIcon",
         "FaaS Tutorial": "faasIcon",
         "Pipelines": "pipelinesIcon",
