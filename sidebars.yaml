@@ -79,7 +79,13 @@
     page: tutorials/recipe_and_ontology.md
   - expanded: false
     group: Labeling Workflows
-    items: []
+    items:
+    - label: Tasks and Assignments
+      page: tutorials/labeling_workflows/task_and_assignment/chapter.md
+    - label: Quality Control Tasks
+      page: tutorials/labeling_workflows/quality_control/chapter.md
+    - label: Managing Item Status
+      page: tutorials/labeling_workflows/item_status/chapter.md
     page: tutorials/labeling_workflows.md
   - expanded: false
     group: Analytics

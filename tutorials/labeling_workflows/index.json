@@ -6,17 +6,17 @@
         {
             "displayName": "Tasks and Assignments",
             "description": "Learn how to create and manage tasks and assignments, including basic operations and workflow management",
-            "location": "task_workflows/task_and_assignment/chapter.md"
+            "location": "labeling_workflows/task_and_assignment/chapter.md"
         },
         {
             "displayName": "Quality Control Tasks",
             "description": "Master quality control with consensus, honeypot, and qualification tasks to ensure annotation quality",
-            "location": "task_workflows/quality_control/chapter.md"
+            "location": "labeling_workflows/quality_control/chapter.md"
         },
         {
             "displayName": "Managing Item Status",
             "description": "Learn how to manage item status in tasks, including completion, approval, and custom status workflows",
-            "location": "task_workflows/item_status/chapter.md"
+            "location": "labeling_workflows/item_status/chapter.md"
         }
     ]
 }
