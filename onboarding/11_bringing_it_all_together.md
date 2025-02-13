@@ -86,7 +86,7 @@ pipeline = project.pipelines.create(
 1. **Explore Advanced Features**
    - [Model Management](https://docs.dataloop.ai/docs/model-management-overview)
    - [Pipeline Automation](https://docs.dataloop.ai/docs/pipelines-overview)
-   - [FaaS Development](https://docs.dataloop.ai/docs/faas-overview)
+   - [FaaS Development](https://docs.dataloop.ai/docs/cloudops-overview)
 
 2. **Build Something Amazing**
    - Start with templates
