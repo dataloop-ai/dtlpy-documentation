@@ -75,7 +75,15 @@ project = dl.projects.get('Apps Project')
 dpk = dl.dpks.get(dpk_name='<app-name>')
 
 # Cast the installation spell
-project.apps.install(dpk=dpk)
+app = project.apps.install(dpk=dpk)
+```
+
+And if you want to upgrade your app:
+
+```python
+app = project.apps.get(app_name='<app-name>')
+app.dpk_version = dpk.version
+app.update()
 ```
 
 ## 🧩 DPK Components - The Building Blocks

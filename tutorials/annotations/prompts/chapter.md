@@ -4,53 +4,10 @@ Welcome to the world of prompt annotations! Think of prompts as digital conversa
 
 # 🎯 Getting Started with Prompts
 
-## Understanding Prompt Structure
-Prompts in Dataloop are stored as JSON files with a specific structure. Here's a simple example:
-
-```json
-{
-	"shebang": "dataloop",
-	"metadata": {
-		"dltype": "prompt"
-	},
-	"prompts": {
-		"prompt#1": [
-			{
-				"mimetype": "application/text",
-				"value": "Please generate an image of a donkey"
-			}
-		]
-	}
-}
-```
-
-## Multimodal Prompts
-Want to combine text and images? Here's how:
-
-```json
-{
-	"shebang": "dataloop",
-	"metadata": {
-		"dltype": "prompt"
-	},
-	"prompts": {
-		"1": [
-			{
-				"mimetype": "image/*",
-				"value": "https://gate.dataloop.ai/api/v1/items/<item-id>/stream"
-			},
-			{
-				"mimetype": "application/text",
-				"value": "What's in these images?"
-			}
-		]
-	}
-}
-```
-
-# 🛠️ Creating and Managing Prompts
+## 🛠️ Creating and Managing Prompts
 
 ## Project Setup
+
 First, let's set up our environment:
 
 ```python
@@ -62,6 +19,7 @@ dataset = project.datasets.get(dataset_name='<dataset name>')
 ```
 
 ## Creating a Single Prompt
+
 Let's create a prompt with both text and image:
 
 ```python
@@ -73,13 +31,13 @@ prompt1 = dl.Prompt(key='conversation-1')
 
 # Add text component
 prompt1.add_element(
-	mimetype=dl.PromptType.TEXT, 
+	mimetype=dl.PromptType.TEXT,
 	value='Who are you?'
 )
 
 # Add image component
 prompt1.add_element(
-	mimetype=dl.PromptType.IMAGE, 
+	mimetype=dl.PromptType.IMAGE,
 	value=dl.items.get(item_id='your-image-id').stream
 )
 
@@ -88,19 +46,20 @@ prompt_item.prompts.append(prompt1)
 ```
 
 ## Building Conversations
+
 Create a sequence of prompts to simulate a conversation:
 
 ```python
 # Add another prompt to continue the conversation
 prompt2 = dl.Prompt(key='conversation-2')
 prompt2.add_element(
-	mimetype=dl.PromptType.TEXT, 
+	mimetype=dl.PromptType.TEXT,
 	value='Where are you from?'
 )
 
 # Add audio element (if needed)
 prompt2.add_element(
-	mimetype=dl.PromptType.AUDIO, 
+	mimetype=dl.PromptType.AUDIO,
 	value='http://audio-file.mp3'
 )
 
@@ -112,6 +71,7 @@ item = dataset.items.upload(prompt_item, overwrite=True)
 ```
 
 ## Batch Upload
+
 Need to upload multiple prompts? We've got you covered:
 
 ```python
@@ -130,13 +90,16 @@ items = dataset.items.upload('/user/prompts')
 # 📝 Working with Responses (Annotations)
 
 ## Response Types
+
 Dataloop supports various types of responses:
+
 - FreeText: For text responses
 - RefImage: For image references
 - RefVideo: For video references (Coming soon!)
 - RefAudio: For audio references (Coming soon!)
 
 ## Adding Text Responses
+
 Here's how to add a text response to a prompt:
 
 ```python
@@ -163,6 +126,7 @@ prompt_item.add(
 ```
 
 ## Adding Image Responses
+
 Want to respond with an image? Here's how:
 
 ```python
@@ -192,6 +156,7 @@ prompt_item.add(
 ```
 
 ## Using External Image URLs
+
 You can also reference external images:
 
 ```python
@@ -214,26 +179,71 @@ prompt_item.add(
 )
 ```
 
+# Understanding Prompt Structure
+
+Prompts in Dataloop are stored as JSON files with a specific structure. Here's a simple example:
+
+```json
+{
+  "shebang": "dataloop",
+  "metadata": {
+    "dltype": "prompt"
+  },
+  "prompts": {
+    "prompt#1": [
+      {
+        "mimetype": "application/text",
+        "value": "Please generate an image of a donkey"
+      }
+    ]
+  }
+}
+```
+
+Want to go multi-modal? Here's how:
+
+```json
+{
+  "shebang": "dataloop",
+  "metadata": {
+    "dltype": "prompt"
+  },
+  "prompts": {
+    "1": [
+      {
+        "mimetype": "image/*",
+        "value": "https://gate.dataloop.ai/api/v1/items/<item-id>/stream"
+      },
+      {
+        "mimetype": "application/text",
+        "value": "What's in these images?"
+      }
+    ]
+  }
+}
+```
+
 # 💡 Pro Tips
 
 ## Best Practices
+
 - Use meaningful prompt keys for easy tracking
 - Keep prompt structures consistent
 - Include metadata for better organization
 - Handle multimodal content appropriately
 
 ## Quality Control
+
 - Validate JSON structure before uploading
 - Check response associations
 - Monitor model confidence scores
 - Keep track of conversation flow
 
 ## Performance Optimization
+
 - Batch upload when possible
 - Use appropriate mimetypes
 - Optimize image sizes
 - Consider response caching
 
 Need help? Check out our other tutorials or reach out to our support team. Happy prompting! 💭✨
-
-
