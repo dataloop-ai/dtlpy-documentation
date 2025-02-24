@@ -44,6 +44,8 @@
       page: tutorials/data_management/items_and_annotations/introduction/chapter.md
     - label: 'Items and Annotations: More Examples'
       page: tutorials/data_management/items_and_annotations/more_examples/chapter.md
+    - label: LiDAR Data
+      page: tutorials/data_management/items_and_annotations/other_data_types/lidar/chapter.md
     - label: 'Dataloop Query Language: Introduction'
       page: tutorials/data_management/dataloop_query_language/introduction/chapter.md
     - label: 'Dataloop Query Language: More Examples'

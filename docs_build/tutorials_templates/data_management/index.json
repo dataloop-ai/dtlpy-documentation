@@ -23,7 +23,11 @@
             "description": "Advanced examples and techniques for items and annotations",
             "location": "data_management/items_and_annotations/more_examples/chapter.md"
         },
-
+        {
+            "displayName": "LiDAR Data",
+            "description": "How to work with LiDAR data",
+            "location": "data_management/items_and_annotations/other_data_types/lidar/chapter.md"
+        },
         {
             "displayName": "Dataloop Query Language: Introduction",
             "description": "Learn the basics of DQL Filters and Pagination",
