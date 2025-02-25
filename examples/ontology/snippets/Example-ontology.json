@@ -1,0 +1,71 @@
+{
+  "title": "Example-ontology",
+  "roots": [
+    {
+      "value": {
+        "tag": "Plant",
+        "displayLabel": "Plant",
+        "color": "#17ecff",
+        "attributes": [
+          "Deadly"
+        ],
+        "displayData": {}
+      },
+      "children": []
+    },
+    {
+      "value": {
+        "tag": "Fruit",
+        "displayLabel": "Fruit",
+        "color": "#a7b3b1",
+        "attributes": [],
+        "displayData": {}
+      },
+      "children": [
+        {
+          "value": {
+            "tag": "apple",
+            "displayLabel": "Apple",
+            "color": "#03ff46",
+            "attributes": [],
+            "displayData": {}
+          },
+          "children": []
+        },
+        {
+          "value": {
+            "tag": "orange",
+            "displayLabel": "Orange",
+            "color": "#3f6c81",
+            "attributes": [],
+            "displayData": {}
+          },
+          "children": []
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "attributes": [
+      {
+        "scope": [
+          "Plant"
+        ],
+        "key": "Deadly",
+        "type": "range",
+        "range": {
+          "min": 0,
+          "max": 5,
+          "step": 1
+        },
+        "scriptData": {
+          "scope": "@ontology.sections.Deadly.scope",
+          "title": "How deadly is the plant?",
+          "key": "Deadly",
+          "optional": true,
+          "multi": true
+        }
+      }
+    ]
+  }
+}
