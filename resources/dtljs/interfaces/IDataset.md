@@ -1,7 +1,5 @@
 # Interface: IDataset
 
-[sdkApi/interfaces/entities/iDataset](../modules/sdkApi_interfaces_entities_iDataset.md).IDataset
-
 An interface representing a Dataset object.
 
 **`Interface`**
@@ -10,49 +8,46 @@ IDataset
 
 ## Hierarchy
 
-- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
+- [`IEntity`](IEntity.md)
 
   ↳ **`IDataset`**
 
 ## Implemented by
 
-- [`SDKDataset`](../classes/sdkApi_interfaces_entities_iDataset.SDKDataset.md)
+- [`SDKDataset`](../classes/SDKDataset.md)
 
 ## Table of contents
 
 ### Properties
 
-- [annotated](sdkApi_interfaces_entities_iDataset.IDataset.md#annotated)
-- [clientId](sdkApi_interfaces_entities_iDataset.IDataset.md#clientid)
-- [createdAt](sdkApi_interfaces_entities_iDataset.IDataset.md#createdat)
-- [creator](sdkApi_interfaces_entities_iDataset.IDataset.md#creator)
-- [directoryTree](sdkApi_interfaces_entities_iDataset.IDataset.md#directorytree)
-- [driver](sdkApi_interfaces_entities_iDataset.IDataset.md#driver)
-- [error](sdkApi_interfaces_entities_iDataset.IDataset.md#error)
-- [export](sdkApi_interfaces_entities_iDataset.IDataset.md#export)
-- [id](sdkApi_interfaces_entities_iDataset.IDataset.md#id)
-- [indexDriver](sdkApi_interfaces_entities_iDataset.IDataset.md#indexdriver)
-- [items](sdkApi_interfaces_entities_iDataset.IDataset.md#items)
-- [itemsCount](sdkApi_interfaces_entities_iDataset.IDataset.md#itemscount)
-- [metadata](sdkApi_interfaces_entities_iDataset.IDataset.md#metadata)
-- [name](sdkApi_interfaces_entities_iDataset.IDataset.md#name)
-- [projects](sdkApi_interfaces_entities_iDataset.IDataset.md#projects)
-- [readableType](sdkApi_interfaces_entities_iDataset.IDataset.md#readabletype)
-- [readonly](sdkApi_interfaces_entities_iDataset.IDataset.md#readonly)
-- [shareLevel](sdkApi_interfaces_entities_iDataset.IDataset.md#sharelevel)
-- [updatedAt](sdkApi_interfaces_entities_iDataset.IDataset.md#updatedat)
-- [updatedBy](sdkApi_interfaces_entities_iDataset.IDataset.md#updatedby)
-- [url](sdkApi_interfaces_entities_iDataset.IDataset.md#url)
+- [clientId](IDataset.md#clientid)
+- [updatedAt](IDataset.md#updatedat)
+- [updatedBy](IDataset.md#updatedby)
+- [id](IDataset.md#id)
+- [name](IDataset.md#name)
+- [annotations](IDataset.md#annotations)
+- [annotated](IDataset.md#annotated)
+- [classes](IDataset.md#classes)
+- [attributes](IDataset.md#attributes)
+- [itemsCount](IDataset.md#itemscount)
+- [url](IDataset.md#url)
+- [items](IDataset.md#items)
+- [directoryTree](IDataset.md#directorytree)
+- [creator](IDataset.md#creator)
+- [projects](IDataset.md#projects)
+- [export](IDataset.md#export)
+- [metadata](IDataset.md#metadata)
+- [clientObjectId](IDataset.md#clientobjectid)
+- [maxClientObjectId](IDataset.md#maxclientobjectid)
+- [createdAt](IDataset.md#createdat)
+- [readableType](IDataset.md#readabletype)
+- [readonly](IDataset.md#readonly)
+- [shareLevel](IDataset.md#sharelevel)
+- [driver](IDataset.md#driver)
+- [error](IDataset.md#error)
+- [indexDriver](IDataset.md#indexdriver)
 
 ## Properties
-
-### annotated
-
-• **annotated**: `number`
-
-The number of items in the dataset that have been annotated
-
-___
 
 ### clientId
 
@@ -62,31 +57,105 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
+[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
 
 ___
 
-### createdAt
+### updatedAt
 
-• **createdAt**: `IDate`
+• `Optional` **updatedAt**: [`IDate`](../modules.md#idate)
 
-The date the dataset was created
+The date and time when the Entity was last updated.
 
-#### Overrides
+#### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
+[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
 
 ___
 
-### creator
+### updatedBy
 
-• **creator**: `string`
+• `Optional` **updatedBy**: `string`
 
-The dataset creator
+The user who last updated the Entity.
+
+#### Inherited from
+
+[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
+
+___
+
+### id
+
+• **id**: `string`
+
+The unique identifier of the dataset
 
 #### Overrides
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
+[IEntity](IEntity.md).[id](IEntity.md#id)
+
+___
+
+### name
+
+• **name**: `string`
+
+The name of the dataset
+
+___
+
+### annotations
+
+• **annotations**: `DatasetClassInfo`[]
+
+___
+
+### annotated
+
+• **annotated**: `number`
+
+The number of items in the dataset that have been annotated
+
+___
+
+### classes
+
+• **classes**: `Object`
+
+#### Index signature
+
+▪ [label: `string`]: `string`
+
+___
+
+### attributes
+
+• **attributes**: `string`[]
+
+___
+
+### itemsCount
+
+• **itemsCount**: `number`
+
+The number of items in the dataset
+
+___
+
+### url
+
+• **url**: `string`
+
+The URL of the dataset
+
+___
+
+### items
+
+• **items**: `string`
+
+The URL of the dataset's items
 
 ___
 
@@ -98,19 +167,23 @@ The URL of the dataset's directory tree
 
 ___
 
-### driver
+### creator
 
-• **driver**: `string`
+• **creator**: `string`
 
-The dataset's driver
+The dataset creator
+
+#### Overrides
+
+[IEntity](IEntity.md).[creator](IEntity.md#creator)
 
 ___
 
-### error
+### projects
 
-• `Optional` **error**: `any`
+• **projects**: `string`[]
 
-The dataset's error
+The list of projects the dataset belongs to
 
 ___
 
@@ -124,44 +197,8 @@ The URLs of the dataset's exports
 
 | Name | Type |
 | :------ | :------ |
-| `json` | `string` |
 | `zip` | `string` |
-
-___
-
-### id
-
-• **id**: `string`
-
-The unique identifier of the dataset
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
-
-___
-
-### indexDriver
-
-• `Optional` **indexDriver**: ``"v1"`` \| ``"v2"``
-
-The dataset's index driver
-
-___
-
-### items
-
-• **items**: `string`
-
-The URL of the dataset's items
-
-___
-
-### itemsCount
-
-• **itemsCount**: `number`
-
-The number of items in the dataset
+| `json` | `string` |
 
 ___
 
@@ -173,19 +210,27 @@ The dataset metadata
 
 ___
 
-### name
+### clientObjectId
 
-• **name**: `string`
-
-The name of the dataset
+• `Optional` **clientObjectId**: `number`
 
 ___
 
-### projects
+### maxClientObjectId
 
-• **projects**: `string`[]
+• `Optional` **maxClientObjectId**: `number`
 
-The list of projects the dataset belongs to
+___
+
+### createdAt
+
+• **createdAt**: [`IDate`](../modules.md#idate)
+
+The date the dataset was created
+
+#### Overrides
+
+[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)
 
 ___
 
@@ -213,32 +258,24 @@ The dataset's share level
 
 ___
 
-### updatedAt
+### driver
 
-• `Optional` **updatedAt**: `IDate`
+• **driver**: `string`
 
-The date and time when the Entity was last updated.
-
-#### Inherited from
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
+The dataset's driver
 
 ___
 
-### updatedBy
+### error
 
-• `Optional` **updatedBy**: `string`
+• `Optional` **error**: `any`
 
-The user who last updated the Entity.
-
-#### Inherited from
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)
+The dataset's error
 
 ___
 
-### url
+### indexDriver
 
-• **url**: `string`
+• `Optional` **indexDriver**: ``"v1"`` \| ``"v2"``
 
-The URL of the dataset
+The dataset's index driver

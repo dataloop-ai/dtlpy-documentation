@@ -1,4 +1,4 @@
-![LOGO](assets/site/logo.svg)
+![LOGO](./assets/site/logo.svg)
 [![Documentation Status](https://readthedocs.org/projects/dtlpy/badge/?version=latest)](https://sdk-docs.dataloop.ai/en/latest/?badge=latest)
 [![pypi](https://img.shields.io/pypi/v/dtlpy.svg)](https://pypi.org/project/dtlpy/)
 [![versions](https://img.shields.io/pypi/pyversions/dtlpy.svg)](https://github.com/dataloop-ai/dtlpy)
@@ -10,11 +10,13 @@ The following repository will gather Dataloop's SDK examples and best practices.
 
 ## Table of Content
 
-1. [Installation](#installation)
-1. [Tutorials](#tutorials)
-1. [Code Examples](#code-examples)
-1. [Other Resources](#resources)
-1. [Contributions](#contributes)
+- [SDK Documentations and Tutorials for Dataloop's SDK](#sdk-documentations-and-tutorials-for-dataloops-sdk)
+  - [Table of Content](#table-of-content)
+  - [Installation](#installation)
+  - [Tutorials](#tutorials)
+  - [Code Examples](#code-examples)
+  - [Resources](#resources)
+  - [Contributes](#contributes)
 
 ## Installation
 
@@ -44,81 +46,9 @@ jupyter notebook tutorials
 
 ## Tutorials
 
-* Annotations
-  * Image
-    *  [Advance tutorials](tutorials/annotations/image/advance_tutorials/chapter.ipynb)
-    *  [Bounding box and cuboid](tutorials/annotations/image/bounding_box_and_cuboid/chapter.ipynb)
-    *  [Classification point and pose](tutorials/annotations/image/classification_point_and_pose/chapter.ipynb)
-    *  [Ellipse and item description](tutorials/annotations/image/ellipse_and_item_description/chapter.ipynb)
-    *  [Polygon and polyline](tutorials/annotations/image/polygon_and_polyline/chapter.ipynb)
-    *  [Segmentation](tutorials/annotations/image/segmentation/chapter.ipynb)
-  * Lidar
-    *  [Cuboid](tutorials/annotations/lidar/cuboid/chapter.ipynb)
-  *  [Text](tutorials/annotations/text/chapter.ipynb)
-  *  [Video](tutorials/annotations/video/chapter.ipynb)
 *  [Auto annotate service](tutorials/auto_annotate_service/chapter.ipynb)
-* Data management
-  * Cloud storage
-    * Aws
-      *  [Auto upstream sync](tutorials/data_management/cloud_storage/aws/auto_upstream_sync/chapter.ipynb)
-      *  [Integration](tutorials/data_management/cloud_storage/aws/integration/chapter.ipynb)
-      *  [Manual item upstream sync](tutorials/data_management/cloud_storage/aws/manual_item_upstream_sync/chapter.ipynb)
-      *  [Storage driver](tutorials/data_management/cloud_storage/aws/storage_driver/chapter.ipynb)
-    * Azure
-      *  [Auto upstream sync](tutorials/data_management/cloud_storage/azure/auto_upstream_sync/chapter.ipynb)
-      *  [Integration](tutorials/data_management/cloud_storage/azure/integration/chapter.ipynb)
-      *  [Storage driver](tutorials/data_management/cloud_storage/azure/storage_driver/chapter.ipynb)
-    * Gcp
-      *  [Auto upstream sync](tutorials/data_management/cloud_storage/gcp/auto_upstream_sync/chapter.ipynb)
-      *  [Integration](tutorials/data_management/cloud_storage/gcp/integration/chapter.ipynb)
-      *  [Storage driver](tutorials/data_management/cloud_storage/gcp/storage_driver/chapter.ipynb)
-  *  [Data versioning](tutorials/data_management/data_versioning/chapter.ipynb)
-  *  [Integrations](tutorials/data_management/integrations/chapter.ipynb)
-  *  [Manage datasets](tutorials/data_management/manage_datasets/chapter.ipynb)
-  *  [Modalities](tutorials/data_management/modalities/chapter.ipynb)
-  *  [Secrets](tutorials/data_management/secrets/chapter.ipynb)
-  * Sort and filter
-    *  [Advanced sdk filters](tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.ipynb)
-    *  [Annotation level](tutorials/data_management/sort_and_filter/annotation_level/chapter.ipynb)
-    *  [Item level](tutorials/data_management/sort_and_filter/item_level/chapter.ipynb)
-    *  [Pagination](tutorials/data_management/sort_and_filter/pagination/chapter.ipynb)
-    *  [Saved filters](tutorials/data_management/sort_and_filter/saved_filters/chapter.ipynb)
-  *  [Upload and manage annotations](tutorials/data_management/upload_and_manage_annotations/chapter.ipynb)
-  *  [Upload and manage items](tutorials/data_management/upload_and_manage_items/chapter.ipynb)
-  *  [Working with metadata](tutorials/data_management/working_with_metadata/chapter.ipynb)
-* Faas
-  *  [Advance](tutorials/faas/advance/chapter.ipynb)
-  *  [Auto annotate](tutorials/faas/auto_annotate/chapter.ipynb)
-  *  [Concept](tutorials/faas/concept/chapter.ipynb)
-  *  [Custom environment using docker](tutorials/faas/custom_environment_using_docker/chapter.ipynb)
-  *  [Execution control](tutorials/faas/execution_control/chapter.ipynb)
-  *  [Multiple functions and modules](tutorials/faas/multiple_functions_and_modules/chapter.ipynb)
-  *  [Private git codebase](tutorials/faas/private_git_codebase/chapter.ipynb)
-  *  [Single function rgb to gray](tutorials/faas/single_function_rgb_to_gray/chapter.ipynb)
-  *  [Ui toolbars](tutorials/faas/ui_toolbars/chapter.ipynb)
-* Model management
-  * Advance
-    *  [Dataloop dataset generator](tutorials/model_management/advance/dataloop_dataset_generator/chapter.ipynb)
-    *  [Model adapter flows](tutorials/model_management/advance/model_adapter_flows/chapter.ipynb)
-    *  [Model annotations](tutorials/model_management/advance/model_annotations/chapter.ipynb)
-    *  [Model metrics](tutorials/model_management/advance/model_metrics/chapter.ipynb)
-    * Train models locally
-      *  [Classification](tutorials/model_management/advance/train_models_locally/classification/chapter.ipynb)
-      *  [Object detection](tutorials/model_management/advance/train_models_locally/object_detection/chapter.ipynb)
-  *  [Create new model sdk](tutorials/model_management/create_new_model_sdk/chapter.ipynb)
-  *  [Introduction](tutorials/model_management/introduction/chapter.ipynb)
-  *  [Marketplace](tutorials/model_management/marketplace/chapter.ipynb)
-  *  [New model torchvision example](tutorials/model_management/new_model_torchvision_example/chapter.ipynb)
 * Pipelines
   *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
-* Recipe and ontology
-  *  [Concepts](tutorials/recipe_and_ontology/concepts/chapter.ipynb)
-  *  [Ontology](tutorials/recipe_and_ontology/ontology/chapter.ipynb)
-  *  [Recipe](tutorials/recipe_and_ontology/recipe/chapter.ipynb)
-* Task workflows
-  *  [Create a task](tutorials/task_workflows/create_a_task/chapter.ipynb)
-  *  [Item status](tutorials/task_workflows/item_status/chapter.ipynb)
-  *  [Redistributing and reassigning a task](tutorials/task_workflows/redistributing_and_reassigning_a_task/chapter.ipynb)
 
 ## Code Examples
 

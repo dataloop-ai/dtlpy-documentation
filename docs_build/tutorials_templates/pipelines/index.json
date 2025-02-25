@@ -7,6 +7,11 @@
             "displayName": "Create a Pipeline",
             "description": "Create a Pipeline.",
             "location": "pipelines/create_a_pipeline/chapter.md"
+        },
+        {
+            "displayName": "Pipeline Executions",
+            "description": "Pipeline Executions.",
+            "location": "pipelines/pipeline_executions/chapter.md"
         }
     ]
 }

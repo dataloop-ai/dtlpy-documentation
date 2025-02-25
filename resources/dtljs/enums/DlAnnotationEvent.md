@@ -1,28 +1,34 @@
 # Enumeration: DlAnnotationEvent
 
-[appLib/SDKDrivers/xFrameDriver/events](../modules/appLib_SDKDrivers_xFrameDriver_events.md).DlAnnotationEvent
-
 Annotation events that are emitted from the host (platform) to the frame (SDK)
 
 ## Table of contents
 
 ### Enumeration Members
 
-- [BULK\_DELETED](appLib_SDKDrivers_xFrameDriver_events.DlAnnotationEvent.md#bulk_deleted)
-- [CREATED](appLib_SDKDrivers_xFrameDriver_events.DlAnnotationEvent.md#created)
-- [DELETED](appLib_SDKDrivers_xFrameDriver_events.DlAnnotationEvent.md#deleted)
-- [DESELECT](appLib_SDKDrivers_xFrameDriver_events.DlAnnotationEvent.md#deselect)
-- [SELECT](appLib_SDKDrivers_xFrameDriver_events.DlAnnotationEvent.md#select)
-- [SET\_SELECTION](appLib_SDKDrivers_xFrameDriver_events.DlAnnotationEvent.md#set_selection)
-- [UPDATED](appLib_SDKDrivers_xFrameDriver_events.DlAnnotationEvent.md#updated)
+- [DELETED](DlAnnotationEvent.md#deleted)
+- [UPDATED](DlAnnotationEvent.md#updated)
+- [CREATED](DlAnnotationEvent.md#created)
+- [BULK\_DELETED](DlAnnotationEvent.md#bulk_deleted)
+- [SELECT](DlAnnotationEvent.md#select)
+- [DESELECT](DlAnnotationEvent.md#deselect)
+- [SET\_SELECTION](DlAnnotationEvent.md#set_selection)
 
 ## Enumeration Members
 
-### BULK\_DELETED
+### DELETED
 
-• **BULK\_DELETED** = ``"dl:annotations:deleted"``
+• **DELETED** = ``"dl:annotation:deleted"``
 
-Annotations deleted
+Annotation deleted
+
+___
+
+### UPDATED
+
+• **UPDATED** = ``"dl:annotation:updated"``
+
+Annotation updated
 
 ___
 
@@ -34,19 +40,11 @@ Annotation created
 
 ___
 
-### DELETED
+### BULK\_DELETED
 
-• **DELETED** = ``"dl:annotation:deleted"``
+• **BULK\_DELETED** = ``"dl:annotations:deleted"``
 
-Annotation deleted
-
-___
-
-### DESELECT
-
-• **DESELECT** = ``"dl:annotations:deselect"``
-
-Annotations deselected
+Annotations deleted
 
 ___
 
@@ -58,16 +56,16 @@ Annotations selected
 
 ___
 
+### DESELECT
+
+• **DESELECT** = ``"dl:annotations:deselect"``
+
+Annotations deselected
+
+___
+
 ### SET\_SELECTION
 
 • **SET\_SELECTION** = ``"dl:annotations:setSelection"``
 
 Set annotations selection
-
-___
-
-### UPDATED
-
-• **UPDATED** = ``"dl:annotation:updated"``
-
-Annotation updated

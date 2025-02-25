@@ -1,7 +1,5 @@
 # Interface: IDriver
 
-[sdkApi/interfaces/entities/iDriver](../modules/sdkApi_interfaces_entities_iDriver.md).IDriver
-
 An interface representing a driver configuration object.
 
 **`Interface`**
@@ -10,71 +8,39 @@ IDriver
 
 ## Hierarchy
 
-- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
+- [`IEntity`](IEntity.md)
 
   ↳ **`IDriver`**
 
 ## Implemented by
 
-- [`SDKDriver`](../classes/sdkApi_interfaces_entities_iDriver.SDKDriver.md)
+- [`SDKDriver`](../classes/SDKDriver.md)
 
 ## Table of contents
 
 ### Properties
 
-- [allowExternalDelete](sdkApi_interfaces_entities_iDriver.IDriver.md#allowexternaldelete)
-- [allowExternalModification](sdkApi_interfaces_entities_iDriver.IDriver.md#allowexternalmodification)
-- [bucket](sdkApi_interfaces_entities_iDriver.IDriver.md#bucket)
-- [bucketName](sdkApi_interfaces_entities_iDriver.IDriver.md#bucketname)
-- [clientId](sdkApi_interfaces_entities_iDriver.IDriver.md#clientid)
-- [containerName](sdkApi_interfaces_entities_iDriver.IDriver.md#containername)
-- [createdAt](sdkApi_interfaces_entities_iDriver.IDriver.md#createdat)
-- [creator](sdkApi_interfaces_entities_iDriver.IDriver.md#creator)
-- [id](sdkApi_interfaces_entities_iDriver.IDriver.md#id)
-- [integrationId](sdkApi_interfaces_entities_iDriver.IDriver.md#integrationid)
-- [integrationType](sdkApi_interfaces_entities_iDriver.IDriver.md#integrationtype)
-- [metadata](sdkApi_interfaces_entities_iDriver.IDriver.md#metadata)
-- [name](sdkApi_interfaces_entities_iDriver.IDriver.md#name)
-- [path](sdkApi_interfaces_entities_iDriver.IDriver.md#path)
-- [region](sdkApi_interfaces_entities_iDriver.IDriver.md#region)
-- [storageClass](sdkApi_interfaces_entities_iDriver.IDriver.md#storageclass)
-- [type](sdkApi_interfaces_entities_iDriver.IDriver.md#type)
-- [updatedAt](sdkApi_interfaces_entities_iDriver.IDriver.md#updatedat)
-- [updatedBy](sdkApi_interfaces_entities_iDriver.IDriver.md#updatedby)
+- [clientId](IDriver.md#clientid)
+- [updatedAt](IDriver.md#updatedat)
+- [updatedBy](IDriver.md#updatedby)
+- [type](IDriver.md#type)
+- [creator](IDriver.md#creator)
+- [id](IDriver.md#id)
+- [createdAt](IDriver.md#createdat)
+- [name](IDriver.md#name)
+- [integrationId](IDriver.md#integrationid)
+- [integrationType](IDriver.md#integrationtype)
+- [metadata](IDriver.md#metadata)
+- [allowExternalDelete](IDriver.md#allowexternaldelete)
+- [allowExternalModification](IDriver.md#allowexternalmodification)
+- [region](IDriver.md#region)
+- [bucketName](IDriver.md#bucketname)
+- [path](IDriver.md#path)
+- [storageClass](IDriver.md#storageclass)
+- [bucket](IDriver.md#bucket)
+- [containerName](IDriver.md#containername)
 
 ## Properties
-
-### allowExternalDelete
-
-• **allowExternalDelete**: `boolean`
-
-Indicates if the driver allows external delete.
-
-___
-
-### allowExternalModification
-
-• **allowExternalModification**: `boolean`
-
-Indicates if the driver allows external modification.
-
-___
-
-### bucket
-
-• `Optional` **bucket**: `string`
-
-The bucket.
-
-___
-
-### bucketName
-
-• `Optional` **bucketName**: `string`
-
-The bucket name.
-
-___
 
 ### clientId
 
@@ -84,27 +50,39 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
+[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
 
 ___
 
-### containerName
+### updatedAt
 
-• `Optional` **containerName**: `string`
+• `Optional` **updatedAt**: [`IDate`](../modules.md#idate)
 
-The container name.
+The date and time when the Entity was last updated.
+
+#### Inherited from
+
+[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
 
 ___
 
-### createdAt
+### updatedBy
 
-• **createdAt**: `string`
+• `Optional` **updatedBy**: `string`
 
-The creation date.
+The user who last updated the Entity.
 
-#### Overrides
+#### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
+[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
+
+___
+
+### type
+
+• **type**: `string`
+
+The driver type.
 
 ___
 
@@ -116,7 +94,7 @@ The driver creator.
 
 #### Overrides
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
+[IEntity](IEntity.md).[creator](IEntity.md#creator)
 
 ___
 
@@ -128,7 +106,27 @@ The driver ID.
 
 #### Overrides
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
+[IEntity](IEntity.md).[id](IEntity.md#id)
+
+___
+
+### createdAt
+
+• **createdAt**: `string`
+
+The creation date.
+
+#### Overrides
+
+[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)
+
+___
+
+### name
+
+• **name**: `string`
+
+The driver name.
 
 ___
 
@@ -156,19 +154,19 @@ The driver metadata.
 
 ___
 
-### name
+### allowExternalDelete
 
-• **name**: `string`
+• **allowExternalDelete**: `boolean`
 
-The driver name.
+Indicates if the driver allows external delete.
 
 ___
 
-### path
+### allowExternalModification
 
-• `Optional` **path**: `string`
+• **allowExternalModification**: `boolean`
 
-The path.
+Indicates if the driver allows external modification.
 
 ___
 
@@ -180,6 +178,22 @@ The region.
 
 ___
 
+### bucketName
+
+• `Optional` **bucketName**: `string`
+
+The bucket name.
+
+___
+
+### path
+
+• `Optional` **path**: `string`
+
+The path.
+
+___
+
 ### storageClass
 
 • `Optional` **storageClass**: `string`
@@ -188,32 +202,16 @@ The storage class.
 
 ___
 
-### type
+### bucket
 
-• **type**: `string`
+• `Optional` **bucket**: `string`
 
-The driver type.
-
-___
-
-### updatedAt
-
-• `Optional` **updatedAt**: `IDate`
-
-The date and time when the Entity was last updated.
-
-#### Inherited from
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
+The bucket.
 
 ___
 
-### updatedBy
+### containerName
 
-• `Optional` **updatedBy**: `string`
+• `Optional` **containerName**: `string`
 
-The user who last updated the Entity.
-
-#### Inherited from
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)
+The container name.

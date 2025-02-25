@@ -1,173 +1,249 @@
-# Prompt Item
+# 💬 Prompt Annotations - Where Conversations Come to Life!
 
-We use prompts and conversations using json files. In those files you can create prompts of all kinds and add multiple prompts to simulate a conversation.
-Example for a json prompt file:
-```json
+Welcome to the world of prompt annotations! Think of prompts as digital conversations - they can include text, images, and even audio. Let's explore how to create and manage these interactive elements!
 
-{
-	"shebang": "dataloop",
-	"metadata": {
-		"dltype": "prompt"
-	},
-	"prompts": {
-		"prompt#1": [
-			{
-				"mimetype": "application/text",
-				"value": "please generate image of a donkey"
-			}
+# 🎯 Getting Started with Prompts
 
-		]
-	}
-}
-```
-An example of a prompt containing both text and an image (change to your item id):
-```json
+## 🛠️ Creating and Managing Prompts
 
-{
-    "shebang": "dataloop",
-    "metadata": {
-        "dltype": "prompt"
-    },
-    "prompts": {
-        "1": [{
-                "mimetype": "image/*",
-                "value": "https://gate.dataloop.ai/api/v1/items/<item-id>/stream"
-            },{
-                "mimetype": "application/text",
-                "value": "What's in these images?"
-            }
-        ]
-    }
-}
-```
+## Project Setup
 
-The `prompts` are a list to support multiple prompts in a single file.
-
-Each prompt can contains multiple sections, e.g. text and image.
-
-## Creating a Prompt
-
-First we create a project and a dataset
-```python
-project = dl.projects.get(project_name='<project name>')
-dataset = project.datasets.get(dataset_name='prompts')
-```
-
-Now we can create a single prompt with multiple elements. The name of the file is the PromptItem `name`:
-```python
-# Crteate a prompt item entity
-prompt_item = dl.PromptItem(name='<your prompt item name>')
-
-# Create the prompt with ID
-prompt1 = dl.Prompt(key='<your-key>')
-# Add a text component
-prompt1.add_element(mimetype=dl.PromptType.TEXT, value='who are you')
-# Add an image component
-prompt1.add_element(mimetype=dl.PromptType.IMAGE, value=dl.items.get(item_id='64f5bd67a9163562961377f5').stream)
-
-# Add the prompt to the promptItem
-prompt_item.prompts.append(prompt)
-
-```
-
-For conversation, we can add multiple prompts with unique IDs:
-
-```python
-
-prompt2 = dl.Prompt(key='2')
-prompt2.add_element(mimetype=dl.PromptType.TEXT, value='where are you from')
-prompt2.add_element(mimetype=dl.PromptType.AUDIO, value='http://item.jpg')
-
-# Add the second prompt to the prompt item
-prompt_item.prompts.append(prompt2)
-```
-
-And just upload the prompt item:
-```python
-item: dl.Item = dataset.items.upload(prompt_item, overwrite=True)
-```
-
-You can upload prompt same as all other files/entities.
-For example, using a list of prompts items:
-```python
-items = dataset.items.upload([prompts_item_1,
-                              prompts_item_2,
-                              prompts_item_3,
-                              prompts_item_4])
-```
-Or an entire directory of prompts json files:
-
-```python
-items = dataset.items.upload('/user/prompts')
-```
-
-# Prompt Annotations (Responses)
-
-The prompt responses are basically annotations in the platform.
-We introduce those annotations type:
-
-1. FreeText
-2. RefImage
-3. RefVideo (Not available yet)
-4. RefAudio (Not available yet)
-
-## FreeText
-
-To upload text response for a prompt you need to connect the annotation to the prompt key:
-
-```python
-item = dl.items.get(item_id='<prompt item id>')
-prompt_item = dl.PromptItem.from_item(item)
-
-# Add annotations
-prompt_item.add(message={"role": "assistant",
-                         "content": [{"mimetype": dl.PromptType.TEXT,
-                                      "value": 'My name is botman'}]},
-                model_info={'name': '<model name>',
-                            'confidence': 1.0,
-                            'model_id': '<model id>'})
-
-```
-
-## Image Response
-
-This annotation type is used to annotate prompt text or input image with an output image.
-For example, generative model receive a text input and generate an image.
-This is how you can upload images as annotations to other items:
+First, let's set up our environment:
 
 ```python
 import dtlpy as dl
 
-item = dl.items.get(item_id='64f6e6010871e45536fc5e8f')
-dataset = item.dataset
-# Upload the image you want to reference
-output = dataset.items.upload(local_path=r"E:\TypesExamples\troy_and_abed.jpeg",
-                              remote_path=f'/annotations/{item.id}')
-# Add annotations
-annotation_collection: dl.AnnotationCollection = item.annotations.builder()
-
-annotation_collection.add(annotation_definition=dl.RefImage(ref=output.id,
-                                                            mimetype=output.mimetype),
-                          prompt_id='prompt#2',
-                          model_info={'name': 'stable-diffusion',
-                                      'confidence': 0.96})
-item.annotations.upload(annotation_collection)
-
+# Get your project and dataset ready
+project = dl.projects.get(project_name='<project name>')
+dataset = project.datasets.get(dataset_name='<dataset name>')
 ```
 
-Same structure could be applied for url reference:
+## Creating a Single Prompt
+
+Let's create a prompt with both text and image:
 
 ```python
-annotation_collection: dl.AnnotationCollection = item.annotations.builder()
+# Create a prompt item
+prompt_item = dl.PromptItem(name='my-first-prompt')
 
-annotation_collection.add(annotation_definition=dl.RefImage(
-    ref='https://en.wikipedia.org/wiki/Pinky_and_the_Brain#/media/File:PinkyandtheBrain.Pinky.png',
-    mimetype='image/png'),
-                          prompt_id='prompt#2',
-                          model_info={'name': 'stable-diffusion',
-                                      'confidence': 0.96})
-item.annotations.upload(annotation_collection)
+# Create a prompt with a unique key
+prompt1 = dl.Prompt(key='conversation-1')
+
+# Add text component
+prompt1.add_element(
+	mimetype=dl.PromptType.TEXT,
+	value='Who are you?'
+)
+
+# Add image component
+prompt1.add_element(
+	mimetype=dl.PromptType.IMAGE,
+	value=dl.items.get(item_id='your-image-id').stream
+)
+
+# Add the prompt to the prompt item
+prompt_item.prompts.append(prompt1)
+```
+
+## Building Conversations
+
+Create a sequence of prompts to simulate a conversation:
+
+```python
+# Add another prompt to continue the conversation
+prompt2 = dl.Prompt(key='conversation-2')
+prompt2.add_element(
+	mimetype=dl.PromptType.TEXT,
+	value='Where are you from?'
+)
+
+# Add audio element (if needed)
+prompt2.add_element(
+	mimetype=dl.PromptType.AUDIO,
+	value='http://audio-file.mp3'
+)
+
+# Add to the same prompt item
+prompt_item.prompts.append(prompt2)
+
+# Upload the complete prompt item
+item = dataset.items.upload(prompt_item, overwrite=True)
+```
+
+## Batch Upload
+
+Need to upload multiple prompts? We've got you covered:
+
+```python
+# Upload multiple prompt items at once
+items = dataset.items.upload([
+	prompts_item_1,
+	prompts_item_2,
+	prompts_item_3,
+	prompts_item_4
+])
+
+# Or upload an entire directory of prompt JSON files
+items = dataset.items.upload('/user/prompts')
+```
+
+# 📝 Working with Responses (Annotations)
+
+## Response Types
+
+Dataloop supports various types of responses:
+
+- FreeText: For text responses
+- RefImage: For image references
+- RefVideo: For video references (Coming soon!)
+- RefAudio: For audio references (Coming soon!)
+
+## Adding Text Responses
+
+Here's how to add a text response to a prompt:
+
+```python
+# Get your prompt item
+item = dl.items.get(item_id='<prompt item id>')
+prompt_item = dl.PromptItem.from_item(item)
+
+# Add a text response
+prompt_item.add(
+    prompt_key='<prompt key>',
+	message={
+		"role": "assistant",
+		"content": [{
+			"mimetype": dl.PromptType.TEXT,
+			"value": 'My name is botman'
+		}]
+	},
+	model_info={
+		'name': 'gpt-4',
+		'confidence': 1.0,
+		'model_id': 'model-123'
+	}
+)
+```
+
+## Adding Image Responses
+
+Want to respond with an image? Here's how:
+
+```python
+# First, upload the response image
+image = dataset.items.upload(
+	local_path="path/to/response.jpg",
+	remote_path=f'/annotations/{item.id}'
+)
+
+# Add the image response to the prompt item
+prompt_item.add(
+    prompt_key='<prompt key>',
+	message={
+		"role": "assistant",
+		"content": [{
+			"mimetype": dl.PromptType.IMAGE,
+			"value": dl.items.get(item_id=image.id).stream
+		}]
+	},
+	model_info={
+		'name': 'gpt-4o-mini',
+		'confidence': 1.0,
+		'model_id': '<model id>'
+	}
+)
 
 ```
 
+## Using External Image URLs
 
+You can also reference external images:
+
+```python
+
+# Add the image response to the prompt item
+prompt_item.add(
+    prompt_key='<prompt key>',
+	message={
+		"role": "assistant",
+		"content": [{
+			"mimetype": dl.PromptType.IMAGE,
+			"value":"https://example.com/image.png"
+		}]
+	},
+	model_info={
+		'name': 'gpt-4o-mini',
+		'confidence': 1.0,
+		'model_id': '<model id>'
+	}
+)
+```
+
+# Understanding Prompt Structure
+
+Prompts in Dataloop are stored as JSON files with a specific structure. Here's a simple example:
+
+```json
+{
+  "shebang": "dataloop",
+  "metadata": {
+    "dltype": "prompt"
+  },
+  "prompts": {
+    "prompt#1": [
+      {
+        "mimetype": "application/text",
+        "value": "Please generate an image of a donkey"
+      }
+    ]
+  }
+}
+```
+
+Want to go multi-modal? Here's how:
+
+```json
+{
+  "shebang": "dataloop",
+  "metadata": {
+    "dltype": "prompt"
+  },
+  "prompts": {
+    "1": [
+      {
+        "mimetype": "image/*",
+        "value": "https://gate.dataloop.ai/api/v1/items/<item-id>/stream"
+      },
+      {
+        "mimetype": "application/text",
+        "value": "What's in these images?"
+      }
+    ]
+  }
+}
+```
+
+# 💡 Pro Tips
+
+## Best Practices
+
+- Use meaningful prompt keys for easy tracking
+- Keep prompt structures consistent
+- Include metadata for better organization
+- Handle multimodal content appropriately
+
+## Quality Control
+
+- Validate JSON structure before uploading
+- Check response associations
+- Monitor model confidence scores
+- Keep track of conversation flow
+
+## Performance Optimization
+
+- Batch upload when possible
+- Use appropriate mimetypes
+- Optimize image sizes
+- Consider response caching
+
+Need help? Check out our other tutorials or reach out to our support team. Happy prompting! 💭✨

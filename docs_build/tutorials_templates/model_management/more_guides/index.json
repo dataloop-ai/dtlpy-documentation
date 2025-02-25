@@ -1,0 +1,23 @@
+{
+  "name": "model-mgmt-tutorial",
+  "title": "More Guides",
+  "description": "Use Dataloop Python SDK to create, train, inference and manage ML Models.\n\nSee our SDK Getting Started guide at https://docs.dataloop.ai/docs/sdk-register.\n",
+  "content": [
+    {
+      "displayName": "Log Metrics",
+      "description": "Upload logs and metrics",
+      "location": "model_management/more_guides/model_metrics/chapter.md"
+    },
+        {
+      "displayName": "Model Annotations",
+      "description": "Upload and filter model predictions annotations",
+      "location": "model_management/more_guides/model_annotations/chapter.md"
+    },
+    {
+      "displayName": "Model Adapter Methods and Flows",
+      "description": "Understand the wrapper function of the model adapter",
+      "location": "model_management/more_guides/model_adapter_flows/chapter.md"
+    }
+  ]
+}
+

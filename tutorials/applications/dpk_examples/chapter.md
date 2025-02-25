@@ -1,6 +1,8 @@
-# Dataloop Manifest
+# 📦 Dataloop Package Kit Examples
 
-Here is an example of a complete DPK manifest
+## 📜 Complete DPK Manifest Example
+
+Here is an example of a complete DPK manifest. 
 
 NOTE: This is not supposed to be a real app, and publishing or installing it will probably result in some errors.
 
@@ -139,8 +141,156 @@ NOTE: This is not supposed to be a real app, and publishing or installing it wil
 }
 ```
 
-Here are some real DPKs example from our GitHub space, for more go check all our DPK repositories:
-- [Model - YOLOv8](https://github.com/dataloop-ai-apps/yolov8/blob/main/dataloop.json)
-- [Panel And Node - DataSplit](https://github.com/dataloop-ai-apps/data-split/blob/main/dataloop.json)
-- [Toolbars - Dtlpy-Converters](https://github.com/dataloop-ai-apps/dtlpy-converters/blob/main/dataloop.json)
+## 🎯 Real-World DPK Examples
+
+Let's explore some production-ready examples from our public repository! Here are some magical DPKs you can use as inspiration:
+
+### 🤖 AI Model Adapters
+
+* [Torch Models](https://github.com/dataloop-ai-apps/torch-models) - Collection of PyTorch model adapters for various tasks
+* [NVIDIA Models](https://github.com/dataloop-ai-apps/nvidia-models) - Integration with NVIDIA's AI model ecosystem
+* [Grounded SAM](https://github.com/dataloop-ai-apps/grounded-sam-adapter) - Adapter for Segment Anything Model with grounding
+
+### 🔄 Pipeline & Data Processing
+
+* [Pipeline Templates](https://github.com/dataloop-ai-apps/pipeline-templates) - Ready-to-use pipeline templates for common workflows
+* [Dataset Clustering](https://github.com/dataloop-ai-apps/dataset-clustering) - Automated dataset organization using clustering techniques
+* [Data Split](https://github.com/dataloop-ai-apps/data-split) - Smart dataset splitting for training/validation/testing
+* [DTLPY Converters](https://github.com/dataloop-ai-apps/dtlpy-converters) - Tools for converting between different annotation formats
+
+### 🔌 Integrations & Utilities
+
+* [Export GCS](https://github.com/dataloop-ai-apps/export-gcs) - Export and import annotations to Google Cloud Storage
+* [OpenCV Face Detection](https://github.com/dataloop-ai-apps/opencv-face-detection) - Simple face detection implementation using OpenCV
+
+### 📊 Dataset Management
+
+* [OSDAR23 Datasets](https://github.com/dataloop-ai-apps/osdar23-datasets) - Example datasets and tools for the OSDAR challenge
+
+## 💡 Key Components in Real DPKs
+
+Each of these DPKs demonstrates best practices for:
+
+### 📝 Documentation
+* Clear README files
+* Installation instructions
+* Usage examples
+* API documentation
+
+### 🏗️ Structure
+* Well-organized code
+* Proper manifest setup
+* Clear dependency management
+* Modular components
+
+### ⚙️ Configuration
+* Environment settings
+* Runtime configurations
+* Service definitions
+* Panel layouts
+
+### 🧪 Testing
+* Test suites
+* Example data
+* Validation scripts
+* Error handling
+
+## 🎯 Example Use Cases
+
+Here are some specific examples of how these DPKs are used:
+
+### 1. Model Integration
+```json
+{
+  "name": "yolov8-detector",
+  "components": {
+    "models": [
+      {
+        "name": "fasterrcnn",
+        "moduleName": "model-adapter",
+        "scope": "project",
+        "status": "trained",
+        "configuration": {
+          "weights_url": "best.pt"
+        }
+      }
+    ]
+  }
+}
+```
+
+### 2. Pipeline Node
+```json
+{
+  "name": "data-splitter",
+  "components": {
+    "pipelineNodes": [
+      {
+        "name": "Split Dataset",
+        "invoke": {
+          "type": "function",
+          "namespace": "data-split.splitter.split_dataset"
+        },
+        "categories": ["data"]
+      }
+    ]
+  }
+}
+```
+
+### 3. Custom UI Panel
+```json
+{
+  "name": "annotation-viewer",
+  "components": {
+    "panels": [
+      {
+        "name": "AnnotationPanel",
+        "supportedSlots": [
+          {
+            "type": "annotationStudio",
+            "configuration": {}
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+## 🚀 Getting Started with Examples
+
+To use any of these example DPKs:
+
+1. **Clone the Repository**
+```bash
+git clone https://github.com/dataloop-ai-apps/<dpk-name>
+```
+
+2. **Install Dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+3. **Configure the DPK**
+```python
+import dtlpy as dl
+project = dl.projects.get('your-project')
+dpk = project.dpks.push(src_path='path/to/dpk')
+```
+
+4. **Install the App**
+```python
+project.apps.install(dpk=dpk)
+```
+
+## 💡 Pro Tips
+
+* 📚 Study multiple examples to understand different patterns
+* 🔍 Look at the manifest structure of similar apps
+* 🧪 Test configurations locally before publishing
+* 📝 Document your customizations
+* 🔄 Keep your dependencies up to date
+
+Need more inspiration? Visit our [Dataloop Apps Space](https://github.com/dataloop-ai-apps) for the latest examples and updates! ✨
 

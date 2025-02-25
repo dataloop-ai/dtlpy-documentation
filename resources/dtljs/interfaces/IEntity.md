@@ -1,7 +1,5 @@
 # Interface: IEntity
 
-[sdkApi/interfaces/entities/base](../modules/sdkApi_interfaces_entities_base.md).IEntity
-
 An interface representing an Entity object.
 
 **`Interface`**
@@ -12,48 +10,70 @@ IEntity
 
 - **`IEntity`**
 
-  ↳ [`IAnnotation`](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md)
+  ↳ [`IAnnotation`](IAnnotation.md)
 
-  ↳ [`IDataset`](sdkApi_interfaces_entities_iDataset.IDataset.md)
+  ↳ [`IRecipe`](IRecipe.md)
 
-  ↳ [`IDriver`](sdkApi_interfaces_entities_iDriver.IDriver.md)
+  ↳ [`ILabelTreeNode`](ILabelTreeNode.md)
 
-  ↳ [`IIntegration`](sdkApi_interfaces_entities_iIntegration.IIntegration.md)
+  ↳ [`IOntology`](IOntology.md)
 
-  ↳ [`IItem`](sdkApi_interfaces_entities_iItem.IItem.md)
+  ↳ [`IItem`](IItem.md)
 
-  ↳ [`IProject`](sdkApi_interfaces_entities_iProject.IProject.md)
+  ↳ [`IStructure`](IStructure.md)
 
-  ↳ [`ITask`](sdkApi_interfaces_entities_iTask.ITask.md)
+  ↳ [`IAttributeSection`](IAttributeSection.md)
 
-  ↳ [`IContributor`](sdkApi_interfaces_entities_iUser.IContributor.md)
+  ↳ [`IExecution`](IExecution.md)
+
+  ↳ [`IDataset`](IDataset.md)
+
+  ↳ [`IProject`](IProject.md)
+
+  ↳ [`IUser`](IUser.md)
+
+  ↳ [`IContributor`](IContributor.md)
+
+  ↳ [`IGroup`](IGroup.md)
+
+  ↳ [`IAccount`](IAccount.md)
+
+  ↳ [`IOrg`](IOrg.md)
+
+  ↳ [`ITask`](ITask.md)
+
+  ↳ [`IDriver`](IDriver.md)
+
+  ↳ [`IIntegration`](IIntegration.md)
+
+  ↳ [`IPipeline`](IPipeline.md)
 
 ## Table of contents
 
 ### Properties
 
-- [clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
-- [createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
-- [creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
-- [id](sdkApi_interfaces_entities_base.IEntity.md#id)
-- [updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
-- [updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)
+- [id](IEntity.md#id)
+- [clientId](IEntity.md#clientid)
+- [creator](IEntity.md#creator)
+- [createdAt](IEntity.md#createdat)
+- [updatedAt](IEntity.md#updatedat)
+- [updatedBy](IEntity.md#updatedby)
 
 ## Properties
+
+### id
+
+• **id**: `string`
+
+A globally unique identifier for the Entity.
+
+___
 
 ### clientId
 
 • `Optional` **clientId**: `string`
 
 A local identifier for the Entity, unique within the client.
-
-___
-
-### createdAt
-
-• `Optional` **createdAt**: `IDate`
-
-The date and time when the Entity was created.
 
 ___
 
@@ -65,17 +85,17 @@ The creator of the Entity.
 
 ___
 
-### id
+### createdAt
 
-• **id**: `string`
+• `Optional` **createdAt**: [`IDate`](../modules.md#idate)
 
-A globally unique identifier for the Entity.
+The date and time when the Entity was created.
 
 ___
 
 ### updatedAt
 
-• `Optional` **updatedAt**: `IDate`
+• `Optional` **updatedAt**: [`IDate`](../modules.md#idate)
 
 The date and time when the Entity was last updated.
 

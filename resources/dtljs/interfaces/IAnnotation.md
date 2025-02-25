@@ -1,7 +1,5 @@
 # Interface: IAnnotation
 
-[sdkApi/interfaces/entities/iAnnotation](../modules/sdkApi_interfaces_entities_iAnnotation.md).IAnnotation
-
 An interface representing an Annotation object, extending the IEntity interface.
 
 **`Interface`**
@@ -10,33 +8,45 @@ IAnnotation
 
 ## Hierarchy
 
-- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
+- [`IEntity`](IEntity.md)
 
   ↳ **`IAnnotation`**
 
 ## Implemented by
 
-- [`SDKAnnotation`](../classes/sdkApi_interfaces_entities_iAnnotation.SDKAnnotation.md)
+- [`SDKAnnotation`](../classes/SDKAnnotation.md)
 
 ## Table of contents
 
 ### Properties
 
-- [clientId](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#clientid)
-- [coordinates](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#coordinates)
-- [createdAt](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#createdat)
-- [creator](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#creator)
-- [datasetId](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#datasetid)
-- [id](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#id)
-- [itemId](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#itemid)
-- [label](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#label)
-- [labelSuggestions](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#labelsuggestions)
-- [metadata](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#metadata)
-- [type](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#type)
-- [updatedAt](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#updatedat)
-- [updatedBy](sdkApi_interfaces_entities_iAnnotation.IAnnotation.md#updatedby)
+- [id](IAnnotation.md#id)
+- [clientId](IAnnotation.md#clientid)
+- [creator](IAnnotation.md#creator)
+- [label](IAnnotation.md#label)
+- [itemId](IAnnotation.md#itemid)
+- [type](IAnnotation.md#type)
+- [metadata](IAnnotation.md#metadata)
+- [datasetId](IAnnotation.md#datasetid)
+- [createdAt](IAnnotation.md#createdat)
+- [updatedAt](IAnnotation.md#updatedat)
+- [updatedBy](IAnnotation.md#updatedby)
+- [coordinates](IAnnotation.md#coordinates)
+- [labelSuggestions](IAnnotation.md#labelsuggestions)
 
 ## Properties
+
+### id
+
+• **id**: `string`
+
+A globally unique identifier for the Entity.
+
+#### Inherited from
+
+[IEntity](IEntity.md).[id](IEntity.md#id)
+
+___
 
 ### clientId
 
@@ -46,27 +56,7 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
-
-___
-
-### coordinates
-
-• `Optional` **coordinates**: `any`
-
-The coordinates associated with the annotation.
-
-___
-
-### createdAt
-
-• **createdAt**: `IDate`
-
-The date and time the annotation was created.
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
+[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
 
 ___
 
@@ -78,27 +68,15 @@ The creator of the Entity.
 
 #### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
+[IEntity](IEntity.md).[creator](IEntity.md#creator)
 
 ___
 
-### datasetId
+### label
 
-• **datasetId**: `string`
+• **label**: `string`
 
-The ID of the dataset the annotation belongs to.
-
-___
-
-### id
-
-• **id**: `string`
-
-A globally unique identifier for the Entity.
-
-#### Inherited from
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
+The label associated with the annotation.
 
 ___
 
@@ -110,11 +88,71 @@ The ID of the item the annotation is associated with.
 
 ___
 
-### label
+### type
 
-• **label**: `string`
+• **type**: `string`
 
-The label associated with the annotation.
+The type of the annotation.
+
+___
+
+### metadata
+
+• **metadata**: `any`
+
+The metadata associated with the annotation.
+
+___
+
+### datasetId
+
+• **datasetId**: `string`
+
+The ID of the dataset the annotation belongs to.
+
+___
+
+### createdAt
+
+• **createdAt**: [`IDate`](../modules.md#idate)
+
+The date and time the annotation was created.
+
+#### Overrides
+
+[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)
+
+___
+
+### updatedAt
+
+• **updatedAt**: [`IDate`](../modules.md#idate)
+
+The date and time the annotation was last updated.
+
+#### Overrides
+
+[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
+
+___
+
+### updatedBy
+
+• **updatedBy**: `string`
+
+The user who last updated the annotation.
+
+#### Overrides
+
+[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
+
+___
+
+### coordinates
+
+• `Optional` **coordinates**: `any`
+
+The coordinates associated with the annotation.
 
 ___
 
@@ -127,43 +165,3 @@ The label suggestions and their associated confidence scores.
 #### Index signature
 
 ▪ [key: `string`]: `number`
-
-___
-
-### metadata
-
-• **metadata**: `any`
-
-The metadata associated with the annotation.
-
-___
-
-### type
-
-• **type**: `string`
-
-The type of the annotation.
-
-___
-
-### updatedAt
-
-• **updatedAt**: `IDate`
-
-The date and time the annotation was last updated.
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
-
-___
-
-### updatedBy
-
-• **updatedBy**: `string`
-
-The user who last updated the annotation.
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)

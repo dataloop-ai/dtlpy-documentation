@@ -1,18 +1,102 @@
-# Dataloop JS-SDK Library ![components version](https://img.shields.io/npm/v/@dataloop-ai/jssdk?label=Latest%20SDK%20Version) ![release status](https://img.shields.io/badge/Relese%20Status-Beta-yellowgreen)
-Written in TypeScript, this repository contains the core of Dataloop's Javacript SDK.
+# Dataloop JS-SDK Library ![components version](https://img.shields.io/npm/v/@dataloop-ai/jssdk?label=Latest%20SDK%20Version) ![release status](https://img.shields.io/badge/Release%20Status-Beta-yellowgreen)
 
-### appLib
-appLib contains the [xFrame](src/appLib/xFrame/readme.md) which serves as the main communication tool between Dataloop's platform and external web applications.
-It contains two SDK drivers - dataloop (REST) and xFrameDriver (xFrame).
-This directory is compiled into one dlAppLib.js file, that can be used as an external script in any application (see: examples)
-### examples
-In this folder you can find examples of basic applications that use the compiled appLib, demonstrating the use of the xFrameDriver. Feel free to add examples of your own.
+Written in TypeScript, this repository contains the core of Dataloop's JavaScript SDK.
 
-### sdkApi
-This directory serves as the source of truth of the JS-SDK API. It contains the entities and interfaces that the SDK drivers implement.
+## Installation
 
-## Scripts
-1. In order to compile and create an updated version of dlAppLib, you can run
-```npm run build:applib```
-2. For a regular build, run ```npm run build```
-3. docker run -it  -v E:\Shabtay\platform\jssdk:/tmp docker.io/dataloopai/py3.8.node16:1.81.4 bash
+```bash
+npm install @dataloop-ai/jssdk
+```
+
+## Quick Start
+
+```typescript
+import { initializeFrameDriver } from '@dataloop-ai/jssdk';
+
+// Initialize the SDK
+await initializeFrameDriver();
+```
+
+## Architecture
+
+The SDK consists of three main components:
+
+### 1. appLib
+The core communication layer containing:
+- **xFrame**: Main communication tool between Dataloop's platform and external web applications
+- **SDK Drivers**: 
+  - Dataloop Driver (REST)
+  - xFrameDriver (xFrame)
+
+The appLib is compiled into a single `dlAppLib.js` file that can be used as an external script in any application.
+
+### 2. sdkApi
+The source of truth for the JS-SDK API, containing:
+- Entity definitions
+- Interface declarations
+- Type definitions
+- Core API implementations
+
+## Development
+
+### Prerequisites
+- Node.js (v12 or higher)
+- npm (v6 or higher)
+
+### Setup
+1. Clone the repository
+```bash
+git clone git@github.com:dataloop-ai/jssdk.git
+cd jssdk
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+### Build Commands
+
+1. Create an updated version of dlAppLib:
+```bash
+npm run build:applib
+```
+
+2. Full build (includes all components):
+```bash
+npm run build
+```
+
+3. Watch mode for development:
+```bash
+npm run build:watch
+```
+
+### Documentation
+The SDK uses TypeDoc to generate documentation. To generate the docs:
+
+```bash
+npm run tsdoc
+```
+
+Documentation will be generated in the `docs` directory and includes:
+- API Reference
+- Type Definitions
+- Usage Examples
+- Interface Descriptions
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the Apache-2.0 License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+For support and questions, please [open an issue](https://github.com/dataloop-ai/jssdk/issues) or contact our support team.

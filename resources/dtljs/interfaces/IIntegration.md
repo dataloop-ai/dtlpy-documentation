@@ -1,7 +1,5 @@
 # Interface: IIntegration
 
-[sdkApi/interfaces/entities/iIntegration](../modules/sdkApi_interfaces_entities_iIntegration.md).IIntegration
-
 An interface representing a integration object.
 
 **`Interface`**
@@ -10,25 +8,29 @@ IIntegration
 
 ## Hierarchy
 
-- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
+- [`IEntity`](IEntity.md)
 
   ↳ **`IIntegration`**
+
+## Implemented by
+
+- [`SDKIntegration`](../classes/SDKIntegration.md)
 
 ## Table of contents
 
 ### Properties
 
-- [clientId](sdkApi_interfaces_entities_iIntegration.IIntegration.md#clientid)
-- [createdAt](sdkApi_interfaces_entities_iIntegration.IIntegration.md#createdat)
-- [creator](sdkApi_interfaces_entities_iIntegration.IIntegration.md#creator)
-- [iconUrl](sdkApi_interfaces_entities_iIntegration.IIntegration.md#iconurl)
-- [id](sdkApi_interfaces_entities_iIntegration.IIntegration.md#id)
-- [metadata](sdkApi_interfaces_entities_iIntegration.IIntegration.md#metadata)
-- [name](sdkApi_interfaces_entities_iIntegration.IIntegration.md#name)
-- [orgId](sdkApi_interfaces_entities_iIntegration.IIntegration.md#orgid)
-- [type](sdkApi_interfaces_entities_iIntegration.IIntegration.md#type)
-- [updatedAt](sdkApi_interfaces_entities_iIntegration.IIntegration.md#updatedat)
-- [updatedBy](sdkApi_interfaces_entities_iIntegration.IIntegration.md#updatedby)
+- [clientId](IIntegration.md#clientid)
+- [updatedBy](IIntegration.md#updatedby)
+- [id](IIntegration.md#id)
+- [name](IIntegration.md#name)
+- [createdAt](IIntegration.md#createdat)
+- [updatedAt](IIntegration.md#updatedat)
+- [type](IIntegration.md#type)
+- [orgId](IIntegration.md#orgid)
+- [iconUrl](IIntegration.md#iconurl)
+- [creator](IIntegration.md#creator)
+- [metadata](IIntegration.md#metadata)
 
 ## Properties
 
@@ -40,95 +42,7 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
-
-___
-
-### createdAt
-
-• **createdAt**: `string` \| `number`
-
-The date and time when the integration was created.
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
-
-___
-
-### creator
-
-• **creator**: `string`
-
-The user who created the integration
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
-
-___
-
-### iconUrl
-
-• `Optional` **iconUrl**: `string`
-
-The integration icon url
-
-___
-
-### id
-
-• **id**: `string`
-
-The integration id
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
-
-___
-
-### metadata
-
-• `Optional` **metadata**: `any`
-
-The integration metadata
-
-___
-
-### name
-
-• **name**: `string`
-
-The integration name
-
-___
-
-### orgId
-
-• **orgId**: `string`
-
-The organization id the integration belongs to
-
-___
-
-### type
-
-• **type**: `string`
-
-The integration type
-
-___
-
-### updatedAt
-
-• **updatedAt**: `string` \| `number`
-
-The date and time when the integration was last updated.
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
+[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
 
 ___
 
@@ -140,4 +54,92 @@ The user who last updated the Entity.
 
 #### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)
+[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
+
+___
+
+### id
+
+• **id**: `string`
+
+The integration id
+
+#### Overrides
+
+[IEntity](IEntity.md).[id](IEntity.md#id)
+
+___
+
+### name
+
+• **name**: `string`
+
+The integration name
+
+___
+
+### createdAt
+
+• **createdAt**: `string` \| `number`
+
+The date and time when the integration was created.
+
+#### Overrides
+
+[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)
+
+___
+
+### updatedAt
+
+• **updatedAt**: `string` \| `number`
+
+The date and time when the integration was last updated.
+
+#### Overrides
+
+[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
+
+___
+
+### type
+
+• **type**: `string`
+
+The integration type
+
+___
+
+### orgId
+
+• **orgId**: `string`
+
+The organization id the integration belongs to
+
+___
+
+### iconUrl
+
+• `Optional` **iconUrl**: `string`
+
+The integration icon url
+
+___
+
+### creator
+
+• **creator**: `string`
+
+The user who created the integration
+
+#### Overrides
+
+[IEntity](IEntity.md).[creator](IEntity.md#creator)
+
+___
+
+### metadata
+
+• `Optional` **metadata**: `any`
+
+The integration metadata

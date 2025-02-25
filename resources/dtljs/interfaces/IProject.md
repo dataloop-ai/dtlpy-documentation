@@ -1,7 +1,5 @@
 # Interface: IProject
 
-[sdkApi/interfaces/entities/iProject](../modules/sdkApi_interfaces_entities_iProject.md).IProject
-
 An interface representing a Project object, extending the IEntity interface.
 
 **`Interface`**
@@ -10,50 +8,46 @@ IProject
 
 ## Hierarchy
 
-- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
+- [`IEntity`](IEntity.md)
 
   ↳ **`IProject`**
 
 ## Implemented by
 
-- [`SDKProject`](../classes/sdkApi_interfaces_entities_iProject.SDKProject.md)
+- [`SDKProject`](../classes/SDKProject.md)
 
 ## Table of contents
 
 ### Properties
 
-- [account](sdkApi_interfaces_entities_iProject.IProject.md#account)
-- [accountId](sdkApi_interfaces_entities_iProject.IProject.md#accountid)
-- [clientId](sdkApi_interfaces_entities_iProject.IProject.md#clientid)
-- [contributors](sdkApi_interfaces_entities_iProject.IProject.md#contributors)
-- [createdAt](sdkApi_interfaces_entities_iProject.IProject.md#createdat)
-- [creator](sdkApi_interfaces_entities_iProject.IProject.md#creator)
-- [datasetsCount](sdkApi_interfaces_entities_iProject.IProject.md#datasetscount)
-- [groups](sdkApi_interfaces_entities_iProject.IProject.md#groups)
-- [id](sdkApi_interfaces_entities_iProject.IProject.md#id)
-- [isBlocked](sdkApi_interfaces_entities_iProject.IProject.md#isblocked)
-- [name](sdkApi_interfaces_entities_iProject.IProject.md#name)
-- [org](sdkApi_interfaces_entities_iProject.IProject.md#org)
-- [orgId](sdkApi_interfaces_entities_iProject.IProject.md#orgid)
-- [role](sdkApi_interfaces_entities_iProject.IProject.md#role)
-- [updatedAt](sdkApi_interfaces_entities_iProject.IProject.md#updatedat)
-- [updatedBy](sdkApi_interfaces_entities_iProject.IProject.md#updatedby)
+- [id](IProject.md#id)
+- [clientId](IProject.md#clientid)
+- [creator](IProject.md#creator)
+- [updatedBy](IProject.md#updatedby)
+- [name](IProject.md#name)
+- [accountId](IProject.md#accountid)
+- [orgId](IProject.md#orgid)
+- [createdAt](IProject.md#createdat)
+- [updatedAt](IProject.md#updatedat)
+- [contributors](IProject.md#contributors)
+- [groups](IProject.md#groups)
+- [datasetsCount](IProject.md#datasetscount)
+- [role](IProject.md#role)
+- [org](IProject.md#org)
+- [account](IProject.md#account)
+- [isBlocked](IProject.md#isblocked)
 
 ## Properties
 
-### account
+### id
 
-• `Optional` **account**: `IAccount`
+• **id**: `string`
 
-The account associated with the project.
+A globally unique identifier for the Entity.
 
-___
+#### Inherited from
 
-### accountId
-
-• `Optional` **accountId**: `string`
-
-The account ID associated with the project.
+[IEntity](IEntity.md).[id](IEntity.md#id)
 
 ___
 
@@ -65,27 +59,7 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
-
-___
-
-### contributors
-
-• `Optional` **contributors**: `IUser`[]
-
-The project contributors.
-
-___
-
-### createdAt
-
-• **createdAt**: `IDate`
-
-The creation date.
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
+[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
 
 ___
 
@@ -97,87 +71,7 @@ The creator of the Entity.
 
 #### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
-
-___
-
-### datasetsCount
-
-• `Optional` **datasetsCount**: `number`
-
-The count of datasets associated with the project.
-
-___
-
-### groups
-
-• `Optional` **groups**: `IGroup`[]
-
-The project groups.
-
-___
-
-### id
-
-• **id**: `string`
-
-A globally unique identifier for the Entity.
-
-#### Inherited from
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
-
-___
-
-### isBlocked
-
-• **isBlocked**: `boolean`
-
-Indicates if the project is blocked.
-
-___
-
-### name
-
-• **name**: `string`
-
-The project name.
-
-___
-
-### org
-
-• `Optional` **org**: `IOrg`
-
-The organization associated with the project.
-
-___
-
-### orgId
-
-• `Optional` **orgId**: `string`
-
-The organization ID associated with the project.
-
-___
-
-### role
-
-• `Optional` **role**: `string`
-
-The role of the project.
-
-___
-
-### updatedAt
-
-• **updatedAt**: `IDate`
-
-The last update date.
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
+[IEntity](IEntity.md).[creator](IEntity.md#creator)
 
 ___
 
@@ -189,4 +83,108 @@ The user who last updated the Entity.
 
 #### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)
+[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
+
+___
+
+### name
+
+• **name**: `string`
+
+The project name.
+
+___
+
+### accountId
+
+• `Optional` **accountId**: `string`
+
+The account ID associated with the project.
+
+___
+
+### orgId
+
+• `Optional` **orgId**: `string`
+
+The organization ID associated with the project.
+
+___
+
+### createdAt
+
+• **createdAt**: [`IDate`](../modules.md#idate)
+
+The creation date.
+
+#### Overrides
+
+[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)
+
+___
+
+### updatedAt
+
+• **updatedAt**: [`IDate`](../modules.md#idate)
+
+The last update date.
+
+#### Overrides
+
+[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
+
+___
+
+### contributors
+
+• `Optional` **contributors**: [`IUser`](IUser.md)[]
+
+The project contributors.
+
+___
+
+### groups
+
+• `Optional` **groups**: [`IGroup`](IGroup.md)[]
+
+The project groups.
+
+___
+
+### datasetsCount
+
+• `Optional` **datasetsCount**: `number`
+
+The count of datasets associated with the project.
+
+___
+
+### role
+
+• `Optional` **role**: `string`
+
+The role of the project.
+
+___
+
+### org
+
+• `Optional` **org**: [`IOrg`](IOrg.md)
+
+The organization associated with the project.
+
+___
+
+### account
+
+• `Optional` **account**: [`IAccount`](IAccount.md)
+
+The account associated with the project.
+
+___
+
+### isBlocked
+
+• **isBlocked**: `boolean`
+
+Indicates if the project is blocked.

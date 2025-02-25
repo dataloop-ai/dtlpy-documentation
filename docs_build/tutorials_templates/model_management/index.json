@@ -24,9 +24,9 @@
             "location": "model_management/new_model_torchvision_example/chapter.md"
         },
         {
-            "displayName": "Advanced Tutorials",
+            "displayName": "More Guides",
             "description": "More Model Management usage",
-            "location": "model_management/advance/index.json"
+            "location": "model_management/more_guides/index.json"
         }
     ]
 }

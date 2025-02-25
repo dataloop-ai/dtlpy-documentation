@@ -1,34 +1,24 @@
 # Enumeration: DlAnnotationFrameEvent
 
-[appLib/SDKDrivers/xFrameDriver/events](../modules/appLib_SDKDrivers_xFrameDriver_events.md).DlAnnotationFrameEvent
-
 Annotation events that are emitted from the frame (SDK) to the host (platform)
 
 ## Table of contents
 
 ### Enumeration Members
 
-- [DESELECT\_ALL](appLib_SDKDrivers_xFrameDriver_events.DlAnnotationFrameEvent.md#deselect_all)
-- [DESELECT\_MULTIPLE](appLib_SDKDrivers_xFrameDriver_events.DlAnnotationFrameEvent.md#deselect_multiple)
-- [DESELECT\_ONE](appLib_SDKDrivers_xFrameDriver_events.DlAnnotationFrameEvent.md#deselect_one)
-- [SELECT\_MULTIPLE](appLib_SDKDrivers_xFrameDriver_events.DlAnnotationFrameEvent.md#select_multiple)
-- [SELECT\_ONE](appLib_SDKDrivers_xFrameDriver_events.DlAnnotationFrameEvent.md#select_one)
+- [SELECT\_ONE](DlAnnotationFrameEvent.md#select_one)
+- [DESELECT\_ONE](DlAnnotationFrameEvent.md#deselect_one)
+- [SELECT\_MULTIPLE](DlAnnotationFrameEvent.md#select_multiple)
+- [DESELECT\_MULTIPLE](DlAnnotationFrameEvent.md#deselect_multiple)
+- [DESELECT\_ALL](DlAnnotationFrameEvent.md#deselect_all)
 
 ## Enumeration Members
 
-### DESELECT\_ALL
+### SELECT\_ONE
 
-• **DESELECT\_ALL** = ``"clearSelectedAnnotations"``
+• **SELECT\_ONE** = ``"selectOneAnnotation"``
 
-Clear selected annotations
-
-___
-
-### DESELECT\_MULTIPLE
-
-• **DESELECT\_MULTIPLE** = ``"deselectMultipleAnnotations"``
-
-Deselect multiple annotations
+Select one annotation
 
 ___
 
@@ -48,8 +38,16 @@ Select multiple annotations
 
 ___
 
-### SELECT\_ONE
+### DESELECT\_MULTIPLE
 
-• **SELECT\_ONE** = ``"selectOneAnnotation"``
+• **DESELECT\_MULTIPLE** = ``"deselectMultipleAnnotations"``
 
-Select one annotation
+Deselect multiple annotations
+
+___
+
+### DESELECT\_ALL
+
+• **DESELECT\_ALL** = ``"clearSelectedAnnotations"``
+
+Clear selected annotations
