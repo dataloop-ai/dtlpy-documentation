@@ -187,6 +187,156 @@ dataset_merge = dl.datasets.merge(
 )
 ```
 
+## Collections: Your Data's Best Friend 🤝
+
+Think of Collections as smart tags on steroids! They're your secret weapon for organizing data like a pro. Whether you're juggling labeling tasks, managing massive datasets, or getting your data ready for model training - Collections have got your back! 
+
+Want to learn all the cool tricks? Check out our [Dataloop documentation](https://docs.dataloop.ai/docs/organize-your-data#collections) for the full scoop! 🎓
+
+### Become a Collections Master 🎯
+
+Ready to become a Collections wizard? The Dataloop SDK gives you superpowers to create, update, delete, and manage collections at both dataset and item levels. Let's break it down!
+
+**Dataset Level Magic Tricks ✨**
+
+These are your dataset-wide spells for managing collections. Think of them as your high-level organization tools:
+
+1. Create a new collection (max 10 per dataset - choose wisely!)
+```python
+dataset.collections.create(name: str)
+```
+
+2. Give your collection a fancy new name (keep it unique!)
+```python
+dataset.collections.update(collection_id: str, new_name: str)
+```
+
+3. Make a collection disappear (poof! 🎩)
+```python
+dataset.collections.delete(collection_id: str)
+```
+
+4. Clone a collection (it's like ctrl+c, ctrl+v, but cooler)
+```python
+dataset.collections.clone(collection_id: str)
+```
+
+5. See all your collections in one place
+```python
+dataset.collections.list()
+```
+
+6. Find the lone wolves (items not in any collection)
+```python
+dataset.collections.list_unassigned_items()
+```
+
+**Item Level Ninja Moves 🥷**
+
+These methods are your precision tools - perfect for when you need that surgical accuracy:
+
+1. Add an item to a collection (like adding a card to your favorite deck)
+```python
+item.assign_collection(item_id: str, collection_name: str)
+```
+
+2. Remove an item from a collection (no hard feelings!)
+```python
+item.unassign_collection(item_id: str, collection_id: str)
+```
+
+3. Check which collections an item belongs to
+```python
+item.list_collections(item_id: str)
+```
+
+**Show Time! 🎬 Real-World Examples**
+
+Let's see these powers in action:
+
+```python
+import dtlpy as dl
+
+project = dl.projects.get(project_name='<project_name>')
+dataset = project.datasets.get(dataset_id='<dataset_id>')
+
+# Get a VIP list of all collections
+dataset.collections.list_all_collections()
+
+# Create a shiny new collection
+dataset.collections.create(collection='my_awesome_collection')
+
+# Clone it (because good things deserve doubles!)
+dataset.collections.clone(collection_name='my_awesome_collection_2')
+
+# Oops, changed our mind - let's delete one
+dataset.collections.delete(collection_name='my_awesome_collection_2')
+
+# Give it a cooler name
+dataset.collections.update(collection_name='my_super_awesome_collection')
+
+# Find the items playing hide and seek
+dataset.collections.list_unassigned_items()
+
+# Add an item to our cool collection
+dataset.items.get(item_id='<item_id>').assign_collection(collections=['my_super_awesome_collection'])
+
+# Let an item go free
+dataset.items.get(item_id='<item_id>').unassign_collection(collections=['my_super_awesome_collection'])
+```
+
+## ML Subsets: Your Dataset's Secret Sauce 🌟
+
+Welcome to ML Subsets - your dataset's personal organizer for machine learning! It's like having a smart assistant that helps you split your data into perfect training, validation, and test portions. No more manual sorting - we've got you covered! 
+
+Want to become an ML Subsets guru? Check out our [detailed guide](https://docs.dataloop.ai/docs/organize-your-data#ml-subsets)! 📚
+
+### ML Subsets: The Fun Way! 🎮
+
+Let's see how to slice and dice your dataset with style:
+
+**1. The Perfect Split (60-20-20 Style) 🎯**
+```python
+import dtlpy as dl
+
+project = dl.projects.get(project_name='<project_name>')
+dataset = project.datasets.get(dataset_id='<dataset_id>')
+
+filters = dl.Filters(field='type', values='file')
+dataset.split_ml_subsets(
+    items_query=filters,
+    percentages={'train': 60, 'validation': 20, 'test': 20}
+)
+```
+* Like a chef perfectly portioning ingredients! 👨‍🍳
+* Your files get VIP treatment in train (60%), validation (20%), and test (20%) clubs
+* Perfectly balanced, as all things should be! 
+
+**2. Send an Item to Training Camp 🏋️‍♂️**
+```python
+filters = dl.Filters()
+filters.add(field='id', values=['<item_id>'], operator=dl.FiltersOperations.IN)
+dataset.assign_subset_to_items(subset='train', items_query=filters)
+```
+* Hand-pick items for special training
+* Like choosing your star player for the big game!
+
+**3. Give an Item a Break 🏖️**
+```python
+filters = dl.Filters()
+filters.add(field='id', values=['<item_id>'], operator=dl.FiltersOperations.IN)
+dataset.remove_subset_from_items(items_query=filters)
+```
+* Sometimes items need a vacation from their subset
+* No hard feelings - they can always come back later!
+
+**4. Find the Free Agents 🔍**
+```python
+dataset.get_items_missing_ml_subset()
+```
+* Spot items that haven't joined a team yet
+* Perfect for making sure no data is left behind!
+
 ## Need More Help? 🤔
 
 Check out our [comprehensive documentation](https://docs.dataloop.ai/docs/welcome) for more details on dataset management and versioning.

@@ -71,6 +71,49 @@ for metadata in updated_integration.meatadata:
             raise ValueError('⚠️ Oops! Integration setup needs attention - check your IAM Role trust relationship')
 ```
 
+### Elastic Container Registry (ECR) Integration: Your Cloud Container Home 🏠
+
+Ready to connect your AWS ECR to Dataloop? Let's make some cloud magic happen! ✨
+
+**First Things First: Your AWS Checklist 📝**
+1. 🪣 Create an S3 bucket in your AWS kingdom
+2. 👮‍♂️ Set up an IAM policy (think of it as your security guard)
+3. 🤝 Create the integration and get your VIP pass (IAM user) from Dataloop
+
+Want the full scoop? Check out our [magical guide](https://docs.dataloop.ai/docs/aws-elastic-container-registry) in the Dataloop docs! 🎓
+
+**Time to Connect! 🔌**
+
+Let's write some code that'll make your AWS ECR and Dataloop become best friends:
+
+```python
+import dtlpy as dl
+# Your organization's secret handshake 🤫
+org = dl.organizations.get(organization_id='your_organization_id')
+
+# Create the integration (it's like introducing two friends)
+integration = org.integrations.create(
+    integrations_type=dl.IntegrationType.PRIVATE_REGISTRY,
+    name='aws-ecr-integration',  # Give it a friendly name
+    options={
+        "name": "AWS",
+        "spec": {
+            "accessKeyId": "your_access_key_id",         # Your AWS username
+            "secretAccessKey": "your_secret_access_key",  # Your AWS password
+            "account": "your_aws_account_id",            # Your AWS address
+            "region": "your_aws_region"                  # Your AWS neighborhood
+        }
+    },
+    metadata={"provider": 'aws'}
+)
+```
+
+**🔑 Where to Find Your Secret Keys:**
+Need help finding those mysterious AWS credentials? Our [documentation](https://docs.dataloop.ai/docs/aws-elastic-container-registry#prerequisites) has your treasure map!
+
+**🎯 Final Step:**
+Pop into your Dataloop platform and check the Integrations section - your new integration should be waving back at you! 👋
+
 ## Step 2: Creating Your Storage Driver 🎯
 
 Now that we have our integration set up, let's create a storage driver - think of it as your personal data concierge that connects your specific S3 bucket to Dataloop.
@@ -215,7 +258,7 @@ d. Destination - Lambda function → Choose from your Lambda functions → choos
 
 ## Need More Help? 🤔
 
-For detailed AWS cross-account integration setup, check out our [comprehensive documentation](https://docs.dataloop.ai/docs/aws-cross-account-integration).
+For detailed AWS cross-account integration setup, check out our [comprehensive documentation](https://docs.dataloop.ai/docs/integrations-overview).
 
 Happy data syncing! 🚀
 

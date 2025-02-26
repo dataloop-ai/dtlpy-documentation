@@ -2,6 +2,49 @@
 
 Ever wondered how to connect your Google Cloud Storage (GCS) seamlessly with Dataloop? You're in the right place! Let's walk through the process step by step, from setting up your integration to automating your data sync.
 
+## Choose Your Integration Adventure! 🎮
+
+Before we dive into the technical stuff, let's pick the right integration path for your needs. We've got several exciting options:
+
+### Cross Project Integration: The Team Player 🤝
+
+Want to connect across different GCP projects? Here's your game plan:
+
+1. 🪣 Create a Cloud Storage Bucket in your GCP kingdom
+2. 👮‍♂️ Set up an IAM policy (your security badge)
+3. 🔗 Create the integration and get your VIP pass (IAM user) from Dataloop
+
+Ready to become a cross-project master? Check out our [detailed guide](https://docs.dataloop.ai/docs/cross-project-integration)!
+
+### Private Key Integration: The Secret Agent 🕵️‍♂️
+
+Need that extra layer of security? Here's your mission, should you choose to accept it:
+
+1. 🪣 Create a Cloud Storage Bucket (your secure vault)
+2. 👑 Create an IAM role (your security clearance)
+3. 🤖 Create a Service Account (your trusted agent)
+4. 🔑 Generate a Private Key (your secret decoder ring)
+
+For the classified details, visit our [secret handbook](https://docs.dataloop.ai/docs/private-key-integration)!
+
+### Google Artifacts Registry Integration: The Modern Curator 📦
+
+Want to manage your container artifacts like a pro? Here's the blueprint:
+
+1. 🏗️ Create and Configure your GCP Google Artifacts Registry
+2. 🤝 Shake hands with Dataloop (integrate the platforms)
+
+Discover all the artifacts secrets in our [curator's guide](https://docs.dataloop.ai/docs/google-artifacts-registry)!
+
+### Google Container Registry Integration: The Classic Container Master 🐳
+
+Prefer the classic container registry? We've got you covered:
+
+1. 🏭 Create and Configure your GCP Google Container Registry
+2. 🔄 Connect it with Dataloop (smooth sailing ahead!)
+
+Master the container arts with our [comprehensive guide](https://docs.dataloop.ai/docs/google-container-registry)!
+
 ## Step 1: Setting Up GCP Integration 🔗
 
 Before we can start moving data around, we need to establish a secure connection between Dataloop and Google Cloud Platform. Let's set up the integration:

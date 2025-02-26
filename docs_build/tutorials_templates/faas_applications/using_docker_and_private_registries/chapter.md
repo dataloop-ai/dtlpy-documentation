@@ -93,14 +93,13 @@ encoded_cred = base64.b64encode(json.dumps(cred_payload).encode()).decode()
 # Create organization integration
 org = dl.organizations.get(organization_name='<org name>')
 secret = org.integrations.create(
-    integrations_type='private-registry',
+    integrations_type=dl.IntegrationType.PRIVATE_REGISTRY,
     name='dockerhub-secret',
     options={
         "name": "_json_key",
         "spec": {"password": encoded_cred}
     }
 )
-
 # Now use your private image
 service = package.deploy(
     service_name='private-service',
