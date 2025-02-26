@@ -60,9 +60,19 @@ random_array = random_array.astype(np.uint8)
 # Upload array (remember to specify remote_name!)
 item = dataset.items.upload(
     local_path=random_array,
-    remote_name='generated_image.jpg'
+    remote_name='generated_image.jpg'  # Only .jpg or .png formats are supported!
+)
+
+# Download as array
+buffer = item.download(
+    save_locally=False,  # Returns a buffer instead of saving to disk
+    to_array=True       # Converts the buffer directly to a numpy array
 )
 ```
+
+**Important Notes:**
+- Use `save_locally=False` to get a buffer instead of saving to disk
+- Use `to_array=True` to get the buffer as a numpy array
 
 #### Image Arrays with PIL
 
@@ -345,30 +355,121 @@ dataset.download(
 
 ### Format Conversion 🔄
 
-#### Export to Popular Formats
+Want to convert annotations between different formats? We've got you covered! First, grab our handy converter toolkit:
 
-Convert your annotations to COCO, YOLO, or VOC format:
+1. Install our [dtlpy-converters](https://github.com/dataloop-ai-apps/dtlpy-converters) package 🛠️
+```bash
+pip install git+https://github.com/dataloop-ai-apps/dtlpy-converters
+```
+
+2. Let's start converting! 🚀
+
+#### Converting TO Dataloop Format ⬇️
+
+Here's how to bring your COCO/YOLO/VOC annotations into Dataloop:
 
 ```python
-# Set up filters if needed
-item_filters = dl.Filters(resource="items", field="dir", values="/specific_folder")
-annotation_filters = dl.Filters(resource="annotations", field="label", values="desired_label")
+import asyncio
+import dtlpy as dl
+from dtlpyconverters.uploaders import ConvertersUploader
 
-# Initialize converter
-converter = dl.Converter()
+# Initialize our magical converter
+converter = ConvertersUploader()
 
-# Convert to desired format
-converter.convert_dataset(
-    dataset=dataset,
-    # Choose your format:
-    # to_format='yolo',
-    # to_format='voc',
-    to_format='coco',
-    local_path=r"C:/converted_annotations",
-    filters=item_filters,
-    annotation_filters=annotation_filters
-)
+# 🎯 COCO to Dataloop
+coco_dataset = dl.datasets.get(dataset_id="dataset_id")
+asyncio.run(converter.coco_to_dataloop(
+    dataset=coco_dataset,
+    input_items_path=r"C:/path/to/coco/items",
+    input_annotations_path=r"C:/path/to/coco/items/annotations",
+    # Make sure item filenames match the COCO json! 🎯
+    coco_json_filename="annotations.json",
+    annotation_options=[
+        dl.AnnotationType.BOX,
+        dl.AnnotationType.SEGMENTATION
+    ],
+    upload_items=True,
+    to_polygon=True
+))
+
+# 🎯 YOLO to Dataloop
+yolo_dataset = dl.datasets.get(dataset_id="dataset_id")
+asyncio.run(converter.yolo_to_dataloop(
+    dataset=yolo_dataset,
+    input_items_path=r"C:/path/to/yolo/items",
+    # Make sure item filenames match YOLO txt files! 🎯
+    input_annotations_path=r"C:/path/to/yolo/items/annotations",
+    upload_items=True,
+    add_labels_to_recipe=True,
+    labels_txt_filepath=r"C:/path/to/yolo/items/labels/labels.txt"
+))
+
+# 🎯 VOC to Dataloop
+voc_dataset = dl.datasets.get(dataset_id='dataset_id')
+asyncio.run(converter.voc_to_dataloop(
+    dataset=voc_dataset,
+    input_items_path=r"C:/path/to/voc/items",
+    # Make sure item filenames match VOC xml files! 🎯
+    input_annotations_path=r"C:/path/to/voc/items/annotations",
+    upload_items=True,
+    add_labels_to_recipe=True
+))
 ```
+
+#### Converting FROM Dataloop Format ⬆️
+
+Need to export your Dataloop annotations to other formats? Here's how:
+
+```python
+import asyncio
+import dtlpy as dl
+from dtlpyconverters import coco_converters, yolo_converters, voc_converters
+
+# Set up your filters (optional but powerful!) 🎯
+filters = dl.Filters()
+# Example: Get items from specific folder
+filters.add(field=dl.FiltersKnownFields.DIR, values='/dog_name')
+# Example: Filter for dog annotations
+filters.add_join(field=dl.FiltersKnownFields.LABEL, values='dog')
+
+# 🎯 Dataloop to COCO
+coco_dataset = dl.datasets.get(dataset_id='')
+coco_converter = coco_converters.DataloopToCoco(
+    input_annotations_path=r'C:/input/coco',
+    output_annotations_path=r'C:/output/coco',
+    download_annotations=True,
+    filters=filters,
+    dataset=coco_dataset
+)
+asyncio.run(coco_converter.convert_dataset())
+
+# 🎯 Dataloop to YOLO
+yolo_dataset = dl.datasets.get(dataset_id='')
+yolo_converter = yolo_converters.DataloopToYolo(
+    input_annotations_path=r'C:/input/yolo',
+    output_annotations_path=r'C:/output/yolo',
+    download_annotations=True,
+    filters=filters,
+    dataset=yolo_dataset
+)
+asyncio.run(yolo_converter.convert_dataset())
+
+# 🎯 Dataloop to VOC
+voc_dataset = dl.datasets.get(dataset_id='')
+voc_converter = voc_converters.DataloopToVoc(
+    input_annotations_path=r'C:/input/voc',
+    output_annotations_path=r'C:/output/voc',
+    download_annotations=True,
+    filters=filters,
+    dataset=voc_dataset
+)
+asyncio.run(voc_converter.convert_dataset())
+```
+
+**Pro Tips! 💡**
+- Always check that your item filenames match the annotation files
+- Use filters to convert specific subsets of your data
+- Remember that converter functions are async - use `asyncio.run()`!
 
 ## Best Practices for Large Scale Operations 🎯
 

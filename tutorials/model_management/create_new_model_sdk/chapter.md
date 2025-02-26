@@ -2,6 +2,33 @@
 
 Ready to bring your own model to the Dataloop platform? Let's build something amazing together! This guide will show you how to create your custom model adapter and get your model running smoothly on our platform.
 
+## Choose Your Path: SDK or UI 🛤️
+
+You've got two ways to bring your model to life in Dataloop:
+
+### Option 1: Using the SDK (This Guide) 💻
+Follow along with this guide to create your model programmatically using our Python SDK.
+
+### Option 2: Using the Dataloop UI 🖥️
+
+Prefer a more visual approach? You can use the [Dataloop UI](https://docs.dataloop.ai/docs/models-overview#using-the-dataloop-ui) to create and integrate your model. Here's how:
+
+1. **Connect Your Docker Registry** 🐳
+   - Link your container registry:
+     * [AWS ECR](https://docs.dataloop.ai/docs/aws-elastic-container-registry)
+     * [Google Container Registry (GCR)](https://docs.dataloop.ai/docs/google-container-registry)
+     * [Google Artifact Registry (GAR)](https://docs.dataloop.ai/docs/google-artifacts-registry)
+
+2. **Create Your Model Application** 🎨
+   - Navigate to the [Model Marketplace](https://docs.dataloop.ai/docs/marketplace-applications#how-to-create-an-application)
+   - Create a new application
+   - Link your Docker image:
+     * Provide the image URL
+     * Connect it to your application
+     * Enable predictions, training, and workflow capabilities
+
+Now, let's dive into the SDK approach! 🚀
+
 ## The Model Adapter: Your Bridge to Dataloop 🌉
 
 Think of the model adapter as a translator between your model and Dataloop. It's like teaching your model to speak our language! Let's create one:
