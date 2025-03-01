@@ -49,3 +49,25 @@ redirects:
     to: '/tutorials/faas_applications'
   '/onboarding/03_add_and_annotate_data':
     to: '/onboarding/onboarding'
+  '/tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter/':
+    to: '/tutorials/data_management/dataloop_query_language/introduction/chapter'
+  '/tutorials/data_management/sort_and_filter/item_level/chapter/':
+    to: '/tutorials/data_management/dataloop_query_language/introduction/chapter'
+  '/tutorials/data_management/upload_and_manage_annotations/chapter':
+    to: '/tutorials/data_management/items_and_annotations/introduction/chapter'
+  '/tutorials/faas/multiple_functions_and_modules/chapter/':
+    to: '/tutorials/faas_applications/building_an_app/chapter/'
+  '/tutorials/data_management/integrations/chapter/':
+    to: '/tutorials/data_management/integrations_and_secrets/chapter/'
+  '/tutorials/data_management/secrets/chapter/':
+    to: '/tutorials/data_management/integrations_and_secrets/chapter/'
+  '/tutorials/data_management/cloud_storage/aws/auto_upstream_sync/chapter/':
+    to: '/tutorials/data_management/external_storage_drivers/aws_s3/chapter/'
+  '/tutorials/data_management/upload_and_manage_items/chapter':
+    to: '/tutorials/data_management/items_and_annotations/introduction/chapter/'
+  '/tutorials/data_management/cloud_storage/aws/integration/chapter/':
+    to: '/tutorials/data_management/external_storage_drivers/aws_s3/chapter'
+  '/tutorials/getting_started/sdk_overview/chapter/':
+    to: '/onboarding/onboarding/'
+  '/onboarding/04_metadata_querying_and_filtering/':
+    to: '/onboarding/05_metadata_and_filtering/'
