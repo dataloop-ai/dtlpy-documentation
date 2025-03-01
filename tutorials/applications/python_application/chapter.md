@@ -91,12 +91,12 @@ class MyMagicalFunction(dl.BaseServiceRunner):
     "modules": [
       {
         "name": "my-magical-function",
-        "entrypoint": "main.py",
+        "entryPoint": "main.py",
         "className": "MyMagicalFunction",
         "functions": [
           {
             "name": "my_magical_function",
-            "inputs": [
+            "input": [
               {
                 "name": "item",
                 "type": "Item"

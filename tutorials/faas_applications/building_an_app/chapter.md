@@ -4,32 +4,37 @@ Welcome to the world of serverless functions in Dataloop! In this tutorial, you'
 
 # 📦 Creating Your First DPK (Dataloop Package)
 
+For the full code, see [this repository](https://github.com/dataloop-ai-apps/hello-world-python-app).
+
 ## Step 1: Write Your Function
+
 Let's start with a simple function that processes items:
 
 ```python
 import dtlpy as dl
 
-class HelloWorld(dl.BaseServiceConfig):
+class HelloWorld(dl.BaseServiceRunner):
     def hello_world(self, item: dl.Item):
         """
         A simple function that prints and returns item details
         :param item: dl.Item to process
         :return: processed item
         """
-        print(f'Processing item: {item.name}')
-        print(f'Item ID: {item.id}')
-        
+        print(f"Processing item: {item.name}")
+        print(f"Item ID: {item.id}")
+
         # Add a simple metadata flag
-        item.metadata['processed'] = True
+        if "user" not in item.metadata:
+            item.metadata["user"] = {}
+        item.metadata["user"]["processed"] = True
         item.update()
-        
         return item
 ```
 
 Save this code in a file named `hello_world.py`.
 
 ## Step 2: Create the DPK Manifest
+
 Create a file named `dataloop.json` with your package configuration:
 
 ```json
@@ -41,15 +46,21 @@ Create a file named `dataloop.json` with your package configuration:
     "modules": [
       {
         "name": "hello-world",
-        "entrypoint": "hello_world.py",
+        "entryPoint": "hello_world.py",
         "className": "HelloWorld",
         "functions": [
           {
             "name": "hello_world",
-            "inputs": [
+            "input": [
               {
                 "name": "item",
-                "type": "item"
+                "type": "Item"
+              }
+            ],
+            "output": [
+              {
+                "name": "item",
+                "type": "Item"
               }
             ]
           }
@@ -61,7 +72,7 @@ Create a file named `dataloop.json` with your package configuration:
         "name": "hello-world",
         "moduleName": "hello-world",
         "runtime": {
-          "podType": "regular-m",
+          "podType": "regular-xs",
           "concurrency": 10,
           "runnerImage": "python:3.10",
           "autoscaler": {
@@ -80,6 +91,7 @@ Create a file named `dataloop.json` with your package configuration:
 # 🚀 Deploying Your Function
 
 ## Step 1: Initialize Dataloop
+
 First, make sure you're logged in:
 
 ```python
@@ -89,17 +101,25 @@ if dl.token_expired():
 ```
 
 ## Step 2: Get Your Project
+
 ```python
 project = dl.projects.get(project_name='your-project-name')
 ```
 
 ## Step 3: Publish and Install
+
 ```python
 # Publish your DPK
 dpk = project.dpks.publish()
 
-# Install the application
-app = project.apps.install(dpk)
+# Install or update the application
+try:
+    app = project.apps.get(app_name=dpk.display_name)
+    app.dpk_version = dpk.version
+    app.update()
+except dl.exceptions.NotFound:
+    print("installing ...")
+    app = project.apps.install(dpk=dpk)
 
 # Get the service
 service = project.services.get('hello-world')
@@ -108,6 +128,7 @@ service = project.services.get('hello-world')
 # 🎯 Running Your Function
 
 ## Manual Execution
+
 Try your function on a specific item:
 
 ```python
@@ -123,15 +144,21 @@ execution = service.execute(
 )
 
 # Wait for completion and get results
-execution.wait()
-if execution.latest_status['status'] == 'success':
+execution = execution.wait()
+if execution.latest_status["status"] == "success":
     processed_item = execution.output
-    print(f'Successfully processed item: {processed_item.name}')
+    print(f"Successfully processed item: {processed_item}")
 else:
-    print(f'Execution failed: {execution.latest_status["message"]}')
+    print(f"Execution failed: {execution.latest_status['message']}")
+
+# Get the updated item
+item = dataset.items.get(item_id=item.id)
+print(f"Updated item's metadata: {item.metadata.get('user')}")
+
 ```
 
 ## Add a Trigger (Optional)
+
 Want your function to run automatically on new items? Add this to your `dataloop.json`:
 
 ```json
@@ -145,10 +172,11 @@ Want your function to run automatically on new items? Add this to your `dataloop
         "namespace": "services.hello-world",
         "spec": {
           "filter": {
-            "resource": "Item",
-            "actions": ["Created"],
             "metadata.system.mimetype": "image/*"
           },
+          "resource": "Item",
+          "actions": ["Created"],
+          "executionMode": "Once",
           "operation": {
             "type": "function",
             "functionName": "hello_world"
@@ -163,20 +191,24 @@ Want your function to run automatically on new items? Add this to your `dataloop
 # 💡 Pro Tips
 
 ## Best Practices
+
 - Keep your functions focused and single-purpose
 - Use meaningful names for your DPK and functions
 - Always handle errors gracefully
 - Test locally before deploying
 
 ## Debugging
+
 - Use print statements for basic debugging
 - Check service logs for issues:
+
 ```python
 logs = service.logs(follow=True)
 print(logs)
 ```
 
 ## Service Management
+
 ```python
 # Pause service when not needed
 service.pause()
@@ -196,6 +228,7 @@ service.update(
 # 🔍 What's Next?
 
 Now that you've created your first function, you can:
+
 - Add more complex processing logic
 - Implement different types of triggers
 - Create functions that work with datasets
