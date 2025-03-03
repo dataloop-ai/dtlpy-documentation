@@ -86,6 +86,57 @@ app.dpk_version = dpk.version
 app.update()
 ```
 
+## 🧹 Uninstalling and Cleaning Up
+
+Sometimes you need to do some spring cleaning! Here's how to uninstall apps and clean up DPKs:
+
+### 🗑️ Uninstalling an App
+
+Simple as waving goodbye:
+
+```python
+# Get your app
+app = project.apps.get(app_name='<app-name>')
+# Uninstall it
+app.uninstall()
+```
+
+### 🧨 Deleting DPKs
+
+You've got two options here:
+
+#### Option 1: Quick Delete (Single Revision) 🎯
+```python
+# Delete a specific DPK revision
+dpk.delete()  # This only removes one revision!
+```
+
+#### Option 2: Complete Cleanup (Nuclear Option) 💥
+
+Want to remove everything related to a DPK? Here's the full cleanup spell:
+
+```python
+# Get your DPK
+dpk = dl.dpks.get(dpk_name='your-dpk-name')
+
+# Find and clean up all related apps
+apps_filters = dl.Filters(field='dpkName', values=dpk.name, resource='apps')
+for app in dl.apps.list(filters=apps_filters).all():
+    print(f'🎯 Found app: {app.name} in project: {app.project.name}')    
+    # Uninstall the app
+    app.uninstall()
+
+# Delete all DPK revisions
+print('🧹 Cleaning up DPK revisions...')
+_ = [revision.delete() for revision in dpk.revisions.all()]
+print('✨ Cleanup complete!')
+```
+
+**Pro Tips! 💡**
+- Always double-check before using the complete cleanup option
+- Consider backing up any important data first
+- Remember that deletions are permanent!
+
 ## 🧩 DPK Components - The Building Blocks
 
 ### 🎯 Scopes
