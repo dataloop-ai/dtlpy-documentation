@@ -83,7 +83,7 @@ Create a dataset on the Dataloop platform and upload the following required LiDA
 
 1. **3D Scene Files** - Point Cloud Data files used for generating the 3D scenes.
 2. **2D Camera Views Files** - Usually showing the angle and viewport of the cameras that captured the main scene.
-3. **Calibration Data Files** Any type of files that contains all required information to align the point cloud data with the camera images. \
+3. **Calibration Data Files** Any type of files that contains all required information to align the point cloud data with the camera images.
    For a detailed explanation about the parameters required in the mapping.json file, please refer to the Camera Calibration Parameters.
 
 ### Example of arranging the files with PandaSet
@@ -287,7 +287,7 @@ A method to parse LiDAR sensor data from the downloaded files
 A method to parse camera data from all available downloaded files
 (Intrinsic, Extrinsic, Timestamps and Distortion).
 
-- `images_and_pcds.LidarCameraData` - A class that stores camera calibration information required to position a camera object in the 3D scene (per frame, per camera). \
+- `images_and_pcds.LidarCameraData` - A class that stores camera calibration information required to position a camera object in the 3D scene (per frame, per camera).
 - `images_and_pcds.LidarImageData` - A class extending `images_and_pcds.LidarCameraData` by associating a 2D image with the camera object in the 3D scene (per frame, per camera).
 
 `Notice:` This classes later get converted into json formant, and get added to the `frames.json` file.
