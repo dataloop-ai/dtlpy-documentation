@@ -127,7 +127,7 @@ The PandaSet scene folder structure:
 
 #### Json files structure
 
-##### 1. `poses.json` file structure (similar for lidar and cameras)
+##### - `poses.json` file structure (similar for lidar and cameras)
 
 Each object refer to a different frame.
 
@@ -138,7 +138,7 @@ Each object refer to a different frame.
 ]
 ```
 
-##### 2. `intrinsics.json` file structure (for cameras)
+##### - `intrinsics.json` file structure (for cameras)
 
 Each camera has static intrinsics calibrations across all its images.
 
@@ -146,7 +146,7 @@ Each camera has static intrinsics calibrations across all its images.
 {"fx": 933.4667, "fy": 934.6754, "cx": 896.4692, "cy": 507.3557}
 ```
 
-##### 3. `timestamps.json` file structure (similar for lidar and cameras)
+##### - `timestamps.json` file structure (similar for lidar and cameras)
 
 Each object refer to a different frame.
 
