@@ -90,12 +90,12 @@ export DTLPY_API_KEY=your-api-key
 ### 2. Configuration File Setup
 
 ```python
+import dtlpy as dl
 # Create a default configuration
-dl.configure()
+dl.login_api_key(api_key=os.environ['DTLPY_API_KEY'])
 
-# Or specify custom settings
-dl.configure(api_key='your-api-key',
-            environment='prod')
+# Check if the configuration is successful
+dl.projects.list().print()
 ```
 
 ## Best Practices & Tips 👑
@@ -143,7 +143,7 @@ Common issues and solutions:
 
 Before proceeding, ensure:
 
-- [ ] Python 3.8+ is installed
+- [ ] Python version between 3.8 and 3.12 is installed
 - [ ] Virtual environment is created and activated
 - [ ] Dataloop SDK is installed
 - [ ] Installation is verified
