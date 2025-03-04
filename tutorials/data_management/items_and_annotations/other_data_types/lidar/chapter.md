@@ -66,8 +66,8 @@ Set it to a default value of `1` if it is not already present.
 
 ### Brief explanation
 
-This section provides an advanced guide about how to set up a LiDAR scene dataset on the Dataloop platform
-for any directory structure of a LiDAR scene, as long as the files are in the following formats:
+This section provides an advanced guide about how to set up a LiDAR scene dataset and create a LiDAR video file on the
+Dataloop platform for any directory structure of a LiDAR scene, as long as the files are in the following formats:
 
 1. **3D Scene Files** - Point Cloud Data files in `.pcd` **ASCII** format.
 2. **2D Camera Views Files** - Image files in JPEG/PNG formats.
@@ -269,11 +269,11 @@ and explain for what each method is used for.
 
 In this section we will show an example implementation of each method in the `CustomBaseParser` to support parsing the PandaSet dataset `Calibration data` and creating the LiDAR video file.
 
-##### 1. [Download data (Customizable)](https://github.com/dataloop-ai-apps/dtlpy-lidar/blob/13dd1b8f1170438c61376ca10446a78580b3914f/dtlpylidar/parsers/custom_base_parser.py#L20)
+##### - [Download data (Customizable)](https://github.com/dataloop-ai-apps/dtlpy-lidar/blob/13dd1b8f1170438c61376ca10446a78580b3914f/dtlpylidar/parsers/custom_base_parser.py#L20)
 
 A method to specify the required binaries and JSON annotations that need to be downloaded for use in subsequent parsing functions.
 
-##### 2. [Parse LiDAR data (Customizable)](https://github.com/dataloop-ai-apps/dtlpy-lidar/blob/13dd1b8f1170438c61376ca10446a78580b3914f/dtlpylidar/parsers/custom_base_parser.py#L45)
+##### - [Parse LiDAR data (Customizable)](https://github.com/dataloop-ai-apps/dtlpy-lidar/blob/13dd1b8f1170438c61376ca10446a78580b3914f/dtlpylidar/parsers/custom_base_parser.py#L45)
 
 A method to parse LiDAR sensor data from the downloaded files
 (Extrinsic and Timestamps).
@@ -282,7 +282,7 @@ A method to parse LiDAR sensor data from the downloaded files
 
 `Notice:` This class later get converted into json formant, and get added to the `frames.json` file.
 
-##### 3. [Parse cameras data (Customizable)](https://github.com/dataloop-ai-apps/dtlpy-lidar/blob/13dd1b8f1170438c61376ca10446a78580b3914f/dtlpylidar/parsers/custom_base_parser.py#L93)
+##### - [Parse cameras data (Customizable)](https://github.com/dataloop-ai-apps/dtlpy-lidar/blob/13dd1b8f1170438c61376ca10446a78580b3914f/dtlpylidar/parsers/custom_base_parser.py#L93)
 
 A method to parse camera data from all available downloaded files
 (Intrinsic, Extrinsic, Timestamps and Distortion).
@@ -292,7 +292,7 @@ A method to parse camera data from all available downloaded files
 
 `Notice:` This classes later get converted into json formant, and get added to the `frames.json` file.
 
-##### 4. [Build LiDAR scene](https://github.com/dataloop-ai-apps/dtlpy-lidar/blob/13dd1b8f1170438c61376ca10446a78580b3914f/dtlpylidar/parsers/custom_base_parser.py#L251)
+##### - [Build LiDAR scene](https://github.com/dataloop-ai-apps/dtlpy-lidar/blob/13dd1b8f1170438c61376ca10446a78580b3914f/dtlpylidar/parsers/custom_base_parser.py#L251)
 
 A method to combine the `lidar_data` and `cameras_data` to construct the `frames.json` file, which represents a LiDAR video containing all point cloud and image files seamlessly integrated. Each frame includes the following information:
 
@@ -301,7 +301,7 @@ A method to combine the `lidar_data` and `cameras_data` to construct the `frames
 
 This integration ensures that each frame is a complete representation of the scene, combining LiDAR and camera data for synchronized analysis.
 
-##### 5. [Run](https://github.com/dataloop-ai-apps/dtlpy-lidar/blob/13dd1b8f1170438c61376ca10446a78580b3914f/dtlpylidar/parsers/custom_base_parser.py#L286)
+##### - [Run](https://github.com/dataloop-ai-apps/dtlpy-lidar/blob/13dd1b8f1170438c61376ca10446a78580b3914f/dtlpylidar/parsers/custom_base_parser.py#L286)
 
 A method to execute the parser to process a dataset containing LiDAR data, using all the above functions, and upload the resulting `frames.json` file.
 
