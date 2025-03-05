@@ -167,7 +167,7 @@ To upload the files to the dataset, you can use the following scripts to upload 
 import dtlpy as dl
 
 # Set the dataset id, scene folder path and remote path
-dataset_id = "dataset-id"
+dataset_id = "<dataset id>"
 scene_folder = "C:/data/pandaset/001"
 remote_path = "/001"
 

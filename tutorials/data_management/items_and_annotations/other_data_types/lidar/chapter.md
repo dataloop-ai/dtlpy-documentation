@@ -32,8 +32,8 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
    where each frame contains the following information:
 
    - **PCD file:** The point cloud data of the 3D scene for the given frame.
-   - **JPEG/PNG files:** The images of the available cameras for the given frame.
-   - **Calibration data:** The calibration data of the LiDAR sensor and the cameras for the given frame (as was specified in the `mapping.json` file).
+   - **JPEG/PNG files:** The 2D images of the available camera sources for the given frame.
+   - **Calibration data:** The calibration data of the LiDAR sensor and the camera sources for the given frame (as was specified in the `mapping.json` file).
 
 4. (Optional) Once all files are ready, contact Dataloop to execute the Ground Detection - on each provided .pcd file to enable the Ground Detection Toggle on the LiDAR Studio.
 
@@ -167,7 +167,7 @@ To upload the files to the dataset, you can use the following scripts to upload 
 import dtlpy as dl
 
 # Set the dataset id, scene folder path and remote path
-dataset_id = "dataset-id"
+dataset_id = "<dataset id>"
 scene_folder = "C:/data/pandaset/001"
 remote_path = "/001"
 
