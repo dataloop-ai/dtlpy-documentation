@@ -32,7 +32,7 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
    where each frame contains the following information:
 
    - **PCD file:** The point cloud data of the 3D scene for the given frame.
-   - **JPEG/PNG files:** The images of the available cameras for the given frame.
+   - **JPEG/PNG files:** The 2D images of the available cameras for the given frame.
    - **Calibration data:** The calibration data of the LiDAR sensor and the cameras for the given frame (as was specified in the `mapping.json` file).
 
 4. (Optional) Once all files are ready, contact Dataloop to execute the Ground Detection - on each provided .pcd file to enable the Ground Detection Toggle on the LiDAR Studio.
