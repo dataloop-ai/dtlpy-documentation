@@ -175,7 +175,7 @@ task.set_status(status='completed')
 # Get task items
 items = task.items.list()
 for item in items:
-    print(f"Item: {item.name}, Status: {item.status}")
+    print(f"Item: {item.name}, Status: {item.status(assignment_id="", task_id="")}")
 ```
 
 ## Quality Assurance 🔍

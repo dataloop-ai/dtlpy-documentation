@@ -252,6 +252,17 @@ def advanced_function(item: dl.Item, context: dl.Context):
     context.add_metric('confidence_score', 0.95)
 ```
 
+Context will also provide more information about the execution, such as the trigger id, task id, and more (when relevant).
+
+```python
+# Get the trigger id
+trigger_id = context.trigger_id
+
+# Get the task id
+task_id = context.task_id
+```
+
+
 ## 💡 Pro Tips & Best Practices
 
 ### Resource Optimization

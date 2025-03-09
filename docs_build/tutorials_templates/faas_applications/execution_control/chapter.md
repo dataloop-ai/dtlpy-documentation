@@ -9,7 +9,7 @@ Need to safely stop a long-running execution? Use checkpoints to implement grace
 
 ```python
 class ServiceRunner(dl.BaseServiceRunner):
-    def train_model(self, item: dl.Item):
+    def train_model(self, item: dl.Item, progress: dl.Progress):
         # Initialize training
         model = list()
         
