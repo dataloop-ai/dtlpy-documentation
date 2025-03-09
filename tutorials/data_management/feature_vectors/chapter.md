@@ -133,6 +133,19 @@ item_features = list(item.features.list().all())
 print(f'This item has {len(item_features)} feature vectors')
 ```
 
+
+## Exporting Feature Sets 📤
+
+Use the `export` method to export a feature set to a local file.
+
+```python
+dataset = dl.datasets.get(dataset_id='my-dataset-id')
+dataset.export(local_path='./my-dataset',
+               feature_vector_filters=None,
+               include_feature_vectors=True)
+```
+
+
 ## Finding Similar Items 🔍
 
 ### K-Nearest Neighbors Search
