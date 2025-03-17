@@ -161,18 +161,26 @@ efficient_autoscaler = dl.KubernetesRabbitmqAutoscaler(
 
 ### Working with Secrets
 
+To add integrations and secrets to your organization, check out [this guide](https://developers.dataloop.ai/tutorials/data_management/integrations_and_secrets/chapter#creating-key-value-secrets-).
+
 Integrations can be added to the manifest or to the service directly.
 
 In the manifest:
 
 ```json
 "components": {
+    "modules": [
+        // map a module to an integration in the DPK
+        {"integrations": ["api_key"]}
+    ],
     "integrations": [
+        // add an integration to the DPK
         {
-            "env": "API_KEY",
-            "value": "integration-id",
-            "type": "key_value",
-            "description": "API key for OpenAI platform",
+            "env": "API_KEY", // the environment variable name inside the FaaS function
+            "key": "api_key", // the key name of the integration in the DPK
+            "value": "integration-id", // the integration/secret id
+            "type": "key_value", // the type of the integration
+            "description": "API key for OpenAI platform", // the description of the integration
         }
     ]
 }
@@ -205,7 +213,6 @@ def secure_function(item: dl.Item):
     db_password = os.environ['DB_PASSWORD']
     # Your secure code here
 ```
-
 
 ## 📊 Monitoring and Logging
 
@@ -261,7 +268,6 @@ trigger_id = context.trigger_id
 # Get the task id
 task_id = context.task_id
 ```
-
 
 ## 💡 Pro Tips & Best Practices
 
