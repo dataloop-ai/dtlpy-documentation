@@ -160,8 +160,8 @@ annotation.delete()
 - **Upload Failure?** Double-check **JSON format** and required metadata fields.
 
 ## 📚 Learn More
-For more details on GIS annotations and formats, refer to the following documentation:
-- [GIS Studio](https://docs.dataloop.ai/docs/gis-studio)
+For more details on GIS user documentation and GIS output formats, refer to the following documentation:
+- [GIS User Documentation ](https://docs.dataloop.ai/docs/gis-studio)
 - [GIS JSON Format](https://docs.dataloop.ai/docs/gis-json-format)
 - [GIS Item JSON Format](https://docs.dataloop.ai/docs/gis-item-json-format)
 
