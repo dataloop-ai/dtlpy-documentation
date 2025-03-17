@@ -52,6 +52,8 @@ class GisPoint(lat, long, label, attributes=None, description=None)
 
 ## Create GIS Box Annotation
 
+Defines a rectangular bounding box using latitude and longitude coordinates to annotate an object. The example below creates a bounding box labeled "car."
+
 ```python
 import dtlpy as dl
 
@@ -72,6 +74,8 @@ box = dl.Gis(
 
 ## Create GIS Polyline Annotation
 
+A polyline annotation is used to define linear features such as roads, rivers, or paths. The example below creates a polyline labeled "road."
+
 
 ```python
 import dtlpy as dl
@@ -87,6 +91,10 @@ polyline = dl.Gis(
 
 ## Create GIS Point Annotation
 
+A point annotation marks a single geographic location, ideal for identifying landmarks, points of interest, or specific objects. The example below places a point labeled "landmark."
+
+
+
 ```python
 import dtlpy as dl
 
@@ -98,6 +106,8 @@ point = dl.Gis(
 
 
 ## Create GIS Polygon Annotation
+
+A polygon annotation is used to define an area by connecting multiple points. The first and last points must be the same to form a closed shape. The example below creates a polygon labeled "building."
 
 ```python
 import dtlpy as dl
@@ -116,6 +126,8 @@ polygon = dl.Gis(
 
 
 ## Attach Annotations to Item
+
+Once annotations are created, they must be attached to an item before being uploaded. The following example adds all previously created annotations to an item and uploads them.
 
 ```python
 import dtlpy as dl
