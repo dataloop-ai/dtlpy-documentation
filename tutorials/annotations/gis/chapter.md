@@ -6,7 +6,6 @@ The **GIS Annotation SDK** enables users to efficiently annotate geospatial data
 ## Upload GIS Items
 GIS items can be uploaded programmatically via the SDK using the GIS-Item JSON format. The uploaded items retain all associated metadata, including the Area of Interest (AOI), if specified.
 
-### **Example: Upload GIS Item**
 ```python
 import dtlpy as dl
 
@@ -14,18 +13,16 @@ import dtlpy as dl
 gis_item = dl.ItemGis.from_local_file(filepath="item_path")
 ```
 
-## Upload GIS Annotations
-The SDK supports GIS-specific annotations using **latitude and longitude** coordinates instead of pixel-based (x, y) values.
 
-### **Supported GIS Annotation Types**
+## **Supported GIS Annotation Types**
 
-#### **GIS Classification**
+### **GIS Classification**
 Classification annotations follow the standard classification structure.
 ```python
 class GisClassification(label, attributes=None, description=None)
 ```
 
-#### **GIS Bounding Box**
+### **GIS Bounding Box**
 A bounding box is defined using latitude and longitude coordinates.
 ```python
 class GisBox(geo, label=None, attributes=None, description=None, angle=None)
@@ -34,31 +31,30 @@ class GisBox(geo, label=None, attributes=None, description=None, angle=None)
 - `angle`: Optional, used for rotated boxes.
 - **Box is created using two points (top-left and bottom-right).**
 
-#### **GIS Polygon**
+### **GIS Polygon**
 A polygon is defined using a list of latitude and longitude coordinates. The first and last coordinates must be identical to close the shape.
 ```python
 class GisPolygon(geo, label, attributes=None, description=None)
 ```
 
-#### **GIS Polyline**
+### **GIS Polyline**
 A polyline consists of a list of latitude and longitude points.
 ```python
 class GisPolyline(geo, label, attributes=None, description=None)
 ```
 
-#### **GIS Point**
+### **GIS Point**
 A point annotation is defined by a single latitude and longitude coordinate.
 ```python
 class GisPoint(lat, long, label, attributes=None, description=None)
 ```
 
-## Example: Uploading GIS Annotations
-Below is an example of adding various GIS annotation types using the SDK.
+
+## Create GIS Box Annotation
 
 ```python
 import dtlpy as dl
 
-# Create GIS Box Annotation
 box = dl.Gis(
     annotation_type=dl.GisType.BOX,
     geo=[
@@ -71,7 +67,15 @@ box = dl.Gis(
         ]
     ], label='car')
 
-# Create GIS Polyline Annotation
+```
+
+
+## Create GIS Polyline Annotation
+
+
+```python
+import dtlpy as dl
+
 polyline = dl.Gis(
     annotation_type=dl.GisType.POLYLINE,
     geo=[
@@ -79,14 +83,25 @@ polyline = dl.Gis(
         [-118.33540, 33.82643],
         [-118.33540, 33.82642]
     ], label='road')
+```
 
-# Create GIS Point Annotation
+## Create GIS Point Annotation
+
+```python
+import dtlpy as dl
+
 point = dl.Gis(
     annotation_type=dl.GisType.POINT,
     geo=[-118.33540, 33.82642],
     label='landmark')
+```
 
-# Create GIS Polygon Annotation
+
+## Create GIS Polygon Annotation
+
+```python
+import dtlpy as dl
+
 polygon = dl.Gis(
     annotation_type=dl.GisType.POLYGON,
     geo=[
@@ -97,8 +112,14 @@ polygon = dl.Gis(
             [-118.33543, 33.82639]
         ]
     ], label='building')
+```
 
-# Attach Annotations to Item
+
+## Attach Annotations to Item
+
+```python
+import dtlpy as dl
+
 builder = item.annotations.builder()
 builder.add(annotation_definition=box)
 builder.add(annotation_definition=polyline)
@@ -108,6 +129,7 @@ item.annotations.upload(annotations=builder)
 ```
 
 ## Supported File Formats
+
 The GIS SDK supports various file formats for geospatial data:
 - **COG (Cloud-Optimized GeoTIFF)** – Optimized for cloud storage and efficient access.
 - **GeoTIFF** – Standard raster data format with geospatial metadata.
