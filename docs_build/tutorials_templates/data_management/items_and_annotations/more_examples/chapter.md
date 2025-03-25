@@ -370,42 +370,46 @@ Here's how to bring your COCO/YOLO/VOC annotations into Dataloop:
 
 ```python
 import dtlpy as dl
-from dtlpyconverters.uploaders import ConvertersUploader
+from dtlpyconverters.coco import CocoToDataloop
+from dtlpyconverters.yolo import YoloToDataloop
+from dtlpyconverters.voc import VocToDataloop
 
-# Initialize our magical converter
-converter = ConvertersUploader()
 
 # 🎯 COCO to Dataloop
 coco_dataset = dl.datasets.get(dataset_id="dataset_id")
-converter.coco_to_dataloop(
+converter = CocoToDataloop(
     dataset=coco_dataset,
     input_items_path=r"C:/path/to/coco/items",
-    input_annotations_path=r"C:/path/to/coco/items/annotations",
     # Make sure item filenames match the COCO json! 🎯
+    input_annotations_path=r"C:/path/to/coco/items/annotations",
+    upload_items=True
+)
+converter.convert(
     coco_json_filename="annotations.json",
     annotation_options=[
         dl.AnnotationType.BOX,
         dl.AnnotationType.SEGMENTATION
     ],
-    upload_items=True,
     to_polygon=True
 )
 
 # 🎯 YOLO to Dataloop
 yolo_dataset = dl.datasets.get(dataset_id="dataset_id")
-converter.yolo_to_dataloop(
+converter = YoloToDataloop(
     dataset=yolo_dataset,
     input_items_path=r"C:/path/to/yolo/items",
     # Make sure item filenames match YOLO txt files! 🎯
     input_annotations_path=r"C:/path/to/yolo/items/annotations",
     upload_items=True,
-    add_labels_to_recipe=True,
+    add_labels_to_recipe=True
+)
+converter.convert(
     labels_txt_filepath=r"C:/path/to/yolo/items/labels/labels.txt"
 )
 
 # 🎯 VOC to Dataloop
 voc_dataset = dl.datasets.get(dataset_id='dataset_id')
-converter.voc_to_dataloop(
+converter = VocToDataloop(
     dataset=voc_dataset,
     input_items_path=r"C:/path/to/voc/items",
     # Make sure item filenames match VOC xml files! 🎯
@@ -413,6 +417,7 @@ converter.voc_to_dataloop(
     upload_items=True,
     add_labels_to_recipe=True
 )
+converter.convert()
 ```
 
 #### Converting FROM Dataloop Format ⬆️
@@ -421,7 +426,9 @@ Need to export your Dataloop annotations to other formats? Here's how:
 
 ```python
 import dtlpy as dl
-from dtlpyconverters.downloaders import ConvertersDownloader
+from dtlpyconverters.coco import DataloopToCoco
+from dtlpyconverters.yolo import DataloopToYolo
+from dtlpyconverters.voc import DataloopToVoc
 
 # Set up your filters (optional but powerful!) 🎯
 filters = dl.Filters()
@@ -430,12 +437,9 @@ filters.add(field=dl.FiltersKnownFields.DIR, values='/dog_name')
 # Example: Filter for dog annotations
 filters.add_join(field=dl.FiltersKnownFields.LABEL, values='dog')
 
-# Initialize our magical converter
-converter = ConvertersDownloader()
-
 # 🎯 Dataloop to COCO
 coco_dataset = dl.datasets.get(dataset_id='')
-converter.dataloop_to_coco(
+converter = DataloopToCoco(
     dataset=coco_dataset,
     input_annotations_path=r'C:/input_coco',
     output_annotations_path=r'C:/output_coco',
@@ -445,10 +449,11 @@ converter.dataloop_to_coco(
     filters=filters,
     label_to_id_mapping=None
 )
+converter.convert()
 
 # 🎯 Dataloop to YOLO
 yolo_dataset = dl.datasets.get(dataset_id='')
-converter.dataloop_to_yolo(
+converter = DataloopToYolo(
     dataset=yolo_dataset,
     input_annotations_path=r'C:/input_yolo',
     output_annotations_path=r'C:/output_yolo',
@@ -457,10 +462,11 @@ converter.dataloop_to_yolo(
     download_items=False,
     filters=filters
 )
+converter.convert()
 
 # 🎯 Dataloop to VOC
 voc_dataset = dl.datasets.get(dataset_id='')
-converter.dataloop_to_voc(
+converter = DataloopToVoc(
     dataset=voc_dataset,
     input_annotations_path=r'C:/input_voc',
     output_annotations_path=r'C:/output_voc',
@@ -469,6 +475,7 @@ converter.dataloop_to_voc(
     download_items=False,
     filters=filters
 )
+converter.convert()
 ```
 
 **Pro Tips! 💡**
