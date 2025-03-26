@@ -188,7 +188,7 @@ class RecursiveExport:
             logger.info(f"Waiting for command {self.command_ids} to finish")
 
             timeout = 60 * 60 * 2
-            max_sleep_time = 2
+            max_sleep_time = 10
             backoff_factor = 1
             elapsed = 0
             start = time.time()
