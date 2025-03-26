@@ -1,36 +1,53 @@
+# **DTLPY Documentation**
+
 ![LOGO](./assets/site/logo.svg)
+
 [![Documentation Status](https://readthedocs.org/projects/dtlpy/badge/?version=latest)](https://sdk-docs.dataloop.ai/en/latest/?badge=latest)
-[![pypi](https://img.shields.io/pypi/v/dtlpy.svg)](https://pypi.org/project/dtlpy/)
-[![versions](https://img.shields.io/pypi/pyversions/dtlpy.svg)](https://github.com/dataloop-ai/dtlpy)
-[![license](https://img.shields.io/github/license/dataloop-ai/dtlpy-documentation.svg)](https://github.com/dataloop-ai/dtlpy-documentation/blob/master/LICENSE)
+[![PyPI Version](https://img.shields.io/pypi/v/dtlpy.svg)](https://pypi.org/project/dtlpy/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/dtlpy.svg)](https://github.com/dataloop-ai/dtlpy)
+[![License](https://img.shields.io/github/license/dataloop-ai/dtlpy-documentation.svg)](https://github.com/dataloop-ai/dtlpy-documentation/blob/master/LICENSE)
 
-# SDK Documentations and Tutorials for Dataloop's SDK
+📚 [SDK Documentation](https://sdk-docs.dataloop.ai/en/latest/)
 
-The following repository will gather Dataloop's SDK examples and best practices.
+Comprehensive documentation, tutorials, and best practice examples for Dataloop's Python SDK, DTLPY.
 
-## Table of Content
+---
 
-- [SDK Documentations and Tutorials for Dataloop's SDK](#sdk-documentations-and-tutorials-for-dataloops-sdk)
-  - [Table of Content](#table-of-content)
-  - [Installation](#installation)
-  - [Tutorials](#tutorials)
-  - [Code Examples](#code-examples)
-  - [Resources](#resources)
-  - [Contributes](#contributes)
+## **Table of Contents**
 
-## Installation
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running Tutorials](#running-tutorials)
+- [Available Tutorials](#available-tutorials)
+- [Code Examples](#code-examples)
+- [Resources](#resources)
+- [Contribution Guidelines](#contribution-guidelines)
 
-First, clone this repo:
+---
 
-```
+## **Overview**
+
+The `dtlpy-documentation` repository contains extensive examples, structured tutorials, and best practice guides for users of the DTLPY SDK. It covers tasks ranging from annotations, data management, model management, pipelines, to integrations and beyond.
+
+---
+
+## **Prerequisites**
+
+- **Python 3.6 - 3.9** (3.10+ not recommended)
+- **Git**
+- **pip** and **virtualenv**
+
+---
+
+## **Installation**
+
+Clone this repository and set up the environment:
+
+```bash
 git clone https://github.com/dataloop-ai/dtlpy-documentation.git
 cd dtlpy-documentation
-```
 
-If you don't have python installed, download and install from [here](https://www.python.org/downloads/) (python<3.10).
-We recommend creating a python virtual environment:
-
-```
 pip3 install --upgrade virtualenv
 virtualenv -p python3 venv
 source venv/bin/activate
@@ -38,19 +55,27 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-To run the tutorials, launch the Jupyter Notebook
+---
 
-```
+## **Running Tutorials**
+
+To launch the provided tutorials using Jupyter Notebook:
+
+```bash
 jupyter notebook tutorials
 ```
 
-## Tutorials
+---
 
-*  [Auto annotate service](tutorials/auto_annotate_service/chapter.ipynb)
-* Pipelines
-  *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
+## **Available Tutorials**
 
-## Code Examples
+- [Auto Annotate Service](tutorials/auto_annotate_service/chapter.ipynb)
+- **Pipelines:**
+  - [Creating Pipelines](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
+
+---
+
+## **Code Examples**
 
 * Annotations
   *  [Annotate items using model](examples/annotations/annotate_items_using_model.py)
@@ -114,11 +139,27 @@ jupyter notebook tutorials
   *  [Upload segmentation annotations from mask image](examples/uploads/upload_segmentation_annotations_from_mask_image.py)
   *  [Upload yolo format annotations](examples/uploads/upload_yolo_format_annotations.py)
 
-## Resources
+---
 
-* [Dataloop Docs](https://docs.dataloop.ai/docs)
-* [SDK Cheat Sheet](https://docs.dataloop.ai/docs/sdk-cheatsheet?highlight=cheat)
-* [DTLPY source code](https://github.com/dataloop-ai/dtlpy)
-* [Platform](https://console.dataloop.ai/)
+## **Resources**
 
-## Contributes
+- [Dataloop Documentation](https://docs.dataloop.ai/docs)
+- [SDK Cheat Sheet](https://docs.dataloop.ai/docs/sdk-cheatsheet?highlight=cheat)
+- [DTLPY SDK Source](https://github.com/dataloop-ai/dtlpy)
+- [Dataloop Platform Console](https://console.dataloop.ai/)
+
+---
+
+## **Contribution Guidelines**
+
+We welcome contributions! When contributing, please ensure:
+
+- Code examples and tutorials follow the repository structure.
+- Clear and descriptive commit messages.
+- Tutorials include comprehensive step-by-step guidance.
+- Code examples are well-documented and tested.
+
+Please create pull requests with clear explanations of changes. Contributions will be reviewed and merged based on code quality and completeness.
+
+---
+
