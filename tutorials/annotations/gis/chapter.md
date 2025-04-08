@@ -1,29 +1,24 @@
 # GIS Annotations
 
 ## Overview
-The **GIS Annotation SDK** enables users to efficiently annotate geospatial data within Dataloop's platform. With this SDK, you can create, manage, and share geospatial annotations such as bounding boxes, polygons, polylines, and points directly on maps. The SDK supports various GIS file formats and provides full control over annotation workflows.
 
-## Upload GIS Items
-GIS items can be uploaded programmatically via the SDK using the GIS-Item JSON format. The uploaded items retain all associated metadata, including the Area of Interest (AOI), if specified.
-
-```python
-import dtlpy as dl
-
-# Upload GIS item from a local file
-gis_item = dl.ItemGis.from_local_file(filepath="item_path")
-```
+The **GIS Annotation SDK** enables users to efficiently annotate geospatial data within Dataloop's platform. With this SDK, you can create, manage, and share geospatial annotations such as bounding boxes, polygons, polylines, and points directly on maps. The SDK supports various GIS file formats and provides full control over annotation workflows. Read the [GIS user documentation](https://docs.dataloop.ai/docs/gis-studio) for information.
 
 
-## **Supported GIS Annotation Types**
+## Supported GIS Annotation Types
 
 ### **GIS Classification**
+
 Classification annotations follow the standard classification structure.
+
 ```python
 class GisClassification(label, attributes=None, description=None)
 ```
 
 ### **GIS Bounding Box**
+
 A bounding box is defined using latitude and longitude coordinates.
+
 ```python
 class GisBox(geo, label=None, attributes=None, description=None, angle=None)
 ```
@@ -32,19 +27,25 @@ class GisBox(geo, label=None, attributes=None, description=None, angle=None)
 - **Box is created using two points (top-left and bottom-right).**
 
 ### **GIS Polygon**
+
 A polygon is defined using a list of latitude and longitude coordinates. The first and last coordinates must be identical to close the shape.
+
 ```python
 class GisPolygon(geo, label, attributes=None, description=None)
 ```
 
 ### **GIS Polyline**
+
 A polyline consists of a list of latitude and longitude points.
+
 ```python
 class GisPolyline(geo, label, attributes=None, description=None)
 ```
 
 ### **GIS Point**
+
 A point annotation is defined by a single latitude and longitude coordinate.
+
 ```python
 class GisPoint(lat, long, label, attributes=None, description=None)
 ```
@@ -71,11 +72,9 @@ box = dl.Gis(
 
 ```
 
-
 ## Create GIS Polyline Annotation
 
 A polyline annotation is used to define linear features such as roads, rivers, or paths. The example below creates a polyline labeled "road."
-
 
 ```python
 import dtlpy as dl
@@ -92,8 +91,6 @@ polyline = dl.Gis(
 ## Create GIS Point Annotation
 
 A point annotation marks a single geographic location, ideal for identifying landmarks, points of interest, or specific objects. The example below places a point labeled "landmark."
-
-
 
 ```python
 import dtlpy as dl
@@ -140,15 +137,8 @@ builder.add(annotation_definition=polygon)
 item.annotations.upload(annotations=builder)
 ```
 
-## Supported File Formats
-
-The GIS SDK supports various file formats for geospatial data:
-- **COG (Cloud-Optimized GeoTIFF)** – Optimized for cloud storage and efficient access.
-- **GeoTIFF** – Standard raster data format with geospatial metadata.
-- **OSM (OpenStreetMap)** – Vector-based format used for open-source map data.
-- **XYZ (Tile Map Services)** – Used for map tiles in web mapping applications.
-
 ## Export GIS Annotations
+
 You can export GIS annotations via the SDK:
 
 ```python
@@ -192,10 +182,4 @@ annotation.delete()
 - **Coordinate Mismatch?** Verify that annotations use the correct **EPSG projection** (default: **4326**).
 - **Performance Issues?** Reduce layer opacity or limit the number of active layers.
 - **Upload Failure?** Double-check **JSON format** and required metadata fields.
-
-## 📚 Learn More
-For more details on GIS user documentation and GIS output formats, refer to the following documentation:
-- [GIS User Documentation ](https://docs.dataloop.ai/docs/gis-studio)
-- [GIS JSON Format](https://docs.dataloop.ai/docs/gis-json-format)
-- [GIS Item JSON Format](https://docs.dataloop.ai/docs/gis-item-json-format)
 
