@@ -70,6 +70,8 @@ jupyter notebook tutorials
   *  [Converter](examples/converters/converter.py)
   *  [Convert annotation types](examples/converters/convert_annotation_types.py)
 * Data management
+  * Scripts
+    *  [Recursive export](examples/data_management/scripts/recursive_export.py)
   * Snippets
     * Datasets
       *  [Add labels](examples/data_management/snippets/datasets/add_labels.py)

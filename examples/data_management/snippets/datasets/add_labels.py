@@ -1,7 +1,4 @@
 def main(project_name, dataset_name):
-    # Imports the SDK package
-    import dtlpy as dl
-
     """
     Label dictionary format:
 
@@ -12,8 +9,9 @@ def main(project_name, dataset_name):
         'color': (34, 6, 231),
         'children': ['list of label dictionaries']
     }
-
     """
+    # Imports the SDK package
+    import dtlpy as dl
 
     # prep
     project = dl.projects.get(project_name=project_name)

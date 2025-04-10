@@ -29,6 +29,11 @@
             "location": "data_management/items_and_annotations/other_data_types/lidar/chapter.md"
         },
         {
+            "displayName": "GIS Data",
+            "description": "How to work with GIS data",
+            "location": "data_management/items_and_annotations/other_data_types/gis/chapter.md"
+        },
+        {
             "displayName": "Dataloop Query Language: Introduction",
             "description": "Learn the basics of DQL Filters and Pagination",
             "location": "data_management/dataloop_query_language/introduction/chapter.md"

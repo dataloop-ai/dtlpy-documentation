@@ -32,6 +32,11 @@
             "displayName": "LiDAR Annotations",
             "description": "Master 3D point cloud annotations - create precise object detection and segmentation in LiDAR scenes with advanced spatial tools",
             "location": "annotations/lidar/chapter.md"
+        },
+        {
+            "displayName": "GIS Annotations",
+            "description": "Easily annotate, manage, and export geo-spatial data using Dataloop's GIS Annotation SDK with full support for bounding boxes, polygons, polylines, and points. ",
+            "location": "annotations/gis/chapter.md"
         }
     ]
 }

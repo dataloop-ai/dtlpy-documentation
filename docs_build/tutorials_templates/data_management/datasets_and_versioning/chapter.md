@@ -223,7 +223,7 @@ dataset.collections.clone(collection_id: str)
 
 5. See all your collections in one place
 ```python
-dataset.collections.list()
+dataset.collections.list_all_collections()
 ```
 
 6. Find the lone wolves (items not in any collection)
@@ -248,6 +248,32 @@ item.unassign_collection(item_id: str, collection_id: str)
 3. Check which collections an item belongs to
 ```python
 item.list_collections(item_id: str)
+```
+
+** Bulk Operations 🤖**
+
+Assign and unassign items to collections in bulk, using dl.Filters:
+
+```python
+filters = dl.Filters()
+filters.add(field='id', values=['<item_id>'], operator=dl.FiltersOperations.IN)
+dataset.assign_collection(collection_name='my_collection', filters=filters)
+```
+
+Or everything in a directory:
+
+```python
+filters = dl.Filters()
+filters.add(field='dir', values='/my_directory')
+dataset.assign_collection(collection_name='my_collection', filters=filters)
+```
+
+Same for unassigning:
+
+```python
+filters = dl.Filters()
+filters.add(field='id', values=['<item_id>'], operator=dl.FiltersOperations.IN)
+dataset.unassign_collection(collection_name='my_collection', filters=filters)
 ```
 
 **Show Time! 🎬 Real-World Examples**

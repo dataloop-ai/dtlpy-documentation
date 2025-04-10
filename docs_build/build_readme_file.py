@@ -62,16 +62,20 @@ def collect_examples(root, git_spec):
     content = dict()
     for path, subdirs, files in os.walk(root):
         for filename in files:
-            filepath = os.path.join(path, filename)
-            if git_spec.match_file(filepath):
-                # file in gitignore
-                continue
-            name, ext = os.path.splitext(filename)
-            if ext not in ['.py', '.ipynb']:
-                continue
-            hierarchy = filepath.split(os.sep)[1:]
-            print(f'Adding to {root}: {filepath}')
-            add_file(content, hierarchy)
+            try:
+                filepath = os.path.join(path, filename)
+                if git_spec.match_file(filepath):
+                    # file in gitignore
+                    continue
+                name, ext = os.path.splitext(filename)
+                if ext not in ['.py', '.ipynb']:
+                    continue
+                hierarchy = filepath.split(os.sep)[1:]
+                print(f'Adding to {root}: {filepath}')
+                add_file(content, hierarchy)
+            except Exception as e:
+                print(f'Error adding {filepath}: {e}')
+                raise
     md_lines = list()
     add_examples_line(md_lines=md_lines,
                       content=content,
