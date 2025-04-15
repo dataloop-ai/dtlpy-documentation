@@ -257,7 +257,7 @@ Assign and unassign items to collections in bulk, using dl.Filters:
 ```python
 filters = dl.Filters()
 filters.add(field='id', values=['<item_id>'], operator=dl.FiltersOperations.IN)
-dataset.assign_collection(collection_name='my_collection', filters=filters)
+dataset.collections.assign(collections=['my_collection'], filters=filters)
 ```
 
 Or everything in a directory:
@@ -265,7 +265,7 @@ Or everything in a directory:
 ```python
 filters = dl.Filters()
 filters.add(field='dir', values='/my_directory')
-dataset.assign_collection(collection_name='my_collection', filters=filters)
+dataset.collections.assign(collections=['my_collection'], filters=filters)
 ```
 
 Same for unassigning:
@@ -273,7 +273,7 @@ Same for unassigning:
 ```python
 filters = dl.Filters()
 filters.add(field='id', values=['<item_id>'], operator=dl.FiltersOperations.IN)
-dataset.unassign_collection(collection_name='my_collection', filters=filters)
+dataset.collections.unassign(collections=['my_collection'], filters=filters)
 ```
 
 **Show Time! 🎬 Real-World Examples**
