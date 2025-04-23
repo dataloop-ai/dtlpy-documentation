@@ -8,41 +8,26 @@ LINE_HEADER = '<func:'
 
 TEMPLATES_PATH = os.path.join('docs_build', 'tutorials_templates')
 TUTORIALS_PATH = 'tutorials'
-NOTEBOOK_TEMPLATE = {"cells": [],
-                     "metadata": {
-                         "kernelspec": {
-                             "display_name": "Python 3",
-                             "language": "python",
-                             "name": "python3"
-                         },
-                         "language_info": {
-                             "codemirror_mode": {
-                                 "name": "ipython",
-                                 "version": 3
-                             },
-                             "file_extension": ".py",
-                             "mimetype": "text/x-python",
-                             "name": "python",
-                             "nbconvert_exporter": "python",
-                             "pygments_lexer": "ipython3",
-                             "version": "3.7.7"
-                         }
-                     },
-                     "nbformat": 4,
-                     "nbformat_minor": 4}
+NOTEBOOK_TEMPLATE = {
+    "cells": [],
+    "metadata": {
+        "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+        "language_info": {
+            "codemirror_mode": {"name": "ipython", "version": 3},
+            "file_extension": ".py",
+            "mimetype": "text/x-python",
+            "name": "python",
+            "nbconvert_exporter": "python",
+            "pygments_lexer": "ipython3",
+            "version": "3.7.7",
+        },
+    },
+    "nbformat": 4,
+    "nbformat_minor": 4,
+}
 
-MD_CELL_TEMPLATE = {
-    "cell_type": "markdown",
-    "metadata": {},
-    "source": []
-}
-CODE_CELL_TEMPLATE = {
-    "cell_type": "code",
-    "execution_count": 0,
-    "metadata": {},
-    "outputs": [],
-    "source": []
-}
+MD_CELL_TEMPLATE = {"cell_type": "markdown", "metadata": {}, "source": []}
+CODE_CELL_TEMPLATE = {"cell_type": "code", "execution_count": 0, "metadata": {}, "outputs": [], "source": []}
 
 
 def _build_md_block(func_string):
@@ -87,9 +72,9 @@ def load_templates(skeleton_filepath, mds_filepath, scripts_filepath):
 
 
 def build_notebook(skeleton_filepath, mds_filepath, scripts_filepath):
-    skeleton, mds_module, scripts_module, indent_factor = load_templates(skeleton_filepath=skeleton_filepath,
-                                                                         mds_filepath=mds_filepath,
-                                                                         scripts_filepath=scripts_filepath)
+    skeleton, mds_module, scripts_module, indent_factor = load_templates(
+        skeleton_filepath=skeleton_filepath, mds_filepath=mds_filepath, scripts_filepath=scripts_filepath
+    )
     cells = list()
     for cell_def in skeleton:
         if cell_def['type'] == 'md':
@@ -132,10 +117,70 @@ def build_notebook(skeleton_filepath, mds_filepath, scripts_filepath):
         json.dump(NOTEBOOK_TEMPLATE, f)
 
 
+def build_notebook_from_markdown(md_filepath: str):
+    """
+    Convert a markdown file to a Jupyter notebook.
+    
+    This function reads a markdown file and creates a Jupyter notebook with markdown and code cells.
+    Code blocks in the markdown file (```python ... ```) are converted to code cells.
+    All other content is converted to markdown cells.
+    
+    Args:
+        md_filepath (str): Path to the markdown file to convert
+    """
+    # Read the markdown file
+    with open(md_filepath, 'r', encoding='UTF-8') as f:
+        markdown_content = f.read()
+    
+    # Create a new notebook with the template
+    notebook = NOTEBOOK_TEMPLATE.copy()
+    cells = []
+    
+    # Split the markdown content by code blocks
+    parts = markdown_content.split('```')
+    
+    # Process each part
+    for i, part in enumerate(parts):
+        # Even indices are markdown content
+        if i % 2 == 0:
+            if part.strip():  # Only add non-empty markdown cells
+                cell = MD_CELL_TEMPLATE.copy()
+                cell['source'] = [line + '\n' for line in part.splitlines()]
+                cells.append(cell)
+        # Odd indices are code blocks
+        else:
+            # Check if it's a Python code block
+            if part.startswith('python'):
+                code_content = part[6:].strip()  # Remove 'python' prefix
+                cell = CODE_CELL_TEMPLATE.copy()
+                cell['source'] = [line + '\n' for line in code_content.splitlines()]
+                cells.append(cell)
+            else:
+                # If it's not a Python code block, treat it as markdown
+                cell = MD_CELL_TEMPLATE.copy()
+                cell['source'] = ['```' + part + '```\n']
+                cells.append(cell)
+    
+    # Set the cells in the notebook
+    notebook['cells'] = cells
+    
+    # Create the output notebook path
+    notebook_filepath = os.path.dirname(md_filepath).replace(TEMPLATES_PATH, TUTORIALS_PATH)
+    notebook_filepath = os.path.join(notebook_filepath, 'chapter.ipynb')
+
+    os.makedirs(os.path.dirname(notebook_filepath), exist_ok=True)
+    
+    # Write the notebook to a file
+    with open(notebook_filepath, 'w', encoding='UTF-8') as f:
+        json.dump(notebook, f, indent=1)
+    
+    return notebook_filepath
+
+
 def build_md_file(skeleton_filepath, mds_filepath, scripts_filepath):
-    skeleton, mds_module, scripts_module, indent_factor = load_templates(skeleton_filepath=skeleton_filepath,
-                                                                         mds_filepath=mds_filepath,
-                                                                         scripts_filepath=scripts_filepath)
+    skeleton, mds_module, scripts_module, indent_factor = load_templates(
+        skeleton_filepath=skeleton_filepath, mds_filepath=mds_filepath, scripts_filepath=scripts_filepath
+    )
     lines = list()
     for cell_def in skeleton:
         if cell_def['type'] == 'md':
@@ -175,34 +220,30 @@ def build_tutorials():
     for path, subdirs, files in os.walk(TEMPLATES_PATH):
         for filename in files:
             if filename == 'skeleton.json':
-                """
-                build tutorials according to the skeleton file (interleave text and scripts) 
-                """
+                # build tutorials according to the skeleton file (interleave text and scripts)
                 print('Preparing {!r} ...'.format(path))
                 skeleton_filepath = os.path.join(path, filename)
                 mds_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'mds.py')
                 scripts_filepath = os.path.join(os.path.dirname(skeleton_filepath), 'scripts.py')
 
-                build_notebook(skeleton_filepath=skeleton_filepath,
-                               mds_filepath=mds_filepath,
-                               scripts_filepath=scripts_filepath)
-                build_md_file(skeleton_filepath=skeleton_filepath,
-                              mds_filepath=mds_filepath,
-                              scripts_filepath=scripts_filepath)
+                build_notebook(
+                    skeleton_filepath=skeleton_filepath, mds_filepath=mds_filepath, scripts_filepath=scripts_filepath
+                )
+                build_md_file(
+                    skeleton_filepath=skeleton_filepath, mds_filepath=mds_filepath, scripts_filepath=scripts_filepath
+                )
                 print('Done!')
             elif filename == 'index.json':
-                """
-                copy index file to the output tutorials to create the tutorials flow
-                """
+                # copy index file to the output tutorials to create the tutorials flow
                 src_index_filepath = os.path.join(path, filename)
                 dst_index_filepath = src_index_filepath.replace(TEMPLATES_PATH, TUTORIALS_PATH)
                 os.makedirs(os.path.dirname(dst_index_filepath), exist_ok=True)
                 shutil.copy(src=src_index_filepath, dst=dst_index_filepath)
             elif filename == 'chapter.md':
-                """
-                copy already created MD files
-                """
+                # split the chapter in to chapter and jupyter notebook
+
                 src_index_filepath = os.path.join(path, filename)
+                build_notebook_from_markdown(src_index_filepath)
                 dst_index_filepath = src_index_filepath.replace(TEMPLATES_PATH, TUTORIALS_PATH)
                 os.makedirs(os.path.dirname(dst_index_filepath), exist_ok=True)
                 shutil.copy(src=src_index_filepath, dst=dst_index_filepath)
