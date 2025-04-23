@@ -223,6 +223,22 @@ Check out our Dataloop documentation for details:
 - [Lock Datasets During Export](https://docs.dataloop.ai/docs/manage-your-datasets#lock-datasets-during-export)
 - [Download an Export Summary File](https://docs.dataloop.ai/docs/manage-your-datasets#download-an-export-summary-file)
 
+### Download Annotations
+
+This script downloads annotations from a Dataloop dataset in JSON and mask formats, with options to include label text, control dataset locking, and set an automatic unlock timeout.
+
+```python
+dataset.download(local_path='local_path',
+                 annotation_options=[dl.ViewAnnotationOptions.JSON, dl.ViewAnnotationOptions.MASK],
+                 overwrite=False,
+                 thickness=1,
+                 with_text=False,
+                 alpha=1,
+                 dataset_lock=False,
+                 lock_timeout_sec=300
+                 )
+```
+
 
 ## Collections: Your Data's Best Friend 🤝
 
