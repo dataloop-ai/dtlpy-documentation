@@ -187,6 +187,43 @@ dataset_merge = dl.datasets.merge(
 )
 ```
 
+### Exporting Datasets
+
+The following example using Dataloop's Python SDK demonstrates how to export datasets with advanced options. It includes generating a `summary file`, enabling `dataset locking during export` to maintain data consistency, and setting an `automatic unlock timeout` to handle potential export delays and reduce workflow interruptions.
+
+
+```python
+import dtlpy as dl
+dl.setenv('rc')
+#dl.login()
+
+filters = dl.Filters()
+filters.add(field='annotated', values=True)
+filters.add_join(field='label', values='<name>')
+
+# Get the project
+project = dl.projects.get(project_id='<id>')
+
+# Export dataset with summary file 
+
+project.datasets.export(dataset_id='<id>', export_type='zip', export_summary=True,filters=filters)
+
+# Lock dataset during export
+
+project.datasets.export(dataset_id='<id>', data='zip', dataset_lock=True,filters=filters) 
+
+# Set automatic-lock timeout for stuck exports
+
+project.datasets.export(dataset_id='<id>', data='zip', lock_timeout_sec = 1000, filters=filters)
+
+```
+
+Check out our Dataloop documentation for details:
+- [Export Datasets](https://docs.dataloop.ai/docs/manage-your-datasets#export-entire-datasets)
+- [Lock Datasets During Export](https://docs.dataloop.ai/docs/manage-your-datasets#lock-datasets-during-export)
+- [Download an Export Summary File](https://docs.dataloop.ai/docs/manage-your-datasets#download-an-export-summary-file)
+
+
 ## Collections: Your Data's Best Friend 🤝
 
 Think of Collections as smart tags on steroids! They're your secret weapon for organizing data like a pro. Whether you're juggling labeling tasks, managing massive datasets, or getting your data ready for model training - Collections have got your back! 
