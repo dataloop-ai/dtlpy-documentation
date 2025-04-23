@@ -220,8 +220,9 @@ project.datasets.export(dataset_id='<id>', data='zip', lock_timeout_sec = 1000, 
 
 Check out our Dataloop documentation for details:
 - [Export Datasets](https://docs.dataloop.ai/docs/manage-your-datasets#export-entire-datasets)
-- [Lock Datasets During Export](https://docs.dataloop.ai/docs/manage-your-datasets#lock-datasets-during-export)
+- [Lock Datasets During Export](https://docs.dataloop.ai/docs/datasets-overview#lock-datasets-during-export)
 - [Download an Export Summary File](https://docs.dataloop.ai/docs/manage-your-datasets#download-an-export-summary-file)
+- [Automatic lock timeout for stuck exports](https://docs.dataloop.ai/docs/datasets-overview#lock-datasets-during-export:~:text=Automatic%20lock%20timeout%20for%20stuck%20exports)
 
 ### Download Annotations
 
