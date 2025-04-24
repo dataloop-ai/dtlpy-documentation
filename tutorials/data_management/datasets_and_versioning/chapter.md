@@ -187,6 +187,60 @@ dataset_merge = dl.datasets.merge(
 )
 ```
 
+### Exporting Datasets
+
+The following example using Dataloop's Python SDK demonstrates how to export datasets with advanced options. It includes generating a `summary file`, enabling `dataset locking during export` to maintain data consistency, and setting an `automatic unlock timeout` to handle potential export delays and reduce workflow interruptions.
+
+
+```python
+import dtlpy as dl
+dl.setenv('rc')
+#dl.login()
+
+filters = dl.Filters()
+filters.add(field='annotated', values=True)
+filters.add_join(field='label', values='<name>')
+
+# Get the project
+project = dl.projects.get(project_id='<id>')
+
+# Export dataset with summary file 
+
+project.datasets.export(dataset_id='<id>', export_type='zip', export_summary=True,filters=filters)
+
+# Lock dataset during export
+
+project.datasets.export(dataset_id='<id>', data='zip', dataset_lock=True,filters=filters) 
+
+# Set automatic-lock timeout for stuck exports
+
+project.datasets.export(dataset_id='<id>', data='zip', lock_timeout_sec = 1000, filters=filters)
+
+```
+
+Check out our Dataloop documentation for details:
+- [Export Datasets](https://docs.dataloop.ai/docs/manage-your-datasets#export-entire-datasets)
+- [Lock Datasets During Export](https://docs.dataloop.ai/docs/datasets-overview#lock-datasets-during-export)
+- [Download an Export Summary File](https://docs.dataloop.ai/docs/manage-your-datasets#download-an-export-summary-file)
+- [Automatic lock timeout for stuck exports](https://docs.dataloop.ai/docs/datasets-overview#lock-datasets-during-export:~:text=Automatic%20lock%20timeout%20for%20stuck%20exports)
+
+### Download Annotations
+
+This script downloads annotations from a Dataloop dataset in JSON and mask formats, with options to include label text, control dataset locking, and set an automatic unlock timeout.
+
+```python
+dataset.download(local_path='local_path',
+                 annotation_options=[dl.ViewAnnotationOptions.JSON, dl.ViewAnnotationOptions.MASK],
+                 overwrite=False,
+                 thickness=1,
+                 with_text=False,
+                 alpha=1,
+                 dataset_lock=False,
+                 lock_timeout_sec=300
+                 )
+```
+
+
 ## Collections: Your Data's Best Friend 🤝
 
 Think of Collections as smart tags on steroids! They're your secret weapon for organizing data like a pro. Whether you're juggling labeling tasks, managing massive datasets, or getting your data ready for model training - Collections have got your back! 
