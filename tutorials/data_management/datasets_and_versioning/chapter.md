@@ -189,32 +189,38 @@ dataset_merge = dl.datasets.merge(
 
 ### Exporting Datasets
 
-The following example using Dataloop's Python SDK demonstrates how to export datasets with advanced options. It includes generating a `summary file`, enabling `dataset locking during export` to maintain data consistency, and setting an `automatic unlock timeout` to handle potential export delays and reduce workflow interruptions.
+The following example using Dataloop's Python SDK demonstrates how to export datasets with advanced options. It includes generating a *summary file*, enabling *dataset locking during export* to maintain data consistency, and setting an *automatic unlock timeout* to handle potential export delays and reduce workflow interruptions.
 
 
 ```python
 import dtlpy as dl
-dl.setenv('rc')
-#dl.login()
 
 filters = dl.Filters()
+# Filer for all annotated items
 filters.add(field='annotated', values=True)
+# Join by filtering a specific label on the annotations
 filters.add_join(field='label', values='<name>')
 
 # Get the project
 project = dl.projects.get(project_id='<id>')
 
-# Export dataset with summary file 
-
-project.datasets.export(dataset_id='<id>', export_type='zip', export_summary=True,filters=filters)
+# Export dataset
+project.datasets.export(dataset_id='<id>', 
+                        export_type='zip',
+                        export_summary=True,
+                        filters=filters)
 
 # Lock dataset during export
-
-project.datasets.export(dataset_id='<id>', data='zip', dataset_lock=True,filters=filters) 
+project.datasets.export(dataset_id='<id>', 
+                        export_type='zip', 
+                        dataset_lock=True,
+                        filters=filters) 
 
 # Set automatic-lock timeout for stuck exports
-
-project.datasets.export(dataset_id='<id>', data='zip', lock_timeout_sec = 1000, filters=filters)
+project.datasets.export(dataset_id='<id>', 
+                        export_type='zip', 
+                        lock_timeout_sec=1000, 
+                        filters=filters)
 
 ```
 
@@ -235,7 +241,7 @@ dataset.download(local_path='local_path',
                  thickness=1,
                  with_text=False,
                  alpha=1,
-                 dataset_lock=False,
+                 dataset_lock=True,
                  lock_timeout_sec=300
                  )
 ```

@@ -46,9 +46,70 @@ jupyter notebook tutorials
 
 ## Tutorials
 
+* Analytics
+  *  [Extract analytics](tutorials/analytics/extract_analytics/chapter.ipynb)
+  *  [Overview](tutorials/analytics/overview/chapter.ipynb)
+* Annotations
+  *  [Audio](tutorials/annotations/audio/chapter.ipynb)
+  *  [Gis](tutorials/annotations/gis/chapter.ipynb)
+  *  [Image](tutorials/annotations/image/chapter.ipynb)
+  *  [Lidar](tutorials/annotations/lidar/chapter.ipynb)
+  *  [Prompts](tutorials/annotations/prompts/chapter.ipynb)
+  *  [Text](tutorials/annotations/text/chapter.ipynb)
+  *  [Video](tutorials/annotations/video/chapter.ipynb)
+* Applications
+  *  [Dpk examples](tutorials/applications/dpk_examples/chapter.ipynb)
+  *  [Faq](tutorials/applications/faq/chapter.ipynb)
+  *  [Introduction](tutorials/applications/introduction/chapter.ipynb)
+  *  [Pipeline library](tutorials/applications/pipeline_library/chapter.ipynb)
+  *  [Python application](tutorials/applications/python_application/chapter.ipynb)
+  *  [Web application](tutorials/applications/web_application/chapter.ipynb)
 *  [Auto annotate service](tutorials/auto_annotate_service/chapter.ipynb)
+* Data management
+  * Dataloop query language
+    *  [Introduction](tutorials/data_management/dataloop_query_language/introduction/chapter.ipynb)
+    *  [More examples](tutorials/data_management/dataloop_query_language/more_examples/chapter.ipynb)
+  *  [Datasets and versioning](tutorials/data_management/datasets_and_versioning/chapter.ipynb)
+  * External storage drivers
+    *  [Aws s3](tutorials/data_management/external_storage_drivers/aws_s3/chapter.ipynb)
+    *  [Azure blob](tutorials/data_management/external_storage_drivers/azure_blob/chapter.ipynb)
+    *  [Gcs](tutorials/data_management/external_storage_drivers/gcs/chapter.ipynb)
+  *  [Feature vectors](tutorials/data_management/feature_vectors/chapter.ipynb)
+  *  [Integrations and secrets](tutorials/data_management/integrations_and_secrets/chapter.ipynb)
+  * Items and annotations
+    *  [Introduction](tutorials/data_management/items_and_annotations/introduction/chapter.ipynb)
+    *  [More examples](tutorials/data_management/items_and_annotations/more_examples/chapter.ipynb)
+    * Other data types
+      *  [Gis](tutorials/data_management/items_and_annotations/other_data_types/gis/chapter.ipynb)
+      *  [Lidar](tutorials/data_management/items_and_annotations/other_data_types/lidar/chapter.ipynb)
+* Faas applications
+  *  [Building an app](tutorials/faas_applications/building_an_app/chapter.ipynb)
+  *  [Execution control](tutorials/faas_applications/execution_control/chapter.ipynb)
+  *  [Github examples](tutorials/faas_applications/github_examples/chapter.ipynb)
+  *  [Service configurations](tutorials/faas_applications/service_configurations/chapter.ipynb)
+  *  [Ui toolbars](tutorials/faas_applications/ui_toolbars/chapter.ipynb)
+  *  [Using docker and private registries](tutorials/faas_applications/using_docker_and_private_registries/chapter.ipynb)
+* Getting started
+  *  [Sdk overview](tutorials/getting_started/sdk_overview/chapter.ipynb)
+* Labeling workflows
+  *  [Item status](tutorials/labeling_workflows/item_status/chapter.ipynb)
+  *  [Quality control](tutorials/labeling_workflows/quality_control/chapter.ipynb)
+  *  [Task and assignment](tutorials/labeling_workflows/task_and_assignment/chapter.ipynb)
+* Model management
+  *  [Create new model sdk](tutorials/model_management/create_new_model_sdk/chapter.ipynb)
+  *  [Introduction](tutorials/model_management/introduction/chapter.ipynb)
+  *  [Marketplace](tutorials/model_management/marketplace/chapter.ipynb)
+  * More guides
+    *  [Model adapter flows](tutorials/model_management/more_guides/model_adapter_flows/chapter.ipynb)
+    *  [Model annotations](tutorials/model_management/more_guides/model_annotations/chapter.ipynb)
+    *  [Model metrics](tutorials/model_management/more_guides/model_metrics/chapter.ipynb)
+  *  [New model torchvision example](tutorials/model_management/new_model_torchvision_example/chapter.ipynb)
 * Pipelines
   *  [Create a pipeline](tutorials/pipelines/create_a_pipeline/chapter.ipynb)
+  *  [Pipeline executions](tutorials/pipelines/pipeline_executions/chapter.ipynb)
+* Recipe and ontology
+  *  [Instructions and validations](tutorials/recipe_and_ontology/instructions_and_validations/chapter.ipynb)
+  *  [Introduction](tutorials/recipe_and_ontology/introduction/chapter.ipynb)
 
 ## Code Examples
 
