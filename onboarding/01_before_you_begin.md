@@ -115,6 +115,38 @@ import os
 api_key = os.environ.get('DTLPY_API_KEY')  # ✅
 ```
 
+Suggestion:  Use `python-dotenv` and `.env` files to load the API key easily:
+
+```python
+# Install python-dotenv
+# pip install python-dotenv
+
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access your API key securely
+api_key = os.getenv('DTLPY_API_KEY')
+
+# Initialize Dataloop with the API key
+dl.login_api_key(api_key=api_key)
+```
+
+> 🔒 **Best Practices for .env Files**:
+> 1. Create a `.env` file in your project root:
+>    ```plaintext
+>    DTLPY_API_KEY=your-api-key-here
+>    ```
+> 2. Add `.env` to your `.gitignore` file to prevent committing sensitive data
+> 3. Create a `.env.example` file with dummy values as a template
+> 4. Never commit real credentials to version control
+> 5. Use strong, unique API keys
+> 6. Regularly rotate your API keys
+> 
+> 📚 Learn more about environment variable best practices and python dotenv [here]](https://github.com/theskumar/python-dotenv?tab=readme-ov-file)
+
 ### 3. Installation Troubleshooting
 
 Common issues and solutions:
