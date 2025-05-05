@@ -1,6 +1,6 @@
 # Building Your Own Model: The DIY Guide 🛠️
 
-Ready to bring your own model to the Dataloop platform? Let's build something amazing together! This guide will show you how to create your custom model adapter and get your model running smoothly on our platform.
+Ready to bring your own model to the Dataloop platform? Let's start building together! This guide will show you how to create your first custom model adapter and get your model running smoothly on our platform.
 
 ## Choose Your Path: SDK or UI 🛤️
 
@@ -9,7 +9,7 @@ You've got two ways to bring your model to life in Dataloop:
 ### Option 1: Using the SDK (This Guide) 💻
 Follow along with this guide to create your model programmatically using our Python SDK.
 
-### Option 2: Using the Dataloop UI 🖥️
+### Option 2: Using the Dataloop UI 👁️
 
 Prefer a more visual approach? You can use the [Dataloop UI](https://docs.dataloop.ai/docs/models-overview#using-the-dataloop-ui) to create and integrate your model. Here's how:
 
@@ -72,7 +72,7 @@ class SimpleModelAdapter(dl.BaseModelAdapter):
 
 ### 1. Create Your Manifest File 📝
 
-First, you'll need a manifest file - think of it as your app's ID card. Here's a template:
+First, you'll need a `dataloop.json` manifest file. Think of it as your app's ID card, identifying all the important parts of your app. Here's a template:
 
 ```json
 {
@@ -333,9 +333,7 @@ class EmbeddingModelAdapter(dl.BaseModelAdapter):
         self.model.to(self.device)
         self.model.eval()
         # Set the embedding size from the load
-        self.configuration["embeddings_size"] = self.configuration.get(
-            "embeddings_size", 512
-        )
+        self.configuration["embeddings_size"] = 512
 
         
     def embed(self, batch, **kwargs):
@@ -358,9 +356,10 @@ class EmbeddingModelAdapter(dl.BaseModelAdapter):
         return embeddings
 ```
 
+
 ### Model Configuration
 
-When creating an embedding model, you must specify the embedding size in the model configuration:
+When creating an embedding model, you must specify the embedding size either in the model adapter (as in the example above), or in the model configuration:
 
 ```python
 model_configuration = {
@@ -370,9 +369,11 @@ model_configuration = {
 }
 ```
 
+> 💡 **Pro Tip**: Check out our [DINOv2 adapter example](https://github.com/dataloop-ai-apps/dinov2-image-embedder/blob/main/adapter.py) on GitHub for a production-ready implementation!
+
 ### Working with Feature Sets
 
-Each embedding model has an associated feature set that stores all the generated embeddings. Here's how to work with it:
+Each embedding model model entity can have one associated feature set that stores all the generated embeddings. Here's how to access it after features have been created:
 
 ```python
 import dtlpy as dl
@@ -428,11 +429,7 @@ import torch
 import numpy as np
 import dtlpy as dl
 
-class ResNetEmbeddingAdapter(dl.BaseModelAdapter):
-    def __init__(self, model_entity):
-        super().__init__(model_entity)
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        
+class SimpleEmbeddingAdapter(dl.BaseModelAdapter):
     def load(self, local_path, **kwargs):
         """Load the model weights"""
         self.model = torch.load(os.path.join(local_path, 'model.pth'))
@@ -494,7 +491,7 @@ If something's not working as expected:
    - Memory errors: Try reducing batch size
    - Missing dependencies: Check your requirements.txt
 
-## Ready to Rock? 🎸
+## Ready to Make Your Own? 🎸
 
 You've just created your own custom model in Dataloop! Remember:
 - Test thoroughly before deployment
