@@ -314,6 +314,159 @@ model.artifacts.download(local_path='./my-model-trained')
 
 > 🔥 **Hot Tip**: Always keep a backup of your best performing weights!
 
+
+## Embedding Models
+
+Embedding models are powerful tools that convert your data into numerical vectors, enabling similarity search, clustering, and other advanced analytics. Here's how to implement and use them effectively:
+
+### Implementing the Embedding Function
+
+To create an embedding model, you need to implement the `embed` function in your model adapter:
+
+```python
+import numpy as np
+import dtlpy as dl
+
+class EmbeddingModelAdapter(dl.BaseModelAdapter):
+    def load()
+    def embed(self, batch, **kwargs):
+        """
+        Convert a batch of items into embedding vectors
+        
+        Args:
+            batch: List of items to embed
+            **kwargs: Additional parameters
+            
+        Returns:
+            List of embedding vectors
+        """
+        embeddings = list()
+        for item in batch:
+            # Process your item and generate embedding
+            # This is a placeholder - replace with your actual embedding logic
+            embedding = self.model(item)  # Your embedding generation logic here
+            embeddings.append(embedding)
+        return embeddings
+```
+
+### Model Configuration
+
+When creating an embedding model, you must specify the embedding size in the model configuration:
+
+```python
+model_configuration = {
+    'embeddings_size': 512,  # Size of your embedding vectors
+    'batch_size': 32,        # Batch size for processing
+    'device': 'cuda'         # Device to run the model on
+}
+```
+
+### Working with Feature Sets
+
+Each embedding model has an associated feature set that stores all the generated embeddings. Here's how to work with it:
+
+```python
+import dtlpy as dl
+
+# Get your model
+model = dl.models.get(model_id="your-model-id")
+
+# Access the feature set
+feature_set = model.feature_set
+print(f"Feature set name: {feature_set.name}")
+print(f"Feature set size: {feature_set.size}")
+
+# List all features
+pages = feature_set.features.list()
+print(f"Number of features: {pages.items_count}")
+
+# Get specific features
+features = feature_set.features.get(feature_id="specific-feature-id")
+```
+
+### Best Practices for Embedding Models
+
+1. **Vector Normalization** 📏
+   - Normalize your embeddings to unit length
+   - This ensures consistent similarity calculations
+   ```python
+   def normalize_embeddings(embeddings):
+       return embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
+   ```
+
+2. **Batch Processing** 🔄
+   - Process items in batches for efficiency
+   - Use appropriate batch sizes based on your model and hardware
+
+3. **Metadata Management** 📋
+   - Store relevant metadata with your embeddings
+   - Include timestamps, model version, and preprocessing details
+
+4. **Version Control** 🔄
+   - Keep track of different embedding model versions
+   - Document changes in embedding generation logic
+
+5. **Performance Optimization** ⚡
+   - Use GPU acceleration when available
+   - Implement caching for frequently accessed embeddings
+
+### Example: Complete Embedding Model Implementation
+
+Here's a complete example of an embedding model implementation:
+
+```python
+import torch
+import numpy as np
+import dtlpy as dl
+
+class ResNetEmbeddingAdapter(dl.BaseModelAdapter):
+    def __init__(self, model_entity):
+        super().__init__(model_entity)
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        
+    def load(self, local_path, **kwargs):
+        """Load the model weights"""
+        self.model = torch.load(os.path.join(local_path, 'model.pth'))
+        self.model.to(self.device)
+        self.model.eval()
+        
+    def embed(self, batch, **kwargs):
+        """Generate embeddings for a batch of items"""
+        embeddings = []
+        with torch.no_grad():
+            for item in batch:
+                # Load and preprocess image
+                image = self._load_image(item)
+                image = image.to(self.device)
+                
+                # Generate embedding
+                embedding = self.model(image)
+                embedding = embedding.cpu().numpy()
+                
+                # Normalize embedding
+                embedding = embedding / np.linalg.norm(embedding)
+                embeddings.append(embedding)
+                
+        return embeddings
+```
+
+### Monitoring and Maintenance
+
+1. **Track Embedding Quality** 📊
+   - Monitor embedding distributions
+   - Check for embedding drift over time
+   - Validate similarity search results
+
+2. **Storage Management** 💾
+   - Implement cleanup for old embeddings
+   - Archive unused feature sets
+   - Monitor storage usage
+
+3. **Performance Monitoring** 📈
+   - Track embedding generation time
+   - Monitor memory usage
+   - Log errors and exceptions
+
 ## Troubleshooting Tips 🔍
 
 If something's not working as expected:
