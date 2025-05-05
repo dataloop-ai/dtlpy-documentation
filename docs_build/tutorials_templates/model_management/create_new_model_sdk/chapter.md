@@ -328,7 +328,16 @@ import numpy as np
 import dtlpy as dl
 
 class EmbeddingModelAdapter(dl.BaseModelAdapter):
-    def load()
+    def load(self, local_path, **kwargs):
+        self.model = torch.load(os.path.join(local_path, 'model.pth'))
+        self.model.to(self.device)
+        self.model.eval()
+        # Set the embedding size from the load
+        self.configuration["embeddings_size"] = self.configuration.get(
+            "embeddings_size", 512
+        )
+
+        
     def embed(self, batch, **kwargs):
         """
         Convert a batch of items into embedding vectors
