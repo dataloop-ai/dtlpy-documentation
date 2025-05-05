@@ -1,6 +1,6 @@
 # Building Your Own Model: The DIY Guide 🛠️
 
-Ready to bring your own model to the Dataloop platform? Let's build something amazing together! This guide will show you how to create your custom model adapter and get your model running smoothly on our platform.
+Ready to bring your own model to the Dataloop platform? Let's start building together! This guide will show you how to create your first custom model adapter and get your model running smoothly on our platform.
 
 ## Choose Your Path: SDK or UI 🛤️
 
@@ -9,7 +9,7 @@ You've got two ways to bring your model to life in Dataloop:
 ### Option 1: Using the SDK (This Guide) 💻
 Follow along with this guide to create your model programmatically using our Python SDK.
 
-### Option 2: Using the Dataloop UI 🖥️
+### Option 2: Using the Dataloop UI 👁️
 
 Prefer a more visual approach? You can use the [Dataloop UI](https://docs.dataloop.ai/docs/models-overview#using-the-dataloop-ui) to create and integrate your model. Here's how:
 
@@ -72,7 +72,7 @@ class SimpleModelAdapter(dl.BaseModelAdapter):
 
 ### 1. Create Your Manifest File 📝
 
-First, you'll need a manifest file - think of it as your app's ID card. Here's a template:
+First, you'll need a `dataloop.json` manifest file. Think of it as your app's ID card, identifying all the important parts of your app. Here's a template:
 
 ```json
 {
@@ -314,6 +314,165 @@ model.artifacts.download(local_path='./my-model-trained')
 
 > 🔥 **Hot Tip**: Always keep a backup of your best performing weights!
 
+
+## Embedding Models
+
+Embedding models are powerful tools that convert your data into numerical vectors, enabling similarity search, clustering, and other advanced analytics. Here's how to implement and use them effectively:
+
+### Implementing the Embedding Function
+
+To create an embedding model, you need to implement the `embed` function in your model adapter:
+
+```python
+import numpy as np
+import dtlpy as dl
+
+class EmbeddingModelAdapter(dl.BaseModelAdapter):
+    def load(self, local_path, **kwargs):
+        self.model = torch.load(os.path.join(local_path, 'model.pth'))
+        self.model.to(self.device)
+        self.model.eval()
+        # Set the embedding size from the load
+        self.configuration["embeddings_size"] = 512
+
+        
+    def embed(self, batch, **kwargs):
+        """
+        Convert a batch of items into embedding vectors
+        
+        Args:
+            batch: List of items to embed
+            **kwargs: Additional parameters
+            
+        Returns:
+            List of embedding vectors
+        """
+        embeddings = list()
+        for item in batch:
+            # Process your item and generate embedding
+            # This is a placeholder - replace with your actual embedding logic
+            embedding = self.model(item)  # Your embedding generation logic here
+            embeddings.append(embedding)
+        return embeddings
+```
+
+
+### Model Configuration
+
+When creating an embedding model, you must specify the embedding size either in the model adapter (as in the example above), or in the model configuration:
+
+```python
+model_configuration = {
+    'embeddings_size': 512,  # Size of your embedding vectors
+    'batch_size': 32,        # Batch size for processing
+    'device': 'cuda'         # Device to run the model on
+}
+```
+
+> 💡 **Pro Tip**: Check out our [DINOv2 adapter example](https://github.com/dataloop-ai-apps/dinov2-image-embedder/blob/main/adapter.py) on GitHub for a production-ready implementation!
+
+### Working with Feature Sets
+
+Each embedding model model entity can have one associated feature set that stores all the generated embeddings. Here's how to access it after features have been created:
+
+```python
+import dtlpy as dl
+
+# Get your model
+model = dl.models.get(model_id="your-model-id")
+
+# Access the feature set
+feature_set = model.feature_set
+print(f"Feature set name: {feature_set.name}")
+print(f"Feature set size: {feature_set.size}")
+
+# List all features
+pages = feature_set.features.list()
+print(f"Number of features: {pages.items_count}")
+
+# Get specific features
+features = feature_set.features.get(feature_id="specific-feature-id")
+```
+
+### Best Practices for Embedding Models
+
+1. **Vector Normalization** 📏
+   - Normalize your embeddings to unit length
+   - This ensures consistent similarity calculations
+   ```python
+   def normalize_embeddings(embeddings):
+       return embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
+   ```
+
+2. **Batch Processing** 🔄
+   - Process items in batches for efficiency
+   - Use appropriate batch sizes based on your model and hardware
+
+3. **Metadata Management** 📋
+   - Store relevant metadata with your embeddings
+   - Include timestamps, model version, and preprocessing details
+
+4. **Version Control** 🔄
+   - Keep track of different embedding model versions
+   - Document changes in embedding generation logic
+
+5. **Performance Optimization** ⚡
+   - Use GPU acceleration when available
+   - Implement caching for frequently accessed embeddings
+
+### Example: Complete Embedding Model Implementation
+
+Here's a complete example of an embedding model implementation:
+
+```python
+import torch
+import numpy as np
+import dtlpy as dl
+
+class SimpleEmbeddingAdapter(dl.BaseModelAdapter):
+    def load(self, local_path, **kwargs):
+        """Load the model weights"""
+        self.model = torch.load(os.path.join(local_path, 'model.pth'))
+        self.model.to(self.device)
+        self.model.eval()
+        
+    def embed(self, batch, **kwargs):
+        """Generate embeddings for a batch of items"""
+        embeddings = []
+        with torch.no_grad():
+            for item in batch:
+                # Load and preprocess image
+                image = self._load_image(item)
+                image = image.to(self.device)
+                
+                # Generate embedding
+                embedding = self.model(image)
+                embedding = embedding.cpu().numpy()
+                
+                # Normalize embedding
+                embedding = embedding / np.linalg.norm(embedding)
+                embeddings.append(embedding)
+                
+        return embeddings
+```
+
+### Monitoring and Maintenance
+
+1. **Track Embedding Quality** 📊
+   - Monitor embedding distributions
+   - Check for embedding drift over time
+   - Validate similarity search results
+
+2. **Storage Management** 💾
+   - Implement cleanup for old embeddings
+   - Archive unused feature sets
+   - Monitor storage usage
+
+3. **Performance Monitoring** 📈
+   - Track embedding generation time
+   - Monitor memory usage
+   - Log errors and exceptions
+
 ## Troubleshooting Tips 🔍
 
 If something's not working as expected:
@@ -332,7 +491,7 @@ If something's not working as expected:
    - Memory errors: Try reducing batch size
    - Missing dependencies: Check your requirements.txt
 
-## Ready to Rock? 🎸
+## Ready to Make Your Own? 🎸
 
 You've just created your own custom model in Dataloop! Remember:
 - Test thoroughly before deployment

@@ -73,6 +73,9 @@ feature_set = project.feature_sets.create(
 )
 ```
 
+> 🔥 **Hot Tip**: To see how to create an embedding models in the Dataloop platform, see the tutorial [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/model_management/create_new_model_sdk/chapter.md).
+
+
 ## Adding Features to Your Set 🎨
 
 ### Using HuggingFace Models

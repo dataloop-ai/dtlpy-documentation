@@ -32,21 +32,16 @@ This gives us the possibility to:
 
 #### Adding Tutorials
 
-The raw tutorials should be located in "tutorials_templates".
-Each tutorial has the following structure:
+The raw tutorials should be located in "tutorials_templates" under "docs_build".
+Each tutorial should contain a markdown file that includes the python code snippets within the \```python ``` symbols.
 
-1. mds.py - contain all the text
-2. scripts.py - contain all the scripts
-3. skeleton.json - contain the instructions to interleave the text and scripts
-
-For each directory, there's an index.json to build the structure of the chapters inside this dir
 
 #### Build
 
 Run the `python docs_build/main.py` to collect all tutorials form the "docs_build/tutorials_templates" and build the final
 "tutorials" directory.
 
-*NOTE build the tutorials from the template directory will OVERRIDE the `tutorials` folder with the changes in the
+*NOTE buildimg the tutorials from the template directory will OVERWRITE the `tutorials` folder with the changes from the
 template!*
 
 ## Passing Tests
