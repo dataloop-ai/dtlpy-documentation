@@ -181,7 +181,7 @@ with ThreadPoolExecutor(max_workers=32) as executor:
     for item in pages.all():
         future = executor.submit(process_item, item)
         futures.append(future)
-        
+
     # Track progress
     for future in futures:
         future.result()
@@ -369,7 +369,6 @@ pip install git+https://github.com/dataloop-ai-apps/dtlpy-converters
 Here's how to bring your COCO/YOLO/VOC annotations into Dataloop:
 
 ```python
-import asyncio
 import dtlpy as dl
 from dtlpyconverters.uploaders import ConvertersUploader
 
@@ -378,7 +377,7 @@ converter = ConvertersUploader()
 
 # 🎯 COCO to Dataloop
 coco_dataset = dl.datasets.get(dataset_id="dataset_id")
-asyncio.run(converter.coco_to_dataloop(
+converter.coco_to_dataloop(
     dataset=coco_dataset,
     input_items_path=r"C:/path/to/coco/items",
     input_annotations_path=r"C:/path/to/coco/items/annotations",
@@ -390,11 +389,11 @@ asyncio.run(converter.coco_to_dataloop(
     ],
     upload_items=True,
     to_polygon=True
-))
+)
 
 # 🎯 YOLO to Dataloop
 yolo_dataset = dl.datasets.get(dataset_id="dataset_id")
-asyncio.run(converter.yolo_to_dataloop(
+converter.yolo_to_dataloop(
     dataset=yolo_dataset,
     input_items_path=r"C:/path/to/yolo/items",
     # Make sure item filenames match YOLO txt files! 🎯
@@ -402,18 +401,18 @@ asyncio.run(converter.yolo_to_dataloop(
     upload_items=True,
     add_labels_to_recipe=True,
     labels_txt_filepath=r"C:/path/to/yolo/items/labels/labels.txt"
-))
+)
 
 # 🎯 VOC to Dataloop
 voc_dataset = dl.datasets.get(dataset_id='dataset_id')
-asyncio.run(converter.voc_to_dataloop(
+converter.voc_to_dataloop(
     dataset=voc_dataset,
     input_items_path=r"C:/path/to/voc/items",
     # Make sure item filenames match VOC xml files! 🎯
     input_annotations_path=r"C:/path/to/voc/items/annotations",
     upload_items=True,
     add_labels_to_recipe=True
-))
+)
 ```
 
 #### Converting FROM Dataloop Format ⬆️
@@ -421,9 +420,8 @@ asyncio.run(converter.voc_to_dataloop(
 Need to export your Dataloop annotations to other formats? Here's how:
 
 ```python
-import asyncio
 import dtlpy as dl
-from dtlpyconverters import coco_converters, yolo_converters, voc_converters
+from dtlpyconverters.downloaders import ConvertersDownloader
 
 # Set up your filters (optional but powerful!) 🎯
 filters = dl.Filters()
@@ -432,38 +430,45 @@ filters.add(field=dl.FiltersKnownFields.DIR, values='/dog_name')
 # Example: Filter for dog annotations
 filters.add_join(field=dl.FiltersKnownFields.LABEL, values='dog')
 
+# Initialize our magical converter
+converter = ConvertersDownloader()
+
 # 🎯 Dataloop to COCO
 coco_dataset = dl.datasets.get(dataset_id='')
-coco_converter = coco_converters.DataloopToCoco(
-    input_annotations_path=r'C:/input/coco',
-    output_annotations_path=r'C:/output/coco',
+converter.dataloop_to_coco(
+    dataset=coco_dataset,
+    input_annotations_path=r'C:/input_coco',
+    output_annotations_path=r'C:/output_coco',
     download_annotations=True,
+    output_items_path=None,
+    download_items=False,
     filters=filters,
-    dataset=coco_dataset
+    label_to_id_mapping=None
 )
-asyncio.run(coco_converter.convert_dataset())
 
 # 🎯 Dataloop to YOLO
 yolo_dataset = dl.datasets.get(dataset_id='')
-yolo_converter = yolo_converters.DataloopToYolo(
-    input_annotations_path=r'C:/input/yolo',
-    output_annotations_path=r'C:/output/yolo',
+converter.dataloop_to_yolo(
+    dataset=yolo_dataset,
+    input_annotations_path=r'C:/input_yolo',
+    output_annotations_path=r'C:/output_yolo',
     download_annotations=True,
-    filters=filters,
-    dataset=yolo_dataset
+    output_items_path=None,
+    download_items=False,
+    filters=filters
 )
-asyncio.run(yolo_converter.convert_dataset())
 
 # 🎯 Dataloop to VOC
 voc_dataset = dl.datasets.get(dataset_id='')
-voc_converter = voc_converters.DataloopToVoc(
-    input_annotations_path=r'C:/input/voc',
-    output_annotations_path=r'C:/output/voc',
+converter.dataloop_to_voc(
+    dataset=voc_dataset,
+    input_annotations_path=r'C:/input_voc',
+    output_annotations_path=r'C:/output_voc',
     download_annotations=True,
-    filters=filters,
-    dataset=voc_dataset
+    output_items_path=None,
+    download_items=False,
+    filters=filters
 )
-asyncio.run(voc_converter.convert_dataset())
 ```
 
 **Pro Tips! 💡**
@@ -517,14 +522,14 @@ asyncio.run(voc_converter.convert_dataset())
 7. **Multi-threading**: Use parallel processing for large datasets
    ```python
    from concurrent.futures import ThreadPoolExecutor
-   
+
    def process_in_parallel(items, max_workers=32):
        with ThreadPoolExecutor(max_workers=max_workers) as executor:
            futures = []
            for item in items:
                future = executor.submit(process_item, item)
                futures.append(future)
-           
+
            # Wait for all tasks to complete
            for future in futures:
                future.result()
@@ -535,10 +540,10 @@ asyncio.run(voc_converter.convert_dataset())
 **Logging**: Maintain detailed logs for debugging
     ```python
     import logging
-    
+
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
-    
+
     def process_with_logging(item):
         try:
             logger.info(f"Processing item: {item.id}")
