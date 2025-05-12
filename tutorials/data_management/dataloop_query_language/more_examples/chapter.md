@@ -143,6 +143,58 @@ pages = dataset.items.list(filters=filters)
 print(f'Found {pages.items_count} items with completed status only')
 ```
 
+### Find Items With Status by Task
+
+Need to find items assigned to a specific task with a specific status? Here's how:
+
+```python
+task_id = "my-task-id"
+status_list = ['completed']
+
+filters = dl.Filters()  # `resource` defaults to items
+filters.add(
+    field='metadata.system.refs',
+    values={
+        'id': {'$in': [task_id]},          # keep refs whose id == TASK_ID
+        'metadata': {
+            'status': {'$in': status_list}  # AND whose status == completed
+        }
+    },
+)
+
+pages = dataset.items.list(filters=filters)
+print(f'Found {pages.items_count} items with completed status for task {task_id}')
+```
+
+### Check Remaining Items in Task
+
+This will get all the items from a specific task that DOES NOT have any status set
+```python
+filetrs = dl.Filters()  # `resource` defaults to items
+filetrs.add(
+    field='metadata.system.refs',
+    values={'id': {'$in': [task.id]}, 
+            'metadata': {'status': {'$exists': False}}}, 
+    operator=dl.FiltersOperations.MATCH
+)
+pages = item.dataset.items.list(filters=filetrs)
+print(pages.items_count)
+```
+
+And the other way around, to get all the items WITH a status:
+
+```python
+filetrs = dl.Filters()  # `resource` defaults to items
+filetrs.add(
+    field='metadata.system.refs',
+    values={'id': {'$in': [task.id]}, 
+            'metadata': {'status': {'$exists': True}}}, 
+    operator=dl.FiltersOperations.MATCH
+)
+pages = item.dataset.items.list(filters=filetrs)
+print(pages.items_count)
+```
+
 ### Finding Unassigned Items
 
 Looking for items nobody's working on?
