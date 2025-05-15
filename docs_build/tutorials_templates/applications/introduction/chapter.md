@@ -1,175 +1,210 @@
-# Introduction
+# 🎮 Welcome to Dataloop Applications - Level Up Your Platform!
 
-## What are Dataloop Applications?
+## 🌟 What are Dataloop Applications?
 
-Dataloop applications are extensions, which are add-ons that can work under the main platform of the Dataloop
-ecosystem (Dataloop OS) and receive access to the predefined panels and can useDataloop SDK and Components to create
-useful features for the end user.
-Using applications, users can work more productively and efficiently by incorporating their custom functionality with
-the underlying platform.
 
-## Publish a DPK (Dataloop Package Kit)
 
-The Dataloop package kit is a zipped file of the entire application's code.
-It holds all the required components of the application, the panels it is serving, the services it uses, and the source
-code of the application.
-The base folder structure of the package is:
+These applications are extensions that plug right into the Dataloop ecosystem (we call it Dataloop OS), giving you access to:
+* Custom panels that feel right at home in the platform 
+* The mighty Dataloop SDK for crafting powerful features
+* Special components that make your workflow smoother
+
+Just like choosing the right tools for crafting in a game, applications let you customize your workspace with exactly what you need! 🛠️
+
+## 📦 The Art of DPK (Dataloop Package Kit)
+
+Think of a DPK as your application's treasure chest - it's a magical bundle that contains everything your application needs to work its wonders! Let's peek inside this chest:
 
 ```
-├── modules
+📁 Your DPK Structure
+├── 📂 modules/            # Your Python magic spells
 │   ├── __init__.py
 │   └── main.py
-├── panels
+├── 📂 panels/            # Your UI enchantments
 │   └── index.html
-├── src
+├── 📂 src/              # Your source code artifacts
 │   └── .gitkeep
-├── tests
+├── 📂 tests/            # Your quality assurance scrolls
 │   ├── __init__.py
 │   └── index.html
-├── dataloop.json
-├── README.md
-├── build.sh
-└── requirements.txt
+├── 📜 dataloop.json     # The sacred manifest
+├── 📜 README.md         # Your application's story
+├── 📜 build.sh         # Your building instructions
+└── 📜 requirements.txt  # Your dependencies scroll
 ```
 
-The best way to start is to visit out GitHub Apps Space and see real and working examples. However, if you want to start
-from scratch:
+Want to see some real magic in action? Visit our [GitHub Apps Space](https://github.com/dataloop-ai-apps) for working examples! But if you're feeling adventurous and want to start from scratch:
 
 ```python
 import dtlpy as dl
 
+# Create your first DPK
 project = dl.projects.get('Project Name')
 dpk = project.dpks.publish()
-
 ```
 
-## Installing Apps
+## 🚀 Installing Your Applications
 
-### Marketplace
+### 🏪 The Marketplace Way
 
-The [Marketplace](https://docs.dataloop.ai/docs/marketplace) serves as a central repository for saving and publishing
-some custom applications, varying from a metadata
-viewer application through audio recording on the website to a completely new UI for the item viewer.
-The Applications are installed into the platform (to a project or entire organization).
-To find an application, go to the marketplace, search for an application by name, category, etc., select and click
-install.
-Now all the application's components should be available to use.
-You can change any settings or configuration (e.g. machine type, autoscaling) in the app settings.
+Think of the [Marketplace](https://docs.dataloop.ai/docs/marketplace) as your app store - it's where all the cool applications hang out! Here you'll find everything from:
+* 🔍 Metadata viewers
+* 🎙️ Annotation Studios
+* 🖼️ AI Model Adapters
+* And many more magical tools!
 
-### Using SDK
+To install an app:
+1. 🏃‍♂️ Sprint to the marketplace
+2. 🔍 Search for your desired application
+3. 🎯 Click install
+4. ✨ Watch the magic happen!
 
-Installing an app is also available in the SDK:
+Need to tweak some settings? You can adjust machine types, autoscaling, and other configurations in the app settings.
+
+### 🐍 The Python SDK Way
+
+For those who prefer to wave their Python wand:
 
 ```python
 import dtlpy as dl
 
+# Get your project ready
 project = dl.projects.get('Apps Project')
+
+# Find your desired app
 dpk = dl.dpks.get(dpk_name='<app-name>')
-project.apps.install(dpk=dpk)
+
+# Cast the installation spell
+app = project.apps.install(dpk=dpk)
 ```
 
-## DPK Components
-
-### Scopes
-
-A DPK can be available for installation at either the Project or Organization level:
-
-* **Project Scope:** The DPK is only available for installation within the specific project where it’s published.
-* **Organization Scope:** The DPK is accessible across all projects within the organization but must be installed
-  individually for each project.
-
-This setup gives you control over where the DPK can be installed based on your specific requirements.
-The scope can be set in the manifest directly (see the examples below) or when publishing:
+And if you want to upgrade your app:
 
 ```python
-import dtlpy as dl
-import json
-
-project = dl.projects.get('Project Name')
-with open('dataloop.json', 'r') as file:
-    manifest = json.load(file)
-
-dpk = dl.Dpk.from_json(_json=manifest,
-                       client_api=dl.client_api,
-                       project=project)
-dpk.scope = "project"  # or 'organization'
-dpk = project.dpks.publish(dpk)
-
+app = project.apps.get(app_name='<app-name>')
+app.dpk_version = dpk.version
+app.update()
 ```
 
-Applications are installed within the scope of individual projects.
-If a DPK is set with `scope=organization`, it will be accessible for installation across all projects within the
-organization, but each project requires a separate installation.
+## 🧹 Uninstalling and Cleaning Up
 
-### Codebase
+Sometimes you need to do some spring cleaning! Here's how to uninstall apps and clean up DPKs:
 
-Codebase can be either directly from git repo and tag, or using Dataloop's Item Codebase.
-Codebase can be set directly in the manifest file, or using the python SDK:
+### 🗑️ Uninstalling an App
+
+Simple as waving goodbye:
 
 ```python
-import dtlpy as dl
-import json
-import os
+# Get your app
+app = project.apps.get(app_name='<app-name>')
+# Uninstall it
+app.uninstall()
+```
 
-project = dl.projects.get('Project Name')
-with open('dataloop.json', 'r') as file:
-    manifest = json.load(file)
+### 🧨 Deleting DPKs
 
-dpk = dl.Dpk.from_json(_json=manifest,
-                       client_api=dl.client_api,
-                       project=project)
+You've got two options here:
 
-# Local codebase
+#### Option 1: Quick Delete (Single Revision) 🎯
+```python
+# Delete a specific DPK revision
+dpk.delete()  # This only removes one revision!
+```
+
+#### Option 2: Complete Cleanup (Nuclear Option) 💥
+
+Want to remove everything related to a DPK? Here's the full cleanup spell:
+
+```python
+# Get your DPK
+dpk = dl.dpks.get(dpk_name='your-dpk-name')
+
+# Find and clean up all related apps
+apps_filters = dl.Filters(field='dpkName', values=dpk.name, resource='apps')
+for app in dl.apps.list(filters=apps_filters).all():
+    print(f'🎯 Found app: {app.name} in project: {app.project.name}')    
+    # Uninstall the app
+    app.uninstall()
+
+# Delete all DPK revisions
+print('🧹 Cleaning up DPK revisions...')
+_ = [revision.delete() for revision in dpk.revisions.all()]
+print('✨ Cleanup complete!')
+```
+
+**Pro Tips! 💡**
+- Always double-check before using the complete cleanup option
+- Consider backing up any important data first
+- Remember that deletions are permanent!
+
+## 🧩 DPK Components - The Building Blocks
+
+### 🎯 Scopes
+
+Your DPK can cast its magic in two realms:
+* 🏰 **Project Scope:** The app only works within its home project
+* 🌍 **Organization Scope:** The app can work across all projects in your organization
+
+Here's how to set your scope:
+
+```json
+{ 
+    "name": "My App",
+    "scope": "project"
+    ...
+}
+```
+
+### 💾 Codebase
+
+Your application's brain can live in two places:
+* 📦 Directly in a git repository with a specific tag
+* 🗄️ In Dataloop's Item Codebase
+
+Here's how to set it up:
+
+```python
+# For local codebase
 codebase = project.codebases.pack(directory=os.getcwd(),
                                   name=dpk.name,
-                                  description="some description")
+                                  description="My awesome app!")
 
-# Git codebase
+# For git codebase
 codebase = dl.GitCodebase(git_url='git_url',
                           git_tag='git_tag')
 
 dpk.codebase = codebase
 dpk = project.dpks.publish(dpk)
-
 ```
 
-### Panels and toolbars
+### 🎨 Panels and Toolbars
 
-A Panel represents the view the user is going to see.
-The panel can be deployed into any available slot in the main platform, for example:
+Think of panels as your app's face - they're what users see and interact with. You can place them in various spots:
+* 🖼️ Item Viewer - Give items a fresh look
+* 🪟 Floating Window - Create movable command centers
+* 📂 Data Browser - Reimagine how users browse items
+* ℹ️ Item Side Panel - Add helpful sidekicks to the viewer
 
-* Item Viewer - Overrides the Item viewer content with a custom-made layout to view an item from the task browser or the
-  dataset browser.
-* Floating Window - create a new window on top of the platform, which can be dragged and resized, and shows the panel.
-* Data Browser - change the browsing view of items in a dataset
-* Item Side Panel - Add a new side panel to the Annotation and Info panels in the item viewer.
+Toolbars are like your app's quick actions - they can appear as:
+* 🔘 Buttons in various places
+* ⚙️ Configuration panels
+* 📊 Project widgets
 
-A Toolbar is a panel that can be ***rendered*** into the platform slots and is NOT served, for example:
+### 🐍 Modules and Functions
 
-* Buttons in the item studio, data browser, task menu, etc.
-* Configuration panels
-* Project widgets
+Your Python modules are like spell books - they hold all the powerful functions your app can perform. Find out more about crafting these spells in our [FaaS tutorial](https://developers.dataloop.ai/tutorials/faas/single_function_rgb_to_gray/chapter/).
 
-### Modules and Functions
+### 🔧 Services
 
-Python functions and modules can be used in the app, they are defined in the "modules" directory. For more information
-about our python modules go [here](https://developers.dataloop.ai/tutorials/faas/single_function_rgb_to_gray/chapter/).
+Think of services as your app's faithful servants - they keep your panels running and manage their lifecycle. Learn more about training these helpers in our [FaaS tutorial](https://developers.dataloop.ai/tutorials/faas/single_function_rgb_to_gray/chapter/).
 
-### Services
+### 🎁 And More!
 
-Services are the carriers of the app panels and backend. A service is responsible for running a panel and managing its
-lifecycle. The dl.Service entity represents the service, for more information about services,
-click [here](https://developers.dataloop.ai/tutorials/faas/single_function_rgb_to_gray/chapter/).
+You can use any other Dataloop entity (Models, Tasks, etc.) in your app - just define them in your manifest, and they'll spring to life during installation!
 
-### All the Others
+## 📜 The Sacred Manifest - dataloop.json
 
-You can use any other Dataloop entity (Models, Tasks, etc.) in the app. Simply define it in the manifest, and it will be
-created on installation.
+Your `dataloop.json` is like your app's spellbook - it contains all the instructions for how your app should work. Check out more examples in our [DPK Examples](https://developers.dataloop.ai/tutorials/applications/dpk_examples/chapter/) page, or explore real-world magic in our [GitHub](https://github.com/dataloop-ai-apps)!
 
-## App Manifest - dataloop.json
-
-The json to describe the app is saved at the root of the app directory and is named dataloop.json. Is contains all the
-definitions of the app components.
-More example in [this page](https://developers.dataloop.ai/tutorials/applications/dpk_examples/chapter/), and you can
-find real working manifests example in the [GitHub](https://github.com/dataloop-ai-apps)
+Ready to create your own magical application? Let's get started! 🚀✨
 

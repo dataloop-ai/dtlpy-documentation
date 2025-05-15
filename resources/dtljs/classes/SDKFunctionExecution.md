@@ -1,40 +1,24 @@
 # Class: SDKFunctionExecution
 
-[sdkApi/interfaces/entities/iExecution](../modules/sdkApi_interfaces_entities_iExecution.md).SDKFunctionExecution
-
 A representation of a function execution
 
 ## Table of contents
 
-### Constructors
-
-- [constructor](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#constructor)
-
 ### Properties
 
-- [app](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#app)
-- [createdAt](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#createdat)
-- [duration](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#duration)
-- [functionName](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#functionname)
-- [id](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#id)
-- [latestStatus](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#lateststatus)
-- [projectId](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#projectid)
-- [serviceId](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#serviceid)
-- [time](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md#time)
+- [app](SDKFunctionExecution.md#app)
+- [functionName](SDKFunctionExecution.md#functionname)
+- [latestStatus](SDKFunctionExecution.md#lateststatus)
+- [time](SDKFunctionExecution.md#time)
+- [id](SDKFunctionExecution.md#id)
+- [createdAt](SDKFunctionExecution.md#createdat)
+- [duration](SDKFunctionExecution.md#duration)
+- [serviceId](SDKFunctionExecution.md#serviceid)
+- [projectId](SDKFunctionExecution.md#projectid)
 
-## Constructors
+### Constructors
 
-### constructor
-
-• **new SDKFunctionExecution**(`execution?`)
-
-Creates an instance of SDKFunctionExecution.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `execution?` | `Partial`<[`SDKFunctionExecution`](sdkApi_interfaces_entities_iExecution.SDKFunctionExecution.md)\> | The execution to create |
+- [constructor](SDKFunctionExecution.md#constructor)
 
 ## Properties
 
@@ -43,6 +27,38 @@ Creates an instance of SDKFunctionExecution.
 • **app**: `string`
 
 The name of the app the function is associated with
+
+___
+
+### functionName
+
+• **functionName**: `string`
+
+The name of the function
+
+___
+
+### latestStatus
+
+• `Optional` **latestStatus**: `ExecutionStatusReport`
+
+The latest status report for the function execution
+
+___
+
+### time
+
+• `Optional` **time**: `Date`
+
+The timestamp for the function execution
+
+___
+
+### id
+
+• `Optional` **id**: `string`
+
+The unique identifier for the function execution
 
 ___
 
@@ -62,27 +78,11 @@ The duration of the function execution
 
 ___
 
-### functionName
+### serviceId
 
-• **functionName**: `string`
+• `Optional` **serviceId**: `string`
 
-The name of the function
-
-___
-
-### id
-
-• `Optional` **id**: `string`
-
-The unique identifier for the function execution
-
-___
-
-### latestStatus
-
-• `Optional` **latestStatus**: `ExecutionStatusReport`
-
-The latest status report for the function execution
+The unique identifier for the service associated with the function
 
 ___
 
@@ -92,18 +92,16 @@ ___
 
 The unique identifier for the project associated with the function
 
-___
+## Constructors
 
-### serviceId
+### constructor
 
-• `Optional` **serviceId**: `string`
+• **new SDKFunctionExecution**(`execution?`)
 
-The unique identifier for the service associated with the function
+Creates an instance of SDKFunctionExecution.
 
-___
+#### Parameters
 
-### time
-
-• `Optional` **time**: `Date`
-
-The timestamp for the function execution
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `execution?` | `Partial`<[`SDKFunctionExecution`](SDKFunctionExecution.md)\> | The execution to create |

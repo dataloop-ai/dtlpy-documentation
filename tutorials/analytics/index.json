@@ -1,0 +1,18 @@
+{
+  "name": "analytics",
+  "title": "Analytics",
+  "description": "Extract and analyze analytics over your data",
+  "content": [
+    {
+      "displayName": "Overview",
+      "description": "overview.",
+      "location": "analytics/overview/chapter.md"
+    },
+    {
+      "displayName": "Extract Analytics",
+      "description": "extract analytics.",
+      "location": "analytics/extract_analytics/chapter.md"
+    }
+  ]
+}
+

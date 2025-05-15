@@ -1,38 +1,39 @@
 # Class: SDKDataset
 
-[sdkApi/interfaces/entities/iDataset](../modules/sdkApi_interfaces_entities_iDataset.md).SDKDataset
-
 Represents a dataset instance within the SDK.
 
 **`Implements`**
 
 ## Implements
 
-- [`IDataset`](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md)
+- [`IDataset`](../interfaces/IDataset.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](sdkApi_interfaces_entities_iDataset.SDKDataset.md#constructor)
+- [constructor](SDKDataset.md#constructor)
 
 ### Properties
 
-- [annotated](sdkApi_interfaces_entities_iDataset.SDKDataset.md#annotated)
-- [createdAt](sdkApi_interfaces_entities_iDataset.SDKDataset.md#createdat)
-- [creator](sdkApi_interfaces_entities_iDataset.SDKDataset.md#creator)
-- [directoryTree](sdkApi_interfaces_entities_iDataset.SDKDataset.md#directorytree)
-- [driver](sdkApi_interfaces_entities_iDataset.SDKDataset.md#driver)
-- [export](sdkApi_interfaces_entities_iDataset.SDKDataset.md#export)
-- [id](sdkApi_interfaces_entities_iDataset.SDKDataset.md#id)
-- [items](sdkApi_interfaces_entities_iDataset.SDKDataset.md#items)
-- [itemsCount](sdkApi_interfaces_entities_iDataset.SDKDataset.md#itemscount)
-- [metadata](sdkApi_interfaces_entities_iDataset.SDKDataset.md#metadata)
-- [name](sdkApi_interfaces_entities_iDataset.SDKDataset.md#name)
-- [projects](sdkApi_interfaces_entities_iDataset.SDKDataset.md#projects)
-- [readableType](sdkApi_interfaces_entities_iDataset.SDKDataset.md#readabletype)
-- [shareLevel](sdkApi_interfaces_entities_iDataset.SDKDataset.md#sharelevel)
-- [url](sdkApi_interfaces_entities_iDataset.SDKDataset.md#url)
+- [annotated](SDKDataset.md#annotated)
+- [annotations](SDKDataset.md#annotations)
+- [attributes](SDKDataset.md#attributes)
+- [classes](SDKDataset.md#classes)
+- [createdAt](SDKDataset.md#createdat)
+- [creator](SDKDataset.md#creator)
+- [directoryTree](SDKDataset.md#directorytree)
+- [driver](SDKDataset.md#driver)
+- [export](SDKDataset.md#export)
+- [id](SDKDataset.md#id)
+- [items](SDKDataset.md#items)
+- [itemsCount](SDKDataset.md#itemscount)
+- [name](SDKDataset.md#name)
+- [projects](SDKDataset.md#projects)
+- [metadata](SDKDataset.md#metadata)
+- [readableType](SDKDataset.md#readabletype)
+- [shareLevel](SDKDataset.md#sharelevel)
+- [url](SDKDataset.md#url)
 
 ## Constructors
 
@@ -46,7 +47,7 @@ Creates an instance of SDKDataset.
 
 | Name | Type |
 | :------ | :------ |
-| `dataset` | `Partial`<[`SDKDataset`](sdkApi_interfaces_entities_iDataset.SDKDataset.md)\> |
+| `dataset` | `Partial`<[`SDKDataset`](SDKDataset.md)\> |
 
 ## Properties
 
@@ -58,19 +59,53 @@ The number of items in the dataset that have been annotated
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[annotated](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#annotated)
+[IDataset](../interfaces/IDataset.md).[annotated](../interfaces/IDataset.md#annotated)
+
+___
+
+### annotations
+
+• **annotations**: `DatasetClassInfo`[]
+
+#### Implementation of
+
+[IDataset](../interfaces/IDataset.md).[annotations](../interfaces/IDataset.md#annotations)
+
+___
+
+### attributes
+
+• **attributes**: `string`[]
+
+#### Implementation of
+
+[IDataset](../interfaces/IDataset.md).[attributes](../interfaces/IDataset.md#attributes)
+
+___
+
+### classes
+
+• **classes**: `Object`
+
+#### Index signature
+
+▪ [p: `string`]: `string`
+
+#### Implementation of
+
+[IDataset](../interfaces/IDataset.md).[classes](../interfaces/IDataset.md#classes)
 
 ___
 
 ### createdAt
 
-• **createdAt**: `IDate`
+• **createdAt**: [`IDate`](../modules.md#idate)
 
 The date the dataset was created
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[createdAt](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#createdat)
+[IDataset](../interfaces/IDataset.md).[createdAt](../interfaces/IDataset.md#createdat)
 
 ___
 
@@ -82,7 +117,7 @@ The dataset creator
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[creator](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#creator)
+[IDataset](../interfaces/IDataset.md).[creator](../interfaces/IDataset.md#creator)
 
 ___
 
@@ -94,7 +129,7 @@ The URL of the dataset's directory tree
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[directoryTree](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#directorytree)
+[IDataset](../interfaces/IDataset.md).[directoryTree](../interfaces/IDataset.md#directorytree)
 
 ___
 
@@ -106,7 +141,7 @@ The dataset's driver
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[driver](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#driver)
+[IDataset](../interfaces/IDataset.md).[driver](../interfaces/IDataset.md#driver)
 
 ___
 
@@ -120,12 +155,12 @@ The URLs of the dataset's exports
 
 | Name | Type |
 | :------ | :------ |
-| `json` | `string` |
 | `zip` | `string` |
+| `json` | `string` |
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[export](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#export)
+[IDataset](../interfaces/IDataset.md).[export](../interfaces/IDataset.md#export)
 
 ___
 
@@ -137,7 +172,7 @@ The unique identifier of the dataset
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[id](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#id)
+[IDataset](../interfaces/IDataset.md).[id](../interfaces/IDataset.md#id)
 
 ___
 
@@ -149,7 +184,7 @@ The URL of the dataset's items
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[items](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#items)
+[IDataset](../interfaces/IDataset.md).[items](../interfaces/IDataset.md#items)
 
 ___
 
@@ -161,19 +196,7 @@ The number of items in the dataset
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[itemsCount](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#itemscount)
-
-___
-
-### metadata
-
-• `Optional` **metadata**: `any`
-
-The dataset metadata
-
-#### Implementation of
-
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[metadata](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#metadata)
+[IDataset](../interfaces/IDataset.md).[itemsCount](../interfaces/IDataset.md#itemscount)
 
 ___
 
@@ -185,7 +208,7 @@ The name of the dataset
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[name](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#name)
+[IDataset](../interfaces/IDataset.md).[name](../interfaces/IDataset.md#name)
 
 ___
 
@@ -197,7 +220,19 @@ The projects the dataset belongs to
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[projects](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#projects)
+[IDataset](../interfaces/IDataset.md).[projects](../interfaces/IDataset.md#projects)
+
+___
+
+### metadata
+
+• `Optional` **metadata**: `any`
+
+The dataset metadata
+
+#### Implementation of
+
+[IDataset](../interfaces/IDataset.md).[metadata](../interfaces/IDataset.md#metadata)
 
 ___
 
@@ -209,7 +244,7 @@ The type of the dataset
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[readableType](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#readabletype)
+[IDataset](../interfaces/IDataset.md).[readableType](../interfaces/IDataset.md#readabletype)
 
 ___
 
@@ -221,7 +256,7 @@ The share level of the dataset
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[shareLevel](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#sharelevel)
+[IDataset](../interfaces/IDataset.md).[shareLevel](../interfaces/IDataset.md#sharelevel)
 
 ___
 
@@ -233,4 +268,4 @@ The URL of the dataset
 
 #### Implementation of
 
-[IDataset](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md).[url](../interfaces/sdkApi_interfaces_entities_iDataset.IDataset.md#url)
+[IDataset](../interfaces/IDataset.md).[url](../interfaces/IDataset.md#url)

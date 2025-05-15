@@ -1,0 +1,79 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="recipeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3452FF"/>
+      <stop offset="100%" style="stop-color:#8896FF"/>
+    </linearGradient>
+    <linearGradient id="paperGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#BDD0FB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Main container -->
+  <g transform="translate(20, 20)">
+    <!-- Recipe paper -->
+    <g transform="translate(0, 0)">
+      <!-- Background paper -->
+      <rect x="40" y="20" width="120" height="160" 
+            rx="10" fill="url(#paperGradient)"/>
+      
+      <!-- Paper fold -->
+      <path d="M160 20 L160 50 L130 20 Z" 
+            fill="url(#recipeGradient)" 
+            opacity="0.8"/>
+
+      <!-- Recipe content -->
+      <g transform="translate(55, 40)">
+        <!-- Title -->
+        <rect width="70" height="4" rx="2" 
+              fill="url(#recipeGradient)" opacity="0.8"/>
+        
+        <!-- Steps -->
+        <g transform="translate(0, 20)">
+          <circle r="3" fill="url(#recipeGradient)"/>
+          <rect x="10" width="50" height="3" rx="1.5" 
+                fill="url(#recipeGradient)" opacity="0.6"/>
+        </g>
+        <g transform="translate(0, 35)">
+          <circle r="3" fill="url(#recipeGradient)"/>
+          <rect x="10" width="60" height="3" rx="1.5" 
+                fill="url(#recipeGradient)" opacity="0.6"/>
+        </g>
+        <g transform="translate(0, 50)">
+          <circle r="3" fill="url(#recipeGradient)"/>
+          <rect x="10" width="40" height="3" rx="1.5" 
+                fill="url(#recipeGradient)" opacity="0.6"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Ontology structure -->
+    <g transform="translate(40, 100)">
+      <!-- Root node -->
+      <rect x="40" y="0" width="40" height="25" 
+            rx="12.5" fill="url(#recipeGradient)"/>
+      
+      <!-- Connecting lines -->
+      <path d="M60 25 L60 45" stroke="url(#recipeGradient)" 
+            stroke-width="2" opacity="0.6"/>
+      <path d="M60 45 L20 45 L100 45" 
+            stroke="url(#recipeGradient)" 
+            stroke-width="2" opacity="0.6"/>
+      <path d="M20 45 L20 65" stroke="url(#recipeGradient)" 
+            stroke-width="2" opacity="0.6"/>
+      <path d="M60 45 L60 65" stroke="url(#recipeGradient)" 
+            stroke-width="2" opacity="0.6"/>
+      <path d="M100 45 L100 65" stroke="url(#recipeGradient)" 
+            stroke-width="2" opacity="0.6"/>
+      
+      <!-- Child nodes -->
+      <rect x="0" y="65" width="40" height="25" 
+            rx="12.5" fill="url(#recipeGradient)" opacity="0.8"/>
+      <rect x="40" y="65" width="40" height="25" 
+            rx="12.5" fill="url(#recipeGradient)" opacity="0.8"/>
+      <rect x="80" y="65" width="40" height="25" 
+            rx="12.5" fill="url(#recipeGradient)" opacity="0.8"/>
+    </g>
+  </g>
+</svg> 

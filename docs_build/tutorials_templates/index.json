@@ -19,14 +19,19 @@
             "location": "recipe_and_ontology/index.json"
         },
         {
-            "displayName": "Task and Workflows",
-            "description": "Tutorials for workforce management",
-            "location": "task_workflows/index.json"
+            "displayName": "Labeling Workflows",
+            "description": "Tutorials for labeling workflows",
+            "location": "labeling_workflows/index.json"
         },
         {
-            "displayName": "FaaS Tutorial",
-            "description": "Tutorials for FaaS",
-            "location": "faas/index.json"
+            "displayName": "Analytics",
+            "description": "Extract and Analyze Analytics",
+            "location": "analytics/index.json"
+        },
+        {
+            "displayName": "FaaS Applications",
+            "description": "Tutorials for FaaS Applications and DPKs",
+            "location": "faas_applications/index.json"
         },
         {
             "displayName": "Pipelines",
@@ -45,4 +50,3 @@
         }
     ]
 }
-

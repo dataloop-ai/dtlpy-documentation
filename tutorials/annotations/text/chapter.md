@@ -1,27 +1,47 @@
-# Text Item
+# 📝 Text Annotations - Making Words Come Alive!
 
-To annotate text file by word or sentence you can use the `dl.Text` annotation.
-It uses start and end character location to label specific word, sentence or any other text block in the txt file.
+Welcome to the world of text annotations! Just like highlighting important passages in a book, text annotations help us mark and categorize important pieces of text. Let's dive in! 
 
-Here's a simple code example to upload a `Person` label to a name in the txt:
+## 🎯 Basic Text Annotation
+
+Think of text annotations like digital highlighters - they help you mark specific words, phrases, or characters in your text. Here's how to create one:
 
 ```python
-# Get dataset, project and item from the platform
-import dtlpy as dl
-
-project = dl.projects.get('My Project')
-dataset = project.datasets.get('My Dataset')
-item = dataset.items.get(filepath='/your-text-file-path.txt')
-# Create a builder instance
+# Get your document ready
+item = dataset.items.get(filepath='/your-text-file.txt')
 builder = item.annotations.builder()
+
+# Create your digital highlight
 builder.add(annotation_definition=dl.Text(text_type='block',
                                           start=11,
                                           end=19,
                                           label='Person'))
-# Upload classification to the item
+
+# Save your work
 item.annotations.upload(builder)
 ```
 
-When you open the item in the studio, the word will be annotated with the `Person` class:
-![AnnotatedItem](../../../assets/images/studios/text_studio.png)
+
+# 💡 Pro Tips for Text Annotations
+
+- Always verify your character coordinates match the text exactly
+- Use meaningful labels that describe the type of text you're marking
+- Consider using attributes to add extra context to your annotations
+- Keep your annotation scheme consistent across all documents
+
+# 🎓 Best Practices
+
+## Working with Large Documents
+When dealing with large text files:
+- Break down the annotation task into manageable sections
+- Use clear label hierarchies to organize different types of annotations
+- Consider using overlapping annotations when concepts intersect
+
+## Annotation Guidelines
+For consistent text annotations:
+- Define clear rules for what should be included in each span
+- Document edge cases and how to handle them
+- Use attributes to capture uncertainty or ambiguity
+
+Need help? Check out our other tutorials or reach out to our support team. Happy text annotating! 📚✨
 

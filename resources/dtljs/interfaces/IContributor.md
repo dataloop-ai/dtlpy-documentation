@@ -1,7 +1,5 @@
 # Interface: IContributor
 
-[sdkApi/interfaces/entities/iUser](../modules/sdkApi_interfaces_entities_iUser.md).IContributor
-
 An interface representing a Contributor object, extending the IEntity interface.
 
 **`Interface`**
@@ -10,65 +8,41 @@ IContributor
 
 ## Hierarchy
 
-- [`IEntity`](sdkApi_interfaces_entities_base.IEntity.md)
+- [`IEntity`](IEntity.md)
 
   ↳ **`IContributor`**
 
 ## Implemented by
 
-- [`SDKContributor`](../classes/sdkApi_interfaces_entities_iUser.SDKContributor.md)
+- [`SDKContributor`](../classes/SDKContributor.md)
 
 ## Table of contents
 
 ### Properties
 
-- [\_org](sdkApi_interfaces_entities_iUser.IContributor.md#_org)
-- [avatar](sdkApi_interfaces_entities_iUser.IContributor.md#avatar)
-- [boarded](sdkApi_interfaces_entities_iUser.IContributor.md#boarded)
-- [clientId](sdkApi_interfaces_entities_iUser.IContributor.md#clientid)
-- [createdAt](sdkApi_interfaces_entities_iUser.IContributor.md#createdat)
-- [creator](sdkApi_interfaces_entities_iUser.IContributor.md#creator)
-- [email](sdkApi_interfaces_entities_iUser.IContributor.md#email)
-- [firstName](sdkApi_interfaces_entities_iUser.IContributor.md#firstname)
-- [groupRole](sdkApi_interfaces_entities_iUser.IContributor.md#grouprole)
-- [id](sdkApi_interfaces_entities_iUser.IContributor.md#id)
-- [interest](sdkApi_interfaces_entities_iUser.IContributor.md#interest)
-- [inviteStatus](sdkApi_interfaces_entities_iUser.IContributor.md#invitestatus)
-- [lastLogin](sdkApi_interfaces_entities_iUser.IContributor.md#lastlogin)
-- [lastName](sdkApi_interfaces_entities_iUser.IContributor.md#lastname)
-- [orgRole](sdkApi_interfaces_entities_iUser.IContributor.md#orgrole)
-- [project](sdkApi_interfaces_entities_iUser.IContributor.md#project)
-- [role](sdkApi_interfaces_entities_iUser.IContributor.md#role)
-- [timezone](sdkApi_interfaces_entities_iUser.IContributor.md#timezone)
-- [type](sdkApi_interfaces_entities_iUser.IContributor.md#type)
-- [updatedAt](sdkApi_interfaces_entities_iUser.IContributor.md#updatedat)
-- [updatedBy](sdkApi_interfaces_entities_iUser.IContributor.md#updatedby)
+- [clientId](IContributor.md#clientid)
+- [creator](IContributor.md#creator)
+- [updatedAt](IContributor.md#updatedat)
+- [updatedBy](IContributor.md#updatedby)
+- [id](IContributor.md#id)
+- [email](IContributor.md#email)
+- [firstName](IContributor.md#firstname)
+- [lastName](IContributor.md#lastname)
+- [avatar](IContributor.md#avatar)
+- [\_org](IContributor.md#_org)
+- [orgRole](IContributor.md#orgrole)
+- [lastLogin](IContributor.md#lastlogin)
+- [groupRole](IContributor.md#grouprole)
+- [type](IContributor.md#type)
+- [interest](IContributor.md#interest)
+- [boarded](IContributor.md#boarded)
+- [timezone](IContributor.md#timezone)
+- [project](IContributor.md#project)
+- [role](IContributor.md#role)
+- [inviteStatus](IContributor.md#invitestatus)
+- [createdAt](IContributor.md#createdat)
 
 ## Properties
-
-### \_org
-
-• **\_org**: `string`
-
-The identifier of the organization the contributor belongs to
-
-___
-
-### avatar
-
-• **avatar**: `string`
-
-The URL of the avatar image of the contributor
-
-___
-
-### boarded
-
-• **boarded**: `boolean`
-
-Whether the contributor has completed the onboarding process
-
-___
 
 ### clientId
 
@@ -78,19 +52,7 @@ A local identifier for the Entity, unique within the client.
 
 #### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[clientId](sdkApi_interfaces_entities_base.IEntity.md#clientid)
-
-___
-
-### createdAt
-
-• **createdAt**: `IDate`
-
-The date and time when the contributor was created
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[createdAt](sdkApi_interfaces_entities_base.IEntity.md#createdat)
+[IEntity](IEntity.md).[clientId](IEntity.md#clientid)
 
 ___
 
@@ -102,7 +64,43 @@ The creator of the Entity.
 
 #### Inherited from
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[creator](sdkApi_interfaces_entities_base.IEntity.md#creator)
+[IEntity](IEntity.md).[creator](IEntity.md#creator)
+
+___
+
+### updatedAt
+
+• `Optional` **updatedAt**: [`IDate`](../modules.md#idate)
+
+The date and time when the Entity was last updated.
+
+#### Inherited from
+
+[IEntity](IEntity.md).[updatedAt](IEntity.md#updatedat)
+
+___
+
+### updatedBy
+
+• `Optional` **updatedBy**: `string`
+
+The user who last updated the Entity.
+
+#### Inherited from
+
+[IEntity](IEntity.md).[updatedBy](IEntity.md#updatedby)
+
+___
+
+### id
+
+• **id**: `string`
+
+The unique identifier of the contributor (email)
+
+#### Overrides
+
+[IEntity](IEntity.md).[id](IEntity.md#id)
 
 ___
 
@@ -122,39 +120,35 @@ The first name of the contributor
 
 ___
 
-### groupRole
+### lastName
 
-• **groupRole**: `string`
+• **lastName**: `string`
 
-The role of the contributor within a group
-
-___
-
-### id
-
-• **id**: `string`
-
-The unique identifier of the contributor (email)
-
-#### Overrides
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[id](sdkApi_interfaces_entities_base.IEntity.md#id)
+The last name of the contributor
 
 ___
 
-### interest
+### avatar
 
-• **interest**: `string`
+• **avatar**: `string`
 
-The areas of interest of the contributor (e.g. "dataManagement")
+The URL of the avatar image of the contributor
 
 ___
 
-### inviteStatus
+### \_org
 
-• `Optional` **inviteStatus**: `string`
+• **\_org**: `string`
 
-The status of the invitation sent to the contributor
+The identifier of the organization the contributor belongs to
+
+___
+
+### orgRole
+
+• **orgRole**: `string`
+
+The role of the contributor within their organization
 
 ___
 
@@ -166,19 +160,43 @@ The timestamp of the last login of the contributor
 
 ___
 
-### lastName
+### groupRole
 
-• **lastName**: `string`
+• **groupRole**: `string`
 
-The last name of the contributor
+The role of the contributor within a group
 
 ___
 
-### orgRole
+### type
 
-• **orgRole**: `string`
+• **type**: `string`
 
-The role of the contributor within their organization
+The type of the contributor
+
+___
+
+### interest
+
+• **interest**: `string`
+
+The areas of interest of the contributor (e.g. "dataManagement")
+
+___
+
+### boarded
+
+• **boarded**: `boolean`
+
+Whether the contributor has completed the onboarding process
+
+___
+
+### timezone
+
+• `Optional` **timezone**: `string`
+
+The timezone of the contributor
 
 ___
 
@@ -198,40 +216,20 @@ The role of the contributor within the project
 
 ___
 
-### timezone
+### inviteStatus
 
-• `Optional` **timezone**: `string`
+• `Optional` **inviteStatus**: `string`
 
-The timezone of the contributor
-
-___
-
-### type
-
-• **type**: `string`
-
-The type of the contributor
+The status of the invitation sent to the contributor
 
 ___
 
-### updatedAt
+### createdAt
 
-• `Optional` **updatedAt**: `IDate`
+• **createdAt**: [`IDate`](../modules.md#idate)
 
-The date and time when the Entity was last updated.
+The date and time when the contributor was created
 
-#### Inherited from
+#### Overrides
 
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedAt](sdkApi_interfaces_entities_base.IEntity.md#updatedat)
-
-___
-
-### updatedBy
-
-• `Optional` **updatedBy**: `string`
-
-The user who last updated the Entity.
-
-#### Inherited from
-
-[IEntity](sdkApi_interfaces_entities_base.IEntity.md).[updatedBy](sdkApi_interfaces_entities_base.IEntity.md#updatedby)
+[IEntity](IEntity.md).[createdAt](IEntity.md#createdat)

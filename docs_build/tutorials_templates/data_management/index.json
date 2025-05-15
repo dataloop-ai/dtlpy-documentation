@@ -1,58 +1,58 @@
 {
-    "name": "management-tutorial",
-    "title": "Management Tutorial",
+    "name": "data-management-tutorial",
+    "title": "Data Management Tutorial",
     "description": "Use Dataloop's Python SDK to integrate your data with your cloud-storage (GCS/S3/Azure), create datasets, upload/link your data items, manage your datasets, and download data.\n\nSee our SDK Getting Started guide at https://docs.dataloop.ai/docs/sdk-register.\n",
     "content": [
         {
-            "displayName": "Integrations",
-            "description": "Add a new integration",
-            "location": "data_management/integrations/chapter.md"
-        },
-        {
-            "displayName": "Cloud Storage",
-            "description": "Setup storage integration with GCS/S3/Azure",
-            "location": "data_management/cloud_storage/index.json"
-        },
-        {
-            "displayName": "Manage Datasets",
+            "displayName": "Datasets and Versioning",
             "description": "Create and manage Datasets and connect them with your cloud storage",
-            "location": "data_management/manage_datasets/chapter.md"
+            "location": "data_management/datasets_and_versioning/chapter.md"
         },
         {
-            "displayName": "Data Versioning",
-            "description": "How to manage versions",
-            "location": "data_management/data_versioning/chapter.md"
+            "displayName": "External Storage",
+            "description": "Setup storage integration with GCS/S3/Azure",
+            "location": "data_management/external_storage_drivers/index.json"
         },
         {
-            "displayName": "Upload and Manage Data and Metadata",
-            "description": "Upload data items and metadata",
-            "location": "data_management/upload_and_manage_items/chapter.md"
+            "displayName": "Items and Annotations: Introduction",
+            "description": "Learn the basics of working with items and annotations",
+            "location": "data_management/items_and_annotations/introduction/chapter.md"
         },
         {
-            "displayName": "Upload and Manage Annotations",
-            "description": "Upload annotations into data items",
-            "location": "data_management/upload_and_manage_annotations/chapter.md"
+            "displayName": "Items and Annotations: More Examples",
+            "description": "Advanced examples and techniques for items and annotations",
+            "location": "data_management/items_and_annotations/more_examples/chapter.md"
         },
         {
-            "displayName": "Sort and Filters",
-            "description": "DQL Filters a Pagination",
-            "location": "data_management/sort_and_filter/index.json"
+            "displayName": "LiDAR Data",
+            "description": "How to work with LiDAR data",
+            "location": "data_management/items_and_annotations/other_data_types/lidar/chapter.md"
         },
         {
-            "displayName": "Working with Metadata",
-            "description": "Working with Item's metadata",
-            "location": "data_management/working_with_metadata/chapter.md"
+            "displayName": "GIS Data",
+            "description": "How to work with GIS data",
+            "location": "data_management/items_and_annotations/other_data_types/gis/chapter.md"
         },
         {
-            "displayName": "Secrets",
-            "description": "Creating secrets in Dataloop",
-            "location": "data_management/secrets/chapter.md"
+            "displayName": "Dataloop Query Language: Introduction",
+            "description": "Learn the basics of DQL Filters and Pagination",
+            "location": "data_management/dataloop_query_language/introduction/chapter.md"
         },
+        {
+            "displayName": "Dataloop Query Language: More Examples",
+            "description": "Advanced DQL examples and techniques",
+            "location": "data_management/dataloop_query_language/more_examples/chapter.md"
+        },
+
         {
             "displayName": "Feature Vectors",
             "description": "How to use feature vectors and embeddings",
             "location": "data_management/feature_vectors/chapter.md"
+        },
+        {
+            "displayName": "Integrations and Secrets",
+            "description": "Add integrations and manage secrets",
+            "location": "data_management/integrations_and_secrets/chapter.md"
         }
     ]
 }
-
