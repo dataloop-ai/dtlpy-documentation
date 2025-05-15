@@ -91,7 +91,7 @@ item = dataset.items.upload(
 )
 ```
 
-#### Json
+#### Json files
 
 ```python
 import json
