@@ -98,11 +98,11 @@ import json
 
 # Open the json file as dictionary
 with open('path/to/json_file.json', 'r') as f:
-    data = json.load(f)
+    json_data = json.load(f)
 
 # Upload the json
 item = dataset.items.upload(
-    local_path=json.dumps(data).encode(),
+    local_path=json.dumps(json_data).encode(),
     remote_name='json_file.json'
 )
 
