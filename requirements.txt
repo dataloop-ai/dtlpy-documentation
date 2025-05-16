@@ -5,3 +5,4 @@ google-cloud-storage
 google-cloud-core
 Pillow>=10.3.0
 setuptools>=78.1.1 # not directly required, pinned by Snyk to avoid a vulnerability
+tornado>=6.5 # not directly required, pinned by Snyk to avoid a vulnerability
