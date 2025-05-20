@@ -87,7 +87,7 @@ recipe.update()
 ```python
 # Magic query to find all the recipes linked to your ontology
 filters = dl.Filters(resource=dl.FiltersResource.RECIPE)
-filters.add(field="ontologies", values=[ontology.id])  # Don't use dl.FiltersResource.ONTOLGY
+filters.add(field="ontologies", values=[ontology.id])  # Make sure to use "ontologies" instead of "ontology"
 recipes = ontology.project.recipes.list(filters=filters)
 ```
 
