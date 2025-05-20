@@ -74,9 +74,10 @@ ontology = project.ontologies.create(
 )
 ```
 
-### Connecting Ontology to an Existing Recipe
+### Connecting Ontology to an existing Recipe
 
 ```python
+# Replace the existing ontology with a new one
 recipe.ontology_ids = [ontology.id]
 recipe.update()
 ```
@@ -84,6 +85,7 @@ recipe.update()
 ### Getting Ontology related Recipes
 
 ```python
+# Magic query to find all the recipes linked to your ontology
 filters = dl.Filters(resource=dl.FiltersResource.RECIPE)
 filters.add(field="ontologies", values=[ontology.id])  # Don't use dl.FiltersResource.ONTOLGY
 recipes = ontology.project.recipes.list(filters=filters)
