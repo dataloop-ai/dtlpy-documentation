@@ -91,6 +91,26 @@ item = dataset.items.upload(
 )
 ```
 
+#### Json files
+
+```python
+import json
+
+# Open the json file as dictionary
+with open('path/to/json_file.json', 'r') as f:
+    json_data = json.load(f)
+
+# Upload the json
+item = dataset.items.upload(
+    local_path=json.dumps(json_data).encode(),
+    remote_name='json_file.json'
+)
+
+# Download and open the json as dictionary
+item = dl.items.get(item_id="item_id")
+json_data = json.loads(item.download(save_locally=False).getvalue())
+```
+
 ### Advanced Metadata Operations 📊
 
 #### Complex Metadata Structure
