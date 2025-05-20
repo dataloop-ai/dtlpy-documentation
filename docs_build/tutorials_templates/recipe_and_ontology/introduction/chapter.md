@@ -74,6 +74,21 @@ ontology = project.ontologies.create(
 )
 ```
 
+### Connecting Ontology to an Existing Recipe
+
+```python
+recipe.ontology_ids = [ontology.id]
+recipe.update()
+```
+
+### Getting Ontology related Recipes
+
+```python
+filters = dl.Filters(resource=dl.FiltersResource.RECIPE)
+filters.add(field="ontologies", values=[ontology.id])  # Don't use dl.FiltersResource.ONTOLGY
+recipes = ontology.project.recipes.list(filters=filters)
+```
+
 ### Adding Labels 🏷️
 
 You've got multiple ways to add labels - pick your favorite!
