@@ -71,6 +71,7 @@ buffer = item.download(
 ```
 
 **Important Notes:**
+
 - Use `save_locally=False` to get a buffer instead of saving to disk
 - Use `to_array=True` to get the buffer as a numpy array
 
@@ -89,6 +90,36 @@ item = dataset.items.upload(
     local_path=np_array,
     remote_name='pil_image.jpg'
 )
+```
+
+#### Working with Streams Directly
+
+```python
+import json
+
+# Example dictionary with sample data
+json_data = {
+    "name": "example_item",
+    "metadata": {
+        "category": "sample",
+        "tags": ["test", "example"],
+        "version": 1.0
+    }
+}
+
+# OR load a local file
+with open('path/to/json_file.json', 'r') as f:
+    json_data = json.load(f)
+
+# Upload the json
+uploaded_item = dataset.items.upload(
+    local_path=json.dumps(json_data).encode(),
+    remote_name='json_file.json'
+)
+
+# Download and open the json as dictionary
+item = dl.items.get(item_id=uploaded_item.id)
+json_data = json.loads(item.download(save_locally=False).getvalue())
 ```
 
 ### Advanced Metadata Operations 📊
@@ -358,6 +389,7 @@ dataset.download(
 Want to convert annotations between different formats? We've got you covered! First, grab our handy converter toolkit:
 
 1. Install our [dtlpy-converters](https://github.com/dataloop-ai-apps/dtlpy-converters) package 🛠️
+
 ```bash
 pip install git+https://github.com/dataloop-ai-apps/dtlpy-converters
 ```
@@ -479,54 +511,59 @@ converter.convert()
 ```
 
 **Pro Tips! 💡**
+
 - Always check that your item filenames match the annotation files
 - Use filters to convert specific subsets of your data
 - Remember that converter functions are async - use `asyncio.run()`!
 
 ## Best Practices for Large Scale Operations 🎯
 
-### Error Handling  🛡️
+### Error Handling 🛡️
 
 **Error Handling**: Always include error handling for large operations
-   ```python
-   try:
-       items = dataset.items.upload(local_path=large_batch)
-   except dl.exceptions.PlatformException as e:
-       print(f"Platform error: {e}")
-   ```
+
+```python
+try:
+    items = dataset.items.upload(local_path=large_batch)
+except dl.exceptions.PlatformException as e:
+    print(f"Platform error: {e}")
+```
 
 ### Performance Optimization 🚀
 
 **Batch Processing**: Group operations for better performance
-   ```python
-   # Example: Batch upload with progress tracking
-   items_batch = []
-   with tqdm.tqdm(total=len(file_list)) as pbar:
-       for i, file_path in enumerate(file_list):
-           items_batch.append({
-               'local_path': file_path,
-               'remote_name': f'processed_{i}.jpg'
-           })
-           if len(items_batch) == 100:  # Process in batches of 100
-               dataset.items.upload(local_path=pd.DataFrame(items_batch))
-               items_batch = []
-               pbar.update(100)
-   ```
+
+```python
+# Example: Batch upload with progress tracking
+items_batch = []
+with tqdm.tqdm(total=len(file_list)) as pbar:
+    for i, file_path in enumerate(file_list):
+        items_batch.append({
+            'local_path': file_path,
+            'remote_name': f'processed_{i}.jpg'
+        })
+        if len(items_batch) == 100:  # Process in batches of 100
+            dataset.items.upload(local_path=pd.DataFrame(items_batch))
+            items_batch = []
+            pbar.update(100)
+```
 
 **Progress Tracking**: Use progress bars for long operations
-   ```python
-   # Track progress for any operation
-   def process_with_progress(items):
-       with tqdm.tqdm(total=len(items)) as pbar:
-           for item in items:
-               # Your processing logic here
-               process_item(item)
-               pbar.update(1)
-   ```
+
+```python
+# Track progress for any operation
+def process_with_progress(items):
+    with tqdm.tqdm(total=len(items)) as pbar:
+        for item in items:
+            # Your processing logic here
+            process_item(item)
+            pbar.update(1)
+```
 
 ### Parallel Processing 🔄
 
 7. **Multi-threading**: Use parallel processing for large datasets
+
    ```python
    from concurrent.futures import ThreadPoolExecutor
 
@@ -545,8 +582,8 @@ converter.convert()
 ### Logging 📝
 
 **Logging**: Maintain detailed logs for debugging
-    ```python
-    import logging
+```python
+import logging
 
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
