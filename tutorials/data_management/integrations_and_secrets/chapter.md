@@ -105,6 +105,20 @@ def my_function(item):
 
 For more details on using secrets in functions, check out our [FaaS Security and Environment Chapter](https://developers.dataloop.ai/tutorials/faas_applications/service_configurations/chapter#-security-and-environment).
 
+### Updating Secrets 💻
+
+You can update an existing Secret’s name, value, or provider using the SDK. This is particularly useful for automating credential rotation, updating expired keys, or adjusting secret metadata to improve service clarity.
+
+```python
+import dtlpy as dl
+
+integration = dl.integrations.get(integrations_id='', organization_id='')
+integration.update(new_options={}, reload_services=True)
+
+# Set reload_services=True to apply changes to all related services immediately.
+# If reload_services is not provided, it defaults to False (services will not be reloaded automatically).
+```
+
 ## Best Practices 🌟
 
 1. **Naming Convention**: Use clear, descriptive names for your integrations and secrets
