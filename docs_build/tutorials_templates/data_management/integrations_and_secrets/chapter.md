@@ -16,8 +16,8 @@ Integrations allow your Dataloop organization to securely configure and access a
   - Microsoft Azure Blob
 - Container Registries 🐳
   - AWS Elastic Container Registry (ECR)
-  - Google Container Registry (GCR)
   - Google Artifact Registry (GAR)
+  - Azure Container Registry (ACR)
 - Secure Token Service (STS) 🔑
 - And more exciting services! 🚀
 
