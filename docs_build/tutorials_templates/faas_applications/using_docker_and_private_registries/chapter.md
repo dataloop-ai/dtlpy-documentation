@@ -182,7 +182,7 @@ gcloud services enable artifactregistry.googleapis.com
 
 This command enables the Artifact Registry API in your GCP project so you can start storing and managing container images, Maven packages, Python packages, etc.
 
-2. Set Up Permissions
+2. Configure IAM Permissions
 
 Ensure your account has the necessary permissions:
 
@@ -197,31 +197,15 @@ gcloud projects add-iam-policy-binding [PROJECT-ID] \     # Replace this with yo
   --role="roles/artifactregistry.admin"   # Grants the Artifact Registry Admin role, which allows full control over Artifact Registry resources.
 ```
 
-3. Create a Repository
+3. Authenticate Docker with GAR
 
-Artifact Registry organizes artifacts in repositories.
-
-Command Format:
-
-```bash
-gcloud artifacts repositories create [REPO_NAME] \
-  --repository-format=[FORMAT] \ 
-  --location=[REGION] \
-  --description="[DESCRIPTION]"
-```
-
-- repository-format: Supports `Container`, maven, npm, python, etc.
-- location: Choose a region close to your deployment (e.g., `us-central1`).
-
-4. Configure Container Authentication
-
-To push and pull Container images, configure authentication:
+Before pushing or pulling images, configure Docker to authenticate with GAR:
 
 ```bash
 gcloud auth configure-docker [REGION]-docker.pkg.dev      # Replace [REGION] with the region your repository is hosted in (e.g., `us-central1`, `europe-west1`, etc.).
 ```
 
-5. Push Container Images to Artifact Registry
+4. Tag and Push Container Images to GAR
 
 **Tag your Container image:**
 
@@ -229,7 +213,7 @@ gcloud auth configure-docker [REGION]-docker.pkg.dev      # Replace [REGION] wit
 docker tag [IMAGE_NAME] [REGION]-docker.pkg.dev/[PROJECT_ID]/[REPOSITORY]/[IMAGE_NAME]:[TAG]
 ```
 
-**Push the image to GAR:**
+**Push it to Artifact Registry:**
 
 ```bash
 docker push [REGION]-docker.pkg.dev/[PROJECT_ID]/[REPOSITORY]/[IMAGE_NAME]:[TAG]
