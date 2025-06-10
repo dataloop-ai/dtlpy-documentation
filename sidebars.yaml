@@ -163,6 +163,13 @@
       page: tutorials/applications/faq/chapter.md
     page: tutorials/applications.md
   page: tutorials/tutorials.md
+- group: Notebooks
+  items:
+  - label: Instructions
+    page: notebooks/instructions.md
+  - label: Notebooks
+    page: notebooks/notebooks.md
+  page: notebooks/notebooks.md
 - group: Resources
   items:
   - group: REST API

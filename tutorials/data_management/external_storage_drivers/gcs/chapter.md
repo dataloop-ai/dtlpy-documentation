@@ -27,24 +27,6 @@ Need that extra layer of security? Here's your mission, should you choose to acc
 
 For the classified details, visit our [secret handbook](https://docs.dataloop.ai/docs/private-key-integration)!
 
-### Google Artifacts Registry Integration: The Modern Curator 📦
-
-Want to manage your container artifacts like a pro? Here's the blueprint:
-
-1. 🏗️ Create and Configure your GCP Google Artifacts Registry
-2. 🤝 Shake hands with Dataloop (integrate the platforms)
-
-Discover all the artifacts secrets in our [curator's guide](https://docs.dataloop.ai/docs/google-artifacts-registry)!
-
-### Google Container Registry Integration: The Classic Container Master 🐳
-
-Prefer the classic container registry? We've got you covered:
-
-1. 🏭 Create and Configure your GCP Google Container Registry
-2. 🔄 Connect it with Dataloop (smooth sailing ahead!)
-
-Master the container arts with our [comprehensive guide](https://docs.dataloop.ai/docs/google-container-registry)!
-
 ## Step 1: Setting Up GCP Integration 🔗
 
 Before we can start moving data around, we need to establish a secure connection between Dataloop and Google Cloud Platform. Let's set up the integration:

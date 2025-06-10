@@ -21,6 +21,9 @@ navbar:
     - label: Developers and support docs
       icon: ./assets/site/dataloop-logo.png
       page: ./tutorials/tutorials.mdx
+    - label: Notebooks
+      icon: ./assets/site/dataloop-logo.png
+      page: ./notebooks/notebooks.md
     - label: SDK and CLI docs
       icon: ./assets/site/dataloop-logo.png
       page: ./resources/resources.mdx
