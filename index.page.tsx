@@ -40,14 +40,22 @@ const CardWrapper = styled.div`
   cursor: pointer;
   padding: 16px;
   background-color: var(--layer-color-ontonal);
-  border-radius: 8px;
+  border-radius: 12px;
   transition: transform 0.2s, box-shadow 0.2s;
-  margin-bottom: 16px;
+  margin-bottom: 0;
   position: relative;
+  min-height: 120px;
+  max-width: 340px;
+  width: 80%;
+  border: 1px solid var(--border-color, #23272f);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
   }
 
   .hidden-link {
@@ -66,18 +74,18 @@ const CardWrapper = styled.div`
 const TopRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 10px;
+  margin-bottom: 6px;
 
   img {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
   }
 
   h4 {
     margin: 0;
     color: var(--text-color);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
   }
 `;
@@ -85,8 +93,14 @@ const TopRow = styled.div`
 const Description = styled.p`
   margin: 0;
   color: var(--text-color-secondary);
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 15px;
+  line-height: 22px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 44px;
 `;
 
 export const DlCard = ({ url, title, description, icon, onClick }: CardWithCodeProps) => {
@@ -101,6 +115,15 @@ export const DlCard = ({ url, title, description, icon, onClick }: CardWithCodeP
     </CardWrapper>
   );
 };
+
+const CardsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  justify-content: center;
+  gap: 32px 24px;
+  margin-top: 2rem;
+  width: 100%;
+`;
 
 export default function HomePage() {
     return (
@@ -118,13 +141,20 @@ export default function HomePage() {
                     Start Your Journey <ArrowRightIcon />
                 </Button>
             </Header>
-            <Cards>
+            <CardsGrid>
                 <DlCard
                     title="Tutorials"
                     description="Level up your skills with our hands-on guides! From basics to advanced AI wizardry"
                     icon={tutorialsIcon}
                     onClick={() => window.location.href = '/tutorials'}
                     url='/tutorials'    
+                />
+                <DlCard
+                    title="Notebooks"
+                    description="Run end to end use cases with Jupyter Notebooks"
+                    icon={tutorialsIcon}
+                    onClick={() => window.location.href = '/notebooks/notebooks'}
+                    url='/notebooks/notebooks'
                 />
                 <DlCard
                     title="Onboarding"
@@ -140,7 +170,7 @@ export default function HomePage() {
                     onClick={() => window.location.href = '/resources'}
                     url='/resources'
                 />
-            </Cards>
+            </CardsGrid>
         </Container>
     );
 }
