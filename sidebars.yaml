@@ -23,11 +23,11 @@
   - label: Bringing It All Together
     page: onboarding/11_bringing_it_all_together.md
   page: onboarding/onboarding.md
-- group: Tutorials
-  expanded: false
+- expanded: false
+  group: Tutorials
   items:
-  - group: Data Management
-    expanded: false
+  - expanded: false
+    group: Data Management
     items:
     - label: Datasets and Versioning
       page: tutorials/data_management/datasets_and_versioning/chapter.md
