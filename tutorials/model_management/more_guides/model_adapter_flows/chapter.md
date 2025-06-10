@@ -98,6 +98,18 @@ How your model gets its report card:
 3. 📊 Compares with ground truth
 4. 📈 Generates performance metrics
 
+### `embed_items`: The Feature Vector Transformer 🎆
+
+![image](../../../../assets/images/model_management/flows/embed_items.png)
+
+The embedding process:
+1. 🎬 Creates batches of items
+2. 🎨 Prepares each batch using your `prepare_item_func`
+3. 🔢 Generates embeddings using your `embed` function
+4. 💾 Stores the vectors in a feature set
+5. 🔄 Repeats until all items are processed
+
+
 ## Your Star Performers: User Functions 🌟
 
 ### Required Functions for Different Use Cases:
@@ -110,6 +122,11 @@ How your model gets its report card:
 - Everything above, plus:
 - `train` 🏋️‍♂️ - Teaches your model new tricks
 - `save` 💾 - Preserves your model's knowledge
+
+#### For Embedding:
+- `load` 📥 - Brings your model to life
+- `embed` 🔢 - Converts items to feature vectors
+- `prepare_item_func` 🎨 - Prepares items for embedding
 
 ### Function Details
 
@@ -148,6 +165,14 @@ def predict(self, batch, **kwargs):
 def prepare_item_func(self, item):
     """Prepare items for prediction"""
     return preprocess_for_model(item)
+```
+
+#### `embed` 🔢
+```python
+def embed(self, batch, **kwargs):
+    """Convert a batch of items into embedding vectors"""
+    embeddings = self.model.encode(item)
+    return embeddings
 ```
 
 ## Pro Tips for Model Adapter Success 💡
