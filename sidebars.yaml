@@ -23,11 +23,11 @@
   - label: Bringing It All Together
     page: onboarding/11_bringing_it_all_together.md
   page: onboarding/onboarding.md
-- expanded: false
-  group: Tutorials
+- group: Tutorials
+  expanded: false
   items:
-  - expanded: false
-    group: Data Management
+  - group: Data Management
+    expanded: false
     items:
     - label: Datasets and Versioning
       page: tutorials/data_management/datasets_and_versioning/chapter.md
@@ -163,6 +163,13 @@
       page: tutorials/applications/faq/chapter.md
     page: tutorials/applications.md
   page: tutorials/tutorials.md
+- group: Notebooks
+  items:
+  - label: Instructions
+    page: notebooks/instructions.md
+  - label: Notebooks
+    page: notebooks/notebooks.md
+  page: notebooks/notebooks.md
 - group: Resources
   items:
   - group: REST API

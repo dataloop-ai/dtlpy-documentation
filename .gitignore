@@ -179,6 +179,7 @@ sketch
 # comment the following lines
 !.yarn/cache
 
+.cursor
 # and uncomment the following lines
 # .pnp.*
 
