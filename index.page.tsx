@@ -46,7 +46,7 @@ const CardWrapper = styled.div`
   position: relative;
   min-height: 120px;
   max-width: 340px;
-  width: 80%;
+  width: 100%;
   border: 1px solid var(--border-color, #23272f);
   box-shadow: 0 4px 16px rgba(0,0,0,0.13);
   display: flex;
@@ -118,11 +118,19 @@ export const DlCard = ({ url, title, description, icon, onClick }: CardWithCodeP
 
 const CardsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px 24px;
   margin-top: 2rem;
   width: 100%;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-items: center;
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+    max-width: 95vw;
+  }
 `;
 
 export default function HomePage() {
