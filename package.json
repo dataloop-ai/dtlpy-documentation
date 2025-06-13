@@ -8,7 +8,7 @@
     "build": "npx @redocly/cli build-docs"
   },
   "dependencies": {
-    "@redocly/realm": "*",
+    "@redocly/realm": "0.119.0",
     "@redocly/theme": "*",
     "styled-components": "^5.3.10"
   },
