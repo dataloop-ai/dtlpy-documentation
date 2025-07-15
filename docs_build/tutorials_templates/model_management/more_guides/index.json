@@ -18,6 +18,11 @@
       "description": "Understand the wrapper function of the model adapter",
       "location": "model_management/more_guides/model_adapter_flows/chapter.md"
     }
+    {
+      "displayName": "Update Model Configuration",
+      "description": "Modify model configurations using the SDK",
+      "location": "model_management/more_guides/model_configurations/chapter.md"
+    }
   ]
 }
 
