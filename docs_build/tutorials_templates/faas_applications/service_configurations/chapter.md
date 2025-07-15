@@ -157,6 +157,126 @@ efficient_autoscaler = dl.KubernetesRabbitmqAutoscaler(
 )
 ```
 
+### Setting Up Autoscaling in Your DPK Definition
+
+Autoscaling lets your Dataloop services automatically adjust resources based on real-time demand—saving costs and improving responsiveness. You can configure autoscaling directly in your DPK (Dataloop Package Kit) manifest under the `runtime.autoscaler` section of your service definition.
+
+Supported Autoscaler Types
+- `rps`: Scales based on HTTP request rate (requests per second). Ideal for UI panels and interactive services.
+- `cpu`: Scales based on CPU usage.
+- `ram`: Scales based on memory usage.
+
+The RPS-based autoscaler is especially relevant for apps using served UI panels (e.g., Studio tools), where responsiveness is critical during user interaction, and efficient resource management is desired during idle times.
+
+#### Example: RPS-Based Autoscaler
+
+Here’s how to define an autoscaler that scales your service based on incoming HTTP requests:
+
+```json
+"runtime": {
+  "podType": "regular-xs",
+  "autoscaler": {
+    "type": "rps",             // "cpu" or "ram" also supported
+    "minReplicas": 0,          // Minimum number of running instances
+    "maxReplicas": 1,          // Maximum number of instances when scaling
+    "threshold": 10,           // Request threshold to trigger scaling
+    "rateSeconds": 30,         // Time window to count requests
+    "cooldownPeriod": "3600"   // Time to wait before scaling down (in seconds)
+  }
+}
+```
+
+**What it Actually Means**:
+
+- threshold = 10: The service will scale up when it receives 10 or more requests in a given window.
+- rateSeconds = 30: The window of time over which requests are counted is 30 seconds.
+- cooldownPeriod = 3600: After the last request, the service will wait 3600 seconds (1 hour) before scaling down.
+
+**Full DPK Example**:
+
+```json
+{
+    "name": "your-rps",
+    "displayName": "your RPS",
+    "icon": "icon-dl-sdk-documentation",
+    "components": {
+        "panels": [
+            {
+                "name": "floatingPanel",
+                "minRole": "annotator",
+                "supportedSlots": [
+                    {
+                        "type": "floatingWindow",
+                        "configuration": {
+                            "layout": {
+                                "width": 455,
+                                "height": 340,
+                                "resizable": true,
+                                "backgroundColor": "dl-color-studio-panel",
+                                "position": {
+                 "x": 775,
+                 "y": 55
+             }
+                            },
+                            "route": [
+                                "datasetItem"
+                            ]
+                        }
+                    }
+                ],
+                "icon": "icon-dl-sdk-documentation",
+                "metadata": {},
+                "defaultSettings": {},
+                "conditions": {
+                    "resources": [
+                        {
+                            "entityType": "item",
+                            "filter": {
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "toolbars": [],
+        "modules": [],
+        "services": [
+            {
+                "name": "your-abc-floating",
+                "panelNames": [
+                    "floatingPanel"
+                ],
+                "initParams": {},
+                "packageRevision": "latest",
+                "runtime": {
+                    "podType": "regular-xs",
+                    "autoscaler": {
+                        "type": "rps",
+                        "minReplicas": 0,
+                        "maxReplicas": 1,
+                        "threshold": 10,
+                        "rateSeconds": 30,
+                        "cooldownPeriod": "3600"
+                    }
+                },
+                "maxAttempts": 3
+            }
+        ],
+        "triggers": [],
+        "pipelines": [],
+        "models": [],
+        "snapshots": []
+    }
+}
+
+```
+
+#### Best Practices & Notes
+
+- Use higher cooldown periods (e.g., 3600s or 1hr) for panel-based services to avoid excessive start/stop cycles, which can impact user experience.
+- Ensure your panel name is correctly linked in the panelNames array of the service.
+- This autoscaling setup optimizes cost and compute by dynamically starting/stopping resources based on actual user demand.
+
 ## 🔐 Security and Environment
 
 ### Working with Secrets
