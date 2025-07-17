@@ -56,6 +56,21 @@ dl.login_api_key(api_key=os.environ['DTLPY_API_KEY'])
 
 > ⚠️ **Security Tip**: Always store API keys as environment variables!
 
+#### Logging In with an API Key
+
+In addition to standard browser-based authentication, the Dataloop SDK supports API key authentication, which is ideal for automated workflows, pipelines, etc.
+To generate your API Key, refer to the [Dataloop Documentation](https://docs.dataloop.ai/docs/project-dashboard-1#manage-api-keys).
+
+```python
+import dtlpy as dl
+
+# Set environment (optional)
+dl.setenv('rc')  # or 'prod'
+
+# Authenticate
+dl.login_api_key('YOUR_API_KEY_HERE')
+```
+
 ### 3. Creating Your First Project 🎨
 
 ```python
