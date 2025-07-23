@@ -145,6 +145,8 @@
         page: tutorials/model_management/more_guides/model_annotations/chapter.md
       - label: Model Adapter Methods and Flows
         page: tutorials/model_management/more_guides/model_adapter_flows/chapter.md
+      - label: Update Model Configuration
+        page: tutorials/model_management/more_guides/model_configurations/chapter.md
     page: tutorials/model_management.md
   - expanded: false
     group: Applications
