@@ -21,6 +21,7 @@ Let's get you up and running with everything you need:
 First, let's get the essential tools installed:
 
 #### Python Installation 🐍
+
 1. Visit [Python Downloads](https://www.python.org/downloads/)
 2. Get Python 3.8 or later
 3. Follow the installation wizard
@@ -184,6 +185,7 @@ task = dataset.tasks.create(
 ## Best Practices 👑
 
 1. **Error Handling** 🛡️
+
    ```python
    try:
        item = dataset.items.get(item_id='your-item-id')
@@ -192,6 +194,7 @@ task = dataset.tasks.create(
    ```
 
 2. **Batch Operations** ⚡
+
    ```python
    # Upload multiple items
    dataset.items.upload(
@@ -201,6 +204,7 @@ task = dataset.tasks.create(
    ```
 
 3. **Resource Cleanup** 🧹
+
    ```python
    # Always logout when done
    dl.logout()
@@ -209,6 +213,7 @@ task = dataset.tasks.create(
 ## Ready to Build Something Amazing? 🚀
 
 You now have all the tools to:
+
 - Manage your AI projects
 - Organize your datasets
 - Label your data
