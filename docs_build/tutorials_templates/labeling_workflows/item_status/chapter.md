@@ -5,6 +5,7 @@ Welcome to your guide to managing item status in Dataloop! Whether you're tracki
 ## Understanding Item Status 🎓
 
 Think of item status as traffic lights for your data workflow:
+
 - 🟢 **COMPLETE**: Item is finished (for annotation tasks)
 - ✅ **APPROVE**: Item passed review (for QA tasks)
 - ⛔ **DISCARD**: Item should be excluded
