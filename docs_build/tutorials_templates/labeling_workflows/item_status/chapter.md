@@ -5,6 +5,7 @@ Welcome to your guide to managing item status in Dataloop! Whether you're tracki
 ## Understanding Item Status 🎓
 
 Think of item status as traffic lights for your data workflow:
+
 - 🟢 **COMPLETE**: Item is finished (for annotation tasks)
 - ✅ **APPROVE**: Item passed review (for QA tasks)
 - ⛔ **DISCARD**: Item should be excluded
@@ -42,7 +43,7 @@ item.update_status(status=dl.ItemStatus.DISCARDED)  # For single-task items
 
 ### Batch Status Updates 🔄
 
-#### Method 1: Using Dataset Filters (Recommended for Multi-Task Items)
+#### Method 1: Using Dataset Filters (Recommended for Single-Task Items)
 
 ```python
 # Update status for annotated items
@@ -69,7 +70,7 @@ dataset.items.update_status(
 )
 ```
 
-#### Method 2: Using Task Entity (Recommended for Single-Task Items)
+#### Method 2: Using Task Entity (Recommended for Multi-Task Items)
 
 ```python
 # Option 1: Using filters
@@ -80,10 +81,13 @@ item_ids = [item.id for item in dataset.items.list(filters=filters).all()]
 item_ids = ['id1', 'id2', 'id3']
 
 # Update status through task
+task = dataset.tasks.get(task_id='your_actual_task_id')
+
+# Set status to APPROVED
 task.set_status(
     status=dl.ItemStatus.APPROVED,
     operation='create',
-    items=item_ids
+    item_ids=item_ids
 )
 ```
 
