@@ -144,47 +144,65 @@ Copy the following code to your lambda function:
 ```python
 import os
 import urllib.parse
+import traceback
+import logging
+from pathlib import Path
 # Set dataloop path to tmp (to read/write from the lambda)
 os.environ["DATALOOP_PATH"] = "/tmp"
 import dtlpy as dl
+
 DATASET_ID = os.environ.get('DATASET_ID')
 DTLPY_USERNAME = os.environ.get('DTLPY_USERNAME')
 DTLPY_PASSWORD = os.environ.get('DTLPY_PASSWORD')
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
 def lambda_handler(event, context):
     dl.login_m2m(email=DTLPY_USERNAME, password=DTLPY_PASSWORD)
-    dataset = dl.datasets.get(dataset_id=DATASET_ID)
+    dataset: dl.Dataset = dl.datasets.get(dataset_id=DATASET_ID)
     driver_path = dl.drivers.get(driver_id=dataset.driver).path
     for record in event['Records']:
-        # Get the bucket name
-        bucket = record['s3']['bucket']['name']
-        # Get the file name
-        filename = urllib.parse.unquote_plus(record['s3']['object']['key'], encoding='utf-8')
-        remote_path = None
-        if driver_path == '/':
-            driver_path = None
-        if driver_path is not None and driver_path not in filename:
+        # Get the file name, e.g. /panorama0/Bul_04/frame_000000.jpg
+        filepath = urllib.parse.unquote_plus(record['s3']['object']['key'], encoding='utf-8')
+        path = Path(filepath)
+        directory = str(path.parent)
+        filename = path.name
+        
+        if driver_path is not None and driver_path not in filepath:
+            # event is not from the path of the driver, we don't need to do anything
             return
-        if driver_path:
-            remote_path = filename.replace(driver_path, '')
+            
+        if driver_path is not None:
+            remote_path = Path(directory.replace(driver_path, ''))
         else:
-            remote_path = filename
+            remote_path = Path(directory)
+            
+        if not remote_path.is_absolute():
+            remote_path = Path('/') / remote_path
+            
         if 'ObjectRemoved' in record['eventName']:
             # On delete event - delete the item from Dataloop
             try:
-                dtlpy_filename = '/' + remote_path
+                dtlpy_filename = str(remote_path / filename)
                 filters = dl.Filters(field='filename', values=dtlpy_filename)
                 dataset.items.delete(filters=filters)
             except Exception as e:
+                logger.error(traceback.format_exc())
                 raise e
         elif 'ObjectCreated' in record['eventName']:
             # On create event - add a new item to the Dataset
             try:
                 # upload the file
-                path = 'external://' + filename
+                external_path = f'external://{filepath}'
                 # dataset.items.upload(local_path=path, overwrite=True) # if overwrite is required
-                dataset.items.upload(local_path=path, remote_path=remote_path)
+                dataset.items.upload(local_path=external_path,
+                                  remote_path=str(remote_path),
+                                  remote_name=filename)
             except Exception as e:
+                logger.error(traceback.format_exc())
                 raise e
+
 ```
 
 5. Add a Layer to the Lambda  
