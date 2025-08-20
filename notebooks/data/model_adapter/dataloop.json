@@ -1,9 +1,9 @@
 {
-  "name": "yolov12",
-  "displayName": "YOLOv12",
+  "name": "yolov20",
+  "displayName": "YOLOv20",
   "version": "0.0.1",
   "scope": "project",
-  "description": "YOLOv12: Attention-Centric Object Detection",
+  "description": "YOLOv20: Attention-Centric Object Detection",
   "attributes": {
     "Provider": "Ultralytics",
     "License": "AGPL-3.0",
@@ -15,7 +15,7 @@
   "components": {
     "computeConfigs": [
       {
-        "name": "yolov12-deploy",
+        "name": "yolov20-deploy",
         "runtime": {
           "podType": "regular-m",
           "concurrency": 1,
@@ -31,11 +31,11 @@
     ],
     "modules": [
       {
-        "name": "yolov12-module",
+        "name": "yolov20-module",
         "entryPoint": "model_adapter.py",
         "className": "Adapter",
-        "computeConfig": "yolov12-deploy",
-        "description": "YoloV12 Module",
+        "computeConfig": "yolov20-deploy",
+        "description": "YoloV20 Module",
         "initInputs": [
           {
             "type": "Model",
@@ -61,19 +61,19 @@
             ],
             "displayName": "Predict Items",
             "displayIcon": "",
-            "description": "Function to run YOLOv12 inference on items"
+            "description": "Function to run YOLOv20 inference on items"
           }
         ]
       }
     ],
     "models": [
       {
-        "name": "yolo12n",
-        "moduleName": "yolov12-module",
+        "name": "yolo20n",
+        "moduleName": "yolov20-module",
         "scope": "project",
         "status": "pre-trained",
         "configuration": {
-          "weights_filename": "yolo12n.pt",
+          "weights_filename": "yolo20n.pt",
           "labels": [
              "person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat", 
              "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat", "dog", 
@@ -89,7 +89,7 @@
         },
         "inputType": "image",
         "outputType": "box",
-        "description": "YOLO12 Nano model"
+        "description": "YOLO20 Nano model"
       }
     ]
   }
