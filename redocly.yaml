@@ -18,15 +18,15 @@ navbar:
     - label: Dataloop Platform
       icon: ./assets/site/dataloop-logo.png
       href: https://console.dataloop.ai
-    - label: Developers and support docs
+    - label: Documentation
       icon: ./assets/site/dataloop-logo.png
-      page: ./tutorials/tutorials.mdx
+      href: https://docs.dataloop.ai/
     - label: Notebooks
       icon: ./assets/site/dataloop-logo.png
       page: ./notebooks/notebooks.md
     - label: SDK and CLI docs
       icon: ./assets/site/dataloop-logo.png
-      page: ./resources/resources.mdx
+      page: ./resources
 markdown:
   toc:
     depth: 8
