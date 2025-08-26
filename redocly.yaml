@@ -26,7 +26,7 @@ navbar:
       page: ./notebooks/notebooks.md
     - label: SDK and CLI docs
       icon: ./assets/site/dataloop-logo.png
-      page: ./resources
+      href: https://developers.dataloop.ai/resources/
 markdown:
   toc:
     depth: 8
