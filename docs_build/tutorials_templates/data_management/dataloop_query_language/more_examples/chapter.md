@@ -91,43 +91,55 @@ dataset = project.datasets.get(dataset_name="cptn-intersect-operator-support")
 # Build a custom filter:
 #  - First filter: only visible items (hidden=False) and of type "file"
 #  - Then apply the "intersect" operator to REQUIRE items to have BOTH "car" and "person" annotations
-custom_filter = {
-    "filter": {
-        "$and": [
-            {"hidden": False},     # Exclude hidden items
-            {"type": "file"}       # Only include file-type items
-        ]
-    },
-    "intersect": [
-        {
-            "query": {
-                "join": {
-                    "filter": {
-                        "label": "car"    # Must include a "car" annotation
-                    },
-                    "on": {
-                        "resource": "annotations",  # Join annotations
-                        "local": "itemId",          # Match by itemId
-                        "forigen": "id"             # Annotation linked to item
-                    }
-                }
-            }
-        },
-        {
-            "query": {
-                "join": {
-                    "filter": {
-                        "label": "person" # Must ALSO include a "person" annotation
-                    },
-                    "on": {
-                        "resource": "annotations",
-                        "local": "itemId",
-                        "forigen": "id"
-                    }
-                }
-            }
-        }
+custom_filter = custom_filter = {
+  "filter": {
+    # Top-level filter: only include items that are not hidden AND are of type "file"
+    "$and": [
+      {
+        "hidden": False  # The item must not be hidden
+      },
+      {
+        "type": "file"   # The item must be a file
+      }
     ]
+  },
+  "join": {
+    # Join the "annotations" resource with the current items
+    "filter": {
+      "label": "car"    # Only include items that have an annotation with label "car"
+    },
+    "on": {
+      "resource": "annotations",  # The resource to join on (annotations)
+      "local": "itemId",          # Match the current file’s itemId
+      "forigen": "id"             # To the annotation’s id
+    }
+  },
+  "intersect": {
+    "query": {
+      "filter": {
+        # Apply an additional filter: items must not be hidden AND must be type "file"
+        "$and": [
+          {
+            "hidden": False
+          },
+          {
+            "type": "file"
+          }
+        ]
+      },
+      "join": {
+        # Join again on the "annotations" resource
+        "filter": {
+          "label": "person"  # But this time, only include items annotated as "person"
+        },
+        "on": {
+          "resource": "annotations",  # The resource to join with
+          "local": "itemId",          # Current file’s itemId
+          "forigen": "id"             # Annotation’s id
+        }
+      }
+    }
+  }
 }
 
 # Apply the filter
@@ -162,6 +174,9 @@ custom_filter = {
             {"type": "file"}       # Only include file-type items
         ]
     },
+
+
+
     "except": {
         "query": {
             "join": {
