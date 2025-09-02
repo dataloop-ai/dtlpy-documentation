@@ -91,7 +91,7 @@ dataset = project.datasets.get(dataset_name="cptn-intersect-operator-support")
 # Build a custom filter:
 #  - First filter: only visible items (hidden=False) and of type "file"
 #  - Then apply the "intersect" operator to REQUIRE items to have BOTH "car" and "person" annotations
-custom_filter = custom_filter = {
+custom_filter = {
   "filter": {
     # Top-level filter: only include items that are not hidden AND are of type "file"
     "$and": [
