@@ -126,6 +126,7 @@ const CardsGrid = styled.div`
   margin-left: auto;
   margin-right: auto;
   justify-items: center;
+  justify-content: center;
 
   @media (max-width: 700px) {
     grid-template-columns: 1fr;

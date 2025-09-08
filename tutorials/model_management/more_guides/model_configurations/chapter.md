@@ -25,7 +25,6 @@ model.update(reload_services=True)
 
 ```
 
-
 **Note**: You need to call `model.update()` here since this is a model entity, not a model adapter. No auto-update will happen (see next section).
 
 **Parameters**:
