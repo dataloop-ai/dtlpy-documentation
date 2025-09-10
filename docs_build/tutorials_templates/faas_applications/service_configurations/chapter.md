@@ -437,6 +437,29 @@ trigger_id = context.trigger_id
 task_id = context.task_id
 ```
 
+## Share Custom Applications Between Projects
+
+You can reuse an installed application across multiple projects by sharing its service—no need to reinstall or duplicate it.
+
+### Benefits
+
+- Save time and resources by avoiding repeated setups.
+- Ensure consistency with the same version and configuration.
+- Simplify updates—apply changes once, and all projects benefit.
+- Optimize costs by centralizing the service.
+
+When you install an application (e.g., Annotation Studio, Function App, Model), the system creates a service entry in CloudOps → Services. Sharing this service lets other projects access the same application without redeployment.  
+
+### Requirements
+
+To use an application from another project:
+
+- **Same Organization** – The application’s service must belong to the same organization as your current project.
+- **Service Bot Membership** – The application’s service bot (from the original project) must be added as a member of your current project.
+- **User Access** – You must be a member of the original project where the application is hosted.
+
+Read [Dataloop documentation](https://docs.dataloop.ai/docs/services#share-custom-applications-across-projects) for sharing your custom application.
+
 ## 💡 Pro Tips & Best Practices
 
 ### Resource Optimization
