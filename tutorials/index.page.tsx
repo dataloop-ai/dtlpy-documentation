@@ -96,8 +96,6 @@ const CardsGrid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   padding: 1rem;
-  justify-items: center;
-  justify-content: center;
 `;
 
 const DlCard = ({ title, description, icon, onClick, url }: CardWithCodeProps) => {
