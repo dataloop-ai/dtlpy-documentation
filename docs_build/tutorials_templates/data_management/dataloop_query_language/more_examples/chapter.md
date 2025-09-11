@@ -8,6 +8,8 @@ Let's start with the essential operators you'll need:
 
 ### Equal (eq) 🎯
 
+Returns items where a field’s value is exactly equal to the specified value.
+
 ```python
 # Example: Find items in a specific folder
 filters = dl.Filters()
@@ -19,6 +21,8 @@ print(f'Found {pages.items_count} items in folder')
 
 ### Not Equal (ne) ❌
 
+Returns items where a field’s value is different from the specified value.
+
 ```python
 # Example: Find items without a specific label
 filters = dl.Filters()
@@ -29,6 +33,8 @@ print(f'Found {pages.items_count} items without cat label')
 ```
 
 ### Greater Than (gt) and Less Than (lt) ⚖️
+
+Return items where a field’s value is greater than or less than the specified value.
 
 ```python
 # Example 1: Items with height > X pixels
@@ -48,6 +54,8 @@ print(f'Found {pages.items_count} items narrower than {width_number_in_pixels}px
 
 ### In List (in) 📝
 
+Returns items where a field’s value matches any value in a given list.
+
 ```python
 # Example: Find items with multiple labels
 filters = dl.Filters()
@@ -59,6 +67,8 @@ print(f'Found {pages.items_count} items with dog or cat labels')
 
 ### Exists ✨
 
+Returns items where the specified field exists in the item’s metadata.
+
 ```python
 # Example: Find items with user metadata
 filters = dl.Filters()
@@ -66,6 +76,129 @@ filters.add(field='metadata.user', values=True, operator=dl.FILTERS_OPERATIONS_E
 pages = dataset.items.list(filters=filters)
 print(f'Found {pages.items_count} items with user metadata')
 ```
+
+### Intersect
+
+In Dataloop, the INTERSECT operator in DQL lets you create advanced queries by finding items that meet multiple conditions. It returns only the items that appear in all queries, making it useful for identifying data that satisfies several criteria across subsets.
+
+```python
+import dtlpy as dl
+
+# Connect to the project and dataset
+project = dl.projects.get(project_name="Vitalii Project")
+dataset = project.datasets.get(dataset_name="cptn-intersect-operator-support")
+
+# Build a custom filter:
+#  - First filter: only visible items (hidden=False) and of type "file"
+#  - Then apply the "intersect" operator to REQUIRE items to have BOTH "car" and "person" annotations
+custom_filter = {
+  "filter": {       # Top-level filter: only include items that are not hidden AND are of type "file"
+    "$and": [
+      {
+        "hidden": false     # The item must not be hidden
+      },
+      {
+        "type": "file"      # The item must be a file
+      }
+    ]
+  },
+  "join": {             # Join the "annotations" resource with the current items
+    "filter": {
+      "label": "car"    # Only include items that have an annotation with label "car"
+    },
+    "on": {
+      "resource": "annotations",  # The resource to join on (annotations)
+      "local": "itemId",          # Match the current file’s itemId
+      "forigen": "id"             # To the annotation’s id
+    }
+  },
+  "intersect": {
+    "query": {
+      "filter": {               # Apply an additional filter: items must not be hidden AND must be type "file"
+        "$and": [
+          {
+            "hidden": false
+          },
+          {
+            "type": "file"
+          }
+        ]
+      },
+      "join": {                 # Join again on the "annotations" resource
+        "filter": {
+          "label": "person"     # But this time, only include items annotated as "person"
+        },
+        "on": {
+          "resource": "annotations",        # The resource to join with
+          "local": "itemId",                # Current file’s itemId
+          "forigen": "id"                   # Annotation’s id
+        }
+      }
+    }
+  }
+}
+
+# Apply the filter
+filters = dl.Filters(custom_filter=custom_filter)
+pages = dataset.items.list(filters=filters)
+
+print(f'Found {pages.items_count} items containing BOTH ' 
+      f'"car" and "person" annotations')
+```
+
+
+### Except
+
+In Dataloop, the EXCEPT operator in DQL lets you create advanced queries by excluding data from one set that also appears in another. It returns only the items unique to the first query, making it useful for filtering out specific results.
+
+
+
+```python
+import dtlpy as dl
+
+# Connect to the project and dataset
+project = dl.projects.get(project_name="Vitalii Project")
+dataset = project.datasets.get(dataset_name="cptn-except-operator-support")
+
+# Build a custom filter:
+#  - First filter: only visible items (hidden=False) and of type "file"
+#  - Then apply the "except" operator to EXCLUDE items with annotations labeled "person"
+custom_filter = {
+    "filter": {
+        "$and": [
+            {"hidden": False},     # Exclude hidden items
+            {"type": "file"}       # Only include file-type items
+        ]
+    },
+
+
+
+    "except": {
+        "query": {
+            "join": {
+                "filter": {
+                    "label": "person"   # Look for "person" annotations
+                },
+                "on": {
+                    "resource": "annotations",  # Join annotations
+                    "local": "itemId",          # Match by itemId
+                    "forigen": "id"             # Annotation linked to item
+                }
+            }
+        }
+    }
+}
+
+# Apply the filter
+filters = dl.Filters(custom_filter=custom_filter)
+pages = dataset.items.list(filters=filters)
+
+print(f'Found {pages.items_count} items (excluding items with "person" annotations)')
+```
+
+
+
+
 
 ## Filtering by Annotations 🏷️
 
