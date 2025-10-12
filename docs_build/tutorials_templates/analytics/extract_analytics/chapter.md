@@ -43,7 +43,7 @@ payload = {
 
 success, resp = dl.client_api.gen_request(req_type="post",
                                           path="/analytics/query",
-                                          json=payload)
+                                          json_req=payload)
 samples = resp.json()
 total_time = 0
 studio_time = samples[0]
@@ -112,7 +112,7 @@ payload = {
 
 success, resp = dl.client_api.gen_request(req_type="post",
                                           path="/analytics/query",
-                                          json=payload)
+                                          json_req=payload)
 samples = resp.json()
 net_annotation_time = 0
 avg_item_time = 0
@@ -180,7 +180,7 @@ payload = {
 
 success, resp = dl.client_api.gen_request(req_type="post",
                                           path="/analytics/query",
-                                          json=payload)
+                                          json_req=payload)
 samples = resp.json()
 if samples[0]['response']:
     data = samples[0]['response']
@@ -218,7 +218,7 @@ payload = {
 
 success, resp = dl.client_api.gen_request(req_type="post",
                                           path="/analytics/query",
-                                          json=payload)
+                                          json_req=payload)
 samples = resp.json()
 if samples[0]['response']:
     data = samples[0]['response']
@@ -266,7 +266,7 @@ payload = {
 
 success, resp = dl.client_api.gen_request(req_type="post",
                                           path="/analytics/query",
-                                          json=payload)
+                                          json_req=payload)
 samples = resp.json()
 if samples[0]['response']:
     hour_data = samples[0]['response']
@@ -321,7 +321,7 @@ payload = {
 
 success, resp = dl.client_api.gen_request(req_type="post",
                                           path="/analytics/query",
-                                          json=payload)
+                                          json_req=payload)
 samples = resp.json()
 if samples[0]['response']:
     hour_data = samples[0]['response']
@@ -371,7 +371,7 @@ payload = {
 
 success, resp = dl.client_api.gen_request(req_type="post",
                                           path="/analytics/query",
-                                          json=payload)
+                                          json_req=payload)
 samples = resp.json()
 if samples[0]['response']:
     data = samples[0]['response']
@@ -419,7 +419,7 @@ payload = {
 
 success, resp = dl.client_api.gen_request(req_type="post",
                                           path="/analytics/query",
-                                          json=payload)
+                                          json_req=payload)
 samples = resp.json()
 if samples[0]['response']:
     hour_data = samples[0]['response']

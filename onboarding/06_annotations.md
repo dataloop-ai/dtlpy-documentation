@@ -122,10 +122,9 @@ annotation.attributes['color'] = 'blue'
 annotation.update()
 
 # Update coordinates (for box)
-if isinstance(annotation, dl.Box):
-    annotation.top = 150
-    annotation.bottom = 250
-    annotation.update()
+annotation.top = 150
+annotation.bottom = 250
+annotation.update()
 ```
 
 ### 3. Batch Operations
@@ -200,8 +199,6 @@ annotations_b = item.annotations.list(filters=dl.Filters(field='creator', values
 
 # Calculate IoU for box annotations
 def calculate_iou(box_a, box_b):
-    if not (isinstance(box_a, dl.Box) and isinstance(box_b, dl.Box)):
-        return 0
     # IoU calculation logic here
     pass
 ```
@@ -246,8 +243,7 @@ def validate_annotation(annotation):
     try:
         # Check required fields
         assert annotation.label, "Missing label"
-        if isinstance(annotation, dl.Box):
-            assert annotation.top < annotation.bottom, "Invalid box coordinates"
+        assert annotation.top < annotation.bottom, "Invalid box coordinates"
         return True
     except AssertionError as e:
         print(f"Validation failed: {str(e)}")

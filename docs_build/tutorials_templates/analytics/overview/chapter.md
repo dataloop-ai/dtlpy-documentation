@@ -19,7 +19,7 @@ payload = {
 
 success, resp = dl.client_api.gen_request(req_type="post", 
                                           path="/analytics/query", 
-                                          json=payload)
+                                          json_req=payload)
 samples = resp.json()
 ```
 
@@ -146,7 +146,7 @@ payload = {
 
 success, resp = dl.client_api.gen_request(req_type="post", 
                                           path="/analytics/query", 
-                                          json=payload)
+                                          json_req=payload)
 samples = resp.json()
 if samples[0]['response']:
     hour_data = samples[0]['response']

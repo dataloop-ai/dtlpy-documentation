@@ -61,8 +61,8 @@ item = dataset.items.get(item_id='item_id')
 item = dataset.items.get(filepath='/images/item.jpg')
 
 # Update item
-item.name = 'new_name.jpg'
-item.update()
+item.filename = '/new_name.jpg' # The new filename must include the full path.
+item.update(True)
 
 # Delete items
 dataset.items.delete(filters=dl.Filters(field='dir', values='/old/folder'))
