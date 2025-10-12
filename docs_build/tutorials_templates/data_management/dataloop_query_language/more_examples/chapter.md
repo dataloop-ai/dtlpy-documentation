@@ -117,6 +117,56 @@ pages = dataset.annotations.list(filters=filters)
 print(f'Found {pages.items_count} box or point annotations')
 ```
 
+## Filtering by Tasks
+
+This example demonstrates how to filter items in a dataset by their task association and annotation status using the Dataloop SDK. It shows how to:
+
+- Access a specific project, dataset, and task.
+- Retrieve items linked to the task.
+- Apply filters to fetch only items with specific statuses (e.g., completed or approved).
+
+
+```python
+
+# Define the task you want to filter by
+# Replace 'your-task-id' with your actual task ID from the Dataloop platform
+task_id = 'your-task-id'
+
+# Access the project object by project name
+project = dl.projects.get(project_name='your-project-name')
+
+# Get the dataset inside the project by its name
+dataset = project.datasets.get(dataset_name='your-dataset-name')
+
+# Access the specific task inside the dataset using the task ID
+task = dataset.tasks.get(task_id=task_id)
+
+# Retrieve all items associated with the task
+items = task.get_items()
+for item in items:
+    # Print the basic information of each item in the task
+    print(f"Item ID: {item.id}, Name: {item.name}")
+
+# with annotation status 'completed' or 'approved'
+filters = dl.Filters()
+
+# Filter 1: Match items by their task reference ID
+filters.add(field='metadata.system.refs.id', values=[task_id], operator=dl.FiltersOperations.IN)
+
+# Filter 2: Match items whose annotation status is either 'completed' or 'approved'
+filters.add(field='metadata.system.annotationStatus', values=['completed', 'approved'], operator=dl.FiltersOperations.IN)
+
+# Apply the filters on dataset items
+pages = dataset.items.list(filters=filters)
+
+# Iterate through filtered items and print their details
+for page in pages:
+    for item in page:
+        print(f"Item ID: {item.id}, Name: {item.name}, "
+              f"Status: {item.metadata['system']['annotationStatus']}")
+
+```
+
 ## Filtering by Status 📊
 
 ### Finding Items by Annotation Status
