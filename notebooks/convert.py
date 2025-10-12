@@ -10,13 +10,29 @@ INDEX_MD = NOTEBOOKS_DIR / "notebooks.md"
 def find_notebooks(root):
     return [p for p in root.rglob("*.ipynb") if not p.name.startswith(".")]
 
+def clean_notebook(nb_path):
+    """Remove cell IDs that cause nbconvert issues"""
+    nb = nbformat.read(str(nb_path), as_version=4)
+    for cell in nb.cells:
+        if 'id' in cell:
+            del cell['id']
+    return nb
+
 # Helper to convert notebook to markdown
 def convert_notebook_to_md(nb_path):
     md_path = nb_path.with_suffix(".md")
     try:
+        # Clean the notebook first
+        nb = clean_notebook(nb_path)
+        temp_path = nb_path.with_suffix(".temp.ipynb")
+        nbformat.write(nb, str(temp_path))
+        
         subprocess.run([
-            "jupyter", "nbconvert", "--execute", "--to", "markdown", str(nb_path), "--output", md_path.stem
+            "jupyter", "nbconvert", "--to", "markdown", str(temp_path), "--output", md_path.stem
         ], check=True, cwd=nb_path.parent)
+        
+        # Clean up temp file
+        temp_path.unlink()
         return md_path
     except subprocess.CalledProcessError as e:
         print(f"Failed to convert {nb_path}: {e}")
@@ -34,8 +50,8 @@ def get_notebook_metadata(nb_path):
 
 # Helper to create GitHub/Colab links
 def make_run_links(nb_rel_path):
-    github_url = f"https://github.com/dataloop-ai/dtlpy-documentation/blob/main/{nb_rel_path.as_posix()}"
-    colab_url = f"https://colab.research.google.com/github/dataloop-ai/dtlpy-documentation/blob/main/{nb_rel_path.as_posix()}"
+    github_url = f"https://github.com/dataloop-ai/dtlpy-documentation/blob/main/notebooks/{nb_rel_path.as_posix()}"
+    colab_url = f"https://colab.research.google.com/github/dataloop-ai/dtlpy-documentation/blob/main/notebooks/{nb_rel_path.as_posix()}"
     github_badge = f"[![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]({github_url})"
     colab_badge = f"[![Colab](https://colab.research.google.com/assets/colab-badge.svg)]({colab_url})"
     return f"{github_badge} {colab_badge}"

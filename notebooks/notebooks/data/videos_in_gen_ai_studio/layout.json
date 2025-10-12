@@ -1,0 +1,169 @@
+[
+    {
+      "title": "Please evaluate the following video",
+      "components": [
+        {
+          "type": "video",
+          "key": "video_stream"
+        },
+        {
+          "type": "radio",
+          "key": "radio_1",
+          "title": "Is the video clear enough to evaluate?",
+          "required": true,
+          "options": [
+            {
+              "label": "Yes",
+              "value": "yes"
+            },
+            {
+              "label": "No",
+              "value": "no"
+            }
+          ]
+        },
+        {
+          "type": "slider",
+          "key": "slider_1",
+          "title": "Overall video rating:",
+          "required": true,
+          "min": 1,
+          "max": 5,
+          "step": 0.25,
+          "default": 3,
+          "hierarchy": {
+            "condition": {
+              "radio_1": {
+                "$eq": "yes"
+              }
+            }
+          }
+        },
+        {
+          "type": "radio",
+          "key": "radio_2",
+          "title": "Would you recommend this video to others?",
+          "required": true,
+          "options": [
+            {
+              "label": "Strongly recommend",
+              "value": "strong_yes"
+            },
+            {
+              "label": "Recommend",
+              "value": "yes"
+            },
+            {
+              "label": "Neutral",
+              "value": "neutral"
+            },
+            {
+              "label": "Not recommend",
+              "value": "no"
+            },
+            {
+              "label": "Strongly advise against",
+              "value": "strong_no"
+            }
+          ],
+          "hierarchy": {
+            "condition": {
+              "radio_1": {
+                "$eq": "yes"
+              }
+            }
+          }
+        },
+        {
+          "type": "select",
+          "key": "select_1",
+          "title": "Select the most appropriate target audience:",
+          "required": true,
+          "options": [
+            {
+              "label": "Children (under 12)",
+              "value": "children"
+            },
+            {
+              "label": "Teenagers (13-17)",
+              "value": "teens"
+            },
+            {
+              "label": "Young adults (18-25)",
+              "value": "young_adults"
+            },
+            {
+              "label": "Adults (26-64)",
+              "value": "adults"
+            },
+            {
+              "label": "Seniors (65+)",
+              "value": "seniors"
+            }
+          ],
+          "hierarchy": {
+            "condition": {
+              "radio_1": {
+                "$eq": "yes"
+              }
+            }
+          }
+        },
+        {
+          "type": "checkbox",
+          "key": "checkbox_1",
+          "title": "Reason for skipping this video evaluation:",
+          "required": true,
+          "options": [
+            {
+              "label": "Video file corrupted",
+              "value": "corrupted"
+            },
+            {
+              "label": "Wrong video uploaded",
+              "value": "wrong_video"
+            },
+            {
+              "label": "Duplicate evaluation",
+              "value": "duplicate"
+            },
+            {
+              "label": "Inappropriate content",
+              "value": "inappropriate"
+            },
+            {
+              "label": "Technical issues preventing evaluation",
+              "value": "technical"
+            },
+            {
+              "label": "Other",
+              "value": "other"
+            }
+          ],
+          "hierarchy": {
+            "condition": {
+              "radio_1": {
+                "$eq": "no"
+              }
+            }
+          }
+        },
+        {
+          "type": "text",
+          "key": "text_2",
+          "title": "Please elaborate further:",
+          "required": false,
+          "placeholder": "Enter your notes here...",
+          "hierarchy": {
+            "condition": {
+              "checkbox_1": {
+                "$in": [
+                  "other"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
