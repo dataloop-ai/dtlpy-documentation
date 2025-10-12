@@ -102,6 +102,7 @@ jupyter notebook tutorials
   * More guides
     *  [Model adapter flows](tutorials/model_management/more_guides/model_adapter_flows/chapter.ipynb)
     *  [Model annotations](tutorials/model_management/more_guides/model_annotations/chapter.ipynb)
+    *  [Model configurations](tutorials/model_management/more_guides/model_configurations/chapter.ipynb)
     *  [Model metrics](tutorials/model_management/more_guides/model_metrics/chapter.ipynb)
   *  [New model torchvision example](tutorials/model_management/new_model_torchvision_example/chapter.ipynb)
 * Pipelines
