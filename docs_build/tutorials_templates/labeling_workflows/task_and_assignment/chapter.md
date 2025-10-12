@@ -12,9 +12,13 @@ Think of tasks as your project's to-do lists and assignments as individual work 
 
 ## Creating Tasks 🛠️
 
-### Basic Task Creation
+The SDK provides specialized methods to create different task types. These methods allow you to clearly define task objectives (labeling, QA, consensus, honeypot, qualification).
 
-Let's start with a simple annotation task:
+**Important**: The following new helper methods do not replace or remove the existing basic task creation method `(task = dataset.tasks.create(...)`. You can still create tasks the original way.
+
+#### Prerequisites
+
+Use this snippet once to authenticate and select your project/dataset.
 
 ```python
 import dtlpy as dl
@@ -23,21 +27,33 @@ import datetime
 if dl.token_expired():
     dl.login()
 
-# Get your project and dataset
 project = dl.projects.get(project_name='project_name')
 dataset = project.datasets.get(dataset_name='dataset_name')
+```
 
-# Create a basic task
-task = dataset.tasks.create(
-    task_name='my_annotation_task',
-    due_date=datetime.datetime(day=1, month=1, year=2029).timestamp(),
+### Creating Labeling Tasks
+
+Labeling tasks are the most common type of annotation tasks. They can be created either as distribution tasks (direct assignment) or pulling tasks (dynamic batch allocation).
+
+```python
+# Create a distribution task (assign immediately)
+dataset.tasks.create_labeling(
+    name='my_distribution_task',
     assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai']
+)
+
+# Create a pulling task (dynamic distribution via batches)
+dataset.tasks.create_labeling(
+    name='my_pulling_task',
+    assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai'],
+    batch_size=5,           # items per batch
+    max_batch_workload=7    # max items per assignment
 )
 ```
 
-### Creating Tasks with Filters 🎯
+### Creating Tasks with Filters
 
-Want to create a task for specific items? Use filters:
+Filters allow you to restrict a task to specific items based on metadata or annotation status.
 
 ```python
 # Filter by directory
@@ -47,60 +63,75 @@ filters = dl.Filters(field='dir', values='/my/folder/path')
 filters = dl.Filters(field='annotated', values=False)
 
 # Create task with filters
-task = dataset.tasks.create(
-    task_name='filtered_task',
-    due_date=datetime.datetime(day=1, month=1, year=2029).timestamp(),
+dataset.tasks.create_labeling(
+    name='filtered_task',
     assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai'],
     filters=filters
 )
 ```
 
-### Creating QA Tasks 🔍
+### Creating QA Tasks
 
-Need to review annotations? Create a QA task:
+QA (Quality Assurance) tasks are designed to review and validate work completed in an annotation task.
 
 ```python
 # Create QA task from an annotation task
 qa_task = dataset.tasks.create_qa_task(
-    task=task,
+    task=task_entity,    # reference an existing annotation task
     due_date=datetime.datetime(day=1, month=1, year=2029).timestamp(),
     assignee_ids=['reviewer1@dataloop.ai', 'reviewer2@dataloop.ai']
 )
 ```
 
-## Smart Task Distribution 🎯
+### Creating Consensus Tasks
 
-### Pulling Tasks (Dynamic Distribution) 🔄
-
-Perfect for flexible teams and continuous work:
+Consensus tasks require multiple annotators to label the same items, enabling accuracy measurement and agreement scoring.
 
 ```python
-pulling_task = dataset.tasks.create(
-    task_name='dynamic_task',
-    due_date=datetime.datetime(day=1, month=1, year=2029).timestamp(),
-    batch_size=10,  # Items per batch (min: 3, max: 100)
-    max_batch_workload=15,  # Max items per assignment
-    allowed_assignees=['annotator1@dataloop.ai', 'annotator2@dataloop.ai']
+# Create a consensus task
+dataset.tasks.create_consensus_task(
+    name='my_consensus_task',
+    assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai'],
+    consensus_percentage=66,  # percent of items to be reviewed in consensus
+    consensus_assignees=2     # annotators per item
 )
 ```
 
-### Consensus Tasks (Multiple Reviews) 👥
+### Creating Honeypot Tasks
 
-Need multiple annotators per item? Try consensus tasks:
+Honeypot tasks introduce pre-labeled “gold standard” items to measure annotator accuracy and reliability.
 
 ```python
-consensus_task = dataset.tasks.create(
-    task_name='consensus_task',
-    due_date=datetime.datetime(day=1, month=1, year=2029).timestamp(),
+# Create a honeypot task
+dataset.tasks.create_honeypot_task(
+    name='my_honeypot_task',
     assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai'],
-    consensus_percentage=100,  # Percentage of items for consensus
-    consensus_assignees=2  # Number of annotators per item
+    consensus_percentage=66,
+    consensus_assignees=2
+)
+```
+
+### Creating Qualification Tasks
+
+Qualification tasks assess annotators’ capabilities before they are assigned to production labeling.
+
+```python
+# Create a qualification task
+dataset.tasks.create_qualification_task(
+    name='my_qualification_task',
+    assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai'],
+    consensus_percentage=66,
+    consensus_assignees=2
 )
 ```
 
 ## Managing Existing Tasks 🔧
 
+This section explains how to work with tasks that have already been created. Using the Dataloop SDK, you can add or reassign items, look up specific tasks or assignments, and maintain ongoing annotation workflows efficiently.
+
 ### Adding Items to Tasks
+
+Use this method to expand an existing task with new data. You can add items either by applying filters (for example, all unassigned items) or by directly passing a list of item IDs. You can also specify which annotators should receive the new assignments.
 
 ```python
 # Add items using filters
@@ -119,6 +150,8 @@ task.add_items(
 ```
 
 ### Finding Tasks and Assignments 🔍
+
+The SDK allows you to search and retrieve tasks or assignments in different ways. You can get a task by its ID, find it by name within a project, list all tasks in a dataset, or access assignment details by ID. This makes it easy to track progress, manage workloads, and monitor task completion.
 
 ```python
 # Get task by ID
@@ -181,7 +214,11 @@ pipeline.update()
 
 ## Cleanup Operations 🧹
 
+Use cleanup operations to remove tasks or assignments that are no longer required. This helps keep your projects organized and ensures that only active, relevant tasks remain accessible.
+
 ### Deleting Tasks and Assignments
+
+You can delete an entire task—including all of its associated assignments—or remove specific assignments individually:
 
 ```python
 # Delete a task (this also deletes its assignments)
@@ -202,7 +239,7 @@ assignment.delete()
 ## Need More Help? 🤔
 
 - Check out our [Task Management Documentation](https://docs.dataloop.ai/docs/labeling-overview)
-- Visit our [Assignment Guide](https://docs.dataloop.ai/docs/assignments)
-- Explore [Pipeline Integration](https://docs.dataloop.ai/docs/workflow-nodes)
+- Visit our [Assignment Guide](https://docs.dataloop.ai/docs/assignments-overview)
+- Explore [Pipeline Integration](https://docs.dataloop.ai/docs/labeling-nodes)
 
 Happy task managing! 🚀
