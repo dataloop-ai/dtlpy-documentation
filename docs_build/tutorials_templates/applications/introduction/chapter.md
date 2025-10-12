@@ -142,8 +142,17 @@ print('✨ Cleanup complete!')
 ### 🎯 Scopes
 
 Your DPK can cast its magic in two realms:
-* 🏰 **Project Scope:** The app only works within its home project
-* 🌍 **Organization Scope:** The app can work across all projects in your organization
+
+#### Project Scope
+
+- The **DPK** can be installed only within its home project.
+- It is limited to that specific project and cannot be shared or installed across other projects.
+
+#### Organization Scope
+
+- The **DPK** is available for installation in **all projects within your organization**. *The DPK must be installed individually in each project—it cannot be deployed to all projects at once.*
+- The installed application can be used in another project by sharing its application service. [Learn more](https://developers.dataloop.ai/tutorials/faas_applications/service_configurations/chapter#share-custom-applications-between-projects). 
+
 
 Here's how to set your scope:
 

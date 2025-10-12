@@ -1,0 +1,9 @@
+Fruit
+Fruit.apple
+Fruit.banana
+Fruit.banana.s
+Fruit.banana.m
+Fruit.banana.l
+Vegetable
+Vegetable.cucumber
+Vegetable.tomato
