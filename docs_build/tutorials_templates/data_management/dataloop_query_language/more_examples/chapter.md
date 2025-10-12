@@ -235,16 +235,58 @@ print(f'Found {pages.items_count} matching files')
 Need to see hidden items and directories?
 
 ```python
-# Method 1: Show directories
+import dtlpy as dl
+
+# ----------------------------------------
+# 1. Login (if required)
+# ----------------------------------------
+if dl.token_expired():
+    dl.login()
+
+# ----------------------------------------
+# 2. Get the project and dataset
+# ----------------------------------------
+project = dl.projects.get(project_name='project_name')
+dataset = project.datasets.get(dataset_name='dataset_name')
+
+# ----------------------------------------
+# 3. Different ways to see hidden items
+# ----------------------------------------
+
+# Method 1: Show directories explicitly
 filters = dl.Filters()
 filters.add(field='type', values='dir')
 
-# Method 2: Remove type filter
+# Method 2: Remove the type filter (will include everything)
 filters = dl.Filters()
 filters.pop(field='type')
 
-# Method 3: Disable defaults
+# Method 3: Disable defaults (hidden items won’t be excluded automatically)
 filters = dl.Filters(use_defaults=False)
+
+# ----------------------------------------
+# 4. Custom filter for hidden items
+# ----------------------------------------
+filters = dl.Filters(resource=dl.FiltersResource.ITEM, use_defaults=False)  
+# Disable defaults → allows hidden items to be queried
+
+# Match specific file patterns (e.g., all JPGs)
+filters.add(field='filename', values='*.jpg', operator=dl.FiltersOperations.MATCH)
+
+# Target a specific hidden directory
+filters.add(field='dir', values='/part1/.something/', operator=dl.FiltersOperations.EQUAL)
+
+# Explicitly include hidden items
+filters.add(field='hidden', values=True)
+
+# ----------------------------------------
+# 5. Iterate through the filtered results
+# ----------------------------------------
+pages = dataset.items.list(filters=filters)
+for page in pages:
+    for item in page:
+        print(f"ID: {item.id}, Name: {item.name}, Hidden: {item.hidden}, Path: {item.dir}")
+
 ```
 
 ## Advanced Sorting and Filtering 🎯
