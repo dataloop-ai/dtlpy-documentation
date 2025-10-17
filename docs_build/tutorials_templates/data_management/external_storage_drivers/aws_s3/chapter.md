@@ -86,7 +86,8 @@ driver = project.drivers.create(
     allow_external_delete=True,
     region='eu-west-1',
     storage_class="",
-    path="/path/in/bucket"
+    # If your path is s3://my-s3-bucket/folder, use only 'folder'
+    path="<folder_name>" 
 )
 ```
 
