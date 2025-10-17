@@ -71,7 +71,8 @@ driver = project.drivers.create(
     integration_id=integration.id,
     bucket_name='<bucket_name>',
     allow_external_delete=True,
-    path=""  # Optional: specify a path within the bucket
+    # Optional: If your path is gs://my-gcp-bucket/folder, use only 'folder'
+    path="<folder_name>" 
 )
 ```
 

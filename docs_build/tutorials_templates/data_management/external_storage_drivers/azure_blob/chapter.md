@@ -38,7 +38,8 @@ driver = project.drivers.create(
     integration_id='integration_id',
     bucket_name='container_name',  # In Azure, this is your container name
     allow_external_delete=True,
-    path=""  # Optional: specify a path within the container
+    # Optional: If your path is https://mystorageaccount.blob.core.windows.net/my-azure-container/folder, use only 'folder'
+    path="<folder_name>" 
 )
 ```
 
