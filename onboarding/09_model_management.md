@@ -35,20 +35,25 @@ model.configuration = {
     'confidence_threshold': 0.5
 }
 model.update()
+```
 
-# Add model artifacts
+### 3. Upload/Download Model Artifacts
+
+```python
+
+# Upload
 model.artifacts.upload(
     filepath='/path/to/weights.pth',
     artifact_name='model_weights'
 )
-```
 
-# Download model artifacts
+# Download
 model.artifacts.download(
     local_path='/path/to/download'
 )
+```
 
-### 3. Model Cloning
+### 4. Model Cloning
 
 ```python
 # Clone a model for fine-tuning
@@ -184,15 +189,16 @@ train_execution = cloned_model.train()
 ```
 
 ### 3. Training Monitoring
+
 Log in to the Dataloop platform and check the training status and metrics.
 
 ## Best Practices 👑
 
 ### 1. Model Organization
+
 - Use clear naming conventions
 - Document model changes
 - Track experiment configurations
 - Maintain version history
 
-
-Ready to explore FaaS (Functions as a Service)? Let's move on to the next chapter! 🚀 
+Ready to explore FaaS (Functions as a Service)? Let's move on to the next chapter! 🚀
