@@ -139,6 +139,51 @@ print(f'net_annotation_time in minutes: {int(net_annotation_time/(1000*60))} \n'
         f'annotation_whole_time in minutes: {int(annotation_whole_time/(1000*60))}')
 ```
 
+## Annotations Count Per Task
+
+Use the following code to extract the total annotations for items in a task.
+
+```python
+import dtlpy as dl
+
+
+# Configuration: Set your project name and dataset ID
+project_name = 'your_project_name_here'
+dataset_id = 'your_dataset_id_here'
+
+# Initialize Project and Dataset
+project = dl.projects.get(project_name=project_name)
+dataset = project.datasets.get(dataset_id=dataset_id)
+
+
+# Retrieve all tasks in the dataset
+tasks = dataset.tasks.list()
+task_ids = [task.id for task in tasks]
+
+# Process each task and count total annotations
+for task_id in task_ids:
+    print(f"\nProcessing Task ID: {task_id}")
+
+    # Filter items that belong to the current task
+    filters = dl.Filters(field='metadata.system.refs.id', values=task_id)
+    task_items = dataset.items.list(filters=filters)
+    print(f"Items found: {task_items.items_count}")
+
+    # Initialize total annotation counter
+    total_annotations = 0
+
+    # Count annotations for each item in the task
+    for item in task_items.all():
+        item_get = dataset.items.get(item_id=item.id)
+        count = getattr(item_get, 'annotations_count', 0)
+        print(f"Item {item.id} annotations_count = {count}")
+        total_annotations += count
+
+    # Fetch task details and print summary
+    task = dataset.tasks.get(task_id=task_id)
+    print(f"Task Name: {task.name}, Total Annotations: {total_annotations}")
+```
+
 ## Average Annotation Time Per Label
 
 `avgAnnotationTimePerLabel` measureType is used for tracking average annotation time per label.
