@@ -439,7 +439,7 @@ task_id = context.task_id
 
 ## Share Custom Applications Between Projects
 
-You can reuse an installed application across multiple projects by sharing its service - no need to reinstall or duplicate it.
+You can reuse an installed application across multiple projects by sharing its service—no need to reinstall or duplicate it.
 
 ### Benefits
 
