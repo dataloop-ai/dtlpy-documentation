@@ -59,10 +59,34 @@
     font-size: 0.85em;
 }
 
-/* Model info tables - smaller text */
+/* Model info tables - smaller text with zebra stripes */
 .field-trace_a_models table,
 .field-trace_b_models table {
     font-size: 0.95em;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.field-trace_a_models table tr:nth-child(even),
+.field-trace_b_models table tr:nth-child(even) {
+    background-color: rgba(128, 128, 128, 0.15);
+}
+
+.field-trace_a_models table tr:nth-child(odd),
+.field-trace_b_models table tr:nth-child(odd) {
+    background-color: transparent;
+}
+
+.field-trace_a_models table th,
+.field-trace_b_models table th {
+    background-color: rgba(128, 128, 128, 0.25);
+}
+
+.field-trace_a_models table td,
+.field-trace_a_models table th,
+.field-trace_b_models table td,
+.field-trace_b_models table th {
+    padding: 6px 10px;
 }
 
 /* Field containers */
@@ -90,6 +114,35 @@
     font-weight: 500;
 }
 
+/* Instructions field title - larger subtitle */
+.field-instructions .field-title {
+    font-size: 1.2em;
+    font-weight: normal;
+    text-underline-offset: 3px;
+}
+
+/* 1. Make the preference question larger (same size as instructions) */
+.field-preferred_model .field-title {
+    font-size: 1.1em;
+    font-weight: normal;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* 2. Model Information - field titles larger than pipeline text */
+.field-trace_a_models .field-title,
+.field-trace_b_models .field-title {
+    font-size: 1.05em;
+    font-weight: normal;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.field-trace_a_models em,
+.field-trace_b_models em {
+    font-size: 0.85em;
+}
+
 /* Prevent content overflow */
 .field-conversation_a,
 .field-conversation_b,
@@ -113,7 +166,7 @@
 .field-trace_b_tool_calls {
     width: 100%;
     min-width: 0;
-    overflow: hidden;
+    overflow: visible;
     box-sizing: border-box;
 }
 
@@ -163,11 +216,14 @@ details code {
 details pre {
     padding: 6px;
     border-radius: 4px;
-    overflow-x: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
     margin: 4px 0;
+    white-space: pre;
+    max-width: 100%;
 }
 
-/* Metadata section - grid layout */
+/* Metadata section - grid layout (section-4 after removing Instructions Metadata) */
 .form-section-4 .section-content {
     display: grid;
     grid-template-columns: calc(50% - 8px) calc(50% - 8px);
