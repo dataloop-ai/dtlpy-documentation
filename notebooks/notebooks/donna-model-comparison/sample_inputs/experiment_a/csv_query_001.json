@@ -1,0 +1,36 @@
+{
+  "query_id": "csv_query_001",
+  "timestamp": "2024-12-28T10:30:00Z",
+  "agents": {
+    "Donna Router": {
+      "model": "gpt-4-turbo",
+      "version": "2024-04-09"
+    },
+    "Donna SQL Generator": {
+      "model": "claude-3-opus",
+      "version": "20240229"
+    },
+    "Donna Validator": {
+      "model": "gpt-4",
+      "version": "0613"
+    }
+  },
+  "messages": [
+    {
+      "role": "user",
+      "content": "What were our top 5 customers by revenue last quarter?"
+    },
+    {
+      "role": "Donna Router",
+      "content": "This is a data query question requiring SQL generation. Routing to SQL Generator agent."
+    },
+    {
+      "role": "Donna SQL Generator",
+      "content": "I'll generate the SQL query to find top 5 customers by revenue:\n\n```sql\nSELECT customer_name, SUM(order_total) as total_revenue\nFROM orders o\nJOIN customers c ON o.customer_id = c.id\nWHERE order_date >= DATE_TRUNC('quarter', CURRENT_DATE - INTERVAL '3 months')\n  AND order_date < DATE_TRUNC('quarter', CURRENT_DATE)\nGROUP BY customer_name\nORDER BY total_revenue DESC\nLIMIT 5;\n```"
+    },
+    {
+      "role": "Donna Validator",
+      "content": "Query validated and executed. Results:\n\n1. Acme Corp - $2.4M\n2. GlobalTech Inc - $1.8M\n3. Nexus Solutions - $1.2M\n4. DataFlow Systems - $980K\n5. CloudFirst Ltd - $750K\n\nThe query correctly handles quarterly date ranges and aggregates revenue by customer."
+    }
+  ]
+}

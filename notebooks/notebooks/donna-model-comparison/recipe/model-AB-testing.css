@@ -1,0 +1,211 @@
+/* Full width layout - no horizontal scroll */
+.form-viewer {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.form-layout {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.form-section {
+    padding: 12px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.section-content {
+    gap: 12px;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Trace Comparison section - grid layout for side-by-side display */
+.form-section-1 .section-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Conversations side by side */
+.field-conversation_a {
+    grid-column: 1;
+}
+
+.field-conversation_b {
+    grid-column: 2;
+}
+
+/* Model Information section - 50% each */
+.form-section-2 .section-content {
+    display: grid;
+    grid-template-columns: calc(50% - 8px) calc(50% - 8px);
+    gap: 16px;
+}
+
+.field-trace_a_models,
+.field-trace_b_models {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 0.85em;
+}
+
+/* Model info tables - smaller text */
+.field-trace_a_models table,
+.field-trace_b_models table {
+    font-size: 0.95em;
+}
+
+/* Field containers */
+.field-container {
+    margin-top: 8px;
+    margin-bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Section titles - large and bold */
+.section-title {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* Field titles - smaller than section titles */
+.field-title {
+    margin-top: 0;
+    padding-top: 0;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+/* Prevent content overflow */
+.field-conversation_a,
+.field-conversation_b,
+.field-trace_a_models,
+.field-trace_b_models {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    padding-left: 8px;
+    box-sizing: border-box;
+}
+
+/* Agent Tool Calls section - 50% each */
+.form-section-3 .section-content {
+    display: grid;
+    grid-template-columns: calc(50% - 8px) calc(50% - 8px);
+    gap: 16px;
+}
+
+.field-trace_a_tool_calls,
+.field-trace_b_tool_calls {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Collapsible details styling - theme aware */
+details {
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    padding: 6px 8px;
+    margin-bottom: 8px;
+    background: transparent;
+    color: inherit;
+    opacity: 0.9;
+    font-size: 0.85em;
+}
+
+details summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 2px 0;
+    color: inherit;
+    font-size: 0.95em;
+}
+
+details[open] summary {
+    border-bottom: 1px solid currentColor;
+    margin-bottom: 6px;
+}
+
+/* Content inside details - smaller text */
+details > *:not(summary) {
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+details p {
+    margin: 4px 0;
+}
+
+/* Code blocks inside details - inherit theme colors */
+details pre,
+details code {
+    background: rgba(128, 128, 128, 0.15);
+    color: inherit;
+    font-size: 0.9em;
+}
+
+details pre {
+    padding: 6px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 4px 0;
+}
+
+/* Metadata section - grid layout */
+.form-section-4 .section-content {
+    display: grid;
+    grid-template-columns: calc(50% - 8px) calc(50% - 8px);
+    gap: 16px;
+}
+
+/* Query ID spans full width on its own row */
+.field-source_query_id {
+    grid-column: 1 / -1;
+    width: 100%;
+}
+
+/* Trace sources - 50% each */
+.field-trace_a_source,
+.field-trace_b_source {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* General field padding */
+.field-text,
+.field-image,
+.field-audio,
+.field-video,
+.field-url,
+.field-select,
+.field-radio,
+.field-checkbox,
+.field-slider,
+.field-rating,
+.field-conversation,
+.field-markdown {
+    padding-left: 8px;
+}
+
+/* Media container spacing */
+.media-container {
+    margin: 0;
+    padding-top: 8px;
+}

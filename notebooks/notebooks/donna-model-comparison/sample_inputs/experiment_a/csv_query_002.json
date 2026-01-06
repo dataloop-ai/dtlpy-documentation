@@ -1,0 +1,36 @@
+{
+  "query_id": "csv_query_002",
+  "timestamp": "2024-12-28T11:15:00Z",
+  "agents": {
+    "Donna Router": {
+      "model": "gpt-4-turbo",
+      "version": "2024-04-09"
+    },
+    "Donna SQL Generator": {
+      "model": "claude-3-opus",
+      "version": "20240229"
+    },
+    "Donna Validator": {
+      "model": "gpt-4",
+      "version": "0613"
+    }
+  },
+  "messages": [
+    {
+      "role": "user",
+      "content": "Show me the monthly sales trend for the past year"
+    },
+    {
+      "role": "Donna Router",
+      "content": "This is a time-series analytics query. Routing to SQL Generator for trend analysis."
+    },
+    {
+      "role": "Donna SQL Generator",
+      "content": "I'll create a query for monthly sales trends:\n\n```sql\nSELECT \n    DATE_TRUNC('month', order_date) as month,\n    COUNT(*) as order_count,\n    SUM(order_total) as total_sales,\n    AVG(order_total) as avg_order_value\nFROM orders\nWHERE order_date >= CURRENT_DATE - INTERVAL '12 months'\nGROUP BY DATE_TRUNC('month', order_date)\nORDER BY month;\n```"
+    },
+    {
+      "role": "Donna Validator",
+      "content": "Query executed successfully. Monthly trends show:\n\n| Month | Orders | Total Sales | Avg Order |\n|-------|--------|-------------|----------|\n| Jan 2024 | 1,234 | $1.2M | $972 |\n| Feb 2024 | 1,456 | $1.4M | $961 |\n| Mar 2024 | 1,678 | $1.7M | $1,013 |\n| ... | ... | ... | ... |\n| Dec 2024 | 2,103 | $2.3M | $1,094 |\n\nOverall trend: +15% YoY growth"
+    }
+  ]
+}

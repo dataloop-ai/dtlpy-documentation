@@ -1,0 +1,127 @@
+[
+  {
+    "title": "Evaluation",
+    "hidden": false,
+    "layout": {
+      "direction": "vertical",
+      "wrap": false
+    },
+    "components": [
+      {
+        "type": "markdown",
+        "key": "instructions",
+        "title": "Instructions"
+      },
+      {
+        "type": "radio",
+        "key": "preferred_model",
+        "title": "Which trace provided the better response?",
+        "required": true,
+        "options": [
+          {
+            "label": "Trace A is better",
+            "value": "trace_a"
+          },
+          {
+            "label": "Trace B is better",
+            "value": "trace_b"
+          },
+          {
+            "label": "Traces are the same",
+            "value": "same"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Trace Comparison",
+    "hidden": false,
+    "layout": {
+      "direction": "horizontal",
+      "wrap": false
+    },
+    "components": [
+      {
+        "type": "conversation",
+        "key": "conversation_a",
+        "title": "Trace A"
+      },
+      {
+        "type": "conversation",
+        "key": "conversation_b",
+        "title": "Trace B"
+      }
+    ]
+  },
+  {
+    "title": "Model Information",
+    "hidden": false,
+    "layout": {
+      "direction": "horizontal",
+      "wrap": false
+    },
+    "components": [
+      {
+        "type": "markdown",
+        "key": "trace_a_models",
+        "title": "Models in Trace A"
+      },
+      {
+        "type": "markdown",
+        "key": "trace_b_models",
+        "title": "Models in Trace B"
+      }
+    ]
+  },
+  {
+    "title": "Agent Tool Calls",
+    "hidden": false,
+    "layout": {
+      "direction": "horizontal",
+      "wrap": false
+    },
+    "components": [
+      {
+        "type": "markdown",
+        "key": "trace_a_tool_calls",
+        "title": "Trace A Tool Calls",
+        "tooltip": "Expand each tool call to see details (agent, args, output)"
+      },
+      {
+        "type": "markdown",
+        "key": "trace_b_tool_calls",
+        "title": "Trace B Tool Calls",
+        "tooltip": "Expand each tool call to see details (agent, args, output)"
+      }
+    ]
+  },
+  {
+    "title": "Metadata",
+    "hidden": false,
+    "layout": {
+      "direction": "horizontal",
+      "wrap": true
+    },
+    "components": [
+      {
+        "type": "text",
+        "key": "source_query_id",
+        "title": "Query ID",
+        "disabled": true
+      },
+      {
+        "type": "text",
+        "key": "trace_a_source",
+        "title": "Trace A Source",
+        "disabled": true
+      },
+      {
+        "type": "text",
+        "key": "trace_b_source",
+        "title": "Trace B Source",
+        "disabled": true
+      }
+    ]
+  }
+]

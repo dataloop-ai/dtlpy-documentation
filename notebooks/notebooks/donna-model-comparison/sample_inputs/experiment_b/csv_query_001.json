@@ -1,0 +1,36 @@
+{
+  "query_id": "csv_query_001",
+  "timestamp": "2024-12-28T10:32:00Z",
+  "agents": {
+    "Donna Router": {
+      "model": "claude-3-sonnet",
+      "version": "20240229"
+    },
+    "Donna SQL Generator": {
+      "model": "gpt-4",
+      "version": "0613"
+    },
+    "Donna Validator": {
+      "model": "claude-3-haiku",
+      "version": "20240307"
+    }
+  },
+  "messages": [
+    {
+      "role": "user",
+      "content": "What were our top 5 customers by revenue last quarter?"
+    },
+    {
+      "role": "Donna Router",
+      "content": "Analyzing request: This requires database access for revenue data. Forwarding to SQL specialist."
+    },
+    {
+      "role": "Donna SQL Generator",
+      "content": "Generating revenue query:\n\n```sql\nSELECT c.name, SUM(o.amount) revenue\nFROM customers c, orders o\nWHERE c.id = o.cust_id\nAND o.date BETWEEN '2024-07-01' AND '2024-09-30'\nGROUP BY c.name\nORDER BY revenue DESC\nLIMIT 5\n```"
+    },
+    {
+      "role": "Donna Validator",
+      "content": "Executed. Top customers:\n1. Acme Corp: $2.4M\n2. GlobalTech: $1.8M\n3. Nexus: $1.2M\n4. DataFlow: $980K\n5. CloudFirst: $750K"
+    }
+  ]
+}
