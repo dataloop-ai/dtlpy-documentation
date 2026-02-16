@@ -1,0 +1,35 @@
+{
+  "name": "json-as-output",
+  "version": "1.0.0",
+  "description": "JSON input/output function example",
+  "components": {
+    "modules": [
+      {
+        "name": "default",
+        "entryPoint": "main.py",
+        "className": "ServiceRunner",
+        "functions": [
+          {
+            "name": "item_to_json",
+            "input": [{"name": "item", "type": "Item"}],
+            "output": [{"name": "item_id_obj", "type": "Json"}]
+          },
+          {
+            "name": "json_to_item",
+            "input": [{"name": "json_obj", "type": "Json"}],
+            "output": [{"name": "item", "type": "Item"}]
+          }
+        ]
+      }
+    ],
+    "services": [
+      {
+        "name": "json-as-output",
+        "moduleName": "default",
+        "runtime": {
+          "podType": "regular-xs"
+        }
+      }
+    ]
+  }
+}

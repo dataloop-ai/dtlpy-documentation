@@ -1,0 +1,41 @@
+{
+  "name": "package-git",
+  "version": "1.0.0",
+  "description": "Package deployment from Git repository",
+  "codebase": {
+    "type": "git",
+    "gitUrl": "https://github.com/dataloop-ai/package_git_example.git",
+    "gitTag": "main"
+  },
+  "components": {
+    "modules": [
+      {
+        "name": "default",
+        "entryPoint": "main.py",
+        "className": "ServiceRunner",
+        "functions": [
+          {
+            "name": "run",
+            "input": [{"name": "item", "type": "Item"}],
+            "description": "example function that prints the item.name"
+          }
+        ]
+      }
+    ],
+    "services": [
+      {
+        "name": "package-git",
+        "moduleName": "default",
+        "runtime": {
+          "concurrency": 1,
+          "autoscaler": {
+            "type": "rabbitmq",
+            "minReplicas": 0,
+            "maxReplicas": 1,
+            "queueLength": 10
+          }
+        }
+      }
+    ]
+  }
+}

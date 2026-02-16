@@ -4,70 +4,26 @@ In this simple function, we will add a classification annotation to an incoming 
 
 * Note: be sure to change the project name to your own working project
 
-## Create the package
-Notice that in this directory, we have our `main.py` file which contained the code for this package.  
-The package code is the content of this directory.
+## Create the app and service
 
-First we'll need to import the SDK
+This directory contains `main.py` with the package code. Create a `dataloop.json` manifest in this directory with your module and service (e.g. name `add-classification`, function `add_classification`, runtime with autoscaler). Then:
 
 ```python
+import os
 import dtlpy as dl
-```
 
-Let's define the project and package name:
-
-```python
-package_name = "add-classification"
 project_name = "my-project"
 project = dl.projects.get(project_name=project_name)
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+dpk = project.dpks.publish(
+    manifest_filepath=os.path.join(script_dir, 'dataloop.json'),
+    local_path=script_dir
+)
+app = project.apps.install(dpk=dpk)
+
+service = project.services.get(service_name='add-classification')
 ```
-
-Now we need to define the modules and function that we will use in this package:
-
-```python
-modules = [dl.PackageModule(
-    name=package_name,
-    entry_point='main.py',
-    functions=[
-        dl.PackageFunction(
-            name='add_classification',
-            inputs=[
-                dl.FunctionIO(name='item', type=dl.PackageInputType.ITEM),
-            ],
-            outputs=[
-                dl.FunctionIO(name='items', type=dl.PackageInputType.ITEMS)
-            ],
-            description='adds a classification to the item'
-        )
-    ]
-)]
-```
-
-Add now we can push the package to the Dataloop platform
-
-```python
-package = project.packages.push(package_name=package_name,
-                                modules=modules,
-                                src_path='./functions/add_annotation_to_item')
-print('New Package has been deployed')
-```
-
-## Deploying the Service
-
-After pushing the code, we need to create the service to actually run it.  
-We'll define the autoscaling (so it will not cost us when there's nothing to run)
-
-```python
-runtime = dl.KubernetesRuntime(autoscaler=dl.KubernetesRabbitmqAutoscaler(min_replicas=0,
-                                                                          max_replicas=1,
-                                                                          queue_length=10))
-
-service = package.services.deploy(service_name=package.name,
-                                  module_name=package.name,
-                                  runtime=runtime)
-```
-
-And now we have the service up and running!
 
 ## Trigger Events
 

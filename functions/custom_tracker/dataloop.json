@@ -1,0 +1,44 @@
+{
+  "name": "custom-tracker",
+  "version": "1.0.0",
+  "description": "Custom BB tracker",
+  "components": {
+    "modules": [
+      {
+        "name": "default_module",
+        "entryPoint": "main.py",
+        "className": "Tracker",
+        "functions": [
+          {
+            "name": "run",
+            "input": [
+              {"name": "item_stream_url", "type": "Json"},
+              {"name": "bbs", "type": "Json"},
+              {"name": "start_frame", "type": "Json"},
+              {"name": "frame_duration", "type": "Json"},
+              {"name": "dl", "type": "Json"}
+            ],
+            "description": "Custom BB tracker"
+          }
+        ]
+      }
+    ],
+    "services": [
+      {
+        "name": "custom-tracker",
+        "moduleName": "default_module",
+        "executionTimeout": 60,
+        "maxAttempts": 1,
+        "runtime": {
+          "podType": "regular-xs",
+          "concurrency": 10,
+          "autoscaler": {
+            "type": "rabbitmq",
+            "minReplicas": 1,
+            "maxReplicas": 1
+          }
+        }
+      }
+    ]
+  }
+}

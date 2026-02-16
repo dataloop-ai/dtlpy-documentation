@@ -25,8 +25,12 @@ def create_pipeline(project_name, dataset_name, service_name=None, function_name
         print('Using existing service name: {}'.format(service.name))
     else:
         function_name = 'metadata_function_second'
-        service = project.services.deploy(func=metadata_function_second,
-                                          service_name='metadata-function-second')
+        service = dl.Service.from_function(
+            func=metadata_function_second,
+            name='metadata-function-second',
+            project=project,
+            client_api=dl.client_api
+        )
         print('Service was created service_name:{}'.format(service.name))
     ##########################################
     # Generate pipeline with relevant params #
