@@ -6,7 +6,7 @@ In this simple function, we will add a classification annotation to an incoming 
 
 ## Create the app and service
 
-This directory contains `main.py` with the package code. Create a `dataloop.json` manifest in this directory with your module and service (e.g. name `add-classification`, function `add_classification`, runtime with autoscaler). Then:
+This directory contains `main.py` with the app code. Create a `dataloop.json` manifest in this directory with your module and service (e.g. name `add-classification`, function `add_classification`, runtime with autoscaler). Then:
 
 ```python
 import os
