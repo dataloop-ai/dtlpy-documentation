@@ -124,11 +124,13 @@ Make sure you have the following files in one directory:
 Run this to push your package:  
 
 ```python
-package = project.packages.push(
-    src_path='<path to folder containing the codebase>',
-    package_name='face-detector',
-    modules=[module]
+import os
+codebase_path = '<path to folder containing the codebase and dataloop.json>'
+dpk = project.dpks.publish(
+    manifest_filepath=os.path.join(codebase_path, 'dataloop.json'),
+    local_path=codebase_path
 )
+app = project.apps.install(dpk=dpk)
 ```
 ## Deploy The  Service  
 The package is now ready to be deployed as a service in the Dataloop Platform.  
@@ -140,22 +142,7 @@ Whenever executed, your package will run as a service on default instance type. 
   
 
 ```python
-service = package.deploy(
-    service_name='face-detector',
-    init_input=[
-        dl.FunctionIO(name='model_filename',
-                      type=dl.PackageInputType.STRING,
-                      value='res10_300x300_ssd_iter_140000.caffemodel'),
-        dl.FunctionIO(name='prototxt_filename',
-                      type=dl.PackageInputType.STRING,
-                      value='deploy.prototxt.txt'),
-        dl.FunctionIO(name='min_confidence',
-                      type=dl.PackageInputType.FLOAT,
-                      value=0.5)
-    ],
-    runtime=dl.KubernetesRuntime(concurrency=1)
-    # The runtime argument Concurrency=1 means that only one execution can run at a time (no parallel executions).
-)
+service = project.services.get(service_name='face-detector')
 ```
 ## Trigger the Service  
 Once the service is deployed, we can create a trigger to run it automatically when a certain event occurs.  
