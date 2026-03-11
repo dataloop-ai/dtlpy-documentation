@@ -17,10 +17,13 @@ def get_version():
 
 
 # Deploying the service
-service = project.services.deploy(func=get_version,
-                                  service_name=service_name,
-                                  runtime=dl.KubernetesRuntime(runner_image='python:3.9.7')
-                                  )
+service = dl.Service.from_function(
+    func=get_version,
+    name=service_name,
+    project=project,
+    client_api=dl.client_api,
+    runtime={"runnerImage": "python:3.9.7"}
+)
 
 # Executing the function - this should print the function output with the python version
 execution = service.execute(function_name='get_version',

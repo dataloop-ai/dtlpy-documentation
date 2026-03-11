@@ -1,0 +1,41 @@
+{
+  "name": "artifacts-package",
+  "version": "1.0.0",
+  "description": "Function example for using artifacts",
+  "components": {
+    "modules": [
+      {
+        "name": "default",
+        "entryPoint": "main.py",
+        "className": "ServiceRunner",
+        "initInputs": [
+          {"name": "artifact_filename", "type": "String"}
+        ],
+        "functions": [
+          {
+            "name": "run",
+            "description": "Function example for using artifacts"
+          }
+        ]
+      }
+    ],
+    "services": [
+      {
+        "name": "artifacts-package",
+        "moduleName": "default",
+        "initParams": {
+          "artifact_filename": "monkey-612x612.zip"
+        },
+        "runtime": {
+          "concurrency": 1,
+          "autoscaler": {
+            "type": "rabbitmq",
+            "minReplicas": 0,
+            "maxReplicas": 1,
+            "queueLength": 10
+          }
+        }
+      }
+    ]
+  }
+}

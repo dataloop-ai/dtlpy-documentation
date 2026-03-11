@@ -9,17 +9,16 @@ Learn how to manage your machine learning models in Dataloop - from development 
 ```python
 import dtlpy as dl
 
-# Get your project
+# Get your project and app
 project = dl.projects.get(project_name='my-project')
+app = project.apps.get(app_name='my-model-app')
 
-# Create a new model
-model = project.models.create(
+# Create a new model from the app
+model = app.models.create(
     model_name='my-awesome-model',
-    description='A state-of-the-art object detection model',
-    tags=['detection', 'production'],
+    dpk_model_name='model-name-from-dpk',
     dataset_id='dataset-id',  # Optional - link to training dataset
-    labels=['car', 'person', 'bike'],  # Model's output labels
-    model_artifacts=[dl.LinkArtifact(link='s3://my-bucket/weights.pth')]
+    labels=['car', 'person', 'bike']  # Model's output labels
 )
 ```
 

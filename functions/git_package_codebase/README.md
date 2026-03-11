@@ -7,12 +7,11 @@ this support in dtlpy>=1.35.13
    main.py - for the running code
 
 
-2. create a package and service from the git repository  
-   use the file [create package](create_package.py)
-   that build the package and service using push and deploy functions to set your own git repo set it in the
-   package.push() in codebase filed  
-   git_url: the url that used to clone  
-   git_tag: tag is the branch
+2. create an app and service from the git repository  
+   use the file [deploy](deploy.py)
+   that publishes the DPK and installs the app. To use your own git repo set the codebase in `dataloop.json`:
+   gitUrl: the url used to clone  
+   gitTag: the branch or tag
 
 ![Imgur](https://i.imgur.com/AO6ZZOC.png)
 

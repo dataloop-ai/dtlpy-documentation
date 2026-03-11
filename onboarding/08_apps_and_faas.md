@@ -4,7 +4,30 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 
 ## Getting Started with FaaS 🌟
 
-### 1. Basic Function Creation
+### Quick deploy from a function
+
+Deploy a single function without a manifest:
+
+```python
+import dtlpy as dl
+
+def hello_world(item: dl.Item) -> dl.Item:
+    print(f'Item name: {item.name}')
+    print(f'Item id: {item.id}')
+    return item
+
+project = dl.projects.get(project_name='my-project')
+service = dl.Service.from_function(
+    func=hello_world,
+    name='hello-world',
+    project=project,
+    client_api=dl.client_api
+)
+```
+
+### 1. Basic Function Creation (DPK manifest)
+
+For triggers, multiple functions, or custom runtime, use a DPK manifest. Define your class:
 
 ```python
 import dtlpy as dl
@@ -15,7 +38,6 @@ class HelloWorld(dl.BaseServiceConfig):
         print(f'Item name: {item.name}')
         print(f'Item id: {item.id}')
         return item
-
 ```
 
 Create the DPK manifest file (`dataloop.json`):

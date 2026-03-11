@@ -5,7 +5,7 @@ Function will reciev a PDF item as input and convert it to JPG image.
 We will also create a trigger on a directory.  
 The input directory will be "/incoming", and the output "/output" which means that we'll upload a PDF to incoming, and we will receive a JPG in output
 
-After running the 'create_package.py' (which will create package, service and trigger) upload a PDF to the project
+After running the 'deploy.py' (which will create the app, service and trigger) upload a PDF to the project
 
 * Note: be sure to change the project name to your own working project
  

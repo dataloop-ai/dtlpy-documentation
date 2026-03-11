@@ -30,6 +30,7 @@ Think of DPK as your model's DNA - it contains:
 
 Apps are like your model's installation wizard:
 - One click to install
+- Create and manage model instances via `app.models.create()`
 - Automatically clones pre-trained models into your project
 - Gets everything set up and ready to go
 

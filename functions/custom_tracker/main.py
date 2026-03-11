@@ -96,51 +96,21 @@ class Tracker(dl.BaseServiceRunner):
 
 
 def deploy():
+    import os
     import dtlpy as dl
-    # Set project name and service name
-    package_name = "custom-tracker"
+
     project_name = "Frog Tracking"
     project = dl.projects.get(project_name=project_name)
 
-    # Push package
-    modules = [
-        dl.PackageModule(name="default_module",
-                         entry_point="main.py",
-                         class_name="Tracker",
-                         functions=[dl.PackageFunction(
-                             name="run",
-                             inputs=[dl.FunctionIO(type="Json", name="item_stream_url"),
-                                     dl.FunctionIO(type="Json", name="bbs"),
-                                     dl.FunctionIO(type="Json", name="start_frame"),
-                                     dl.FunctionIO(type="Json", name="frame_duration"),
-                                     dl.FunctionIO(type="Json", name="dl")],
-                             outputs=[],
-                             description="Custom BB tracker"),
-                         ])]
-    package = project.packages.push(package_name=package_name,
-                                    modules=modules,
-                                    src_path="functions/custom_tracker",
-                                    requirements=[dl.PackageRequirement(name="opencv_python",
-                                                                        version="4.5.2.54"),
-                                                  dl.PackageRequirement(name="opencv-contrib-python",
-                                                                        version="4.5.2.54")]
-                                    )
-
-    # Deploy service
-    tracker_service = package.services.deploy(
-        service_name=package.name,
-        execution_timeout=60,
-        max_attempts=1,
-        module_name="default_module",
-        runtime=dl.KubernetesRuntime(pod_type=dl.InstanceCatalog.REGULAR_XS,
-                                     concurrency=10,
-                                     autoscaler=dl.KubernetesRabbitmqAutoscaler(
-                                         min_replicas=1,
-                                         max_replicas=1)
-                                     )
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    dpk = project.dpks.publish(
+        manifest_filepath=os.path.join(script_dir, 'dataloop.json'),
+        local_path=script_dir
     )
+    project.apps.install(dpk=dpk)
 
-    # Add to datasets recipe
+    tracker_service = project.services.get(service_name="custom-tracker")
+
     dataset = project.datasets.get("custom tracker")
     recipe = dataset.recipes.list()[0]
     recipe.metadata["system"]["trackerSettings"] = {"serviceName": tracker_service.name,
