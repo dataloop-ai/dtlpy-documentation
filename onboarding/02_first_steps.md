@@ -42,25 +42,41 @@ if dl.token_expired():
     dl.login()
 ```
 
-### 2. Headless Authentication
-
 ```python
-# Using API key (recommended for automation)
-dl.login_api_key(api_key=os.environ['DTLPY_API_KEY'])
-
-# Using email/password (not recommended for production)
-dl.login_m2m(email='your-email@company.com', 
-             password=os.environ['DTLPY_PASSWORD'])
+# Test your installation
+import dtlpy as dl
+print(dl.__version__)
 ```
 
-### 3. Token Management
+### 2. Token Management
 
 ```python
 # Check token status
 is_expired = dl.token_expired()
-
 # Logout
 dl.logout()
+```
+
+### 3. Headless Authentication
+
+```python
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access your API key securely
+api_key = os.getenv('DTLPY_API_KEY')
+
+# Initialize Dataloop with the API key
+dl.login_api_key(api_key=api_key)
+```
+
+```python
+# Using email/password (not recommended for production)
+# dl.login_m2m(email='your-email@company.com', 
+#              password=os.environ['DTLPY_PASSWORD'])
 ```
 
 ## Project Management Mastery 🏗️
@@ -68,11 +84,29 @@ dl.logout()
 ### 1. Creating Your First Project
 
 ```python
-# Create a new project
-project = dl.projects.create(project_name='My-Awesome-Project')
+# ============================================================================
+# Project  Setup
+# ============================================================================
+# Create your project(or get if they already exist)
+#set your project name here
+project_name = "My-Awesome-Project-2"
+try:
+    # Try to get existing project
+    project = dl.projects.get(project_name=project_name)
+    print(f"Project '{project_name}' already exists")
+except Exception:
+    # Create project if it doesn't exist
+    project = dl.projects.create(project_name=project_name)
+    print(f"Created project '{project_name}'")
+```
 
+```python
 # Get existing project
-project = dl.projects.get(project_name='My-Awesome-Project')
+project = dl.projects.get(project_name=project_name)
+
+project.print()
+
+project.open_in_web()
 ```
 
 ### 2. Project Configuration
@@ -80,8 +114,8 @@ project = dl.projects.get(project_name='My-Awesome-Project')
 ```python
 # Add project members
 project.add_member(
-    email='teammate@company.com',
-    role=dl.MemberRole.Developer
+    email='teammate@company2.com',
+    role=dl.MemberRole.DEVELOPER
 )
 ```
 
@@ -92,7 +126,6 @@ project.add_member(
 projects = dl.projects.list()
 for project in projects:
     print(f"Project: {project.name}")
-
 ```
 
 ## Dataset Organization 📊
@@ -100,12 +133,28 @@ for project in projects:
 ### 1. Creating Datasets
 
 ```python
-# Create a new dataset
-dataset = project.datasets.create(dataset_name='training-data')
+# ============================================================================
+# Datset  Setup
+# ============================================================================
+# Create your datset(or get if they already exist)
 
+#set your training and update dataset name 
+dataset_training_name = "training-data"
+
+try:
+    # Try to get existing dataset
+    dataset = project.datasets.get(dataset_name=dataset_training_name)
+    print(f"Dataset '{dataset_training_name}' already exists")
+except Exception:
+    # Create dataset if it doesn't exist
+    dataset = project.datasets.create(dataset_name=dataset_training_name)
+    print(f"Created dataset '{dataset_training_name}'")
+```
+
+```python
 # Clone an existing dataset
 cloned_dataset = dataset.clone(
-    clone_name='validation-data'
+    clone_name="validation-data"   
 )
 ```
 
@@ -116,11 +165,15 @@ cloned_dataset = dataset.clone(
 datasets = project.datasets.list()
 
 # Get dataset by name
-dataset = project.datasets.get(dataset_name='training-data')
+dataset = project.datasets.get(dataset_name=dataset_training_name)
 
 # Update dataset
-dataset.name = 'training-data-v1'
+dataset.name = "training-data-v1"
 dataset.update()
+```
+
+```python
+dataset.open_in_web()
 ```
 
 ## Team Collaboration Essentials 👥
@@ -131,13 +184,13 @@ dataset.update()
 # Add team member with role
 project.add_member(
     email='annotator@company.com',
-    role=dl.MemberRole.Annotator
+    role=dl.MemberRole.ANNOTATOR
 )
 
 # Update member role
 project.update_member(
     email='annotator@company.com',
-    role=dl.MemberRole.Developer
+    role=dl.MemberRole.DEVELOPER
 )
 ```
 
@@ -145,12 +198,12 @@ project.update_member(
 
 ```python
 # List project members
-members = project.members.list()
+members = project.list_members()
 for member in members:
     print(f"{member.email}: {member.role}")
 
 # Remove member
-project.remove_member(email='ex-teammate@company.com')
+project.remove_member(email='annotator@company.com')
 ```
 
 ## Best Practices 👑
@@ -162,6 +215,7 @@ project.remove_member(email='ex-teammate@company.com')
 - Tag resources appropriately
 
 ### 2. Security Practices
+
 ```python
 # Use environment variables
 api_key = os.environ.get('DTLPY_API_KEY')
@@ -172,6 +226,7 @@ if dl.token_expired():
 ```
 
 ### 3. Resource Management
+
 ```python
 # Clean up unused resources
 try:
@@ -186,30 +241,33 @@ finally:
 ### Common Issues:
 
 1. **Authentication Failures**
-   ```python
-   # Check token status
-   print(dl.token_expired())
+
+```python
+# Check token status
+print(dl.token_expired())
    
-   # Force re-authentication
-   dl.login_m2m(force=True)
-   ```
+# Force re-authentication
+dl.login_m2m(force=True, email="your_email", password="your_password")
+```
 
 2. **Project Access Issues**
-   ```python
-   # Verify project existence
-   try:
-       project = dl.projects.get(project_name='My-Project')
-   except dl.exceptions.NotFound:
-       print("Project not found!")
-   ```
+
+```python
+# Verify project existence
+try:
+    project = dl.projects.get(project_name='My-Project')
+except dl.exceptions.NotFound:
+    print("Project not found!")
+```
 
 3. **Dataset Operations**
-   ```python
-   # Handle dataset errors
-   try:
-       dataset.update(description='New description')
-   except dl.exceptions.Forbidden:
-       print("Insufficient permissions!")
-   ```
 
-Ready to start working with data? Let's move on to data management! 🚀 
+```python
+# Handle dataset errors
+try:
+    dataset.update(system_metadata='New description')
+except dl.exceptions.Forbidden:
+    print("Insufficient permissions!")
+```
+
+Ready to start working with data? Let's move on to data management! 🚀
