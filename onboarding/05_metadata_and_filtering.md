@@ -24,23 +24,14 @@ dl.login_api_key(api_key=api_key)
 #     dl.login()
 ```
 
-## Configuration Setup
+## Project and Dataset Setup
 
 ```python
-#TODO Please review the configuration and set your configuration setup
-# ============================================================================
-# Configuration
-project_name = "onboarding-project-1"  # Name of your Dataloop project
-# ============================================================================
-# Project and Dataset Names
-dataset_name = "onboarding-dataset-10"  # Name of your Dataloop dataset
-```
-
-```python
-# ============================================================================
-# Project and Dataset Setup
-# ============================================================================
 # Create your project and dataset (or get if they already exist)
+
+# Set your project and dataset names
+project_name = "onboarding-project-1"
+dataset_name = "onboarding-dataset-1"
 
 try:
     # Try to get existing project
