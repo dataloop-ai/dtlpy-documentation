@@ -2,6 +2,57 @@
 
 Learn how to create, manage, and organize annotations in Dataloop - your key to building high-quality training data.
 
+## Dataloop Login 🔐
+
+```python
+import dtlpy as dl
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access your API key securely
+api_key = os.getenv('DTLPY_API_KEY')
+
+print(f"API key: {api_key[:20]}...  ")
+
+# Initialize Dataloop with the API key
+dl.login_api_key(api_key=api_key)
+
+# if dl.token_expired():
+#     dl.login()
+```
+
+## Project and Dataset Setup
+
+```python
+# Create your project and dataset (or get if they already exist)
+
+# Set your project and dataset names
+project_name = "onboarding-project-1"
+dataset_name = "onboarding-dataset-1"
+
+try:
+    # Try to get existing project
+    project = dl.projects.get(project_name=project_name)
+    print(f"Project '{project_name}' already exists")
+except Exception:
+    project = dl.projects.create(project_name=project_name)
+    # Create project if it doesn't exist
+    print(f"Created project '{project_name}'")
+
+try:
+    # Try to get existing dataset
+    dataset = project.datasets.get(dataset_name=dataset_name)
+    print(f"Dataset '{dataset_name}' already exists")
+
+except Exception:
+    # Create dataset if it doesn't exist
+    dataset = project.datasets.create(dataset_name=dataset_name)
+    print(f"Created dataset '{dataset_name}'")
+```
+
 ## Annotation Basics 🎨
 
 ### 1. Creating Annotations
@@ -9,8 +60,11 @@ Learn how to create, manage, and organize annotations in Dataloop - your key to 
 ```python
 import dtlpy as dl
 
+item = dataset.items.list().items[0]
+item_id = item.id
+
 # Get your item
-item = dataset.items.get(item_id='your-item-id')
+item = dataset.items.get(item_id=item_id)
 
 # Create an annotation builder
 builder = item.annotations.builder()
@@ -31,6 +85,11 @@ builder.add(annotation_definition=dl.Classification(
 
 # Upload annotations
 item.annotations.upload(builder)
+```
+
+```python
+# explore the added annotations in your item
+item.open_in_web()
 ```
 
 ### 2. Annotation Types
@@ -113,8 +172,14 @@ car_annotations = item.annotations.list(filters=filters)
 ### 2. Updating Annotations
 
 ```python
+annotations.print()
+anottation_id = annotations[0].id   
+print(f"annotation id: {anottation_id} ")
+```
+
+```python
 # Get specific annotation
-annotation = item.annotations.get(annotation_id='annotation-id')
+annotation = item.annotations.get(annotation_id=anottation_id)
 
 # Update properties
 annotation.label = 'truck'
@@ -127,6 +192,14 @@ annotation.bottom = 250
 annotation.update()
 ```
 
+```python
+item.open_in_web()
+```
+
+```python
+dataset.items.list().print()
+```
+
 ### 3. Batch Operations
 
 ```python
@@ -135,9 +208,14 @@ filters = dl.Filters(resource=dl.FiltersResource.ANNOTATION)
 filters.add(field='label', values='car')
 item.annotations.delete(filters=filters)
 
+print(item_id)
+
+source_id = item_id
+
+target_id = '6a15976a4617583bfe5351e6' 
 # Copy annotations between items
-source_item = dataset.items.get(item_id='source-id')
-target_item = dataset.items.get(item_id='target-id')
+source_item = dataset.items.get(item_id=source_id)
+target_item = dataset.items.get(item_id=target_id)
 
 annotations = source_item.annotations.list()
 target_item.annotations.upload(annotations)
@@ -149,32 +227,47 @@ target_item.annotations.upload(annotations)
 
 ```python
 # Create an annotation task
+# Set your email
+email_addr = 'yigal.pinhasi@dell.com'
+# email = 'annotator@company.com'
 task = dataset.tasks.create(
     task_name='Annotate Cars',
-    assignee_ids=['annotator@company.com'],
+    assignee_ids=[email_addr],
     filters=dl.Filters(field='dir', values='/folder/to/annotate')
 )
 
 # Add specific items to task
 task.add_items(
-    item_ids=['item1-id', 'item2-id'],
-    assignee_ids=['annotator@company.com']
+    items=[source_item, target_item],
+    assignee_ids=[email_addr]
 )
+
+task_id = task.id
+```
+
+```python
+# Get task by ID
+task = project.tasks.get(task_id=task_id)
+```
+
+```python
+task.open_in_web()
 ```
 
 ### 2. Task Management
 
 ```python
-# Get task by ID
-task = dataset.tasks.get(task_id='task-id')
 
 # Update task status
-task.set_status(status='completed')
+task.set_status(status='completed', operation='create', item_ids=[source_id, target_id])
 
 # Get task items
-items = task.items.list()
-for item in items:
-    print(f"Item: {item.name}, Status: {item.status(assignment_id="", task_id="")}")
+items = task.get_items()
+# for item in items:
+#     print(f"Item: {item.name}, Status: {item.status(assignment_id="", task_id="")}")
+
+
+items.print()
 ```
 
 ## Quality Assurance 🔍
@@ -185,7 +278,7 @@ for item in items:
 # Create a review task
 review_task = dataset.tasks.create_qa_task(
     task=task, # Original task
-    assignee_ids=['reviewer@company.com'],
+    assignee_ids=[email_addr],
     filters=dl.Filters(field='annotated', values=True)
 )
 ```
@@ -249,6 +342,5 @@ def validate_annotation(annotation):
         print(f"Validation failed: {str(e)}")
         return False
 ```
-
 
 Ready to explore metadata and filtering? Let's move on to the next chapter! 🚀

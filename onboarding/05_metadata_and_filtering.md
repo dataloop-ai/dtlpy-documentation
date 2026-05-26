@@ -191,13 +191,13 @@ filters = dl.Filters()
 # Filter by filename
 filters.add(field='filename', values='*.jpg')
 
-# #TODO - fill filter dir 
+# set filter dir 
 filter_dir = "/my-folder/news/dogs2"
 # Filter by directory
 filters.add(field='dir', values=filter_dir)
 
-# # # Filter by created date
-# # #TODO - fill filter date
+#  Filter by created date
+# #set filter date
 filter_date = "2026-05-23"
 filters.add(field='createdAt', values=filter_date, operator=dl.FiltersOperations.GREATER_THAN)
 
@@ -217,19 +217,15 @@ filters = dl.Filters()
 # Exact match
 filters.add(field='metadata.user.location', values='New York')
 
-#YGP-TODO:  Cannot query on key 'metadata.user.tags' - no items contain the specified key, or the key is unsearchable
-# # Multiple values
-# filters.add(field='metadata.user.tags', values=['outdoor', 'daylight'], operator=dl.FiltersOperations.IN)
-
 # Larger than, smaller than
 filters.add(field='metadata.user.camera.settings.iso', 
            values=100,
            operator=dl.FiltersOperations.GREATER_THAN_OR_EQUAL)
 
-#YGP-TODO: BadRequest error received: ('400', "Cannot query on key 'metadata.user.camera' - no items contain the specified key, or the key is unsearchable"
-# filters.add(field='metadata.user.camera', 
-#            values=True,
-#            operator=dl.FiltersOperations.EXISTS)
+
+filters.add(field='metadata.user.photographer', 
+            values=True,
+            operator=dl.FiltersOperations.EXISTS)
 
 dataset.items.list(filters=filters).print()
 print_meta_data(filters)
@@ -245,21 +241,18 @@ print_meta_data()
 # Combining multiple filters
 filters = dl.Filters(resource=dl.FiltersResource.ITEM)
 
-# # # # AND operation (default)
+# AND operation (default)
 filters.add(field='metadata.user.status', values='reviewed')
 filters.add(field='metadata.user.batch', values='B-001')
 
 
-#YGP-TODO - this filter creeat an internal server error 
-# OR operation
-filters.add(field='metadata.user.tags', values=['outdoor', 'urgent'], operator=dl.FiltersOperations.OR)
-
-filters.add(field='metadata.user.status', values='reviewed')
-
-# # # # NOT EQUAL operation
+# NOT EQUAL operation
 filters.add(field='metadata.user.status', values='rejected', operator=dl.FiltersOperations.NOT_EQUAL)
 
 print(filters.prepare())
+
+dataset.items.list(filters=filters).print()
+print_meta_data(filters)
 ```
 
 ```python
