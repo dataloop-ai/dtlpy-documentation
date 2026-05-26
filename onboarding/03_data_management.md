@@ -332,12 +332,10 @@ def safe_upload(path):
 1. **Efficient Data Organization**
 
 ```python
-# Create organized folder structure
+# Create folders using make_dir
 folders = ['train', 'val', 'test']
-
-#YGP-TODO- doesnt work - need to futher investigate - I think we can removeteh cell 
 for folder in folders:
-    dataset.folders.create(folder_name=folder)
+    dataset.items.make_dir(directory=f'/{folder}')
 ```
 
 2. **Bulk Operations with Progress**
