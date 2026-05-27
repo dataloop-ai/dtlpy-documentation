@@ -122,7 +122,7 @@ print(cloned_ds_id)
 # dataset_ids = ["dataset-1-id", "dataset-2-id"]
 # project_ids = ["project-1-id", "project-2-id"]
 
-#YGP-TODO  datasets.merge failed with 500 inernal erro
+#YGP-ERROR: datasets.merge failed with 500 inernal erro
 dataset_merge = dl.datasets.merge(
     merge_name="my_merged_dataset",
     project_ids=project_ids,
