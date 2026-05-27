@@ -348,6 +348,24 @@ def upload_with_progress(files):
         dataset.items.upload(local_path=file)
 ```
 
+### Access the object metadata
+
+#### Dataset Metadata
+
+```python
+# if you want to access the dataset via API, you can use the following URL:
+# add dataset id to the end of the URL
+# https://gate.dataloop.ai/api/v1/datasets/{dataset_id}
+```
+
+#### Item Metadata
+
+```python
+# if you want to access the dataset via API, you can use the following URL:
+# add dataset id & item_id to the URL
+# https://gate.dataloop.ai/api/v1/datasets/{dataset_id}/items/{item_id}
+```
+
 ## Troubleshooting Guide 🔧
 
 ### Common Issues:
