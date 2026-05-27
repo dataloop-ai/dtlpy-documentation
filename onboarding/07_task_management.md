@@ -19,9 +19,6 @@ print(f"API key: {api_key[:20]}...  ")
 
 # Initialize Dataloop with the API key
 dl.login_api_key(api_key=api_key)
-
-# if dl.token_expired():
-#     dl.login()
 ```
 
 ## Project and Dataset Setup
@@ -30,7 +27,7 @@ dl.login_api_key(api_key=api_key)
 # Create your project and dataset (or get if they already exist)
 
 # Set your project and dataset names
-project_name = "My-Awesome-Project-2"
+project_name = "onboarding-project-1"
 dataset_name = "onboarding-dataset-1"
 
 try:

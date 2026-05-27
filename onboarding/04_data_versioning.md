@@ -20,10 +20,7 @@ api_key = os.getenv('DTLPY_API_KEY')
 print(f"API key: {api_key[:20]}...  ")
 
 # Initialize Dataloop with the API key
-# dl.login_api_key(api_key=api_key)
-
-if dl.token_expired():
-    dl.login()
+dl.login_api_key(api_key=api_key)
 ```
 
 ## Project and Dataset Setup
@@ -55,6 +52,15 @@ except Exception:
     print(f"Created dataset '{dataset_name}'")
 ```
 
+### Dataset Types
+
+We have three  types of datasets types:
+- Master: Original dataset that manages the actual binaries.
+
+- Clone: Contains pointers to original files, enabling management of virtual items that do not replicate the binaries of the underlying storage once cloned or copied. When you clone a dataset, you can decide whether the new copy will contain metadata and annotations created over the original.
+
+- Merge: Multiple cloned datasets can be merged into one, which enables multiple annotations to be merged onto the same item.
+
 ### 1. Check Your Dataset
 
 ```python
@@ -62,15 +68,19 @@ dataset_id = dataset.id
 dataset.items.list().print()
 ```
 
+```python
+dataset.open_in_web()
+```
+
 ### 2. Dataset Cloning
 
 ```python
 # Clone an entire dataset
-
 # Set your clone datset names
-dataset_cloned_name = 'dataset_v5'
-dataset_filter_cloned = 'dataset_v5_filtered'
-dataset.clone(clone_name=dataset_cloned_name,
+dataset_cloned_name = 'dataset_v1'
+dataset_filter_cloned_name = 'dataset_v1_filtered'
+
+dataset_cloned = dataset.clone(clone_name=dataset_cloned_name,
               filters=None,
               with_items_annotations=True,
               with_metadata=True,
@@ -78,13 +88,19 @@ dataset.clone(clone_name=dataset_cloned_name,
 
 # Create a filtered clone dataset 
 # Set the flter_dir to filter in files from  with coresponding dir value taken out of the items list
-flter_dir = '/dataset/folder/dogs2' 
+filter_dir = '/batch-upload/dogs2' 
 # Clone with filters
 filters = dl.Filters()
-filters.add(field='dir', values=flter_dir)
-dataset.clone(clone_name='dataset_filter_cloned',
+filters.add(field='dir', values=filter_dir)
+
+dataset_filter_cloned = dataset_cloned.clone(clone_name=dataset_filter_cloned_name,
               filters=filters,
               with_items_annotations=True)
+```
+
+```python
+dataset_cloned.items.list().print()
+dataset_filter_cloned.items.list(filters=filters).print()
 ```
 
 ## Dataset Management 📊
@@ -96,41 +112,38 @@ dataset.clone(clone_name='dataset_filter_cloned',
 project.datasets.list()
 ```
 
-```python
-# Explore your new datasets in DL Dashabord 
-cloned_dataset = project.datasets.get(dataset_name=dataset_cloned_name)
-filtered_dataset = project.datasets.get(dataset_name="filtered_dataset")
-
-#explore dataset in web
-cloned_dataset.open_in_web()
-filtered_dataset.open_in_web()
-```
-
-```python
-project_id = project.id
-cloned_ds_id = cloned_dataset.id
-
-print(project_id)
-print(cloned_ds_id)
-```
-
 ### 2. Merging Datasets
 
 ```python
-#set the following dataset and project IDs
-# Merge two datasets
-# dataset_ids = ["dataset-1-id", "dataset-2-id"]
-# project_ids = ["project-1-id", "project-2-id"]
+# Multiple cloned datasets can be merged into one, which enables multiple annotations to be merged onto the same item.
 
-#YGP-ERROR: datasets.merge failed with 500 inernal erro
-dataset_merge = dl.datasets.merge(
-    merge_name="my_merged_dataset",
+# Merge two cloned datasets
+dataset_ids = [dataset_cloned.id, dataset_filter_cloned.id]
+project_ids = [project.id]
+
+merged_dataset_name = "my_merged_dataset"
+
+dl.datasets.merge(
+    merge_name=merged_dataset_name,
     project_ids=project_ids,
     dataset_ids=dataset_ids,
     with_items_annotations=True,
     with_metadata=False,
     with_task_annotations_status=False
 )
+```
+
+```python
+#explore data
+merged_dataset = project.datasets.get(dataset_name=merged_dataset_name)
+
+dataset_cloned.items.list().print()
+dataset_filter_cloned.items.list().print()
+merged_dataset.items.list().print()
+```
+
+```python
+merged_dataset.open_in_web()
 ```
 
 ## Best Practices 👑
@@ -160,17 +173,17 @@ except dl.exceptions.NotFound:
 
 ## Pro Tips 💡
 
-### 1. Clone with Purpose
+1. **Clone with Purpose**
    - Always specify meaningful clone names
    - Include relevant metadata and annotations
    - Document the reason for cloning
 
-### 2. Merge with Care
+2. **Merge with Care**
    - Ensure datasets have compatible recipes
    - Verify project and dataset IDs
    - Test merged dataset integrity
 
-### 3. Version Control
+3. **Version Control**
    - Keep track of dataset versions
    - Document changes between versions
    - Maintain clear version naming conventions

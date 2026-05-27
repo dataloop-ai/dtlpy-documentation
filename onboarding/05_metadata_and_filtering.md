@@ -129,8 +129,8 @@ item.metadata['user']['status'] = 'reviewed'
 item.metadata['user']['last_modified'] = '2024-03-20'
 item = item.update()
 
-#set - fill filter dir 
-filter_dir = '/my-folder/news/dogs2'
+# Set - fill filter dir 
+filter_dir = '/my-folder/news/'
 
 # Batch update metadata
 filters = dl.Filters(field='dir', values=filter_dir)
@@ -192,7 +192,7 @@ filters = dl.Filters()
 filters.add(field='filename', values='*.jpg')
 
 # set filter dir 
-filter_dir = "/my-folder/news/dogs2"
+filter_dir = "/my-folder/news/"
 # Filter by directory
 filters.add(field='dir', values=filter_dir)
 
