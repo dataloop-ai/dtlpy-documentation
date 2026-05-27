@@ -217,15 +217,19 @@ filters = dl.Filters()
 # Exact match
 filters.add(field='metadata.user.location', values='New York')
 
+#YGP-ERROR:  Cannot query on key 'metadata.user.tags' - no items contain the specified key, or the key is unsearchable
+# # Multiple values
+# filters.add(field='metadata.user.tags', values=['outdoor', 'daylight'], operator=dl.FiltersOperations.IN)
+
 # Larger than, smaller than
 filters.add(field='metadata.user.camera.settings.iso', 
            values=100,
            operator=dl.FiltersOperations.GREATER_THAN_OR_EQUAL)
 
-
-filters.add(field='metadata.user.photographer', 
-            values=True,
-            operator=dl.FiltersOperations.EXISTS)
+#YGP-ERROR: BadRequest error received: ('400', "Cannot query on key 'metadata.user.camera' - no items contain the specified key, or the key is unsearchable"
+# filters.add(field='metadata.user.camera', 
+#            values=True,
+#            operator=dl.FiltersOperations.EXISTS)
 
 dataset.items.list(filters=filters).print()
 print_meta_data(filters)
