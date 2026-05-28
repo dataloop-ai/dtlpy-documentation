@@ -8,7 +8,12 @@ INDEX_MD = NOTEBOOKS_DIR / "notebooks.md"
 
 # Helper to get all .ipynb files recursively
 def find_notebooks(root):
-    return [p for p in root.rglob("*.ipynb") if not p.name.startswith(".")]
+    return [p for p in root.rglob("*.ipynb") if not p.name.startswith(".") and ".temp." not in p.name]
+
+
+def cleanup_temp_files(root):
+    for p in root.rglob("*.temp.ipynb"):
+        p.unlink(missing_ok=True)
 
 def clean_notebook(nb_path):
     """Remove cell IDs that cause nbconvert issues"""
@@ -36,6 +41,8 @@ def convert_notebook_to_md(nb_path):
         return md_path
     except subprocess.CalledProcessError as e:
         print(f"Failed to convert {nb_path}: {e}")
+        temp_path = nb_path.with_suffix(".temp.ipynb")
+        temp_path.unlink(missing_ok=True)
         return None
 
 # Helper to extract notebook title/description (from metadata or fallback)
@@ -58,12 +65,13 @@ def make_run_links(nb_rel_path):
 
 # Main script
 def main():
+    cleanup_temp_files(NOTEBOOKS_DIR)
     notebooks = find_notebooks(NOTEBOOKS_DIR)
     rows = []
     for nb_path in notebooks:
         md_path = convert_notebook_to_md(nb_path)
         nb_rel_path = nb_path.relative_to(NOTEBOOKS_DIR)
-        md_rel_path = md_path.relative_to(NOTEBOOKS_DIR) if md_path else None
+        md_rel_path = md_path.relative_to(NOTEBOOKS_DIR) if md_path and md_path.exists() else None
         title, desc = get_notebook_metadata(nb_path)
         run_links = make_run_links(nb_rel_path)
         if md_rel_path:
