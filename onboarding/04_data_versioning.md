@@ -54,12 +54,11 @@ except Exception:
 
 ### Dataset Types
 
-We have three  types of datasets types:
-- Master: Original dataset that manages the actual binaries.
+In this section, we will use all three dataset types.
 
-- Clone: Contains pointers to original files, enabling management of virtual items that do not replicate the binaries of the underlying storage once cloned or copied. When you clone a dataset, you can decide whether the new copy will contain metadata and annotations created over the original.
+please review them in the following link:
+https://docs.dataloop.ai/docs/datasets-overview#dataset-types
 
-- Merge: Multiple cloned datasets can be merged into one, which enables multiple annotations to be merged onto the same item.
 
 ### 1. Check Your Dataset
 
