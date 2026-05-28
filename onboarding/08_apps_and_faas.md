@@ -379,6 +379,7 @@ service.print()
 triggers = service.triggers.list()
 triggers.print()
 ```
+upload image to datset and see that is being executed by the service trigger 
 
 ```python
 # Execute function
