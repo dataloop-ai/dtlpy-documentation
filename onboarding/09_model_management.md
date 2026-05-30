@@ -111,25 +111,11 @@ model.update()
 print(model.configuration)
 ```
 
-### 3. Upload/Download Model Artifacts
+### 3. Model Cloning
 
 ```python
-# Upload
-model.artifacts.upload(
-    filepath='/path/to/weights.pth'
-)
-
-# Download
-model.artifacts.download(
-    local_path='/path/to/download'
-)
-```
-
-### 4. Model Cloning
-
-```python
-# Clone a model for fine-tuning
 model_cloned = model.clone(
+# Clone a model for fine-tuning
     model_name='my-model-v2',
     dataset=dataset,
     project_id=project.id,
@@ -139,6 +125,21 @@ model_cloned = model.clone(
 
 ```python
 project.models.list().print()
+```
+
+### 4. Upload/Download Model Artifacts
+
+```python
+# Upload
+model_cloned.artifacts.upload(
+    filepath='/path/to/weights.pth',
+    artifact_name='model_weights'
+)
+
+# Download
+model_cloned.artifacts.download(
+    local_path='/path/to/download'
+)
 ```
 
 ## Model Deployment 🌟
