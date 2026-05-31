@@ -1,6 +1,6 @@
-# Model Management: Your AI Model's Lifecycle 🤖
+# Pipelines and Automation: Building Smart Workflows 🔄
 
-Learn how to manage your machine learning models in Dataloop - from development to deployment and monitoring.
+Learn how to create and manage pipelines in Dataloop - your key to automating workflows and data processing.
 
 ## Dataloop Login 🔐
 
@@ -28,7 +28,6 @@ dl.login_api_key(api_key=api_key)
 
 # Set your project and dataset names
 project_name = "onboarding-project-1"
-dataset_name = "onboarding-dataset-1"
 
 try:
     # Try to get existing project
@@ -38,342 +37,231 @@ except Exception:
     project = dl.projects.create(project_name=project_name)
     # Create project if it doesn't exist
     print(f"Created project '{project_name}'")
+```
+
+## Getting Started with Pipelines 🚀
+
+### 1. Creating a Pipeline
+
+```python
+# Create a new pipeline
+pipeline = project.pipelines.create(name='My-First-Pipeline')
+
+# Print pipeline details
+print(pipeline)
+```
+
+### 2. Getting Existing Pipelines
+
+```python
+# Get pipeline by ID
+pipeline = project.pipelines.get(pipeline_id=pipeline.id)
+
+# List all pipelines in project
+project.pipelines.list()
+```
+
+### 3. Building Pipeline
+
+Learn how to construct a pipeline by adding nodes, connecting them with filters, and installing the pipeline to process PDF files into chunks.
+
+### Preparing the Pipeline Indgredients
+
+```python
+# Create datasets ─────────────────────────────────────────────
+dataset_pdf = project.datasets.create(dataset_name='pdf-source')
+dataset_pdf_chunk = project.datasets.create(dataset_name='pdf-chunks')
+```
+
+```python
+# Install RAG PDF Processor DPK ──────────────────────────────
+dpk = dl.dpks.get(dpk_name='rag-pdf-processor')
 
 try:
-    # Try to get existing dataset
-    dataset = project.datasets.get(dataset_name=dataset_name)
-    print(f"Dataset '{dataset_name}' already exists")
-
-except Exception:
-    # Create dataset if it doesn't exist
-    dataset = project.datasets.create(dataset_name=dataset_name)
-    print(f"Created dataset '{dataset_name}'")
-```
-
-### Dataset repopulate
-
-```python
-# Clear the dataset and repopulate it with new items without metadata attribution
-# You can skip or comment out this cell if it's not needed
-
-# Empty dataset - delete all dataset items
-for item in dataset.items.list().all():
-    item.delete()
-
-# Upload entire directory
-dataset.items.upload(
-    # Set the local folder path 
-    local_path='/path/to/folder',
-    remote_path='/batch-upload',
-)
-
-dataset.items.list().print()
-```
-
-## Getting Started with Models 🚀
-
-### 1. Basic Model Setup
-
-```python
-# Check if model is already installed on project
-model_name = "mobilenet"
-try:
-    model = project.models.get(model_name=model_name)
-except Exception:
-    model_dpk = dl.dpks.get(dpk_name="mobilenet")
-    print(f"App '{model_dpk.name}' not found, installing...")
-    model_app = project.apps.install(dpk=model_dpk)
-    model = project.models.get(model_name=model_name)
+    app = project.apps.install(dpk=dpk)
+    print(f"App installed: {app.name}")
+except Exception as e:
+    if 'already installed' in str(e):
+        print(f"App already installed, getting existing...")
+        app = project.apps.get(app_name=dpk.display_name)
+        print(f"App found: {app.name}")
+    else:
+        raise e
 ```
 
 ```python
-model.print()
-project.models.list().print()
+# Check Service is deployed
+import time
+ 
+# Wait for service to be deployed after app install
+print("Waiting for service to deploy...")
+for i in range(12):  # wait up to 60 seconds
+    services = project.services.list()
+    for s in services.all():
+        if 'pdf-processor' in s.name:
+            pdf_service = s
+            print(f"Service ready: {pdf_service.name}")
+            break
+    else:
+        print(f"Not ready yet... ({(i+1)*5}s)")
+        time.sleep(5)
+        continue
+    break
+else:
+    # If still not found, list all services to see what's available
+    print("Services available:")
+    project.services.list().print()
+
+service = project.services.get(service_name='pdf-processor-service')
+service.print()
 ```
 
-### 2. Model Configuration
-
 ```python
-model.configuration
+import dtlpy as dl
 
-print(model.configuration)
 
-# Set model configuration
-model.configuration = {
-    'weights_filename': 'weights.pth',
-    'input_size': 640,
-    'batch_size': 32,
-    'num_classes': 3,
-    'confidence_threshold': 0.5
-}
-model.update()
-
-print(model.configuration)
-```
-
-### 3. Model Cloning
-
-```python
-model_cloned = model.clone(
-# Clone a model for fine-tuning
-    model_name='my-model-v2',
-    dataset=dataset,
+# Build pipeline ──────────────────────────────────────────────
+# PDF dataset source
+dataset_node = dl.DatasetNode(
+    name='PDF Source',
     project_id=project.id,
-    labels=['car', 'truck', 'bus']  # Updated labels
-)
-```
-
-```python
-project.models.list().print()
-```
-
-### 4. Upload/Download Model Artifacts
-
-```python
-# Upload
-model_cloned.artifacts.upload(
-    filepath='/path/to/weights.pth',
-    artifact_name='model_weights'
+    dataset_id=dataset_pdf.id,
+    position=(1, 1)
 )
 
-# Download
-model_cloned.artifacts.download(
-    local_path='/path/to/download'
-)
-```
-
-## Model Deployment 🌟
-
-### 1. Basic Deployment
-
-```python
-# Deploy model with default configuration
-deployment = model.deploy()
-
-# Deploy with custom configuration
-deployment = model.deploy(
-    service_config={
-        'runtime': {
-            'gpu': True,
-            'numReplicas': 1,
-            'concurrency': 1,
-            'podType': dl.InstanceCatalog.GPU_T4_M
-        }
-    }
-)
-```
-
-### 2. Advanced Deployment Options
-
-```python
-# Deploy with auto-scaling
-deployment = model.deploy(
-    service_config={
-        'runtime': {
-            'podType': dl.InstanceCatalog.GPU_T4_S,
-            'autoscaler': {
-                'type': 'rabbitmq',
-                'minReplicas': 0,
-                'maxReplicas': 3,
-                'queueLength': 10
-            }
-        },
-        'executionTimeout': 60 * 10,  # 10 minutes
-        'initTimeout': 60 * 5  # 5 minutes
-    }
-)
-```
-
-```python
-project.services.list().print()
-```
-
-## Model Inference 🎯
-
-### 1. Single Item Prediction
-
-```python
-# Get an item
-item = dataset.items.list().items[0]
-
-# Run prediction
-prediction = model.predict(item_ids=[item.id])
-
-# Wait for results
-prediction.wait()
-prediction_status = prediction.status
-```
-
-```python
-# Explore tagged item in Dataloop Dashboard
-dataset.open_in_web()
-```
-
-### 2. Batch Predictions
-
-```python
-# Create filters for items
-filters = dl.Filters()
-
-# Set filter value
-filters.add(field='dir', values='/folder/to/predict')
-
-dataset.items.list(filters=filters).print()
-# Run batch prediction
-items = dataset.items.list(filters=filters)
-item_ids = [item.id for item in items.all()]
-
-batch_prediction = model.predict(
-    item_ids=item_ids,
-    dataset_id=dataset.id
-)
-
-batch_prediction_status = batch_prediction.wait()
-```
-
-```python
-# View prediction annotations results from annotations
-print("=== Prediction Results ===")
-
-
-# Get the items with their annotations
-for item_id in item_ids:
-    item = dataset.items.get(item_id=item_id)
-    print(f"\nItem: {item.name} (ID: {item.id})")
-    
-    # Get annotations for this item
-    annotations = list(item.annotations.list())
-    print(f"Number of annotations: {len(annotations)}")
-
-
-    for annotation in annotations:
-        print(f"Label: {annotation.label}, type:{annotation.type}")
-```
-
-```python
-# explore the dataset annotations in Dataloop platform
-dataset.open_in_web()
-```
-
-## Model Training 🎓
-
-### 1. Basic Training
-
-```python
-import datetime
-# Clone the base model for training
-model_cloned = model.clone(
-    model_name='my-model-v2',
-    dataset=dataset,
+# PDF to Chunks function
+function_node = dl.FunctionNode(
+    name='PDF to Chunks',
+    service=pdf_service,
+    function_name='run',
+    position=(2, 1),
     project_id=project.id
 )
-```
 
-```python
-# label the dataset 
-# Get unique labels from existing annotations
-labels = set()
-for item in dataset.items.list().all():
-    for annotation in item.annotations.list():
-        labels.add(annotation.label)
- 
-print("Existing labels:", labels)
- 
-# Add these labels to dataset recipe
-label_list = list(labels)
-
-# Check if model_cloned has a dataset
-print(f"Dataset ID: {model_cloned.dataset_id}")
-
-dataset.add_labels(label_list=label_list)
-
-# If None, set it and update
-model_cloned.dataset_id = dataset.id
-model_cloned.update()
-```
-
-```python
-# Split dataset into ML subsets
-filters = dl.Filters(field='type', values='file')
-
-# Randomly split dataset items into train/validation/test subsets
-# by tagging each item's system metadata (metadata.system.tags.train/validation/test)
-# This is required before training so the model knows which items to use for each phase
-dataset.split_ml_subsets(
-    items_query=filters,
-    percentages={'train': 80, 'validation': 20, 'test': 0}
+# Chunks output dataset
+output_node = dl.DatasetNode(
+    name='Chunks Output',
+    project_id=project.id,
+    dataset_id=dataset_pdf_chunk.id,
+    position=(3, 1)
 )
 
-# Create filters based on ML subset tags
-train_filters = dl.Filters(field="metadata.system.tags.train", values=True)
-validation_filters = dl.Filters(field="metadata.system.tags.validation", values=True)
- 
-# Add subsets to the model
-model_cloned.add_subset(subset_name="train", subset_filter=train_filters)
-model_cloned.add_subset(subset_name="validation", subset_filter=validation_filters)
- 
-model_cloned.configuration = {
-    'batch_size': 16,
-    'num_epochs': 5,
-    'lr': 0.0001,
-    'optimizer': 'adam'
-}
 
-# Update with system metadata
-model_cloned.update(system_metadata=True)
- 
-# Now train
-train_execution = model_cloned.train()
-print(f"Training started - Execution ID: {train_execution.id}")
+# Connect: source → function (PDF only) → output
+pdf_filter = dl.Filters()
+pdf_filter.add(field='metadata.system.mimetype', values='application/pdf')
 
-# Monitor training
-train_execution = train_execution.wait()
-print(f"Training status: {train_execution.latest_status['status']}")
+pipeline.nodes.add(node=dataset_node).connect(
+    node=function_node,
+    filters=pdf_filter
+).connect(
+    node=output_node
+)
+
+pipeline.update()
+pipeline.install()
+print(f"Pipeline ready: {pipeline.name} ({pipeline.id})")
 ```
 
-### 2. Advanced Training Options
+### You just created your first pipeline! 🎉
 
 ```python
-# Train with data splitting and validation
-train_filters = dl.Filters(field="metadata.system.tags.train", values=True)
-validation_filters = dl.Filters(field="metadata.system.tags.validation", values=True)
-
-cloned_model = model.clone(
-    model_name='cloned-model',
-    dataset=dataset,
-    train_filter=train_filters,
-    validation_filter=validation_filters,
-    configuration={
-        'epochs': 100,
-        'batch_size': 32,
-        'learning_rate': 0.001,
-        'early_stopping': {
-            'patience': 5,
-            'min_delta': 0.001
-        },
-        'augmentation': {
-            'horizontal_flip': True,
-            'rotation_range': 20,
-            'zoom_range': 0.2
-        }
-    }
-)
-train_execution = cloned_model.train()
-train_status = train_execution.wait()
-print(f"Training status: {train_status.latest_status['status']}")
+# explore the new pipeline in Web UI
+pipeline.open_in_web()
 ```
 
-### 3. Training Monitoring
+### 3. Pipeline Execution
 
-Log in to the Dataloop platform and check the training status and metrics.
+```python
+# ── 6. Upload a PDF and execute ────────────────────────────────────
+item = dataset_pdf.items.upload(
+    local_path=r'local_path_to_your_pdf',
+    remote_path='/'
+)
+print(f"Uploaded: {item.name} ({item.id})")
+
+pipeline_execution = pipeline.pipeline_executions.create(
+    pipeline_id=pipeline.id,
+    execution_input=[dl.FunctionIO(type=dl.PackageInputType.ITEM, value=item.id, name='item')]
+)
+
+print(f"Execution started: {pipeline_execution.id}")
+```
+
+## Pipeline Management 📋
+
+### 1. Basic Operations
+
+```python
+# Delete a pipeline
+is_deleted = project.pipelines.delete(pipeline_id='<pipeline_id>')
+
+# Open pipeline in web UI
+project.pipelines.open_in_web(pipeline_id='<pipeline_id>')
+
+# Pause pipeline
+project.pipelines.pause(pipeline='pipeline_entity')
+
+# Reset pipeline
+project.pipelines.reset(pipeline='pipeline_entity')
+```
+
+### 2. Pipeline Monitoring
+
+```python
+# Get pipeline statistics
+project.pipelines.stats(pipeline='pipeline_entity')
+
+# Get pipeline execution object
+pipeline_executions = pipeline.pipeline_executions.get(pipeline_id='pipeline_id')
+
+# List project pipeline executions
+pipeline.pipeline_executions.list()
+```
 
 ## Best Practices 👑
 
-### 1. Model Organization
+### 1. Pipeline Organization
+- Use clear, descriptive pipeline names
+- Document pipeline purpose and configuration
+- Keep track of pipeline versions
+- Monitor pipeline executions
 
-- Use clear naming conventions
-- Document model changes
-- Track experiment configurations
-- Maintain version history
+### 2. Error Prevention
 
-Ready to explore FaaS (Functions as a Service)? Let's move on to the next chapter! 🚀
+```python
+# Validate pipeline before operations
+try:
+    pipeline = project.pipelines.get(pipeline_id='pipeline_id')
+    # Proceed with operations
+except dl.exceptions.NotFound:
+    print("Pipeline not found!")
+```
+
+### 3. Resource Management
+- Monitor pipeline statistics regularly
+- Clean up unused pipelines
+- Document pipeline configurations
+- Test pipelines before production use
+
+## Pro Tips 💡
+
+1. **Pipeline Design**
+   - Plan pipeline flow before creation
+   - Use meaningful node names
+   - Document pipeline inputs and outputs
+   - Consider error handling at each step
+
+2. **Execution Management**
+   - Monitor pipeline executions
+   - Handle execution errors gracefully
+   - Keep track of execution statistics
+   - Document common issues and solutions
+
+3. **Pipeline Maintenance**
+   - Regularly check pipeline status
+   - Update pipeline configurations as needed
+   - Monitor resource usage
+   - Document pipeline changes
+
+Ready to explore integrations and APIs? Let's move on to the next chapter! 🚀
