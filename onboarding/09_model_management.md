@@ -8,6 +8,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 import dtlpy as dl
 from dotenv import load_dotenv
 import os
+import datetime
 
 # Load environment variables from .env file
 load_dotenv()
@@ -19,6 +20,7 @@ print(f"API key: {api_key[:20]}...  ")
 
 # Initialize Dataloop with the API key
 dl.login_api_key(api_key=api_key)
+
 ```
 
 ## Project and Dataset Setup
@@ -50,6 +52,10 @@ except Exception:
     print(f"Created dataset '{dataset_name}'")
 ```
 
+```python
+dataset.open_in_web()
+```
+
 ### Dataset repopulate
 
 ```python
@@ -70,12 +76,17 @@ dataset.items.upload(
 dataset.items.list().print()
 ```
 
+```python
+item = dataset.items.list().items[0]
+item.print()
+```
+
 ## Getting Started with Models 🚀
 
 ### 1. Basic Model Setup
 
 ```python
-# Check if model is already installed on project
+# Check if model is already installed on roject
 model_name = "mobilenet"
 try:
     model = project.models.get(model_name=model_name)
@@ -91,55 +102,53 @@ model.print()
 project.models.list().print()
 ```
 
-### 2. Model Configuration
-
 ```python
-model.configuration
-
-print(model.configuration)
-
-# Set model configuration
-model.configuration = {
-    'weights_filename': 'weights.pth',
-    'input_size': 640,
-    'batch_size': 32,
-    'num_classes': 3,
-    'confidence_threshold': 0.5
-}
-model.update()
-
-print(model.configuration)
+project.open_in_web()
 ```
 
-### 3. Model Cloning
+### 2. Model Cloning
 
 ```python
-model_cloned = model.clone(
 # Clone a model for fine-tuning
+model_cloned = model.clone(
     model_name='my-model-v2',
-    dataset=dataset,
     project_id=project.id,
+    dataset=dataset,
     labels=['car', 'truck', 'bus']  # Updated labels
 )
 ```
 
+### 3. Model Configuration
+
 ```python
-project.models.list().print()
+# model.configuration
+
+print(model_cloned.configuration)
+# # {'epochs': 100, 'batch_size': 32, 'learning_rate': 0.001, 'optimizer': 'adam'}
+
+model_cloned.configuration['input_size'] = 640 
+model_cloned.configuration['batch_size'] = 32
+model_cloned.update()
+
+print(model_cloned.configuration)
 ```
 
-### 4. Upload/Download Model Artifacts
+### 3. Upload/Download Model Artifacts
 
 ```python
 # Upload
 model_cloned.artifacts.upload(
     filepath='/path/to/weights.pth',
-    artifact_name='model_weights'
 )
 
 # Download
 model_cloned.artifacts.download(
-    local_path='/path/to/download'
+    local_path='/path/to/download/atrifacts'
 )
+```
+
+```python
+project.models.list().print()
 ```
 
 ## Model Deployment 🌟
@@ -223,6 +232,7 @@ dataset.items.list(filters=filters).print()
 items = dataset.items.list(filters=filters)
 item_ids = [item.id for item in items.all()]
 
+
 batch_prediction = model.predict(
     item_ids=item_ids,
     dataset_id=dataset.id
@@ -232,9 +242,8 @@ batch_prediction_status = batch_prediction.wait()
 ```
 
 ```python
-# View prediction annotations results from annotations
+# View prediction results from annotations
 print("=== Prediction Results ===")
-
 
 # Get the items with their annotations
 for item_id in item_ids:
@@ -250,27 +259,28 @@ for item_id in item_ids:
         print(f"Label: {annotation.label}, type:{annotation.type}")
 ```
 
-```python
-# explore the dataset annotations in Dataloop platform
-dataset.open_in_web()
-```
-
 ## Model Training 🎓
 
 ### 1. Basic Training
 
 ```python
-import datetime
-# Clone the base model for training
-model_cloned = model.clone(
-    model_name='my-model-v2',
-    dataset=dataset,
-    project_id=project.id
-)
-```
+# Training data preparation
+# The training service requires annotations without metadata.system.model.name to avoid training on model-generated predictions
+all_items = list(dataset.items.list().all())
 
-```python
-# label the dataset 
+for item in all_items:
+    annotations = list(item.annotations.list())
+    
+    for annotation in annotations:
+        # Remove model metadata if it exists
+        if annotation.metadata and 'system' in annotation.metadata:
+            if 'model' in annotation.metadata['system']:
+                print(f"Removing model metadata from annotation on {item.name}")
+                # Clear the model metadata
+                annotation.metadata['system'].pop('model', None)
+                annotation.update(True)
+
+# Dataset Labeling 
 # Get unique labels from existing annotations
 labels = set()
 for item in dataset.items.list().all():
@@ -282,23 +292,27 @@ print("Existing labels:", labels)
 # Add these labels to dataset recipe
 label_list = list(labels)
 
-# Check if model_cloned has a dataset
-print(f"Dataset ID: {model_cloned.dataset_id}")
-
 dataset.add_labels(label_list=label_list)
-
-# If None, set it and update
-model_cloned.dataset_id = dataset.id
-model_cloned.update()
 ```
 
 ```python
+
+# Clone the base model for training
+model_cloned = model.clone(
+    model_name='my-model-v2',
+    dataset=dataset,
+    project_id=project.id
+)
+
+model_cloned.labels = label_list
+# If None, set it and update
+model_cloned.dataset_id = dataset.id
+model_cloned.update()
+
 # Split dataset into ML subsets
 filters = dl.Filters(field='type', values='file')
 
 # Randomly split dataset items into train/validation/test subsets
-# by tagging each item's system metadata (metadata.system.tags.train/validation/test)
-# This is required before training so the model knows which items to use for each phase
 dataset.split_ml_subsets(
     items_query=filters,
     percentages={'train': 80, 'validation': 20, 'test': 0}
@@ -311,22 +325,26 @@ validation_filters = dl.Filters(field="metadata.system.tags.validation", values=
 # Add subsets to the model
 model_cloned.add_subset(subset_name="train", subset_filter=train_filters)
 model_cloned.add_subset(subset_name="validation", subset_filter=validation_filters)
+
+model.labels = labels
+
+print(model_cloned.configuration)
  
-model_cloned.configuration = {
-    'batch_size': 16,
-    'num_epochs': 5,
-    'lr': 0.0001,
-    'optimizer': 'adam'
-}
+model_cloned.configuration['batch_size'] = 16
+model_cloned.configuration['num_epochs'] = 3
+model_cloned.configuration['lr'] = 0.0001
+
+print(model_cloned.configuration)
 
 # Update with system metadata
 model_cloned.update(system_metadata=True)
  
 # Now train
+# Now train
 train_execution = model_cloned.train()
 print(f"Training started - Execution ID: {train_execution.id}")
 
-# Monitor training
+# Step 5: Monitor training
 train_execution = train_execution.wait()
 print(f"Training status: {train_execution.latest_status['status']}")
 ```
@@ -338,13 +356,14 @@ print(f"Training status: {train_execution.latest_status['status']}")
 train_filters = dl.Filters(field="metadata.system.tags.train", values=True)
 validation_filters = dl.Filters(field="metadata.system.tags.validation", values=True)
 
-cloned_model = model.clone(
+model_cloned_advanced = model.clone(
     model_name='cloned-model',
     dataset=dataset,
     train_filter=train_filters,
     validation_filter=validation_filters,
+    labels=label_list,
     configuration={
-        'epochs': 100,
+        'epochs': 5,
         'batch_size': 32,
         'learning_rate': 0.001,
         'early_stopping': {
@@ -358,7 +377,7 @@ cloned_model = model.clone(
         }
     }
 )
-train_execution = cloned_model.train()
+train_execution = model_cloned_advanced.train()
 train_status = train_execution.wait()
 print(f"Training status: {train_status.latest_status['status']}")
 ```
