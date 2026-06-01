@@ -2,7 +2,9 @@
 
 Master the essentials of managing your data in Dataloop - from uploading files to organizing your datasets efficiently.
 
-## Dataloop Login 🔐
+## Project Setup ⚙️
+
+### Dataloop Login 🔐
 
 ```python
 import dtlpy as dl
@@ -21,7 +23,7 @@ print(f"API key: {api_key[:20]}...  ")
 dl.login_api_key(api_key=api_key)
 ```
 
-## Project and Dataset Setup
+### Project and Dataset Setup
 
 ```python
 # Create your project and dataset (or get if they already exist)

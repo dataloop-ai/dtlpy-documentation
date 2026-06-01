@@ -2,7 +2,9 @@
 
 Master the art of organizing and finding your data using Dataloop's powerful metadata and filtering capabilities.
 
-## Dataloop Login 🔐
+## Project Setup ⚙️
+
+### Dataloop Login 🔐
 
 ```python
 import dtlpy as dl
@@ -19,12 +21,9 @@ print(f"API key: {api_key[:20]}...  ")
 
 # Initialize Dataloop with the API key
 dl.login_api_key(api_key=api_key)
-
-# if dl.token_expired():
-#     dl.login()
 ```
 
-## Project and Dataset Setup
+### Project and Dataset Setup
 
 ```python
 # Create your project and dataset (or get if they already exist)
@@ -259,7 +258,7 @@ print_meta_data(filters)
 dataset.open_in_web()   
 ```
 
-### 2. Pagination and Sorting
+### 4. Pagination and Sorting
 
 ```python
 # Get items with pagination
@@ -399,7 +398,7 @@ https://gate.dataloop.ai/api/v1/datasets/<dataset_id>/schema
 ```
 
 **Check for your key under:**
-- **schema keys** – fields that support filtering
-- **unsearchablePaths** – fields that cannot be used in filters (these will trigger the error)
+- **schema keys** – filtered keys
+- **unsearchablePaths** – unsearchable paths
 
 Ready to explore task management? Let's move on to the next chapter! 🚀

@@ -1,8 +1,9 @@
 # Task Management: Orchestrating Your Annotation Workflow 🎯
 
 Learn how to efficiently create, manage, and track annotation tasks in Dataloop - your key to organizing team workflows and ensuring quality annotations.
+## Project Setup ⚙️
 
-## Dataloop Login 🔐
+### Dataloop Login 🔐
 
 ```python
 import dtlpy as dl
@@ -21,7 +22,7 @@ print(f"API key: {api_key[:20]}...  ")
 dl.login_api_key(api_key=api_key)
 ```
 
-## Project and Dataset Setup
+### Project and Dataset Setup
 
 ```python
 # Create your project and dataset (or get if they already exist)
@@ -86,6 +87,7 @@ import datetime
 
 # Add annotators to your project e.g 'annotator1@dataloop.ai', 'annotator2@dataloop.ai'
 # Set your real email address in assignee_ids email 'my-email@dell.com'
+
 task_1 = dataset.tasks.create_labeling_task(
     name='my_distribution_task',
     assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai', 'my-email@dell.com'],

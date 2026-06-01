@@ -34,9 +34,9 @@ Before diving into the setup, here are some helpful resources:
 - Python: Version 3.12 
 - uv: Latest version recommended
 
-# Choose Your Package Manager
+## Choose Your Package Manager
 
-## Why Use uv? ⚡
+### Why Use uv? ⚡
 
 **uv** is a modern Python package manager written in Rust that provides significant performance improvements and better reliability compared to traditional pip. It's designed to be a drop-in replacement for pip while offering faster operations and more robust dependency resolution.
 
@@ -76,7 +76,7 @@ see https://www.datacamp.com/tutorial/python-uv for more information
 > uv --version
 > ```
 
-## 3. Setting Up a Virtual Environment
+### 3. Setting Up a Virtual Environment
 
 > 📌 **Run these commands in your terminal**:
 >
@@ -105,7 +105,7 @@ see https://www.datacamp.com/tutorial/python-uv for more information
 
 ### 1. Basic Installation
 
-### Select the correct Python interpreter
+**Select the correct Python interpreter**
 
 > 📌 **Important**: After activating the virtual environment, make sure to select the `.venv` kernel in your Jupyter notebook:
 > 1. Click on "Kernel" in the top menu
@@ -116,6 +116,8 @@ see https://www.datacamp.com/tutorial/python-uv for more information
 > There are two ways to add Python packages to your active `.venv`:
 >
 > **Option 1: Install package for active venv on terminal**
+
+Open terminal and run:
 > ```bash
 > # Activate the virtual environment first
 > .venv\Scripts\activate  # Windows
@@ -167,10 +169,6 @@ print(dl.__version__)
 ```
 1.123.3
 ```
-
-## Environment Configuration ⚙️
-
-### 1. Setting Up Environment Variables
 
 ## Best Practices & Tips 👑
 

@@ -2,9 +2,9 @@
 
 Learn how to track, manage, and restore different versions of your datasets in Dataloop - your key to maintaining data lineage and reproducibility.
 
-## Getting Started with Versioning 🌟
+## Project Setup ⚙️
 
-## Dataloop Login 🔐
+### Dataloop Login 🔐
 
 ```python
 import dtlpy as dl
@@ -23,7 +23,7 @@ print(f"API key: {api_key[:20]}...  ")
 dl.login_api_key(api_key=api_key)
 ```
 
-## Project and Dataset Setup
+### Project and Dataset Setup
 
 ```python
 # Create your project and dataset (or get if they already exist)
@@ -51,14 +51,11 @@ except Exception:
     dataset = project.datasets.create(dataset_name=dataset_name)
     print(f"Created dataset '{dataset_name}'")
 ```
+## Getting Started with Versioning 🌟
 
-### Dataset Types
-
-In this section, we will use all three dataset types.
-
-please review them in the following link:
-https://docs.dataloop.ai/docs/datasets-overview#dataset-types
-
+> This section will use all three dataset types.
+> Please review them in the following link:
+> [Dataset Types Overview](https://docs.dataloop.ai/docs/datasets-overview#dataset-types)
 
 ### 1. Check Your Dataset
 

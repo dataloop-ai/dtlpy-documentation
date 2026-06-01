@@ -2,7 +2,9 @@
 
 Learn how to create, deploy, and manage serverless functions in Dataloop - your key to automating workflows and extending platform capabilities.
 
-## Dataloop login
+## Project Setup ⚙️
+
+### Dataloop login
 
 ```python
 import dtlpy as dl
@@ -21,7 +23,7 @@ print(f"API key: {api_key[:20]}...  ")
 dl.login_api_key(api_key=api_key)
 ```
 
-## Project and Dataset setup
+### Project and Dataset setup
 
 ```python
 # Create your project and dataset (or get if they already exist)
@@ -86,11 +88,10 @@ project.open_in_web()
 service.open_in_web()      
 ```
 
-Congratulations, you just created your first service!<br>
-<br>
-For more service info see:<br>
-<br>
-https://docs.dataloop.ai/docs/services?highlight=services
+Congratulations, you just created your first service 🎉
+
+For more service info see: [Services Documentation](https://docs.dataloop.ai/docs/services?highlight=services)
+
 
 ```python
 service.print()
@@ -104,7 +105,7 @@ dataset.items.list().print()
 ```python
 # The service is deployed but not running automatically. It's a function waiting to be triggered.
 # To execute it manually on a specific item:
-item_id = '6a182b313077fa6e8db329e4'
+item_id = 'item_id'
 
 service.print()
 execution = service.execute(
@@ -121,16 +122,7 @@ service.open_in_web()
 
 ## DPK Manifest
 
-### DPK Structure and Component
-
-A DPK (Dataloop Package)is a self-contained package that includes:
-
-Your Python code (modules, classes, functions)
-A manifest file (dataloop.json) defining:
-- Module names and entry points
-- Function definitions (inputs, outputs)
-- Service configurations (runtime, scaling)
-- Triggers, panels, pipelines, etc.
+A DPK (Dataloop Package)is a self-contained package 
 
 ### 1. Basic Function Creation (DPK manifest)
 

@@ -2,7 +2,9 @@
 
 Learn how to create, manage, and organize annotations in Dataloop - your key to building high-quality training data.
 
-## Dataloop Login 🔐
+## Project Setup ⚙️
+
+### Dataloop Login 🔐
 
 ```python
 import dtlpy as dl
@@ -19,12 +21,9 @@ print(f"API key: {api_key[:20]}...  ")
 
 # Initialize Dataloop with the API key
 dl.login_api_key(api_key=api_key)
-
-# if dl.token_expired():
-#     dl.login()
 ```
 
-## Project and Dataset Setup
+### Project and Dataset Setup
 
 ```python
 # Create your project and dataset (or get if they already exist)

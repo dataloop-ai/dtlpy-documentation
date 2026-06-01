@@ -2,7 +2,9 @@
 
 Learn how to create and manage pipelines in Dataloop - your key to automating workflows and data processing.
 
-## Dataloop Login 🔐
+## Project Setup ⚙️
+
+### Dataloop Login 🔐
 
 ```python
 import dtlpy as dl
@@ -20,8 +22,7 @@ print(f"API key: {api_key[:20]}...  ")
 # Initialize Dataloop with the API key
 dl.login_api_key(api_key=api_key)
 ```
-
-## Project and Dataset Setup
+### Project and Dataset Setup
 
 ```python
 # Create your project and dataset (or get if they already exist)
@@ -39,6 +40,10 @@ except Exception:
     print(f"Created project '{project_name}'")
 ```
 
+## Getting Started with Pipelines 🚀
+
+Build the **`rag-pdf-processor`** pipeline programmatically using the Dataloop SDK.
+
 ## Pipeline Flow
 ```
 [Source Dataset (ds-source)]  →  [PDF to Chunks]  →  [Chunks Dataset (ds-chunk)]
@@ -50,12 +55,7 @@ except Exception:
 | PDF to Chunks | Custom (RAG PDF Processor) | Splits PDFs into text chunks |
 | Chunks Dataset | Storage | Stores the generated chunk items |
 
-
-## Getting Started with Pipelines 🚀
-
-### RAG PDF Pipeline 🔄
-
-Build the **`rag-pdf-pocessor`** pipeline programmatically using the Dataloop SDK.
+## Building the Pipeline 🔨
 
 ### 1. Creating a Pipeline
 
@@ -81,7 +81,7 @@ project.pipelines.list()
 
 Learn how to construct a pipeline by adding nodes, connecting them with filters, and installing the pipeline to process PDF files into chunks.
 
-### Preparing the Pipeline Indgredients
+#### 1. Preparing the Pipeline Ingredients
 
 ```python
 # Create datasets ─────────────────────────────────────────────
@@ -134,7 +134,7 @@ else:
 
 ```
 
-### Pipeline Construction
+#### 2. Pipeline Construction
 
 ```python
 import dtlpy as dl
@@ -183,17 +183,18 @@ pipeline.install()
 print(f"Pipeline ready: {pipeline.name} ({pipeline.id})")
 ```
 
-### You just created your first pipeline! 🎉
+#### 3. You just created your first pipeline! 🎉
 
 ```python
 # explore the new pipeline in Web UI
 pipeline.open_in_web()
 ```
 
-### 3. Pipeline Execution
+### 4. Pipeline Execution
 
 ```python
-# ── 6. Upload a PDF and execute ────────────────────────────────────
+# Upload a PDF and execute ────────────────────────────────────
+
 item = dataset_pdf.items.upload(
     local_path=r'local_path_to_your_pdf',
     remote_path='/'

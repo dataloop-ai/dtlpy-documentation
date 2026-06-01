@@ -2,7 +2,9 @@
 
 Learn how to manage your machine learning models in Dataloop - from development to deployment and monitoring.
 
-## Dataloop Login 🔐
+## Project Setup ⚙️
+
+### Dataloop Login 🔐
 
 ```python
 import dtlpy as dl
@@ -23,7 +25,7 @@ dl.login_api_key(api_key=api_key)
 
 ```
 
-## Project and Dataset Setup
+### Project and Dataset Setup
 
 ```python
 # Create your project and dataset (or get if they already exist)
@@ -56,7 +58,7 @@ except Exception:
 dataset.open_in_web()
 ```
 
-### Dataset repopulate
+### Repopulating the Dataset
 
 ```python
 # Clear the dataset and repopulate it with new items without metadata attribution
@@ -340,11 +342,10 @@ print(model_cloned.configuration)
 model_cloned.update(system_metadata=True)
  
 # Now train
-# Now train
 train_execution = model_cloned.train()
 print(f"Training started - Execution ID: {train_execution.id}")
 
-# Step 5: Monitor training
+# Monitor training
 train_execution = train_execution.wait()
 print(f"Training status: {train_execution.latest_status['status']}")
 ```
