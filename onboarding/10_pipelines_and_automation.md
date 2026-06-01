@@ -105,6 +105,35 @@ except Exception as e:
         raise e
 ```
 
+```python
+# After installing the app, find the PDF processor service in the project.
+# DPK services may be deployed with a different name than the original project.
+
+pdf_service = None
+
+# Try by exact name first
+try:
+    pdf_service = project.services.get(service_name='pdf-processor-service')
+    print(f"Service found: {pdf_service.name} ({pdf_service.id})")
+except Exception:
+    # Search all project services by package name
+    print("Searching project services...")
+    for svc in project.services.list().items:
+        print(f"  - {svc.name}  (package: {svc.package_name})")
+        if svc.package_name == 'rag-pdf-processor':
+            pdf_service = svc
+
+if pdf_service:
+    print(f"\nUsing service: {pdf_service.name} ({pdf_service.id})")
+else:
+    raise Exception(
+        "PDF processor service not found in project.\n"
+        "The app installed but did not deploy its service automatically.\n"
+        "Go to the project in the Web UI → Apps → RAG PDF Processor → and check its services."
+    )
+
+```
+
 ### Pipeline Construction
 
 ```python
