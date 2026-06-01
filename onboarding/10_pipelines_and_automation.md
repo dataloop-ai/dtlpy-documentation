@@ -39,7 +39,23 @@ except Exception:
     print(f"Created project '{project_name}'")
 ```
 
+## Pipeline Flow
+```
+[Source Dataset (ds-source)]  →  [PDF to Chunks]  →  [Chunks Dataset (ds-chunk)]
+```
+
+| Node | Type | Description |
+|------|------|-------------|
+| Source Dataset | Storage | Reads PDF items from the source dataset |
+| PDF to Chunks | Custom (RAG PDF Processor) | Splits PDFs into text chunks |
+| Chunks Dataset | Storage | Stores the generated chunk items |
+
+
 ## Getting Started with Pipelines 🚀
+
+### RAG PDF Pipeline 🔄
+
+Build the **`rag-pdf-pocessor`** pipeline programmatically using the Dataloop SDK.
 
 ### 1. Creating a Pipeline
 
