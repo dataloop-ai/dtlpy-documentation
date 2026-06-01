@@ -376,4 +376,34 @@ def safe_metadata_update(item, updates):
         return None
 ```
 
+### 4. Filter Error Troubleshooting
+
+```python
+# Filter by metadata fields
+filters = dl.Filters()
+filters.add(field='metadata.user.camera', 
+           values=True,
+           operator=dl.FiltersOperations.EXISTS)
+
+dataset.items.list(filters=filters).print()
+```
+
+#### Troubleshooting Filter Error
+
+If you encounter this error:
+```
+Cannot query on key 'your-key' - no items contain the specified key, or the key is unsearchable
+```
+
+This indicates that the key you're using in your filter is either not valid or cannot be queried. Since the dataset schema defines all filterable keys, use it to verify your filter:
+
+**Open the dataset schema endpoint:**
+```
+https://gate.dataloop.ai/api/v1/datasets/<dataset_id>/schema
+```
+
+**Check for your key under:**
+- **schema keys** – fields that support filtering
+- **unsearchablePaths** – fields that cannot be used in filters (these will trigger the error)
+
 Ready to explore task management? Let's move on to the next chapter! 🚀
