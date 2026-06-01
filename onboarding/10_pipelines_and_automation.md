@@ -89,32 +89,7 @@ except Exception as e:
         raise e
 ```
 
-```python
-# Check Service is deployed
-import time
- 
-# Wait for service to be deployed after app install
-print("Waiting for service to deploy...")
-for i in range(12):  # wait up to 60 seconds
-    services = project.services.list()
-    for s in services.all():
-        if 'pdf-processor' in s.name:
-            pdf_service = s
-            print(f"Service ready: {pdf_service.name}")
-            break
-    else:
-        print(f"Not ready yet... ({(i+1)*5}s)")
-        time.sleep(5)
-        continue
-    break
-else:
-    # If still not found, list all services to see what's available
-    print("Services available:")
-    project.services.list().print()
-
-service = project.services.get(service_name='pdf-processor-service')
-service.print()
-```
+### Pipeline Construction
 
 ```python
 import dtlpy as dl
