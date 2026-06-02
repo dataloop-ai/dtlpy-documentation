@@ -73,23 +73,15 @@ api_key = os.getenv('DTLPY_API_KEY')
 dl.login_api_key(api_key=api_key)
 ```
 
-```python
-# Using email/password (not recommended for production)
-# dl.login_m2m(email='your-email@company.com', 
-#              password=os.environ['DTLPY_PASSWORD'])
-```
-
 ## Project Management Mastery 🏗️
 
 ### 1. Creating Your First Project
 
 ```python
-# ============================================================================
 # Project  Setup
-# ============================================================================
-# Create your project(or get if they already exist)
-#set your project name here
-project_name = "My-Awesome-Project-2"
+
+# Set your project name here
+project_name = "My-Awesome-Project"
 try:
     # Try to get existing project
     project = dl.projects.get(project_name=project_name)
@@ -98,15 +90,6 @@ except Exception:
     # Create project if it doesn't exist
     project = dl.projects.create(project_name=project_name)
     print(f"Created project '{project_name}'")
-```
-
-```python
-# Get existing project
-project = dl.projects.get(project_name=project_name)
-
-project.print()
-
-project.open_in_web()
 ```
 
 ### 2. Project Configuration
@@ -128,17 +111,30 @@ for project in projects:
     print(f"Project: {project.name}")
 ```
 
+
+### 4. Project Exploration
+
+> #### open_in_web() 🌐
+>
+> The `open_in_web()` method launches the Dataloop web platform in your default browser, providing direct access to view and manage your project resources from the SDK.
+
+
+```python
+# Print project details
+project.print()
+
+# Open project in Dataloop platform and explore it
+project.open_in_web()
+```
+
 ## Dataset Organization 📊
 
 ### 1. Creating Datasets
 
 ```python
-# ============================================================================
-# Datset  Setup
-# ============================================================================
-# Create your datset(or get if they already exist)
+# Dataset Setup
 
-#set your training and update dataset name 
+# Set your training dataset name 
 dataset_training_name = "training-data"
 
 try:
@@ -173,6 +169,7 @@ dataset.update()
 ```
 
 ```python
+# Explore dataset in Dataloop platform
 dataset.open_in_web()
 ```
 

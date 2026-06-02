@@ -26,11 +26,9 @@ dl.login_api_key(api_key=api_key)
 ### Project and Dataset Setup
 
 ```python
-# Create your project and dataset (or get if they already exist)
-
 # Set your project and dataset names
-project_name = "onboarding-project-1"
-dataset_name = "onboarding-dataset-1"
+project_name = "onboarding-project"
+dataset_name = "onboarding-dataset"
 
 try:
     # Try to get existing project
@@ -57,6 +55,7 @@ except Exception:
 ### 1. Adding Metadata
 
 ```python
+# Helper function to print metadata
 def print_meta_data(filters=None):
     items = list(dataset.items.list(filters=filters).all())
     for item in items:
@@ -64,13 +63,14 @@ def print_meta_data(filters=None):
 ```
 
 ```python
-# print datset items
+# Print dataset items details
 dataset.items.list().print()
+# Print dataset items metadata
 print_meta_data()
 ```
 
 ```python
-#get first item id 
+# Get first item id 
 item = dataset.items.list().items[0]
 item_id = item.id
 ```
@@ -78,7 +78,7 @@ item_id = item.id
 ```python
 import dtlpy as dl
 
-# Add metadata to an item
+# Add metadata to the first item
 item = dataset.items.get(item_id=item_id)
 item.metadata['user'] = {
     'photographer': 'John Doe',
@@ -99,7 +99,7 @@ print(item.metadata['user'])
 ```
 
 ```python
-#set the item_id from the list above
+# Set the item_id from the list above
 local_image_path = '/path/to/image.jpg'
 
 # Add metadata during upload
@@ -127,12 +127,9 @@ dataset.items.list().print()
 item.metadata['user']['status'] = 'reviewed'
 item.metadata['user']['last_modified'] = '2024-03-20'
 item = item.update()
-
-# Set - fill filter dir 
-filter_dir = '/my-folder/news/'
-
-# Batch update metadata
-filters = dl.Filters(field='dir', values=filter_dir)
+ 
+# Batch update metadata, set filter dir values
+filters = dl.Filters(field='dir', values='/my-folder/news/')
 dataset.items.update(
     filters=filters,
     update_values={
@@ -190,15 +187,12 @@ filters = dl.Filters()
 # Filter by filename
 filters.add(field='filename', values='*.jpg')
 
-# set filter dir 
-filter_dir = "/my-folder/news/"
-# Filter by directory
-filters.add(field='dir', values=filter_dir)
 
-#  Filter by created date
-# #set filter date
-filter_date = "2026-05-23"
-filters.add(field='createdAt', values=filter_date, operator=dl.FiltersOperations.GREATER_THAN)
+# Filter by directory, set filter dir values
+filters.add(field='dir', values='/my-folder/news/')
+
+# filter by created date, set filter date value
+filters.add(field='createdAt', values='2026-05-23' , operator=dl.FiltersOperations.GREATER_THAN)
 
 dataset.items.list(filters=filters).print()
 ```
@@ -216,9 +210,8 @@ filters = dl.Filters()
 # Exact match
 filters.add(field='metadata.user.location', values='New York')
 
-# YGP-ERROR:  Cannot query on key 'metadata.user.tags' - no items contain the specified key, or the key is unsearchable
+# Error:  Cannot query on key 'metadata.user.tags' - no items contain the specified key, or the key is unsearchable
 # error on filtering an array field
-# Multiple values
 # filters.add(field='metadata.user.tags', values=['outdoor', 'daylight'], operator=dl.FiltersOperations.IN)
 
 # Larger than, smaller than

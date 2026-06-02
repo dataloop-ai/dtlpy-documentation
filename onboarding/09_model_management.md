@@ -28,11 +28,9 @@ dl.login_api_key(api_key=api_key)
 ### Project and Dataset Setup
 
 ```python
-# Create your project and dataset (or get if they already exist)
-
 # Set your project and dataset names
-project_name = "onboarding-project-1"
-dataset_name = "onboarding-dataset-1"
+project_name = "onboarding-project"
+dataset_name = "onboarding-dataset"
 
 try:
     # Try to get existing project
@@ -124,14 +122,11 @@ model_cloned = model.clone(
 
 ```python
 # model.configuration
-
-print(model_cloned.configuration)
-# # {'epochs': 100, 'batch_size': 32, 'learning_rate': 0.001, 'optimizer': 'adam'}
-
 model_cloned.configuration['input_size'] = 640 
 model_cloned.configuration['batch_size'] = 32
 model_cloned.update()
 
+# see model configuration after update
 print(model_cloned.configuration)
 ```
 

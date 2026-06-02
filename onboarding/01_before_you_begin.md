@@ -40,7 +40,7 @@ Before diving into the setup, here are some helpful resources:
 
 **uv** is a modern Python package manager written in Rust that provides significant performance improvements and better reliability compared to traditional pip. It's designed to be a drop-in replacement for pip while offering faster operations and more robust dependency resolution.
 
-see https://www.datacamp.com/tutorial/python-uv for more information
+See https://www.datacamp.com/tutorial/python-uv for more information
 
 ## Python Environment Setup 🐍
 
@@ -51,8 +51,6 @@ see https://www.datacamp.com/tutorial/python-uv for more information
 > ```bash
 > # Check if Python is installed
 > python --version
-> # or
-> python3 --version
 >
 > # If not installed, download from:
 > # https://www.python.org/downloads/
@@ -95,7 +93,7 @@ see https://www.datacamp.com/tutorial/python-uv for more information
 > .venv\Scripts\activate  
 >
 > # On macOS/Linux:
-> source .venv/bin/activate
+># source .venv/bin/activate
 >
 > # from activated venv - install ipykernel for Jupyter notebook support:
 > uv add ipykernel
@@ -105,8 +103,8 @@ see https://www.datacamp.com/tutorial/python-uv for more information
 
 ### 1. Basic Installation
 
-**Select the correct Python interpreter**
-
+> **Select the correct Python interpreter**
+>
 > 📌 **Important**: After activating the virtual environment, make sure to select the `.venv` kernel in your Jupyter notebook:
 > 1. Click on "Kernel" in the top menu
 > 2. Select "Change kernel"
@@ -117,8 +115,10 @@ see https://www.datacamp.com/tutorial/python-uv for more information
 >
 > **Option 1: Install package for active venv on terminal**
 
-Open terminal and run:
+
 > ```bash
+> Open terminal and run:
+>
 > # Activate the virtual environment first
 > .venv\Scripts\activate  # Windows
 > # or
@@ -130,8 +130,8 @@ Open terminal and run:
 > # Verify installation
 > uv pip show dtlpy
 > ```
-
-**Option 2: Run directly from Jupyter notebook**
+>
+> **Option 2: Run directly from Jupyter notebook**
 
 ```python
 # Install the Dataloop SDK
@@ -139,17 +139,6 @@ Open terminal and run:
 
 # Verify installation
 !uv pip show dtlpy
-```
-
-```
-Resolved 89 packages in 14ms
-Checked 82 packages in 412ms
-Name: dtlpy
-Version: 1.123.3
-Location: c:\Users\Yigal_Pinhasi\Dev\dataloop_proj\dtlpy-documentation\.venv\Lib\site-packages
-Requires: aiohttp, attrs, certifi, dictdiffer, diskcache, dtlpymetrics, filelock, fuzzyfinder, inquirer, jinja2, numpy, pandas, pathspec, pillow, prompt-toolkit, pyjwt, pymongo, redis, requests, requests-toolbelt, tabulate, tqdm, urllib3, validators, webvtt-py
-Required-by: dtlpymetrics
-Using Python 3.11.15 environment at: c:\Users\Yigal_Pinhasi\Dev\dataloop_proj\dtlpy-documentation\.venv
 ```
 
 ### 2. Validation
@@ -160,40 +149,36 @@ import dtlpy as dl
 print(dl.__version__)
 ```
 
-```python
-# Test your installation
-import dtlpy as dl
-print(dl.__version__)
-```
-
-```
-1.123.3
-```
-
 ## Best Practices & Tips 👑
+### 1. Create API Keys 🔑
 
-### 1. Environment Management
+> **What is an API Key?**
+>
+> An API key is used to authenticate and authorize your access to the Dataloop platform.
+>
+> **How to Create an API Key:**
+> 1. Navigate to your project dashboard
+> 2. Go to the **API Keys** tab
+> 3. Click "Create New Key"
+> 4. Store it securely in a `.env` file to avoid exposing sensitive information
+
+### 2. Environment Management
 
 Use `python-dotenv` and `.env` files to load the API key:
 
-🔒 Best Practices for .env Files:
-1. Create a .env file in your project root: `DTLPY_API_KEY=your-api-key-here`
-2. Add .env to your .gitignore file to prevent committing sensitive data
-3. Create a .env.example file with dummy values as a template
-4. Never commit real credentials to version control
-5. Use strong, unique API keys
-6. Regularly rotate your API keys
+> 🔒 Best Practices for .env Files:
+> 1. Create a .env file in your project root: `DTLPY_API_KEY=your-api-key-here`
+> 2. Add .env to your .gitignore file to prevent committing sensitive data
+> 3. Create a .env.example file with dummy values as a template
+> 4. Never commit real credentials to version control
+> 5. Use strong, unique API keys
+> 6. Regularly rotate your API keys
 
 📚 Learn more about environment variable best practices and python dotenv [here](https://github.com/theskumar/python-dotenv)
 
 ```python
 # Install python-dotenv
 !uv add python-dotenv
-```
-
-```
-Resolved 89 packages in 3ms
-Checked 82 packages in 26ms
 ```
 
 ```python
@@ -210,7 +195,7 @@ api_key = os.getenv('DTLPY_API_KEY')
 dl.login_api_key(api_key=api_key)
 ```
 
-### 2. Security Best Practices
+### 3. Security Best Practices
 
 ```python
 # DON'T: Hardcode credentials
@@ -224,7 +209,7 @@ load_dotenv()
 api_key = os.getenv('DTLPY_API_KEY')
 ```
 
-### 3. Installation Troubleshooting
+### 4 Installation Troubleshooting
 
 Common issues and solutions:
 
@@ -239,19 +224,15 @@ uv add --trusted-host pypi.org --trusted-host files.pythonhosted.org dtlpy
 # Temporary fix using uv
 !uv add --trusted-host pypi.org --trusted-host files.pythonhosted.org dtlpy
 ```
-
-```
-Resolved 89 packages in 13ms
-Checked 82 packages in 435ms
-```
-
-#### 2. Dependency Conflicts
+#### 2. Handle Dependency Conflicts
 
 ```python
-# Clean installation using uv
-#!uv pip uninstall dtlpy
-#!uv pip cache purge
-#!uv add dtlpy
+# remove installed package
+#uv uninstall dtlpy
+# remove unused or old cached packages from uv's cache
+#uv cache prune
+# install the package again
+# uv add dtlpy
 ```
 
 #### 3. Version Mismatch
@@ -308,11 +289,6 @@ import dtlpy as dl
 dl.verbose.logging_level = "DEBUG"
 ```
 
-```
-[2026-05-22 16:08:50][DEB][dtlpy:v1.123.3][services.cookie:104] COOKIE.write: key: verbose
-[2026-05-22 16:08:51][DEB][dtlpy:v1.123.3][services.cookie:104] COOKIE.write: key: check_version_status
-```
-
 ### 3. Resource Management
 
 ```python
@@ -323,14 +299,4 @@ try:
 finally:
     dl.logout()
 ```
-
-```python
-# Always clean up resources
-try:
-    # Your code here
-    pass
-finally:
-    dl.logout()
-```
-
 Ready to start your Dataloop journey? Let's move on to authentication and project setup! 🚀

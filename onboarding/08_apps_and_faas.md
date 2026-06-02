@@ -26,11 +26,9 @@ dl.login_api_key(api_key=api_key)
 ### Project and Dataset setup
 
 ```python
-# Create your project and dataset (or get if they already exist)
-
 # Set your project and dataset names
-project_name = "onboarding-project-1"
-dataset_name = "onboarding-dataset-1"
+project_name = "onboarding-project"
+dataset_name = "onboarding-dataset"
 
 try:
     # Try to get existing project
@@ -64,7 +62,7 @@ def hello_world(item: dl.Item) -> dl.Item:
     print(f'Hello World -Item id: {item.id}')
     return item
 
-app_name = 'hello-world-app-1'
+app_name = 'hello-world-app'
 # Creates and deploys a service from a plain Python function.
 service = dl.Service.from_function(
     func=hello_world,
@@ -78,39 +76,33 @@ service = dl.Service.from_function(
 app = project.apps.get(app_name=app_name)
 app.print()
 
-# open your project in dataloop platform and navigate to the marketplace and choose the Applications tab
-# look for your new installed app, hard refresh < CRTL + SHIFT + R > if you can find it 
+# Open your project in dataloop platform and navigate to the marketplace and choose the Applications tab
+# Look for your new installed app, hard refresh < CRTL + SHIFT + R > if you can find it 
 project.open_in_web()
 ```
 
 ```python
-# a new service was deployed 
+# A new service was deployed 
 service.open_in_web()      
 ```
+>Congratulations, you just created your first service 🎉
 
-Congratulations, you just created your first service 🎉
-
-For more service info see: [Services Documentation](https://docs.dataloop.ai/docs/services?highlight=services)
+>For more service info see: [Services Documentation](https://docs.dataloop.ai/docs/services?highlight=services)
 
 
 ```python
+# Let's see the service details
 service.print()
 project.services.list().print()
 ```
 
-```python
-dataset.items.list().print()
 ```
-
-```python
 # The service is deployed but not running automatically. It's a function waiting to be triggered.
 # To execute it manually on a specific item:
-item_id = 'item_id'
-
 service.print()
 execution = service.execute(
     function_name='hello_world',
-    item_id=item_id
+    item_id='item_id'
 )
 ```
 

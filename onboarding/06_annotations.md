@@ -26,11 +26,9 @@ dl.login_api_key(api_key=api_key)
 ### Project and Dataset Setup
 
 ```python
-# Create your project and dataset (or get if they already exist)
-
 # Set your project and dataset names
-project_name = "onboarding-project-1"
-dataset_name = "onboarding-dataset-1"
+project_name = "onboarding-project"
+dataset_name = "onboarding-dataset"
 
 try:
     # Try to get existing project
@@ -60,10 +58,10 @@ except Exception:
 import dtlpy as dl
 
 item = dataset.items.list().items[0]
-item_id = item.id
+first_item_id = item.id
 
 # Get your item
-item = dataset.items.get(item_id=item_id)
+item = dataset.items.get(item_id=first_item_id)
 
 # Create an annotation builder
 builder = item.annotations.builder()
@@ -87,7 +85,7 @@ item.annotations.upload(builder)
 ```
 
 ```python
-# explore the added annotations in your item
+# Explore the added annotations in your item
 item.open_in_web()
 ```
 
@@ -172,7 +170,7 @@ car_annotations = item.annotations.list(filters=filters)
 
 ```python
 annotations.print()
-anottation_id = annotations[0].id   
+annotation_id = annotations[0].id   
 print(f"annotation id: {anottation_id} ")
 ```
 
@@ -192,11 +190,8 @@ annotation.update()
 ```
 
 ```python
+# Explore the item with updated annotations
 item.open_in_web()
-```
-
-```python
-dataset.items.list().print()
 ```
 
 ### 3. Batch Operations
@@ -207,11 +202,9 @@ filters = dl.Filters(resource=dl.FiltersResource.ANNOTATION)
 filters.add(field='label', values='car')
 item.annotations.delete(filters=filters)
 
-print(item_id)
+source_id = first_item_id
 
-source_id = item_id
-
-target_id = '6a15976a4617583bfe5351e6' 
+target_id = 'target_id' 
 # Copy annotations between items
 source_item = dataset.items.get(item_id=source_id)
 target_item = dataset.items.get(item_id=target_id)
@@ -227,11 +220,10 @@ target_item.annotations.upload(annotations)
 ```python
 # Create an annotation task
 # Set your email
-email_addr = 'yigal.pinhasi@dell.com'
-# email = 'annotator@company.com'
+my_email_annotator = 'my_email@company.com'
 task = dataset.tasks.create(
     task_name='Annotate Cars',
-    assignee_ids=[email_addr],
+    assignee_ids=[my_email_annotator],
     filters=dl.Filters(field='dir', values='/folder/to/annotate')
 )
 
@@ -242,10 +234,6 @@ task.add_items(
 )
 
 task_id = task.id
-```
-
-```python
-# Get task by ID
 task = project.tasks.get(task_id=task_id)
 ```
 
@@ -256,18 +244,10 @@ task.open_in_web()
 ### 2. Task Management
 
 ```python
-
 # Update task status
 task.set_status(status='completed', operation='create', item_ids=[source_id, target_id])
-
-# Get task items
-items = task.get_items()
-# for item in items:
-#     print(f"Item: {item.name}, Status: {item.status(assignment_id="", task_id="")}")
-
-
-items.print()
 ```
+
 
 ## Quality Assurance 🔍
 

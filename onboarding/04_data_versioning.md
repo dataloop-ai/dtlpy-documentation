@@ -26,11 +26,9 @@ dl.login_api_key(api_key=api_key)
 ### Project and Dataset Setup
 
 ```python
-# Create your project and dataset (or get if they already exist)
-
 # Set your project and dataset names
-project_name = "onboarding-project-1"
-dataset_name = "onboarding-dataset-1"
+project_name = "onboarding-project"
+dataset_name = "onboarding-dataset"
 
 try:
     # Try to get existing project
@@ -60,11 +58,13 @@ except Exception:
 ### 1. Check Your Dataset
 
 ```python
+# Check the dataset items
 dataset_id = dataset.id
 dataset.items.list().print()
 ```
 
 ```python
+# Explore the dataset in the Dataloop platform
 dataset.open_in_web()
 ```
 
@@ -130,7 +130,7 @@ dl.datasets.merge(
 ```
 
 ```python
-#explore data
+# Print ore the datasets items
 merged_dataset = project.datasets.get(dataset_name=merged_dataset_name)
 
 dataset_cloned.items.list().print()
@@ -139,6 +139,7 @@ merged_dataset.items.list().print()
 ```
 
 ```python
+# Explore the dataset in the Dataloop platform
 merged_dataset.open_in_web()
 ```
 

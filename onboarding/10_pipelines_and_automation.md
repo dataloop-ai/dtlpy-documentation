@@ -22,13 +22,11 @@ print(f"API key: {api_key[:20]}...  ")
 # Initialize Dataloop with the API key
 dl.login_api_key(api_key=api_key)
 ```
-### Project and Dataset Setup
+### Project Setup
 
 ```python
-# Create your project and dataset (or get if they already exist)
-
 # Set your project and dataset names
-project_name = "onboarding-project-1"
+project_name = "onboarding-project"
 
 try:
     # Try to get existing project

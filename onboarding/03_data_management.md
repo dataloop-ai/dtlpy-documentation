@@ -26,11 +26,9 @@ dl.login_api_key(api_key=api_key)
 ### Project and Dataset Setup
 
 ```python
-# Create your project and dataset (or get if they already exist)
-
 # Set your project and dataset names
-project_name = "onboarding-project-1"
-dataset_name = "onboarding-dataset-1"
+project_name = "onboarding-project"
+dataset_name = "onboarding-dataset"
 try:
     # Try to get existing project
     project = dl.projects.get(project_name=project_name)
@@ -51,15 +49,17 @@ except Exception:
     print(f"Created dataset '{dataset_name}'")
 ```
 
-## Uploading Items 📤
-
-### 1. Single Item Upload
+### Dataset Cleanup
 
 ```python
-#empty dataset - delete all dataset items
+# Empty dataset - delete all dataset items
 for item in dataset.items.list().all():
     item.delete()
 ```
+
+## Uploading Items 📤
+
+### 1. Single Item Upload
 
 ```python
 import dtlpy as dl
@@ -75,7 +75,7 @@ item = dataset.items.upload(
     }
 )
 
-item_id = item.id
+single_item_id = item.id
 
 item.metadata['user'] = {
     'name': 'Lucky luke',
@@ -86,12 +86,12 @@ item.update()
 ```
 
 ```python
-#explore item 
+# Explore item 
 item.print()
 
 print(item.metadata)
 
-# view item metadata info in  Dataloop web dashboard
+# Explore item metadata in Dataloop platform
 item.open_in_web()
 ```
 
@@ -105,9 +105,8 @@ dataset.items.upload(
     remote_path='/batch-upload',
     local_annotations_path='/path/to/annotations'  # Optional
 )
-
-dataset.items.list().print()
 ```
+
 
 ```python
 # Upload multiple specific files
@@ -118,14 +117,13 @@ items = dataset.items.upload(
     local_path=[local_image_1, local_image_2],
     remote_path='/batch-upload'
 )
-
-dataset.items.list().print()
 ```
 
 ```python
 # List items in the dataset
 dataset.items.list().print()
 
+# Explore dataset in Dataloop platform
 dataset.open_in_web()
 ```
 
@@ -134,17 +132,21 @@ dataset.open_in_web()
 ### 1. Directory Structure
 
 ```python
+# Get item 
+item = dataset.items.get(item_id=single_item_id)
+
+# Print item details
 item.print()
 # Move items
 item.move(
     new_path='/new/path/item.jpg'
 )
 
+# Print item details after move
 item.print()
 
-# List directory contents
-pages = dataset.items.list(filters=dl.Filters(field='dir', values='/folder2'))
-pages.print()
+# List directory contents after setting filter value
+dataset.items.list(filters=dl.Filters(field='dir', values='/batch-upload')).print()
 ```
 
 ### 2. Item Management
@@ -156,7 +158,7 @@ dataset.items.list().print()
 
 ```python
 # Get item by ID or filename
-item = dataset.items.get(item_id=item_id)
+item = dataset.items.get(item_id=single_item_id)
 # Delete items
 dataset.items.delete(filters=dl.Filters(field='dir', values='/batch-upload'))
 dataset.items.list().print()
@@ -165,7 +167,7 @@ dataset.items.list().print()
 ### 3. Metadata Organization
 
 ```python
-item = dataset.items.get(item_id=item_id)
+item = dataset.items.get(item_id=single_item_id)
 item.print()
 
 # Add metadata to item
@@ -183,7 +185,7 @@ print(item.metadata['user'])
 dataset.items.list().print()
 
 # Set the directory filter value (use the 'dir' column from the items list)
-filter_items_dir = '/dataset/folder/dogs2'
+filter_items_dir = '/dataset/folder'
 
 # Batch metadata update
 filters = dl.Filters(field='dir', values=filter_items_dir)
@@ -212,26 +214,26 @@ dataset.items.upload(
     remote_path='/dataset/folder'
 )
 
-dataset.items.list().print()
 
-# Set dowmload path 
-local_folder_download_path = '/path/to/folder_download'  # Path to local folder for downloading items
-
-# Bulk download
+# Download items - set download local path
 dataset.items.download(
-    local_path=local_folder_download_path,
-    filters=dl.Filters(field='dir', values=filter_items_dir)
+    local_path='/path/to/folder_download',
+    filters=dl.Filters(field='dir', values='/batch-upload')
 )
+```
+```python
+# Print dataset items after upload
+dataset.items.list().print()
 ```
 
 ### 2. Batch Processing
 
 ```python
 # Set the filter_item_dir with coreesponng value from the items list
-filter_item_dir = '/batch-upload/dogs2'
+filter_item_dir = 
 
-# Process multiple items
-filters = dl.Filters(field='dir', values=filter_item_dir)
+# Process multiple items after setting the filter value
+filters = dl.Filters(field='dir', values='/batch-upload')
 pages = dataset.items.list(filters=filters)
 
 def process_item(item):
@@ -246,13 +248,13 @@ for page in pages:
         # Process each item
         process_item(item)
 
-# print list before delete 
+# Print list before delete 
 dataset.items.list().print()
 
 # Batch delete
 dataset.items.delete(filters=filters)
 
-# print list after delete   
+# Print list after delete   
 dataset.items.list().print()
 ```
 
@@ -354,19 +356,19 @@ def upload_with_progress(files):
 
 #### Dataset Metadata
 
-```python
-# if you want to access the dataset via API, you can use the following URL:
-# add dataset id to the end of the URL
-# https://gate.dataloop.ai/api/v1/datasets/{dataset_id}
-```
+> If you want to access the dataset via API, you can use the following URL.
+> Add the dataset ID to the end of the URL:
+>
+> https://gate.dataloop.ai/api/v1/datasets/{dataset_id}
+
 
 #### Item Metadata
 
-```python
-# if you want to access the dataset via API, you can use the following URL:
-# add dataset id & item_id to the URL
-# https://gate.dataloop.ai/api/v1/datasets/{dataset_id}/items/{item_id}
-```
+> If you want to access the dataset via API,
+> you can use the following URL:
+> Add dataset ID and item ID to the URL:
+>
+> https://gate.dataloop.ai/api/v1/datasets/{dataset_id}/items/{item_id}
 
 ## Troubleshooting Guide 🔧
 

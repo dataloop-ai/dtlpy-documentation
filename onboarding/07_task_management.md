@@ -25,11 +25,9 @@ dl.login_api_key(api_key=api_key)
 ### Project and Dataset Setup
 
 ```python
-# Create your project and dataset (or get if they already exist)
-
 # Set your project and dataset names
-project_name = "onboarding-project-1"
-dataset_name = "onboarding-dataset-1"
+project_name = "onboarding-project"
+dataset_name = "onboarding-dataset"
 
 try:
     # Try to get existing project
@@ -65,7 +63,7 @@ Labeling tasks are the foundation of annotation workflows. They can be configure
 - Item-specific tasks — assign selected items to annotators for targeted review or urgent labeling.
 
 ```python
-# task cleanup before we start
+# Task cleanup before we start
 for task in project.tasks.list():
     task.delete()
 ```
@@ -76,6 +74,7 @@ dataset.items.list().print()
 
 ```python
 # set your four jpg items
+item_1 = dataset.items.get(item_id='item_id_1')
 item_2 = dataset.items.get(item_id='item_id_2')
 item_3 = dataset.items.get(item_id='item_id_3')
 item_4 = dataset.items.get(item_id='item_id_4')
@@ -87,7 +86,6 @@ import datetime
 
 # Add annotators to your project e.g 'annotator1@dataloop.ai', 'annotator2@dataloop.ai'
 # Set your real email address in assignee_ids email 'my-email@dell.com'
-
 task_1 = dataset.tasks.create_labeling_task(
     name='my_distribution_task',
     assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai', 'my-email@dell.com'],
@@ -195,7 +193,7 @@ assignment.reassign('new_annotator@company.com')
 ```
 
 ```python
-# check new reassignement in dashboard
+# Check new reassignment in dashboard
 task.open_in_web()
 ```
 
