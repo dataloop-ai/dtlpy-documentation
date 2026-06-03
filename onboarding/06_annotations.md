@@ -321,4 +321,4 @@ Learn how to create, manage, and organize annotations in Dataloop - your key to 
 > ```
 
 
-Ready to explore metadata and filtering? Let's move on to the next chapter! 🚀
+Ready to explore task management? Let's move on to the next chapter! 🚀

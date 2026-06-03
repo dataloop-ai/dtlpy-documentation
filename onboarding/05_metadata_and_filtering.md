@@ -53,18 +53,11 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 ### 1. Adding Metadata
 
 > ```python
-> # Helper function to print metadata
-> def print_meta_data(filters=None):
->     items = list(dataset.items.list(filters=filters).all())
->     for item in items:
->         print(item.metadata)
-> ```
-
-> ```python
 > # Print dataset items details
 > dataset.items.list().print()
 > # Print dataset items metadata
-> print_meta_data()
+> for item in dataset.items.list().all():
+>     print(item.metadata)
 > ```
 
 > ```python
@@ -111,7 +104,8 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 >     }
 > )
 >
-> print_meta_data()
+> for item in dataset.items.list().all():
+>     print(item.metadata)
 > ```
 
 ### 2. Updating Metadata
@@ -138,7 +132,8 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 > ```
 
 > ```python
-> print_meta_data()
+> for item in dataset.items.list().all():
+>     print(item.metadata)
 > ```
 
 ### 3. Metadata Schema
@@ -198,7 +193,8 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 ### 2. Metadata Filters
 
 > ```python
-> print_meta_data()
+> for item in dataset.items.list().all():
+>     print(item.metadata)
 > ```
 
 > ```python
@@ -218,13 +214,15 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 >            operator=dl.FiltersOperations.GREATER_THAN_OR_EQUAL)
 >
 > dataset.items.list(filters=filters).print()
-> print_meta_data(filters)
+> for item in dataset.items.list(filters=filters).all():
+>     print(item.metadata)
 > ```
 
 ### 3. Complex Queries
 
 > ```python
-> print_meta_data()
+> for item in dataset.items.list().all():
+>     print(item.metadata)
 > ```
 
 > ```python
@@ -242,7 +240,8 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 > print(filters.prepare())
 >
 > dataset.items.list(filters=filters).print()
-> print_meta_data(filters)
+> for item in dataset.items.list(filters=filters).all():
+>     print(item.metadata)
 > ```
 
 > ```python

@@ -128,7 +128,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 > print(model_cloned.configuration)
 > ```
 
-### 3. Upload/Download Model Artifacts
+### 4. Upload/Download Model Artifacts
 
 > ```python
 > # Upload
