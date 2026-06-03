@@ -17,8 +17,6 @@ load_dotenv()
 # Access your API key securely
 api_key = os.getenv('DTLPY_API_KEY')
 
-print(f"API key: {api_key[:20]}...  ")
-
 # Initialize Dataloop with the API key
 dl.login_api_key(api_key=api_key)
 ```
@@ -229,9 +227,6 @@ dataset.items.list().print()
 ### 2. Batch Processing
 
 ```python
-# Set the filter_item_dir with coreesponng value from the items list
-filter_item_dir = 
-
 # Process multiple items after setting the filter value
 filters = dl.Filters(field='dir', values='/batch-upload')
 pages = dataset.items.list(filters=filters)

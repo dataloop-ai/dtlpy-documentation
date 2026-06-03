@@ -17,8 +17,6 @@ load_dotenv()
 # Access your API key securely
 api_key = os.getenv('DTLPY_API_KEY')
 
-print(f"API key: {api_key[:20]}...  ")
-
 # Initialize Dataloop with the API key
 dl.login_api_key(api_key=api_key)
 ```
@@ -171,12 +169,12 @@ car_annotations = item.annotations.list(filters=filters)
 ```python
 annotations.print()
 annotation_id = annotations[0].id   
-print(f"annotation id: {anottation_id} ")
+print(f"annotation id: {annotation_id} ")
 ```
 
 ```python
 # Get specific annotation
-annotation = item.annotations.get(annotation_id=anottation_id)
+annotation = item.annotations.get(annotation_id=annotation_id)
 
 # Update properties
 annotation.label = 'truck'

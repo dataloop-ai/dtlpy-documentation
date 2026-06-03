@@ -17,8 +17,6 @@ load_dotenv()
 # Access your API key securely
 api_key = os.getenv('DTLPY_API_KEY')
 
-print(f"API key: {api_key[:20]}...  ")
-
 # Initialize Dataloop with the API key
 dl.login_api_key(api_key=api_key)
 ```
@@ -100,9 +98,10 @@ project.services.list().print()
 # The service is deployed but not running automatically. It's a function waiting to be triggered.
 # To execute it manually on a specific item:
 service.print()
+item_id='item_id'
 execution = service.execute(
     function_name='hello_world',
-    item_id='item_id'
+    item_id=item_id
 )
 ```
 

@@ -18,8 +18,6 @@ load_dotenv()
 # Access your API key securely
 api_key = os.getenv('DTLPY_API_KEY')
 
-print(f"API key: {api_key[:20]}...  ")
-
 # Initialize Dataloop with the API key
 dl.login_api_key(api_key=api_key)
 
@@ -322,8 +320,6 @@ validation_filters = dl.Filters(field="metadata.system.tags.validation", values=
 # Add subsets to the model
 model_cloned.add_subset(subset_name="train", subset_filter=train_filters)
 model_cloned.add_subset(subset_name="validation", subset_filter=validation_filters)
-
-model.labels = labels
 
 print(model_cloned.configuration)
  
