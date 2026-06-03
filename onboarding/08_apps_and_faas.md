@@ -21,7 +21,7 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 > dl.login_api_key(api_key=api_key)
 > ```
 
-### Project and Dataset setup
+### Project and Dataset Setup
 
 > ```python
 > # Set your project and dataset names

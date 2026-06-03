@@ -311,7 +311,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 - Keep related files together
 - Document organization schema
 
-### 3. Error Handling
+### 2. Error Handling
 
 > ```python
 > def safe_upload(path):

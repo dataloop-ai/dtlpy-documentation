@@ -141,7 +141,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > print(f'Predict node ready: model={model.name!r}  app={app.name!r}')
 > ```
 
-### 4. Pipeline Installation
+### 6. Pipeline Installation
 
 > ```python
 > # Connect nodes and install pipeline
@@ -153,12 +153,8 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 
 ### You just created your first pipeline!
 
-> ```python
-> # explore the new pipeline in Web UI
-> pipeline.open_in_web()
-> ```
 
-### 3. Pipeline Execution
+### 7. Pipeline Execution
 
 > ```python
 > item = dataset_source.items.upload(

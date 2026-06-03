@@ -209,7 +209,7 @@ Use `python-dotenv` and `.env` files to load the API key:
 > api_key = os.getenv('DTLPY_API_KEY')
 > ```
 
-### 4 Installation Troubleshooting
+### 4. Installation Troubleshooting
 
 Common issues and solutions:
 
