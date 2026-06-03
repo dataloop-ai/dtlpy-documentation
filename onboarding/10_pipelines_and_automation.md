@@ -151,7 +151,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > print(f'Pipeline ready: {pipeline.name} ({pipeline.id})')
 > ```
 
-### You just created your first pipeline!
+### Congratulations! Your First Pipeline is Ready 🎉
 
 
 ### 7. Pipeline Execution
