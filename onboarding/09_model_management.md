@@ -34,7 +34,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 >     # Try to get existing project
 >     project = dl.projects.get(project_name=project_name)
 >     print(f"Project '{project_name}' already exists")
-> except Exception:
+> except dl.exceptions.NotFound:
 >     project = dl.projects.create(project_name=project_name)
 >     # Create project if it doesn't exist
 >     print(f"Created project '{project_name}'")
@@ -44,7 +44,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 >     dataset = project.datasets.get(dataset_name=dataset_name)
 >     print(f"Dataset '{dataset_name}' already exists")
 >
-> except Exception:
+> except dl.exceptions.NotFound:
 >     # Create dataset if it doesn't exist
 >     dataset = project.datasets.create(dataset_name=dataset_name)
 >     print(f"Created dataset '{dataset_name}'")
@@ -88,7 +88,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 > model_name = "mobilenet"
 > try:
 >     model = project.models.get(model_name=model_name)
-> except Exception:
+> except dl.exceptions.NotFound:
 >     model_dpk = dl.dpks.get(dpk_name="mobilenet")
 >     print(f"App '{model_dpk.name}' not found, installing...")
 >     model_app = project.apps.install(dpk=model_dpk)

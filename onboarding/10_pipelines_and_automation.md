@@ -77,7 +77,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 ### 4. Pipeline Ingredients
 
 > ```python
-> # Create datasets ─────────────────────────────────────────────
+> # Create datasets
 > dataset_source = project.datasets.create(dataset_name='ds-model-source')
 > ```
 
@@ -86,7 +86,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > model_name = "mobilenet"
 > try:
 >     model = project.models.get(model_name=model_name)
-> except Exception:
+> except dl.exceptions.NotFound:
 >     model_dpk = dl.dpks.get(dpk_name="mobilenet")
 >     print(f"App '{model_dpk.name}' not found, installing...")
 >     model_app = project.apps.install(dpk=model_dpk)

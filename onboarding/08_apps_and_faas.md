@@ -32,7 +32,7 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 >     # Try to get existing project
 >     project = dl.projects.get(project_name=project_name)
 >     print(f"Project '{project_name}' already exists")
-> except Exception:
+> except dl.exceptions.NotFound:
 >     project = dl.projects.create(project_name=project_name)
 >     # Create project if it doesn't exist
 >     print(f"Created project '{project_name}'")
@@ -42,7 +42,7 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 >     dataset = project.datasets.get(dataset_name=dataset_name)
 >     print(f"Dataset '{dataset_name}' already exists")
 >
-> except Exception:
+> except dl.exceptions.NotFound:
 >     # Create dataset if it doesn't exist
 >     dataset = project.datasets.create(dataset_name=dataset_name)
 >     print(f"Created dataset '{dataset_name}'")
@@ -94,7 +94,7 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 > project.services.list().print()
 > ```
 
-> ```
+> ```python
 > # The service is deployed but not running automatically. It's a function waiting to be triggered.
 > # To execute it manually on a specific item:
 > service.print()
@@ -363,9 +363,9 @@ Add trigger to the DPK manifest file under components (dataloop.json) amd bump t
 > triggers.print()
 > ```
 
-upload image to dataset and see that is being executed by the service trigger
-
 > ```python
+> # Upload image to dataset and see that it is being executed by the service trigger
+> ```
 > # Execute function
 > execution = service.execute(
 >     function_name="hello_world",

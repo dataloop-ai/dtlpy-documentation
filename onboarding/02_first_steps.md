@@ -86,7 +86,7 @@ With our powerful Python SDK, you'll have full control over your entire AI devel
 >     # Try to get existing project
 >     project = dl.projects.get(project_name=project_name)
 >     print(f"Project '{project_name}' already exists")
-> except Exception:
+> except dl.exceptions.NotFound:
 >     # Create project if it doesn't exist
 >     project = dl.projects.create(project_name=project_name)
 >     print(f"Created project '{project_name}'")
@@ -141,7 +141,7 @@ With our powerful Python SDK, you'll have full control over your entire AI devel
 >     # Try to get existing dataset
 >     dataset = project.datasets.get(dataset_name=dataset_training_name)
 >     print(f"Dataset '{dataset_training_name}' already exists")
-> except Exception:
+> except dl.exceptions.NotFound:
 >     # Create dataset if it doesn't exist
 >     dataset = project.datasets.create(dataset_name=dataset_training_name)
 >     print(f"Created dataset '{dataset_training_name}'")
