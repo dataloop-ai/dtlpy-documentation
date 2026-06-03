@@ -6,306 +6,302 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 
 ### Dataloop Login 🔐
 
-```python
-import dtlpy as dl
-from dotenv import load_dotenv
-import os
-
-# Load environment variables from .env file
-load_dotenv(override=True)
-
-# Access your API key securely
-api_key = os.getenv('DTLPY_API_KEY')
-
-# Initialize Dataloop with the API key
-dl.login_api_key(api_key=api_key)
-```
+> ```python
+> import dtlpy as dl
+> from dotenv import load_dotenv
+> import os
+>
+> # Load environment variables from .env file
+> load_dotenv(override=True)
+>
+> # Access your API key securely
+> api_key = os.getenv('DTLPY_API_KEY')
+>
+> # Initialize Dataloop with the API key
+> dl.login_api_key(api_key=api_key)
+> ```
 
 ### Project and Dataset Setup
 
-```python
-# Set your project and dataset names
-project_name = "onboarding-project"
-dataset_name = "onboarding-dataset"
-try:
-    # Try to get existing project
-    project = dl.projects.get(project_name=project_name)
-    print(f"Project '{project_name}' already exists")
-except Exception:
-    project = dl.projects.create(project_name=project_name)
-    # Create project if it doesn't exist
-    print(f"Created project '{project_name}'")
-
-try:
-    # Try to get existing dataset
-    dataset = project.datasets.get(dataset_name=dataset_name)
-    print(f"Dataset '{dataset_name}' already exists")
-
-except Exception:
-    # Create dataset if it doesn't exist
-    dataset = project.datasets.create(dataset_name=dataset_name)
-    print(f"Created dataset '{dataset_name}'")
-```
+> ```python
+> # Set your project and dataset names
+> project_name = "onboarding-project"
+> dataset_name = "onboarding-dataset"
+> try:
+>     # Try to get existing project
+>     project = dl.projects.get(project_name=project_name)
+>     print(f"Project '{project_name}' already exists")
+> except Exception:
+>     project = dl.projects.create(project_name=project_name)
+>     # Create project if it doesn't exist
+>     print(f"Created project '{project_name}'")
+>
+> try:
+>     # Try to get existing dataset
+>     dataset = project.datasets.get(dataset_name=dataset_name)
+>     print(f"Dataset '{dataset_name}' already exists")
+>
+> except Exception:
+>     # Create dataset if it doesn't exist
+>     dataset = project.datasets.create(dataset_name=dataset_name)
+>     print(f"Created dataset '{dataset_name}'")
+> ```
 
 ### Dataset Cleanup
 
-```python
-# Empty dataset - delete all dataset items
-for item in dataset.items.list().all():
-    item.delete()
-```
+> ```python
+> # Empty dataset - delete all dataset items
+> for item in dataset.items.list().all():
+>     item.delete()
+> ```
 
 ## Uploading Items 📤
 
 ### 1. Single Item Upload
 
-```python
-import dtlpy as dl
+> ```python
+> import dtlpy as dl
+>
+> # Upload a single file
+> item = dataset.items.upload(
+>     # Set the local JPG file path — use r prefix if the path contains special characters, e.g., r'c:\users\one drive\dog.jpg'
+>     local_path ='path/to/your/file.jpg',
+>     remote_path='remote/path/',  # Optional
+>     item_metadata={
+>         'photographer': 'John Doe',
+>         'location': 'New York'
+>     }
+> )
+>
+> single_item_id = item.id
+>
+> item.metadata['user'] = {
+>     'name': 'Lucky luke',
+>     'location': 'Israel'
+> }
+>
+> item.update()
+> ```
 
-# Upload a single file
-item = dataset.items.upload(
-    # Set the local JPG file path — use r prefix if the path contains special characters, e.g., r'c:\users\one drive\dog.jpg'
-    local_path ='path/to/your/file.jpg',
-    remote_path='remote/path/',  # Optional
-    item_metadata={
-        'photographer': 'John Doe',
-        'location': 'New York'
-    }
-)
-
-single_item_id = item.id
-
-item.metadata['user'] = {
-    'name': 'Lucky luke',
-    'location': 'Israel'
-}
-
-item.update()
-```
-
-```python
-# Explore item 
-item.print()
-
-print(item.metadata)
-
-# Explore item metadata in Dataloop platform
-item.open_in_web()
-```
+> ```python
+> # Explore item
+> item.print()
+>
+> print(item.metadata)
+>
+> # Explore item metadata in Dataloop platform
+> item.open_in_web()
+> ```
 
 ### 2. Batch Upload
 
-```python
-# Upload entire directory
-dataset.items.upload(
-    # Set the local folder path 
-    local_path='/path/to/folder',
-    remote_path='/batch-upload',
-    local_annotations_path='/path/to/annotations'  # Optional
-)
-```
+> ```python
+> # Upload entire directory
+> dataset.items.upload(
+>     # Set the local folder path
+>     local_path='/path/to/folder',
+>     remote_path='/batch-upload',
+>     local_annotations_path='/path/to/annotations'  # Optional
+> )
+> ```
 
 
-```python
-# Upload multiple specific files
-local_image_1 = 'path/to/your/file_1.jpg'
-local_image_2 = 'path/to/your/file_2.jpg'
+> ```python
+> # Upload multiple specific files
+> local_image_1 = 'path/to/your/file_1.jpg'
+> local_image_2 = 'path/to/your/file_2.jpg'
+>
+> items = dataset.items.upload(
+>     local_path=[local_image_1, local_image_2],
+>     remote_path='/batch-upload'
+> )
+> ```
 
-items = dataset.items.upload(
-    local_path=[local_image_1, local_image_2],
-    remote_path='/batch-upload'
-)
-```
-
-```python
-# List items in the dataset
-dataset.items.list().print()
-
-# Explore dataset in Dataloop platform
-dataset.open_in_web()
-```
+> ```python
+> # List items in the dataset
+> dataset.items.list().print()
+>
+> # Explore dataset in Dataloop platform
+> dataset.open_in_web()
+> ```
 
 ## File Organization Strategies 📂
 
 ### 1. Directory Structure
 
-```python
-# Get item 
-item = dataset.items.get(item_id=single_item_id)
-
-# Print item details
-item.print()
-# Move items
-item.move(
-    new_path='/new/path/item.jpg'
-)
-
-# Print item details after move
-item.print()
-
-# List directory contents after setting filter value
-dataset.items.list(filters=dl.Filters(field='dir', values='/batch-upload')).print()
-```
+> ```python
+> # Get item
+> item = dataset.items.get(item_id=single_item_id)
+>
+> # Print item details
+> item.print()
+> # Move items
+> item.move(
+>     new_path='/new/path/item.jpg'
+> )
+>
+> # Print item details after move
+> item.print()
+>
+> # List directory contents after setting filter value
+> dataset.items.list(filters=dl.Filters(field='dir', values='/batch-upload')).print()
+> ```
 
 ### 2. Item Management
 
-```python
-# Set your filter directory value
-dataset.items.list().print()
-```
+> ```python
+> # Set your filter directory value
+> dataset.items.list().print()
+> ```
 
-```python
-# Get item by ID or filename
-item = dataset.items.get(item_id=single_item_id)
-# Delete items
-dataset.items.delete(filters=dl.Filters(field='dir', values='/batch-upload'))
-dataset.items.list().print()
-```
+> ```python
+> # Get item by ID or filename
+> item = dataset.items.get(item_id=single_item_id)
+> # Delete items
+> dataset.items.delete(filters=dl.Filters(field='dir', values='/batch-upload'))
+> dataset.items.list().print()
+> ```
 
 ### 3. Metadata Organization
 
-```python
-item = dataset.items.get(item_id=single_item_id)
-item.print()
+> ```python
+> item = dataset.items.get(item_id=single_item_id)
+> item.print()
+>
+> # Add metadata to item
+> item.metadata['user'] = {
+>     'status': 'reviewed',
+>     'quality': 'high',
+>     'tags': ['validated', 'ready']
+> }
+> item = item.update()
+>
+> print(item.metadata['user'])
+> ```
 
-# Add metadata to item
-item.metadata['user'] = {
-    'status': 'reviewed',
-    'quality': 'high',
-    'tags': ['validated', 'ready']
-}
-item = item.update()
-
-print(item.metadata['user'])
-```
-
-```python
-dataset.items.list().print()
-
-# Set the directory filter value (use the 'dir' column from the items list)
-filter_items_dir = '/dataset/folder'
-
-# Batch metadata update
-filters = dl.Filters(field='dir', values=filter_items_dir)
-dataset.items.update(
-    filters=filters,
-    update_values ={'user.status': 'reviewed_in_batch'}
-)
-```
-
-```python
-dataset.
-```
+> ```python
+> dataset.items.list().print()
+>
+> # Set the directory filter value (use the 'dir' column from the items list)
+> filter_items_dir = '/dataset/folder'
+>
+> # Batch metadata update
+> filters = dl.Filters(field='dir', values=filter_items_dir)
+> dataset.items.update(
+>     filters=filters,
+>     update_values ={'user.status': 'reviewed_in_batch'}
+> )
+> ```
 
 ## Batch Operations ⚡
 
 ### 1. Bulk Upload and Download
 
-```python
-# Bulk upload
-
-# Set local folder path
-local_folder_path = '/path/to/folder'
-
-dataset.items.upload(
-    local_path=local_folder_path,
-    remote_path='/dataset/folder'
-)
-
-
-# Download items - set download local path
-dataset.items.download(
-    local_path='/path/to/folder_download',
-    filters=dl.Filters(field='dir', values='/batch-upload')
-)
-```
-```python
-# Print dataset items after upload
-dataset.items.list().print()
-```
+> ```python
+> # Bulk upload
+>
+> # Set local folder path
+> local_folder_path = '/path/to/folder'
+>
+> dataset.items.upload(
+>     local_path=local_folder_path,
+>     remote_path='/dataset/folder'
+> )
+>
+>
+> # Download items - set download local path
+> dataset.items.download(
+>     local_path='/path/to/folder_download',
+>     filters=dl.Filters(field='dir', values='/batch-upload')
+> )
+> ```
+> ```python
+> # Print dataset items after upload
+> dataset.items.list().print()
+> ```
 
 ### 2. Batch Processing
 
-```python
-# Process multiple items after setting the filter value
-filters = dl.Filters(field='dir', values='/batch-upload')
-pages = dataset.items.list(filters=filters)
-
-def process_item(item):
-    """Process a single item"""
-    print(f'Processing: {item.name}')
-    # Add your processing logic here
-    # e.g., download, transform, analyze
-    return item
-
-for page in pages:
-    for item in page:
-        # Process each item
-        process_item(item)
-
-# Print list before delete 
-dataset.items.list().print()
-
-# Batch delete
-dataset.items.delete(filters=filters)
-
-# Print list after delete   
-dataset.items.list().print()
-```
+> ```python
+> # Process multiple items after setting the filter value
+> filters = dl.Filters(field='dir', values='/batch-upload')
+> pages = dataset.items.list(filters=filters)
+>
+> def process_item(item):
+>     """Process a single item"""
+>     print(f'Processing: {item.name}')
+>     # Add your processing logic here
+>     # e.g., download, transform, analyze
+>     return item
+>
+> for page in pages:
+>     for item in page:
+>         # Process each item
+>         process_item(item)
+>
+> # Print list before delete
+> dataset.items.list().print()
+>
+> # Batch delete
+> dataset.items.delete(filters=filters)
+>
+> # Print list after delete
+> dataset.items.list().print()
+> ```
 
 ### 3. Concurrent Operations
 
-```python
-import concurrent.futures
-
-with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-    futures = [executor.submit(process_item, item) for item in items]
-    concurrent.futures.wait(futures)
-```
+> ```python
+> import concurrent.futures
+>
+> with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+>     futures = [executor.submit(process_item, item) for item in items]
+>     concurrent.futures.wait(futures)
+> ```
 
 ## Data Validation 🔍
 
 ### 1. Item Validation
 
-```python
-# Check item existence
-try:
-    item = dataset.items.get(filepath='/path/to/item.jpg')
-except dl.exceptions.NotFound:
-    print("Item not found!")
-
-# Validate item metadata
-def validate_item(item):
-    required_fields = ['status', 'quality']
-    metadata = item.metadata.get('user', {})
-    return all(field in metadata for field in required_fields)
-```
+> ```python
+> # Check item existence
+> try:
+>     item = dataset.items.get(filepath='/path/to/item.jpg')
+> except dl.exceptions.NotFound:
+>     print("Item not found!")
+>
+> # Validate item metadata
+> def validate_item(item):
+>     required_fields = ['status', 'quality']
+>     metadata = item.metadata.get('user', {})
+>     return all(field in metadata for field in required_fields)
+> ```
 
 ### 2. Batch Validation
 
-```python
-# Validate multiple items
-def validate_items(dataset):
-    invalid_items = []
-    for item in dataset.items.list().all():
-        if not validate_item(item):
-            invalid_items.append(item.id)
-    return invalid_items
-```
+> ```python
+> # Validate multiple items
+> def validate_items(dataset):
+>     invalid_items = []
+>     for item in dataset.items.list().all():
+>         if not validate_item(item):
+>             invalid_items.append(item.id)
+>     return invalid_items
+> ```
 
 ### 3. Data Integrity Checks
 
-```python
-# Check for corrupted images
-def check_image_integrity(item):
-    try:
-        buffer = item.download(save_locally=False)
-        Image.open(buffer)
-        return True
-    except Exception as e:
-        print(f"Corrupted image {item.name}: {e}")
-        return False
-```
+> ```python
+> # Check for corrupted images
+> def check_image_integrity(item):
+>     try:
+>         buffer = item.download(save_locally=False)
+>         Image.open(buffer)
+>         return True
+>     except Exception as e:
+>         print(f"Corrupted image {item.name}: {e}")
+>         return False
+> ```
 
 ## Best Practices 👑
 
@@ -317,35 +313,35 @@ def check_image_integrity(item):
 
 ### 32. Error Handling
 
-```python
-def safe_upload(path):
-    try:
-        item = dataset.items.upload(local_path=path, raise_on_error=True)
-        return True, item
-    except Exception as e:
-        return False, str(e)
-```
+> ```python
+> def safe_upload(path):
+>     try:
+>         item = dataset.items.upload(local_path=path, raise_on_error=True)
+>         return True, item
+>     except Exception as e:
+>         return False, str(e)
+> ```
 
 ## Pro Tips 💡
 
 1. **Efficient Data Organization**
 
-```python
-# Create folders using make_dir
-folders = ['train', 'val', 'test']
-for folder in folders:
-    dataset.items.make_dir(directory=f'/{folder}')
-```
+> ```python
+> # Create folders using make_dir
+> folders = ['train', 'val', 'test']
+> for folder in folders:
+>     dataset.items.make_dir(directory=f'/{folder}')
+> ```
 
 2. **Bulk Operations with Progress**
 
-```python
-from tqdm import tqdm
-   
-def upload_with_progress(files):
-    for file in tqdm(files, desc="Uploading"):
-        dataset.items.upload(local_path=file)
-```
+> ```python
+> from tqdm import tqdm
+>
+> def upload_with_progress(files):
+>     for file in tqdm(files, desc="Uploading"):
+>         dataset.items.upload(local_path=file)
+> ```
 
 ### Access the object metadata
 
@@ -371,28 +367,28 @@ def upload_with_progress(files):
 
 1. **Upload Failures**
 
-```python
-# Retry mechanism
-def upload_with_retry(path, max_retries=3):
-    for attempt in range(max_retries):
-        try:
-            return dataset.items.upload(local_path=path, raise_on_error=True)
-        except Exception as e:
-            if attempt == max_retries - 1:
-                raise e
-            time.sleep(2 ** attempt)  # Exponential backoff
-```
+> ```python
+> # Retry mechanism
+> def upload_with_retry(path, max_retries=3):
+>     for attempt in range(max_retries):
+>         try:
+>             return dataset.items.upload(local_path=path, raise_on_error=True)
+>         except Exception as e:
+>             if attempt == max_retries - 1:
+>                 raise e
+>             time.sleep(2 ** attempt)  # Exponential backoff
+> ```
 
 2. **Download Issues**
 
-```python
-# Handle download errors
-try:
-    item.download(local_path='path/to/save')
-except dl.exceptions.ItemNotFound:
-    print("Item not found!")
-except dl.exceptions.ConnectionError:
-    print("Connection error - retrying...")
-```
+> ```python
+> # Handle download errors
+> try:
+>     item.download(local_path='path/to/save')
+> except dl.exceptions.ItemNotFound:
+>     print("Item not found!")
+> except dl.exceptions.ConnectionError:
+>     print("Connection error - retrying...")
+> ```
 
 Ready to start annotating your data? Let's move on to the annotation chapter! 🎯

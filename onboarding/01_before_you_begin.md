@@ -93,7 +93,7 @@ See https://www.datacamp.com/tutorial/python-uv for more information
 > .venv\Scripts\activate  
 >
 > # On macOS/Linux:
-># source .venv/bin/activate
+> # source .venv/bin/activate
 >
 > # from activated venv - install ipykernel for Jupyter notebook support:
 > uv add ipykernel
@@ -132,22 +132,22 @@ See https://www.datacamp.com/tutorial/python-uv for more information
 > ```
 >
 > **Option 2: Run directly from Jupyter notebook**
-
-```python
-# Install the Dataloop SDK
-!uv add dtlpy
-
-# Verify installation
-!uv pip show dtlpy
-```
+>
+> ```python
+> # Install the Dataloop SDK
+> !uv add dtlpy
+>
+> # Verify installation
+> !uv pip show dtlpy
+> ```
 
 ### 2. Validation
 
-```python
-# Test your installation
-import dtlpy as dl
-print(dl.__version__)
-```
+> ```python
+> # Test your installation
+> import dtlpy as dl
+> print(dl.__version__)
+> ```
 
 ## Best Practices & Tips 👑
 ### 1. Create API Keys 🔑
@@ -176,38 +176,38 @@ Use `python-dotenv` and `.env` files to load the API key:
 
 📚 Learn more about environment variable best practices and python dotenv [here](https://github.com/theskumar/python-dotenv)
 
-```python
-# Install python-dotenv
-!uv add python-dotenv
-```
+> ```python
+> # Install python-dotenv
+> !uv add python-dotenv
+> ```
 
-```python
-from dotenv import load_dotenv
-import os
-
-# Load environment variables from .env file
-load_dotenv()
-
-# Access your API key securely
-api_key = os.getenv('DTLPY_API_KEY')
-
-# Initialize Dataloop with the API key
-dl.login_api_key(api_key=api_key)
-```
+> ```python
+> from dotenv import load_dotenv
+> import os
+>
+> # Load environment variables from .env file
+> load_dotenv()
+>
+> # Access your API key securely
+> api_key = os.getenv('DTLPY_API_KEY')
+>
+> # Initialize Dataloop with the API key
+> dl.login_api_key(api_key=api_key)
+> ```
 
 ### 3. Security Best Practices
 
-```python
-# DON'T: Hardcode credentials
-# api_key = "your-api-key"  # ❌
-
-
-# Load environment variables from .env file
-load_dotenv()
-
-# Get the API key from environment
-api_key = os.getenv('DTLPY_API_KEY')
-```
+> ```python
+> # DON'T: Hardcode credentials
+> # api_key = "your-api-key"  # ❌
+>
+>
+> # Load environment variables from .env file
+> load_dotenv()
+>
+> # Get the API key from environment
+> api_key = os.getenv('DTLPY_API_KEY')
+> ```
 
 ### 4 Installation Troubleshooting
 
@@ -215,37 +215,37 @@ Common issues and solutions:
 
 #### 1. SSL Certificate Errors
 
-```bash
-# Temporary fix using uv
-uv add --trusted-host pypi.org --trusted-host files.pythonhosted.org dtlpy
-```
+> ```bash
+> # Temporary fix using uv
+> uv add --trusted-host pypi.org --trusted-host files.pythonhosted.org dtlpy
+> ```
 
-```python
-# Temporary fix using uv
-!uv add --trusted-host pypi.org --trusted-host files.pythonhosted.org dtlpy
-```
+> ```python
+> # Temporary fix using uv
+> !uv add --trusted-host pypi.org --trusted-host files.pythonhosted.org dtlpy
+> ```
 #### 2. Handle Dependency Conflicts
 
-```python
-# # Remove installed package
-# uv uninstall dtlpy
-# # Remove unused or old cached packages from uv's cache
-# uv cache prune
-# ## Install the package again
-# uv add dtlpy
-```
+> ```python
+> # # Remove installed package
+> # uv uninstall dtlpy
+> # # Remove unused or old cached packages from uv's cache
+> # uv cache prune
+> # ## Install the package again
+> # uv add dtlpy
+> ```
 
 #### 3. Version Mismatch
 
-```bash
-# Force specific version using uv
-uv add dtlpy==x.y.z
-```
+> ```bash
+> # Force specific version using uv
+> uv add dtlpy==x.y.z
+> ```
 
-```python
-# Force specific version using uv
-# uv add dtlpy==x.y.z
-```
+> ```python
+> # Force specific version using uv
+> # uv add dtlpy==x.y.z
+> ```
 
 ## Validation Checklist ✅
 
@@ -275,21 +275,22 @@ Once your environment is ready:
 
 ### 2. Development Workflow
 
-```python
-import dtlpy as dl
-
-# Enable debug logging
-dl.verbose.logging_level = "DEBUG"
-```
+> ```python
+> import dtlpy as dl
+>
+> # Enable debug logging
+> dl.verbose.logging_level = "DEBUG"
+> ```
 
 ### 3. Resource Management
 
-```python
-# Always clean up resources
-try:
-    # Your code here
-    pass
-finally:
-    dl.logout()
-```
+> ```python
+> # Always clean up resources
+> try:
+>     # Your code here
+>     pass
+> finally:
+>     dl.logout()
+> ```
+
 Ready to start your Dataloop journey? Let's move on to authentication and project setup! 🚀
