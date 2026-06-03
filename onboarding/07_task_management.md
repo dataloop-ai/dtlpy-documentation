@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 import os
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv(override=True)
 
 # Access your API key securely
 api_key = os.getenv('DTLPY_API_KEY')
