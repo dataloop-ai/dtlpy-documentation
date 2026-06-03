@@ -84,7 +84,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 ### 1. Basic Model Setup
 
 > ```python
-> # Check if model is already installed on roject
+> # Check if model is already installed on project
 > model_name = "mobilenet"
 > try:
 >     model = project.models.get(model_name=model_name)

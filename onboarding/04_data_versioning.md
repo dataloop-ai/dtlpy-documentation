@@ -81,7 +81,7 @@ Learn how to track, manage, and restore different versions of your datasets in D
 >               with_task_annotations_status=True)
 >
 > # Create a filtered clone dataset
-> # Set the flter_dir to filter in files from  with coresponding dir value taken out of the items list
+> # Set the flter_dir to filter in files from  with corresponding dir value taken out of the items list
 > filter_dir = '/batch-upload/dogs2'
 > # Clone with filters
 > filters = dl.Filters()

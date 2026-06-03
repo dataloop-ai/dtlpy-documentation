@@ -114,7 +114,7 @@ Labeling tasks are the foundation of annotation workflows. They can be configure
 
 > ```python
 > # Explore your tasks in dataloop dashboard platform
-> # ecplore each task assignmemts
+> # explore each task assignments
 > dataset.tasks.open_in_web()
 >
 > # Check your email and verify you received email notification on task creation/completed

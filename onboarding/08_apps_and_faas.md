@@ -363,7 +363,7 @@ Add trigger to the DPK manifest file under components (dataloop.json) amd bump t
 > triggers.print()
 > ```
 
-upload image to datset and see that is being executed by the service trigger
+upload image to dataset and see that is being executed by the service trigger
 
 > ```python
 > # Execute function

@@ -82,7 +82,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > ```
 
 > ```python
-> # Check if model is already installed on roject
+> # Check if model is already installed on project
 > model_name = "mobilenet"
 > try:
 >     model = project.models.get(model_name=model_name)
