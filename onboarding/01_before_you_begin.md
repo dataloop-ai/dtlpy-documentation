@@ -227,11 +227,11 @@ uv add --trusted-host pypi.org --trusted-host files.pythonhosted.org dtlpy
 #### 2. Handle Dependency Conflicts
 
 ```python
-# remove installed package
-#uv uninstall dtlpy
-# remove unused or old cached packages from uv's cache
-#uv cache prune
-# install the package again
+# # Remove installed package
+# uv uninstall dtlpy
+# # Remove unused or old cached packages from uv's cache
+# uv cache prune
+# ## Install the package again
 # uv add dtlpy
 ```
 
@@ -274,13 +274,6 @@ Once your environment is ready:
 - Install Python extensions for code completion
 
 ### 2. Development Workflow
-
-```python
-import dtlpy as dl
-
-# Enable debug logging
-dl.verbose.logging_level = "DEBUG"
-```
 
 ```python
 import dtlpy as dl
