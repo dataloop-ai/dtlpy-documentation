@@ -11,7 +11,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > import os
 >
 > # Load environment variables from .env file
-> load_dotenv()
+> load_dotenv(override=True)
 >
 > # Access your API key securely
 > api_key = os.getenv('DTLPY_API_KEY')
@@ -32,39 +32,61 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 >     # Try to get existing project
 >     project = dl.projects.get(project_name=project_name)
 >     print(f"Project '{project_name}' already exists")
-> except Exception:
+> except dl.exceptions.NotFound:
 >     project = dl.projects.create(project_name=project_name)
 >     # Create project if it doesn't exist
 >     print(f"Created project '{project_name}'")
 > ```
 
-> ```python
-> project.print()
-> ```
+## Creating Code Node Pipeline 🚀
 
-## Getting Started with Pipelines 🚀
-
-### 1. Pipeline Flow Diagram
+### Pipeline Flow Diagram
 
 > ```
-> ┌─────────────────┐       ┌─────────────────────┐
-> │   DatasetNode   │       │  FunctionNode (ML)  │
-> │ (source-dataset)│ ----> │ (mobilenet-predict) │
-> │  Position: (1,1)│       │   Position: (2,1)   │
-> └─────────────────┘       └─────────────────────┘
+> ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
+> │   DatasetNode   │       │    CodeNode     │       │   DatasetNode   │
+> │ (source-dataset)│ ----> │ (process-item)  │ ----> │(output-dataset) │
+> |                 |       |                 |       |                 |
+> └─────────────────┘       └─────────────────┘       └─────────────────┘
 > ```
 
-### 2. Creating a Pipeline
+### Code Node Processing Function
 
 > ```python
-> # Create a new pipeline
-> pipeline = project.pipelines.create(name='My-First-Pipeline')
+> # Define processing method for CodeNode
+> def process_item(item: dl.Item):
+>     """
+>     Process an item - add metadata and return it.
+>     This method runs directly in the pipeline, no service deployment needed.
+>     """
 >
-> # Print pipeline details
-> print(pipeline)
+>     import datetime
+>
+>     # Initialize metadata
+>     item.metadata = item.metadata or {}
+>     item.metadata['user'] = item.metadata.get('user', {})
+>
+>     # Add processing metadata
+>     item.metadata['user']['processed'] = True
+>     item.metadata['user']['timestamp'] = datetime.datetime.now().isoformat()
+>     item.metadata['user']['pipeline'] = 'code-node-pipeline'
+>
+>     # Update item in Dataloop
+>     item.update(system_metadata=True)
+>
+>     print(f'Processed item: {item.name}')
+>     return item
 > ```
 
-### 3. Getting Existing Pipelines
+### Creating Pipelines
+
+> ```python
+> # Create pipeline
+> pipeline = project.pipelines.create(name='code-node-pipeline')
+> print(f'Pipeline created: {pipeline.name} ({pipeline.id})')
+> ```
+
+### Getting Existing Pipelines
 
 > ```python
 > # Get pipeline by ID
@@ -74,13 +96,112 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > project.pipelines.list()
 > ```
 
-### 4. Pipeline Ingredients
+### Pipeline Constructions
+
+> ```python
+> # Create datasets
+> source_dataset = project.datasets.create(dataset_name='code-node-source')
+> output_dataset = project.datasets.get(dataset_name='code-node-output')
+>
+> # Create nodes
+>
+> # 1. Source dataset node
+> source_node = dl.DatasetNode(
+>     name='source-dataset',
+>     project_id=project.id,
+>     dataset_id=source_dataset.id,
+>     position=(1, 1)
+> )
+>
+> # 2. CodeNode - runs the Python method directly
+> code_node = dl.CodeNode(
+>     name='process-item',
+>     position=(2, 1),
+>     project_id=project.id,
+>     method=process_item,
+>     project_name=project.name
+> )
+>
+> # 3. Output dataset node
+> output_node = dl.DatasetNode(
+>     name='output-dataset',
+>     project_id=project.id,
+>     dataset_id=output_dataset.id,
+>     position=(3, 1)
+> )
+>
+> print('Nodes created successfully')
+> ```
+
+### Installing the Pipeline
+
+> ```python
+> # Connect nodes: Source → CodeNode → Output
+> pipeline.nodes.add(node=source_node).connect(node=code_node).connect(node=output_node)
+>
+> pipeline.update()
+> pipeline.install()
+> print(f'Pipeline ready: {pipeline.name} ({pipeline.id})')
+>
+> # Open pipeline in Dataloop platform
+> pipeline.open_in_web()
+> ```
+### Congratulations! Your First Pipeline is Ready 🎉
+
+### Testing the Pipeline
+
+> ```python
+> # Upload a test item to source dataset
+> # Replace with your actual file path
+> test_item = source_dataset.items.upload(
+>     local_path=r"C:\Users\Yigal_Pinhasi\OneDrive - Dell Technologies\Pictures\dogs\dog1.jpg",
+>     remote_path='/'
+> )
+> print(f'Uploaded test item: {test_item.name}')
+> ```
+>
+> ```python
+> # Execute pipeline manually (optional)
+> pipeline_execution = pipeline.pipeline_executions.create(
+>     pipeline_id=pipeline.id,
+>     execution_input=[dl.FunctionIO(type=dl.PackageInputType.ITEM, value=test_item.id, name='item')]
+> )
+> print(f'Execution started: {pipeline_execution.id}')
+>
+> pipeline.open_in_web()
+> ```
+
+## Creating a Model Pipeline
+
+### Pipeline Flow Diagram
+
+> ```
+> ┌─────────────────┐       ┌─────────────────────┐
+> │   DatasetNode   │       │  FunctionNode (ML)  │
+> │ (source-dataset)│ ----> │ (mobilenet-predict) │
+> │  Position: (1,1)│       │   Position: (2,1)   │
+> └─────────────────┘       └─────────────────────┘
+> ```
+
+### Creating a Pipeline
+
+> ```python
+> # Create a new pipeline
+> pipeline = project.pipelines.create(name='My-First-Pipeline')
+>
+> # Print pipeline details
+> print(pipeline)
+> ```
+
+
+### Pipeline Ingredients
 
 > ```python
 > # Create datasets
 > dataset_source = project.datasets.create(dataset_name='ds-model-source')
+> print(f'Created dataset: {dataset_source.name}')
 > ```
-
+>
 > ```python
 > # Check if model is already installed on project
 > model_name = "mobilenet"
@@ -100,9 +221,10 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 >
 > # Print service details
 > model_service.print()
+> print(f'Service deployed: {model_service.name}')
 > ```
 
-### 3. Pipeline Constructions
+### Pipeline Constructions
 
 > ```python
 > # Dataset source
@@ -141,7 +263,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > print(f'Predict node ready: model={model.name!r}  app={app.name!r}')
 > ```
 
-### 6. Pipeline Installation
+### Installing the Pipeline
 
 > ```python
 > # Connect nodes and install pipeline
@@ -151,10 +273,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > print(f'Pipeline ready: {pipeline.name} ({pipeline.id})')
 > ```
 
-### Congratulations! Your First Pipeline is Ready 🎉
-
-
-### 7. Pipeline Execution
+### Testing the Pipeline
 
 > ```python
 > item = dataset_source.items.upload(
@@ -248,6 +367,5 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
    - Update pipeline configurations as needed
    - Monitor resource usage
    - Document pipeline changes
-
 
 Ready to explore integrations and APIs? Let's move on to the next chapter! 🚀
