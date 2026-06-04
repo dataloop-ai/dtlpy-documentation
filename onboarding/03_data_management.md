@@ -77,7 +77,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 >
 > item.metadata['user'] = {
 >     'name': 'Lucky luke',
->     'location': 'Israel'
+>     'location': 'London'
 > }
 >
 > item.update()
