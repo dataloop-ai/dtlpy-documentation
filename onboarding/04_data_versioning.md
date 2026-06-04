@@ -49,9 +49,9 @@ Learn how to track, manage, and restore different versions of your datasets in D
 > ```
 ## Getting Started with Versioning 🌟
 
-> This section will use all three dataset types.
-> Please review them in the following link:
-> [Dataset Types Overview](https://docs.dataloop.ai/docs/datasets-overview#dataset-types)
+This section will use all three dataset types.
+ Please review them in the following link:
+ [Dataset Types Overview](https://docs.dataloop.ai/docs/datasets-overview#dataset-types)
 
 ### 1. Check Your Dataset
 
@@ -68,7 +68,7 @@ Learn how to track, manage, and restore different versions of your datasets in D
 
 > ```python
 > # Clone an entire dataset
-> # Set your clone datset names
+> # Set your clone dataset names
 > dataset_cloned_name = 'dataset_v1'
 > dataset_filter_cloned_name = 'dataset_v1_filtered'
 >
@@ -79,7 +79,7 @@ Learn how to track, manage, and restore different versions of your datasets in D
 >               with_task_annotations_status=True)
 >
 > # Create a filtered clone dataset
-> # Set the flter_dir to filter in files from  with corresponding dir value taken out of the items list
+> # Set the filter_dir to filter files by directory from the items list
 > filter_dir = '/batch-upload/dogs2'
 > # Clone with filters
 > filters = dl.Filters()
@@ -88,11 +88,11 @@ Learn how to track, manage, and restore different versions of your datasets in D
 > dataset_filter_cloned = dataset_cloned.clone(clone_name=dataset_filter_cloned_name,
 >               filters=filters,
 >               with_items_annotations=True)
-> ```
-
-> ```python
+> 
+> # Print the cloned datasets
 > dataset_cloned.items.list().print()
-> dataset_filter_cloned.items.list(filters=filters).print()
+> # Print the filtered cloned dataset
+> dataset_filter_cloned.items.list().print()
 > ```
 
 ## Dataset Management 📊

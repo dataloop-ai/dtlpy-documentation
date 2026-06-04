@@ -74,8 +74,8 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 > app = project.apps.get(app_name=app_name)
 > app.print()
 >
-> # Open your project in dataloop platform and navigate to the marketplace and choose the Applications tab
-> # Look for your new installed app, hard refresh < CRTL + SHIFT + R > if you can find it
+> # Open your project in Dataloop platform and navigate to the marketplace and choose the Applications tab
+> # Look for your new installed app, hard refresh < CTRL + SHIFT + R > if you can't find it
 > project.open_in_web()
 > ```
 

@@ -78,18 +78,18 @@ Labeling tasks are the foundation of annotation workflows. They can be configure
 > import dtlpy as dl
 > import datetime
 >
-> # Add annotators to your project e.g 'annotator1@dataloop.ai', 'annotator2@dataloop.ai'
-> # Set your real email address in assignee_ids email 'my-email@dell.com'
+> # Add annotators to your project e.g., 'annotator1@dataloop.ai', 'annotator2@dataloop.ai'
+> # Set your real email address in assignee_ids email 'your-email@company.com'
 > task_1 = dataset.tasks.create_labeling_task(
 >     name='my_distribution_task',
->     assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai', 'my-email@dell.com'],
+>     assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai', 'your-email@company.com'],
 >     dataset=dataset
 > )
 >
 > # Create a simple pulling task (dynamic distribution via batches)
 > task_2 = dataset.tasks.create_labeling_task(
 >     name='my_pulling_task',
->     assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai', 'my-email@dell.com'],
+>     assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai', 'your-email@company.com'],
 >     batch_size=5,           # items per batch
 >     max_batch_workload=7    # max items per assignment
 > )
@@ -102,18 +102,17 @@ Labeling tasks are the foundation of annotation workflows. They can be configure
 >
 > task_3 = dataset.tasks.create_labeling_task(
 >     name='Urgent Review',
->     assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai','my-email@dell.com'],
+>     assignee_ids=['annotator1@dataloop.ai', 'annotator2@dataloop.ai', 'your-email@company.com'],
 >     filters=filters,
 >     due_date=datetime.datetime(2026, 12, 31).timestamp()
 > )
 > ```
 
 > ```python
-> # Explore your tasks in dataloop dashboard platform
-> # explore each task assignments
+> # Explore your tasks in Dataloop dashboard platform
 > dataset.tasks.open_in_web()
 >
-> # Check your email and verify you received email notification on task creation/completed
+> # Check your email and verify you received email notifications on task creation/completion
 > ```
 
 ### 2. Advanced Task Configuration
@@ -135,10 +134,9 @@ This section covers how to manage existing tasks in the Dataloop SDK. You can re
 ### 1. Task Operations
 
 > ```python
+> # List all tasks in the dataset
 > dataset.tasks.list().print()
-> ```
-
-> ```python
+>
 > # Get task by ID
 > task = dataset.tasks.get(task_id=task_1.id)
 >
@@ -152,9 +150,8 @@ This section covers how to manage existing tasks in the Dataloop SDK. You can re
 >
 > # Delete task
 > task.delete()
-> ```
-
-> ```python
+>
+> # List remaining tasks
 > dataset.tasks.list().print()
 > ```
 
