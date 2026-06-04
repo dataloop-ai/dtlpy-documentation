@@ -359,7 +359,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 > you can use the following URL:
 > Add dataset ID and item ID to the URL:
 >
-> https://gate.dataloop.ai/api/v1/datasets/{dataset_id}/items/{item_id}
+> https://gate.dataloop.ai/api/v1/items/{item_id}
 
 ## Troubleshooting Guide 🔧
 

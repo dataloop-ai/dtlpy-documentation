@@ -347,18 +347,12 @@ Add trigger to the DPK manifest file under components (dataloop.json) and bump t
 > dpk = project.dpks.publish()
 > app.dpk_version = dpk.version
 > app.update()
-> ```
 >
-> ```python
+> # show services
 > project.services.list().print()
-> ```
-
-> ```python
+> # get specific service
 > service = project.services.get(service_name='service_name')
 > service.print()
-> ```
-
-> ```python
 > # show service triggers
 > triggers = service.triggers.list()
 > triggers.print()

@@ -64,13 +64,9 @@ Labeling tasks are the foundation of annotation workflows. They can be configure
 > # Task cleanup before we start
 > for task in project.tasks.list():
 >     task.delete()
-> ```
-
-> ```python
+>
 > dataset.items.list().print()
-> ```
-
-> ```python
+>
 > # set your four jpg items
 > item_1 = dataset.items.get(item_id='item_id_1')
 > item_2 = dataset.items.get(item_id='item_id_2')

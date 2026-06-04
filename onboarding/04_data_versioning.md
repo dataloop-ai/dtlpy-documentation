@@ -59,9 +59,7 @@ Learn how to track, manage, and restore different versions of your datasets in D
 > # Check the dataset items
 > dataset_id = dataset.id
 > dataset.items.list().print()
-> ```
-
-> ```python
+>
 > # Explore the dataset in the Dataloop platform
 > dataset.open_in_web()
 > ```
