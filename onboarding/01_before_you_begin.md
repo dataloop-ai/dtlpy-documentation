@@ -97,17 +97,17 @@ See https://www.datacamp.com/tutorial/python-uv for more information
 
 ### 1. Basic Installation
 
-> **Select the correct Python interpreter**
->
-> 📌 **Important**: After activating the virtual environment, make sure to select the `.venv` kernel in your Jupyter notebook:
-> 1. Click on "Kernel" in the top menu
-> 2. Select "Change kernel"
-> 3. Choose `.venv` from the list
-> 4. Verify the kernel is selected (top right corner should show .venv)
+ **Select the correct Python interpreter**
 
-> There are two ways to add Python packages to your active `.venv`:
->
-> **Option 1: Install package for active venv on terminal**
+ 📌 **Important**: After activating the virtual environment, make sure to select the `.venv` kernel in your Jupyter notebook:
+ 1. Click on "Kernel" in the top menu
+ 2. Select "Change kernel"
+ 3. Choose `.venv` from the list
+ 4. Verify the kernel is selected (top right corner should show .venv)
+
+ There are two ways to add Python packages to your active `.venv`:
+
+ **Option 1: Install package for active venv on terminal**
 
 
 > ```bash
@@ -124,9 +124,9 @@ See https://www.datacamp.com/tutorial/python-uv for more information
 > # Verify installation
 > uv pip show dtlpy
 > ```
->
-> **Option 2: Run directly from Jupyter notebook**
->
+
+**Option 2: Run directly from Jupyter notebook**
+
 > ```python
 > # Install the Dataloop SDK
 > !uv add dtlpy
@@ -146,27 +146,27 @@ See https://www.datacamp.com/tutorial/python-uv for more information
 ## Best Practices & Tips 👑
 ### 1. Create API Keys 🔑
 
-> **What is an API Key?**
->
-> An API key is used to authenticate and authorize your access to the Dataloop platform.
->
-> **How to Create an API Key:**
-> 1. Navigate to your project dashboard
-> 2. Go to the **API Keys** tab
-> 3. Click "Create New Key"
-> 4. Store it securely in a `.env` file to avoid exposing sensitive information
+**What is an API Key?**
+
+An API key is used to authenticate and authorize your access to the Dataloop platform.
+
+**How to Create an API Key:**
+1. Navigate to your project dashboard
+2. Go to the **API Keys** tab
+3. Click "Create New Key"
+4. Store it securely in a `.env` file to avoid exposing sensitive information
 
 ### 2. Environment Management
 
 Use `python-dotenv` and `.env` files to load the API key:
 
-> 🔒 Best Practices for .env Files:
-> 1. Create a .env file in your project root: `DTLPY_API_KEY=your-api-key-here`
-> 2. Add .env to your .gitignore file to prevent committing sensitive data
-> 3. Create a .env.example file with dummy values as a template
-> 4. Never commit real credentials to version control
-> 5. Use strong, unique API keys
-> 6. Regularly rotate your API keys
+🔒 Best Practices for .env Files:
+1. Create a .env file in your project root: `DTLPY_API_KEY=your-api-key-here`
+2. Add .env to your .gitignore file to prevent committing sensitive data
+3. Create a .env.example file with dummy values as a template
+4. Never commit real credentials to version control
+5. Use strong, unique API keys
+6. Regularly rotate your API keys
 
 📚 Learn more about environment variable best practices and python dotenv [here](https://github.com/theskumar/python-dotenv)
 

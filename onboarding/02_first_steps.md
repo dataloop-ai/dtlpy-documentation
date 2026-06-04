@@ -114,9 +114,9 @@ With our powerful Python SDK, you'll have full control over your entire AI devel
 
 ### 4. Project Exploration
 
-> #### open_in_web() 🌐
->
-> The `open_in_web()` method launches the Dataloop web platform in your default browser, providing direct access to view and manage your project resources from the SDK.
+**open_in_web()** 🌐
+
+The `open_in_web()` method launches the Dataloop web platform in your default browser, providing direct access to view and manage your project resources from the SDK.
 
 
 > ```python

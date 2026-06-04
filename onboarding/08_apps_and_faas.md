@@ -83,9 +83,9 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 > # A new service was deployed
 > service.open_in_web()
 > ```
->Congratulations, you just created your first service 🎉
+Congratulations, you just created your first service 🎉
 
->For more service info see: [Services Documentation](https://docs.dataloop.ai/docs/services?highlight=services)
+For more service info see: [Services Documentation](https://docs.dataloop.ai/docs/services?highlight=services)
 
 
 > ```python
@@ -366,8 +366,6 @@ Add trigger to the DPK manifest file under components (dataloop.json) and bump t
 >     item_id=item_id,
 >     project_id=project.id
 > )
-> ```
->
 > # Wait for execution to complete
 > execution = execution.wait()
 >

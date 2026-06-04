@@ -373,16 +373,20 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 > dataset.items.list(filters=filters).print()
 > ```
 
-#### Troubleshooting Filter Error
 
-If you encounter this error:
+**Filter Error Message:**
 ```
-Cannot query on key 'your-key' - no items contain the specified key, or the key is unsearchable
+"Cannot query on key 'your-key' - no items contain the specified key, or the key is unsearchable"
 ```
 
-This indicates that the key you're using in your filter is either not valid or cannot be queried. Since the dataset schema defines all filterable keys, use it to verify your filter:
+**Reason:**
+This error occurs when the filter key is either invalid or not queryable. 
 
-**Open the dataset schema endpoint:**
+**Troubleshooting:**
+The dataset schema defines all filterable keys, you can verify your filter by checking the schema.
+Check the dataset schema endpoint to see if your key is listed in the schema keys or unsearchablePaths.
+
+**Dataset Schema Endpoint:**
 ```
 https://gate.dataloop.ai/api/v1/datasets/<dataset_id>/schema
 ```

@@ -93,15 +93,8 @@ Learn how to manage your machine learning models in Dataloop - from development 
 >     print(f"App '{model_dpk.name}' not found, installing...")
 >     model_app = project.apps.install(dpk=model_dpk)
 >     model = project.models.get(model_name=model_name)
-> ```
-
-> ```python
 > model.print()
 > project.models.list().print()
-> ```
-
-> ```python
-> project.open_in_web()
 > ```
 
 ### 2. Model Cloning
@@ -140,9 +133,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 > model_cloned.artifacts.download(
 >     local_path='/path/to/download/artifacts'
 > )
-> ```
-
-> ```python
+>
 > project.models.list().print()
 > ```
 
@@ -186,9 +177,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 >         'initTimeout': 60 * 5  # 5 minutes
 >     }
 > )
-> ```
-
-> ```python
+> # Print services after deployment
 > project.services.list().print()
 > ```
 
