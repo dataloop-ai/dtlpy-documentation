@@ -24,7 +24,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 
 > ```python
 > # Set your project and dataset names
-> project_name = "onboarding-project-9"
+> project_name = "onboarding-project"
 >
 > try:
 >     # Try to get existing project
@@ -99,7 +99,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > ```python
 > # Create datasets
 > source_dataset = project.datasets.create(dataset_name='code-node-source')
-> output_dataset = project.datasets.get(dataset_name='code-node-output')
+> output_dataset = project.datasets.create(dataset_name='code-node-output')
 >
 > # Create nodes
 >
@@ -152,7 +152,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > # Upload a test item to source dataset
 > # Replace with your actual file path
 > test_item = source_dataset.items.upload(
->     local_path=r"C:\Users\Yigal_Pinhasi\OneDrive - Dell Technologies\Pictures\dogs\dog1.jpg",
+>     local_path=r"/path/to/your/image.jpg",
 >     remote_path='/'
 > )
 > print(f'Uploaded test item: {test_item.name}')
@@ -275,7 +275,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 
 > ```python
 > item = dataset_source.items.upload(
->     local_path=r"C:\Users\Yigal_Pinhasi\OneDrive - Dell Technologies\Pictures\dogs\dog3.jpg",
+>     local_path=r"/path/to/your/image.jpg",
 >     remote_path='/'
 > )
 >

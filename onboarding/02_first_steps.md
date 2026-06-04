@@ -134,17 +134,17 @@ With our powerful Python SDK, you'll have full control over your entire AI devel
 > ```python
 > # Dataset Setup
 >
-> # Set your training dataset name
-> dataset_training_name = "training-data"
+> # Set your dataset name
+> dataset_name = "onboarding-dataset"
 >
 > try:
 >     # Try to get existing dataset
->     dataset = project.datasets.get(dataset_name=dataset_training_name)
->     print(f"Dataset '{dataset_training_name}' already exists")
+>     dataset = project.datasets.get(dataset_name=dataset_name)
+>     print(f"Dataset '{dataset_name}' already exists")
 > except dl.exceptions.NotFound:
 >     # Create dataset if it doesn't exist
->     dataset = project.datasets.create(dataset_name=dataset_training_name)
->     print(f"Created dataset '{dataset_training_name}'")
+>     dataset = project.datasets.create(dataset_name=dataset_name)
+>     print(f"Created dataset '{dataset_name}'")
 > ```
 
 > ```python

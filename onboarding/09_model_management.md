@@ -138,7 +138,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 >
 > # Download
 > model_cloned.artifacts.download(
->     local_path='/path/to/download/atrifacts'
+>     local_path='/path/to/download/artifacts'
 > )
 > ```
 

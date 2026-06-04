@@ -12,12 +12,6 @@ Before diving into the setup, here are some helpful resources:
 4. 📂 [Onboarding Files](https://github.com/dataloop-ai/dtlpy-documentation/tree/main/onboarding) - Access all onboarding exercise files
 5. 📚 [In-depth SDK Documentation](https://sdk-docs.dataloop.ai/en/latest/entities.html) - Detailed SDK reference
 
-[Dataloop Python SDK Cheat Sheet](https://docs.dataloop.ai/docs/sdk-cheatsheet)
-[Recommended Specifications](https://docs.dataloop.ai/docs/platform-recommended)
-[Sign Up](https://console.dataloop.ai)
-[Onboarding Files](https://github.com/dataloop-ai/dtlpy-documentation/tree/main/onboarding)
-[In-depth SDK Documentation](https://sdk-docs.dataloop.ai/en/latest/entities.html)
-
 ## System Requirements 💻
 
 ### Hardware Requirements

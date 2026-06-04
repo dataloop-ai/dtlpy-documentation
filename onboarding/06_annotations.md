@@ -228,7 +228,7 @@ Learn how to create, manage, and organize annotations in Dataloop - your key to 
 > # Add specific items to task
 > task.add_items(
 >     items=[source_item, target_item],
->     assignee_ids=[email_addr]
+>     assignee_ids=[my_email_annotator]
 > )
 >
 > task_id = task.id
@@ -255,7 +255,7 @@ Learn how to create, manage, and organize annotations in Dataloop - your key to 
 > # Create a review task
 > review_task = dataset.tasks.create_qa_task(
 >     task=task, # Original task
->     assignee_ids=[email_addr],
+>     assignee_ids=[my_email_annotator],
 >     filters=dl.Filters(field='annotated', values=True)
 > )
 > ```

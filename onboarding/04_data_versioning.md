@@ -128,7 +128,7 @@ Learn how to track, manage, and restore different versions of your datasets in D
 > ```
 
 > ```python
-> # Print ore the datasets items
+> # Print the datasets items
 > merged_dataset = project.datasets.get(dataset_name=merged_dataset_name)
 >
 > dataset_cloned.items.list().print()
