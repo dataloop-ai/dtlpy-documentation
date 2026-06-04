@@ -113,7 +113,7 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 
 ## DPK Manifest
 
-A DPK (Dataloop Package)is a self-contained package 
+A DPK (Dataloop Package) is a self-contained package that contains all the necessary components for deployment. 
 
 ### 1. Basic Function Creation (DPK manifest)
 
@@ -291,7 +291,7 @@ Install the application:
 
 ### 3. Trigger Functions
 
-Add trigger to the DPK manifest file under components (dataloop.json) amd bump the dpk version:
+Add trigger to the DPK manifest file under components (dataloop.json) and bump the dpk version:
 
 > ```json
 > "components": {
@@ -343,11 +343,12 @@ Add trigger to the DPK manifest file under components (dataloop.json) amd bump t
 ### 1. Execution Management
 
 > ```python
+> # Publish DPK and update app version
 > dpk = project.dpks.publish()
 > app.dpk_version = dpk.version
 > app.update()
 > ```
-
+>
 > ```python
 > project.services.list().print()
 > ```
@@ -365,13 +366,13 @@ Add trigger to the DPK manifest file under components (dataloop.json) amd bump t
 
 > ```python
 > # Upload image to dataset and see that it is being executed by the service trigger
-> ```
 > # Execute function
 > execution = service.execute(
 >     function_name="hello_world",
 >     item_id=item_id,
 >     project_id=project.id
 > )
+> ```
 >
 > # Wait for execution to complete
 > execution = execution.wait()
