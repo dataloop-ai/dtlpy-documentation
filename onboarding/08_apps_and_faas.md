@@ -98,6 +98,8 @@ For more service info see: [Services Documentation](https://docs.dataloop.ai/doc
 > # The service is deployed but not running automatically. It's a function waiting to be triggered.
 > # To execute it manually on a specific item:
 > service.print()
+>
+> # Set the item ID you want to test with
 > item_id='item_id'
 > execution = service.execute(
 >     function_name='hello_world',
@@ -343,7 +345,7 @@ Add trigger to the DPK manifest file under components (dataloop.json) and bump t
 ### 1. Execution Management
 
 > ```python
-> # Publish DPK and update app version
+> # Publish DPK and update app version after manual changes in DPK
 > dpk = project.dpks.publish()
 > app.dpk_version = dpk.version
 > app.update()

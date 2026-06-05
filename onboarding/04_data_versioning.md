@@ -182,4 +182,4 @@ This section will use all three dataset types.
    - Maintain clear version naming conventions
 
 
-Ready to explore pipelines and automation? Let's move on to the next chapter! 🚀
+Ready to explore metadata and filtering? Let's move on to the next chapter! 🚀

@@ -145,9 +145,8 @@ The `open_in_web()` method launches the Dataloop web platform in your default br
 >     # Create dataset if it doesn't exist
 >     dataset = project.datasets.create(dataset_name=dataset_name)
 >     print(f"Created dataset '{dataset_name}'")
-> ```
-
-> ```python
+>
+>
 > # Clone an existing dataset
 > cloned_dataset = dataset.clone(
 >     clone_name="validation-data"
@@ -161,7 +160,7 @@ The `open_in_web()` method launches the Dataloop web platform in your default br
 > datasets = project.datasets.list()
 >
 > # Get dataset by name
-> dataset = project.datasets.get(dataset_name=dataset_training_name)
+> dataset = project.datasets.get(dataset_name=dataset_name)
 >
 > # Update dataset
 > dataset.name = "training-data-v1"

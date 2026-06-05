@@ -65,7 +65,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 > # Upload a single file
 > item = dataset.items.upload(
 >     # Set the local JPG file path — use r prefix if the path contains special characters, e.g., r'c:\users\one drive\dog.jpg'
->     local_path ='path/to/your/file.jpg',
+>     local_path='path/to/your/file.jpg',
 >     remote_path='remote/path/',  # Optional
 >     item_metadata={
 >         'photographer': 'John Doe',
@@ -73,6 +73,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 >     }
 > )
 >
+> # Store item ID for later use in notebook
 > single_item_id = item.id
 >
 > item.metadata['user'] = {
