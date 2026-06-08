@@ -112,12 +112,12 @@ Learn how to manage your machine learning models in Dataloop - from development 
 ### 3. Model Configuration
 
 > ```python
-> # model.configuration
+> # Set model.configuration
 > model_cloned.configuration['input_size'] = 640
 > model_cloned.configuration['batch_size'] = 32
 > model_cloned.update()
 >
-> # see model configuration after update
+> # See model configuration after update
 > print(model_cloned.configuration)
 > ```
 

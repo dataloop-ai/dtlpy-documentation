@@ -40,11 +40,8 @@ With our powerful Python SDK, you'll have full control over your entire AI devel
 > # Smart login with token handling
 > if dl.token_expired():
 >     dl.login()
-> ```
-
-> ```python
+> 
 > # Test your installation
-> import dtlpy as dl
 > print(dl.__version__)
 > ```
 

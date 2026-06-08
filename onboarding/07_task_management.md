@@ -67,7 +67,7 @@ Labeling tasks are the foundation of annotation workflows. They can be configure
 >
 > dataset.items.list().print()
 >
-> # set your four jpg items
+> # Set the following jpg items
 > item_1 = dataset.items.get(item_id='item_id_1')
 > item_2 = dataset.items.get(item_id='item_id_2')
 > item_3 = dataset.items.get(item_id='item_id_3')

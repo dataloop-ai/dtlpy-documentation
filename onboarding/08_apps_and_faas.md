@@ -231,7 +231,7 @@ Install the application:
 > ```
 
 > ```python
-> # republish the updated dpk
+> # Republish the updated DPK
 > dpk = project.dpks.publish()
 >
 > # The app.install() call:
@@ -350,12 +350,12 @@ Add trigger to the DPK manifest file under components (dataloop.json) and bump t
 > app.dpk_version = dpk.version
 > app.update()
 >
-> # show services
+> # Show services
 > project.services.list().print()
-> # get specific service
+> # Get specific service
 > service = project.services.get(service_name='service_name')
 > service.print()
-> # show service triggers
+> # Show service triggers
 > triggers = service.triggers.list()
 > triggers.print()
 > ```

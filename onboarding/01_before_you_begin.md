@@ -109,10 +109,8 @@ See https://www.datacamp.com/tutorial/python-uv for more information
 
  **Option 1: Install package for active venv on terminal**
 
-
-> ```bash
-> Open terminal and run:
->
+Open terminal and run:
+> ```bash>
 > # Activate the virtual environment first
 > .venv\Scripts\activate  # Windows
 > # or
@@ -161,12 +159,11 @@ An API key is used to authenticate and authorize your access to the Dataloop pla
 Use `python-dotenv` and `.env` files to load the API key:
 
 🔒 Best Practices for .env Files:
-1. Create a .env file in your project root: `DTLPY_API_KEY=your-api-key-here`
-2. Add .env to your .gitignore file to prevent committing sensitive data
-3. Create a .env.example file with dummy values as a template
-4. Never commit real credentials to version control
-5. Use strong, unique API keys
-6. Regularly rotate your API keys
+1. Add .env to your .gitignore file to prevent committing sensitive data
+2. Create a .env.example file with dummy values as a template
+3. Never commit real credentials to version control
+4. Use strong, unique API keys
+5. Regularly rotate your API keys
 
 📚 Learn more about environment variable best practices and python dotenv [here](https://github.com/theskumar/python-dotenv)
 
@@ -236,10 +233,6 @@ Common issues and solutions:
 > uv add dtlpy==x.y.z
 > ```
 
-> ```python
-> # Force specific version using uv
-> # uv add dtlpy==x.y.z
-> ```
 
 ## Validation Checklist ✅
 

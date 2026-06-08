@@ -20,7 +20,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > dl.login_api_key(api_key=api_key)
 > ```
 
-## Project and Dataset Setup
+## Project Setup
 
 > ```python
 > # Set your project and dataset names
@@ -234,7 +234,6 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > )
 >
 > # Create ML predict node
-> # Since Dataloop has no dedicated ML node class, we convert a FunctionNode:
 > # - Set node_type to ML
 > # - Link to the model via metadata.modelId
 > # - Link to the installed app for UI function picker resolution

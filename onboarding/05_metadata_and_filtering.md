@@ -90,7 +90,7 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 > ```
 
 > ```python
-> # Set the item_id from the list above
+> # Set the item local path 
 > local_image_path = '/path/to/image.jpg'
 >
 > # Add metadata during upload
@@ -120,7 +120,7 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 > item.metadata['user']['last_modified'] = '2024-03-20'
 > item = item.update()
 >
-> # Batch update metadata, set filter dir values
+> # Set the filter dir value to match your target folder
 > filters = dl.Filters(field='dir', values='/my-folder/news/')
 > dataset.items.update(
 >     filters=filters,
@@ -184,7 +184,7 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 > # Filter by directory, set filter dir values
 > filters.add(field='dir', values='/my-folder/news/')
 >
-> # filter by created date, set filter date value
+> # Filter by created date, set filter date value
 > filters.add(field='createdAt', values='2026-05-23' , operator=dl.FiltersOperations.GREATER_THAN)
 >
 > dataset.items.list(filters=filters).print()
@@ -203,10 +203,6 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 >
 > # Exact match
 > filters.add(field='metadata.user.location', values='New York')
->
-> # Error:  Cannot query on key 'metadata.user.tags' - no items contain the specified key, or the key is unsearchable
-> # error on filtering an array field
-> # filters.add(field='metadata.user.tags', values=['outdoor', 'daylight'], operator=dl.FiltersOperations.IN)
 >
 > # Larger than, smaller than
 > filters.add(field='metadata.user.camera.settings.iso',
@@ -339,7 +335,7 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 
 > ```python
 > # Use specific fields when possible
-> filters.add(field='metadata.user.status', values='reviewed')  # ✅
+> filters.add(field='metadata.user.status', values='reviewed')  
 >
 > # Combine filters efficiently
 > filters = dl.Filters(resource=dl.FiltersResource.ITEM)
