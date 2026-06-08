@@ -58,7 +58,6 @@ Here's how it all comes together in a typical AI project:
 >     name='production-pipeline',
 >     nodes=[
 >         dl.DatasetNode(name='input'),
->         dl.ModelNode(name='predict'),
 >         dl.TaskNode(name='review')
 >     ]
 > )

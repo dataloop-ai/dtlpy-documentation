@@ -144,8 +144,6 @@ Open terminal and run:
 ## Best Practices & Tips 👑
 ### 1. Create API Keys 🔑
 
-**What is an API Key?**
-
 An API key is used to authenticate and authorize your access to the Dataloop platform.
 
 **How to Create an API Key:**
