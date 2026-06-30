@@ -77,8 +77,8 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 > single_item_id = item.id
 >
 > item.metadata['user'] = {
->     'name': 'Lucky luke',
->     'location': 'London'
+>     'name': 'Lucky Luke',
+>     'location': 'Belgium'
 > }
 >
 > item.update()
@@ -136,12 +136,13 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 >
 > # Print item details
 > item.print()
+>
 > # Move items
 > item.move(
 >     new_path='/new/path/item.jpg'
 > )
 >
-> # Print item details after move
+> # Print item details after the move
 > item.print()
 >
 > # List directory contents after setting filter value
@@ -156,8 +157,6 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 > ```
 
 > ```python
-> # Get item by ID or filename
-> item = dataset.items.get(item_id=single_item_id)
 > # Delete items
 > dataset.items.delete(filters=dl.Filters(field='dir', values='/batch-upload'))
 > dataset.items.list().print()
@@ -185,9 +184,8 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 >
 > # Set the directory filter value (use the 'dir' column from the items list)
 > filter_items_dir = '/dataset/folder'
->
-> # Batch metadata update
 > filters = dl.Filters(field='dir', values=filter_items_dir)
+> # Batch metadata update
 > dataset.items.update(
 >     filters=filters,
 >     update_values={'user.status': 'reviewed_in_batch'}

@@ -50,6 +50,7 @@ Learn how to efficiently create, manage, and track annotation tasks in Dataloop 
 ## Creating Tasks
 
 The SDK provides specialized methods to create different task types. These methods allow you to clearly define task objectives (labeling, QA, consensus, honeypot, and qualification).
+
 **Important**: The following new helper methods do not replace or remove the existing basic task creation method `(task = dataset.tasks.create(...)`, and you can still create tasks using the original method.
 
 ### 1. Simple Labeling Task Creation
@@ -144,7 +145,6 @@ This section covers how to manage existing tasks in the Dataloop SDK. You can re
 > task.name = 'Updated Task Name'
 > task.update()
 >
->
 > # Change task status
 > task.set_status(status='completed', operation='create', item_ids=[item_1.id, item_2.id])
 >
@@ -160,6 +160,7 @@ This section covers how to manage existing tasks in the Dataloop SDK. You can re
 > ```python
 > # Get existing task
 > task = dataset.tasks.get(task_id=task_2.id)
+>
 > # Add items to task
 > task.add_items(
 >     items=[item_3, item_4],
@@ -171,7 +172,7 @@ This section covers how to manage existing tasks in the Dataloop SDK. You can re
 > ```
 
 > ```python
-> #  Create a distribution task (not pulling task)
+> # Create a distribution task (not pulling task)
 > task = dataset.tasks.create_labeling_task(
 >     name='my_distribution_task',
 >     assignee_ids=['annotator1@dataloop.ai'],

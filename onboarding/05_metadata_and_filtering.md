@@ -229,7 +229,6 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 > filters.add(field='metadata.user.status', values='reviewed')
 > filters.add(field='metadata.user.batch', values='B-001')
 >
->
 > # NOT EQUAL operation
 > filters.add(field='metadata.user.status', values='rejected', operator=dl.FiltersOperations.NOT_EQUAL)
 >

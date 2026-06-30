@@ -50,6 +50,7 @@ With our powerful Python SDK, you'll have full control over your entire AI devel
 > ```python
 > # Check token status
 > is_expired = dl.token_expired()
+>
 > # Logout
 > dl.logout()
 > ```

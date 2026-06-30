@@ -209,18 +209,16 @@ Common issues and solutions:
 > uv add --trusted-host pypi.org --trusted-host files.pythonhosted.org dtlpy
 > ```
 
-> ```python
-> # Temporary fix using uv
-> !uv add --trusted-host pypi.org --trusted-host files.pythonhosted.org dtlpy
-> ```
 #### 2. Handle Dependency Conflicts
 
 > ```python
 > # # Remove installed package
 > # uv uninstall dtlpy
+>
 > # # Remove unused or old cached packages from uv's cache
 > # uv cache prune
-> # ## Install the package again
+>
+> # # Install the package again
 > # uv add dtlpy
 > ```
 

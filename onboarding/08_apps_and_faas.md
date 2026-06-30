@@ -75,7 +75,7 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 > app.print()
 >
 > # Open your project in Dataloop platform and navigate to the marketplace and choose the Applications tab
-> # Look for your new installed app, hard refresh < CTRL + SHIFT + R > if you can't find it
+> # Look for your new installed app, refresh if you can't find it
 > project.open_in_web()
 > ```
 
@@ -352,16 +352,17 @@ Add trigger to the DPK manifest file under components (dataloop.json) and bump t
 >
 > # Show services
 > project.services.list().print()
+>
 > # Get specific service
 > service = project.services.get(service_name='service_name')
 > service.print()
+>
 > # Show service triggers
 > triggers = service.triggers.list()
 > triggers.print()
 > ```
 
 > ```python
-> # Upload image to dataset and see that it is being executed by the service trigger
 > # Execute function
 > execution = service.execute(
 >     function_name="hello_world",
