@@ -8,17 +8,10 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 
 > ```python
 > import dtlpy as dl
-> from dotenv import load_dotenv
-> import os
 >
-> # Load environment variables from .env file
-> load_dotenv(override=True)
->
-> # Access your API key securely
-> api_key = os.getenv('DTLPY_API_KEY')
->
-> # Initialize Dataloop with the API key
-> dl.login_api_key(api_key=api_key)
+> # Interactive login — opens a browser window
+> if dl.token_expired():
+>     dl.login()
 > ```
 
 ### Project and Dataset Setup
@@ -53,11 +46,9 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 ### Quick deploy from a function
 
 > ```python
-> import dtlpy as dl
->
 > def hello_world(item: dl.Item) -> dl.Item:
 >     print(f'Hello World - Item name: {item.name}')
->     print(f'Hello World -Item id: {item.id}')
+>     print(f'Hello World - Item id: {item.id}')
 >     return item
 >
 > app_name = 'hello-world-app'
@@ -99,8 +90,9 @@ For more service info see: [Services Documentation](https://docs.dataloop.ai/doc
 > # To execute it manually on a specific item:
 > service.print()
 >
-> # Set the item ID you want to test with
-> item_id='item_id'
+> # Get an item from the dataset to test with
+> item = dataset.items.list().items[0]
+> item_id = item.id
 > execution = service.execute(
 >     function_name='hello_world',
 >     item_id=item_id
@@ -121,7 +113,10 @@ A DPK (Dataloop Package) is a self-contained package that contains all the neces
 
 For triggers, multiple functions, or custom runtime, use a DPK manifest. Define your class:
 
-Copy the following code to hello_world.py module
+Create a new folder for your DPK (e.g., `hello-world-dpk/`), and inside it create the following files.
+Make sure to navigate to that folder before running `project.dpks.publish()`.
+
+**File 1: `hello_world.py`** — copy the following code:
 
 > ```python
 > import dtlpy as dl
@@ -134,7 +129,7 @@ Copy the following code to hello_world.py module
 >         return item
 > ```
 
-Create the DPK manifest file (dataloop.json):
+**File 2: `dataloop.json`** — create the DPK manifest file:
 
 > ```json
 > {
@@ -399,3 +394,4 @@ Add trigger to the DPK manifest file under components (dataloop.json) and bump t
 > service.resume()
 > ```
 
+Ready to explore Model Management? Let's move on to the next chapter! 🚀

@@ -7,17 +7,10 @@ Learn how to efficiently create, manage, and track annotation tasks in Dataloop 
 
 > ```python
 > import dtlpy as dl
-> from dotenv import load_dotenv
-> import os
 >
-> # Load environment variables from .env file
-> load_dotenv(override=True)
->
-> # Access your API key securely
-> api_key = os.getenv('DTLPY_API_KEY')
->
-> # Initialize Dataloop with the API key
-> dl.login_api_key(api_key=api_key)
+> # Interactive login — opens a browser window
+> if dl.token_expired():
+>     dl.login()
 > ```
 
 ### Project and Dataset Setup
@@ -68,15 +61,12 @@ Labeling tasks are the foundation of annotation workflows. They can be configure
 >
 > dataset.items.list().print()
 >
-> # Set the following jpg items
-> item_1 = dataset.items.get(item_id='item_id_1')
-> item_2 = dataset.items.get(item_id='item_id_2')
-> item_3 = dataset.items.get(item_id='item_id_3')
-> item_4 = dataset.items.get(item_id='item_id_4')
+> # Auto-select items from dataset (ensure your dataset has at least 4 items)
+> all_items = list(dataset.items.list().all())
+> item_1, item_2, item_3, item_4 = all_items[0], all_items[1], all_items[2], all_items[3]
 > ```
 
 > ```python
-> import dtlpy as dl
 > import datetime
 >
 > # Add annotators to your project e.g., 'annotator1@dataloop.ai', 'annotator2@dataloop.ai'

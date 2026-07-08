@@ -8,17 +8,10 @@ Learn how to track, manage, and restore different versions of your datasets in D
 
 > ```python
 > import dtlpy as dl
-> from dotenv import load_dotenv
-> import os
 >
-> # Load environment variables from .env file
-> load_dotenv(override=True)
->
-> # Access your API key securely
-> api_key = os.getenv('DTLPY_API_KEY')
->
-> # Initialize Dataloop with the API key
-> dl.login_api_key(api_key=api_key)
+> # Interactive login — opens a browser window
+> if dl.token_expired():
+>     dl.login()
 > ```
 
 ### Project and Dataset Setup
@@ -47,6 +40,18 @@ Learn how to track, manage, and restore different versions of your datasets in D
 >     dataset = project.datasets.create(dataset_name=dataset_name)
 >     print(f"Created dataset '{dataset_name}'")
 > ```
+
+### Dataset Items Setup
+
+> ```python
+> # Ensure the dataset has items — if empty, upload sample files
+> if dataset.items.list().items_count == 0:
+>     print("Dataset is empty. Please upload some items before proceeding.")
+>     print("You can upload items by running: dataset.items.upload(local_path='path/to/your/files')")
+> else:
+>     print(f"Dataset has {dataset.items.list().items_count} items")
+> ```
+
 ## Getting Started with Versioning 🌟
 
 This section will use all three dataset types.
@@ -80,7 +85,8 @@ This section will use all three dataset types.
 >
 > # Create a filtered clone dataset
 > # Set the filter_dir to filter files by directory from the items list
-> filter_dir = '/batch-upload/dogs2'
+> # Set this to a directory that exists in your dataset (check the items list above)
+> filter_dir = '/batch-upload'
 > # Clone with filters
 > filters = dl.Filters()
 > filters.add(field='dir', values=filter_dir)
@@ -101,7 +107,7 @@ This section will use all three dataset types.
 
 > ```python
 > # List all datasets in project
-> project.datasets.list()
+> project.datasets.list().print()
 > ```
 
 ### 2. Merging Datasets
@@ -138,48 +144,5 @@ This section will use all three dataset types.
 > # Explore the dataset in the Dataloop platform
 > merged_dataset.open_in_web()
 > ```
-
-## Best Practices 👑
-
-### 1. Dataset Organization
-- Use clear naming conventions for cloned datasets
-- Document the purpose of each dataset version
-- Keep track of dataset lineage
-- Validate merged datasets before using them
-
-### 2. Version Management
-- Clone datasets before making major changes
-- Use filters to create specific subset versions
-- Maintain documentation of version differences
-- Test merged datasets thoroughly
-
-### 3. Error Prevention
-
-> ```python
-> # Validate dataset before operations
-> try:
->     dataset = project.datasets.get(dataset_id='dataset_id')
->     # Proceed with operations
-> except dl.exceptions.NotFound:
->     print("Dataset not found!")
-> ```
-
-## Pro Tips 💡
-
-1. **Clone with Purpose**
-   - Always specify meaningful clone names
-   - Include relevant metadata and annotations
-   - Document the reason for cloning
-
-2. **Merge with Care**
-   - Ensure datasets have compatible recipes
-   - Verify project and dataset IDs
-   - Test merged dataset integrity
-
-3. **Version Control**
-   - Keep track of dataset versions
-   - Document changes between versions
-   - Maintain clear version naming conventions
-
 
 Ready to explore metadata and filtering? Let's move on to the next chapter! 🚀

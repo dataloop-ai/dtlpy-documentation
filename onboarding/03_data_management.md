@@ -8,17 +8,10 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 
 > ```python
 > import dtlpy as dl
-> from dotenv import load_dotenv
-> import os
 >
-> # Load environment variables from .env file
-> load_dotenv(override=True)
->
-> # Access your API key securely
-> api_key = os.getenv('DTLPY_API_KEY')
->
-> # Initialize Dataloop with the API key
-> dl.login_api_key(api_key=api_key)
+> # Interactive login — opens a browser window
+> if dl.token_expired():
+>     dl.login()
 > ```
 
 ### Project and Dataset Setup
@@ -60,8 +53,6 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 ### 1. Single Item Upload
 
 > ```python
-> import dtlpy as dl
->
 > # Upload a single file
 > item = dataset.items.upload(
 >     # Set the local JPG file path — use r prefix if the path contains special characters, e.g., r'c:\users\one drive\dog.jpg'
@@ -157,6 +148,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 > ```
 
 > ```python
+> # ⚠️ Skip this cell if you plan to continue to the next chapters — it deletes items needed later
 > # Delete items
 > dataset.items.delete(filters=dl.Filters(field='dir', values='/batch-upload'))
 > dataset.items.list().print()
@@ -241,6 +233,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 > # Print list before delete
 > dataset.items.list().print()
 >
+> # ⚠️ Skip this delete if you plan to continue to the next chapters — it deletes items needed later
 > # Batch delete
 > dataset.items.delete(filters=filters)
 >
@@ -252,6 +245,9 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 
 > ```python
 > import concurrent.futures
+>
+> # Get all items for concurrent processing
+> items = list(dataset.items.list().all())
 >
 > with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
 >     futures = [executor.submit(process_item, item) for item in items]
@@ -291,6 +287,8 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 ### 3. Data Integrity Checks
 
 > ```python
+> from PIL import Image
+>
 > # Check for corrupted images
 > def check_image_integrity(item):
 >     try:
@@ -302,92 +300,15 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 >         return False
 > ```
 
-## Best Practices 👑
-
-### 1. File Organization
-- Use consistent folder structures
-- Implement clear naming conventions
-- Keep related files together
-- Document organization schema
-
-### 2. Error Handling
-
-> ```python
-> def safe_upload(path):
->     try:
->         item = dataset.items.upload(local_path=path, raise_on_error=True)
->         return True, item
->     except Exception as e:
->         return False, str(e)
-> ```
-
 ## Pro Tips 💡
 
-1. **Efficient Data Organization**
+**Efficient Data Organization**
 
 > ```python
 > # Create folders using make_dir
 > folders = ['train', 'val', 'test']
 > for folder in folders:
 >     dataset.items.make_dir(directory=f'/{folder}')
-> ```
-
-2. **Bulk Operations with Progress**
-
-> ```python
-> from tqdm import tqdm
->
-> def upload_with_progress(files):
->     for file in tqdm(files, desc="Uploading"):
->         dataset.items.upload(local_path=file)
-> ```
-
-### Access the object metadata
-
-#### Dataset Metadata
-
-> If you want to access the dataset via API, you can use the following URL.
-> Add the dataset ID to the end of the URL:
->
-> https://gate.dataloop.ai/api/v1/datasets/{dataset_id}
-
-
-#### Item Metadata
-
-> If you want to access the dataset via API,
-> you can use the following URL:
-> Add dataset ID and item ID to the URL:
->
-> https://gate.dataloop.ai/api/v1/items/{item_id}
-
-## Troubleshooting Guide 🔧
-
-### Common Issues:
-
-1. **Upload Failures**
-
-> ```python
-> # Retry mechanism
-> def upload_with_retry(path, max_retries=3):
->     for attempt in range(max_retries):
->         try:
->             return dataset.items.upload(local_path=path, raise_on_error=True)
->         except Exception as e:
->             if attempt == max_retries - 1:
->                 raise e
->             time.sleep(2 ** attempt)  # Exponential backoff
-> ```
-
-2. **Download Issues**
-
-> ```python
-> # Handle download errors
-> try:
->     item.download(local_path='path/to/save')
-> except dl.exceptions.ItemNotFound:
->     print("Item not found!")
-> except dl.exceptions.ConnectionError:
->     print("Connection error - retrying...")
 > ```
 
 Ready to start annotating your data? Let's move on to the annotation chapter! 🎯

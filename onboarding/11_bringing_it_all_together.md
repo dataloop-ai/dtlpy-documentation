@@ -28,7 +28,7 @@ Throughout this guide, you've mastered:
 
 ## Real-World Example: A Complete Workflow 🌟
 
-Here's how it all comes together in a typical AI project:
+Here's a simplified overview of a complete workflow (illustrative — not all parameters shown):
 
 > ```python
 > import dtlpy as dl
@@ -62,23 +62,6 @@ Here's how it all comes together in a typical AI project:
 >     ]
 > )
 > ```
-
-## Best Practices for Success 👑
-
-1. **Organization**
-   - Use clear naming conventions
-   - Keep consistent metadata structure
-   - Document your workflows
-
-2. **Development**
-   - Test in staging before production
-   - Use version control
-   - Monitor performance metrics
-
-3. **Collaboration**
-   - Share knowledge with your team
-   - Maintain documentation
-   - Follow established patterns
 
 ## Where to Go Next? 🎯
 

@@ -8,19 +8,11 @@ Learn how to manage your machine learning models in Dataloop - from development 
 
 > ```python
 > import dtlpy as dl
-> from dotenv import load_dotenv
-> import os
 > import datetime
 >
-> # Load environment variables from .env file
-> load_dotenv(override=True)
->
-> # Access your API key securely
-> api_key = os.getenv('DTLPY_API_KEY')
->
-> # Initialize Dataloop with the API key
-> dl.login_api_key(api_key=api_key)
->
+> # Interactive login — opens a browser window
+> if dl.token_expired():
+>     dl.login()
 > ```
 
 ### Project and Dataset Setup
@@ -149,10 +141,10 @@ Learn how to manage your machine learning models in Dataloop - from development 
 > deployment = model.deploy(
 >     service_config={
 >         'runtime': {
->             'gpu': True,
 >             'numReplicas': 1,
 >             'concurrency': 1,
->             'podType': dl.InstanceCatalog.GPU_T4_M
+>             'podType': dl.INSTANCE_CATALOG_REGULAR_S,
+>             'runnerImage': 'gcr.io/viewo-g/piper/agent/runner/apps/torch-models:0.1.8'
 >         }
 >     }
 > )
@@ -165,7 +157,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 > deployment = model.deploy(
 >     service_config={
 >         'runtime': {
->             'podType': dl.InstanceCatalog.GPU_T4_S,
+>             'podType': dl.INSTANCE_CATALOG_REGULAR_S,
 >             'autoscaler': {
 >                 'type': 'rabbitmq',
 >                 'minReplicas': 0,
@@ -190,9 +182,10 @@ Learn how to manage your machine learning models in Dataloop - from development 
 > item = dataset.items.list().items[0]
 >
 > # Run prediction
+> model = project.models.get(model_name=model.name)
 > prediction = model.predict(item_ids=[item.id])
 >
-> # Wait for results
+> # Wait for results (service to start and complete prediction)
 > prediction.wait()
 > prediction_status = prediction.status
 > ```
@@ -283,7 +276,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 >
 > # Clone the base model for training
 > model_cloned = model.clone(
->     model_name='my-model-v2',
+>     model_name='my-model-trained',
 >     dataset=dataset,
 >     project_id=project.id
 > )
@@ -367,14 +360,4 @@ Learn how to manage your machine learning models in Dataloop - from development 
 
 Log in to the Dataloop platform and check the training status and metrics.
 
-## Best Practices 👑
-
-### 1. Model Organization
-
-- Use clear naming conventions
-- Document model changes
-- Track experiment configurations
-- Maintain version history
-
-
-Ready to explore FaaS (Functions as a Service)? Let's move on to the next chapter! 🚀
+Ready to explore Pipelines and Automation? Let's move on to the next chapter! 🚀

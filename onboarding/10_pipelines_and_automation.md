@@ -7,17 +7,10 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > ```python
 > import dtlpy as dl
 > from dtlpy.entities.node import PipelineNodeIO
-> from dotenv import load_dotenv
-> import os
 >
-> # Load environment variables from .env file
-> load_dotenv(override=True)
->
-> # Access your API key securely
-> api_key = os.getenv('DTLPY_API_KEY')
->
-> # Initialize Dataloop with the API key
-> dl.login_api_key(api_key=api_key)
+> # Interactive login — opens a browser window
+> if dl.token_expired():
+>     dl.login()
 > ```
 
 ## Project Setup
@@ -185,7 +178,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 
 > ```python
 > # Create a new pipeline
-> pipeline = project.pipelines.create(name='My-First-Pipeline')
+> pipeline = project.pipelines.create(name='model-pipeline')
 >
 > # Print pipeline details
 > print(pipeline)
@@ -214,7 +207,14 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 
 > ```python
 > # Deploy model with default configuration
-> model_service = model.deploy()
+> if not model.services.list().items:
+>    print("No services found for the model")
+>    model_service = model.deploy()
+> else:
+>    print("Services found for the model")
+>    model_service = model.services.list().items[0]
+>    print(f"Service found: {model_service.name}")
+>
 > service_id = model_service.id
 >
 > # Print service details
@@ -294,17 +294,13 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 ### 1. Basic Operations
 
 > ```python
-> # Delete a pipeline
-> is_deleted = project.pipelines.delete(pipeline_id='<pipeline_id>')
+> # These are reference examples — replace with your actual pipeline
+> # project.pipelines.delete(pipeline_id=pipeline.id)
+> # project.pipelines.pause(pipeline=pipeline)
+> # project.pipelines.reset(pipeline=pipeline)
 >
 > # Open pipeline in web UI
-> project.pipelines.open_in_web(pipeline_id='<pipeline_id>')
->
-> # Pause pipeline
-> project.pipelines.pause(pipeline='pipeline_entity')
->
-> # Reset pipeline
-> project.pipelines.reset(pipeline='pipeline_entity')
+> pipeline.open_in_web()
 > ```
 
 ### 2. Pipeline Monitoring
@@ -320,49 +316,4 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > pipeline.pipeline_executions.list()
 > ```
 
-## Best Practices 👑
-
-### 1. Pipeline Organization
-- Use clear, descriptive pipeline names
-- Document pipeline purpose and configuration
-- Keep track of pipeline versions
-- Monitor pipeline executions
-
-### 2. Error Prevention
-
-> ```python
-> # Validate pipeline before operations
-> try:
->     pipeline = project.pipelines.get(pipeline_id='pipeline_id')
->     # Proceed with operations
-> except dl.exceptions.NotFound:
->     print("Pipeline not found!")
-> ```
-
-### 3. Resource Management
-- Monitor pipeline statistics regularly
-- Clean up unused pipelines
-- Document pipeline configurations
-- Test pipelines before production use
-
-## Pro Tips 💡
-
-1. **Pipeline Design**
-   - Plan pipeline flow before creation
-   - Use meaningful node names
-   - Document pipeline inputs and outputs
-   - Consider error handling at each step
-
-2. **Execution Management**
-   - Monitor pipeline executions
-   - Handle execution errors gracefully
-   - Keep track of execution statistics
-   - Document common issues and solutions
-
-3. **Pipeline Maintenance**
-   - Regularly check pipeline status
-   - Update pipeline configurations as needed
-   - Monitor resource usage
-   - Document pipeline changes
-
-Ready to explore integrations and APIs? Let's move on to the next chapter! 🚀
+Ready to bring it all together? Let's move on to the final chapter! 🚀

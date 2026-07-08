@@ -8,17 +8,10 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 
 > ```python
 > import dtlpy as dl
-> from dotenv import load_dotenv
-> import os
 >
-> # Load environment variables from .env file
-> load_dotenv(override=True)
->
-> # Access your API key securely
-> api_key = os.getenv('DTLPY_API_KEY')
->
-> # Initialize Dataloop with the API key
-> dl.login_api_key(api_key=api_key)
+> # Interactive login — opens a browser window
+> if dl.token_expired():
+>     dl.login()
 > ```
 
 ### Project and Dataset Setup
@@ -48,6 +41,17 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 >     print(f"Created dataset '{dataset_name}'")
 > ```
 
+### Dataset Items Setup
+
+> ```python
+> # Ensure the dataset has items — if empty, upload sample files
+> if dataset.items.list().items_count == 0:
+>     print("Dataset is empty. Please upload some items before proceeding.")
+>     print("You can upload items by running: dataset.items.upload(local_path='path/to/your/files')")
+> else:
+>     print(f"Dataset has {dataset.items.list().items_count} items")
+> ```
+
 ## Working with Metadata 📝
 
 ### 1. Adding Metadata
@@ -67,8 +71,6 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 > ```
 
 > ```python
-> import dtlpy as dl
->
 > # Add metadata to the first item
 > item = dataset.items.get(item_id=item_id)
 > item.metadata['user'] = {
@@ -120,8 +122,8 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 > item.metadata['user']['last_modified'] = '2024-03-20'
 > item = item.update()
 >
-> # Set the filter dir value to match your target folder
-> filters = dl.Filters(field='dir', values='/my-folder/news/')
+> # Set the filter dir value to match a folder in your dataset (run dataset.items.list().print() to see available dirs)
+> filters = dl.Filters(field='dir', values='/your-folder/')
 > dataset.items.update(
 >     filters=filters,
 >     update_values={
@@ -134,35 +136,6 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 > ```python
 > for item in dataset.items.list().all():
 >     print(item.metadata)
-> ```
-
-### 3. Metadata Schema
-
-> ```python
-> # Define a metadata schema
-> schema = {
->     "type": "object",
->     "properties": {
->         "user": {
->             "type": "object",
->             "properties": {
->                 "status": {
->                     "type": "string",
->                     "enum": ["new", "in-progress", "reviewed"]
->                 },
->                 "quality": {
->                     "type": "integer",
->                     "minimum": 1,
->                     "maximum": 5
->                 }
->             }
->         }
->     }
-> }
->
-> # Apply schema to dataset
-> dataset.metadata_schema = schema
-> dataset.update()
 > ```
 
 ## Advanced Filtering 🎯
@@ -181,11 +154,11 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 > filters.add(field='filename', values='*.jpg')
 >
 >
-> # Filter by directory, set filter dir values
-> filters.add(field='dir', values='/my-folder/news/')
+> # Filter by directory — set this to a folder in your dataset
+> filters.add(field='dir', values='/your-folder')
 >
-> # Filter by created date, set filter date value
-> filters.add(field='createdAt', values='2026-05-23' , operator=dl.FiltersOperations.GREATER_THAN)
+> # Filter by created date — adjust this date to match your data
+> filters.add(field='createdAt', values='2026-05-23', operator=dl.FiltersOperations.GREATER_THAN)
 >
 > dataset.items.list(filters=filters).print()
 > ```
@@ -258,105 +231,7 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 > filters.sort_by(field='metadata.user.quality', value=dl.FiltersOrderByDirection.ASCENDING)
 > ```
 
-## Practical Examples 💡
-
-### 1. Quality Control Pipeline
-
-> ```python
-> def quality_control_pipeline(dataset):
->     """Filter and process high-quality items"""
->     # Get high-quality, reviewed items
->     filters = dl.Filters()
->     filters.add(field='metadata.user.quality', values=[4, 5])
->     filters.add(field='metadata.user.status', values='reviewed')
->
->     high_quality_items = dataset.items.list(filters=filters)
->
->     # Process items
->     for item in high_quality_items:
->         process_high_quality_item(item)
-> ```
-
-### 2. Data Organization
-
-> ```python
-> def organize_by_metadata(dataset):
->     """Organize items into folders based on metadata"""
->     filters = dl.Filters()
->     items = dataset.items.list(filters=filters)
->
->     for item in items:
->         # Get metadata values
->         category = item.metadata['user'].get('category', 'uncategorized')
->
->         # Create category folder
->         new_path = f'/{category}/{item.name}'
->
->         # Move item
->         dataset.items.move(item=item, new_path=new_path)
-> ```
-
-### 3. Batch Processing
-
-> ```python
-> def process_unreviewed_items(dataset):
->     """Find and process unreviewed items"""
->     # Create filter for unreviewed items
->     filters = dl.Filters()
->     filters.add(field='metadata.user.status', values='new')
->
->     # Get items in batches
->     page_size = 100
->     pages = dataset.items.list(
->         filters=filters,
->         page_size=page_size
->     )
->
->     for page in pages:
->         for item in page:
->             # Process item
->             process_item(item)
->
->             # Update status
->             item.metadata['user']['status'] = 'processed'
->             item.update()
-> ```
-
-## Best Practices 👑
-
-### 1. Metadata Structure
-- Use consistent naming conventions
-- Keep metadata hierarchical
-- Document metadata schema
-- Validate metadata values
-
-### 2. Query Optimization
-
-> ```python
-> # Use specific fields when possible
-> filters.add(field='metadata.user.status', values='reviewed')  
->
-> # Combine filters efficiently
-> filters = dl.Filters(resource=dl.FiltersResource.ITEM)
-> filters.add(field='dir', values='/dataset1')
-> filters.add(field='metadata.user.status', values='reviewed')
-> ```
-
-### 3. Error Handling
-
-> ```python
-> def safe_metadata_update(item, updates):
->     """Safely update item metadata"""
->     try:
->         for key, value in updates.items():
->             item.metadata['user'][key] = value
->         return item.update()
->     except Exception as e:
->         print(f"Error updating metadata: {str(e)}")
->         return None
-> ```
-
-### 4. Filter Error Troubleshooting
+## Filter Error Troubleshooting
 
 > ```python
 > # Filter by metadata fields

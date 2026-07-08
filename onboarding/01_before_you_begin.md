@@ -25,16 +25,7 @@ Before diving into the setup, here are some helpful resources:
   - Windows 10/11
   - macOS 10.14+
   - Ubuntu 18.04+ or other modern Linux distributions
-- Python: Version 3.12 
-- uv: Latest version recommended
-
-## Choose Your Package Manager
-
-### Why Use uv? ⚡
-
-**uv** is a modern Python package manager written in Rust that provides significant performance improvements and better reliability compared to traditional pip. It's designed to be a drop-in replacement for pip while offering faster operations and more robust dependency resolution.
-
-See https://www.datacamp.com/tutorial/python-uv for more information
+- Python: Version 3.8 to 3.12
 
 ## Python Environment Setup 🐍
 
@@ -52,34 +43,13 @@ See https://www.datacamp.com/tutorial/python-uv for more information
 
 💡 Pro Tip: Always check "Add Python to PATH" during Windows installation!
 
-### 2. Installing uv
+### 2. Setting Up a Virtual Environment
 
 > 📌 **Run these commands in your terminal**:
 >
 > ```bash
-> # Install uv
-> # On Windows (PowerShell):
-> irm https://astral.sh/uv/install.ps1 | iex
->
-> # On macOS/Linux:
-> curl -LsSf https://astral.sh/uv/install.sh | sh
->
-> # Verify installation (restart PowerShell first on Windows)
-> uv --version
-> ```
-
-### 3. Setting Up a Virtual Environment
-
-> 📌 **Run these commands in your terminal**:
->
-> ```bash
-> # Initialize a new project and create a virtual environment using uv
->
-> # uv init creates a pyproject.toml file and sets up the project structure:
-> uv init 
->
-> # Create a new virtual environment using uv (creates a .venv directory by default):
-> uv venv
+> # Create a new virtual environment:
+> python -m venv .venv
 >
 > # Activate the environment:
 >
@@ -89,8 +59,8 @@ See https://www.datacamp.com/tutorial/python-uv for more information
 > # On macOS/Linux:
 > # source .venv/bin/activate
 >
-> # from activated venv - install ipykernel for Jupyter notebook support:
-> uv add ipykernel
+> # Install ipykernel for Jupyter notebook support:
+> pip install ipykernel
 > ```
 
 ## SDK Installation Guide 📦
@@ -110,27 +80,27 @@ See https://www.datacamp.com/tutorial/python-uv for more information
  **Option 1: Install package for active venv on terminal**
 
 Open terminal and run:
-> ```bash>
+> ```bash
 > # Activate the virtual environment first
 > .venv\Scripts\activate  # Windows
 > # or
 > source .venv/bin/activate  # macOS/Linux
 >
 > # Install the package
-> uv add dtlpy
+> pip install dtlpy
 >
 > # Verify installation
-> uv pip show dtlpy
+> pip show dtlpy
 > ```
 
 **Option 2: Run directly from Jupyter notebook**
 
 > ```python
 > # Install the Dataloop SDK
-> !uv add dtlpy
+> !pip install dtlpy
 >
 > # Verify installation
-> !uv pip show dtlpy
+> !pip show dtlpy
 > ```
 
 ### 2. Validation
@@ -142,9 +112,12 @@ Open terminal and run:
 > ```
 
 ## Best Practices & Tips 👑
-### 1. Create API Keys 🔑
 
-An API key is used to authenticate and authorize your access to the Dataloop platform.
+### 1. API Keys (For Automated / Headless Workflows) 🔑
+
+For interactive use, `dl.login()` (covered in the next chapter) is the simplest way to authenticate — it opens a browser window and handles everything for you.
+
+For **automated or headless environments** (CI/CD pipelines, remote servers, scheduled scripts), use an API key instead:
 
 **How to Create an API Key:**
 1. Navigate to your project dashboard
@@ -152,7 +125,7 @@ An API key is used to authenticate and authorize your access to the Dataloop pla
 3. Click "Create New Key"
 4. Store it securely in a `.env` file to avoid exposing sensitive information
 
-### 2. Environment Management
+**Using API Keys Securely:**
 
 Use `python-dotenv` and `.env` files to load the API key:
 
@@ -167,7 +140,7 @@ Use `python-dotenv` and `.env` files to load the API key:
 
 > ```python
 > # Install python-dotenv
-> !uv add python-dotenv
+> !pip install python-dotenv
 > ```
 
 > ```python
@@ -184,51 +157,11 @@ Use `python-dotenv` and `.env` files to load the API key:
 > dl.login_api_key(api_key=api_key)
 > ```
 
-### 3. Security Best Practices
-
 > ```python
 > # DON'T: Hardcode credentials
 > # api_key = "your-api-key"  # ❌
->
->
-> # Load environment variables from .env file
-> load_dotenv()
->
-> # Get the API key from environment
-> api_key = os.getenv('DTLPY_API_KEY')
+> # Always use environment variables instead
 > ```
-
-### 4. Installation Troubleshooting
-
-Common issues and solutions:
-
-#### 1. SSL Certificate Errors
-
-> ```bash
-> # Temporary fix using uv
-> uv add --trusted-host pypi.org --trusted-host files.pythonhosted.org dtlpy
-> ```
-
-#### 2. Handle Dependency Conflicts
-
-> ```python
-> # # Remove installed package
-> # uv uninstall dtlpy
->
-> # # Remove unused or old cached packages from uv's cache
-> # uv cache prune
->
-> # # Install the package again
-> # uv add dtlpy
-> ```
-
-#### 3. Version Mismatch
-
-> ```bash
-> # Force specific version using uv
-> uv add dtlpy==x.y.z
-> ```
-
 
 ## Validation Checklist ✅
 
@@ -239,41 +172,5 @@ Before proceeding, ensure:
 - Installation is verified
 - Environment variables are set
 - Test import is successful
-
-## Next Steps 🎯
-
-Once your environment is ready:
-
-1. Configure your credentials
-2. Create your first project
-3. Start exploring Dataloop's features
-
-🔍 Need Help? Check our [troubleshooting guide](https://docs.dataloop.ai/docs/troubleshooting)
-
-## Pro Tips 💡
-
-### 1. IDE Integration
-- Use VS Code or PyCharm for better development experience
-- Install Python extensions for code completion
-
-### 2. Development Workflow
-
-> ```python
-> import dtlpy as dl
->
-> # Enable debug logging
-> dl.verbose.logging_level = "DEBUG"
-> ```
-
-### 3. Resource Management
-
-> ```python
-> # Always clean up resources
-> try:
->     # Your code here
->     pass
-> finally:
->     dl.logout()
-> ```
 
 Ready to start your Dataloop journey? Let's move on to authentication and project setup! 🚀

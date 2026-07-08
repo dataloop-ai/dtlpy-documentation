@@ -79,7 +79,7 @@ With our powerful Python SDK, you'll have full control over your entire AI devel
 > # Project Setup
 >
 > # Set your project name here
-> project_name = "My-Awesome-Project"
+> project_name = "onboarding-project"
 > try:
 >     # Try to get existing project
 >     project = dl.projects.get(project_name=project_name)
@@ -95,7 +95,7 @@ With our powerful Python SDK, you'll have full control over your entire AI devel
 > ```python
 > # Add project members
 > project.add_member(
->     email='teammate@company2.com',
+>     email='teammate@company.com',
 >     role=dl.MemberRole.DEVELOPER
 > )
 > ```
@@ -105,8 +105,8 @@ With our powerful Python SDK, you'll have full control over your entire AI devel
 > ```python
 > # List all projects
 > projects = dl.projects.list()
-> for project in projects:
->     print(f"Project: {project.name}")
+> for p in projects:
+>     print(f"Project: {p.name}")
 > ```
 
 
@@ -143,12 +143,6 @@ The `open_in_web()` method launches the Dataloop web platform in your default br
 >     # Create dataset if it doesn't exist
 >     dataset = project.datasets.create(dataset_name=dataset_name)
 >     print(f"Created dataset '{dataset_name}'")
->
->
-> # Clone an existing dataset
-> cloned_dataset = dataset.clone(
->     clone_name="validation-data"
-> )
 > ```
 
 ### 2. Dataset Management
@@ -160,9 +154,8 @@ The `open_in_web()` method launches the Dataloop web platform in your default br
 > # Get dataset by name
 > dataset = project.datasets.get(dataset_name=dataset_name)
 >
-> # Update dataset
-> dataset.name = "training-data-v1"
-> dataset.update()
+> # Print dataset details
+> dataset.print()
 > ```
 
 > ```python
@@ -198,70 +191,6 @@ The `open_in_web()` method launches the Dataloop web platform in your default br
 >
 > # Remove member
 > project.remove_member(email='annotator@company.com')
-> ```
-
-## Best Practices 👑
-
-### 1. Project Organization
-- Use clear naming conventions
-- Add detailed descriptions
-- Maintain proper documentation
-- Tag resources appropriately
-
-### 2. Security Practices
-
-> ```python
-> # Use environment variables
-> api_key = os.environ.get('DTLPY_API_KEY')
->
-> # Regular token refresh
-> if dl.token_expired():
->     dl.refresh_token()
-> ```
-
-### 3. Resource Management
-
-> ```python
-> # Clean up unused resources
-> try:
->     # Your code here
-> finally:
->     # Logout when done
->     dl.logout()
-> ```
-
-## Troubleshooting Guide 🔧
-
-### Common Issues:
-
-1. **Authentication Failures**
-
-> ```python
-> # Check token status
-> print(dl.token_expired())
->
-> # Force re-authentication
-> dl.login_m2m(force=True, email="your_email", password="your_password")
-> ```
-
-2. **Project Access Issues**
-
-> ```python
-> # Verify project existence
-> try:
->     project = dl.projects.get(project_name='My-Project')
-> except dl.exceptions.NotFound:
->     print("Project not found!")
-> ```
-
-3. **Dataset Operations**
-
-> ```python
-> # Handle dataset errors
-> try:
->     dataset.update(system_metadata='New description')
-> except dl.exceptions.Forbidden:
->     print("Insufficient permissions!")
 > ```
 
 Ready to start working with data? Let's move on to data management! 🚀
