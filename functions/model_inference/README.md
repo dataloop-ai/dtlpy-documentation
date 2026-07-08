@@ -14,51 +14,25 @@ project = dl.projects.get(project_name=project_name)
 
 ```
 
-## Deploy the Package
+## Deploy the app and service
 
-We have two functions, one to return the annotations and one to upload them.  
-Later, when we'll create a button, we want to return the annotations directly to the Image Studio, so they will be
-rendered directly on the image. When using the model inside a pipeline or with a trigger, we want the function to upload
-the annotations to image after the inference.
+We have two functions: `inference` (return annotations to Image Studio) and `inference_and_upload` (upload annotations when used in a pipeline or trigger). Create a `dataloop.json` manifest in this directory with the module and service (e.g. name `inceptionv3`, runtime with `runnerImage: tensorflow/tensorflow:2.7.0`). Then:
 
 ```python
-modules = [dl.PackageModule(class_name='ModelRunner',
-                            entry_point='main.py',
-                            functions=[
-                                dl.PackageFunction(
-                                    inputs=[dl.FunctionIO(type=dl.PACKAGE_INPUT_TYPE_ITEM, name="item")],
-                                    outputs=[dl.FunctionIO(type=dl.PACKAGE_INPUT_TYPE_ANNOTATIONS, name="annotations")],
-                                    name='inference',
-                                    display_name='InceptionV3',
-                                    description='Inference on a pretrained imagenet model'),
-                                dl.PackageFunction(
-                                    inputs=[dl.FunctionIO(type=dl.PACKAGE_INPUT_TYPE_ITEM, name="item")],
-                                    outputs=[dl.FunctionIO(type=dl.PACKAGE_INPUT_TYPE_ITEM, name="item")],
-                                    name='inference_and_upload',
-                                    display_name='InceptionV3',
-                                    description='Inference on a pretrained imagenet model')
-                            ])]
-package = project.packages.push(package_name=package_name,
-                                modules=modules,
-                                src_path=src_path)
-```
+import os
+import dtlpy as dl
 
-## Deploy the Service
+project_name = 'My Project'
+project = dl.projects.get(project_name=project_name)
 
-We'll run the inference on a CPU, with a TensorFlow docker image.
+script_dir = os.path.dirname(os.path.abspath(__file__))
+dpk = project.dpks.publish(
+    manifest_filepath=os.path.join(script_dir, 'dataloop.json'),
+    local_path=script_dir
+)
+app = project.apps.install(dpk=dpk)
 
-```
-service = package.services.deploy(service_name=package.name,
-                                  runtime=dl.KubernetesRuntime(pod_type=dl.INSTANCE_CATALOG_REGULAR_XS,
-                                                               runner_image='tensorflow/tensorflow:2.7.0'))
-```
-
-To update an existing service with a new pushed package run the following code:
-
-```
-service = package.services.get(service_name=package.name)
-service.package_revision = package.version
-service.update()
+service = project.services.get(service_name='inceptionv3')
 ```
 
 ## Run an Execution

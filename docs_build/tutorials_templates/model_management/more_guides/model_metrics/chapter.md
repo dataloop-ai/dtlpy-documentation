@@ -22,15 +22,14 @@ import numpy as np
 # Connect to your project
 project = dl.projects.get(project_name='your-awesome-project')
 
-# Create a package for your model
+# Publish your DPK and install the app
 dpk = project.dpks.publish()
-
-# Install the DPK
-project.apps.install(dpk=dpk)
+app = project.apps.install(dpk=dpk)
 
 # Create a model to track
-model = dpk.models.create(
+model = app.models.create(
     model_name='My Tracked Model',
+    dpk_model_name='model-name-from-dpk',
     description='A model with awesome metrics tracking',
     dataset_id='your-dataset-id',
     labels=[]

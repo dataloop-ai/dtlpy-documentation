@@ -112,6 +112,13 @@ dataset.items.download(
 filters = dl.Filters(field='dir', values='/folder')
 pages = dataset.items.list(filters=filters)
 
+def process_item(item):
+    """Process a single item"""
+    print(f'Processing: {item.name}')
+    # Add your processing logic here
+    # e.g., download, transform, analyze
+    return item
+
 for page in pages:
     for item in page:
         # Process each item
@@ -126,10 +133,9 @@ dataset.items.delete(filters=filters)
 ```python
 import concurrent.futures
 
-def process_batch(items):
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        futures = [executor.submit(process_item, item) for item in items]
-        concurrent.futures.wait(futures)
+with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+    futures = [executor.submit(process_item, item) for item in items]
+    concurrent.futures.wait(futures)
 ```
 
 ## Data Validation 🔍

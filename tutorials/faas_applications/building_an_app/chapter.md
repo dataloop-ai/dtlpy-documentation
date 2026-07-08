@@ -90,6 +90,31 @@ Create a file named `dataloop.json` with your package configuration:
 
 # 🚀 Deploying Your Function
 
+## Quick deploy from a function
+
+For a single Python function you can deploy without a manifest:
+
+```python
+import dtlpy as dl
+
+def hello_world(item: dl.Item) -> dl.Item:
+    if "user" not in item.metadata:
+        item.metadata["user"] = {}
+    item.metadata["user"]["processed"] = True
+    item.update()
+    return item
+
+project = dl.projects.get(project_name='your-project-name')
+service = dl.Service.from_function(
+    func=hello_world,
+    name='hello-world',
+    project=project,
+    client_api=dl.client_api
+)
+```
+
+For full control (triggers, multiple functions, custom runtime), use the DPK manifest below.
+
 ## Step 1: Initialize Dataloop
 
 First, make sure you're logged in:
