@@ -241,39 +241,6 @@ Learn how to manage your machine learning models in Dataloop - from development 
 ### 1. Basic Training
 
 > ```python
-> # Training data preparation
-> # The training service requires annotations without metadata.system.model.name to avoid training on model-generated predictions
-> all_items = list(dataset.items.list().all())
->
-> for item in all_items:
->     annotations = list(item.annotations.list())
->
->     for annotation in annotations:
->         # Remove model metadata if it exists
->         if annotation.metadata and 'system' in annotation.metadata:
->             if 'model' in annotation.metadata['system']:
->                 print(f"Removing model metadata from annotation on {item.name}")
->                 # Clear the model metadata
->                 annotation.metadata['system'].pop('model', None)
->                 annotation.update(True)
->
-> # Dataset Labeling
-> # Get unique labels from existing annotations
-> labels = set()
-> for item in dataset.items.list().all():
->     for annotation in item.annotations.list():
->         labels.add(annotation.label)
->
-> print("Existing labels:", labels)
->
-> # Add these labels to dataset recipe
-> label_list = list(labels)
->
-> dataset.add_labels(label_list=label_list)
-> ```
-
-> ```python
->
 > # Clone the base model for training
 > model_cloned = model.clone(
 >     model_name='my-model-trained',
@@ -323,7 +290,45 @@ Learn how to manage your machine learning models in Dataloop - from development 
 > print(f"Training status: {train_execution.latest_status['status']}")
 > ```
 
-### 2. Advanced Training Options
+### 2. Training Data Preparation — Edge Cases
+
+> **Note:** The following steps are **not part of the standard training workflow**. They are workarounds for specific scenarios:
+> - **Stripping model metadata**: The training service skips annotations that have `metadata.system.model.name` set (i.e., model-generated predictions). If your dataset only has model-generated annotations and you want to train on them, you need to remove this metadata.
+> - **Extracting labels from annotations**: Normally, your dataset recipe should already have labels defined. If labels are missing from the recipe (e.g., annotations were uploaded without updating the ontology), this extracts them from existing annotations and adds them.
+
+> ```python
+> # Training data preparation
+> # The training service requires annotations without metadata.system.model.name to avoid training on model-generated predictions
+> all_items = list(dataset.items.list().all())
+>
+> for item in all_items:
+>     annotations = list(item.annotations.list())
+>
+>     for annotation in annotations:
+>         # Remove model metadata if it exists
+>         if annotation.metadata and 'system' in annotation.metadata:
+>             if 'model' in annotation.metadata['system']:
+>                 print(f"Removing model metadata from annotation on {item.name}")
+>                 # Clear the model metadata
+>                 annotation.metadata['system'].pop('model', None)
+>                 annotation.update(True)
+>
+> # Dataset Labeling
+> # Get unique labels from existing annotations
+> labels = set()
+> for item in dataset.items.list().all():
+>     for annotation in item.annotations.list():
+>         labels.add(annotation.label)
+>
+> print("Existing labels:", labels)
+>
+> # Add these labels to dataset recipe
+> label_list = list(labels)
+>
+> dataset.add_labels(label_list=label_list)
+> ```
+
+### 3. Advanced Training Options
 
 > ```python
 > # Train with data splitting and validation
@@ -356,7 +361,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 > print(f"Training status: {train_status.latest_status['status']}")
 > ```
 
-### 3. Training Monitoring
+### 4. Training Monitoring
 
 Log in to the Dataloop platform and check the training status and metrics.
 
