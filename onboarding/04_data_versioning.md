@@ -113,6 +113,11 @@ This section will use all three dataset types.
 ### 2. Merging Datasets
 
 > ```python
+> # NOTE: Not all datasets can be merged. Merge conditions:
+> # 1. Cloned datasets: merge works only if items originated from the same master item (same source).
+> # 2. Non-cloned datasets with the same recipe: items are summed, similar items will be duplicated.
+> # 3. Datasets with different recipes: CANNOT be merged — align recipes first using 'Switch recipe'.
+>
 > # Multiple cloned datasets can be merged into one, which enables multiple annotations to be merged onto the same item.
 >
 > # Merge two cloned datasets
