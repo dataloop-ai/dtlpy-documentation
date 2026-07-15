@@ -200,7 +200,7 @@ Add the service configuration to the DPK manifest file (dataloop.json):
 >     ],
 >     "services": [
 >       {
->         "name": "hello-world-srv",
+>         "name": "hello-world-service",
 >         "moduleName": "hello-world",
 >         "runtime": {
 >           "podType": "regular-m",
@@ -297,7 +297,7 @@ Add trigger to the DPK manifest file under components (dataloop.json) and bump t
 >       "name": "run-on-item-created",
 >       "active": true,
 >       "type": "Event",
->       "namespace": "services.hello-world-srv",
+>       "namespace": "services.hello-world-service",
 >       "spec": {
 >         "filter": {
 >           "$and": [
