@@ -28,58 +28,40 @@ Throughout this guide, you've mastered:
 
 ## Real-World Example: A Complete Workflow 🌟
 
-Here's how it all comes together in a typical AI project:
+Here's a simplified overview of a complete workflow (illustrative — not all parameters shown):
 
-```python
-import dtlpy as dl
-
-# 1. Project Setup
-project = dl.projects.create('my-ai-project')
-dataset = project.datasets.create('training-data')
-
-# 2. Data Pipeline
-dataset.items.upload(
-    local_path='/path/to/data',
-    remote_path='/raw'
-)
-
-# 3. Create Task
-task = dataset.tasks.create(
-    task_name='Annotation Round 1',
-    assignee_ids=['annotator@company.com']
-)
-
-# 4. Deploy Model
-model = project.models.get('my-model')
-model.deploy()
-
-# 5. Automate Workflow
-pipeline = project.pipelines.create(
-    name='production-pipeline',
-    nodes=[
-        dl.DatasetNode(name='input'),
-        dl.ModelNode(name='predict'),
-        dl.TaskNode(name='review')
-    ]
-)
-```
-
-## Best Practices for Success 👑
-
-1. **Organization**
-   - Use clear naming conventions
-   - Keep consistent metadata structure
-   - Document your workflows
-
-2. **Development**
-   - Test in staging before production
-   - Use version control
-   - Monitor performance metrics
-
-3. **Collaboration**
-   - Share knowledge with your team
-   - Maintain documentation
-   - Follow established patterns
+> ```python
+> import dtlpy as dl
+>
+> # 1. Project Setup
+> project = dl.projects.create('my-ai-project')
+> dataset = project.datasets.create('training-data')
+>
+> # 2. Data Pipeline
+> dataset.items.upload(
+>     local_path='/path/to/data',
+>     remote_path='/raw'
+> )
+>
+> # 3. Create Task
+> task = dataset.tasks.create(
+>     task_name='Annotation Round 1',
+>     assignee_ids=['annotator@company.com']
+> )
+>
+> # 4. Deploy Model
+> model = project.models.get('my-model')
+> model.deploy()
+>
+> # 5. Automate Workflow
+> pipeline = project.pipelines.create(
+>     name='production-pipeline',
+>     nodes=[
+>         dl.DatasetNode(name='input'),
+>         dl.TaskNode(name='review')
+>     ]
+> )
+> ```
 
 ## Where to Go Next? 🎯
 
@@ -95,6 +77,6 @@ pipeline = project.pipelines.create(
 
 Remember: The best way to learn is by doing. Take what you've learned and start building! 🚀
 
-> 🔍 **Need Help?** 
-> - Documentation: [docs.dataloop.ai](https://docs.dataloop.ai)
-> - Support: [support@dataloop.ai](mailto:support@dataloop.ai)
+🔍 **Need Help?** 
+- Documentation: [docs.dataloop.ai](https://docs.dataloop.ai)
+- Support: [support@dataloop.ai](mailto:support@dataloop.ai)

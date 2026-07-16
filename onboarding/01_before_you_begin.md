@@ -15,203 +15,162 @@ Before diving into the setup, here are some helpful resources:
 ## System Requirements 💻
 
 ### Hardware Requirements
-- **CPU**: 2+ cores recommended
-- **RAM**: 4GB minimum, 8GB+ recommended
-- **Storage**: 1GB+ free space for SDK and dependencies
-- **Internet**: Stable connection required
+- CPU: 2+ cores recommended
+- RAM: 4GB minimum, 8GB+ recommended
+- Storage: 1GB+ free space for SDK and dependencies
+- Internet: Stable connection required
 
 ### Software Prerequisites
-- **Operating System**: 
+- Operating System:
   - Windows 10/11
   - macOS 10.14+
   - Ubuntu 18.04+ or other modern Linux distributions
-- **Python**: Version 3.6 or higher
-- **pip**: Latest version recommended
+- Python: Version 3.8 to 3.12
 
 ## Python Environment Setup 🐍
 
 ### 1. Installing Python
 
-```bash
-# Check if Python is installed
-python --version  # or python3 --version
+> 📌 **Run these commands in your terminal**:
+>
+> ```bash
+> # Check if Python is installed
+> python --version
+>
+> # If not installed, download from:
+> # https://www.python.org/downloads/
+> ```
 
-# If not installed, download from:
-# https://www.python.org/downloads/
-```
-
-> 💡 **Pro Tip**: Always check "Add Python to PATH" during Windows installation!
+💡 Pro Tip: Always check "Add Python to PATH" during Windows installation!
 
 ### 2. Setting Up a Virtual Environment
 
-```bash
-# Create a new virtual environment
-python -m venv dataloop-env
-
-# Activate the environment
-# On Windows:
-dataloop-env\Scripts\activate
-# On macOS/Linux:
-source dataloop-env/bin/activate
-```
+> 📌 **Run these commands in your terminal**:
+>
+> ```bash
+> # Create a new virtual environment:
+> python -m venv .venv
+>
+> # Activate the environment:
+>
+> # On Windows:
+> .venv\Scripts\activate  
+>
+> # On macOS/Linux:
+> # source .venv/bin/activate
+>
+> # Install ipykernel for Jupyter notebook support:
+> pip install ipykernel
+> ```
 
 ## SDK Installation Guide 📦
 
 ### 1. Basic Installation
 
-```bash
-# Install the Dataloop SDK
-pip install dtlpy
+ **Select the correct Python interpreter**
 
-# Verify installation
-pip show dtlpy
-```
+ 📌 **Important**: After activating the virtual environment, make sure to select the `.venv` kernel in your Jupyter notebook:
+ 1. Click on "Kernel" in the top menu
+ 2. Select "Change kernel"
+ 3. Choose `.venv` from the list
+ 4. Verify the kernel is selected (top right corner should show .venv)
+
+ There are two ways to add Python packages to your active `.venv`:
+
+ **Option 1: Install package for active venv on terminal**
+
+Open terminal and run:
+> ```bash
+> # Activate the virtual environment first
+> .venv\Scripts\activate  # Windows
+> # or
+> source .venv/bin/activate  # macOS/Linux
+>
+> # Install the package
+> pip install dtlpy
+>
+> # Verify installation
+> pip show dtlpy
+> ```
+
+**Option 2: Run directly from Jupyter notebook**
+
+> ```python
+> # Install the Dataloop SDK
+> !pip install dtlpy
+>
+> # Verify installation
+> !pip show dtlpy
+> ```
 
 ### 2. Validation
 
-```python
-# Test your installation
-import dtlpy as dl
-print(dl.__version__)
-```
-
-## Environment Configuration ⚙️
-
-### 1. Setting Up Environment Variables
-
-```bash
-# Windows
-set DTLPY_API_KEY=your-api-key
-
-# Linux/macOS
-export DTLPY_API_KEY=your-api-key
-```
-
-### 2. Configuration File Setup
-
-```python
-import dtlpy as dl
-# Create a default configuration
-dl.login_api_key(api_key=os.environ['DTLPY_API_KEY'])
-
-# Check if the configuration is successful
-dl.projects.list().print()
-```
+> ```python
+> # Test your installation
+> import dtlpy as dl
+> print(dl.__version__)
+> ```
 
 ## Best Practices & Tips 👑
 
-### 1. Environment Management
-- Always use virtual environments
-- Keep dependencies updated
-- Document your environment setup
+### 1. API Keys (For Automated / Headless Workflows) 🔑
 
-### 2. Security Best Practices
-```python
-# DON'T: Hardcode credentials
-api_key = "your-api-key"  # ❌
+For interactive use, `dl.login()` (covered in the next chapter) is the simplest way to authenticate — it opens a browser window and handles everything for you.
 
-# DO: Use environment variables
-import os
-api_key = os.environ.get('DTLPY_API_KEY')  # ✅
-```
+For **automated or headless environments** (CI/CD pipelines, remote servers, scheduled scripts), use an API key instead:
 
-Suggestion:  Use `python-dotenv` and `.env` files to load the API key easily:
+**How to Create an API Key:**
+1. Navigate to your project dashboard
+2. Go to the **API Keys** tab
+3. Click "Create New Key"
+4. Store it securely in a `.env` file to avoid exposing sensitive information
 
-```python
-# Install python-dotenv
-# pip install python-dotenv
+**Using API Keys Securely:**
 
-from dotenv import load_dotenv
-import os
+Use `python-dotenv` and `.env` files to load the API key:
 
-# Load environment variables from .env file
-load_dotenv()
+🔒 Best Practices for .env Files:
+1. Add .env to your .gitignore file to prevent committing sensitive data
+2. Create a .env.example file with dummy values as a template
+3. Never commit real credentials to version control
+4. Use strong, unique API keys
+5. Regularly rotate your API keys
 
-# Access your API key securely
-api_key = os.getenv('DTLPY_API_KEY')
+📚 Learn more about environment variable best practices and python dotenv [here](https://github.com/theskumar/python-dotenv)
 
-# Initialize Dataloop with the API key
-dl.login_api_key(api_key=api_key)
-```
+> ```python
+> # Install python-dotenv
+> !pip install python-dotenv
+> ```
 
-> 🔒 **Best Practices for .env Files**:
-> 1. Create a `.env` file in your project root:
->    ```plaintext
->    DTLPY_API_KEY=your-api-key-here
->    ```
-> 2. Add `.env` to your `.gitignore` file to prevent committing sensitive data
-> 3. Create a `.env.example` file with dummy values as a template
-> 4. Never commit real credentials to version control
-> 5. Use strong, unique API keys
-> 6. Regularly rotate your API keys
-> 
-> 📚 Learn more about environment variable best practices and python dotenv [here]](https://github.com/theskumar/python-dotenv?tab=readme-ov-file)
+> ```python
+> from dotenv import load_dotenv
+> import os
+>
+> # Load environment variables from .env file
+> load_dotenv()
+>
+> # Access your API key securely
+> api_key = os.getenv('DTLPY_API_KEY')
+>
+> # Initialize Dataloop with the API key
+> dl.login_api_key(api_key=api_key)
+> ```
 
-### 3. Installation Troubleshooting
-
-Common issues and solutions:
-
-1. **SSL Certificate Errors**
-   ```bash
-   # Temporary fix
-   pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org dtlpy
-   ```
-
-2. **Dependency Conflicts**
-   ```bash
-   # Clean installation
-   pip uninstall dtlpy
-   pip cache purge
-   pip install dtlpy
-   ```
-
-3. **Version Mismatch**
-   ```bash
-   # Force specific version
-   pip install dtlpy==x.y.z
-   ```
+> ```python
+> # DON'T: Hardcode credentials
+> # api_key = "your-api-key"  # ❌
+> # Always use environment variables instead
+> ```
 
 ## Validation Checklist ✅
 
 Before proceeding, ensure:
+- Python version between 3.8 and 3.12 is installed
+- Virtual environment is created and activated
+- Dataloop SDK is installed
+- Installation is verified
+- Environment variables are set
+- Test import is successful
 
-- [ ] Python version between 3.8 and 3.12 is installed
-- [ ] Virtual environment is created and activated
-- [ ] Dataloop SDK is installed
-- [ ] Installation is verified
-- [ ] Environment variables are set
-- [ ] Test import is successful
-
-## Next Steps 🎯
-
-Once your environment is ready:
-1. Configure your credentials
-2. Create your first project
-3. Start exploring Dataloop's features
-
-> 🔍 **Need Help?** Check our [troubleshooting guide](https://docs.dataloop.ai/docs/troubleshooting)
-
-## Pro Tips 💡
-
-1. **IDE Integration**
-   - Use VS Code or PyCharm for better development experience
-   - Install Python extensions for code completion
-
-2. **Development Workflow**
-   ```python
-   import dtlpy as dl
-   # Enable debug logging
-   dl.verbose.logging_level = "DEBUG"
-
-   ```
-
-3. **Resource Management**
-   ```python
-   # Always clean up resources
-   try:
-       # Your code here
-   finally:
-       dl.logout()
-   ```
-
-Ready to start your Dataloop journey? Let's move on to authentication and project setup! 🚀 
+Ready to start your Dataloop journey? Let's move on to authentication and project setup! 🚀
