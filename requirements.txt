@@ -10,3 +10,4 @@ jupyter-core>=5.8.0 # not directly required, pinned by Snyk to avoid a vulnerabi
 aiohttp>=3.12.14 # not directly required, pinned by Snyk to avoid a vulnerability
 protobuf>=4.25.8 # not directly required, pinned by Snyk to avoid a vulnerability
 jupyterlab>=4.4.8 # not directly required, pinned by Snyk to avoid a vulnerability
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
