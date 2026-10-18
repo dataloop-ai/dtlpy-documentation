@@ -251,6 +251,104 @@ custom_filter = {
 }
 ```
 
+## External Vector Stores: Embeddings Drivers
+
+By default, feature vectors are stored by Dataloop. An embeddings driver binds a dataset to an external vector store instead - Elasticsearch or PostgreSQL (pgvector) - so the vectors of a feature set are written to and read from that store.
+
+An embeddings driver does not generate embeddings and does not create the external store. You still run your embedding model, write the vectors to the store, and bind the store to the dataset.
+
+### Create an Embeddings Driver
+
+The store credentials live in an existing Dataloop integration; the driver only references it by ID.
+
+```python
+import dtlpy as dl
+
+dataset = dl.datasets.get(dataset_id='your-dataset-id')
+
+driver = dataset.embeddings_drivers.create(
+    name='pg-embeddings',
+    integration_id='your-integration-id',
+    store_type=dl.EmbeddingsDriverStoreType.POSTGRESQL,
+    feature_set_schema_mappings=[{
+        'featureSetConfig': {'name': 'text-embedding-3-small', 'size': 1536},
+        'schemaName': 'public.vectors',   # PostgreSQL table, schema-qualified
+        'vectorField': 'embedding',       # column that holds the vector
+        'externalField': 'doc_id',        # join-key column in the vector table
+        'distanceMetric': 'cosine',
+        'dataColumn': 'doc_id',           # item-side field that matches externalField
+    }],
+)
+print(driver.created_feature_sets)
+```
+
+A dataset can have only one embeddings driver; creating a second one raises `dl.exceptions.Conflict`.
+
+| Input | Type | Required | Explanation |
+|---|---|---|---|
+| `name` | `str` | Yes | Driver name. |
+| `integration_id` | `str` | Yes | Integration that holds the vector store credentials. |
+| `store_type` | `dl.EmbeddingsDriverStoreType` | Yes | `ELASTICSEARCH` or `POSTGRESQL`. |
+| `dataset_id` | `str` | No | Dataset to bind. Taken from `dataset.embeddings_drivers`; required with `dl.embeddings_drivers`. |
+| `project_id` | `str` | No | Taken from the dataset or project you called it from. |
+| `feature_set_schema_mappings` | `list[dict]` | No | One mapping per feature set to create. |
+
+Keys of each schema mapping:
+
+| Key | Explanation |
+|---|---|
+| `featureSetConfig.name`, `featureSetConfig.size` | Name and vector dimension of the feature set. `size` must equal the length of the vectors in the store. |
+| `schemaName` | The external table (PostgreSQL, schema-qualified) or index (Elasticsearch). |
+| `vectorField` | The column or field that holds the vector. |
+| `externalField` | The join-key column or field in the external store. |
+| `distanceMetric` | A `dl.EmbeddingsDistanceMetric` value, such as `'cosine'`. |
+| `dataColumn` | The item field that matches `externalField`. Leave it out when the vectors live in the same Elasticsearch index as the data, as in the SDK's Elasticsearch example. |
+
+`driver.created_feature_sets` lists the feature sets created from the mappings. An entry with an empty `featureSetId` failed to be created, and its `statusMessage` says why.
+
+### Enums
+
+| Enum | Values |
+|---|---|
+| `dl.EmbeddingsDriverStoreType` | `ELASTICSEARCH`, `POSTGRESQL` |
+| `dl.EmbeddingsDistanceMetric` | `L2`, `COSINE`, `INNER_PRODUCT`, `L2_NORM`, `DOT_PRODUCT` |
+| `dl.EmbeddingsDriverStatus` | `ACTIVE`, `INACTIVE`, `ERROR` |
+
+Not every store supports every metric. Ask the SDK:
+
+```python
+dl.embeddings_drivers.supported_distances(store_type=dl.EmbeddingsDriverStoreType.ELASTICSEARCH)
+```
+
+### Manage Embeddings Drivers
+
+```python
+# Get / list / delete
+driver = dl.embeddings_drivers.get(embeddings_driver_id='driver-id')
+drivers = dataset.embeddings_drivers.list()          # drivers of this dataset (page, page_size optional)
+dl.embeddings_drivers.delete(embeddings_driver_id='driver-id')
+
+# Rename
+driver.name = 'new-name'
+driver = dl.embeddings_drivers.update(embeddings_driver=driver)
+
+# Schema mappings
+mappings = dl.embeddings_drivers.list_schema_mappings(embeddings_driver_id='driver-id')
+mapping = dl.embeddings_drivers.update_schema_mapping(
+    embeddings_driver_id='driver-id',
+    feature_set_id='feature-set-id',
+    vector_field='embedding',
+    distance_metric=dl.EmbeddingsDistanceMetric.COSINE,
+)
+```
+
+Rules to know:
+
+- `update_schema_mapping()` can change only `vector_field`, `data_column` and `distance_metric`, and you must pass at least one. Changing `vector_field` or `distance_metric` re-validates every mapping of the driver.
+- The platform never changes a driver's `dataset_id` or `store_type`. Once the driver has a schema mapping, it also keeps `schema_name`, `external_field`, `distance_metric` and `data_column` as they are - `update()` returns them unchanged instead of raising.
+
+An `EmbeddingsDriver` has `id`, `name`, `dataset_id`, `integration_id`, `store_type`, `status`, `status_message`, `schema_name`, `external_field`, `distance_metric` and `data_column`. A `FeatureSetSchemaMapping` has `id`, `embeddings_driver_id`, `feature_set_id`, `schema_name`, `vector_field`, `external_field`, `data_column`, `distance_metric`, `created_at` and `updated_at`.
+
 ## Best Practices 💡
 
 1. **Vector Size**: Choose appropriate dimensions for your use case

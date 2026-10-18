@@ -45,6 +45,43 @@ dataset = project.datasets.create(
 )
 ```
 
+### Creating a Dataset with Elastic Metadata (Storage Analytics)
+
+For a dataset on external storage (NFS, PowerScale or S3), you can store the items' metadata in Elasticsearch so it can be queried and analyzed there.
+
+```python
+# The platform manages the Elasticsearch metadata driver
+dataset = project.datasets.create_storage_analytics(
+    dataset_name='my-nfs-dataset',
+    driver_id='storage-driver-id'
+)
+
+# Use your own Elasticsearch database driver instead
+dataset = project.datasets.create_storage_analytics(
+    dataset_name='my-nfs-dataset',
+    driver_id='storage-driver-id',
+    metadata_driver_id='elastic-driver-id'
+)
+```
+
+`create_storage_analytics()` is a shortcut for `datasets.create()` with `metadata_driver_id`. If you leave `metadata_driver_id` out, it uses `dl.MetadataDriver.SYSTEM`, the platform's internal Elasticsearch:
+
+```python
+dataset = project.datasets.create(
+    dataset_name='my-nfs-dataset',
+    driver_id='storage-driver-id',
+    metadata_driver_id=dl.MetadataDriver.SYSTEM
+)
+print(dataset.metadata_driver_id)  # 'system'
+```
+
+| Input | Explanation |
+|---|---|
+| `driver_id` | The storage driver of the dataset. A storage driver is required when you set `metadata_driver_id`. |
+| `metadata_driver_id` | The ID of an Elasticsearch database driver, or `dl.MetadataDriver.SYSTEM`. |
+
+`dataset.metadata_driver_id` is set by the platform and is read-only. This is different from a database-backed dataset, where the rows themselves live in the database - see [Database-Backed Datasets](/tutorials/data_management/external_storage_drivers/database_backed_datasets/chapter.md).
+
 ### Finding Your Datasets 🔍
 
 Need to find specific datasets? Use our powerful DQL (Dataloop Query Language) to filter and search:

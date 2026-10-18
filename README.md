@@ -73,6 +73,7 @@ jupyter notebook tutorials
   * External storage drivers
     *  [Aws s3](tutorials/data_management/external_storage_drivers/aws_s3/chapter.ipynb)
     *  [Azure blob](tutorials/data_management/external_storage_drivers/azure_blob/chapter.ipynb)
+    *  [Database backed datasets](tutorials/data_management/external_storage_drivers/database_backed_datasets/chapter.ipynb)
     *  [Gcs](tutorials/data_management/external_storage_drivers/gcs/chapter.ipynb)
   *  [Feature vectors](tutorials/data_management/feature_vectors/chapter.ipynb)
   *  [Integrations and secrets](tutorials/data_management/integrations_and_secrets/chapter.ipynb)

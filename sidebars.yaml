@@ -40,6 +40,8 @@
         page: tutorials/data_management/external_storage_drivers/azure_blob/chapter.md
       - label: Google Cloud Storage
         page: tutorials/data_management/external_storage_drivers/gcs/chapter.md
+      - label: Database-Backed Datasets
+        page: tutorials/data_management/external_storage_drivers/database_backed_datasets/chapter.md
     - label: 'Items and Annotations: Introduction'
       page: tutorials/data_management/items_and_annotations/introduction/chapter.md
     - label: 'Items and Annotations: More Examples'

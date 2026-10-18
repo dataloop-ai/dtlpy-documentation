@@ -572,6 +572,25 @@ filters.pop(field='to-delete-field')
 filters.pop_join(field='to-delete-annotation-field')
 ```
 
+## Database-Backed Datasets
+
+On a dataset backed by an external database, regular filters work on the mapped `metadata.user.*` paths, and `custom_filter` is supported:
+
+```python
+filters = dl.Filters(field='metadata.user.eventType', values='click')
+pages = dataset.items.list(filters=filters)
+```
+
+To get the database rows exactly as stored, set `database_driver_raw_data_only`. `items.list()` then returns a `pandas.DataFrame` with the raw database column names:
+
+```python
+filters = dl.Filters()
+filters.database_driver_raw_data_only = True
+df = dataset.items.list(filters=filters)
+```
+
+See [Database-Backed Datasets](/tutorials/data_management/external_storage_drivers/database_backed_datasets/chapter.md) for how to create and load such a dataset.
+
 ## Need More Advanced Options? 🚀
 
 For even more filtering power, check out our [Advanced SDK Filters](https://docs.dataloop.ai/docs/dql-operators) guide.

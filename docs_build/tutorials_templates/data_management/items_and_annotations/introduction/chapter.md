@@ -165,6 +165,16 @@ for page in pages:
         print(f"Found item: {item.name} with mood: {item.metadata['user']['mood']}")
 ```
 
+### Uploading Rows to a Database-Backed Dataset
+
+If the dataset is backed by an external database (`dataset.is_database_backed` is `True`), pass rows instead of file paths. `upload()` accepts a `dict`, a list of `dict` or a `pandas.DataFrame`:
+
+```python
+dataset.items.upload({'_id': 'e1', 'event_type': 'click', 'score': 0.91})
+```
+
+File options such as `remote_path`, `item_metadata` and `overwrite` are ignored for rows. See [Database-Backed Datasets](/tutorials/data_management/external_storage_drivers/database_backed_datasets/chapter.md) for the full behavior.
+
 ### Working with Arrays 🔢a
 
 Need to upload numpy arrays directly? Here's how:
