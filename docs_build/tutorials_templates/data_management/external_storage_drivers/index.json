@@ -17,6 +17,11 @@
       "displayName": "Google Cloud Storage",
       "description": "Connect and sync your Google Cloud Storage with Dataloop, including automatic syncing via Cloud Functions",
       "location": "data_management/external_storage_drivers/gcs/chapter.md"
+    },
+    {
+      "displayName": "Database-Backed Datasets",
+      "description": "Expose Elasticsearch rows as a dataset, upload structured rows, and query them with filters",
+      "location": "data_management/external_storage_drivers/database_backed_datasets/chapter.md"
     }
   ]
 }
