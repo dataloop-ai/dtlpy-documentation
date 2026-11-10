@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import YAML from 'yaml';
-import { pageUrl } from './scripts/lib/urls.mjs';
+import { pageUrl } from './scripts/urls.mjs';
 import redirects from './redirects.json' with { type: 'json' };
 
 const toSidebar = (n) => {

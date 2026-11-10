@@ -1,7 +1,7 @@
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { posix } from 'node:path';
 import YAML from 'yaml';
-import { pageUrl } from './lib/urls.mjs';
+import { pageUrl } from './urls.mjs';
 
 const SOURCES = ['onboarding', 'tutorials', 'notebooks', 'resources/dtljs'];
 const OUT = 'src/content/docs';
