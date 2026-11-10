@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **GIS Annotation SDK** enables users to efficiently annotate geospatial data within Dataloop's platform. With this SDK, you can create, manage, and share geospatial annotations such as bounding boxes, polygons, polylines, and points directly on maps. The SDK supports various GIS file formats and provides full control over annotation workflows. Read the [GIS user documentation](https://docs.dataloop.ai/docs/gis-studio) for information.
+The **GIS Annotation SDK** enables users to efficiently annotate geospatial data within DDOE's platform. With this SDK, you can create, manage, and share geospatial annotations such as bounding boxes, polygons, polylines, and points directly on maps. The SDK supports various GIS file formats and provides full control over annotation workflows. Read the [GIS user documentation](https://docs.dataloop.ai/docs/gis-studio) for information.
 
 
 ## Supported GIS Annotation Types
@@ -171,13 +171,13 @@ Remove annotations from an item:
 annotation.delete()
 ```
 
-## 💡 Pro Tips for GIS Annotations
+## Pro Tips for GIS Annotations
 - **Use AOI Efficiently**: Always define an **Area of Interest (AOI)** to keep annotations within valid boundaries.
 - **Leverage Multi-Layers**: Enable multiple layers to compare different geospatial data sources for better accuracy.
 - **Shortcut Navigation**: Use **keyboard shortcuts** for faster annotation (e.g., `Ctrl + Z` for undo, `Shift + Drag` for zooming).
 - **Optimize Performance**: Large datasets? Use **COG format** for efficient access and streaming.
 
-## 🔧 Troubleshooting Common Issues
+## Troubleshooting Common Issues
 - **Annotations Not Visible?** Ensure the correct **layer** is selected and visible.
 - **Coordinate Mismatch?** Verify that annotations use the correct **EPSG projection** (default: **4326**).
 - **Performance Issues?** Reduce layer opacity or limit the number of active layers.

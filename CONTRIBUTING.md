@@ -1,16 +1,16 @@
-# Contribution Guidelines for Dataloop.ai Documentation Repository
+# Contribution Guidelines for DDOE Documentation Repository
 
-Thank you for your interest in contributing to the Dataloop.ai documentation repository!
-We are excited to work with you to create high-quality content that helps our developer community use Dataloop.ai
+Thank you for your interest in contributing to the Dell Data Orchestration Engine (DDOE) documentation repository!
+We are excited to work with you to create high-quality content that helps our developer community use DDOE
 effectively.
 To ensure that your contributions are successful, please follow the guidelines below.
 
 ## Forking the Repository
 
-To contribute to the Dataloop.ai documentation repository, you will need to create a fork of the repository on Github.
+To contribute to the DDOE documentation repository, you will need to create a fork of the repository on Github.
 To do this, follow these steps:
 
-* Go to the Dataloop.ai documentation repository on Github.
+* Go to the DDOE documentation repository on Github.
 * Click the "Fork" button in the upper right corner of the page.
 * Select your Github account as the location to fork the repository.
 
@@ -44,6 +44,24 @@ Run the `python docs_build/main.py` to collect all tutorials form the "docs_buil
 *NOTE buildimg the tutorials from the template directory will OVERWRITE the `tutorials` folder with the changes from the
 template!*
 
+## Documentation Site
+
+The site at https://developers.dataloop.ai is built with [Astro Starlight](https://starlight.astro.build) (MIT) and
+deployed to GitHub Pages by `.github/workflows/deploy-docs.yml` on every push to `main`.
+
+```
+npm ci
+npm run dev           # local preview with live reload
+npm run build         # production build into dist/
+npm run check-links   # verify internal links in dist/
+```
+
+* `npm run sync` (run automatically by `dev` and `build`) copies `onboarding/`, `tutorials/`, `notebooks/` and
+  `resources/dtljs/` into `src/content/docs/`. Do not edit the copies; edit the sources.
+* The sidebar is read from `sidebars.yaml`. Moved or renamed pages need an entry in `redirects.json`.
+* Hand-written pages live directly in `src/content/docs/` (`index.mdx`, `tutorials/index.mdx`, `resources/index.mdx`).
+* Do not use emojis in documentation.
+
 ## Passing Tests
 
 Before your pull request can be merged into the main repository, it must pass a series of tests.
@@ -71,7 +89,7 @@ Make changes to the content in your fork of the repository.
 
 ## Final
 
-Thank you for your contributions to the Dataloop.ai documentation repository! We appreciate your efforts to help our
+Thank you for your contributions to the DDOE documentation repository! We appreciate your efforts to help our
 community learn and grow.
 
 

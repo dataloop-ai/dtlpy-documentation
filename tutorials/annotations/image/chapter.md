@@ -1,8 +1,8 @@
-# 🎨 Image Annotations - Your Visual Data Toolkit!
+# Image Annotations - Your Visual Data Toolkit!
 
 Welcome to the world of image annotations! Whether you're training an AI model, analyzing medical images, or cataloging your photo collection, annotations are your tools for marking, labeling, and understanding visual data. Let's dive into the exciting possibilities!
 
-# 📋 Classification - Simple Yet Powerful
+# Classification - Simple Yet Powerful
 
 ## Single Item Classification
 Need to label an entire image? Here's how to add a simple classification:
@@ -36,7 +36,7 @@ for page in pages:
         item.annotations.upload(builder)
 ```
 
-# 📍 Points & Poses - Precision Marking
+# Points & Poses - Precision Marking
 
 ## Point Annotations
 Perfect for marking specific locations in your image:
@@ -79,7 +79,7 @@ builder.add(annotation_definition=dl.Point(x=x,
 builder.upload()
 ```
 
-# 📦 Boxes & Cuboids - Defining Regions
+# Boxes & Cuboids - Defining Regions
 
 ## Bounding Box
 The classic way to mark regions of interest:
@@ -125,7 +125,7 @@ builder.add(annotation_definition=dl.Cube(
 ))
 ```
 
-# 🔷 Advanced Shapes - Creative Freedom
+# Advanced Shapes - Creative Freedom
 
 ## Ellipse Annotations
 Perfect for circular or oval regions:
@@ -158,7 +158,7 @@ builder.add(annotation_definition=dl.Polyline(
 ))
 ```
 
-# 🎭 Segmentation - Pixel-Perfect Precision
+# Segmentation - Pixel-Perfect Precision
 
 ## Basic Segmentation
 Create a binary mask for your annotations:
@@ -209,7 +209,7 @@ instance_map = {"background": 0, "foreground": 1}
 builder.from_instance_mask(mask=mask, instance_map=instance_map)
 ```
 
-# 📝 Metadata & Description
+# Metadata & Description
 
 ## Item Description
 Add context to your images:
@@ -231,7 +231,7 @@ builder.add(annotation_definition=dl.Box(...),
            })
 ```
 
-# 🚀 Advanced Tutorials
+# Advanced Tutorials
 
 ## Copying Annotations Between Items
 Want to reuse annotations across different images? Here's how to copy them between items:
@@ -394,7 +394,7 @@ for annotation in pages.all():
     annotation.update()
 ```
 
-# 💡 Pro Tips & Best Practices
+# Pro Tips & Best Practices
 
 ## Annotation Quality
 - Double-check coordinates and dimensions
@@ -414,7 +414,7 @@ for annotation in pages.all():
 - Implement quality control checks
 - Document your annotation guidelines
 
-# 🔧 Troubleshooting Common Issues
+# Troubleshooting Common Issues
 
 ## Coordinate Systems
 - Remember: (0,0) is top-left corner
@@ -428,5 +428,5 @@ for annotation in pages.all():
 - Validate attribute formats
 - Test annotation visibility
 
-Need help? Check out our other tutorials or reach out to our support team. Happy annotating! 🎨✨
+Need help? Check out our other tutorials or reach out to our support team. Happy annotating!
 

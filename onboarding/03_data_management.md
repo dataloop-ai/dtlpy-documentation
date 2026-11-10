@@ -1,10 +1,10 @@
-# Data Management Fundamentals 💾
+# Data Management Fundamentals
 
-Master the essentials of managing your data in Dataloop - from uploading files to organizing your datasets efficiently.
+Master the essentials of managing your data in Dell Data Orchestration Engine (DDOE) - from uploading files to organizing your datasets efficiently.
 
-## Project Setup ⚙️
+## Project Setup
 
-### Dataloop Login 🔐
+### DDOE Login
 
 > ```python
 > import dtlpy as dl
@@ -48,7 +48,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 >     item.delete()
 > ```
 
-## Uploading Items 📤
+## Uploading Items
 
 ### 1. Single Item Upload
 
@@ -81,7 +81,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 >
 > print(item.metadata)
 >
-> # Explore item metadata in Dataloop platform
+> # Explore item metadata in DDOE platform
 > item.open_in_web()
 > ```
 
@@ -113,11 +113,11 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 > # List items in the dataset
 > dataset.items.list().print()
 >
-> # Explore dataset in Dataloop platform
+> # Explore dataset in DDOE platform
 > dataset.open_in_web()
 > ```
 
-## File Organization Strategies 📂
+## File Organization Strategies
 
 ### 1. Directory Structure
 
@@ -148,7 +148,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 > ```
 
 > ```python
-> # ⚠️ Skip this cell if you plan to continue to the next chapters — it deletes items needed later
+> # Skip this cell if you plan to continue to the next chapters — it deletes items needed later
 > # Delete items
 > dataset.items.delete(filters=dl.Filters(field='dir', values='/batch-upload'))
 > dataset.items.list().print()
@@ -184,7 +184,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 > )
 > ```
 
-## Batch Operations ⚡
+## Batch Operations
 
 ### 1. Bulk Upload and Download
 
@@ -233,7 +233,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 > # Print list before delete
 > dataset.items.list().print()
 >
-> # ⚠️ Skip this delete if you plan to continue to the next chapters — it deletes items needed later
+> # Skip this delete if you plan to continue to the next chapters — it deletes items needed later
 > # Batch delete
 > dataset.items.delete(filters=filters)
 >
@@ -254,7 +254,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 >     concurrent.futures.wait(futures)
 > ```
 
-## Data Validation 🔍
+## Data Validation
 
 ### 1. Item Validation
 
@@ -300,7 +300,7 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 >         return False
 > ```
 
-## Pro Tips 💡
+## Pro Tips
 
 **Efficient Data Organization**
 
@@ -311,4 +311,4 @@ Master the essentials of managing your data in Dataloop - from uploading files t
 >     dataset.items.make_dir(directory=f'/{folder}')
 > ```
 
-Ready to start annotating your data? Let's move on to the annotation chapter! 🎯
+Ready to start annotating your data? Let's move on to the annotation chapter!

@@ -1,8 +1,8 @@
-# Creating Pipelines: Building Automated Workflows 🔄
+# Creating Pipelines: Building Automated Workflows
 
-This tutorial will help you master pipeline creation in Dataloop, covering all node types and their advanced features.
+This tutorial will help you master pipeline creation in Dell Data Orchestration Engine (DDOE), covering all node types and their advanced features.
 
-## Prerequisites 🎯
+## Prerequisites
 
 First, log in to the platform:
 
@@ -22,7 +22,7 @@ service = project.services.get(service_name='My Service')
 function_name = 'My Function'
 ```
 
-## Creating a Pipeline 🚀
+## Creating a Pipeline
 
 Create a new pipeline in your project:
 
@@ -30,7 +30,7 @@ Create a new pipeline in your project:
 pipeline = project.pipelines.create(name='my-pipeline')
 ```
 
-## Node Types and Configuration 🛠️
+## Node Types and Configuration
 
 ### 1. Dataset Node
 
@@ -109,7 +109,7 @@ code_node = dl.CodeNode(
 )
 ```
 
-## Building the Pipeline Flow 🔗
+## Building the Pipeline Flow
 
 ### 1. Adding Nodes
 
@@ -161,7 +161,7 @@ dataset_node.add_trigger(
 )
 ```
 
-## Finalizing and Managing the Pipeline 📋
+## Finalizing and Managing the Pipeline
 
 ### 1. Update and Install
 
@@ -182,7 +182,7 @@ pipeline.open_in_web()
 project.pipelines.delete(pipeline_id=pipeline.id)
 ```
 
-## Best Practices 💡
+## Best Practices
 
 1. **Node Positioning**
    - Use meaningful positions for visual clarity
@@ -204,4 +204,4 @@ project.pipelines.delete(pipeline_id=pipeline.id)
    - Document expected inputs and outputs
    - Maintain pipeline version history
 
-Need help? Check our [Pipeline documentation](https://docs.dataloop.ai/docs/pipelines-overview) for more details! 🚀
+Need help? Check our [Pipeline documentation](https://docs.dataloop.ai/docs/pipelines-overview) for more details!

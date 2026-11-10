@@ -2,10 +2,10 @@
 
 [Brief description of what this notebook covers. Explain the main purpose, key concepts, and what users will learn. This should be 2-3 sentences that clearly communicate the value and scope of the tutorial.]
 
-[Optional: Add context about why this topic is important or how it fits into the broader Dataloop ecosystem. Include any relevant background information that helps users understand the significance of what they're learning.]
+[Optional: Add context about why this topic is important or how it fits into the broader Dell Data Orchestration Engine (DDOE) ecosystem. Include any relevant background information that helps users understand the significance of what they're learning.]
 
 ### Prerequisites:
-* **Dataloop Account:** You should have access to a Dataloop platform account.
+* **DDOE Account:** You should have access to a DDOE platform account.
 * **Python Environment:** Ensure you have Python 3.7+ installed with pip.
 * **Basic Python Knowledge:** Familiarity with Python programming concepts.
 * **[Additional Prerequisites]:** [List any specific requirements for this tutorial]
@@ -35,7 +35,7 @@ The following cell uses `pip` to install the required packages. The `--quiet` fl
 
 ### Authentication and Connection
 
-To interact with the Dataloop platform, you need to authenticate. The simplest way in an interactive environment like a Jupyter Notebook is using `dl.login()` which will open a browser window for you to log in via your Dataloop account (or uses saved credentials if available and valid).
+To interact with the DDOE platform, you need to authenticate. The simplest way in an interactive environment like a Jupyter Notebook is using `dl.login()` which will open a browser window for you to log in via your DDOE account (or uses saved credentials if available and valid).
 
 
 ```python
@@ -47,7 +47,7 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Login to Dataloop
+# Login to DDOE
 dl.login()
 ```
 
@@ -118,6 +118,6 @@ Now that you've completed this tutorial, you might want to explore:
 
 ### Additional Resources:
 
-- [Dataloop Documentation](https://dataloop.ai/docs/)
+- [DDOE Documentation](https://dataloop.ai/docs/)
 - [Python SDK Reference](https://sdk-docs.dataloop.ai/)
 - [Additional relevant resources]

@@ -1,8 +1,8 @@
-# 🎨 UI Toolbars - Customize Your Dataloop Experience
+# UI Toolbars - Customize Your DDOE Experience
 
-Welcome to UI Toolbars! Learn how to add custom buttons and functionality throughout the Dataloop platform. Whether you want to trigger functions or open panels, toolbars make it possible!
+Welcome to UI Toolbars! Learn how to add custom buttons and functionality throughout the Dell Data Orchestration Engine (DDOE) platform. Whether you want to trigger functions or open panels, toolbars make it possible!
 
-## 🎯 When to Use Toolbars
+## When to Use Toolbars
 
 Toolbars are perfect when you need to:
 
@@ -10,38 +10,38 @@ Toolbars are perfect when you need to:
 - Open custom panels (UI Applications) from platform locations
 - Add context-specific actions to datasets, tasks, or items
 
-## 📍 Available Toolbar Locations
+## Available Toolbar Locations
 
-1. **`datasetsDashboard`** 📊
+1. **`datasetsDashboard`**
 
    - Available in Datasets and Project Overview pages
    - Perfect for dataset-wide operations
 
-2. **`datasetBrowser`** 🗂️
+2. **`datasetBrowser`**
 
    - For operations in the dataset browser interface
    - _Note: Limited availability for regular users_
 
-3. **`datasetMenu`** 📁
+3. **`datasetMenu`**
 
    - Located in the dataset menu
    - Available in both Datasets and Project Overview pages
 
-4. **`taskMenu`** ✅
+4. **`taskMenu`**
 
    - Found in the task menu on the Tasks page
    - Ideal for task management operations
 
-5. **`itemMenu`** 📄
+5. **`itemMenu`**
 
    - Available in the right-click item menu
    - Perfect for item-specific operations
 
-6. **`projectActions`** 🏗️
+6. **`projectActions`**
    - Located in the Project Actions menu
    - For project-level operations
 
-## 🛠️ Toolbar Structure
+## Toolbar Structure
 
 ### Basic Components
 
@@ -101,7 +101,7 @@ Full configuration options:
 }
 ```
 
-## 📝 Practical Examples
+## Practical Examples
 
 ### 1. Function Button in Dataset Dashboard
 
@@ -147,7 +147,7 @@ Open a custom UI panel:
 }
 ```
 
-## 💡 Pro Tips & Best Practices
+## Pro Tips & Best Practices
 
 ### UI/UX Design
 
@@ -177,4 +177,4 @@ Open a custom UI panel:
 - Update based on user feedback
 - Regular testing across different locations
 
-Need help? Check out our [icon library](https://dataloop-ai.github.io/icons/) for button icons, or reach out to our support team. Happy customizing! ✨
+Need help? Check out our [icon library](https://dataloop-ai.github.io/icons/) for button icons, or reach out to our support team. Happy customizing!

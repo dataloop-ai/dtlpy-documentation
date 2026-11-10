@@ -1,7 +1,7 @@
 {
     "name": "data-management-tutorial",
     "title": "Data Management Tutorial",
-    "description": "Use Dataloop's Python SDK to integrate your data with your cloud-storage (GCS/S3/Azure), create datasets, upload/link your data items, manage your datasets, and download data.\n\nSee our SDK Getting Started guide at https://docs.dataloop.ai/docs/sdk-register.\n",
+    "description": "Use DDOE's Python SDK to integrate your data with your cloud-storage (GCS/S3/Azure), create datasets, upload/link your data items, manage your datasets, and download data.\n\nSee our SDK Getting Started guide at https://docs.dataloop.ai/docs/sdk-register.\n",
     "content": [
         {
             "displayName": "Datasets and Versioning",
@@ -34,12 +34,12 @@
             "location": "data_management/items_and_annotations/other_data_types/gis/chapter.md"
         },
         {
-            "displayName": "Dataloop Query Language: Introduction",
+            "displayName": "DDOE Query Language: Introduction",
             "description": "Learn the basics of DQL Filters and Pagination",
             "location": "data_management/dataloop_query_language/introduction/chapter.md"
         },
         {
-            "displayName": "Dataloop Query Language: More Examples",
+            "displayName": "DDOE Query Language: More Examples",
             "description": "Advanced DQL examples and techniques",
             "location": "data_management/dataloop_query_language/more_examples/chapter.md"
         },

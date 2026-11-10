@@ -1,20 +1,20 @@
-# Quality Control in Dataloop: Consensus, Honeypot, and Qualification Tasks 🎯
+# Quality Control in DDOE: Consensus, Honeypot, and Qualification Tasks
 
-Welcome to your guide to quality control in Dataloop! Whether you're validating annotations, assessing annotator skills, or ensuring data quality, we've got you covered. Let's dive into the world of quality control tasks!
+Welcome to your guide to quality control in Dell Data Orchestration Engine (DDOE)! Whether you're validating annotations, assessing annotator skills, or ensuring data quality, we've got you covered. Let's dive into the world of quality control tasks!
 
-## Understanding Quality Control Tasks 🎓
+## Understanding Quality Control Tasks
 
 Think of quality control tasks as your data quality toolkit. Each type serves a unique purpose:
 
-### Task Types at a Glance 📊
+### Task Types at a Glance
 
 | Task Type | Purpose | Best For | Key Feature |
 |----------|---------|----------|-------------|
-| 🤝 **Consensus** | Multiple annotators work together | High-value data | Majority voting |
-| 🍯 **Honeypot** | Hidden quality checks | Ongoing monitoring | Mixed with real data |
-| 📝 **Qualification** | Skill assessment | New annotators | Pre-task testing |
+| **Consensus** | Multiple annotators work together | High-value data | Majority voting |
+| **Honeypot** | Hidden quality checks | Ongoing monitoring | Mixed with real data |
+| **Qualification** | Skill assessment | New annotators | Pre-task testing |
 
-## Creating Consensus Tasks 🤝
+## Creating Consensus Tasks
 
 Want multiple annotators to work on the same items? Consensus tasks are your friend! They help ensure quality through collaboration and agreement.
 
@@ -37,7 +37,7 @@ consensus_task = dataset.tasks.create(
 )
 ```
 
-### How Consensus Tasks Work 🔄
+### How Consensus Tasks Work
 
 1. **Distribution**: 
    - 60% of items go to all annotators
@@ -47,7 +47,7 @@ consensus_task = dataset.tasks.create(
    - Results are compared automatically
    - Differences can trigger additional review
 
-## Setting Up Honeypot Tasks 🍯
+## Setting Up Honeypot Tasks
 
 Want to quietly monitor annotation quality? Honeypot tasks mix pre-annotated "truth" items with regular work.
 
@@ -65,16 +65,16 @@ honeypot_task = dataset.tasks.create(
 )
 ```
 
-### Honeypot Setup Requirements 📋
+### Honeypot Setup Requirements
 
 1. Create a `/honeypot` folder in your dataset root
 2. Add your ground truth items there
 3. They'll be randomly mixed into assignments
 4. Performance is measured against these known items
 
-💡 **Pro Tip**: Keep your honeypot percentage low (3-5%) to maintain natural workflow while ensuring quality.
+**Pro Tip**: Keep your honeypot percentage low (3-5%) to maintain natural workflow while ensuring quality.
 
-## Creating Qualification Tasks 📝
+## Creating Qualification Tasks
 
 Need to test annotator skills before a big project? Qualification tasks are your answer!
 
@@ -91,16 +91,16 @@ qualification_task = dataset.tasks.create(
 )
 ```
 
-### How Qualification Tasks Work 🎓
+### How Qualification Tasks Work
 
 1. Each annotator gets the same set of pre-annotated items
 2. They work without seeing the ground truth
 3. Their work is compared against known correct annotations
 4. Scores help you assess their skills
 
-## Best Practices 💡
+## Best Practices
 
-### Choosing the Right Task Type 🎯
+### Choosing the Right Task Type
 
 1. **Use Consensus Tasks When**:
    - Working on critical data
@@ -117,7 +117,7 @@ qualification_task = dataset.tasks.create(
    - Starting a new project type
    - Need to assess specific skills
 
-### Quality Control Tips 🌟
+### Quality Control Tips
 
 1. **For Consensus Tasks**:
    - Start with a small consensus percentage
@@ -134,10 +134,10 @@ qualification_task = dataset.tasks.create(
    - Provide clear instructions
    - Set realistic passing thresholds
 
-## Need More Help? 🤔
+## Need More Help?
 
 - Learn more about [Consensus Tasks](https://docs.dataloop.ai/docs/quality-task-types#consensus)
 - Explore [Honeypot Tasks](https://docs.dataloop.ai/docs/quality-task-types#honeypot)
 - Understand [Qualification Tasks](https://docs.dataloop.ai/docs/quality-task-types#qualification)
 
-Happy quality controlling! 🚀
+Happy quality controlling!

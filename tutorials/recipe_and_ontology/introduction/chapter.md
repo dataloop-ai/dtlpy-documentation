@@ -1,25 +1,25 @@
-# Recipes and Ontologies: Your Data's Secret Sauce 🧪
+# Recipes and Ontologies: Your Data's Secret Sauce
 
-Welcome to the world of recipes and ontologies in Dataloop! Think of recipes as your master cookbook 📖 and ontologies as your ingredient lists 📝. Let's dive in and learn how to create the perfect data labeling recipe!
+Welcome to the world of recipes and ontologies in Dell Data Orchestration Engine (DDOE)! Think of recipes as your master cookbook and ontologies as your ingredient lists. Let's dive in and learn how to create the perfect data labeling recipe!
 
-## Understanding the Basics 🎓
+## Understanding the Basics
 
-### What's a Recipe? 🍳
+### What's a Recipe?
 
-A recipe in Dataloop is like your cooking instructions - it tells annotators exactly how to label your data. It includes:
-- 🔗 Link to an ontology (your ingredients)
-- 🛠️ Labeling tools (box, polygon, etc.)
-- 📄 Optional PDF instructions
-- ✨ And more goodies!
+A recipe in DDOE is like your cooking instructions - it tells annotators exactly how to label your data. It includes:
+- Link to an ontology (your ingredients)
+- Labeling tools (box, polygon, etc.)
+- Optional PDF instructions
+- And more goodies!
 
-### What's an Ontology? 🌳
+### What's an Ontology?
 
 An ontology is your structured knowledge base that contains:
-- 🏷️ Labels (like "Dog", "Cat", "Car")
-- 📊 Attributes (properties like "Color", "Size")
-- 🔄 Relationships between labels and attributes
+- Labels (like "Dog", "Cat", "Car")
+- Attributes (properties like "Color", "Size")
+- Relationships between labels and attributes
 
-## Working with Recipes 🧑‍🍳
+## Working with Recipes
 
 ### Basic Recipe Operations
 
@@ -42,7 +42,7 @@ recipe = dataset.recipes.get(recipe_id='your-recipe-id')
 dataset.recipes.get(recipe_id='your-recipe-id').delete()
 ```
 
-### Cloning Recipes 🐑
+### Cloning Recipes
 
 Need a recipe that's similar to an existing one? Clone it! It's like copying your grandma's recipe and adding your own twist.
 
@@ -53,7 +53,7 @@ Need a recipe that's similar to an existing one? Clone it! It's like copying you
 recipe2 = recipe.clone(shallow=False)
 ```
 
-### Switching Dataset Recipes 🔄
+### Switching Dataset Recipes
 
 Want to try a different recipe on your dataset? Here's how:
 
@@ -62,7 +62,7 @@ dataset = project.datasets.get(dataset_name="myDataSet")
 recipe = dataset.switch_recipe(recipe_id="recipe_id")
 ```
 
-## Creating Your Ontology 📚
+## Creating Your Ontology
 
 ### Starting Fresh
 
@@ -91,7 +91,7 @@ filters.add(field="ontologies", values=[ontology.id])  # Make sure to use "ontol
 recipes = ontology.project.recipes.list(filters=filters)
 ```
 
-### Adding Labels 🏷️
+### Adding Labels
 
 You've got multiple ways to add labels - pick your favorite!
 
@@ -119,7 +119,7 @@ labels = [
 dataset.add_labels(label_list=labels)
 ```
 
-### Creating Label Hierarchies 🌲
+### Creating Label Hierarchies
 
 Want to organize your labels like a family tree? Here's how:
 
@@ -136,7 +136,7 @@ label = dl.Label(
 dataset.add_labels(label_list=label)
 ```
 
-### The Big Nested Labels Adventure 🗺️
+### The Big Nested Labels Adventure
 
 Want to create complex hierarchies? Try this super-powered approach:
 
@@ -162,13 +162,13 @@ nested_labels = [
 labels = dataset.add_labels(label_list=nested_labels)
 ```
 
-## Working with Attributes 🎨
+## Working with Attributes
 
 Attributes are like special powers for your labels. They help describe additional properties without creating new labels.
 
 ### Types of Attributes
 
-1. ✅ **Checkbox** (Multiple Choice)
+1. **Checkbox** (Multiple Choice)
 ```python
 ontology.update_attributes(
     key='color',
@@ -179,7 +179,7 @@ ontology.update_attributes(
 )
 ```
 
-2. 🔘 **Radio Button** (Single Choice)
+2. **Radio Button** (Single Choice)
 ```python
 ontology.update_attributes(
     key='occluded',
@@ -190,7 +190,7 @@ ontology.update_attributes(
 )
 ```
 
-3. 🎚️ **Slider**
+3. **Slider**
 ```python
 ontology.update_attributes(
     key='height',
@@ -201,7 +201,7 @@ ontology.update_attributes(
 )
 ```
 
-4. ❓ **Yes/No Question**
+4. **Yes/No Question**
 ```python
 ontology.update_attributes(
     key='female',
@@ -211,7 +211,7 @@ ontology.update_attributes(
 )
 ```
 
-5. ✍️ **Free Text**
+5. **Free Text**
 ```python
 ontology.update_attributes(
     key='age',
@@ -221,7 +221,7 @@ ontology.update_attributes(
 )
 ```
 
-## Handy Tips and Tricks 💡
+## Handy Tips and Tricks
 
 1. **View All Labels**
 ```python
@@ -250,17 +250,17 @@ dataset.update_label(label_name='Cat', color="#fcba03", upsert=True)
 dataset.delete_labels(label_names=['Cat', 'Dog'])
 ```
 
-## Best Practices 🌟
+## Best Practices
 
-1. 📝 Plan your ontology structure before creating it
-2. 🎨 Use consistent color schemes for related labels
-3. 📊 Keep your attribute choices clear and concise
-4. 🌳 Don't go too deep with label hierarchies (max 5 levels)
-5. 🔄 Test your recipe with a small dataset first
+1. Plan your ontology structure before creating it
+2. Use consistent color schemes for related labels
+3. Keep your attribute choices clear and concise
+4. Don't go too deep with label hierarchies (max 5 levels)
+5. Test your recipe with a small dataset first
 
-## Need More Help? 🤔
+## Need More Help?
 
 - Check out our [Recipe Documentation](https://docs.dataloop.ai/docs/ontology-overview#recipe)
 - Visit our [Ontology Guide](https://docs.dataloop.ai/docs/ontology-overview#ontology)
 
-Happy labeling! 🚀
+Happy labeling!

@@ -52,9 +52,9 @@ def get_notebook_metadata(nb_path):
 def make_run_links(nb_rel_path):
     github_url = f"https://github.com/dataloop-ai/dtlpy-documentation/blob/main/notebooks/{nb_rel_path.as_posix()}"
     colab_url = f"https://colab.research.google.com/github/dataloop-ai/dtlpy-documentation/blob/main/notebooks/{nb_rel_path.as_posix()}"
-    github_badge = f"[![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]({github_url})"
-    colab_badge = f"[![Colab](https://colab.research.google.com/assets/colab-badge.svg)]({colab_url})"
-    return f"{github_badge} {colab_badge}"
+    github_link = f"[GitHub]({github_url})"
+    colab_link = f"[Colab]({colab_url})"
+    return f"{github_link}, {colab_link}"
 
 # Main script
 def main():
@@ -75,7 +75,7 @@ def main():
     # Write notebooks.md
     with open(INDEX_MD, "w", encoding="utf-8") as f:
         f.write("# Notebooks\n\n")
-        f.write("Explore interactive End-to-End Jupyter Notebooks for Dataloop Use Cases. Click the Colab or GitHub icons to run or view each notebook.\n\n")
+        f.write("Explore interactive End-to-End Jupyter Notebooks for DDOE Use Cases. Click the Colab or GitHub icons to run or view each notebook.\n\n")
         f.write("| Name | Description | Run |\n")
         f.write("| --- | --- | --- |\n")
         for name, desc, run in rows:

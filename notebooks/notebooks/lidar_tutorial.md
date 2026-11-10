@@ -1,11 +1,11 @@
 # LiDAR Data Processing Tutorial
 
-This notebook provides a comprehensive guide on preparing and managing LiDAR data on the Dataloop platform using its Python SDK. LiDAR (Light Detection and Ranging) data processing is essential for autonomous vehicles, robotics, and 3D mapping applications.
+This notebook provides a comprehensive guide on preparing and managing LiDAR data on the Dell Data Orchestration Engine (DDOE) platform using its Python SDK. LiDAR (Light Detection and Ranging) data processing is essential for autonomous vehicles, robotics, and 3D mapping applications.
 
-You'll learn how to structure LiDAR data, upload it to Dataloop, construct LiDAR video items, and add 3D annotations for comprehensive spatial analysis.
+You'll learn how to structure LiDAR data, upload it to DDOE, construct LiDAR video items, and add 3D annotations for comprehensive spatial analysis.
 
 ### Prerequisites:
-* **Dataloop Account:** You should have access to a Dataloop platform account.
+* **DDOE Account:** You should have access to a DDOE platform account.
 * **Python Environment:** Ensure you have Python 3.7+ installed with pip.
 * **LiDAR Data:** Access to LiDAR data files including PCD files, camera images, and calibration data.
 * **Local Data Structure:** Your LiDAR data should be organized as described in this tutorial.
@@ -18,13 +18,13 @@ You'll learn how to structure LiDAR data, upload it to Dataloop, construct LiDAR
 5. [Upload Annotations](#upload-annotations)
 6. [Conclusion and Next Steps](#conclusion)
 
-For more detailed information, refer to the official Dataloop documentation:
+For more detailed information, refer to the official DDOE documentation:
 - [LiDAR Data Setup](https://docs.dataloop.ai/docs/lidar-data-setup)
 - [LiDAR Video Annotations](https://developers.dataloop.ai/tutorials/annotations/lidar/chapter)
 
 ## <a id='dependencies-setup'></a>1. Dependencies & Setup
 
-First, let's ensure all required Python packages are installed. The cell below will install `dtlpy` for Dataloop SDK interaction and `dtlpylidar` for LiDAR-specific functionalities. It is recommended to run this to ensure you have the latest compatible versions.
+First, let's ensure all required Python packages are installed. The cell below will install `dtlpy` for DDOE SDK interaction and `dtlpylidar` for LiDAR-specific functionalities. It is recommended to run this to ensure you have the latest compatible versions.
 
 
 ```python
@@ -43,11 +43,11 @@ import dtlpy as dl
 from dtlpylidar.parsers.base_parser import LidarFileMappingParser
 ```
 
-### Connect to Dataloop Platform
+### Connect to DDOE Platform
 
-To begin, we need to connect to the Dataloop platform. If you're not already logged in, running the cell below will prompt you to do so. We will then create a new project or retrieve an existing one to work in.
+To begin, we need to connect to the DDOE platform. If you're not already logged in, running the cell below will prompt you to do so. We will then create a new project or retrieve an existing one to work in.
 
-> **Action Required:** In the cell below, replace `"your-lidar-project-name"` with your Dataloop project name. If a project with this name already exists, it will be retrieved; otherwise, a new one will be created.
+> **Action Required:** In the cell below, replace `"your-lidar-project-name"` with your DDOE project name. If a project with this name already exists, it will be retrieved; otherwise, a new one will be created.
 
 
 ```python
@@ -66,11 +66,11 @@ except dl.exceptions.NotFound:
 
 ## <a id='data-preparation'></a>3. LiDAR Data Preparation
 
-To construct a LiDAR video item, your dataset must contain three key components: PCD files for 3D scenes, camera images for 2D views, and a `mapping.json` file for sensor calibration. This section explains how to structure these files locally before uploading them to Dataloop.
+To construct a LiDAR video item, your dataset must contain three key components: PCD files for 3D scenes, camera images for 2D views, and a `mapping.json` file for sensor calibration. This section explains how to structure these files locally before uploading them to DDOE.
 
 ### 3.1 Local File Structure
 
-Before uploading to the Dataloop platform, your LiDAR data must be arranged in a specific local directory structure. This ensures that all components (point clouds, images) are correctly associated.
+Before uploading to the DDOE platform, your LiDAR data must be arranged in a specific local directory structure. This ensures that all components (point clouds, images) are correctly associated.
 
 #### Required Directory Structure:
 
@@ -141,7 +141,7 @@ The `mapping.json` file must follow a specific schema. Below is a template demon
 }
 ```
 
-### 3.3 Upload Data to Dataloop
+### 3.3 Upload Data to DDOE
 
 You can use your own data structured as described above, or use sample data from [OSDaR23](https://data.fid-move.de/dataset/osdar23) for this tutorial.
 
@@ -151,7 +151,7 @@ You can use your own data structured as described above, or use sample data from
 ```python
 DATASET_NAME = "My-LiDAR-Dataset"
 # Check if the dataset exists within the project
-# if not, create it. Dataloop automatically creates a default Recipe and Ontology.
+# if not, create it. DDOE automatically creates a default Recipe and Ontology.
 try:
     dataset = project.datasets.get(dataset_name=DATASET_NAME)
     print(f"Successfully retrieved dataset: '{dataset.name}' (ID: {dataset.id})")
@@ -179,13 +179,13 @@ We can take a look at the items in the platform using the following command:
 
 
 ```python
-# Open the dataset in the Dataloop web interface
+# Open the dataset in the DDOE web interface
 dataset.open_in_web()
 ```
 
 ## <a id='construct-lidar-video'></a>4. Construct LiDAR Video Item
 
-After uploading your raw data files (`.pcd`, `.jpg`, `mapping.json`), we use the Dataloop LiDAR SDK to create a single, composite LiDAR video item. The `LidarFileMappingParser` reads the `mapping.json` file and generates a `frames.json` item, which represents the synchronized 3D video sequence in the Dataloop studio.
+After uploading your raw data files (`.pcd`, `.jpg`, `mapping.json`), we use the DDOE LiDAR SDK to create a single, composite LiDAR video item. The `LidarFileMappingParser` reads the `mapping.json` file and generates a `frames.json` item, which represents the synchronized 3D video sequence in the DDOE studio.
 
 ### 4.1 Parse Mapping File
 
@@ -202,7 +202,7 @@ print(f"LiDAR Video File: ItemID: {frames_item.id}, ItemName: {frames_item.name}
 
 ## <a id='upload-annotations'></a>5. Upload Annotations
 
-With the `frames.json` video item created, you can now add annotations. The process is similar to annotating standard videos in Dataloop, but with support for 3D annotation types like cuboids. First, we need to retrieve the `frames.json` item we just created.
+With the `frames.json` video item created, you can now add annotations. The process is similar to annotating standard videos in DDOE, but with support for 3D annotation types like cuboids. First, we need to retrieve the `frames.json` item we just created.
 
 ### 5.1 Retrieve Frames Item
 
@@ -297,28 +297,28 @@ builder.upload()
 print(f"Successfully uploaded 3D cuboid annotation to frames {frame_num}-{end_frame_num}")
 ```
 
-### 5.3 View in Dataloop Studio
+### 5.3 View in DDOE Studio
 
-Once the annotation is uploaded, you can open the LiDAR video item in the Dataloop platform to view it in the LiDAR Studio. The following command will open the item directly in your web browser.
+Once the annotation is uploaded, you can open the LiDAR video item in the DDOE platform to view it in the LiDAR Studio. The following command will open the item directly in your web browser.
 
 
 ```python
-# Open the LiDAR video item in the Dataloop LiDAR Studio
+# Open the LiDAR video item in the DDOE LiDAR Studio
 frames_item.open_in_web()
 ```
 
 ## <a id='conclusion'></a>6. Conclusion and Next Steps
 
-Congratulations! You have successfully walked through the entire process of preparing a LiDAR dataset for the Dataloop platform.
+Congratulations! You have successfully walked through the entire process of preparing a LiDAR dataset for the DDOE platform.
 
 ### Summary of What You've Accomplished:
-- Set up your Dataloop environment and project for LiDAR data processing
+- Set up your DDOE environment and project for LiDAR data processing
 - Learned the required file structure for LiDAR data (PCDs, images, and mapping file)
 - Understood the `mapping.json` schema for sensor calibration and synchronization
-- Uploaded and structured raw LiDAR data files to Dataloop
-- Constructed a composite LiDAR video item using the Dataloop LiDAR SDK
+- Uploaded and structured raw LiDAR data files to DDOE
+- Constructed a composite LiDAR video item using the DDOE LiDAR SDK
 - Created and uploaded 3D cuboid annotations to the video item
-- Visualized the results in the Dataloop LiDAR Studio
+- Visualized the results in the DDOE LiDAR Studio
 
 ### Next Steps:
 From here, you can explore more advanced functionalities:
@@ -329,4 +329,4 @@ From here, you can explore more advanced functionalities:
 - **Multi-Modal Analysis:** Combine LiDAR data with other sensor modalities for comprehensive scene understanding
 - **Quality Assurance:** Set up QA workflows for 3D annotation validation and consensus
 
-For more advanced LiDAR processing capabilities, explore the full [Dataloop LiDAR SDK documentation](https://github.com/dataloop-ai-apps/dtlpy-lidar) and the [LiDAR tutorials](https://developers.dataloop.ai/tutorials/data_management/items_and_annotations/other_data_types/lidar/chapter) in the Dataloop developer documentation.
+For more advanced LiDAR processing capabilities, explore the full [DDOE LiDAR SDK documentation](https://github.com/dataloop-ai-apps/dtlpy-lidar) and the [LiDAR tutorials](https://developers.dataloop.ai/tutorials/data_management/items_and_annotations/other_data_types/lidar/chapter) in the DDOE developer documentation.

@@ -1,9 +1,9 @@
-# Task Management: Orchestrating Your Annotation Workflow 🎯
+# Task Management: Orchestrating Your Annotation Workflow
 
-Learn how to efficiently create, manage, and track annotation tasks in Dataloop - your key to organizing team workflows and ensuring quality annotations.
-## Project Setup ⚙️
+Learn how to efficiently create, manage, and track annotation tasks in Dell Data Orchestration Engine (DDOE) - your key to organizing team workflows and ensuring quality annotations.
+## Project Setup
 
-### Dataloop Login 🔐
+### DDOE Login
 
 > ```python
 > import dtlpy as dl
@@ -100,7 +100,7 @@ Labeling tasks are the foundation of annotation workflows. They can be configure
 > ```
 
 > ```python
-> # Explore your tasks in Dataloop dashboard platform
+> # Explore your tasks in DDOE dashboard platform
 > dataset.tasks.open_in_web()
 >
 > # Check your email and verify you received email notifications on task creation/completion
@@ -118,9 +118,9 @@ Advanced configurations extend beyond basic labeling to support specialized work
 
 This level of configuration is best suited for production environments, where maintaining annotation accuracy, consistency, and reliability is critical.
 
-## Managing Tasks 📋
+## Managing Tasks
 
-This section covers how to manage existing tasks in the Dataloop SDK. You can retrieve tasks by ID, update their properties, change their status, delete them when no longer needed, and manage the items assigned to each task.
+This section covers how to manage existing tasks in the DDOE SDK. You can retrieve tasks by ID, update their properties, change their status, delete them when no longer needed, and manage the items assigned to each task.
 
 ### 1. Task Operations
 
@@ -180,4 +180,4 @@ This section covers how to manage existing tasks in the Dataloop SDK. You can re
 > ```
 
 
-Ready to explore model management? Let's move on to the next chapter! 🚀
+Ready to explore model management? Let's move on to the next chapter!

@@ -1,6 +1,6 @@
 # LiDAR Data Setup
 
-## Using Dataloop Mapping
+## Using DDOE Mapping
 
 ### Files and Calibration Data Setup
 
@@ -10,7 +10,7 @@ To prepare a dataset for LiDAR video creation, please ensure that you complete t
 
 Once all files are ready, to create the LiDAR video file (of all the PCD files stitched together), do as follows:
 
-1. Install [Dataloop LiDAR SDK](https://github.com/dataloop-ai-apps/dtlpy-lidar) to your local python environment, using the command:
+1. Install [Dell Data Orchestration Engine (DDOE) LiDAR SDK](https://github.com/dataloop-ai-apps/dtlpy-lidar) to your local python environment, using the command:
 
    ```bash
    pip install git+https://github.com/dataloop-ai-apps/dtlpy-lidar.git
@@ -35,7 +35,7 @@ Once all files are ready, to create the LiDAR video file (of all the PCD files s
    - **JPEG/PNG files:** The 2D images of the available camera sources for the given frame.
    - **Calibration data:** The calibration data of the LiDAR sensor and the camera sources for the given frame (as was specified in the `mapping.json` file).
 
-4. (Optional) Once all files are ready, contact Dataloop to execute the Ground Detection - on each provided .pcd file to enable the Ground Detection Toggle on the LiDAR Studio.
+4. (Optional) Once all files are ready, contact DDOE to execute the Ground Detection - on each provided .pcd file to enable the Ground Detection Toggle on the LiDAR Studio.
 
 ### Upload Framed Annotations
 
@@ -67,7 +67,7 @@ Set it to a default value of `1` if it is not already present.
 ### Brief explanation
 
 This section provides an advanced guide about how to set up a LiDAR scene dataset and create a LiDAR video file on the
-Dataloop platform for any directory structure of a LiDAR scene, as long as the files are in the following formats:
+DDOE platform for any directory structure of a LiDAR scene, as long as the files are in the following formats:
 
 1. **3D Scene Files** - Point Cloud Data files in `.pcd` **ASCII** format with a size limit of 70 MB.
 2. **2D Camera Views Files** - Image files in JPEG/PNG formats.
@@ -79,7 +79,7 @@ However, this parser can be extended to support custom LiDAR scenes by modifying
 
 ### Step 1: Files Setup
 
-Create a dataset on the Dataloop platform and upload the following required LiDAR files to the dataset:
+Create a dataset on the DDOE platform and upload the following required LiDAR files to the dataset:
 
 1. **3D Scene Files** - Point Cloud Data files used for generating the 3D scenes.
 2. **2D Camera Views Files** - Usually showing the angle and viewport of the cameras that captured the main scene.
@@ -92,14 +92,14 @@ To prepare the PandaSet dataset, do as follows:
 
 1. Go to [PandaSet Kaggle Page](https://www.kaggle.com/datasets/usharengaraju/pandaset-dataset).
 2. Download the dataset and extract the files from the `.zip` file.
-3. Open a project on the Dataloop platform and create a new dataset for it.
+3. Open a project on the DDOE platform and create a new dataset for it.
 4. Select a scene folder from the extracted files in the `.zip` file keep the following folders:
    - `lidar`
    - `camera`
 5. **Normalize the data**, by updating the folders files through the following steps:
    1. Locate the `poses.json` file in the `lidar` folder and open it.
    2. Convert the PCD files from `.ply` to `.pcd` format, and apply the transformations from the `poses.json` file to the PCD files.
-6. Upload the folders with the updated files to the dataset on the Dataloop platform.
+6. Upload the folders with the updated files to the dataset on the DDOE platform.
 
 **Important Notes:**
 
@@ -107,8 +107,8 @@ To prepare the PandaSet dataset, do as follows:
   The converter requires that the remote dataset will already have the PandaSet 3D scene files in `.pkl` format to converted into `.pcd` format. \
   For more details on why `.pcd` files are preferred, please refer to the [PCD file format documentation](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
 - **Conversion Scripts:** \
-  You can find helpful scripts for converting `.pkl` files to `.pcd` in the `dtlpylidar/utilities/converters` directory, on [Dataloop LiDAR SDK](https://github.com/dataloop-ai-apps/dtlpy-lidar),
-  or you can use the provided example in the section (Upload PandaSet to Dataloop) for uploading the PandaSet dataset with the updated files.
+  You can find helpful scripts for converting `.pkl` files to `.pcd` in the `dtlpylidar/utilities/converters` directory, on [DDOE LiDAR SDK](https://github.com/dataloop-ai-apps/dtlpy-lidar),
+  or you can use the provided example in the section (Upload PandaSet to DDOE) for uploading the PandaSet dataset with the updated files.
 
 #### Dataset structure explanation
 
@@ -157,9 +157,9 @@ Each object refer to a different frame.
 ]
 ```
 
-#### Upload PandaSet to Dataloop
+#### Upload PandaSet to DDOE
 
-To upload the files to the dataset, you can use the following scripts to upload the scene folder to the dataset on the Dataloop platform:
+To upload the files to the dataset, you can use the following scripts to upload the scene folder to the dataset on the DDOE platform:
 
 1. Define the `dataset_id`, `scene_folder` and `remote_path` (on the dataset) to the target dataset for uploading the PandaSet scene.
 
@@ -174,7 +174,7 @@ remote_path = "/001"
 dataset = dl.datasets.get(dataset_id=dataset_id)
 ```
 
-2. Execute the following function to upload the scene to the dataset on the Dataloop platform, ensuring it adheres to the correct structure
+2. Execute the following function to upload the scene to the dataset on the DDOE platform, ensuring it adheres to the correct structure
    (make sure [dtlpy-lidar](https://github.com/dataloop-ai-apps/dtlpy-lidar) is installed).
 
 ```python

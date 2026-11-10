@@ -1,10 +1,10 @@
-# Model Management: Your AI Model's Lifecycle 🤖
+# Model Management: Your AI Model's Lifecycle
 
-Learn how to manage your machine learning models in Dataloop - from development to deployment and monitoring.
+Learn how to manage your machine learning models in Dell Data Orchestration Engine (DDOE) - from development to deployment and monitoring.
 
-## Project Setup ⚙️
+## Project Setup
 
-### Dataloop Login 🔐
+### DDOE Login
 
 > ```python
 > import dtlpy as dl
@@ -71,7 +71,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 > item.print()
 > ```
 
-## Getting Started with Models 🚀
+## Getting Started with Models
 
 ### 1. Basic Model Setup
 
@@ -129,7 +129,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 > project.models.list().print()
 > ```
 
-## Model Deployment 🌟
+## Model Deployment
 
 ### 1. Basic Deployment
 
@@ -173,7 +173,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 > project.services.list().print()
 > ```
 
-## Model Inference 🎯
+## Model Inference
 
 ### 1. Single Item Prediction
 
@@ -191,7 +191,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 > ```
 
 > ```python
-> # Explore tagged item in Dataloop Dashboard
+> # Explore tagged item in DDOE Dashboard
 > dataset.open_in_web()
 > ```
 
@@ -236,7 +236,7 @@ Learn how to manage your machine learning models in Dataloop - from development 
 >         print(f"Label: {annotation.label}, type:{annotation.type}")
 > ```
 
-## Model Training 🎓
+## Model Training
 
 ### 1. Basic Training
 
@@ -363,6 +363,6 @@ Learn how to manage your machine learning models in Dataloop - from development 
 
 ### 4. Training Monitoring
 
-Log in to the Dataloop platform and check the training status and metrics.
+Log in to the DDOE platform and check the training status and metrics.
 
-Ready to explore Pipelines and Automation? Let's move on to the next chapter! 🚀
+Ready to explore Pipelines and Automation? Let's move on to the next chapter!

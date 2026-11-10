@@ -1,6 +1,6 @@
-# 🚗 3D World of LiDAR Annotations! 
+# 3D World of LiDAR Annotations! 
 
-Welcome to the exciting world of 3D annotations! While 2D annotations are like drawing on paper, LiDAR annotations are like sculpting in space. Let's learn how to create these digital sculptures! 🎨
+Welcome to the exciting world of 3D annotations! While 2D annotations are like drawing on paper, LiDAR annotations are like sculpting in space. Let's learn how to create these digital sculptures!
 
 ## Creating Your First 3D Cuboid
 
@@ -73,12 +73,12 @@ builder.add(
 builder.upload()
 ```
 
-# 💡 Pro Tips for LiDAR Annotations
+# Pro Tips for LiDAR Annotations
 
 - Use consistent object IDs when tracking objects across frames
 - Take advantage of attributes to add extra information about the objects
 
-# 🎓 Advanced Topics
+# Advanced Topics
 
 ## Working with Multiple Frames
 When annotating LiDAR data, you'll often work with sequences of frames. Here are some best practices:
@@ -94,4 +94,4 @@ LiDAR data typically uses a right-handed coordinate system where:
 
 Remember this when positioning your annotations!
 
-Need help? Check out our other tutorials or reach out to our support team. Happy 3D annotating! 🎉
+Need help? Check out our other tutorials or reach out to our support team. Happy 3D annotating!

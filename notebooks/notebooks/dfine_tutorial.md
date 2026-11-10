@@ -1,18 +1,18 @@
-# D-FINE Object Detection Model with Dataloop Platform Tutorial
+# D-FINE Object Detection Model with DDOE Platform Tutorial
 
-This notebook provides a comprehensive guide on using the D-FINE (Diverse Fine-grained Distribution Refinement) object detection model with the Dataloop platform. D-FINE is a real-time object detection model designed for diverse applications such as autonomous driving, surveillance systems, robotics, and retail analytics.
+This notebook provides a comprehensive guide on using the D-FINE (Diverse Fine-grained Distribution Refinement) object detection model with the Dell Data Orchestration Engine (DDOE) platform. D-FINE is a real-time object detection model designed for diverse applications such as autonomous driving, surveillance systems, robotics, and retail analytics.
 
 The D-FINE model uses two key components: Fine-grained Distribution Refinement (FDR) for enhanced localization accuracy, and Global Optimal Localization Self-Distillation (GO-LSD) for improved training efficiency. You'll learn how to fine-tune this powerful model on your custom datasets and deploy it for real-time inference.
 
 ### Prerequisites:
-* **Dataloop Account:** You should have access to a Dataloop platform account.
+* **DDOE Account:** You should have access to a DDOE platform account.
 * **Python Environment:** Python 3.7+ with pip for installing required packages.
 * **Basic Knowledge:** Familiarity with object detection concepts and machine learning workflows is helpful.
 
 ### Navigate through the following sections:
 1. **[Install Dependencies](#install-dependencies)** - Setting up required Python libraries
 2. **[Import Required Libraries](#import-libraries)** - Loading necessary modules
-3. **[Set Up Dataloop Environment](#setup-environment)** - Connecting to the platform
+3. **[Set Up DDOE Environment](#setup-environment)** - Connecting to the platform
 4. **[Install D-FINE Model Package](#install-dfine-dpk)** - Loading the model from marketplace
 5. **[Load Base D-FINE Model](#configure-dfine-model)** - Configuring the base model
 6. **[Prepare Dataset](#prepare-dataset)** - Setting up training data
@@ -26,9 +26,9 @@ The D-FINE model uses two key components: Fine-grained Distribution Refinement (
 <a id="install-dependencies"></a>
 ## 1. Install Dependencies
 
-First, ensure that the necessary Python libraries are installed. This notebook requires `dtlpy` for interacting with the Dataloop platform and standard Python libraries for data processing and visualization.
+First, ensure that the necessary Python libraries are installed. This notebook requires `dtlpy` for interacting with the DDOE platform and standard Python libraries for data processing and visualization.
 
-**Note:** The D-FINE model dependencies (transformers, torch, etc.) will be managed by the Dataloop model adapter.
+**Note:** The D-FINE model dependencies (transformers, torch, etc.) will be managed by the DDOE model adapter.
 
 
 ```python
@@ -47,9 +47,9 @@ import time
 ```
 
 <a id="setup-environment"></a>
-## 3. Set Up Dataloop Environment
+## 3. Set Up DDOE Environment
 
-Connect to the Dataloop platform and create or get an existing project to work with.
+Connect to the DDOE platform and create or get an existing project to work with.
 
 
 ```python
@@ -62,12 +62,12 @@ project = dl.projects.create(project_name=PROJECT_NAME)
 print(f"Working with project: {project.name} (ID: {project.id})")
 ```
 
-**Action Required:** In the cell above, replace `"My Dfine Finetune Project"` with the desired name for your Dataloop project. If a project with this name already exists, the SDK will retrieve it; otherwise, a new project will be created.
+**Action Required:** In the cell above, replace `"My Dfine Finetune Project"` with the desired name for your DDOE project. If a project with this name already exists, the SDK will retrieve it; otherwise, a new project will be created.
 
 <a id="install-dfine-dpk"></a>
 ## 4. Install D-FINE Model Package
 
-Install the D-FINE model package from the Dataloop marketplace. This will provide the model adapter and all necessary dependencies.
+Install the D-FINE model package from the DDOE marketplace. This will provide the model adapter and all necessary dependencies.
 
 **Note:** If a D-FINE DPK is not yet available in the marketplace, we'll create a model entity directly and use the model adapter pattern. This section shows both approaches.
 
@@ -190,7 +190,7 @@ print(f"Training complete. Model status: {finetuned_model.status}")
 <a id="deploy-service"></a>
 ## 9. Deploy Model as Service
 
-Deploy the trained model as a service on the Dataloop platform to enable real-time inference. This allows you to run predictions on-demand through API calls.
+Deploy the trained model as a service on the DDOE platform to enable real-time inference. This allows you to run predictions on-demand through API calls.
 
 
 ```python
@@ -220,7 +220,7 @@ test_items = list(dataset.items.list(filters=test_filters).all())[:3]
 execution = finetuned_model.predict(item_ids=[item.id for item in test_items])
 print(f"Running predictions on {len(test_items)} items...", end="", flush=True)
 
-# Wait for execution with progress updates using Dataloop's in_progress() method
+# Wait for execution with progress updates using DDOE's in_progress() method
 while execution.in_progress():
     status = execution.get_latest_status()['status']
     print(f" {status}...", end="", flush=True)
@@ -303,11 +303,11 @@ for feature in list(features_page.all())[:3]:
 <a id="conclusion"></a>
 ## 12. Conclusion
 
-Congratulations! You have successfully fine-tuned the D-FINE object detection model with a custom dataset on the Dataloop platform.
+Congratulations! You have successfully fine-tuned the D-FINE object detection model with a custom dataset on the DDOE platform.
 
 ### What We Accomplished
 
-1. **Installed the D-FINE model package** from the Dataloop marketplace
+1. **Installed the D-FINE model package** from the DDOE marketplace
 2. **Configured the model** with custom training parameters
 3. **Prepared and split a dataset** for training, validation, and testing
 4. **Trained the model** on your custom dataset
@@ -317,13 +317,13 @@ Congratulations! You have successfully fine-tuned the D-FINE object detection mo
 
 ### Next Steps
 
-- **Monitor Model Performance:** Check the model metrics and training logs in the Dataloop UI
+- **Monitor Model Performance:** Check the model metrics and training logs in the DDOE UI
 - **Improve Model Accuracy:** Experiment with different hyperparameters, data augmentation settings, or training epochs
 - **Scale Deployment:** Adjust service configuration (replicas, pod types) based on your inference workload
 - **Production Integration:** Use the deployed service API to integrate object detection into your applications
 
 ### Additional Resources
 
-- [Dataloop Developer Documentation](https://developers.dataloop.ai/)
-- [Dataloop Model Management Guide](https://developers.dataloop.ai/tutorials/model_management/)
-- [Dataloop Service Deployment Guide](https://developers.dataloop.ai/tutorials/model_management/deploy/)
+- [DDOE Developer Documentation](https://developers.dataloop.ai/)
+- [DDOE Model Management Guide](https://developers.dataloop.ai/tutorials/model_management/)
+- [DDOE Service Deployment Guide](https://developers.dataloop.ai/tutorials/model_management/deploy/)

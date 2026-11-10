@@ -48,9 +48,9 @@
       page: tutorials/data_management/items_and_annotations/other_data_types/lidar/chapter.md
     - label: GIS Data
       page: tutorials/data_management/items_and_annotations/other_data_types/gis/chapter.md
-    - label: 'Dataloop Query Language: Introduction'
+    - label: 'DDOE Query Language: Introduction'
       page: tutorials/data_management/dataloop_query_language/introduction/chapter.md
-    - label: 'Dataloop Query Language: More Examples'
+    - label: 'DDOE Query Language: More Examples'
       page: tutorials/data_management/dataloop_query_language/more_examples/chapter.md
     - label: Feature Vectors
       page: tutorials/data_management/feature_vectors/chapter.md
@@ -164,7 +164,7 @@
     - label: Frequently Asked Questions
       page: tutorials/applications/faq/chapter.md
     page: tutorials/applications.md
-  page: tutorials/tutorials.md
+  page: tutorials/index.mdx
 - group: Notebooks
   items:
   - label: Instructions
@@ -202,7 +202,7 @@
     - label: xFrameDriver
       page: resources/dtljs/classes/xFrameDriver.md
     page: /resources/dtljs/index.md
-  page: resources/resources.mdx
+  page: resources/index.mdx
 - href: https://docs.dataloop.ai/docs/glossary-overview
   label: Glossary
 - href: https://docs.dataloop.ai/docs/sdk-cheatsheet

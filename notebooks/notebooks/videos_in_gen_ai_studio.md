@@ -1,11 +1,11 @@
-# Videos in Dataloop GenAI Evaluation Studio Tutorial
+# Videos in DDOE GenAI Evaluation Studio Tutorial
 
-This notebook guides you through the process of setting up a Dataloop project and dataset for evaluating videos using the Dataloop GenAI Evaluation Studio. The GenAI Evaluation Studio provides a powerful interface for creating custom evaluation workflows, particularly useful for assessing video content quality, relevance, and other subjective metrics.
+This notebook guides you through the process of setting up a Dell Data Orchestration Engine (DDOE) project and dataset for evaluating videos using the DDOE GenAI Evaluation Studio. The GenAI Evaluation Studio provides a powerful interface for creating custom evaluation workflows, particularly useful for assessing video content quality, relevance, and other subjective metrics.
 
 You'll learn how to create evaluation layouts, upload videos, and set up comprehensive evaluation workflows that can be used by annotators to assess video content systematically.
 
 ### Prerequisites:
-* **Dataloop Account:** You should have access to a Dataloop platform account.
+* **DDOE Account:** You should have access to a DDOE platform account.
 * **Python Environment:** Ensure you have Python 3.7+ installed with pip.
 * **Project Access:** Ability to create projects and manage datasets.
 * **Local Files:** Access to the required configuration and video files as described below.
@@ -17,7 +17,7 @@ You'll learn how to create evaluation layouts, upload videos, and set up compreh
 
 ### Navigate through the following sections:
 1. [Dependencies & Setup](#dependencies-setup)
-2. [Dataloop Environment Setup](#environment-setup)
+2. [DDOE Environment Setup](#environment-setup)
 3. [Dataset Management](#dataset-management)
 4. [Understanding and Uploading the Evaluation Layout](#evaluation-layout)
 5. [Understanding the Evaluation Item Schema](#item-schema)
@@ -48,27 +48,27 @@ LAYOUT_JSON_PATH = "data/videos_in_gen_ai_studio/layout.json"
 ITEM_SCHEMA_JSON_PATH = "data/videos_in_gen_ai_studio/item_schema.json"
 VIDEOS_DIR_PATH = "data/videos_in_gen_ai_studio/videos"
 
-print(f"Dataloop SDK Version: {dl.__version__}")
+print(f"DDOE SDK Version: {dl.__version__}")
 print(f"Configuration paths set:")
 print(f"  Layout JSON: {LAYOUT_JSON_PATH}")
 print(f"  Item Schema: {ITEM_SCHEMA_JSON_PATH}")
 print(f"  Videos Directory: {VIDEOS_DIR_PATH}")
 ```
 
-## <a id='environment-setup'></a>2. Dataloop Environment Setup
+## <a id='environment-setup'></a>2. DDOE Environment Setup
 
-This section handles connecting to the Dataloop platform. It will:
+This section handles connecting to the DDOE platform. It will:
 1. Check if your login token is expired and prompt for login if necessary.
-2. Create or retrieve the specified Dataloop project.
+2. Create or retrieve the specified DDOE project.
 
 
 ```python
 # Check login status and connect if needed
 if dl.token_expired():
     dl.login()
-    print("Successfully logged into Dataloop")
+    print("Successfully logged into DDOE")
 else:
-    print(f"Already connected to Dataloop as {dl.info()['user_email']}")
+    print(f"Already connected to DDOE as {dl.info()['user_email']}")
 
 # Define a unique name for your project or change it to your own project name
 user_email = dl.info()['user_email']
@@ -86,7 +86,7 @@ except dl.exceptions.NotFound:
 
 ## <a id='dataset-management'></a>3. Dataset Management
 
-Here, we'll either create a new dataset or retrieve an existing one within your Dataloop project. This dataset will store your videos and their corresponding evaluation items.
+Here, we'll either create a new dataset or retrieve an existing one within your DDOE project. This dataset will store your videos and their corresponding evaluation items.
 
 
 ```python
@@ -94,7 +94,7 @@ Here, we'll either create a new dataset or retrieve an existing one within your 
 dataset_name = 'videos-in-gen-ai-studio-dataset'
 
 # Check if the dataset exists within the project
-# if not, create it. Dataloop automatically creates a default Recipe and Ontology.
+# if not, create it. DDOE automatically creates a default Recipe and Ontology.
 try:
     dataset = project.datasets.get(dataset_name=dataset_name)
     print(f"Successfully retrieved dataset: '{dataset.name}' (ID: {dataset.id})")
@@ -107,7 +107,7 @@ print(f"Dataset ready for video evaluation setup")
 
 ## <a id='evaluation-layout'></a>4. Understanding and Uploading the Evaluation Layout
 
-The Evaluation Studio in Dataloop uses a JSON file (often called `layout.json`) to define the user interface for an evaluation task. This file specifies the questions, input types (e.g., radio buttons, sliders), and any conditional logic between them. This is the same JSON built when using the Multimodal Recipe in the Dataloop platform's UI.
+The Evaluation Studio in DDOE uses a JSON file (often called `layout.json`) to define the user interface for an evaluation task. This file specifies the questions, input types (e.g., radio buttons, sliders), and any conditional logic between them. This is the same JSON built when using the Multimodal Recipe in the DDOE platform's UI.
 
 The `layout.json` file is uploaded to a special hidden dataset in your project called the 'binaries dataset'. The system then uses the ID of the target dataset (where your videos will reside) to create a unique name for this layout, ensuring it's specifically tied to your video evaluation task.
 
@@ -178,7 +178,7 @@ These are the building blocks for your questions within the `components` array o
 
 ### 4.3 Conditional Logic (Hierarchy)
 
-You can show or hide components based on answers to previous questions using the `hierarchy` property. This uses Dataloop Query Language (DQL) syntax.
+You can show or hide components based on answers to previous questions using the `hierarchy` property. This uses DDOE Query Language (DQL) syntax.
 
 #### Basic Condition Structure:
 Checks if the field specified by `fieldKey` equals `value`.
@@ -224,7 +224,7 @@ def upload_evaluation_layout(project: dl.Project, dataset_id: str, layout_json_p
     and proper association.
 
     Args:
-        project: The Dataloop Project object.
+        project: The DDOE Project object.
         dataset_id: The ID of the dataset where the videos and evaluation items will be stored.
                        This ID is used to name the layout file.
         layout_json_path: Local path to the layout.json file.
@@ -268,7 +268,7 @@ print(f"\nLayout uploaded successfully with name: {layout_file_name}")
 
 ## <a id='item-schema'></a>5. Understanding the Evaluation Item Schema
 
-For each video you upload, you'll also upload a corresponding JSON item. This JSON item tells the Dataloop Evaluation Studio:
+For each video you upload, you'll also upload a corresponding JSON item. This JSON item tells the DDOE Evaluation Studio:
 1. Which video to display (via its stream URL).
 2. Which evaluation layout to use.
 
@@ -282,23 +282,23 @@ We use a template file (`item_schema.json`) for this. The key part of this templ
 ```
 
 * `"video_stream"`: This key **must match** the `key` of the `"type": "video"` component defined in your `layout.json`.
-* `"{{video_stream}}"`: This is a placeholder that our script will replace with the actual Dataloop stream URL of the uploaded video.
+* `"{{video_stream}}"`: This is a placeholder that our script will replace with the actual DDOE stream URL of the uploaded video.
 
-When this JSON item is uploaded to Dataloop, we also add special metadata to it:
+When this JSON item is uploaded to DDOE, we also add special metadata to it:
 ```python
 item_metadata={
     "system": {
         "evaluation": {"layoutName": layout_file_name}, # Links to the uploaded layout.json
-        "shebang": {"dltype": "evaluation-studio"},     # Tells Dataloop to open this with Evaluation Studio
+        "shebang": {"dltype": "evaluation-studio"},     # Tells DDOE to open this with Evaluation Studio
     },
 }
 ```
-This metadata ensures that when an annotator opens this JSON item in Dataloop, it loads the correct video within the defined evaluation interface.
+This metadata ensures that when an annotator opens this JSON item in DDOE, it loads the correct video within the defined evaluation interface.
 
 ## <a id='video-upload'></a>6. Processing and Uploading Videos for Evaluation
 
 This is the main part where we iterate through your video files. For each video, we will:
-1. Upload the video file to your Dataloop dataset.
+1. Upload the video file to your DDOE dataset.
 2. Create a temporary JSON file based on `item_schema.json`, injecting the uploaded video's stream URL.
 3. Upload this new JSON file (the "Evaluation Item" or "Gen AI Studio Item") to the same dataset, linking it to the video and the evaluation layout via metadata.
 
@@ -310,19 +310,19 @@ Let's define the helper functions for uploading videos and creating evaluation i
 ```python
 def upload_video_to_dataloop(dataset_obj: dl.Dataset, local_video_path: str) -> dl.Item:
     """
-    Uploads a single video file to the specified Dataloop dataset.
+    Uploads a single video file to the specified DDOE dataset.
 
     Args:
-        dataset_obj: The Dataloop Dataset object to upload to.
+        dataset_obj: The DDOE Dataset object to upload to.
         local_video_path: The local path to the video file.
 
     Returns:
-        The Dataloop Item object for the uploaded video.
+        The DDOE Item object for the uploaded video.
     """
     video_filename = os.path.basename(local_video_path)
     print(f"Uploading video: {video_filename}...")
     item = dataset_obj.items.upload(local_path=local_video_path, remote_path="/videos/")
-    print(f"✓ Successfully uploaded video: {item.name} (ID: {item.id}, Stream URL: {item.stream})")
+    print(f"Successfully uploaded video: {item.name} (ID: {item.id}, Stream URL: {item.stream})")
     return item
 
 def create_and_upload_evaluation_item(
@@ -336,14 +336,14 @@ def create_and_upload_evaluation_item(
     Creates and uploads the JSON item for the Evaluation Studio, linking it to the video and layout.
 
     Args:
-        dataset_obj: The Dataloop Dataset object.
-        video_item: The Dataloop Item object of the uploaded video.
+        dataset_obj: The DDOE Dataset object.
+        video_item: The DDOE Item object of the uploaded video.
         video_file_basename: The original base name of the video file (without extension), used for naming the JSON item.
         item_schema_template_path: Path to the item_schema.json template.
         evaluation_layout_name: The name of the layout file uploaded earlier (e.g., 'dataset_XYZ_layout').
 
     Returns:
-        The Dataloop Item object for the uploaded JSON evaluation item.
+        The DDOE Item object for the uploaded JSON evaluation item.
     """
     print(f"Creating and uploading Evaluation Studio Item for {video_file_basename}...")
     
@@ -377,7 +377,7 @@ def create_and_upload_evaluation_item(
                 },
             },
         )
-        print(f"✓ Successfully uploaded Evaluation Studio Item: {genai_item.name} (ID: {genai_item.id})")
+        print(f"Successfully uploaded Evaluation Studio Item: {genai_item.name} (ID: {genai_item.id})")
         return genai_item
     finally:
         os.remove(temp_json_file_path)
@@ -421,7 +421,7 @@ else:
                 video_files_processed += 1
                 
             except Exception as e:
-                print(f"✗ ERROR processing {video_filename_with_ext}: {str(e)}")
+                print(f"ERROR processing {video_filename_with_ext}: {str(e)}")
                 continue 
         else:
             print(f"Skipping non-file entry: {video_filename_with_ext}")
@@ -431,10 +431,10 @@ else:
 
 ## <a id='conclusion'></a>7. Conclusion and Next Steps
 
-You have now successfully set up your Dataloop project for video evaluation!
+You have now successfully set up your DDOE project for video evaluation!
 
 ### Summary of What You've Accomplished:
-- Connected to Dataloop and configured your project for video evaluation
+- Connected to DDOE and configured your project for video evaluation
 - Created or retrieved a dataset for storing videos and evaluation items
 - Understood the structure and components of evaluation layouts (`layout.json`)
 - Uploaded an evaluation layout that defines the UI for your annotators
@@ -443,19 +443,19 @@ You have now successfully set up your Dataloop project for video evaluation!
 - Set up the complete workflow for video evaluation in the GenAI Evaluation Studio
 
 ### What Happened:
-1. Connected to Dataloop and your specified project.
+1. Connected to DDOE and your specified project.
 2. Created or retrieved a dataset for video evaluation.
 3. Uploaded an evaluation layout (`layout.json`) that defines the UI for your annotators.
 4. For each video in your `data/videos` directory:
    - The video file was uploaded to the dataset.
-   - A corresponding JSON item was created and uploaded. This item links the video to the evaluation layout and tells Dataloop to open it with the Evaluation Studio.
+   - A corresponding JSON item was created and uploaded. This item links the video to the evaluation layout and tells DDOE to open it with the Evaluation Studio.
 
 ### Next Steps:
-- **Navigate to your dataset in the Dataloop platform:** You should see the uploaded JSON items (e.g., `myvideo.json`). The video files themselves will be in a `/videos/` folder within the dataset's item browser.
+- **Navigate to your dataset in the DDOE platform:** You should see the uploaded JSON items (e.g., `myvideo.json`). The video files themselves will be in a `/videos/` folder within the dataset's item browser.
 - **Open one of the JSON items:** Right click on the item → Open With and select "GenAI Evaluation Studio". It should open in the GenAI Evaluation Studio, displaying the video alongside the questions defined in your `layout.json`.
-- **Create annotation tasks:** You can now assign these evaluation items to annotators by creating tasks in Dataloop.
+- **Create annotation tasks:** You can now assign these evaluation items to annotators by creating tasks in DDOE.
 - **Customize evaluation layouts:** Experiment with different component types and conditional logic to create more sophisticated evaluation workflows.
-- **Analyze evaluation results:** Use Dataloop's analytics and reporting features to analyze the evaluation responses and derive insights from your video assessments.
+- **Analyze evaluation results:** Use DDOE's analytics and reporting features to analyze the evaluation responses and derive insights from your video assessments.
 - **Scale your workflow:** Integrate this process into larger content evaluation pipelines for systematic video quality assessment.
 
 

@@ -1,33 +1,33 @@
-# Welcome to Dataloop SDK: Your AI Development Companion 🚀
+# Welcome to DDOE SDK: Your AI Development Companion
 
-Ready to supercharge your AI development? The Dataloop SDK is your all-in-one toolkit for managing the complete AI lifecycle. Think of it as your command center for everything from data management to production deployment!
+Ready to supercharge your AI development? The Dell Data Orchestration Engine (DDOE) SDK is your all-in-one toolkit for managing the complete AI lifecycle. Think of it as your command center for everything from data management to production deployment!
 
-## What Can You Do? 🎯
+## What Can You Do?
 
 With our powerful Python SDK, you'll have full control over:
 
-- 📁 Projects - Your high-level workspaces
-- 📊 Datasets - Your data collections
-- 🖼️ Items - Your individual files
-- ✏️ Annotations - Your data labels
-- 📝 Metadata - Your custom data attributes
+- Projects - Your high-level workspaces
+- Datasets - Your data collections
+- Items - Your individual files
+- Annotations - Your data labels
+- Metadata - Your custom data attributes
 
-## Getting Started: Your Journey Begins Here 🌟
+## Getting Started: Your Journey Begins Here
 
 Let's get you up and running with everything you need:
 
-### 1. Setting Up Your Environment 🛠️
+### 1. Setting Up Your Environment
 
 First, let's get the essential tools installed:
 
-#### Python Installation 🐍
+#### Python Installation
 1. Visit [Python Downloads](https://www.python.org/downloads/)
 2. Get Python 3.8 or later
 3. Follow the installation wizard
 
-> 💡 **Pro Tip**: Make sure to check "Add Python to PATH" during installation!
+> **Pro Tip**: Make sure to check "Add Python to PATH" during installation!
 
-#### Dataloop SDK Installation 📦
+#### DDOE SDK Installation
 
 ```bash
 # Install using pip
@@ -37,7 +37,7 @@ pip install dtlpy
 pip show dtlpy  # Should show version 1.64.9 or later
 ```
 
-### 2. Logging In: Your Gateway to Dataloop 🔑
+### 2. Logging In: Your Gateway to DDOE
 
 ```python
 import dtlpy as dl
@@ -47,19 +47,19 @@ if dl.token_expired():
     dl.login()
 ```
 
-#### For Long-Running Jobs: M2M Authentication 🤖
+#### For Long-Running Jobs: M2M Authentication
 
 ```python
 # Using API key (recommended for automation)
 dl.login_api_key(api_key=os.environ['DTLPY_API_KEY'])
 ```
 
-> ⚠️ **Security Tip**: Always store API keys as environment variables!
+> **Security Tip**: Always store API keys as environment variables!
 
 #### Logging In with an API Key
 
-In addition to standard browser-based authentication, the Dataloop SDK supports API key authentication, which is ideal for automated workflows, pipelines, etc.
-To generate your API Key, refer to the [Dataloop Documentation](https://docs.dataloop.ai/docs/project-dashboard-1#manage-api-keys).
+In addition to standard browser-based authentication, the DDOE SDK supports API key authentication, which is ideal for automated workflows, pipelines, etc.
+To generate your API Key, refer to the [DDOE Documentation](https://docs.dataloop.ai/docs/project-dashboard-1#manage-api-keys).
 
 ```python
 import dtlpy as dl
@@ -71,7 +71,7 @@ dl.setenv('rc')  # or 'prod'
 dl.login_api_key('YOUR_API_KEY_HERE')
 ```
 
-### 3. Creating Your First Project 🎨
+### 3. Creating Your First Project
 
 ```python
 # Create a new project
@@ -81,7 +81,7 @@ project = dl.projects.create(project_name='My-Awesome-Project')
 project = dl.projects.get(project_name='My-Awesome-Project')
 ```
 
-### 4. Managing Team Access 👥
+### 4. Managing Team Access
 
 ```python
 # Add a team member
@@ -97,7 +97,7 @@ project.update_member(
 )
 ```
 
-### 5. Working with Datasets 📊
+### 5. Working with Datasets
 
 ```python
 # Create a new dataset
@@ -109,9 +109,9 @@ item = dataset.items.upload(
 )
 ```
 
-> 🎯 **Pro Tip**: Use `remote_path` to organize files in folders!
+> **Pro Tip**: Use `remote_path` to organize files in folders!
 
-### 6. Adding Annotations ✏️
+### 6. Adding Annotations
 
 ```python
 # Create an annotation builder
@@ -139,7 +139,7 @@ builder.add(
 item.annotations.upload(builder)
 ```
 
-### 7. Smart Filtering 🔍
+### 7. Smart Filtering
 
 ```python
 # Create a filter
@@ -154,7 +154,7 @@ for item in items.all():
     print(f"Found cat in: {item.name}")
 ```
 
-### 8. Working with Metadata 📝
+### 8. Working with Metadata
 
 ```python
 # Add metadata to an item
@@ -170,7 +170,7 @@ filters = dl.Filters()
 filters.add(field='metadata.user.location', values='New York')
 ```
 
-### 9. Creating Tasks 📋
+### 9. Creating Tasks
 
 ```python
 # Create an annotation task
@@ -181,9 +181,9 @@ task = dataset.tasks.create(
 )
 ```
 
-## Best Practices 👑
+## Best Practices
 
-1. **Error Handling** 🛡️
+1. **Error Handling**
    ```python
    try:
        item = dataset.items.get(item_id='your-item-id')
@@ -191,7 +191,7 @@ task = dataset.tasks.create(
        print("Item not found!")
    ```
 
-2. **Batch Operations** ⚡
+2. **Batch Operations**
    ```python
    # Upload multiple items
    dataset.items.upload(
@@ -200,13 +200,13 @@ task = dataset.tasks.create(
    )
    ```
 
-3. **Resource Cleanup** 🧹
+3. **Resource Cleanup**
    ```python
    # Always logout when done
    dl.logout()
    ```
 
-## Ready to Build Something Amazing? 🚀
+## Ready to Build Something Amazing?
 
 You now have all the tools to:
 - Manage your AI projects
@@ -215,6 +215,6 @@ You now have all the tools to:
 - Create annotation tasks
 - Track everything with metadata
 
-Happy coding! 🎉
+Happy coding!
 
-> 📚 **Want to Learn More?** Check out our [full onboarding](onboarding.md)!
+> **Want to Learn More?** Check out our [full onboarding](/onboarding/onboarding.md)!

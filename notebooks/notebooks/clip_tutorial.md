@@ -1,13 +1,13 @@
 # CLIP (Contrastive Language-Image Pre-Training) Model Adapter Tutorial
 
-This notebook provides a comprehensive guide on fine-tuning a CLIP model using the Dataloop platform and its Python SDK. CLIP models are powerful for tasks involving understanding the relationship between images and text, such as zero-shot image classification, image-text retrieval, and generating image embeddings for semantic search.
+This notebook provides a comprehensive guide on fine-tuning a CLIP model using the Dell Data Orchestration Engine (DDOE) platform and its Python SDK. CLIP models are powerful for tasks involving understanding the relationship between images and text, such as zero-shot image classification, image-text retrieval, and generating image embeddings for semantic search.
 
 Fine-tuning allows you to adapt a pre-trained CLIP model to your specific dataset and domain, potentially improving its performance on tasks relevant to your data. This tutorial demonstrates the complete workflow from data preparation through model deployment.
 
 ### Prerequisites:
-* **Dataloop Account:** You should have access to a Dataloop platform account.
+* **DDOE Account:** You should have access to a DDOE platform account.
 * **Python Environment:** Ensure you have Python 3.7+ installed with pip.
-* **Project Access:** Ability to create projects and install apps from the Dataloop Marketplace.
+* **Project Access:** Ability to create projects and install apps from the DDOE Marketplace.
 * **Basic ML Knowledge:** Understanding of machine learning concepts and multimodal models.
 
 ### Navigate through the following sections:
@@ -21,7 +21,7 @@ Let's get started!
 
 ## <a id='dependencies-setup'></a>1. Dependencies & Setup
 
-First, ensure that the necessary Python libraries are installed. This notebook requires `dtlpy` for interacting with the Dataloop platform and `pandas` for data manipulation. The following cell will install or upgrade them.
+First, ensure that the necessary Python libraries are installed. This notebook requires `dtlpy` for interacting with the DDOE platform and `pandas` for data manipulation. The following cell will install or upgrade them.
 
 
 ```python
@@ -45,12 +45,12 @@ import pandas as pd
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 
-print(f"Dataloop SDK Version: {dl.__version__}")
+print(f"DDOE SDK Version: {dl.__version__}")
 ```
 
-### Set Up Dataloop Environment
+### Set Up DDOE Environment
 
-We need to set up our Dataloop environment and get our project. You'll need to replace project and dataset names with your own values.
+We need to set up our DDOE environment and get our project. You'll need to replace project and dataset names with your own values.
 
 > **_NOTE:_** This tutorial assumes you are working in a new project which does NOT have the CLIP model previously installed. If it's an existing project and you already have CLIP installed, you will need to get the appropriate app and base CLIP model entity for the rest of the code to work correctly.
 
@@ -73,21 +73,21 @@ except dl.exceptions.NotFound:
     print(f"Successfully created project: '{project.name}' (ID: {project.id})")
 ```
 
-**Action Required:** In the cell above, you can modify `"{user_prefix}-clip-tutorial"` with the desired name for your Dataloop project. If a project with this name already exists, the SDK will retrieve it; otherwise, a new project will be created.
+**Action Required:** In the cell above, you can modify `"{user_prefix}-clip-tutorial"` with the desired name for your DDOE project. If a project with this name already exists, the SDK will retrieve it; otherwise, a new project will be created.
 
 ## <a id='prepare-dataset'></a>3. Prepare Dataset for Fine-Tuning
 
 Fine-tuning a CLIP model requires a dataset of images paired with relevant textual descriptions. This section covers two ways to prepare such a dataset:
-1. **Option A:** Use a publicly available dataset from the Dataloop Marketplace (Mars Surface Images with Captions).
+1. **Option A:** Use a publicly available dataset from the DDOE Marketplace (Mars Surface Images with Captions).
 2. **Option B:** Upload your own custom dataset of images and descriptions.
 
 ### 3.1 Option A: Use Public Dataset (Mars Surface Images)
 
-For this tutorial we will install the Mars Surface Images Datasets from the Dataloop Marketplace. This dataset includes images with descriptions pre-loaded in the item metadata.
+For this tutorial we will install the Mars Surface Images Datasets from the DDOE Marketplace. This dataset includes images with descriptions pre-loaded in the item metadata.
 
 #### 3.1.1 Install Mars Surface Images DPK
 
-This Dataloop Package (DPK) contains datasets related to Mars surface imagery, including one with captions.
+This DDOE Package (DPK) contains datasets related to Mars surface imagery, including one with captions.
 
 
 ```python
@@ -104,7 +104,7 @@ except dl.exceptions.BadRequest as e:
     app = project.apps.get(app_name=dpk.display_name)
 ```
 
-⚠️ You may need to wait a few minutes after installing the app until the dataset has completed loading into your project.
+You may need to wait a few minutes after installing the app until the dataset has completed loading into your project.
 
 
 ```python
@@ -116,7 +116,7 @@ print("Dataset should now be available")
 
 #### 3.1.2 Get Captioned Dataset and Split for ML
 
-After installing the DPK, the "Mars Surface Images with Captions" dataset should be available in your project. We will retrieve this dataset and split its items into training, validation, and test subsets. The Dataloop SDK provides a convenient method to do this by automatically tagging items. This splitting is crucial for proper model training and evaluation.
+After installing the DPK, the "Mars Surface Images with Captions" dataset should be available in your project. We will retrieve this dataset and split its items into training, validation, and test subsets. The DDOE SDK provides a convenient method to do this by automatically tagging items. This splitting is crucial for proper model training and evaluation.
 
 
 ```python
@@ -131,7 +131,7 @@ print(f"Dataset split completed with percentages: {SUBSET_PERCENTAGES}")
 
 ### 3.2 Option B: (Alternative) Upload and Prepare Your Custom Dataset
 
-If you have your own dataset of images and corresponding text descriptions, you can use the function below to create a new Dataloop dataset and upload your images with descriptions.
+If you have your own dataset of images and corresponding text descriptions, you can use the function below to create a new DDOE dataset and upload your images with descriptions.
 
 The function expects a Pandas DataFrame (`pairs_df`) with two columns:
 - `'filepath'`: The local path to each image file.
@@ -214,7 +214,7 @@ With the dataset prepared, we can now proceed to fine-tune the CLIP model.
 
 ### 4.1 Install CLIP Model Package (DPK)
 
-First, we install the CLIP model DPK from the Dataloop Marketplace. This package provides the necessary components for CLIP model training and inference.
+First, we install the CLIP model DPK from the DDOE Marketplace. This package provides the necessary components for CLIP model training and inference.
 
 
 ```python
@@ -299,12 +299,12 @@ print(f"Model cloned successfully: '{finetuned_model.name}' (ID: {finetuned_mode
 print(f"Starting training for model: '{finetuned_model.name}'. This may take a while...")
 execution = finetuned_model.train()
 print(f"Training initiated. Execution ID: {execution.id}")
-print(f"You can monitor progress in the Dataloop platform at: {finetuned_model.platform_url}")
+print(f"You can monitor progress in the DDOE platform at: {finetuned_model.platform_url}")
 ```
 
 ### 4.4 Monitor Training Progress
 
-The cell below will periodically check the status of the training execution. You can also monitor the training progress, view logs, and see performance metrics directly in the Dataloop platform by navigating to your project, then Models, finding your `finetuned_model`, and checking its 'Executions' or 'Training' tabs.
+The cell below will periodically check the status of the training execution. You can also monitor the training progress, view logs, and see performance metrics directly in the DDOE platform by navigating to your project, then Models, finding your `finetuned_model`, and checking its 'Executions' or 'Training' tabs.
 
 
 ```python
@@ -323,12 +323,12 @@ while execution_status not in [dl.ExecutionStatus.SUCCESS, dl.ExecutionStatus.FA
 # Check final status
 total_time = time.time() - start_time
 if execution_status == dl.ExecutionStatus.SUCCESS:
-    print(f"🎉 Training completed successfully! (Total time: {total_time/60:.1f} minutes)")
+    print(f"Training completed successfully! (Total time: {total_time/60:.1f} minutes)")
     print(f"Model ID: {finetuned_model.id}")
     # Update the local model object with the latest status and artifacts from the platform
     finetuned_model = project.models.get(model_id=finetuned_model.id)
 elif execution_status == dl.ExecutionStatus.FAILED:
-    print(f"❌ Training failed. Execution ID: {execution.id}. Check logs in Dataloop platform for details.")
+    print(f"Training failed. Execution ID: {execution.id}. Check logs in DDOE platform for details.")
 else:
     print(f"Training ended with status: {execution_status}. Execution ID: {execution.id}.")
 ```
@@ -358,10 +358,10 @@ if 'finetuned_model' in locals() and finetuned_model is not None and execution_s
         finetuned_model = project.models.get(model_id=finetuned_model.id)
     
     if finetuned_model.status == dl.ModelStatus.DEPLOYED:
-        print(f"🎉 Model successfully deployed!")
+        print(f"Model successfully deployed!")
         print(f"Model URL: {finetuned_model.platform_url}")
     else:
-        print(f"❌ Deployment failed. Model status: {finetuned_model.status}")
+        print(f"Deployment failed. Model status: {finetuned_model.status}")
 else:
     print("Skipping deployment: Model training was not successful or 'finetuned_model' is not defined.")
 ```
@@ -395,7 +395,7 @@ if 'finetuned_model' in locals() and finetuned_model.status == dl.ModelStatus.DE
         print(f"Starting embedding for dataset: '{dataset_to_embed.name}' (ID: {dataset_to_embed.id}) using model '{finetuned_model.name}'.")
         embedding_execution = finetuned_model.embed_datasets(dataset_ids=[dataset_to_embed.id])
         print(f"Embedding process initiated. Execution ID: {embedding_execution.id}. This may take some time.")
-        print(f"You can monitor the embedding progress in the Dataloop platform.")
+        print(f"You can monitor the embedding progress in the DDOE platform.")
         
         # You can wait for this execution to complete similarly to the training execution if needed.
         # embedding_execution.wait() or a loop with time.sleep()
@@ -407,12 +407,12 @@ else:
 
 ## <a id='conclusion'></a>5. Conclusion and Next Steps
 
-Congratulations! You have successfully walked through the process of fine-tuning a CLIP model using the Dataloop platform.
+Congratulations! You have successfully walked through the process of fine-tuning a CLIP model using the DDOE platform.
 
 ### Summary of What You've Accomplished:
-- **Environment Setup:** Connected to Dataloop and configured your project for CLIP model fine-tuning
+- **Environment Setup:** Connected to DDOE and configured your project for CLIP model fine-tuning
 - **Dataset Preparation:** Prepared a dataset of images and descriptions, either by using a public dataset or learning how to upload custom data
-- **Model Installation:** Installed the CLIP model package from the Dataloop Marketplace
+- **Model Installation:** Installed the CLIP model package from the DDOE Marketplace
 - **Model Configuration:** Configured and cloned a pretrained CLIP model with appropriate hyperparameters
 - **Model Training:** Fine-tuned the model on your dataset with proper monitoring and error handling
 - **Model Deployment:** Deployed the fine-tuned model as a service for inference
@@ -427,8 +427,8 @@ Congratulations! You have successfully walked through the process of fine-tuning
 - **Integration with Pipelines:** Incorporate your CLIP model into automated workflows for content analysis, recommendation systems, or quality assessment
 
 ### Additional Resources:
-- **[Dataloop Model Management](https://developers.dataloop.ai/tutorials/model_management):** Learn more about managing and versioning models
+- **[DDOE Model Management](https://developers.dataloop.ai/tutorials/model_management):** Learn more about managing and versioning models
 - **[CLIP Research Paper](https://arxiv.org/abs/2103.00020):** Understand the theoretical foundations of CLIP
-- **[Dataloop Developer Documentation](https://developers.dataloop.ai/):** Explore many more features for MLOps, data management, and AI development
+- **[DDOE Developer Documentation](https://developers.dataloop.ai/):** Explore many more features for MLOps, data management, and AI development
 
 This tutorial demonstrates the power of combining state-of-the-art multimodal models with a comprehensive MLOps platform. Your fine-tuned CLIP model is now ready to power intelligent image-text applications!

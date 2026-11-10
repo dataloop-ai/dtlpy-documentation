@@ -1,10 +1,10 @@
 ---
-title: Dataloop SDK Onboarding
+title: DDOE SDK Onboarding
 ---
 
-# Dataloop SDK Onboarding Guide 🚀
+# DDOE SDK Onboarding Guide
 
-Welcome to the Dataloop SDK onboarding guide! This comprehensive tutorial will walk you through everything you need to know to get started with Dataloop's powerful Python SDK.
+Welcome to the Dell Data Orchestration Engine (DDOE) SDK onboarding guide! This comprehensive tutorial will walk you through everything you need to know to get started with DDOE's powerful Python SDK.
 
 ## Chapters
 
@@ -25,12 +25,12 @@ Welcome to the Dataloop SDK onboarding guide! This comprehensive tutorial will w
 - [10 Pipelines and Automation](10_pipelines_and_automation.md)
 
 ### Conclusion
-- [11 Dataloop in Action: Bringing It All Together](11_bringing_it_all_together.md)
+- [11 DDOE in Action: Bringing It All Together](11_bringing_it_all_together.md)
 
 ## Additional Resources
 
-- [📚 SDK Documentation](https://sdk-docs.dataloop.ai/en/latest/)
-- [🌟 Example Projects](https://github.com/dataloop-ai-apps)
-- [📧 Support](mailto:support@dataloop.ai)
+- [ SDK Documentation](https://sdk-docs.dataloop.ai/en/latest/)
+- [ Example Projects](https://github.com/dataloop-ai-apps)
+- [ Support](mailto:support@dataloop.ai)
 
-Ready to begin? Start with [Before You Begin](01_before_you_begin.md) to set up your environment and get started with Dataloop! 🚀
+Ready to begin? Start with [Before You Begin](01_before_you_begin.md) to set up your environment and get started with DDOE!

@@ -1,14 +1,14 @@
-# Managing Datasets and Versioning in Dataloop 🗄️
+# Managing Datasets and Versioning in DDOE
 
-Welcome to your guide to managing datasets in Dataloop! Whether you're organizing your data, connecting to cloud storage, or managing versions, we've got you covered. Let's dive in!
+Welcome to your guide to managing datasets in Dell Data Orchestration Engine (DDOE)! Whether you're organizing your data, connecting to cloud storage, or managing versions, we've got you covered. Let's dive in!
 
-## Understanding Datasets 📚
+## Understanding Datasets
 
-Think of datasets as smart buckets in Dataloop that can hold any type of data item. The cool part? Your data can live anywhere - either on Dataloop's storage or your favorite cloud provider. There's no limit to how many datasets you can have in a project, making it perfect for versioning and experimentation.
+Think of datasets as smart buckets in DDOE that can hold any type of data item. The cool part? Your data can live anywhere - either on DDOE's storage or your favorite cloud provider. There's no limit to how many datasets you can have in a project, making it perfect for versioning and experimentation.
 
-## Creating and Managing Datasets 🛠️
+## Creating and Managing Datasets
 
-### Creating Your First Dataset ✨
+### Creating Your First Dataset
 
 Let's start with the basics - creating a dataset:
 
@@ -17,9 +17,9 @@ dataset_name = 'My Amazing Dataset'
 dataset = project.datasets.create(dataset_name=dataset_name)
 ```
 
-### Creating a Cloud-Connected Dataset ☁️
+### Creating a Cloud-Connected Dataset
 
-If you didn't connect your cloud storage to Dataloop yet, you can do it by following the instructions in one of the following tutorials:
+If you didn't connect your cloud storage to DDOE yet, you can do it by following the instructions in one of the following tutorials:
 
 - [Amazon Web Services (S3)](/tutorials/data_management/external_storage_drivers/aws_s3/chapter.md)
 - [Microsoft Azure Blob Storage](/tutorials/data_management/external_storage_drivers/azure_blob/chapter.md)
@@ -45,9 +45,9 @@ dataset = project.datasets.create(
 )
 ```
 
-### Finding Your Datasets 🔍
+### Finding Your Datasets
 
-Need to find specific datasets? Use our powerful DQL (Dataloop Query Language) to filter and search:
+Need to find specific datasets? Use our powerful DQL (DDOE Query Language) to filter and search:
 
 ```python
 # Set up filters
@@ -59,7 +59,7 @@ datasets = project.datasets.list(filters=filters)
 datasets.print()
 ```
 
-### Organizing with Directories 📂
+### Organizing with Directories
 
 Keep your files organized by creating directories based on any context you need - upload time, batch, source, etc:
 
@@ -68,7 +68,7 @@ directory = '/directory/name'
 dataset.items.make_dir(directory=directory)
 ```
 
-### Deep Copying Between Datasets 📋
+### Deep Copying Between Datasets
 
 Need to copy data between datasets? Here's how to do it while preserving your folder structure and annotations:
 
@@ -130,17 +130,17 @@ for page in pages:
             new_item.annotations.upload(item.annotations.list())
 ```
 
-## Data Versioning: Your Time Machine 🕰️
+## Data Versioning: Your Time Machine
 
-Dataloop's powerful versioning system helps you manage your data like a pro. Here's what you can do:
+DDOE's powerful versioning system helps you manage your data like a pro. Here's what you can do:
 
-- Create golden training sets 🏆
-- Snapshot datasets for reproducibility 📸
-- Experiment with different subsets 🧪
-- Manage tasks and assignments 📋
-- Roll back to previous versions if needed ⏮️
+- Create golden training sets
+- Snapshot datasets for reproducibility
+- Experiment with different subsets
+- Manage tasks and assignments
+- Roll back to previous versions if needed
 
-### Cloning Datasets 🐑
+### Cloning Datasets
 
 Want a copy of your dataset? Cloning creates a new dataset that references the original files (no duplicate storage needed):
 
@@ -162,7 +162,7 @@ dataset_clone = dataset.clone(
 )
 ```
 
-### Merging Datasets 🤝
+### Merging Datasets
 
 Need to combine datasets? Here's what happens when you merge:
 
@@ -189,7 +189,7 @@ dataset_merge = dl.datasets.merge(
 
 ### Exporting Datasets
 
-The following example using Dataloop's Python SDK demonstrates how to export datasets with advanced options. It includes generating a *summary file*, enabling *dataset locking during export* to maintain data consistency, and setting an *automatic unlock timeout* to handle potential export delays and reduce workflow interruptions.
+The following example using DDOE's Python SDK demonstrates how to export datasets with advanced options. It includes generating a *summary file*, enabling *dataset locking during export* to maintain data consistency, and setting an *automatic unlock timeout* to handle potential export delays and reduce workflow interruptions.
 
 
 ```python
@@ -224,7 +224,7 @@ project.datasets.export(dataset_id='<id>',
 
 ```
 
-Check out our Dataloop documentation for details:
+Check out our DDOE documentation for details:
 - [Export Datasets](https://docs.dataloop.ai/docs/manage-your-datasets#export-entire-datasets)
 - [Lock Datasets During Export](https://docs.dataloop.ai/docs/datasets-overview#lock-datasets-during-export)
 - [Download an Export Summary File](https://docs.dataloop.ai/docs/manage-your-datasets#download-an-export-summary-file)
@@ -232,7 +232,7 @@ Check out our Dataloop documentation for details:
 
 ### Download Annotations
 
-This script downloads annotations from a Dataloop dataset in JSON and mask formats, with options to include label text, control dataset locking, and set an automatic unlock timeout.
+This script downloads annotations from a DDOE dataset in JSON and mask formats, with options to include label text, control dataset locking, and set an automatic unlock timeout.
 
 ```python
 dataset.download(local_path='local_path',
@@ -247,17 +247,17 @@ dataset.download(local_path='local_path',
 ```
 
 
-## Collections: Your Data's Best Friend 🤝
+## Collections: Your Data's Best Friend
 
 Think of Collections as smart tags on steroids! They're your secret weapon for organizing data like a pro. Whether you're juggling labeling tasks, managing massive datasets, or getting your data ready for model training - Collections have got your back! 
 
-Want to learn all the cool tricks? Check out our [Dataloop documentation](https://docs.dataloop.ai/docs/organize-your-data#collections) for the full scoop! 🎓
+Want to learn all the cool tricks? Check out our [DDOE documentation](https://docs.dataloop.ai/docs/organize-your-data#collections) for the full scoop!
 
-### Become a Collections Master 🎯
+### Become a Collections Master
 
-Ready to become a Collections wizard? The Dataloop SDK gives you superpowers to create, update, delete, and manage collections at both dataset and item levels. Let's break it down!
+Ready to become a Collections wizard? The DDOE SDK gives you superpowers to create, update, delete, and manage collections at both dataset and item levels. Let's break it down!
 
-**Dataset Level Magic Tricks ✨**
+**Dataset Level Magic Tricks**
 
 These are your dataset-wide spells for managing collections. Think of them as your high-level organization tools:
 
@@ -271,7 +271,7 @@ dataset.collections.create(name: str)
 dataset.collections.update(collection_id: str, new_name: str)
 ```
 
-3. Make a collection disappear (poof! 🎩)
+3. Make a collection disappear (poof!)
 ```python
 dataset.collections.delete(collection_id: str)
 ```
@@ -291,7 +291,7 @@ dataset.collections.list_all_collections()
 dataset.collections.list_unassigned_items()
 ```
 
-**Item Level Ninja Moves 🥷**
+**Item Level Ninja Moves**
 
 These methods are your precision tools - perfect for when you need that surgical accuracy:
 
@@ -310,7 +310,7 @@ item.unassign_collection(item_id: str, collection_id: str)
 item.list_collections(item_id: str)
 ```
 
-** Bulk Operations 🤖**
+** Bulk Operations**
 
 Assign and unassign items to collections in bulk, using dl.Filters:
 
@@ -336,7 +336,7 @@ filters.add(field='id', values=['<item_id>'], operator=dl.FiltersOperations.IN)
 dataset.collections.unassign(collections=['my_collection'], filters=filters)
 ```
 
-**Show Time! 🎬 Real-World Examples**
+**Show Time! Real-World Examples**
 
 Let's see these powers in action:
 
@@ -371,17 +371,17 @@ dataset.items.get(item_id='<item_id>').assign_collection(collections=['my_super_
 dataset.items.get(item_id='<item_id>').unassign_collection(collections=['my_super_awesome_collection'])
 ```
 
-## ML Subsets: Your Dataset's Secret Sauce 🌟
+## ML Subsets: Your Dataset's Secret Sauce
 
 Welcome to ML Subsets - your dataset's personal organizer for machine learning! It's like having a smart assistant that helps you split your data into perfect training, validation, and test portions. No more manual sorting - we've got you covered! 
 
-Want to become an ML Subsets guru? Check out our [detailed guide](https://docs.dataloop.ai/docs/organize-your-data#ml-subsets)! 📚
+Want to become an ML Subsets guru? Check out our [detailed guide](https://docs.dataloop.ai/docs/organize-your-data#ml-subsets)!
 
-### ML Subsets: The Fun Way! 🎮
+### ML Subsets: The Fun Way!
 
 Let's see how to slice and dice your dataset with style:
 
-**1. The Perfect Split (60-20-20 Style) 🎯**
+**1. The Perfect Split (60-20-20 Style)**
 ```python
 import dtlpy as dl
 
@@ -394,11 +394,11 @@ dataset.split_ml_subsets(
     percentages={'train': 60, 'validation': 20, 'test': 20}
 )
 ```
-* Like a chef perfectly portioning ingredients! 👨‍🍳
+* Like a chef perfectly portioning ingredients!
 * Your files get VIP treatment in train (60%), validation (20%), and test (20%) clubs
 * Perfectly balanced, as all things should be! 
 
-**2. Send an Item to Training Camp 🏋️‍♂️**
+**2. Send an Item to Training Camp**
 ```python
 filters = dl.Filters()
 filters.add(field='id', values=['<item_id>'], operator=dl.FiltersOperations.IN)
@@ -407,7 +407,7 @@ dataset.assign_subset_to_items(subset='train', items_query=filters)
 * Hand-pick items for special training
 * Like choosing your star player for the big game!
 
-**3. Give an Item a Break 🏖️**
+**3. Give an Item a Break**
 ```python
 filters = dl.Filters()
 filters.add(field='id', values=['<item_id>'], operator=dl.FiltersOperations.IN)
@@ -416,15 +416,15 @@ dataset.remove_subset_from_items(items_query=filters)
 * Sometimes items need a vacation from their subset
 * No hard feelings - they can always come back later!
 
-**4. Find the Free Agents 🔍**
+**4. Find the Free Agents**
 ```python
 dataset.get_items_missing_ml_subset()
 ```
 * Spot items that haven't joined a team yet
 * Perfect for making sure no data is left behind!
 
-## Need More Help? 🤔
+## Need More Help?
 
 Check out our [comprehensive documentation](https://docs.dataloop.ai/docs/welcome) for more details on dataset management and versioning.
 
-Happy data managing! 🚀
+Happy data managing!

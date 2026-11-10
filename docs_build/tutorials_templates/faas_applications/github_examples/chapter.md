@@ -1,12 +1,12 @@
-# 🌟 Real-World DPK Examples
+# Real-World DPK Examples
 
-Welcome to our showcase of real-world FaaS applications! Let's explore how Dataloop's serverless functions are being used in production environments. These examples are drawn from our [public apps repository](https://github.com/dataloop-ai-apps) and demonstrate the power and flexibility of FaaS.
+Welcome to our showcase of real-world FaaS applications! Let's explore how DDOE's serverless functions are being used in production environments. These examples are drawn from our [public apps repository](https://github.com/dataloop-ai-apps) and demonstrate the power and flexibility of FaaS.
 
-## 🤖 AI Model Integration Examples
+## AI Model Integration Examples
 
 ### ResNet Model Integration
 The [torch-models](https://github.com/dataloop-ai-apps/torch-models/) repository provides ready-to-use model adapters for popular PyTorch architectures. The ResNet-50 adapter is perfect for image classification tasks and can be easily fine-tuned on your custom datasets. To use it:
-1. Install the torch-models app from the Dataloop Marketplace
+1. Install the torch-models app from the Dell Data Orchestration Engine (DDOE) Marketplace
 2. Get the installed model:
 ```python
 # list the models in the project
@@ -72,7 +72,7 @@ class ServiceRunner(dl.BaseServiceRunner):
         item.annotations.upload(builder)
 ```
 
-## 🔄 Integration Examples
+## Integration Examples
 
 ### GCS Export Service
 Based on [export-gcs](https://github.com/dataloop-ai-apps/export-gcs), here's how to export annotations to Google Cloud Storage:
@@ -109,7 +109,7 @@ class ServiceRunner(dl.BaseServiceRunner):
         pass
 ```
 
-## 💡 Key Takeaways
+## Key Takeaways
 
 1. **Integration Flexibility**
    - FaaS seamlessly integrates with popular AI frameworks
@@ -132,7 +132,7 @@ class ServiceRunner(dl.BaseServiceRunner):
    - Consider caching for frequently used models
    - Monitor service performance and costs
 
-## 🚀 Next Steps
+## Next Steps
 
 Ready to build your own FaaS applications? Here are some resources to help you get started:
 
@@ -141,4 +141,4 @@ Ready to build your own FaaS applications? Here are some resources to help you g
 3. Explore our model adapters for quick AI integration
 4. Try implementing these examples in your own projects
 
-Need help? Our support team is always ready to assist you in building production-ready FaaS applications! Happy coding! ✨
+Need help? Our support team is always ready to assist you in building production-ready FaaS applications! Happy coding!

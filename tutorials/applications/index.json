@@ -1,11 +1,11 @@
 {
     "name": "applications",
-    "title": "Creating Dataloop Applications",
-    "description": "Master the art of developing powerful applications for the Dataloop platform, from Python services to web interfaces",
+    "title": "Creating DDOE Applications",
+    "description": "Master the art of developing powerful applications for the DDOE platform, from Python services to web interfaces",
     "content": [
         {
             "displayName": "Introduction to Applications",
-            "description": "Learn about Dataloop applications, DPKs, and how to extend the platform's capabilities",
+            "description": "Learn about DDOE applications, DPKs, and how to extend the platform's capabilities",
             "location": "applications/introduction/chapter.md"
         },
         {
@@ -15,7 +15,7 @@
         },
         {
             "displayName": "Web Applications",
-            "description": "Build interactive web applications, custom panels, and UI components for the Dataloop platform",
+            "description": "Build interactive web applications, custom panels, and UI components for the DDOE platform",
             "location": "applications/web_application/chapter.md"
         },
         {

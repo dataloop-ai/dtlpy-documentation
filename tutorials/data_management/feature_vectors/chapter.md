@@ -1,36 +1,36 @@
-# Understanding Feature Vectors in Dataloop 🧬
+# Understanding Feature Vectors in DDOE
 
-Welcome to your guide to working with feature vectors in Dataloop! Whether you're working with image embeddings, text representations, or custom features, we've got you covered. Let's dive into the world of vector representations!
+Welcome to your guide to working with feature vectors in Dell Data Orchestration Engine (DDOE)! Whether you're working with image embeddings, text representations, or custom features, we've got you covered. Let's dive into the world of vector representations!
 
-## What Are Feature Vectors? 🤔
+## What Are Feature Vectors?
 
 [Feature vectors](https://en.wikipedia.org/wiki/Feature_(machine_learning)) are like coordinates on a map for your data - they represent each piece of information as a point in a multi-dimensional space. Just as you can locate any place on Earth using latitude and longitude coordinates, feature vectors let machines precisely locate and compare data points based on their characteristics. Each number in the vector represents a different dimension or attribute, creating a mathematical way to measure how similar or different items are from each other.
 
-### Key Concepts 🎯
+### Key Concepts
 
 * **Representation**: Feature vectors can describe anything - images, text, or even customer profiles
 * **Flexibility**: Vectors can be any length, depending on what you need
 * **Versatility**: They can come from raw data or AI models
 
-### Feature Vector Examples 🌟
+### Feature Vector Examples
 
-1. **Image Embeddings** 🖼️
+1. **Image Embeddings**
    ```
    ResNet model → Image → [0.2, 0.8, ..., 0.5] (1024 dimensions)
    ```
 
-2. **Text Embeddings** 📝
+2. **Text Embeddings**
    ```
    BERT model → Text → [0.1, 0.3, ..., 0.7] (768 dimensions)
    ```
 
-3. **Customer Profile** 👤
+3. **Customer Profile**
    ```
    Customer Data → [Age, Income, Years, Purchases, Value]
    Example: [35, 75000, 5, 20, 150]
    ```
 
-## Working with Feature Sets 📦
+## Working with Feature Sets
 
 ### What is a Feature Set?
 
@@ -40,7 +40,7 @@ Think of a Feature Set as a container for your feature vectors. It holds:
 - Information about size and type
 - Connection to models (optional)
 
-### Creating Your First Feature Set ✨
+### Creating Your First Feature Set
 
 Let's start with the basics:
 
@@ -59,7 +59,7 @@ feature_set = project.feature_sets.create(
 )
 ```
 
-### Connecting to Models 🤖
+### Connecting to Models
 
 Want to link your feature set directly to a model? Just add the model ID:
 
@@ -73,12 +73,12 @@ feature_set = project.feature_sets.create(
 )
 ```
 
-> 🔥 **Hot Tip**: To see how to create an embedding model in the Dataloop platform, see the tutorial [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/model_management/create_new_model_sdk/chapter.md).
+> **Hot Tip**: To see how to create an embedding model in the DDOE platform, see the tutorial [here](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/tutorials/model_management/create_new_model_sdk/chapter.md).
 
 
-## Adding Features to Your Set 🎨
+## Adding Features to Your Set
 
-Now that you've created a feature set, you can fill it with features. These features can be created by models on the Dataloop platform, or you can upload them yourself via the SDK.
+Now that you've created a feature set, you can fill it with features. These features can be created by models on the DDOE platform, or you can upload them yourself via the SDK.
 
 ```python
 feature = feature_set.features.create(
@@ -134,7 +134,7 @@ for item in items.all():
     pbar.update()
 ```
 
-## Managing Feature Sets 🛠️
+## Managing Feature Sets
 
 ### Basic Operations
 
@@ -154,7 +154,7 @@ print(f'This item has {len(item_features)} feature vectors')
 ```
 
 
-## Exporting Feature Sets 📤
+## Exporting Feature Sets
 
 Use the `export` method to export a feature set to a local file.
 
@@ -166,7 +166,7 @@ dataset.export(local_path='./my-dataset',
 ```
 
 
-## Finding Similar Items 🔍
+## Finding Similar Items
 
 ### K-Nearest Neighbors Search
 
@@ -219,7 +219,7 @@ for i_item, item in enumerate(res.items):
         break
 ```
 
-### Distance-Based Search 📏
+### Distance-Based Search
 
 Need items within a specific distance? Use a distance threshold:
 
@@ -251,7 +251,7 @@ custom_filter = {
 }
 ```
 
-## Best Practices 💡
+## Best Practices
 
 1. **Vector Size**: Choose appropriate dimensions for your use case
 2. **Normalization**: Consider normalizing vectors for better comparison
@@ -259,10 +259,10 @@ custom_filter = {
 4. **Model Selection**: Choose the right embedding model for your data type
 5. **Index Management**: Consider the trade-off between search speed and accuracy
 
-## Need More Help? 🤔
+## Need More Help?
 
 Check out our [comprehensive documentation](https://docs.dataloop.ai/docs/welcome) for more details on working with feature vectors.
 
-Happy vectorizing! 🚀
+Happy vectorizing!
 
 

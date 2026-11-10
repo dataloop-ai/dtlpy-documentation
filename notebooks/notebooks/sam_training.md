@@ -1,18 +1,18 @@
 # SAM2 (Segment Anything Model 2) Tutorial
 
-This notebook provides a comprehensive guide on how to use SAM2 (Segment Anything Model 2), a powerful image segmentation model by Meta AI, with the Dataloop platform and its Python SDK. We will cover the full workflow from setup to model training and evaluation.
+This notebook provides a comprehensive guide on how to use SAM2 (Segment Anything Model 2), a powerful image segmentation model by Meta AI, with the Dell Data Orchestration Engine (DDOE) platform and its Python SDK. We will cover the full workflow from setup to model training and evaluation.
 
-SAM2 represents a significant advancement in image segmentation, offering improved accuracy and efficiency for various computer vision tasks. This tutorial will help you leverage SAM2's capabilities within the Dataloop ecosystem for your segmentation projects.
+SAM2 represents a significant advancement in image segmentation, offering improved accuracy and efficiency for various computer vision tasks. This tutorial will help you leverage SAM2's capabilities within the DDOE ecosystem for your segmentation projects.
 
 ### Prerequisites:
-* **Dataloop Account:** You should have access to a Dataloop platform account.
+* **DDOE Account:** You should have access to a DDOE platform account.
 * **Python Environment:** Ensure you have Python 3.7+ installed with pip.
-* **Dataset Access:** A Dataloop project and dataset with images for segmentation tasks.
+* **Dataset Access:** A DDOE project and dataset with images for segmentation tasks.
 * **GPU Resources:** Recommended for training and inference (though CPU is supported for basic operations).
 
 ### Navigate through the following sections:
 1. [Dependencies & Setup](#dependencies-setup)
-2. [Environment Setup and Dataloop Connection](#environment-setup)
+2. [Environment Setup and DDOE Connection](#environment-setup)
 3. [Project and Dataset Configuration](#project-dataset-config)
 4. [Load and Visualize Data](#load-visualize-data)
 5. [SAM2 Prediction](#sam2-prediction)
@@ -20,22 +20,22 @@ SAM2 represents a significant advancement in image segmentation, offering improv
 7. [Model Evaluation](#model-evaluation)
 8. [Conclusion and Next Steps](#conclusion)
 
-For more details about SAM2 in the Dataloop platform, refer to the [Dataloop SAM Github repository](https://github.com/dataloop-ai-apps/grounded-sam-adapter/tree/main/adapters/sam_adapter).
+For more details about SAM2 in the DDOE platform, refer to the [DDOE SAM Github repository](https://github.com/dataloop-ai-apps/grounded-sam-adapter/tree/main/adapters/sam_adapter).
 
 ## <a id='dependencies-setup'></a>1. Dependencies & Setup
 
-First, let's ensure all required Python packages are installed. The cell below will install `dtlpy` for Dataloop SDK interaction, along with `matplotlib`, `numpy`, and `Pillow` for data handling and visualization.
+First, let's ensure all required Python packages are installed. The cell below will install `dtlpy` for DDOE SDK interaction, along with `matplotlib`, `numpy`, and `Pillow` for data handling and visualization.
 
 
 ```python
 !pip install dtlpy matplotlib numpy Pillow --upgrade --quiet
 ```
 
-## <a id='environment-setup'></a>2. Environment Setup and Dataloop Connection
+## <a id='environment-setup'></a>2. Environment Setup and DDOE Connection
 
 ### Import Required Libraries
 
-With dependencies installed, we'll import the necessary libraries and establish a connection to the Dataloop platform. If your Dataloop token is expired or not found, you will be prompted to log in.
+With dependencies installed, we'll import the necessary libraries and establish a connection to the DDOE platform. If your DDOE token is expired or not found, you will be prompted to log in.
 
 
 ```python
@@ -47,28 +47,28 @@ import numpy as np
 from PIL import Image
 import io
 
-# Login to the Dataloop platform
+# Login to the DDOE platform
 # This will check if your current token is valid and prompt for login if necessary.
 if dl.token_expired():
     dl.login()
-print('Successfully logged into Dataloop')
+print('Successfully logged into DDOE')
 ```
 
 ## <a id='project-dataset-config'></a>3. Project and Dataset Configuration
 
-Now, we need to specify the Dataloop project and dataset you'll be working with.
+Now, we need to specify the DDOE project and dataset you'll be working with.
 
-**Action Required:** In the code cell below, please replace `'your_project_name'` and `'your_dataset_name'` with the names of your Dataloop project and dataset, respectively. The dataset should contain images, which can be with or without existing annotations.
+**Action Required:** In the code cell below, please replace `'your_project_name'` and `'your_dataset_name'` with the names of your DDOE project and dataset, respectively. The dataset should contain images, which can be with or without existing annotations.
 
 
 ```python
 # Get the project
-# IMPORTANT: Modify 'your_project_name' to your specific Dataloop project name.
+# IMPORTANT: Modify 'your_project_name' to your specific DDOE project name.
 project = dl.projects.get(project_name='your_project_name')
 print(f'Connected to project: {project.name}')
 
 # Get the dataset
-# IMPORTANT: Modify 'your_dataset_name' to your specific Dataloop dataset name.
+# IMPORTANT: Modify 'your_dataset_name' to your specific DDOE dataset name.
 dataset = project.datasets.get(dataset_name='your_dataset_name')
 print(f'Connected to dataset: {dataset.name}')
 ```
@@ -104,7 +104,7 @@ def display_item_with_annotations(item):
     Display an image item and its annotations
     
     Args:
-        item: A Dataloop item object
+        item: A DDOE item object
     """
     if not item:
         print("No item to display")
@@ -145,7 +145,7 @@ def display_item_with_annotations(item):
                     plt.scatter(coords[0], coords[1], c='red', s=50)
                     plt.text(coords[0], coords[1], annotation.label, color='white', backgroundcolor='red', fontsize=8)
                 elif annotation.type == 'segmentation':
-                    # Assuming annotation.geo is a Dataloop geo object for segmentation
+                    # Assuming annotation.geo is a DDOE geo object for segmentation
                     # The geo_to_mask method requires image height and width
                     mask = annotation.geo.geo_to_mask((image.height, image.width)) 
                     plt.imshow(mask, alpha=0.5, cmap='jet')
@@ -159,7 +159,7 @@ def display_item_with_annotations(item):
 
 ### 4.3 Visualize Selected Item
 
-Display the randomly selected item and its annotations both in the notebook and optionally in the Dataloop platform.
+Display the randomly selected item and its annotations both in the notebook and optionally in the DDOE platform.
 
 
 ```python
@@ -170,13 +170,13 @@ display_item_with_annotations(item)
 
 ```python
 # Show the item and item annotations in the platform
-# This will open the item in your web browser, in the Dataloop annotation studio.
+# This will open the item in your web browser, in the DDOE annotation studio.
 item.open_in_web()
 ```
 
 ## <a id='sam2-prediction'></a>5. SAM2 Prediction
 
-We will now use a pre-trained SAM2 model available on the Dataloop platform to perform image segmentation. SAM2 in Dataloop supports multiple prediction modes:
+We will now use a pre-trained SAM2 model available on the DDOE platform to perform image segmentation. SAM2 in DDOE supports multiple prediction modes:
 
 ### SAM2 Prediction Modes:
 
@@ -199,11 +199,11 @@ We will now use a pre-trained SAM2 model available on the Dataloop platform to p
 
 ### 5.1 Install and Configure SAM2 Model
 
-First, we need to get the SAM2 DPK (Dataloop Package), install it as an app in our project (if not already installed), and then retrieve the associated model.
+First, we need to get the SAM2 DPK (DDOE Package), install it as an app in our project (if not already installed), and then retrieve the associated model.
 
 
 ```python
-# Get the SAM2 DPK (Dataloop Package)
+# Get the SAM2 DPK (DDOE Package)
 sam2_dpk = dl.dpks.get(dpk_name='sam2')
 
 # Install the SAM2 app from the DPK if not already installed in the project
@@ -282,9 +282,9 @@ The predictions above show the model's segmentation results, which will typicall
 
 Remember to check the [SAM2 model documentation](https://github.com/dataloop-ai-apps/grounded-sam-adapter/tree/main/adapters/sam_adapter) for detailed configuration options and best practices for different modes.
 
-#### Option 1: Adding a Bounding Box via the Dataloop UI
+#### Option 1: Adding a Bounding Box via the DDOE UI
 
-1. Run the cell below to open the selected item in the Dataloop annotation studio.
+1. Run the cell below to open the selected item in the DDOE annotation studio.
 2. Use the bounding box tool in the UI to draw a box around an object of interest.
 3. Assign a label to the box (e.g., "target_object").
 4. Save the annotation.
@@ -292,14 +292,14 @@ Remember to check the [SAM2 model documentation](https://github.com/dataloop-ai-
 
 
 ```python
-# Run this cell to open the item in the Dataloop UI for manual annotation
+# Run this cell to open the item in the DDOE UI for manual annotation
 # After adding and saving a bounding box in the UI, come back to this notebook.
 item.open_in_web()
 ```
 
 #### Option 2: Adding a Bounding Box Programmatically
 
-Alternatively, use the Dataloop SDK to add a bounding box annotation to the item. Adjust the coordinates and label as needed. Note that the coordinates `(left, top, right, bottom)` are in pixels.
+Alternatively, use the DDOE SDK to add a bounding box annotation to the item. Adjust the coordinates and label as needed. Note that the coordinates `(left, top, right, bottom)` are in pixels.
 
 
 ```python
@@ -381,13 +381,13 @@ for key, value in clone_model.configuration.items():
 
 ### 6.3 Update Training Configuration
 
-For instance, let's say we want to change the number of training epochs. You can do this directly in the Dataloop platform UI by opening the model's page, or programmatically via the SDK.
+For instance, let's say we want to change the number of training epochs. You can do this directly in the DDOE platform UI by opening the model's page, or programmatically via the SDK.
 
 To change configuration in the UI, run the cell below to open the cloned model's page in your browser. Navigate to the configuration settings and make your edits (e.g., set 'num_epochs' or 'epochs' to 10).
 
 
 ```python
-# Option 1: Open the cloned model in the Dataloop UI to modify configuration
+# Option 1: Open the cloned model in the DDOE UI to modify configuration
 clone_model.open_in_web()
 ```
 
@@ -420,9 +420,9 @@ for key, value in clone_model.configuration.items():
 
 ### 6.5 Prepare Data Subsets for Training
 
-For effective model training, it's crucial to split your dataset into training, validation, and (optionally) test subsets. Dataloop provides tools to manage these splits. Here, we'll split our dataset items based on percentages. The items will be tagged accordingly (e.g., 'train', 'validation', 'test').
+For effective model training, it's crucial to split your dataset into training, validation, and (optionally) test subsets. DDOE provides tools to manage these splits. Here, we'll split our dataset items based on percentages. The items will be tagged accordingly (e.g., 'train', 'validation', 'test').
 
-For more information on dataset splitting and subsets, refer to the [Dataloop documentation on ML Subsets](https://developers.dataloop.ai/tutorials/data_management/datasets_and_versioning/chapter#ml-subsets-your-datasets-secret-sauce-).
+For more information on dataset splitting and subsets, refer to the [DDOE documentation on ML Subsets](https://developers.dataloop.ai/tutorials/data_management/datasets_and_versioning/chapter#ml-subsets-your-datasets-secret-sauce-).
 
 
 ```python
@@ -485,11 +485,11 @@ print('Model training finished successfully')
 
 ### 6.8 Monitor Training Progress
 
-You can navigate to the 'Training' tab on the model's page in the Dataloop UI to view detailed progress, logs, and performance metrics as the training runs. The cell below will open this page for you.
+You can navigate to the 'Training' tab on the model's page in the DDOE UI to view detailed progress, logs, and performance metrics as the training runs. The cell below will open this page for you.
 
 
 ```python
-# Open the model page in the Dataloop platform to monitor training
+# Open the model page in the DDOE platform to monitor training
 clone_model.open_in_web()
 ```
 
@@ -530,7 +530,7 @@ print('Model evaluation finished successfully')
 
 ### 7.3 View Evaluation Results
 
-Once the evaluation is finished, you can access detailed performance metrics in the Dataloop platform. These are typically found under a 'Metrics' or 'Precision-Recall' tab on the model's page.
+Once the evaluation is finished, you can access detailed performance metrics in the DDOE platform. These are typically found under a 'Metrics' or 'Precision-Recall' tab on the model's page.
 
 
 ```python
@@ -539,10 +539,10 @@ clone_model.open_in_web()
 
 ## <a id='conclusion'></a>8. Conclusion and Next Steps
 
-Congratulations! You have successfully walked through the process of using SAM2 with Dataloop, including:
+Congratulations! You have successfully walked through the process of using SAM2 with DDOE, including:
 
 ### Summary of What You've Accomplished:
-- Set up your environment and connected to Dataloop
+- Set up your environment and connected to DDOE
 - Configured your project and dataset for segmentation tasks
 - Visualized data and annotations using helper functions
 - Performed predictions with a pre-trained SAM2 model using various prompting techniques
@@ -552,8 +552,8 @@ Congratulations! You have successfully walked through the process of using SAM2 
 ### Next Steps:
 - **Explore Advanced Configurations:** Dive deeper into the SAM2 model's configuration options for both prediction and training to optimize performance for your specific use case
 - **Iterate on Training:** Adjust training parameters (epochs, learning rate, batch size), dataset composition, and augmentation strategies to improve your fine-tuned model
-- **Deploy Your Trained Model:** Once satisfied with your fine-tuned model, deploy it as a service to use it for inference on new, unseen data within your Dataloop workflows or external applications
-- **Analyze Evaluation Metrics:** Thoroughly review the evaluation metrics in the Dataloop platform to understand your model's strengths and weaknesses
+- **Deploy Your Trained Model:** Once satisfied with your fine-tuned model, deploy it as a service to use it for inference on new, unseen data within your DDOE workflows or external applications
+- **Analyze Evaluation Metrics:** Thoroughly review the evaluation metrics in the DDOE platform to understand your model's strengths and weaknesses
 - **Integration with Pipelines:** Incorporate your trained SAM2 model into automated annotation pipelines for production use
 
-This notebook provides a foundational guide. The Dataloop platform offers many more features for comprehensive AI data management and model development. We encourage you to explore the [Dataloop documentation](https://dataloop.ai/docs) for more advanced topics and functionalities.
+This notebook provides a foundational guide. The DDOE platform offers many more features for comprehensive AI data management and model development. We encourage you to explore the [DDOE documentation](https://dataloop.ai/docs) for more advanced topics and functionalities.

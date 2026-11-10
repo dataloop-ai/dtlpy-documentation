@@ -1,6 +1,6 @@
 # Analytics Overview
 
-In the Dataloop platform, we have an analytics screen where different metrics like Active users, Annotator's performance, Total working time, Item annotation time, etc. can be tracked at a project, dataset, or task level which would help the business.
+In the Dell Data Orchestration Engine (DDOE) platform, we have an analytics screen where different metrics like Active users, Annotator's performance, Total working time, Item annotation time, etc. can be tracked at a project, dataset, or task level which would help the business.
 
 To retrieve metrics from the API, you'll need to send a JSON payload containing the desired metrics and time period for analysis. This payload is essential for specifying which analytics data you want to track and analyze.
 

@@ -1,10 +1,10 @@
-# Advanced Item and Annotation Examples 🎓
+# Advanced Item and Annotation Examples
 
-Welcome to our advanced guide for working with items and annotations! Here you'll find detailed examples and advanced techniques for managing your data in Dataloop.
+Welcome to our advanced guide for working with items and annotations! Here you'll find detailed examples and advanced techniques for managing your data in Dell Data Orchestration Engine (DDOE).
 
-## Advanced Item Examples and Operations 🎯
+## Advanced Item Examples and Operations
 
-### Advanced Upload Scenarios 🚀
+### Advanced Upload Scenarios
 
 #### Batch Upload with Metadata and Annotations
 
@@ -43,7 +43,7 @@ items = dataset.items.upload(
 )
 ```
 
-### Working with Different File Types 📁
+### Working with Different File Types
 
 #### Image Arrays with OpenCV
 
@@ -122,7 +122,7 @@ item = dl.items.get(item_id=uploaded_item.id)
 json_data = json.loads(item.download(save_locally=False).getvalue())
 ```
 
-### Advanced Metadata Operations 📊
+### Advanced Metadata Operations
 
 #### Complex Metadata Structure
 
@@ -172,7 +172,7 @@ dataset.items.update(
 )
 ```
 
-## Working with Large Datasets 🗄️
+## Working with Large Datasets
 
 ### Progress Tracking
 
@@ -219,11 +219,11 @@ with ThreadPoolExecutor(max_workers=32) as executor:
         pbar.update()
 ```
 
-## Advanced Annotation Examples and Operations 🎯
+## Advanced Annotation Examples and Operations
 
-Welcome to our advanced guide for working with annotations! Here you'll find detailed examples and techniques for managing complex annotation scenarios in Dataloop.
+Welcome to our advanced guide for working with annotations! Here you'll find detailed examples and techniques for managing complex annotation scenarios in DDOE.
 
-### Working with Different Formats 📦
+### Working with Different Formats
 
 #### Converting from COCO Format
 
@@ -256,7 +256,7 @@ builder.from_vtt_file(filepath=local_vtt_path)
 item.annotations.upload(builder)
 ```
 
-### Video Annotations 🎥
+### Video Annotations
 
 #### Adding Time-Based Annotations
 
@@ -291,7 +291,7 @@ for i_row, row in df.iterrows():
 item.annotations.upload(annotations=builder)
 ```
 
-### Audio Annotations 🎵
+### Audio Annotations
 
 ```python
 # Get your audio file
@@ -316,7 +316,7 @@ builder.add(
 item.annotations.upload(builder)
 ```
 
-### Batch Operations 📊
+### Batch Operations
 
 #### Copy Annotations Between Items
 
@@ -342,7 +342,7 @@ item = dataset.items.get(item_id="target-item-id")
 item.annotations.upload(annotations=annotations)
 ```
 
-### Downloading Annotations 📥
+### Downloading Annotations
 
 #### Multiple Format Downloads
 
@@ -384,21 +384,21 @@ dataset.download(
 )
 ```
 
-### Format Conversion 🔄
+### Format Conversion
 
 Want to convert annotations between different formats? We've got you covered! First, grab our handy converter toolkit:
 
-1. Install our [dtlpy-converters](https://github.com/dataloop-ai-apps/dtlpy-converters) package 🛠️
+1. Install our [dtlpy-converters](https://github.com/dataloop-ai-apps/dtlpy-converters) package
 
 ```bash
 pip install git+https://github.com/dataloop-ai-apps/dtlpy-converters
 ```
 
-2. Let's start converting! 🚀
+2. Let's start converting!
 
-#### Converting TO Dataloop Format ⬇️
+#### Converting TO DDOE Format
 
-Here's how to bring your COCO/YOLO/VOC annotations into Dataloop:
+Here's how to bring your COCO/YOLO/VOC annotations into DDOE:
 
 ```python
 import dtlpy as dl
@@ -407,12 +407,12 @@ from dtlpyconverters.yolo import YoloToDataloop
 from dtlpyconverters.voc import VocToDataloop
 
 
-# 🎯 COCO to Dataloop
+# COCO to DDOE
 coco_dataset = dl.datasets.get(dataset_id="dataset_id")
 converter = CocoToDataloop(
     dataset=coco_dataset,
     input_items_path=r"C:/path/to/coco/items",
-    # Make sure item filenames match the COCO json! 🎯
+    # Make sure item filenames match the COCO json!
     input_annotations_path=r"C:/path/to/coco/items/annotations",
     upload_items=True
 )
@@ -425,12 +425,12 @@ converter.convert(
     to_polygon=True
 )
 
-# 🎯 YOLO to Dataloop
+# YOLO to DDOE
 yolo_dataset = dl.datasets.get(dataset_id="dataset_id")
 converter = YoloToDataloop(
     dataset=yolo_dataset,
     input_items_path=r"C:/path/to/yolo/items",
-    # Make sure item filenames match YOLO txt files! 🎯
+    # Make sure item filenames match YOLO txt files!
     input_annotations_path=r"C:/path/to/yolo/items/annotations",
     upload_items=True,
     add_labels_to_recipe=True
@@ -439,12 +439,12 @@ converter.convert(
     labels_txt_filepath=r"C:/path/to/yolo/items/labels/labels.txt"
 )
 
-# 🎯 VOC to Dataloop
+# VOC to DDOE
 voc_dataset = dl.datasets.get(dataset_id='dataset_id')
 converter = VocToDataloop(
     dataset=voc_dataset,
     input_items_path=r"C:/path/to/voc/items",
-    # Make sure item filenames match VOC xml files! 🎯
+    # Make sure item filenames match VOC xml files!
     input_annotations_path=r"C:/path/to/voc/items/annotations",
     upload_items=True,
     add_labels_to_recipe=True
@@ -452,9 +452,9 @@ converter = VocToDataloop(
 converter.convert()
 ```
 
-#### Converting FROM Dataloop Format ⬆️
+#### Converting FROM DDOE Format
 
-Need to export your Dataloop annotations to other formats? Here's how:
+Need to export your DDOE annotations to other formats? Here's how:
 
 ```python
 import dtlpy as dl
@@ -462,14 +462,14 @@ from dtlpyconverters.coco import DataloopToCoco
 from dtlpyconverters.yolo import DataloopToYolo
 from dtlpyconverters.voc import DataloopToVoc
 
-# Set up your filters (optional but powerful!) 🎯
+# Set up your filters (optional but powerful!)
 filters = dl.Filters()
 # Example: Get items from specific folder
 filters.add(field=dl.FiltersKnownFields.DIR, values='/dog_name')
 # Example: Filter for dog annotations
 filters.add_join(field=dl.FiltersKnownFields.LABEL, values='dog')
 
-# 🎯 Dataloop to COCO
+# DDOE to COCO
 coco_dataset = dl.datasets.get(dataset_id='')
 converter = DataloopToCoco(
     dataset=coco_dataset,
@@ -483,7 +483,7 @@ converter = DataloopToCoco(
 )
 converter.convert()
 
-# 🎯 Dataloop to YOLO
+# DDOE to YOLO
 yolo_dataset = dl.datasets.get(dataset_id='')
 converter = DataloopToYolo(
     dataset=yolo_dataset,
@@ -496,7 +496,7 @@ converter = DataloopToYolo(
 )
 converter.convert()
 
-# 🎯 Dataloop to VOC
+# DDOE to VOC
 voc_dataset = dl.datasets.get(dataset_id='')
 converter = DataloopToVoc(
     dataset=voc_dataset,
@@ -510,15 +510,15 @@ converter = DataloopToVoc(
 converter.convert()
 ```
 
-**Pro Tips! 💡**
+**Pro Tips!**
 
 - Always check that your item filenames match the annotation files
 - Use filters to convert specific subsets of your data
 - Remember that converter functions are async - use `asyncio.run()`!
 
-## Best Practices for Large Scale Operations 🎯
+## Best Practices for Large Scale Operations
 
-### Error Handling 🛡️
+### Error Handling
 
 **Error Handling**: Always include error handling for large operations
 
@@ -529,7 +529,7 @@ except dl.exceptions.PlatformException as e:
     print(f"Platform error: {e}")
 ```
 
-### Performance Optimization 🚀
+### Performance Optimization
 
 **Batch Processing**: Group operations for better performance
 
@@ -560,7 +560,7 @@ def process_with_progress(items):
             pbar.update(1)
 ```
 
-### Parallel Processing 🔄
+### Parallel Processing
 
 7. **Multi-threading**: Use parallel processing for large datasets
 
@@ -579,7 +579,7 @@ def process_with_progress(items):
                future.result()
    ```
 
-### Logging 📝
+### Logging
 
 **Logging**: Maintain detailed logs for debugging
 ```python
@@ -598,10 +598,10 @@ import logging
             raise
     ```
 
-## Need More Help? 🤔
+## Need More Help?
 
 - Check out our [Python SDK Documentation](https://sdk-docs.dataloop.ai/en/latest/entities.html)
 - Visit our [Community Forum](https://dataloop.ai/community)
 - Explore our [Tutorials](https://docs.dataloop.ai/tutorials)
 
-Happy coding! 🚀
+Happy coding!

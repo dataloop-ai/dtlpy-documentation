@@ -1,16 +1,16 @@
-# Tasks and Assignments in Dataloop 📋
+# Tasks and Assignments in DDOE
 
-Welcome to your guide to managing tasks and assignments in Dataloop! Whether you're setting up annotation projects, managing QA workflows, or organizing your team's workload, we've got you covered. Let's dive in!
+Welcome to your guide to managing tasks and assignments in Dell Data Orchestration Engine (DDOE)! Whether you're setting up annotation projects, managing QA workflows, or organizing your team's workload, we've got you covered. Let's dive in!
 
-## Understanding Tasks and Assignments 🎓
+## Understanding Tasks and Assignments
 
 Think of tasks as your project's to-do lists and assignments as individual work packages. Here's what you need to know:
 
-- **Tasks** 📦 contain the overall work to be done
-- **Assignments** 📝 distribute the work among team members
-- **Items** 🖼️ are the actual data pieces to be worked on
+- **Tasks** contain the overall work to be done
+- **Assignments** distribute the work among team members
+- **Items** are the actual data pieces to be worked on
 
-## Creating Tasks 🛠️
+## Creating Tasks
 
 The SDK provides specialized methods to create different task types. These methods allow you to clearly define task objectives (labeling, QA, consensus, honeypot, qualification).
 
@@ -125,9 +125,9 @@ dataset.tasks.create_qualification_task(
 )
 ```
 
-## Managing Existing Tasks 🔧
+## Managing Existing Tasks
 
-This section explains how to work with tasks that have already been created. Using the Dataloop SDK, you can add or reassign items, look up specific tasks or assignments, and maintain ongoing annotation workflows efficiently.
+This section explains how to work with tasks that have already been created. Using the DDOE SDK, you can add or reassign items, look up specific tasks or assignments, and maintain ongoing annotation workflows efficiently.
 
 ### Adding Items to Tasks
 
@@ -149,7 +149,7 @@ task.add_items(
 )
 ```
 
-### Finding Tasks and Assignments 🔍
+### Finding Tasks and Assignments
 
 The SDK allows you to search and retrieve tasks or assignments in different ways. You can get a task by its ID, find it by name within a project, list all tasks in a dataset, or access assignment details by ID. This makes it easy to track progress, manage workloads, and monitor task completion.
 
@@ -170,7 +170,7 @@ assignment = dl.assignments.get(assignment_id='assignment-id')
 assignments = task.assignments.list()
 ```
 
-### Redistributing Work 🔄
+### Redistributing Work
 
 Need to change who's working on what? Here's how:
 
@@ -187,7 +187,7 @@ assignment.redistribute(
 assignment.reassign(['new.annotator@dataloop.ai'])
 ```
 
-## Pipeline Integration 🔗
+## Pipeline Integration
 
 Want to include tasks in your pipeline? Here's how:
 
@@ -212,7 +212,7 @@ pipeline.nodes.add(node=task_node)
 pipeline.update()
 ```
 
-## Cleanup Operations 🧹
+## Cleanup Operations
 
 Use cleanup operations to remove tasks or assignments that are no longer required. This helps keep your projects organized and ensures that only active, relevant tasks remain accessible.
 
@@ -228,18 +228,18 @@ task.delete()
 assignment.delete()
 ```
 
-## Best Practices 💡
+## Best Practices
 
-1. 📊 Use filters to create focused tasks
-2. 🔄 Consider pulling tasks for flexible teams
-3. 👥 Use consensus tasks for critical annotations
-4. 📅 Set realistic due dates
-5. 🎯 Keep batch sizes manageable (10-20 items)
+1. Use filters to create focused tasks
+2. Consider pulling tasks for flexible teams
+3. Use consensus tasks for critical annotations
+4. Set realistic due dates
+5. Keep batch sizes manageable (10-20 items)
 
-## Need More Help? 🤔
+## Need More Help?
 
 - Check out our [Task Management Documentation](https://docs.dataloop.ai/docs/labeling-overview)
 - Visit our [Assignment Guide](https://docs.dataloop.ai/docs/assignments-overview)
 - Explore [Pipeline Integration](https://docs.dataloop.ai/docs/labeling-nodes)
 
-Happy task managing! 🚀
+Happy task managing!

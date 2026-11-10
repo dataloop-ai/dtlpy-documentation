@@ -1,8 +1,8 @@
-# 👋 Your First FaaS Application - Hello World!
+# Your First FaaS Application - Hello World!
 
-Welcome to the world of serverless functions in Dataloop! In this tutorial, you'll learn how to create, package, and run your first function. Think of FaaS as your personal automation toolkit - it lets you extend Dataloop's capabilities with your own custom code.
+Welcome to the world of serverless functions in Dell Data Orchestration Engine (DDOE)! In this tutorial, you'll learn how to create, package, and run your first function. Think of FaaS as your personal automation toolkit - it lets you extend DDOE's capabilities with your own custom code.
 
-# 📦 Creating Your First DPK (Dataloop Package)
+# Creating Your First DPK (DDOE Package)
 
 For the full code, see [this repository](https://github.com/dataloop-ai-apps/hello-world-python-app).
 
@@ -41,7 +41,7 @@ Create a file named `dataloop.json` with your package configuration:
 {
   "name": "hello-world",
   "version": "1.0.0",
-  "description": "My first Dataloop function",
+  "description": "My first DDOE function",
   "components": {
     "modules": [
       {
@@ -88,7 +88,7 @@ Create a file named `dataloop.json` with your package configuration:
 }
 ```
 
-# 🚀 Deploying Your Function
+# Deploying Your Function
 
 ## Quick deploy from a function
 
@@ -115,7 +115,7 @@ service = dl.Service.from_function(
 
 For full control (triggers, multiple functions, custom runtime), use the DPK manifest below.
 
-## Step 1: Initialize Dataloop
+## Step 1: Initialize DDOE
 
 First, make sure you're logged in:
 
@@ -150,7 +150,7 @@ except dl.exceptions.NotFound:
 service = project.services.get('hello-world')
 ```
 
-# 🎯 Running Your Function
+# Running Your Function
 
 ## Manual Execution
 
@@ -213,7 +213,7 @@ Want your function to run automatically on new items? Add this to your `dataloop
 }
 ```
 
-# 💡 Pro Tips
+# Pro Tips
 
 ## Best Practices
 
@@ -250,7 +250,7 @@ service.update(
 )
 ```
 
-# 🔍 What's Next?
+# What's Next?
 
 Now that you've created your first function, you can:
 
@@ -259,4 +259,4 @@ Now that you've created your first function, you can:
 - Create functions that work with datasets
 - Build multi-function applications
 
-Need help? Check out our other tutorials or reach out to our support team. Happy coding! 🚀✨
+Need help? Check out our other tutorials or reach out to our support team. Happy coding!

@@ -1,8 +1,8 @@
-# Managing Model Annotations: Your AI's Signature 🎨
+# Managing Model Annotations: Your AI's Signature
 
 Ever wondered how to keep track of which annotations came from which model? Let's explore how to add, find, and manage your model's predictions like a pro!
 
-## Adding Your Model's Signature ✍️
+## Adding Your Model's Signature
 
 Think of model metadata as your AI's signature on its work. Here's how to make your model sign its predictions:
 
@@ -40,17 +40,17 @@ for detection in detections:
 item.annotations.upload(collection)
 ```
 
-> 💡 **Pro Tip**: The model info gets stored in `annotation.metadata.user.model` - perfect for filtering later!
+> **Pro Tip**: The model info gets stored in `annotation.metadata.user.model` - perfect for filtering later!
 
-## Finding Your Model's Work 🔍
+## Finding Your Model's Work
 
-### Visual Studio Magic ✨
+### Visual Studio Magic
 
 Want to see all predictions from a specific model? Group annotations by creator in the studio:
 
 ![Model Filtering in Studio](../../../../assets/images/model_management/model_studio_filter.png)
 
-### Power Search with SDK 🚀
+### Power Search with SDK
 
 Find all annotations from your model programmatically:
 
@@ -69,10 +69,10 @@ filters.add(field='metadata.user.model.name', values=model.name)
 
 # Count your model's annotations
 pages = dataset.annotations.list(filters=filters)
-print(f'🎯 Found {pages.items_count} annotations from {model.name}!')
+print(f'Found {pages.items_count} annotations from {model.name}!')
 ```
 
-## Cleaning Up: Delete with Care ⚠️
+## Cleaning Up: Delete with Care
 
 Need to remove your model's predictions? Here's how:
 
@@ -83,35 +83,35 @@ filters.add(field='metadata.user.model.name', values=model.name)
 
 # Double check what you're about to delete
 pages = dataset.annotations.list(filters=filters)
-print(f'⚠️ About to delete {pages.items_count} annotations from {model.name}')
+print(f'About to delete {pages.items_count} annotations from {model.name}')
 
 # Get user confirmation
 user_input = input("Type 'DELETE' to confirm: ")
 if user_input == 'DELETE':
     # Delete the annotations
     dataset.annotations.delete(filters=filters)
-    print('✨ Cleanup complete!')
+    print('Cleanup complete!')
 else:
-    print('🛑 Operation cancelled')
+    print('Operation cancelled')
 ```
 
-> ⚠️ **Warning**: Deletion is permanent! Always double-check your filters before deleting annotations.
+> **Warning**: Deletion is permanent! Always double-check your filters before deleting annotations.
 
-## Best Practices 👑
+## Best Practices
 
-1. **Organization** 📋
+1. **Organization**
    - Always add model info to annotations
    - Use consistent naming conventions
    - Keep track of model versions
 
-2. **Filtering** 🎯
+2. **Filtering**
    - Use specific filters to avoid mistakes
    - Verify filter results before actions
    - Combine filters for precise selection
 
-3. **Safety** 🛡️
+3. **Safety**
    - Backup important annotations
    - Double-check deletion filters
    - Use test runs on small subsets
 
-Happy annotating! 🎨
+Happy annotating!

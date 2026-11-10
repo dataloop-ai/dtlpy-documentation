@@ -1,11 +1,11 @@
 # Building a Custom Model Adapter Tutorial
 
-This notebook provides a comprehensive guide on how to build, configure, and deploy a custom model adapter on the Dataloop platform. Model adapters are a powerful feature that allows you to integrate any model, including your own locally trained or fine-tuned models, into the Dataloop ecosystem for inference, annotation, and quality assurance.
+This notebook provides a comprehensive guide on how to build, configure, and deploy a custom model adapter on the Dell Data Orchestration Engine (DDOE) platform. Model adapters are a powerful feature that allows you to integrate any model, including your own locally trained or fine-tuned models, into the DDOE ecosystem for inference, annotation, and quality assurance.
 
-Model adapters serve as the bridge between your custom models and the Dataloop platform, enabling seamless integration of machine learning workflows with data management and annotation processes.
+Model adapters serve as the bridge between your custom models and the DDOE platform, enabling seamless integration of machine learning workflows with data management and annotation processes.
 
 ### Prerequisites:
-* **Dataloop Account:** You should have access to a Dataloop platform account.
+* **DDOE Account:** You should have access to a DDOE platform account.
 * **Python Environment:** Ensure you have Python 3.7+ installed with pip.
 * **Model Knowledge:** Basic understanding of machine learning models and their inference processes.
 * **Docker (Optional):** For custom runtime environments and deployment optimization.
@@ -13,22 +13,22 @@ Model adapters serve as the bridge between your custom models and the Dataloop p
 ### Navigate through the following sections:
 1. [Dependencies & Setup](#dependencies-setup)
 2. [Building the Custom Model Adapter](#build-adapter)
-3. [Configuring the Dataloop Application (DPK)](#configure-dpk)
+3. [Configuring the DDOE Application (DPK)](#configure-dpk)
 4. [Publishing and Deploying the DPK](#publish-deploy)
 5. [Conclusion and Next Steps](#conclusion)
 
 ## <a id='dependencies-setup'></a>1. Dependencies & Setup
 
-First, let's ensure all required Python packages are installed and establish a connection to the Dataloop platform.
+First, let's ensure all required Python packages are installed and establish a connection to the DDOE platform.
 
 
 ```python
 !pip install dtlpy --upgrade --quiet
 ```
 
-### Environment Setup and Dataloop Connection
+### Environment Setup and DDOE Connection
 
-With the dependencies installed, we'll import the necessary libraries and establish a connection to the Dataloop platform. If your Dataloop token is expired or not found, you will be prompted to log in.
+With the dependencies installed, we'll import the necessary libraries and establish a connection to the DDOE platform. If your DDOE token is expired or not found, you will be prompted to log in.
 
 
 ```python
@@ -39,12 +39,12 @@ warnings.filterwarnings('ignore')
 if dl.token_expired():
     dl.login()
     
-print(f"Successfully connected to Dataloop environment: {dl.client_api.environment}")
+print(f"Successfully connected to DDOE environment: {dl.client_api.environment}")
 ```
 
 ## <a id='build-adapter'></a>2. Building the Custom Model Adapter
 
-The `dl.BaseModelAdapter` is the bridge between your model's code and the Dataloop platform. It's a Python class where you implement a few key methods to define how your model loads, trains, and predicts.
+The `dl.BaseModelAdapter` is the bridge between your model's code and the DDOE platform. It's a Python class where you implement a few key methods to define how your model loads, trains, and predicts.
 
 ### Key Methods to Implement:
 
@@ -52,7 +52,7 @@ The `dl.BaseModelAdapter` is the bridge between your model's code and the Datalo
 
 - **`predict(self, batch, **kwargs)`**: This is the core inference function. It takes a batch of prepared items (e.g., a list of NumPy arrays for images) and should return a list of `dl.AnnotationCollection` objects, with one collection for each item in the batch.
 
-- **`train(self, data_path, output_path, **kwargs)`**: (Optional) If you want to enable training or fine-tuning from within the Dataloop platform, you'll implement this method to define your training loop.
+- **`train(self, data_path, output_path, **kwargs)`**: (Optional) If you want to enable training or fine-tuning from within the DDOE platform, you'll implement this method to define your training loop.
 
 - **`save(self, local_path, **kwargs)`**: (Optional) After training, this function is called to save the updated model weights and any other necessary artifacts to the specified `local_path`.
 
@@ -132,9 +132,9 @@ class Adapter(dl.BaseModelAdapter):
         return batch_annotations
 ```
 
-## <a id='configure-dpk'></a>3. Configuring the Dataloop Application (DPK)
+## <a id='configure-dpk'></a>3. Configuring the DDOE Application (DPK)
 
-Every model and service on Dataloop is packaged as a Dataloop Application (DPK). The configuration for this app is defined in a manifest file called `dataloop.json`. This file contains all the necessary information for the platform to understand, display, and execute your model.
+Every model and service on DDOE is packaged as a DDOE Application (DPK). The configuration for this app is defined in a manifest file called `dataloop.json`. This file contains all the necessary information for the platform to understand, display, and execute your model.
 
 ### Key sections in `dataloop.json`:
 
@@ -239,7 +239,7 @@ The `computeConfigs` section in your `dataloop.json` is critical for defining th
 -   **`name`**: A unique identifier for your compute configuration. You'll use this name to assign a specific configuration to a module (e.g., `"computeConfig": "your-deploy-config-name"`).
 
 -   **`runtime`**: This object specifies the execution environment for your service.
-    -   **`podType`**: This determines the size of the machine (pod) your service will run on. Dataloop offers a range of pod types with varying CPU, GPU, and memory resources.
+    -   **`podType`**: This determines the size of the machine (pod) your service will run on. DDOE offers a range of pod types with varying CPU, GPU, and memory resources.
 
 | Pod Type | vCPU | Memory (GiB) | GPU | Description |
 |---|---|---|---|---|
@@ -262,9 +262,9 @@ The `computeConfigs` section in your `dataloop.json` is critical for defining th
 
 ### 3.3 Runner Image and Custom Environments
 
-The optional `runnerImage` parameter allows you to specify a custom Docker image for your service's execution environment. This is extremely useful when your model requires specific system libraries, dependencies, or a particular version of Python that isn't available in the default Dataloop environment.
+The optional `runnerImage` parameter allows you to specify a custom Docker image for your service's execution environment. This is extremely useful when your model requires specific system libraries, dependencies, or a particular version of Python that isn't available in the default DDOE environment.
 
-If you don't provide a `runnerImage`, Dataloop uses a default image. However, for production and reproducibility, it's highly recommended to build and use your own.
+If you don't provide a `runnerImage`, DDOE uses a default image. However, for production and reproducibility, it's highly recommended to build and use your own.
 
 Here is a sample `Dockerfile` that you could use as a starting point:
 
@@ -292,7 +292,7 @@ ultralytics
 dtlpy
 ```
 
-For this tutorial, we are using a pre-built image specified in the final `dataloop.json`, but for your own projects, you would build this Docker image and push it to a container registry (like GCR, ECR, or Docker Hub) that your Dataloop organization is connected to.
+For this tutorial, we are using a pre-built image specified in the final `dataloop.json`, but for your own projects, you would build this Docker image and push it to a container registry (like GCR, ECR, or Docker Hub) that your DDOE organization is connected to.
 
 ### 3.4 Complete `dataloop.json` for YOLOv20
 
@@ -317,7 +317,7 @@ Below is the complete manifest for our YOLOv20 adapter. We'll write this to a `d
     "Category": "Model",
     "Computer Vision": "Object Detection",
     "Media Type": ["Image"],
-    "Deployed By": "Dataloop"
+    "Deployed By": "DDOE"
   },
   "components": {
     "computeConfigs": [
@@ -405,7 +405,7 @@ Below is the complete manifest for our YOLOv20 adapter. We'll write this to a `d
 
 ## <a id='publish-deploy'></a>4. Publishing and Deploying the DPK
 
-Once you have your `model_adapter.py` and `dataloop.json` files ready, the final step is to publish your DPK to the Dataloop platform. This makes your model available as an app that can be installed in any project.
+Once you have your `model_adapter.py` and `dataloop.json` files ready, the final step is to publish your DPK to the DDOE platform. This makes your model available as an app that can be installed in any project.
 
 The following script automates this process:
 
@@ -414,7 +414,7 @@ The following script automates this process:
 
 ### 4.1 Define Project and Publish
 
-**Action Required:** In the code cell below, replace `'{user_prefix}-model-adapter-tutorial'` with the name of the Dataloop project where you want to publish and install your model app.
+**Action Required:** In the code cell below, replace `'{user_prefix}-model-adapter-tutorial'` with the name of the DDOE project where you want to publish and install your model app.
 
 
 ```python
@@ -434,13 +434,13 @@ except dl.exceptions.NotFound:
 
 ### 4.2 Publish and Install the DPK
 
-This cell will publish your DPK to the Dataloop platform and install it in your project.
+This cell will publish your DPK to the DDOE platform and install it in your project.
 
 
 ```python
 import os
 
-# Publish the DPK to the Dataloop platform
+# Publish the DPK to the DDOE platform
 dpk = project.dpks.publish(manifest_filepath='dataloop.json', 
                            local_path=os.getcwd())
 
@@ -460,13 +460,13 @@ except dl.exceptions.NotFound:
 
 ## <a id='conclusion'></a>5. Conclusion and Next Steps
 
-Congratulations! You've now walked through the entire process of integrating a custom object detection model into the Dataloop platform.
+Congratulations! You've now walked through the entire process of integrating a custom object detection model into the DDOE platform.
 
 ### Summary of What You've Accomplished:
-- **Brought Your Own Model**: Used the `BaseModelAdapter` to wrap any model for use on Dataloop
-- **Handled Data**: Implemented the `predict` function to process items and generate Dataloop-standard annotations
+- **Brought Your Own Model**: Used the `BaseModelAdapter` to wrap any model for use on DDOE
+- **Handled Data**: Implemented the `predict` function to process items and generate DDOE-standard annotations
 - **Packaged Your App**: Defined your model, its functions, and configurations in the `dataloop.json` manifest
-- **Deployed and Managed**: Published your DPK and installed it as a usable app within your Dataloop projects
+- **Deployed and Managed**: Published your DPK and installed it as a usable app within your DDOE projects
 
 ### Next Steps:
 - **Implement Training**: Add the `train` method to fine-tune your models directly on the platform
@@ -474,4 +474,4 @@ Congratulations! You've now walked through the entire process of integrating a c
 - **Build Interactive UI**: Create custom panels and interfaces for your applications
 - **Explore Advanced Features**: Investigate model versioning, A/B testing, and performance monitoring
 
-For more examples and advanced model adapter patterns, you can explore the [Dataloop AI Apps GitHub repository](https://github.com/dataloop-ai-apps).
+For more examples and advanced model adapter patterns, you can explore the [DDOE AI Apps GitHub repository](https://github.com/dataloop-ai-apps).

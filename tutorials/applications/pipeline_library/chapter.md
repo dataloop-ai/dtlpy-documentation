@@ -1,18 +1,18 @@
-# 🔄 Custom Pipeline Nodes - Extend Your Pipeline Powers!
+# Custom Pipeline Nodes - Extend Your Pipeline Powers!
 
-Welcome to the world of custom pipeline nodes! Here's where you'll learn to extend Dataloop's pipeline capabilities with your own magical nodes. Let's create something amazing! ✨
+Welcome to the world of custom pipeline nodes! Here's where you'll learn to extend DDOE's pipeline capabilities with your own magical nodes. Let's create something amazing!
 
-## 🎯 What are Custom Pipeline Nodes?
+## What are Custom Pipeline Nodes?
 
 The pipeline library is your toolbox of powerful nodes that can be used to build data processing pipelines. While we provide many built-in nodes, you can supercharge your pipelines by adding your own custom nodes!
 
 ![Pipeline_nodes1.png](../../../assets/apps/Pipeline_nodes1.png)
 
-## 🚀 Creating Your First Custom Node
+## Creating Your First Custom Node
 
 Let's walk through creating a custom node that applies CLAHE (Contrast Limited Adaptive Histogram Equalization) to images.
 
-### 📜 The Manifest Structure
+### The Manifest Structure
 
 Your custom node needs a magical manifest (`dataloop.json`) that defines its powers:
 
@@ -75,7 +75,7 @@ Your custom node needs a magical manifest (`dataloop.json`) that defines its pow
 }
 ```
 
-### 🐍 The Python Implementation
+### The Python Implementation
 
 Create your node's logic in `modules/main.py`:
 
@@ -122,7 +122,7 @@ class ServiceRunner(dl.BaseServiceRunner):
         return new_item
 ```
 
-### ⚙️ Service Configuration
+### Service Configuration
 
 The service settings in your manifest control how your node runs:
 
@@ -151,7 +151,7 @@ The service settings in your manifest control how your node runs:
 }
 ```
 
-## 🎮 Using Your Custom Node
+## Using Your Custom Node
 
 1. **Install the Node**
 
@@ -165,19 +165,19 @@ The service settings in your manifest control how your node runs:
 
 ![Pipeline_nodes2.png](../../../assets/apps/Pipeline_nodes2.png)
 
-## 💡 Pro Tips
+## Pro Tips
 
-- 🔧 Keep your node focused on one task
-- 📊 Add proper error handling
-- 🎨 Choose meaningful icons
-- 📝 Write clear descriptions
-- ⚡ Optimize for performance
+- Keep your node focused on one task
+- Add proper error handling
+- Choose meaningful icons
+- Write clear descriptions
+- Optimize for performance
 
-## 🎨 Creating Pipeline Templates
+## Creating Pipeline Templates
 
 Want to share your pipeline magic with others? Let's create a reusable pipeline template! Here's an example of an image augmentation pipeline that automatically processes images with various transformations.
 
-### 📜 Pipeline Template Manifest
+### Pipeline Template Manifest
 
 Your pipeline template needs its own magical manifest (`dataloop.json`):
 By adding a pipeline template to the project, the template will be available to all users in the project. pipeline template to the DPK, the template will be available to all users in the project. Just install the app and use the template in the pipeline.
@@ -195,7 +195,7 @@ By adding a pipeline template to the project, the template will be available to 
 
 Check all of our [Pipeline Templates](https://github.com/dataloop-ai-apps/pipeline-templates) for more information.
 
-### 🚀 Using the Template
+### Using the Template
 
 1. **Install the Template**
 
@@ -211,22 +211,22 @@ pipeline = project.pipelines.get(name='my-augmentation-pipeline')
 pipeline.execute(items=[item1, item2])
 ```
 
-### 💡 Template Pro Tips
+### Template Pro Tips
 
-- 🎯 Make your template focused and purpose-driven
-- 📝 Provide clear node configurations
-- ⚡ Optimize for parallel processing when possible
-- 📊 Consider resource requirements
+- Make your template focused and purpose-driven
+- Provide clear node configurations
+- Optimize for parallel processing when possible
+- Consider resource requirements
 
-## 🚀 Next Steps
+## Next Steps
 
 Ready to create your own pipeline node? Here's your checklist:
 
-1. 📝 Define your node's purpose
-2. 🎨 Design the interface
-3. 🔧 Implement the logic
-4. 📦 Package it up
-5. 🧪 Test thoroughly
-6. 🚀 Share with your team!
+1. Define your node's purpose
+2. Design the interface
+3. Implement the logic
+4. Package it up
+5. Test thoroughly
+6. Share with your team!
 
-Need inspiration? Check out our [example nodes](https://github.com/dataloop-ai-apps/custom-pipeline-nodes-demo) or join our developer community! ✨
+Need inspiration? Check out our [example nodes](https://github.com/dataloop-ai-apps/custom-pipeline-nodes-demo) or join our developer community!

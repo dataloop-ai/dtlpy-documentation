@@ -1,6 +1,6 @@
 ## Overview
 
-The **GIS Data** enables users to efficiently annotate geospatial data within Dataloop's platform. With this SDK, you can create, manage, and upload GIS Data items into the Dataloop platform for the annoattion process. The SDK supports various GIS file formats and provides full control over annotation workflows. Read the [GIS user documentation](https://docs.dataloop.ai/docs/gis-studio) for information.
+The **GIS Data** enables users to efficiently annotate geospatial data within DDOE's platform. With this SDK, you can create, manage, and upload GIS Data items into the Dell Data Orchestration Engine (DDOE) platform for the annoattion process. The SDK supports various GIS file formats and provides full control over annotation workflows. Read the [GIS user documentation](https://docs.dataloop.ai/docs/gis-studio) for information.
 
 ## Supported File Formats
 
@@ -12,7 +12,7 @@ The GIS SDK supports various file formats for geospatial data:
 
 In the GIS Annotation Studio, annotations are created using geospatial data, utilizing latitude and longitude coordinates instead of pixel-based positioning. Below are the key components that define how GIS layers, boundaries, and settings are structured in the SDK.
 
-### 1️⃣ Main Layer and Optional Layers
+### Main Layer and Optional Layers
 
 **Main Layer**
 
@@ -47,7 +47,7 @@ Example JSON structure
 }
 ```
 
-### 2️⃣ AOI (Area of Interest)
+### AOI (Area of Interest)
 
 - The Area of Interest (AOI) is the defined workspace for creating annotations in the GIS Annotation Studio.
 - Specified in the GIS-Item JSON as a polygon, usually a 2D rectangle.
@@ -82,7 +82,7 @@ Example AOI Definition:
 
 
 
-### 3️⃣ Bounds
+### Bounds
 
 - Defines the visible map area in the GIS Annotation Studio.
 - Used to set the extent of the map a user can pan and zoom into.
@@ -101,7 +101,7 @@ Example Bounds Definition:
 }
 ```
 
-### 4️⃣ Coordinate System
+### Coordinate System
 
 
 - Defines how locations on Earth are represented using numerical values (latitude & longitude).
@@ -117,7 +117,7 @@ Example Bounds Definition:
 }
 ```
 
-### 5️⃣ Zoom, Min Zoom, Max Zoom
+### Zoom, Min Zoom, Max Zoom
 
 - Controls how much users can zoom in or out on the map.
 - Defines the minimum and maximum zoom levels for the dataset.
@@ -199,7 +199,7 @@ Users can create GIS items using the SDK with support types such as `XYZ` or `Ge
     "layer": {  
         "name": "GeoTIFF Image",  // User-defined name for the main GIS layer.
         "type": "geoTiff",  // Specifies the layer type. Options: "geoTiff" (raster-based GIS format), "xyz", "osm".
-        "ref": "67d14487f561d469323d8996"  // Reference ID for the GIS item stored in Dataloop. ** It can be either `ref` or `url`.
+        "ref": "67d14487f561d469323d8996"  // Reference ID for the GIS item stored in DDOE. ** It can be either `ref` or `url`.
     },
     "optionalLayers": [  
         {
@@ -228,7 +228,7 @@ Key Takeaways:
 
 - "shebang" and "dltype" are mandatory fields that define the system format.
 - "layer" specifies the main GIS dataset, which is required.
-- `layer` -> `url` URL to fetch the GeoTIFF raster layer. This serves as the primary layer. The URL allows streaming the GIS item directly from the Dataloop API. 
+- `layer` -> `url` URL to fetch the GeoTIFF raster layer. This serves as the primary layer. The URL allows streaming the GIS item directly from the DDOE API. 
 - `epsg`: Representing the file's Coordinate System (EPSG).
 	- EPSG:4326 - WGS 84 (commonly used for GPS & mapping). 
     - EPSG:3857 - Web Mercator (used in most online maps).
@@ -240,7 +240,7 @@ Key Takeaways:
 - "aoi" specifies the exact annotation area, ensuring that annotations are placed in the correct region.
 
 
-#### 📚 Learn More
+#### Learn More
 
 For more details on GIS user documentation and GIS output formats, refer to the following documentation:
 - [GIS User Documentation ](https://docs.dataloop.ai/docs/gis-studio)
@@ -256,7 +256,7 @@ GIS items can be uploaded programmatically via the SDK using the GIS-Item JSON f
 ```python
 import dtlpy as dl
 
-# Replace "project_name" with the actual name of your Dataloop project
+# Replace "project_name" with the actual name of your DDOE project
 project = dl.projects.get(project_name="project_name") 
 
 
@@ -271,13 +271,13 @@ item = dataset.items.upload(local_path=gis_item)
 ```
 
 
-## 💡 Pro Tips for GIS Annotations
+## Pro Tips for GIS Annotations
 - **Use AOI Efficiently**: Always define an **Area of Interest (AOI)** to keep annotations within valid boundaries.
 - **Leverage Multi-Layers**: Enable multiple layers to compare different geospatial data sources for better accuracy.
 - **Shortcut Navigation**: Use **keyboard shortcuts** for faster annotation (e.g., `Ctrl + Z` for undo, `Shift + Drag` for zooming).
 - **Optimize Performance**: Large datasets? Use **COG format** for efficient access and streaming.
 
-## 🔧 Troubleshooting Common Issues
+## Troubleshooting Common Issues
 - **Annotations Not Visible?** Ensure the correct **layer** is selected and visible.
 - **Coordinate Mismatch?** Verify that annotations use the correct **EPSG projection** (default: **4326**).
 - **Performance Issues?** Reduce layer opacity or limit the number of active layers.

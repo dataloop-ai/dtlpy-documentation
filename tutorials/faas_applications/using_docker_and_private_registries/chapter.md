@@ -1,6 +1,6 @@
 # Using Customer Docker and Code Registries
 
-## 🐳 Custom Docker Environments
+## Custom Docker Environments
 
 ### Using Custom Docker Images
 You can use any Docker image to run your FaaS application. Here's how:
@@ -27,12 +27,12 @@ service.runtime.runner_image = 'docker.io/python:3.8'
 service.update()
 ```
 
-### Dataloop's Public Images
+### DDOE's Public Images
 
 We maintain public Docker images with different configurations:
 
 ```python
-# Use Dataloop's GPU-enabled image with CUDA 11.5 and Python 3.8
+# Use DDOE's GPU-enabled image with CUDA 11.5 and Python 3.8
 service.runtime.runner_image = 'dockerhub.io/dataloopai/dtlpy-agent:latest.gpu.cuda11.5.py3.8.opencv'
 service.update()
 ```
@@ -118,18 +118,18 @@ service = package.deploy(
 
 ### AWS Elastic Container Registry (ECR) Integration
 
-Ready to connect your AWS ECR to Dataloop? Let's make some cloud magic happen! ✨
+Ready to connect your AWS ECR to Dell Data Orchestration Engine (DDOE)? Let's make some cloud magic happen!
 
-**First Things First: Your AWS Checklist 📝**
-1. 🪣 Create an S3 bucket in your AWS kingdom
-2. 👮‍♂️ Set up an IAM policy (think of it as your security guard)
-3. 🤝 Create the integration and get your VIP pass (IAM user) from Dataloop
+**First Things First: Your AWS Checklist**
+1. Create an S3 bucket in your AWS kingdom
+2. Set up an IAM policy (think of it as your security guard)
+3. Create the integration and get your VIP pass (IAM user) from DDOE
 
-Want the full scoop? Check out our [magical guide](https://docs.dataloop.ai/docs/aws-elastic-container-registry) in the Dataloop docs! 🎓
+Want the full scoop? Check out our [magical guide](https://docs.dataloop.ai/docs/aws-elastic-container-registry) in the DDOE docs!
 
-**Time to Connect! 🔌**
+**Time to Connect!**
 
-Let's write some code that'll make your AWS ECR and Dataloop become best friends:
+Let's write some code that'll make your AWS ECR and DDOE become best friends:
 
 ```python
 import dtlpy as dl
@@ -140,7 +140,7 @@ org = dl.organizations.get(organization_id='your_organization_id')
 # Step 2: Create the integration with AWS ECR
 integration = org.integrations.create(
     integrations_type=dl.IntegrationType.PRIVATE_REGISTRY,  # Declares this as a private container registry
-    name='aws-ecr-integration',  # Friendly name for this integration inside Dataloop
+    name='aws-ecr-integration',  # Friendly name for this integration inside DDOE
 
     # Step 3: Provide connection options for ECR
     options={
@@ -161,18 +161,18 @@ integration = org.integrations.create(
 
 Once an integration is established, users can deploy services and pipelines using Container images stored in their private AWS ECR.
 
-**🔑 Where to Find Your Secret Keys:**
+**Where to Find Your Secret Keys:**
 Need help finding those mysterious AWS credentials? Our [documentation](https://docs.dataloop.ai/docs/aws-elastic-container-registry#prerequisites) has your treasure map!
 
-**🎯 Final Step:**
-Pop into your Dataloop platform and check the Integrations section - your new integration should be waving back at you! 👋
+**Final Step:**
+Pop into your DDOE platform and check the Integrations section - your new integration should be waving back at you!
 
 
 ### Google Artifacts Registry (GAR) Integration
 
 Want to manage your container artifacts like a pro?
 
-#### 🏗️ Create and Configure (GAR)
+#### Create and Configure (GAR)
 
 1. Enable the GAR API
 
@@ -224,14 +224,14 @@ docker push [REGION]-docker.pkg.dev/[PROJECT_ID]/[REPOSITORY]/[IMAGE_NAME]:[TAG]
 - Navigate to Artifacts Registry in the GCP Console: https://console.cloud.google.com/marketplace/product/google/artifactregistry.
 - Confirm that the image is visible in the registry.
 
-#### Integrate GAR with Dataloop
+#### Integrate GAR with DDOE
 
 
 ```python
 
 import dtlpy as dl
 
-# Retrieve your Dataloop project by ID
+# Retrieve your DDOE project by ID
 project = dl.projects.get(project_id='your_project_id')
 
 # Get the organization associated with the project
@@ -245,7 +245,7 @@ options = org.integrations.generate_gar_options(
     location=''          # The GAR region (e.g., 'us-central1')
 )
 
-# Create the integration object in Dataloop
+# Create the integration object in DDOE
 integration = org.integrations.create(
     integrations_type=dl.IntegrationType.PRIVATE_REGISTRY,  # Defines this as a private registry integration
     name='gar-reg',  # Name of the integration (customizable)
@@ -259,9 +259,9 @@ Discover all the artifacts secrets in our [curator's guide](https://docs.dataloo
 
 ### Azure Container Registry (ACR) Integration
 
-The Azure Container Registry (ACR) enables seamless integration with the Dataloop platform for managing containerized components such as custom plugins, microservices, and machine learning models to be used in the applications, pipelines, etc. of the dataloop platform. ACR supports OCI-compliant container images, providing a secure, scalable, and Azure-native way to deploy and manage assets within your AI data pipeline.
+The Azure Container Registry (ACR) enables seamless integration with the DDOE platform for managing containerized components such as custom plugins, microservices, and machine learning models to be used in the applications, pipelines, etc. of the dataloop platform. ACR supports OCI-compliant container images, providing a secure, scalable, and Azure-native way to deploy and manage assets within your AI data pipeline.
 
-To integrate Azure Container Registry (ACR) with the Dataloop platform using the SDK, follow these steps:
+To integrate Azure Container Registry (ACR) with the DDOE platform using the SDK, follow these steps:
 
 ```python
 import dtlpy as dl
@@ -279,7 +279,7 @@ options = org.integrations.generate_azure_container_registry_options(
     location=''   # Azure region where your ACR is hosted (e.g., 'eastus')
 )
 
-# Step 4: Create the ACR integration in Dataloop
+# Step 4: Create the ACR integration in DDOE
 integration = org.integrations.create(
     integrations_type=dl.IntegrationType.PRIVATE_REGISTRY,  # Defines it as a private registry integration
     name='azure-reg',  # Name the integration for easy reference
@@ -291,7 +291,7 @@ integration = org.integrations.create(
 Learn more about the [ACR](https://docs.dataloop.ai/docs/azure-container-registry) in our user documentation.
 
 
-## 🔗 Private Git Integration
+## Private Git Integration
 
 ### Setting Up Git Credentials
 Configure authentication for private repositories:

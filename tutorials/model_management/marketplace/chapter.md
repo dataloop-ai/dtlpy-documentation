@@ -1,20 +1,20 @@
-# Models from the Marketplace: Your AI Shopping Spree! 🛍️
+# Models from the Marketplace: Your AI Shopping Spree!
 
-Welcome to Dataloop's Model Marketplace - think of it as your one-stop shop for ready-to-use AI models! Whether you need image classification, object detection, or other ML goodies, we've got you covered.
+Welcome to DDOE's Model Marketplace - think of it as your one-stop shop for ready-to-use AI models! Whether you need image classification, object detection, or other ML goodies, we've got you covered.
 
-## What's in Store? 🏪
+## What's in Store?
 
 Our Marketplace offers:
-- 🚀 Pre-trained models ready for instant use
-- 🎯 Models you can fine-tune on your data
-- 🔧 Various algorithms for different tasks
-- 📦 Easy installation and deployment
+- Pre-trained models ready for instant use
+- Models you can fine-tune on your data
+- Various algorithms for different tasks
+- Easy installation and deployment
 
 Let's dive in and see how to use these awesome models!
 
-## Quick Start: From Zero to Hero 🦸‍♂️
+## Quick Start: From Zero to Hero
 
-### 1. Set Up Your Workspace 🏗️
+### 1. Set Up Your Workspace
 
 First, let's create your AI playground:
 
@@ -29,15 +29,15 @@ item = dataset.items.upload(
 )
 ```
 
-### 2. Get Your Model 🛒
+### 2. Get Your Model
 
 Head to the Marketplace and pick your model:
 
 ![Marketplace Model Selection](../../../assets/images/model_management/marketplace-models.png)
 
-> 💡 **Pro Tip**: Look for models that match your use case and data type!
+> **Pro Tip**: Look for models that match your use case and data type!
 
-### 3. Deploy Your Model 🚀
+### 3. Deploy Your Model
 
 ```python
 # Get and deploy your model
@@ -51,7 +51,7 @@ service = model.deploy(
 )
 ```
 
-### 4. Make Predictions 🎯
+### 4. Make Predictions
 
 ```python
 # Get the latest model state
@@ -65,11 +65,11 @@ prediction.wait()
 item.open_in_web()
 ```
 
-## Level Up: Fine-tuning Models 🎮
+## Level Up: Fine-tuning Models
 
 Want to make these models even better? Let's customize them for your specific needs!
 
-### 1. Prepare Your Data 📊
+### 1. Prepare Your Data
 
 First, let's organize your dataset into train and validation sets:
 
@@ -89,9 +89,9 @@ custom_model = project.models.clone(
 )
 ```
 
-> 🎮 **Quick Hack**: Need to split your data randomly? Check out our [random split script](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/examples/items/random_split_to_folders.py)!
+> **Quick Hack**: Need to split your data randomly? Check out our [random split script](https://github.com/dataloop-ai/dtlpy-documentation/blob/main/examples/items/random_split_to_folders.py)!
 
-### 2. Understanding the Model's Brain 🧠
+### 2. Understanding the Model's Brain
 
 Your model comes with some smart mappings:
 ```python
@@ -103,7 +103,7 @@ print("ID to Label mapping:", custom_model.id_to_label_map)
 print("Model configuration:", custom_model.configuration)
 ```
 
-### 3. Training Time 🎓
+### 3. Training Time
 
 Let's teach your model some new tricks:
 
@@ -141,7 +141,7 @@ custom_model = dl.models.get(model_id=custom_model.id)
 print("Model status:", custom_model.status)
 ```
 
-### 4. Deploy Your Super-Model 🦸‍♀️
+### 4. Deploy Your Super-Model
 
 ```python
 # Deploy your fine-tuned model
@@ -154,26 +154,26 @@ custom_model = dl.models.get(model_id=custom_model.id)
 model.predict(item_ids=[item.id])
 ```
 
-## Pro Tips for Model Masters 👑
+## Pro Tips for Model Masters
 
-1. **Before Training** 📋
+1. **Before Training**
    - Clean your data
    - Balance your datasets
    - Check label compatibility
 
-2. **During Training** ⚡
+2. **During Training**
    - Monitor the logs
    - Track performance metrics
    - Save checkpoints
 
-3. **After Training** 🎯
+3. **After Training**
    - Validate on new data
    - Compare with baseline
    - Document improvements
 
-## Need More Help? 🤝
+## Need More Help?
 
-- 📚 Check out our [Model Management docs](https://docs.dataloop.ai/docs/model-management-overview)
-- 🛍️ Explore more in our [Marketplace](https://docs.dataloop.ai/docs/startline-models)
+- Check out our [Model Management docs](https://docs.dataloop.ai/docs/model-management-overview)
+- Explore more in our [Marketplace](https://docs.dataloop.ai/docs/startline-models)
 
-Happy modeling! 🚀
+Happy modeling!

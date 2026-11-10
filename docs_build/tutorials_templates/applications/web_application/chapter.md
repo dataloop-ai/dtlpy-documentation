@@ -1,36 +1,36 @@
-# 🌐 Building Web Apps - Create Your Own Platform Experience!
+# Building Web Apps - Create Your Own Platform Experience!
 
-Welcome to the world of web applications in Dataloop! Here's where you'll learn to create beautiful, interactive web experiences that seamlessly integrate with our platform. Let's build something amazing! ✨
+Welcome to the world of web applications in Dell Data Orchestration Engine (DDOE)! Here's where you'll learn to create beautiful, interactive web experiences that seamlessly integrate with our platform. Let's build something amazing!
 
 ![](../../../assets/apps/platform_studio.png)
 
-## ⚡ Quick Start Guide
+## Quick Start Guide
 
-1. 🎨 Create a client-side app using your favorite framework (we ❤️ Vue.js!)
-2. 📜 Serve your magical `dataloop.json` manifest at your app's root
-3. 🔒 Host your app locally on `local.dataloop.ai` with HTTPS
-4. 🎯 Add your app as a debug app in the Application Hub
-5. 🧪 Test your creation in its intended panel type
-6. 🔍 Debug using browser dev tools
+1. Create a client-side app using your favorite framework (we Vue.js!)
+2. Serve your magical `dataloop.json` manifest at your app's root
+3. Host your app locally on `local.dataloop.ai` with HTTPS
+4. Add your app as a debug app in the Application Hub
+5. Test your creation in its intended panel type
+6. Debug using browser dev tools
 
-## 🏗️ Building Your Web Application
+## Building Your Web Application
 
-### 🎨 Choosing Your Framework
+### Choosing Your Framework
 
 While you can use any modern framework (React, Angular, etc.), we especially love Vue.js because:
-* 🎯 We provide a Vue-based design system matching our platform theme
-* 🎨 We offer ready-to-use UI components
-* 🔧 We maintain open-source Vue.js libraries and icons
+* We provide a Vue-based design system matching our platform theme
+* We offer ready-to-use UI components
+* We maintain open-source Vue.js libraries and icons
 
-### 🚀 Quick Start Template
+### Quick Start Template
 
 Want to jumpstart your development? Check out our [example application](https://github.com/dataloop-ai-apps/item-viewer)!
 
 ![](../../../assets/apps/template_repo.png)
 
-## 🛠️ Local Development Setup
+## Local Development Setup
 
-### 🔧 Essential Configurations
+### Essential Configurations
 
 1. **Configure Local Domain**
    ```text
@@ -39,14 +39,14 @@ Want to jumpstart your development? Check out our [example application](https://
    ```
 
 2. **Development Requirements**
-   * 🔒 HTTPS enabled
-   * 🌐 CORS configured
-   * 🎯 Windows: Serve on "0.0.0.0"
-   * 📜 Public `dataloop.json` at app root
-   * 👤 Developer role access
-   * 📚 Familiarity with our JS SDK
+   * HTTPS enabled
+   * CORS configured
+   * Windows: Serve on "0.0.0.0"
+   * Public `dataloop.json` at app root
+   * Developer role access
+   * Familiarity with our JS SDK
 
-### 🎮 Creating Your First App
+### Creating Your First App
 
 1. **Project Setup**
    ```shell
@@ -63,11 +63,11 @@ Want to jumpstart your development? Check out our [example application](https://
      * Click "Proceed to local.dataloop.ai" or
      * Type "thisisunsafe"
 
-## 💻 Building an Item Viewer
+## Building an Item Viewer
 
 Let's create a magical item viewer using our JS SDK! Here's how to bring your items to life:
 
-### 🔮 Initialize SDK & Load Item
+### Initialize SDK & Load Item
 
 ```javascript
 // App.vue
@@ -83,7 +83,7 @@ export default {
 }
 ```
 
-### 🎨 Display Your Item
+### Display Your Item
 
 ```html
 <!-- Show the item with style -->
@@ -95,9 +95,9 @@ export default {
 />
 ```
 
-## 🐞 Debug Mode in Platform
+## Debug Mode in Platform
 
-### 🎯 Adding Your Debug App
+### Adding Your Debug App
 
 1. Navigate to **Application Hub** > **Developer** tab
    ![img.png](../../../assets/apps/img.png)
@@ -116,9 +116,9 @@ export default {
    * Choose "Open With..." > Your App
    ![img_3.png](../../../assets/apps/img_3.png)
 
-## 🧪 Testing Your Creation
+## Testing Your Creation
 
-### 🔍 Local Testing Setup
+### Local Testing Setup
 
 We provide powerful tools for testing your app locally:
 
@@ -136,26 +136,26 @@ We provide powerful tools for testing your app locally:
    * Save snapshot to tests directory
    * Use in your test setup
 
-## 🎨 Complete Item Viewer Example
+## Complete Item Viewer Example
 
 Want to see a production-ready example? Check out our [item-viewer repository](https://github.com/dataloop-ai-apps/item-viewer)!
 
-## 💡 Pro Tips
+## Pro Tips
 
-* 🔍 Use browser dev tools for debugging
-* 📝 Keep your manifest up to date
-* 🧪 Test across different browsers
-* 🔒 Follow security best practices
-* 📚 Document your configuration
+* Use browser dev tools for debugging
+* Keep your manifest up to date
+* Test across different browsers
+* Follow security best practices
+* Document your configuration
 
-## 🚀 Next Steps
+## Next Steps
 
 Ready to create your own web application? Here's your checklist:
-1. 📚 Choose your framework
-2. 🛠️ Set up local development
-3. 🔧 Configure your manifest
-4. 🎨 Build your interface
-5. 🧪 Test thoroughly
-6. 🚀 Deploy and share!
+1. Choose your framework
+2. Set up local development
+3. Configure your manifest
+4. Build your interface
+5. Test thoroughly
+6. Deploy and share!
 
-Need inspiration? Visit our [example apps](https://github.com/dataloop-ai-apps) or join our developer community! ✨
+Need inspiration? Visit our [example apps](https://github.com/dataloop-ai-apps) or join our developer community!

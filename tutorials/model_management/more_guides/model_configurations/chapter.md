@@ -1,14 +1,14 @@
 # Update Model Configurations
 
-You can update a deployed model’s configuration either via the Dataloop UI or programmatically using the SDK.
+You can update a deployed model’s configuration either via the Dell Data Orchestration Engine (DDOE) UI or programmatically using the SDK.
 
-## 🖥️ Update via the UI
+## Update via the UI
 
-Refer to the [Dataloop Documentation](https://docs.dataloop.ai/docs/model-versions#update-model-configurations).
+Refer to the [DDOE Documentation](https://docs.dataloop.ai/docs/model-versions#update-model-configurations).
 
 ## Update via the SDK
 
-You can also modify model configurations programmatically using the Dataloop SDK:
+You can also modify model configurations programmatically using the DDOE SDK:
 
 ```python
 
@@ -34,7 +34,7 @@ model.update(reload_services=True)
     – Set to `True` if you want all related services to be updated with the new configuration.
     - When you use `model.update(reload_services=False)`, the model's configuration is updated, but the changes are not applied to any deployed services that use this model.
 
-## 🔄 Auto-Update Model Configurations and Adapter Defaults
+## Auto-Update Model Configurations and Adapter Defaults
 
 In the implementation of a model adapter (that inherits from the base model adapter), if any changes are done to the configuration or adapter defaults, these changes will automatically update the deployed model entity. This provides seamless configuration management without requiring manual updates.
 

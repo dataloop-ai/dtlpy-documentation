@@ -1,8 +1,8 @@
-# Pipelines and Automation: Building Smart Workflows 🔄
+# Pipelines and Automation: Building Smart Workflows
 
-Learn how to create and manage pipelines in Dataloop - your key to automating workflows and data processing.
+Learn how to create and manage pipelines in Dell Data Orchestration Engine (DDOE) - your key to automating workflows and data processing.
 
-## Dataloop Login 🔐
+## DDOE Login
 
 > ```python
 > import dtlpy as dl
@@ -29,7 +29,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 >     print(f"Created project '{project_name}'")
 > ```
 
-## Creating Code Node Pipeline 🚀
+## Creating Code Node Pipeline
 
 ### Pipeline Flow Diagram
 
@@ -62,7 +62,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 >     item.metadata['user']['timestamp'] = datetime.datetime.now().isoformat()
 >     item.metadata['user']['pipeline'] = 'code-node-pipeline'
 >
->     # Update item in Dataloop
+>     # Update item in DDOE
 >     item.update(system_metadata=True)
 >
 >     print(f'Processed item: {item.name}')
@@ -134,10 +134,10 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > pipeline.install()
 > print(f'Pipeline ready: {pipeline.name} ({pipeline.id})')
 >
-> # Open pipeline in Dataloop platform
+> # Open pipeline in DDOE platform
 > pipeline.open_in_web()
 > ```
-### Congratulations! Your First Pipeline is Ready 🎉
+### Congratulations! Your First Pipeline is Ready
 
 ### Testing the Pipeline
 
@@ -289,7 +289,7 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > pipeline.open_in_web()
 > ```
 
-## Pipeline Management 📋
+## Pipeline Management
 
 ### 1. Basic Operations
 
@@ -316,4 +316,4 @@ Learn how to create and manage pipelines in Dataloop - your key to automating wo
 > pipeline.pipeline_executions.list()
 > ```
 
-Ready to bring it all together? Let's move on to the final chapter! 🚀
+Ready to bring it all together? Let's move on to the final chapter!

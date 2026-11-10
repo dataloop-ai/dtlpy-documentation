@@ -35,7 +35,7 @@
         },
         {
             "displayName": "GIS Annotations",
-            "description": "Easily annotate, manage, and export geo-spatial data using Dataloop's GIS Annotation SDK with full support for bounding boxes, polygons, polylines, and points. ",
+            "description": "Easily annotate, manage, and export geo-spatial data using DDOE's GIS Annotation SDK with full support for bounding boxes, polygons, polylines, and points. ",
             "location": "annotations/gis/chapter.md"
         }
     ]

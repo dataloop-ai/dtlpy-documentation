@@ -1,13 +1,13 @@
 # Video Tracking Tutorial
 
-This notebook provides a comprehensive guide on using video trackers on the Dataloop platform **through the UI** — no SDK or code required. Video tracking is essential for annotating objects across frames in videos, making it faster and more efficient than manual frame-by-frame annotation.
+This notebook provides a comprehensive guide on using video trackers on the Dell Data Orchestration Engine (DDOE) platform **through the UI** — no SDK or code required. Video tracking is essential for annotating objects across frames in videos, making it faster and more efficient than manual frame-by-frame annotation.
 
-You'll learn about the two types of trackers available in Dataloop:
+You'll learn about the two types of trackers available in DDOE:
 - **Offline Tracker (ByteTrack):** Links existing annotations across frames in automated pipelines
 - **AI Tracker (SAM2):** Generates annotations from a starting point in the Annotation Studio
 
 ### Prerequisites:
-* **Dataloop Account:** You should have access to a Dataloop platform account.
+* **DDOE Account:** You should have access to a DDOE platform account.
 * **Video Data:** Access to video files for annotation.
 
 ### Navigate through the following sections:
@@ -16,14 +16,14 @@ You'll learn about the two types of trackers available in Dataloop:
 3. [Using the AI Tracker](#ai-tracker-ui) - SAM2 in Annotation Studio
 4. [Conclusion and Next Steps](#conclusion)
 
-For more detailed information, refer to the official Dataloop documentation:
+For more detailed information, refer to the official DDOE documentation:
 - [Video Annotations](https://developers.dataloop.ai/tutorials/annotations/video/chapter)
 - [Pipelines Documentation](https://docs.dataloop.ai/docs/pipelines)
 
 
 ## <a id='tracking-modes'></a>1. Understanding Tracking Modes
 
-Dataloop offers two distinct tracking approaches, each suited for different use cases. Understanding the difference helps you choose the right tool for your workflow.
+DDOE offers two distinct tracking approaches, each suited for different use cases. Understanding the difference helps you choose the right tool for your workflow.
 
 
 ### Offline Tracker (Object Association)
@@ -71,7 +71,7 @@ The AI Tracker (SAM2) is designed for **generating annotations from a single sta
 
 ## <a id='offline-tracker-ui'></a>2. Using the Offline Tracker (ByteTrack)
 
-The Offline Tracker (ByteTrack) runs as a node in a Dataloop pipeline. Here's how to set it up and use it to link detections across video frames.
+The Offline Tracker (ByteTrack) runs as a node in a DDOE pipeline. Here's how to set it up and use it to link detections across video frames.
 
 
 ### Step 1: Create a Pipeline with Detection + Tracking
@@ -93,7 +93,7 @@ The Offline Tracker works as part of a pipeline that processes video frames. A t
 
 ### Step 2: Add ByteTrack to Your Pipeline
 
-1. Open your project in Dataloop
+1. Open your project in DDOE
 2. Navigate to **Pipelines** in the left sidebar
 3. Create a new pipeline or edit an existing one
 4. Add the **Video-Utils** applications, both stitching and splitting from marketplace
@@ -109,13 +109,13 @@ The Offline Tracker works as part of a pipeline that processes video frames. A t
 
 ### When to Use Offline Tracker
 
-✅ **Use when:**
+**Use when:**
 - You have a detection model that annotates all frames
 - You need to process large video datasets automatically
 - You want consistent object IDs for analytics or training
 - You're building an automated annotation pipeline
 
-❌ **Don't use when:**
+**Don't use when:**
 - You want interactive, real-time tracking during annotation
 - You only have one frame annotated and want to propagate it
 - You need to manually correct tracks during the annotation process
@@ -128,7 +128,7 @@ The AI Tracker (SAM2) is used in the **Video Studio** to generate annotations fr
 
 ### Step 1: Open a Video in the Annotation Studio
 
-1. Navigate to your dataset in Dataloop
+1. Navigate to your dataset in DDOE
 2. Click on a video item to open it in the Video Studio
 
 
@@ -178,14 +178,14 @@ This allows you to iteratively improve tracking results without starting over.
 
 ### When to Use AI Tracker
 
-✅ **Use when:**
+**Use when:**
 - You want to annotate a video interactively
 - You have one or a few objects to track
 - You need precise detection
 - You want human oversight with the ability to correct errors
 - You're working on shorter video clips
 
-❌ **Don't use when:**
+**Don't use when:**
 - All frames are already annotated (use Offline Tracker instead)
 - You need fully automated batch processing
 - You're processing large video datasets without human review
@@ -193,7 +193,7 @@ This allows you to iteratively improve tracking results without starting over.
 
 ## <a id='conclusion'></a>4. Conclusion and Next Steps
 
-Congratulations! You have learned how to use both trackers in the Dataloop platform.
+Congratulations! You have learned how to use both trackers in the DDOE platform.
 
 ### Summary
 

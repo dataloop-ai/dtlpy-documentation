@@ -1,22 +1,22 @@
-# Building a Faster R-CNN Model: From PyTorch to Dataloop 🚀
+# Building a Faster R-CNN Model: From PyTorch to DDOE
 
-Ever wanted to bring the power of PyTorch's Faster R-CNN to Dataloop? Let's build something awesome together! We'll transform a standard PyTorch model into a Dataloop-ready powerhouse.
+Ever wanted to bring the power of PyTorch's Faster R-CNN to Dell Data Orchestration Engine (DDOE)? Let's build something awesome together! We'll transform a standard PyTorch model into a DDOE-ready powerhouse.
 
-## Before We Start 🎯
+## Before We Start
 
 Let's get your workspace ready:
 
-### What You'll Need 🧰
-- 🔑 A Dataloop account (your gateway to AI awesomeness)
-- 🐍 Python installed on your machine
-- 📦 Dataloop SDK (`pip install dtlpy`)
-- 🔥 TorchVision (`pip install torchvision`)
+### What You'll Need
+- A DDOE account (your gateway to AI awesomeness)
+- Python installed on your machine
+- DDOE SDK (`pip install dtlpy`)
+- TorchVision (`pip install torchvision`)
 
-> 💡 **Quick Links**:
-> - [Setting up Python for Dataloop](https://developers.dataloop.ai/tutorials/getting_started/sdk_overview/chapter/#installing-prerequisite-software)
+> **Quick Links**:
+> - [Setting up Python for DDOE](https://developers.dataloop.ai/tutorials/getting_started/sdk_overview/chapter/#installing-prerequisite-software)
 > - [PyTorch Installation Guide](https://pytorch.org/get-started/locally/)
 
-## Test Drive: Running Locally 🏎️
+## Test Drive: Running Locally
 
 Let's first test our model in its natural habitat. Create a file called `test_model.py`:
 
@@ -28,7 +28,7 @@ from torchvision.transforms.functional import to_pil_image
 
 def test_local_model(image_path):
     """Test Faster R-CNN locally"""
-    print("🔄 Loading image and model...")
+    print("Loading image and model...")
     
     # Load and prep the image
     img = read_image(image_path)
@@ -46,7 +46,7 @@ def test_local_model(image_path):
     batch = [preprocess(img)]
     
     # Run prediction
-    print("🎯 Running prediction...")
+    print("Running prediction...")
     prediction = model(batch)[0]
     
     # Visualize results
@@ -63,17 +63,17 @@ def test_local_model(image_path):
     # Show the result
     im = to_pil_image(box.detach())
     im.show()
-    print("✨ Done! Check out the visualized predictions!")
+    print("Done! Check out the visualized predictions!")
 
 # Try it out!
 test_local_model("/path/to/your/image.jpg")
 ```
 
-> 🌟 **Pro Tip**: You can grab a test image [here](https://raw.githubusercontent.com/dataloop-ai/dtlpy-documentation/main/assets/images/hamster.jpg)
+> **Pro Tip**: You can grab a test image [here](https://raw.githubusercontent.com/dataloop-ai/dtlpy-documentation/main/assets/images/hamster.jpg)
 
-## Building the Dataloop Bridge: Model Adapter 🌉
+## Building the DDOE Bridge: Model Adapter
 
-Now let's create our model adapter - the magical translator between PyTorch and Dataloop. Create `adapter.py`:
+Now let's create our model adapter - the magical translator between PyTorch and DDOE. Create `adapter.py`:
 
 ```python
 import dtlpy as dl
@@ -83,7 +83,7 @@ from torchvision.models.detection import fasterrcnn_resnet50_fpn_v2, FasterRCNN_
 class FasterRCNNAdapter(dl.BaseModelAdapter):
     def load(self, local_path, **kwargs):
         """Load the model with its super-powers"""
-        print('🚀 Initializing Faster R-CNN...')
+        print('Initializing Faster R-CNN...')
         
         # Get the best weights
         self.weights = FasterRCNN_ResNet50_FPN_V2_Weights.DEFAULT
@@ -95,17 +95,17 @@ class FasterRCNNAdapter(dl.BaseModelAdapter):
         
         # Setup preprocessing
         self.preprocess = self.weights.transforms()
-        print('✅ Model loaded and ready!')
+        print('Model loaded and ready!')
 
     def prepare_item_func(self, item: dl.Item):
         """Prepare items for the model"""
-        print(f'🔄 Preparing item: {item.name}')
+        print(f'Preparing item: {item.name}')
         img = read_image(item.download())
         return self.preprocess(img)
 
     def predict(self, batch, **kwargs):
-        """Run predictions and return Dataloop annotations"""
-        print(f'🎯 Running prediction on batch of {len(batch)} items')
+        """Run predictions and return DDOE annotations"""
+        print(f'Running prediction on batch of {len(batch)} items')
         
         predictions = self.model(batch)
         batch_annotations = []
@@ -113,7 +113,7 @@ class FasterRCNNAdapter(dl.BaseModelAdapter):
         for pred in predictions:
             collection = dl.AnnotationCollection()
             
-            # Convert predictions to Dataloop annotations
+            # Convert predictions to DDOE annotations
             for box, label, score in zip(
                 pred["boxes"], 
                 pred["labels"], 
@@ -135,13 +135,13 @@ class FasterRCNNAdapter(dl.BaseModelAdapter):
                 )
             batch_annotations.append(collection)
             
-        print('✨ Predictions complete!')
+        print('Predictions complete!')
         return batch_annotations
 ```
 
-## Launching on Dataloop 🚀
+## Launching on DDOE
 
-### 1. Create Your Model DPK 📦
+### 1. Create Your Model DPK
 
 First, create a `dataloop.json` manifest file:
 
@@ -190,34 +190,34 @@ First, create a `dataloop.json` manifest file:
 }
 ```
 
-### 2. Deploy Your Model 🌟
+### 2. Deploy Your Model
 
 ```python
 import dtlpy as dl
 
-# Login to Dataloop
+# Login to DDOE
 dl.login()
 
 # Get your project
 project = dl.projects.get("Your-Awesome-Project")
 
 # Publish your DPK
-print("📦 Publishing DPK...")
+print("Publishing DPK...")
 dpk = project.dpks.publish()
 
 # Install the app
-print("🔧 Installing app...")
+print("Installing app...")
 project.apps.install(dpk=dpk)
 
 # Get and deploy your model
-print("🚀 Deploying model...")
+print("Deploying model...")
 model = project.models.get("faster-rcnn")
 model.deploy()
 
-print("✨ Your model is ready to rock!")
+print("Your model is ready to rock!")
 ```
 
-### 3. Test Your Model 🧪
+### 3. Test Your Model
 
 ```python
 # Upload a test image
@@ -230,30 +230,30 @@ execution = model.predict(item_ids=[item.id])
 execution.wait()
 
 # Check results
-print(f"🎯 Prediction status: {execution.status[-1]['status']}")
+print(f"Prediction status: {execution.status[-1]['status']}")
 item.open_in_web()
 ```
 
-## Pro Tips for Success 👑
+## Pro Tips for Success
 
-1. **Performance Optimization** ⚡
+1. **Performance Optimization**
    - Use GPU pods for faster inference
    - Batch your predictions when possible
    - Monitor memory usage
 
-2. **Error Handling** 🛡️
+2. **Error Handling**
    - Add proper logging
    - Handle edge cases
    - Validate inputs
 
-3. **Best Practices** 📋
+3. **Best Practices**
    - Version your model artifacts
    - Document configuration options
    - Test thoroughly before deployment
 
-## Need Help? 🤝
+## Need Help?
 
-- 🔍 Check the [full example on GitHub](https://github.com/dataloop-ai-apps/torch-models)
-- 📚 Read our [Model Management docs](https://docs.dataloop.ai/docs/model-management-overview)
+- Check the [full example on GitHub](https://github.com/dataloop-ai-apps/torch-models)
+- Read our [Model Management docs](https://docs.dataloop.ai/docs/model-management-overview)
 
-Happy modeling! May your predictions be accurate and your deployments smooth! 🚀
+Happy modeling! May your predictions be accurate and your deployments smooth!

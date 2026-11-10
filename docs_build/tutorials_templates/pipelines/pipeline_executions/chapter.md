@@ -1,8 +1,8 @@
-# Pipeline Executions (Pipeline Cycles): Running Your AI Workflows 🔄
+# Pipeline Executions (Pipeline Cycles): Running Your AI Workflows
 
-Learn how to execute and manage pipeline runs in Dataloop - from basic execution to advanced node-specific operations.
+Learn how to execute and manage pipeline runs in Dell Data Orchestration Engine (DDOE) - from basic execution to advanced node-specific operations.
 
-## Basic Pipeline Execution 🚀
+## Basic Pipeline Execution
 
 ### Execute a Pipeline
 
@@ -36,7 +36,7 @@ execution = pipeline.execute_batch(
 )
 ```
 
-## Advanced Execution Features 🎯
+## Advanced Execution Features
 
 ### Node-Specific Execution
 
@@ -74,7 +74,7 @@ service_execution = service.execute_batch(
 )
 ```
 
-## Monitoring Executions 📊
+## Monitoring Executions
 
 ### Track Execution Status
 
@@ -115,7 +115,7 @@ def monitor_execution(pipeline, execution_id, timeout=60):
     return False
 ```
 
-## Customizing Pipeline Nodes 🛠️
+## Customizing Pipeline Nodes
 
 ### Update Node Configuration
 
@@ -153,7 +153,7 @@ def create_code_node(project, position=(4, 4)):
     return code_node
 ```
 
-## Best Practices 👑
+## Best Practices
 
 1. **Error Handling**
    ```python
@@ -186,7 +186,7 @@ def create_code_node(project, position=(4, 4)):
        return False
    ```
 
-## Pro Tips 💡
+## Pro Tips
 
 1. **Batch Processing**
    - Use filters to process multiple items efficiently
@@ -203,4 +203,4 @@ def create_code_node(project, position=(4, 4)):
    - Monitor execution status
    - Track input/output flow
 
-Need help? Check our [Pipeline documentation](https://docs.dataloop.ai/docs/pipelines-overview) for more details! 🚀
+Need help? Check our [Pipeline documentation](https://docs.dataloop.ai/docs/pipelines-overview) for more details!

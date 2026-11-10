@@ -1,10 +1,10 @@
-# Connecting Dataloop with Azure Blob Storage 🌉
+# Connecting DDOE with Azure Blob Storage
 
-Ever wondered how to connect your Azure Blob Storage seamlessly with Dataloop? You're in the right place! Let's walk through the process step by step, from setting up your integration to automating your data sync.
+Ever wondered how to connect your Azure Blob Storage seamlessly with Dell Data Orchestration Engine (DDOE)? You're in the right place! Let's walk through the process step by step, from setting up your integration to automating your data sync.
 
-## Step 1: Setting Up Azure Integration 🔗
+## Step 1: Setting Up Azure Integration
 
-Before we can start moving data around, we need to establish a secure connection between Dataloop and Azure. Let's set up the integration:
+Before we can start moving data around, we need to establish a secure connection between DDOE and Azure. Let's set up the integration:
 
 ```python
 import dtlpy as dl
@@ -23,11 +23,11 @@ organization.integrations.create(
 )
 ```
 
-To learn more about setting up integrations and required permissions, check out our [Dataloop documentation](https://docs.dataloop.ai/docs/azure-cloud-storage).
+To learn more about setting up integrations and required permissions, check out our [DDOE documentation](https://docs.dataloop.ai/docs/azure-cloud-storage).
 
-## Step 2: Creating Your Storage Driver 🎯
+## Step 2: Creating Your Storage Driver
 
-Now that we have our integration set up, let's create a storage driver - think of it as your personal data concierge that connects your specific Azure container to Dataloop.
+Now that we have our integration set up, let's create a storage driver - think of it as your personal data concierge that connects your specific Azure container to DDOE.
 
 ```python
 import dtlpy as dl
@@ -51,9 +51,9 @@ dataset = project.datasets.create(dataset_name=dataset_name, driver=driver)
 dataset.sync()
 ```
 
-## Step 3: Syncing Your Data 🔄
+## Step 3: Syncing Your Data
 
-### Manual Sync ⚡
+### Manual Sync
 
 Need to sync a specific item? Here's your shortcut:
 
@@ -68,21 +68,21 @@ dataset = dl.datasets.get(dataset_id='your dataset id')
 dataset.items.upload(local_path=item_path, remote_path=remote_path)
 ```
 
-### Automatic Sync with Azure Function ✨
+### Automatic Sync with Azure Function
 
-Want your Dataloop dataset to automatically stay in sync with your Azure Blob container? Let's set up an Azure Function!
+Want your DDOE dataset to automatically stay in sync with your Azure Blob container? Let's set up an Azure Function!
 
-#### Prerequisites 📋
+#### Prerequisites
 
 1. An Azure account with an active subscription
 2. A resource group and storage account ([Create one if needed](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create))
 3. Familiarity with [Azure Function App](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python) (optional)
 
-#### Setting Up Your Azure Function 🛠️
+#### Setting Up Your Azure Function
 
 1. Create a Container in your Storage Account:
    * Set Public access level to Container OR Blob
-   * Note: This container will be your external storage for the Dataloop dataset
+   * Note: This container will be your external storage for the DDOE dataset
 
 2. Create a new Function App:
    * Choose your Subscription and Resource Group
@@ -158,8 +158,8 @@ import dtlpy as dl
 dl.login()
 project = dl.projects.get(project_name='project name')
 bot = project.bots.create(name='serviceAccount', return_credentials=True)
-print('🤖 Bot username:', bot.id)
-print('🔑 Bot password:', bot.password)
+print('Bot username:', bot.id)
+print('Bot password:', bot.password)
 ```
 
 5. Set Up Event Grid Subscription:
@@ -176,8 +176,8 @@ print('🔑 Bot password:', bot.password)
 
 **Note:** Allow up to 5 minutes for the automatic sync to become active.
 
-## Need More Help? 🤔
+## Need More Help?
 
 For detailed Azure integration setup, check out our [comprehensive documentation](https://docs.dataloop.ai/docs/azure-cloud-storage).
 
-Happy data syncing! 🚀
+Happy data syncing!

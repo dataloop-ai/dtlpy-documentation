@@ -5,7 +5,7 @@ This notebook provides a comprehensive guide and a ready-to-use workflow for enh
 You'll learn two powerful approaches: Label-Guided UMAP for creating visually clustered 3D embeddings, and Extended CLIP for enriching high-dimensional vectors with label information to improve similarity search performance.
 
 ### Prerequisites:
-* **Dataloop Account:** You should have access to a Dataloop platform account.
+* **Dell Data Orchestration Engine (DDOE) Account:** You should have access to a DDOE platform account.
 * **Python Environment:** Python 3.7+ with pip for installing required packages.
 * **Basic Knowledge:** Familiarity with machine learning concepts and embeddings is helpful but not required.
 
@@ -17,26 +17,26 @@ You'll learn two powerful approaches: Label-Guided UMAP for creating visually cl
 
 ---
 
-### 🎯 Embedding Options at a Glance
+### Embedding Options at a Glance
 
 #### Option A: Label-Guided UMAP Embedding
 - **Purpose**: Creates low-dimensional (3D) embeddings that visually group items with similar labels.
 - **Best for**: Interactive visualization, understanding data structure, and discovering how labels relate to underlying features.
-- **Output**: A new Dataloop feature set with 3D coordinates, viewable in the platform's 3D data viewer.
+- **Output**: A new DDOE feature set with 3D coordinates, viewable in the platform's 3D data viewer.
 
 #### Option B: Extended CLIP Embedding  
 - **Purpose**: Augments high-dimensional CLIP features with explicit label data.
 - **Best for**: Powering more accurate similarity searches where both visual and label information are important.
-- **Output**: A new Dataloop feature set with enriched, high-dimensional vectors.
+- **Output**: A new DDOE feature set with enriched, high-dimensional vectors.
 
 <a id="setup"></a>
 ## 1. Setup and Common Configuration
 
-**📌 Important:** This section must be run first, regardless of which embedding option you choose later. It handles package installation, connection to the Dataloop platform, and automated project setup.
+**Important:** This section must be run first, regardless of which embedding option you choose later. It handles package installation, connection to the DDOE platform, and automated project setup.
 
 ### 1.1 Install Required Packages
 
-First, we'll install the necessary Python packages. These libraries are essential for interacting with the Dataloop platform (`dtlpy`), handling data (`pandas`), processing embeddings (`scikit-learn`), and performing dimensionality reduction (`umap-learn`). This step may take a few minutes to complete.
+First, we'll install the necessary Python packages. These libraries are essential for interacting with the DDOE platform (`dtlpy`), handling data (`pandas`), processing embeddings (`scikit-learn`), and performing dimensionality reduction (`umap-learn`). This step may take a few minutes to complete.
 
 
 ```python
@@ -51,7 +51,7 @@ First, we'll install the necessary Python packages. These libraries are essentia
 
 ### 1.2 Import Libraries and Define Helpers
 
-Next, we import the required libraries and define a helper function. This function, `ensure_feature_set`, simplifies the process of creating or retrieving a feature set in your Dataloop project, preventing errors if the feature set already exists.
+Next, we import the required libraries and define a helper function. This function, `ensure_feature_set`, simplifies the process of creating or retrieving a feature set in your DDOE project, preventing errors if the feature set already exists.
 
 
 ```python
@@ -73,7 +73,7 @@ def ensure_feature_set(project: dl.Project, feature_set_name, dim, set_type):
     Create or get an existing feature set in the project.
     
     Args:
-        project: Dataloop project object
+        project: DDOE project object
         feature_set_name: Name for the feature set
         dim: Dimension/size of the feature vectors
         set_type: Type of the feature set (e.g., '3d', 'embedding')
@@ -95,39 +95,39 @@ def ensure_feature_set(project: dl.Project, feature_set_name, dim, set_type):
 
 ### 1.3 Automated Project and Dataset Setup
 
-This section fully automates the setup process within the Dataloop platform. It is designed to run without any manual input.
+This section fully automates the setup process within the DDOE platform. It is designed to run without any manual input.
 
 **What this step does:**
-1. **Connects to Dataloop:** Establishes a connection to the platform, handling authentication if needed.
+1. **Connects to DDOE:** Establishes a connection to the platform, handling authentication if needed.
 2. **Creates a Project:** A new project named `My First Embeddings Project` is created to house our work.
-3. **Installs a Dataset App:** The `dataset-images-animals` Dataloop App (DPK) is installed from the Marketplace. This app automatically creates a sample dataset with images, annotations, and pre-computed CLIP embeddings.
+3. **Installs a Dataset App:** The `dataset-images-animals` DDOE App (DPK) is installed from the Marketplace. This app automatically creates a sample dataset with images, annotations, and pre-computed CLIP embeddings.
 4. **Waits for Setup:** The script waits for the app's setup services to complete.
 5. **Extracts Configuration:** Finally, it retrieves the newly created `dataset_id` and the existing `feature_set_id` (`'clip-feature-set'`), which are essential for the subsequent steps.
 
 
 ```python
-# 🔗 Step 1: Connect to Dataloop Environment
-print("🔗 Step 1: Connecting to Dataloop...")
+# Step 1: Connect to DDOE Environment
+print("Step 1: Connecting to DDOE...")
 dl.setenv('prod')  # Set environment to RC (adjust if needed)
 if dl.token_expired():
-    print("🔐 Token expired, logging in...")
+    print("Token expired, logging in...")
     dl.login()
-print("✅ Successfully connected to Dataloop environment")
+print("Successfully connected to DDOE environment")
 
-# 📁 Step 2: Create New Project
-print("\n📁 Step 2: Creating project...")
+# Step 2: Create New Project
+print("\n Step 2: Creating project...")
 suffix = ''.join(random.choices(string.ascii_letters + string.digits, k=5))
 project = dl.projects.create(project_name=f"My First Embeddings Project_{suffix}")
-print(f"✅ Project loaded: '{project.name}' (ID: {project.id})")
+print(f"Project loaded: '{project.name}' (ID: {project.id})")
 
-# 📦 Step 3: Install DPK
-print("\n📦 Step 3: Installing dataset app...")
+# Step 3: Install DPK
+print("\n Step 3: Installing dataset app...")
 dpk = dl.dpks.get(dpk_name='dataset-images-animals')
 app = project.apps.install(dpk=dpk, app_name=dpk.display_name)
-print(f"✅ DPK installed: '{dpk.display_name}' (Version: {dpk.version})")
+print(f"DPK installed: '{dpk.display_name}' (Version: {dpk.version})")
 
-# ⚙️ Step 4: Setup Services
-print("\n⚙️ Step 4: Configuring services...")
+# Step 4: Setup Services
+print("\n Step 4: Configuring services...")
 # Create a filter to get services belonging to the app
 filters = dl.Filters(resource=dl.FiltersResource.SERVICE)
 filters.add(field='packageId', values=dpk.id)
@@ -135,29 +135,29 @@ filters.add(field='packageId', values=dpk.id)
 # List the services with the specified filters
 services = [ser for ser in project.services.list(filters=filters).all()]
 service: dl.Service = services[0]
-print(f"✅ Service configured: '{service.name}' (ID: {service.id})")
+print(f"Service configured: '{service.name}' (ID: {service.id})")
 
-# 🔍 Step 5: Extract Configuration
-print("\n🔍 Step 5: Wait for execution to complete...")
+# Step 5: Extract Configuration
+print("\n Step 5: Wait for execution to complete...")
 execution = service.executions.list()[0][0]
 execution.wait()
 dataset_id = execution.input['dataset']['dataset_id']
 feature_set: dl.Feature = project.feature_sets.get(feature_set_name='clip-feature-set')
 
-print(f"✅ Configuration extracted successfully!")
-print(f"📊 Dataset ID: {dataset_id}")
-print(f"🎯 Feature Set: '{feature_set.name}' (ID: {feature_set.id})")
+print(f"Configuration extracted successfully!")
+print(f"Dataset ID: {dataset_id}")
+print(f"Feature Set: '{feature_set.name}' (ID: {feature_set.id})")
 
 print("\n" + "="*60)
-print("🎉 Setup Complete! Use these values in the next steps:")
-print(f"   📊 dataset_id: {dataset_id}")
-print(f"   🎯 feature_set_id: {feature_set.id}")
+print("Setup Complete! Use these values in the next steps:")
+print(f" dataset_id: {dataset_id}")
+print(f" feature_set_id: {feature_set.id}")
 print("="*60)
 ```
 
 ### 1.4 Download Dataset and Extracted Features
 
-This final setup step brings the data from the Dataloop platform to our local notebook environment. We use the SDK's `export` functionality to download a JSON representation of our dataset, which includes all items, their annotations (labels), and their pre-computed feature vectors.
+This final setup step brings the data from the DDOE platform to our local notebook environment. We use the SDK's `export` functionality to download a JSON representation of our dataset, which includes all items, their annotations (labels), and their pre-computed feature vectors.
 
 **What happens here:**
 1. An export job is created for the entire dataset.
@@ -167,19 +167,19 @@ This final setup step brings the data from the Dataloop platform to our local no
 
 
 ```python
-# 📊 Configure export directory
+# Configure export directory
 save_dir = "./export"  # Local directory for exported data
 os.makedirs(save_dir, exist_ok=True)
 
-# 🔄 Get dataset and export data
+# Get dataset and export data
 dataset = dl.datasets.get(dataset_id=dataset_id)
 
-print("🚀 Starting data export process...")
-print(f"📁 Dataset: {dataset.name}")
-print(f"💾 Save directory: {save_dir}")
+print("Starting data export process...")
+print(f"Dataset: {dataset.name}")
+print(f"Save directory: {save_dir}")
 
-# 📤 Export dataset with feature vectors and annotations using the simple export method
-print("📤 Exporting dataset with feature vectors and annotations...")
+# Export dataset with feature vectors and annotations using the simple export method
+print("Exporting dataset with feature vectors and annotations...")
 export_result = dataset.export(
     local_path=save_dir,
     include_feature_vectors=True,
@@ -188,8 +188,8 @@ export_result = dataset.export(
     timeout=0  # No timeout - wait until complete
 )
 
-print("⏳ Export completed...")
-print(f"📥 Export result: {export_result}")
+print("Export completed...")
+print(f"Export result: {export_result}")
 
 # The export returns the directory path, we need to find the actual JSON file
 data_file = None
@@ -197,17 +197,17 @@ data_file = None
 # Look for JSON files in the export directory
 json_files = [f for f in os.listdir(export_result) if f.endswith('.json')]
 data_file = os.path.join(export_result, json_files[0])
-print(f"📊 Found JSON file: {data_file}")
-print(f"📊 Data file: {data_file}")
+print(f"Found JSON file: {data_file}")
+print(f"Data file: {data_file}")
 
 # Count items in the export
 with open(data_file, 'r') as f:
     exported_data = json.load(f)
     items_count = len(exported_data)
 
-print("✅ Data export completed successfully!")
-print(f"📊 Total items exported: {items_count}")
-print("📋 You can now proceed to choose your embedding option below.")
+print("Data export completed successfully!")
+print(f"Total items exported: {items_count}")
+print("You can now proceed to choose your embedding option below.")
 ```
 
 ---
@@ -221,22 +221,22 @@ print("📋 You can now proceed to choose your embedding option below.")
 1. **Input**: Takes the existing high-dimensional feature vectors (e.g., from CLIP) and the corresponding annotation labels for each item.
 2. **Process**: The UMAP algorithm is trained on both the features and the labels simultaneously. The `target_weight` parameter controls how strongly the labels influence the final layout.
 3. **Output**: A new 3D coordinate for each item, plus a set of 2D scatter plot images (one for each label) saved locally for quick inspection.
-4. **Result**: A new Dataloop feature set containing these 3D embeddings, which can be visualized directly on the platform.
+4. **Result**: A new DDOE feature set containing these 3D embeddings, which can be visualized directly on the platform.
 
-**💡 Tip**: Experiment with the UMAP parameters (`n_neighbors`, `min_dist`, `target_weight`) in the code to see how they affect the clustering and separation of your data.
+**Tip**: Experiment with the UMAP parameters (`n_neighbors`, `min_dist`, `target_weight`) in the code to see how they affect the clustering and separation of your data.
 
 ### 2.1 Configure Feature Set Name
 
-First, specify the name for the new UMAP feature set that will be created in your Dataloop project.
+First, specify the name for the new UMAP feature set that will be created in your DDOE project.
 
 
 ```python
-# 🏷️ Configure the name for your new UMAP feature set
-# This will be created in your Dataloop project
+# Configure the name for your new UMAP feature set
+# This will be created in your DDOE project
 enhanced_feature_set_name = "umap-label-enhanced"
 
-print(f"✅ Feature set name configured: {enhanced_feature_set_name}")
-print("📋 This will create a new feature set with 3D UMAP embeddings in your project, optimized to separate by labels.")
+print(f"Feature set name configured: {enhanced_feature_set_name}")
+print("This will create a new feature set with 3D UMAP embeddings in your project, optimized to separate by labels.")
 ```
 
 ### 2.2 Generate Label-Guided UMAP Embeddings
@@ -246,13 +246,13 @@ This code cell executes the entire UMAP generation workflow. It will:
 2. **Prepare labels** by converting them into a binary format suitable for supervised UMAP.
 3. **Run the UMAP algorithm** with the specified parameters to generate 3D embeddings.
 4. **Generate and save visualizations** as PNG files, showing the distribution of each label in the 2D plane.
-5. **Upload the new embeddings** back to your Dataloop project under the feature set name you configured.
+5. **Upload the new embeddings** back to your DDOE project under the feature set name you configured.
 
 
 ```python
-print("🔄 Step 1: Loading and processing data...")
+print("Step 1: Loading and processing data...")
 
-# 📊 Load data from exported file
+# Load data from exported file
 items = dict()
 with open(data_file, 'r') as f:
     exported_data = json.load(f)
@@ -288,10 +288,10 @@ with open(data_file, 'r') as f:
                 labels = [ann['label'] for ann in item.get("annotations", [])]
                 items[item["id"]] = {"features": feature_vector, "labels": labels}
 
-print(f"📋 Loaded {len(items)} annotated items with feature vectors")
+print(f"Loaded {len(items)} annotated items with feature vectors")
 
-# 🔄 Step 2: Prepare data for UMAP
-print("🔄 Step 2: Preparing labels for supervised learning...")
+# Step 2: Prepare data for UMAP
+print("Step 2: Preparing labels for supervised learning...")
 
 # Convert to numpy arrays
 features = np.array([v["features"] for v in items.values()])
@@ -301,12 +301,12 @@ labels = [v["labels"] for v in items.values()]  # keep as list for multi-label p
 mlb = MultiLabelBinarizer()
 y = mlb.fit_transform(labels)
 
-print(f"✅ Feature matrix shape: {features.shape}")
-print(f"✅ Label matrix shape: {y.shape}")
-print(f"✅ Unique labels found: {list(mlb.classes_)}")
+print(f"Feature matrix shape: {features.shape}")
+print(f"Label matrix shape: {y.shape}")
+print(f"Unique labels found: {list(mlb.classes_)}")
 
-# 🔄 Step 3: Run UMAP algorithm
-print("🔄 Step 3: Running UMAP algorithm (this may take several minutes)...")
+# Step 3: Run UMAP algorithm
+print("Step 3: Running UMAP algorithm (this may take several minutes)...")
 
 # Configure UMAP with label guidance
 dumap = umap.UMAP(
@@ -322,10 +322,10 @@ dumap = umap.UMAP(
 
 # Generate embeddings
 embedding = dumap.fit_transform(features, y=y)
-print(f"✅ Generated {embedding.shape[0]} embeddings with {embedding.shape[1]} dimensions")
+print(f"Generated {embedding.shape[0]} embeddings with {embedding.shape[1]} dimensions")
 
-# 🔄 Step 4: Create visualizations
-print("🔄 Step 4: Creating visualization plots...")
+# Step 4: Create visualizations
+print("Step 4: Creating visualization plots...")
 
 # Create visualizations for each label
 for idx, label in enumerate(mlb.classes_):
@@ -348,38 +348,38 @@ for idx, label in enumerate(mlb.classes_):
     plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
     plt.close()
     
-    print(f"  📊 Saved visualization for '{label}' -> {plot_filename}")
+    print(f" Saved visualization for '{label}' -> {plot_filename}")
 
-print("✅ All visualizations saved successfully!")
+print("All visualizations saved successfully!")
 
-# 🔄 Step 5: Prepare embeddings for upload
-print("🔄 Step 5: Preparing embeddings for upload to Dataloop...")
+# Step 5: Prepare embeddings for upload
+print("Step 5: Preparing embeddings for upload to DDOE...")
 
 # Match embeddings back to item IDs
 to_upload = {}
 for indx, key in enumerate(items.keys()):
     to_upload[key] = embedding[indx].tolist()
 
-# Create feature set in Dataloop
+# Create feature set in DDOE
 feature_set_label_enhanced = ensure_feature_set(project, enhanced_feature_set_name, 3, "3d")
-print(f"✅ Feature set '{enhanced_feature_set_name}' ready in project")
+print(f"Feature set '{enhanced_feature_set_name}' ready in project")
 
-# 🔄 Step 6: Upload embeddings
-print("🔄 Step 6: Uploading embeddings to Dataloop...")
+# Step 6: Upload embeddings
+print("Step 6: Uploading embeddings to DDOE...")
 
 def upload_single(feature_set, item, value, pbar):
-    """Upload a single feature vector to Dataloop"""
+    """Upload a single feature vector to DDOE"""
     try:
         feature_set_label_enhanced.features.create(value=value, entity=item)
         pbar.update(1)
         return True
     except Exception as e:
-        print(f"❌ Error uploading feature for {item.id}: {e}")
+        print(f"Error uploading feature for {item.id}: {e}")
         pbar.update(1)
         return False
 
 # Upload with progress tracking
-with tqdm(total=len(to_upload), desc="📤 Uploading UMAP embeddings") as pbar:
+with tqdm(total=len(to_upload), desc="Uploading UMAP embeddings") as pbar:
     pool = ThreadPoolExecutor(max_workers=50)
     futures = []
     
@@ -392,12 +392,12 @@ with tqdm(total=len(to_upload), desc="📤 Uploading UMAP embeddings") as pbar:
     successful_uploads = sum(1 for future in futures if future.result())
     pool.shutdown(wait=True)
 
-print(f"✅ UMAP embedding generation completed!")
-print(f"📊 Feature set '{enhanced_feature_set_name}' created with 3D embeddings")
-print(f"📁 Visualizations saved in: {save_dir}")
-print(f"🎯 Total items processed: {len(to_upload)}")
-print(f"✅ Successfully uploaded: {successful_uploads}/{len(to_upload)}")
-print("\n🎉 Your label-guided UMAP embeddings are now available in Dataloop!")
+print(f"UMAP embedding generation completed!")
+print(f"Feature set '{enhanced_feature_set_name}' created with 3D embeddings")
+print(f"Visualizations saved in: {save_dir}")
+print(f"Total items processed: {len(to_upload)}")
+print(f"Successfully uploaded: {successful_uploads}/{len(to_upload)}")
+print("\n Your label-guided UMAP embeddings are now available in DDOE!")
 ```
 
 ---
@@ -411,22 +411,22 @@ print("\n🎉 Your label-guided UMAP embeddings are now available in Dataloop!")
 1. **Input**: Takes the existing high-dimensional CLIP feature vectors and the annotation labels for each item.
 2. **Process**: First, all unique labels across the dataset are identified. For each item, a binary vector is created where each position corresponds to a unique label (1 if present, 0 if absent). This binary vector is then concatenated to the end of the item's original CLIP vector.
 3. **Output**: A new, higher-dimensional feature vector for each item.
-4. **Result**: A new Dataloop feature set containing these extended embeddings, ready to be used for enhanced similarity search.
+4. **Result**: A new DDOE feature set containing these extended embeddings, ready to be used for enhanced similarity search.
 
-**💡 Example**: If your original CLIP features are 512-dimensional and you have 10 unique labels in your dataset, the new extended features will be 522-dimensional (512 + 10).
+**Example**: If your original CLIP features are 512-dimensional and you have 10 unique labels in your dataset, the new extended features will be 522-dimensional (512 + 10).
 
 ### 3.1 Configure Feature Set Name
 
-First, specify the name for the new extended CLIP feature set that will be created in your Dataloop project.
+First, specify the name for the new extended CLIP feature set that will be created in your DDOE project.
 
 
 ```python
-# 🏷️ Configure the name for your new extended CLIP feature set
-# This will be created in your Dataloop project
+# Configure the name for your new extended CLIP feature set
+# This will be created in your DDOE project
 extended_feature_set_name = "extended-clip"
 
-print(f"✅ Feature set name configured: {extended_feature_set_name}")
-print("📋 This will create a new feature set with extended CLIP embeddings in your project.")
+print(f"Feature set name configured: {extended_feature_set_name}")
+print("This will create a new feature set with extended CLIP embeddings in your project.")
 ```
 
 ### 3.2 Generate Extended CLIP Embeddings
@@ -435,9 +435,9 @@ This code cell executes the entire workflow for creating extended CLIP embedding
 1. **Analyze the dataset** to find all unique labels available.
 2. **Create a binary vector** for each item, representing the presence or absence of each unique label.
 3. **Concatenate** the original CLIP feature vector with the new label binary vector for each item.
-4. **Upload the new, extended embeddings** back to your Dataloop project under the feature set name you configured.
+4. **Upload the new, extended embeddings** back to your DDOE project under the feature set name you configured.
 
-**⏱️ Processing time**: This process is generally much faster than UMAP as it does not involve complex model training.
+**Processing time**: This process is generally much faster than UMAP as it does not involve complex model training.
 
 
 ```python
@@ -456,9 +456,9 @@ def labels_to_binary_vector(all_labels, sample_labels):
     sample_set = set(sample_labels)
     return [int(label in sample_set) for label in all_labels]
 
-print("🔄 Step 1: Analyzing dataset to find all unique labels...")
+print("Step 1: Analyzing dataset to find all unique labels...")
 
-# 📊 Load data from exported file
+# Load data from exported file
 with open(data_file, 'r') as f:
     exported_data = json.load(f)
     
@@ -470,18 +470,18 @@ elif isinstance(exported_data, list):
 else:
     raise ValueError("Unexpected export format")
 
-# 🔍 Find all unique labels in the dataset
+# Find all unique labels in the dataset
 all_labels = set()
 for item in items_list:
     for annotation in item.get("annotations", []):
         all_labels.add(annotation.get("label"))
 
 all_labels = list(sorted(all_labels))  # Sort for consistent ordering
-print(f"✅ Found {len(all_labels)} unique labels: {all_labels}")
+print(f"Found {len(all_labels)} unique labels: {all_labels}")
 
-print("🔄 Step 2: Processing items and creating extended embeddings...")
+print("Step 2: Processing items and creating extended embeddings...")
 
-# 📊 Process each item and create extended embeddings
+# Process each item and create extended embeddings
 all_processed_data = {}
 processed_count = 0
 skipped_count = 0
@@ -525,19 +525,19 @@ for item in items_list:
     }
     processed_count += 1
 
-print(f"✅ Successfully processed {processed_count} items")
-print(f"⚠️  Skipped {skipped_count} items (missing feature vectors)")
+print(f"Successfully processed {processed_count} items")
+print(f"Skipped {skipped_count} items (missing feature vectors)")
 
 # Show dimension information
 if all_processed_data:
     sample_vector = next(iter(all_processed_data.values()))["item_vector_data"]
     original_dim = len(sample_vector) - len(all_labels)
-    print(f"📊 Original feature dimension: {original_dim}")
-    print(f"📊 Label dimension: {len(all_labels)}")
-    print(f"📊 Extended feature dimension: {len(sample_vector)}")
-    print(f"💡 Extension ratio: {len(sample_vector)/original_dim:.2f}x original size")
+    print(f"Original feature dimension: {original_dim}")
+    print(f"Label dimension: {len(all_labels)}")
+    print(f"Extended feature dimension: {len(sample_vector)}")
+    print(f"Extension ratio: {len(sample_vector)/original_dim:.2f}x original size")
 
-print("\n🔄 Step 3: Creating extended feature set and uploading embeddings...")
+print("\n Step 3: Creating extended feature set and uploading embeddings...")
 
 # Create the extended feature set
 original_feature_set = dl.feature_sets.get(feature_set_id=feature_set.id)
@@ -549,7 +549,7 @@ extended_feature_set = ensure_feature_set(
     original_feature_set.set_type + "-extended"
 )
 
-print(f"✅ Created feature set '{extended_feature_set_name}' with dimension {extended_dim}")
+print(f"Created feature set '{extended_feature_set_name}' with dimension {extended_dim}")
 
 # Prepare data for upload
 to_upload = {}
@@ -558,18 +558,18 @@ for item_id, data in all_processed_data.items():
 
 # Upload function
 def upload_single(feature_set, item, value, pbar):
-    """Upload a single feature vector to Dataloop"""
+    """Upload a single feature vector to DDOE"""
     try:
         feature_set.features.create(value=value, entity=item)
         pbar.update(1)
         return True
     except Exception as e:
-        print(f"❌ Error uploading feature for {item.id}: {e}")
+        print(f"Error uploading feature for {item.id}: {e}")
         pbar.update(1)
         return False
 
 # Upload with progress tracking
-with tqdm(total=len(to_upload), desc="📤 Uploading extended embeddings") as pbar:
+with tqdm(total=len(to_upload), desc="Uploading extended embeddings") as pbar:
     pool = ThreadPoolExecutor(max_workers=50)
     futures = []
     
@@ -582,24 +582,24 @@ with tqdm(total=len(to_upload), desc="📤 Uploading extended embeddings") as pb
     successful_uploads = sum(1 for future in futures if future.result())
     pool.shutdown(wait=True)
 
-print(f"\n✅ Extended CLIP embedding generation completed!")
-print(f"📊 Feature set '{extended_feature_set_name}' created with {extended_dim} dimensions")
-print(f"🎯 Successfully uploaded: {successful_uploads}/{len(all_processed_data)}")
-print("\n🎉 Your extended CLIP embeddings are now available in Dataloop!")
+print(f"\n Extended CLIP embedding generation completed!")
+print(f"Feature set '{extended_feature_set_name}' created with {extended_dim} dimensions")
+print(f"Successfully uploaded: {successful_uploads}/{len(all_processed_data)}")
+print("\n Your extended CLIP embeddings are now available in DDOE!")
 ```
 
 ---
 <a id="conclusion"></a>
 ## 4. Conclusion and Next Steps
 
-Congratulations! You have successfully walked through the process of enhancing a dataset with advanced, label-aware embedding techniques. You have created one or two new feature sets in your Dataloop project, each tailored for a specific purpose.
+Congratulations! You have successfully walked through the process of enhancing a dataset with advanced, label-aware embedding techniques. You have created one or two new feature sets in your DDOE project, each tailored for a specific purpose.
 
 ### Summary of Results
 
 **If you chose Option A (Label-Guided UMAP):**
 - You created a `3d` feature set (e.g., `umap-label-enhanced`).
 - These embeddings are optimized for visualization, where items with similar labels are clustered together.
-- **Next Step:** Navigate to the dataset in the Dataloop platform, go to the 'Embeddings' tab, select your new 3D feature set, and explore your data in the interactive 3D viewer.
+- **Next Step:** Navigate to the dataset in the DDOE platform, go to the 'Embeddings' tab, select your new 3D feature set, and explore your data in the interactive 3D viewer.
 
 **If you chose Option B (Extended CLIP):**
 - You created a high-dimensional `embedding` feature set (e.g., `extended-clip`).
@@ -610,4 +610,4 @@ Congratulations! You have successfully walked through the process of enhancing a
 
 *   **Downstream Tasks:** These new feature sets can be used as inputs for other machine learning models or pipelines.
 *   **Parameter Tuning:** Experiment with the parameters in the UMAP and Extended CLIP generation cells to see how they affect your results.
-*   **Automation:** Integrate this notebook's logic into a Dataloop FaaS (Function as a Service) to automatically generate enhanced embeddings whenever your dataset is updated.
+*   **Automation:** Integrate this notebook's logic into a DDOE FaaS (Function as a Service) to automatically generate enhanced embeddings whenever your dataset is updated.

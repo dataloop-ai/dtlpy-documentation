@@ -1,25 +1,25 @@
-# Building Your Own Model: The DIY Guide 🛠️
+# Building Your Own Model: The DIY Guide
 
-Ready to bring your own model to the Dataloop platform? Let's start building together! This guide will show you how to create your first custom model adapter and get your model running smoothly on our platform.
+Ready to bring your own model to the Dell Data Orchestration Engine (DDOE) platform? Let's start building together! This guide will show you how to create your first custom model adapter and get your model running smoothly on our platform.
 
-## Choose Your Path: SDK or UI 🛤️
+## Choose Your Path: SDK or UI
 
-You've got two ways to bring your model to life in Dataloop:
+You've got two ways to bring your model to life in DDOE:
 
-### Option 1: Using the SDK (This Guide) 💻
+### Option 1: Using the SDK (This Guide)
 Follow along with this guide to create your model programmatically using our Python SDK.
 
-### Option 2: Using the Dataloop UI 👁️
+### Option 2: Using the DDOE UI
 
-Prefer a more visual approach? You can use the [Dataloop UI](https://docs.dataloop.ai/docs/models-overview#using-the-dataloop-ui) to create and integrate your model. Here's how:
+Prefer a more visual approach? You can use the [DDOE UI](https://docs.dataloop.ai/docs/models-overview#using-the-dataloop-ui) to create and integrate your model. Here's how:
 
-1. **Connect Your Docker Registry** 🐳
+1. **Connect Your Docker Registry**
    - Link your container registry:
      * [AWS ECR](https://docs.dataloop.ai/docs/aws-elastic-container-registry)
      * [Google Container Registry (GCR)](https://docs.dataloop.ai/docs/google-container-registry)
      * [Google Artifact Registry (GAR)](https://docs.dataloop.ai/docs/google-artifacts-registry)
 
-2. **Create Your Model Application** 🎨
+2. **Create Your Model Application**
    - Navigate to the [Model Marketplace](https://docs.dataloop.ai/docs/marketplace-applications#how-to-create-an-application)
    - Create a new application
    - Link your Docker image:
@@ -27,11 +27,11 @@ Prefer a more visual approach? You can use the [Dataloop UI](https://docs.datalo
      * Connect it to your application
      * Enable predictions, training, and workflow capabilities
 
-Now, let's dive into the SDK approach! 🚀
+Now, let's dive into the SDK approach!
 
-## The Model Adapter: Your Bridge to Dataloop 🌉
+## The Model Adapter: Your Bridge to DDOE
 
-Think of the model adapter as a translator between your model and Dataloop. It's like teaching your model to speak our language! Let's create one:
+Think of the model adapter as a translator between your model and DDOE. It's like teaching your model to speak our language! Let's create one:
 
 ```python
 import dtlpy as dl
@@ -40,17 +40,17 @@ import os
 class SimpleModelAdapter(dl.BaseModelAdapter):
     def load(self, local_path, **kwargs):
         """Load your model from saved weights"""
-        print('🔄 Loading model from:', local_path)
+        print('Loading model from:', local_path)
         self.model = torch.load(os.path.join(local_path, 'model.pth'))
 
     def predict(self, batch, **kwargs):
         """Run predictions on a batch of data"""
-        print(f'🎯 Predicting batch of size: {len(batch)}')
+        print(f'Predicting batch of size: {len(batch)}')
         
         # Get model predictions
         preds = self.model(batch)
         
-        # Convert predictions to Dataloop format
+        # Convert predictions to DDOE format
         batch_annotations = list()
         for i_img, predicted_class in enumerate(preds):
             # Create a collection for each image
@@ -66,11 +66,11 @@ class SimpleModelAdapter(dl.BaseModelAdapter):
         return batch_annotations
 ```
 
-> 💡 **Pro Tip**: Check out our [ResNet adapter example](https://github.com/dataloop-ai-apps/torch-models/blob/main/adapters/resnet/resnet_adapter.py) on GitHub for a production-ready implementation!
+> **Pro Tip**: Check out our [ResNet adapter example](https://github.com/dataloop-ai-apps/torch-models/blob/main/adapters/resnet/resnet_adapter.py) on GitHub for a production-ready implementation!
 
-## Publishing Your Model App 🚀
+## Publishing Your Model App
 
-### 1. Create Your Manifest File 📝
+### 1. Create Your Manifest File
 
 First, you'll need a `dataloop.json` manifest file. Think of it as your app's ID card, identifying all the important parts of your app. Here's a template:
 
@@ -125,7 +125,7 @@ First, you'll need a `dataloop.json` manifest file. Think of it as your app's ID
 }
 ```
 
-### 2. Publish Your App 🎉
+### 2. Publish Your App
 
 Time to share your creation with the world (or at least your project)!
 
@@ -136,14 +136,14 @@ project = dl.projects.get(project_name="your-awesome-project")
 dpk = project.dpks.publish()
 ```
 
-### 3. Install Your App 📦
+### 3. Install Your App
 
-#### Option A: Through the UI 🖥️
+#### Option A: Through the UI
 1. Go to Models Marketplace
 2. Find your app
-3. Click "Install" - Done! ✨
+3. Click "Install" - Done!
 
-#### Option B: Using Python 🐍
+#### Option B: Using Python
 ```python
 # Get your project
 project = dl.projects.get(project_name="your-awesome-project")
@@ -153,7 +153,7 @@ dpk = project.dpks.get(dpk_name='my-awesome-model')
 app = project.apps.install(dpk=dpk)
 ```
 
-## Upload Your Model Weights 🏋️‍♂️
+## Upload Your Model Weights
 
 Now let's give your model its superpowers:
 
@@ -172,16 +172,16 @@ model.configuration['weights_filename'] = artifact.filename
 model.deploy()
 ```
 
-## Testing Your Model 🧪
+## Testing Your Model
 
-### Method 1: Using the UI 🖥️
+### Method 1: Using the UI
 1. Go to the "Deployed" tab
 2. Find your model
 3. Click the "Test" tab
 4. Drag & drop an image
-5. Click "Test" and watch the magic happen! ✨
+5. Click "Test" and watch the magic happen!
 
-### Method 2: Using Python 🐍
+### Method 2: Using Python
 ```python
 # Get your model and test item
 model = dl.models.get(model_id='your-model-id')
@@ -198,15 +198,15 @@ execution = dl.executions.get(execution_id=execution.id)
 print(f"Prediction status: {execution.status[-1]['status']}")
 ```
 
-## Training Your Model 🎓
+## Training Your Model
 
 Time to teach your model some new tricks! Let's add training capabilities to your model adapter:
 
 ```python
 class SimpleModelAdapter(dl.BaseModelAdapter):
     def train(self, data_path, **kwargs):
-        """Train your model on Dataloop dataset"""
-        print('🎯 Starting training with data from:', data_path)
+        """Train your model on DDOE dataset"""
+        print('Starting training with data from:', data_path)
         
         # Get training parameters from configuration
         epochs = self.configuration.get('epochs', 10)
@@ -236,11 +236,11 @@ class SimpleModelAdapter(dl.BaseModelAdapter):
                 # Print statistics
                 running_loss += loss.item()
                 if i % 100 == 99:
-                    print(f'🔄 Epoch {epoch + 1}, Batch {i + 1}: Loss = {running_loss / 100:.3f}')
+                    print(f'Epoch {epoch + 1}, Batch {i + 1}: Loss = {running_loss / 100:.3f}')
                     running_loss = 0.0
                     
             
-        print('🎉 Training completed!')
+        print('Training completed!')
         
     def save(self, local_path):
         """Save model checkpoint"""
@@ -250,7 +250,7 @@ class SimpleModelAdapter(dl.BaseModelAdapter):
         }
         checkpoint_path = os.path.join(local_path, f'checkpoint.pth')
         torch.save(checkpoint, checkpoint_path)
-        print(f'💾 Saved checkpoint: {checkpoint_path}')
+        print(f'Saved checkpoint: {checkpoint_path}')
 ```
 
 To train your model:
@@ -279,11 +279,11 @@ model.configuration.update({
 model.train()
 ```
 
-> 🔥 **Important Note**: If you want your model to include annotations that were generated by a model in the training subsets, you must set "include_model_annotations": True in the model configuration. This ensures that both manually created and AI-generated annotations are considered during training.
+> **Important Note**: If you want your model to include annotations that were generated by a model in the training subsets, you must set "include_model_annotations": True in the model configuration. This ensures that both manually created and AI-generated annotations are considered during training.
 
-> 💡 **Pro Tip**: Always monitor your training metrics! Add logging and validation steps to track your model's progress.
+> **Pro Tip**: Always monitor your training metrics! Add logging and validation steps to track your model's progress.
 
-## Export The Weights 🎯
+## Export The Weights
 
 Once your model is trained and ready, it's time to export those precious weights! Here's how:
 
@@ -295,24 +295,24 @@ model = project.models.get('my-model-trained')
 model.artifacts.download(local_path='./my-model-trained')
 ```
 
-## Best Practices for Weight Management 📋
+## Best Practices for Weight Management
 
-1. **Version Control** 🔄
+1. **Version Control**
    - Use semantic versioning for your weights
    - Keep a changelog of training modifications
    - Store training parameters with weights
 
-2. **Validation** ✅
+2. **Validation**
    - Test exported weights before deployment
    - Verify model performance after loading
    - Keep validation metrics for comparison
 
-3. **Documentation** 📝
+3. **Documentation**
    - Record training parameters
    - Note any preprocessing requirements
    - Document expected input/output formats
 
-> 🔥 **Hot Tip**: Always keep a backup of your best performing weights!
+> **Hot Tip**: Always keep a backup of your best performing weights!
 
 
 ## Embedding Models
@@ -369,7 +369,7 @@ model_configuration = {
 }
 ```
 
-> 💡 **Pro Tip**: Check out our [DINOv2 adapter example](https://github.com/dataloop-ai-apps/dinov2-image-embedder/blob/main/adapter.py) on GitHub for a production-ready implementation!
+> **Pro Tip**: Check out our [DINOv2 adapter example](https://github.com/dataloop-ai-apps/dinov2-image-embedder/blob/main/adapter.py) on GitHub for a production-ready implementation!
 
 ### Working with Feature Sets
 
@@ -396,7 +396,7 @@ features = feature_set.features.get(feature_id="specific-feature-id")
 
 ### Best Practices for Embedding Models
 
-1. **Vector Normalization** 📏
+1. **Vector Normalization**
    - Normalize your embeddings to unit length
    - This ensures consistent similarity calculations
    ```python
@@ -404,19 +404,19 @@ features = feature_set.features.get(feature_id="specific-feature-id")
        return embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
    ```
 
-2. **Batch Processing** 🔄
+2. **Batch Processing**
    - Process items in batches for efficiency
    - Use appropriate batch sizes based on your model and hardware
 
-3. **Metadata Management** 📋
+3. **Metadata Management**
    - Store relevant metadata with your embeddings
    - Include timestamps, model version, and preprocessing details
 
-4. **Version Control** 🔄
+4. **Version Control**
    - Keep track of different embedding model versions
    - Document changes in embedding generation logic
 
-5. **Performance Optimization** ⚡
+5. **Performance Optimization**
    - Use GPU acceleration when available
    - Implement caching for frequently accessed embeddings
 
@@ -458,47 +458,47 @@ class SimpleEmbeddingAdapter(dl.BaseModelAdapter):
 
 ### Monitoring and Maintenance
 
-1. **Track Embedding Quality** 📊
+1. **Track Embedding Quality**
    - Monitor embedding distributions
    - Check for embedding drift over time
    - Validate similarity search results
 
-2. **Storage Management** 💾
+2. **Storage Management**
    - Implement cleanup for old embeddings
    - Archive unused feature sets
    - Monitor storage usage
 
-3. **Performance Monitoring** 📈
+3. **Performance Monitoring**
    - Track embedding generation time
    - Monitor memory usage
    - Log errors and exceptions
 
-## Troubleshooting Tips 🔍
+## Troubleshooting Tips
 
 If something's not working as expected:
 
-1. **Check Service Status** 🚦
+1. **Check Service Status**
    - Make sure your model service is up and running
    - Look for the green light in the services page
 
-2. **Check the Logs** 📋
+2. **Check the Logs**
    - Go to "Model Management" > "Deployed" tab
    - Click on the "Executions" number
    - Look for the paper icon to view logs
 
-3. **Common Issues** ⚠️
+3. **Common Issues**
    - Timeouts: Your service might need more resources
    - Memory errors: Try reducing batch size
    - Missing dependencies: Check your requirements.txt
 
-## Ready to Make Your Own? 🎸
+## Ready to Make Your Own?
 
-You've just created your own custom model in Dataloop! Remember:
+You've just created your own custom model in DDOE! Remember:
 - Test thoroughly before deployment
 - Monitor your model's performance
 - Keep your weights and code in sync
 - Document any special requirements
 
-Happy modeling! 🚀
+Happy modeling!
 
-> 🎓 **Need More Help?** Check our [documentation](https://docs.dataloop.ai)
+> **Need More Help?** Check our [documentation](https://docs.dataloop.ai)

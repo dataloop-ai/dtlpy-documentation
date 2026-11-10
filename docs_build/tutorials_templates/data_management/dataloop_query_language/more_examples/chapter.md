@@ -1,12 +1,12 @@
-# DQL Cookbook: Practical Examples 🍳
+# DQL Cookbook: Practical Examples
 
 Welcome to our DQL cookbook! Here you'll find tasty recipes for common filtering scenarios. Each example is ready to use - just copy, paste, and adjust to your needs!
 
-## Filter Operators Toolbox 🧰
+## Filter Operators Toolbox
 
 Let's start with the essential operators you'll need:
 
-### Equal (eq) 🎯
+### Equal (eq)
 
 Returns items where a field’s value is exactly equal to the specified value.
 
@@ -19,7 +19,7 @@ pages = dataset.items.list(filters=filters)
 print(f'Found {pages.items_count} items in folder')
 ```
 
-### Not Equal (ne) ❌
+### Not Equal (ne)
 
 Returns items where a field’s value is different from the specified value.
 
@@ -32,7 +32,7 @@ pages = dataset.items.list(filters=filters)
 print(f'Found {pages.items_count} items without cat label')
 ```
 
-### Greater Than (gt) and Less Than (lt) ⚖️
+### Greater Than (gt) and Less Than (lt)
 
 Return items where a field’s value is greater than or less than the specified value.
 
@@ -52,7 +52,7 @@ pages = dataset.items.list(filters=filters)
 print(f'Found {pages.items_count} items narrower than {width_number_in_pixels}px')
 ```
 
-### In List (in) 📝
+### In List (in)
 
 Returns items where a field’s value matches any value in a given list.
 
@@ -65,7 +65,7 @@ pages = dataset.items.list(filters=filters)
 print(f'Found {pages.items_count} items with dog or cat labels')
 ```
 
-### Exists ✨
+### Exists
 
 Returns items where the specified field exists in the item’s metadata.
 
@@ -79,7 +79,7 @@ print(f'Found {pages.items_count} items with user metadata')
 
 ### Intersect
 
-In Dataloop, the INTERSECT operator in DQL lets you create advanced queries by finding items that meet multiple conditions. It returns only the items that appear in all queries, making it useful for identifying data that satisfies several criteria across subsets.
+In Dell Data Orchestration Engine (DDOE), the INTERSECT operator in DQL lets you create advanced queries by finding items that meet multiple conditions. It returns only the items that appear in all queries, making it useful for identifying data that satisfies several criteria across subsets.
 
 ```python
 import dtlpy as dl
@@ -149,7 +149,7 @@ print(f'Found {pages.items_count} items containing BOTH '
 
 ### Except
 
-In Dataloop, the EXCEPT operator in DQL lets you create advanced queries by excluding data from one set that also appears in another. It returns only the items unique to the first query, making it useful for filtering out specific results.
+In DDOE, the EXCEPT operator in DQL lets you create advanced queries by excluding data from one set that also appears in another. It returns only the items unique to the first query, making it useful for filtering out specific results.
 
 
 
@@ -200,7 +200,7 @@ print(f'Found {pages.items_count} items (excluding items with "person" annotatio
 
 
 
-## Filtering by Annotations 🏷️
+## Filtering by Annotations
 
 ### Finding Items by Label
 
@@ -252,7 +252,7 @@ print(f'Found {pages.items_count} box or point annotations')
 
 ## Filtering by Tasks
 
-This example demonstrates how to filter items in a dataset by their task association and annotation status using the Dataloop SDK. It shows how to:
+This example demonstrates how to filter items in a dataset by their task association and annotation status using the DDOE SDK. It shows how to:
 
 - Access a specific project, dataset, and task.
 - Retrieve items linked to the task.
@@ -262,7 +262,7 @@ This example demonstrates how to filter items in a dataset by their task associa
 ```python
 
 # Define the task you want to filter by
-# Replace 'your-task-id' with your actual task ID from the Dataloop platform
+# Replace 'your-task-id' with your actual task ID from the DDOE platform
 task_id = 'your-task-id'
 
 # Access the project object by project name
@@ -300,7 +300,7 @@ for page in pages:
 
 ```
 
-## Filtering by Status 📊
+## Filtering by Status
 
 ### Finding Items by Annotation Status
 
@@ -389,7 +389,7 @@ pages = dataset.items.list(filters=filters)
 print(f'Found {pages.items_count} unassigned items')
 ```
 
-## File and Folder Operations 📁
+## File and Folder Operations
 
 ### Filtering by Folder
 
@@ -472,7 +472,7 @@ for page in pages:
 
 ```
 
-## Advanced Sorting and Filtering 🎯
+## Advanced Sorting and Filtering
 
 ### Size-Based Sorting
 
@@ -502,7 +502,7 @@ pages = dataset.items.list(filters=filters)
 print(f'Found {pages.items_count} sorted items')
 ```
 
-## Time-Based Filtering ⏰
+## Time-Based Filtering
 
 ### Finding Items by Date Range
 
@@ -527,7 +527,7 @@ pages = dataset.items.list(filters=filters)
 print(f'Found {pages.items_count} items in time range')
 ```
 
-## Working with Custom Filters 🛠️
+## Working with Custom Filters
 
 ### Using Platform-Generated DQL
 
@@ -572,8 +572,8 @@ filters.pop(field='to-delete-field')
 filters.pop_join(field='to-delete-annotation-field')
 ```
 
-## Need More Advanced Options? 🚀
+## Need More Advanced Options?
 
 For even more filtering power, check out our [Advanced SDK Filters](https://docs.dataloop.ai/docs/dql-operators) guide.
 
-Happy filtering! 🎉
+Happy filtering!

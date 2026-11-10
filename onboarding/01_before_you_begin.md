@@ -1,18 +1,18 @@
-# Before You Begin: Essential Setup 🛠️
+# Before You Begin: Essential Setup
 
-Welcome to your Dataloop journey! Let's get your environment perfectly set up for success.
+Welcome to your Dell Data Orchestration Engine (DDOE) journey! Let's get your environment perfectly set up for success.
 
-## Useful Resources 📚
+## Useful Resources
 
 Before diving into the setup, here are some helpful resources:
 
-1. 🔍 [Dataloop Python SDK Cheat Sheet](https://docs.dataloop.ai/docs/sdk-cheatsheet) - Quick reference for SDK code examples
-2. 💻 [Recommended Specifications](https://docs.dataloop.ai/docs/platform-recommended) - System requirements, supported browsers, and file formats
-3. 🔑 [Sign Up](https://console.dataloop.ai) - Create your free Dataloop account
-4. 📂 [Onboarding Files](https://github.com/dataloop-ai/dtlpy-documentation/tree/main/onboarding) - Access all onboarding exercise files
-5. 📚 [In-depth SDK Documentation](https://sdk-docs.dataloop.ai/en/latest/entities.html) - Detailed SDK reference
+1. [DDOE Python SDK Cheat Sheet](https://docs.dataloop.ai/docs/sdk-cheatsheet) - Quick reference for SDK code examples
+2. [Recommended Specifications](https://docs.dataloop.ai/docs/platform-recommended) - System requirements, supported browsers, and file formats
+3. [Sign Up](https://console.dataloop.ai) - Create your free DDOE account
+4. [Onboarding Files](https://github.com/dataloop-ai/dtlpy-documentation/tree/main/onboarding) - Access all onboarding exercise files
+5. [In-depth SDK Documentation](https://sdk-docs.dataloop.ai/en/latest/entities.html) - Detailed SDK reference
 
-## System Requirements 💻
+## System Requirements
 
 ### Hardware Requirements
 - CPU: 2+ cores recommended
@@ -27,11 +27,11 @@ Before diving into the setup, here are some helpful resources:
   - Ubuntu 18.04+ or other modern Linux distributions
 - Python: Version 3.8 to 3.12
 
-## Python Environment Setup 🐍
+## Python Environment Setup
 
 ### 1. Installing Python
 
-> 📌 **Run these commands in your terminal**:
+> **Run these commands in your terminal**:
 >
 > ```bash
 > # Check if Python is installed
@@ -41,11 +41,11 @@ Before diving into the setup, here are some helpful resources:
 > # https://www.python.org/downloads/
 > ```
 
-💡 Pro Tip: Always check "Add Python to PATH" during Windows installation!
+Pro Tip: Always check "Add Python to PATH" during Windows installation!
 
 ### 2. Setting Up a Virtual Environment
 
-> 📌 **Run these commands in your terminal**:
+> **Run these commands in your terminal**:
 >
 > ```bash
 > # Create a new virtual environment:
@@ -63,13 +63,13 @@ Before diving into the setup, here are some helpful resources:
 > pip install ipykernel
 > ```
 
-## SDK Installation Guide 📦
+## SDK Installation Guide
 
 ### 1. Basic Installation
 
  **Select the correct Python interpreter**
 
- 📌 **Important**: After activating the virtual environment, make sure to select the `.venv` kernel in your Jupyter notebook:
+**Important**: After activating the virtual environment, make sure to select the `.venv` kernel in your Jupyter notebook:
  1. Click on "Kernel" in the top menu
  2. Select "Change kernel"
  3. Choose `.venv` from the list
@@ -96,7 +96,7 @@ Open terminal and run:
 **Option 2: Run directly from Jupyter notebook**
 
 > ```python
-> # Install the Dataloop SDK
+> # Install the DDOE SDK
 > !pip install dtlpy
 >
 > # Verify installation
@@ -111,9 +111,9 @@ Open terminal and run:
 > print(dl.__version__)
 > ```
 
-## Best Practices & Tips 👑
+## Best Practices & Tips
 
-### 1. API Keys (For Automated / Headless Workflows) 🔑
+### 1. API Keys (For Automated / Headless Workflows)
 
 For interactive use, `dl.login()` (covered in the next chapter) is the simplest way to authenticate — it opens a browser window and handles everything for you.
 
@@ -129,14 +129,14 @@ For **automated or headless environments** (CI/CD pipelines, remote servers, sch
 
 Use `python-dotenv` and `.env` files to load the API key:
 
-🔒 Best Practices for .env Files:
+Best Practices for .env Files:
 1. Add .env to your .gitignore file to prevent committing sensitive data
 2. Create a .env.example file with dummy values as a template
 3. Never commit real credentials to version control
 4. Use strong, unique API keys
 5. Regularly rotate your API keys
 
-📚 Learn more about environment variable best practices and python dotenv [here](https://github.com/theskumar/python-dotenv)
+Learn more about environment variable best practices and python dotenv [here](https://github.com/theskumar/python-dotenv)
 
 > ```python
 > # Install python-dotenv
@@ -153,24 +153,24 @@ Use `python-dotenv` and `.env` files to load the API key:
 > # Access your API key securely
 > api_key = os.getenv('DTLPY_API_KEY')
 >
-> # Initialize Dataloop with the API key
+> # Initialize DDOE with the API key
 > dl.login_api_key(api_key=api_key)
 > ```
 
 > ```python
 > # DON'T: Hardcode credentials
-> # api_key = "your-api-key"  # ❌
+> # api_key = "your-api-key"
 > # Always use environment variables instead
 > ```
 
-## Validation Checklist ✅
+## Validation Checklist
 
 Before proceeding, ensure:
 - Python version between 3.8 and 3.12 is installed
 - Virtual environment is created and activated
-- Dataloop SDK is installed
+- DDOE SDK is installed
 - Installation is verified
 - Environment variables are set
 - Test import is successful
 
-Ready to start your Dataloop journey? Let's move on to authentication and project setup! 🚀
+Ready to start your DDOE journey? Let's move on to authentication and project setup!

@@ -1,10 +1,10 @@
-# 💬 Prompt Annotations - Where Conversations Come to Life!
+# Prompt Annotations - Where Conversations Come to Life!
 
 Welcome to the world of prompt annotations! Think of prompts as digital conversations - they can include text, images, and even audio. Let's explore how to create and manage these interactive elements!
 
-# 🎯 Getting Started with Prompts
+# Getting Started with Prompts
 
-## 🛠️ Creating and Managing Prompts
+## Creating and Managing Prompts
 
 ## Project Setup
 
@@ -87,11 +87,11 @@ items = dataset.items.upload([
 items = dataset.items.upload('/user/prompts')
 ```
 
-# 📝 Working with Responses (Annotations)
+# Working with Responses (Annotations)
 
 ## Response Types
 
-Dataloop supports various types of responses:
+Dell Data Orchestration Engine (DDOE) supports various types of responses:
 
 - FreeText: For text responses
 - RefImage: For image references
@@ -181,7 +181,7 @@ prompt_item.add(
 
 # Understanding Prompt Structure
 
-Prompts in Dataloop are stored as JSON files with a specific structure. Here's a simple example:
+Prompts in DDOE are stored as JSON files with a specific structure. Here's a simple example:
 
 ```json
 {
@@ -223,7 +223,7 @@ Want to go multi-modal? Here's how:
 }
 ```
 
-# 💡 Pro Tips
+# Pro Tips
 
 ## Best Practices
 
@@ -246,4 +246,4 @@ Want to go multi-modal? Here's how:
 - Optimize image sizes
 - Consider response caching
 
-Need help? Check out our other tutorials or reach out to our support team. Happy prompting! 💭✨
+Need help? Check out our other tutorials or reach out to our support team. Happy prompting!

@@ -1,10 +1,10 @@
-# Metadata and Filtering: Organizing Your AI Data 🔍
+# Metadata and Filtering: Organizing Your AI Data
 
-Master the art of organizing and finding your data using Dataloop's powerful metadata and filtering capabilities.
+Master the art of organizing and finding your data using DDOE's powerful metadata and filtering capabilities.
 
-## Project Setup ⚙️
+## Project Setup
 
-### Dataloop Login 🔐
+### DDOE Login
 
 > ```python
 > import dtlpy as dl
@@ -52,7 +52,7 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 >     print(f"Dataset has {dataset.items.list().items_count} items")
 > ```
 
-## Working with Metadata 📝
+## Working with Metadata
 
 ### 1. Adding Metadata
 
@@ -138,7 +138,7 @@ Master the art of organizing and finding your data using Dataloop's powerful met
 >     print(item.metadata)
 > ```
 
-## Advanced Filtering 🎯
+## Advanced Filtering
 
 ### 1. Basic Filters
 
@@ -266,4 +266,4 @@ https://gate.dataloop.ai/api/v1/datasets/<dataset_id>/schema
 - **unsearchablePaths** – unsearchable paths
 
 
-Ready to explore task management? Let's move on to the next chapter! 🚀
+Ready to explore task management? Let's move on to the next chapter!

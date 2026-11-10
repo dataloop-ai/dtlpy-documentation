@@ -1,15 +1,15 @@
-# Managing Item Status in Dataloop 🏷️
+# Managing Item Status in DDOE
 
-Welcome to your guide to managing item status in Dataloop! Whether you're tracking annotation progress, managing QA workflows, or organizing your data, understanding item status is key. Let's dive in!
+Welcome to your guide to managing item status in Dell Data Orchestration Engine (DDOE)! Whether you're tracking annotation progress, managing QA workflows, or organizing your data, understanding item status is key. Let's dive in!
 
-## Understanding Item Status 🎓
+## Understanding Item Status
 
 Think of item status as traffic lights for your data workflow:
 
-- 🟢 **COMPLETE**: Item is finished (for annotation tasks)
-- ✅ **APPROVE**: Item passed review (for QA tasks)
-- ⛔ **DISCARD**: Item should be excluded
-- ⚪ **NO STATUS**: Item is available for work
+- **COMPLETE**: Item is finished (for annotation tasks)
+- **APPROVE**: Item passed review (for QA tasks)
+- **DISCARD**: Item should be excluded
+- **NO STATUS**: Item is available for work
 
 ### Default Status Types
 
@@ -21,7 +21,7 @@ Think of item status as traffic lights for your data workflow:
    - `APPROVE`: Item passed review
    - `DISCARD`: Item should be excluded
 
-## Working with Item Status 🛠️
+## Working with Item Status
 
 ### Setting Status for Single Items
 
@@ -41,7 +41,7 @@ item.update_status(status=dl.ItemStatus.APPROVED, assignment_id=assignment.id)  
 item.update_status(status=dl.ItemStatus.DISCARDED)  # For single-task items
 ```
 
-### Batch Status Updates 🔄
+### Batch Status Updates
 
 #### Method 1: Using Dataset Filters (Recommended for Single-Task Items)
 
@@ -91,7 +91,7 @@ task.set_status(
 )
 ```
 
-### Clearing Item Status ♻️
+### Clearing Item Status
 
 Need to make items available for work again? Here's how to clear their status:
 
@@ -102,7 +102,7 @@ item.update_status(dl.ITEM_STATUS_APPROVED, assignment_id=assignment.id, clear=T
 item.update_status(dl.ITEM_STATUS_COMPLETED, clear=True)  # For single-task items
 ```
 
-### Custom Status Actions 🎨
+### Custom Status Actions
 
 Want to create tasks with custom status options? Here's how:
 
@@ -124,29 +124,29 @@ task = dataset.tasks.create(
 )
 ```
 
-## Best Practices 💡
+## Best Practices
 
-1. 🎯 **Choose the Right Method**:
+1. **Choose the Right Method**:
    - Use dataset methods for items in multiple tasks
    - Use task methods for single-task items
 
-2. 🔄 **Batch Operations**:
+2. **Batch Operations**:
    - Use filters for bulk updates when possible
    - Group similar status updates together
 
-3. 📝 **Status Management**:
+3. **Status Management**:
    - Clear status when work needs to be redone
    - Use custom statuses for specific workflow needs
    - Document your status workflow
 
-4. ⚠️ **Important Notes**:
+4. **Important Notes**:
    - Changing task statuses doesn't affect already-status-assigned items
    - Always verify status updates with filters or item counts
    - Consider using custom statuses for complex workflows
 
-## Need More Help? 🤔
+## Need More Help?
 
 - Check out our [Item Status Documentation](https://docs.dataloop.ai/docs/tasks#section-4-statuses)
 - Visit our [Task Management Guide](https://docs.dataloop.ai/docs/tasks)
 
-Happy status managing! 🚀
+Happy status managing!

@@ -1,32 +1,32 @@
-# Power User Playbook: Your Dataloop Journey Continues 🚀
+# Power User Playbook: Your DDOE Journey Continues
 
-Congratulations on completing the Dataloop onboarding! Let's recap what you've learned and explore where to go next.
+Congratulations on completing the Dell Data Orchestration Engine (DDOE) onboarding! Let's recap what you've learned and explore where to go next.
 
-## Your AI Development Arsenal 🎯
+## Your AI Development Arsenal
 
 Throughout this guide, you've mastered:
 
-1. **Data Management** 📊
+1. **Data Management**
    - Organizing datasets and items
    - Working with metadata
    - Version control for data
 
-2. **Annotation & Tasks** ✏️
+2. **Annotation & Tasks**
    - Creating and managing tasks
    - Building annotation workflows
    - Quality assurance processes
 
-3. **Model Management** 🤖
+3. **Model Management**
    - Training and deploying models
    - Model versioning and metrics
    - Integration with pipelines
 
-4. **Automation** ⚡
+4. **Automation**
    - Pipeline creation
    - Triggers and webhooks
    - Resource management
 
-## Real-World Example: A Complete Workflow 🌟
+## Real-World Example: A Complete Workflow
 
 Here's a simplified overview of a complete workflow (illustrative — not all parameters shown):
 
@@ -63,7 +63,7 @@ Here's a simplified overview of a complete workflow (illustrative — not all pa
 > )
 > ```
 
-## Where to Go Next? 🎯
+## Where to Go Next?
 
 1. **Explore Advanced Features**
    - [Model Management](https://docs.dataloop.ai/docs/model-management-overview)
@@ -75,8 +75,8 @@ Here's a simplified overview of a complete workflow (illustrative — not all pa
    - Customize for your needs
    - Scale with confidence
 
-Remember: The best way to learn is by doing. Take what you've learned and start building! 🚀
+Remember: The best way to learn is by doing. Take what you've learned and start building!
 
-🔍 **Need Help?** 
+**Need Help?** 
 - Documentation: [docs.dataloop.ai](https://docs.dataloop.ai)
 - Support: [support@dataloop.ai](mailto:support@dataloop.ai)

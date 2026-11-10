@@ -1,12 +1,12 @@
-# Connecting Dataloop with AWS S3 🌉
+# Connecting DDOE with AWS S3
 
-Ever wondered how to connect your AWS S3 buckets seamlessly with Dataloop? You're in the right place! Let's walk through the process step by step, from setting up your integration to automating your data sync.
+Ever wondered how to connect your AWS S3 buckets seamlessly with Dell Data Orchestration Engine (DDOE)? You're in the right place! Let's walk through the process step by step, from setting up your integration to automating your data sync.
 
-## Step 1: Setting Up AWS Integrations 🔗
+## Step 1: Setting Up AWS Integrations
 
-Before we can start moving data around, we need to establish a secure connection between Dataloop and AWS. You've got two options:
+Before we can start moving data around, we need to establish a secure connection between DDOE and AWS. You've got two options:
 
-### Option 1: AWS Access-Key Integration 🔑
+### Option 1: AWS Access-Key Integration
 
 Here's the quick way to set up using access keys:
 
@@ -22,13 +22,13 @@ organization.integrations.create(
 )
 ```
 
-### Option 2: AWS Cross Account Integration 🤝
+### Option 2: AWS Cross Account Integration
 
 For those who prefer the more secure cross-account approach, here's your step-by-step guide:
 
 1. Create your S3 bucket
 2. Set up an IAM policy
-3. Create the integration and get your Dataloop IAM user:
+3. Create the integration and get your DDOE IAM user:
 
 ```python
 import dtlpy as dl
@@ -51,8 +51,8 @@ for metadata in integration.meatadata:
     elif metadata['name'] == 'status':
         integration_status = metadata['value']
 
-print('🎯 IAM User ARN:', iam_user_arn_value)
-print('📊 Integration Status:', integration_status)
+print('IAM User ARN:', iam_user_arn_value)
+print('Integration Status:', integration_status)
 ```
 
 4. Create your IAM role
@@ -68,12 +68,12 @@ updated_integration = project.integrations.get(integrations_id=integration.id)
 for metadata in updated_integration.meatadata:
     if metadata['name'] == 'status':
         if metadata['value'] != 'trust-established':
-            raise ValueError('⚠️ Oops! Integration setup needs attention - check your IAM Role trust relationship')
+            raise ValueError('Oops! Integration setup needs attention - check your IAM Role trust relationship')
 ```
 
-## Step 2: Creating Your Storage Driver 🎯
+## Step 2: Creating Your Storage Driver
 
-Now that we have our integration set up, let's create a storage driver - think of it as your personal data concierge that connects your specific S3 bucket to Dataloop.
+Now that we have our integration set up, let's create a storage driver - think of it as your personal data concierge that connects your specific S3 bucket to DDOE.
 
 ```python
 import dtlpy as dl
@@ -99,9 +99,9 @@ dataset = project.datasets.create(dataset_name=dataset_name, driver=driver)
 dataset.sync()
 ```
 
-## Step 3: Syncing Your Data 🔄
+## Step 3: Syncing Your Data
 
-### Manual Sync ⚡
+### Manual Sync
 
 Need to sync a specific item? Here's your shortcut:
 
@@ -115,11 +115,11 @@ dataset = dl.datasets.get(dataset_id='<dataset-id>')
 dataset.items.upload(local_path=item_path, remote_path=remote_path)
 ```
 
-### Automatic Sync with AWS Lambda ✨
+### Automatic Sync with AWS Lambda
 
-Want your Dataloop dataset to automatically stay in sync with your S3 bucket? Let's set up a Lambda function!
+Want your DDOE dataset to automatically stay in sync with your S3 bucket? Let's set up a Lambda function!
 
-#### Setting Up Your Lambda Function 🛠️
+#### Setting Up Your Lambda Function
 
 1. Create a new Lambda function
 2. Extend the timeout to 1 minute (the default 3 seconds won't cut it!)
@@ -134,8 +134,8 @@ Need those credentials? Here's how to get them:
 import dtlpy as dl
 project = dl.projects.get(project_name='project name')
 bot = project.bots.create(name='serviceAccount', return_credentials=True)
-print('🤖 Bot username:', bot.id)
-print('🔑 Bot password:', bot.password)
+print('Bot username:', bot.id)
+print('Bot password:', bot.password)
 ```
 
 4. The Lambda Code 
@@ -183,7 +183,7 @@ def lambda_handler(event, context):
             remote_path = Path('/') / remote_path
             
         if 'ObjectRemoved' in record['eventName']:
-            # On delete event - delete the item from Dataloop
+            # On delete event - delete the item from DDOE
             try:
                 dtlpy_filename = str(remote_path / filename)
                 filters = dl.Filters(field='filename', values=dtlpy_filename)
@@ -208,11 +208,11 @@ def lambda_handler(event, context):
 
 5. Add a Layer to the Lambda  
 
-We have created an AWS Layer with the Dataloop SDK ready. Click [here](https://storage.googleapis.com/dtlpy/aws-python3.8-lambda-layer/layer.zip) to download the zip file.  
+We have created an AWS Layer with the DDOE SDK ready. Click [here](https://storage.googleapis.com/dtlpy/aws-python3.8-lambda-layer/layer.zip) to download the zip file.  
 Because the layer's size is larger than 50MB you cannot use it directly (AWS restrictions), but need to upload it to a bucket first.  
 Once uploaded, create a new layer for the dtlpy env:  
 a. Go to the layers screen and "click Add Layer".  
-![add_layer](../../../../../assets/bind_aws/create_layer.png)  
+![add_layer](../../../../assets/bind_aws/create_layer.png)  
 b. Choose a name (dtlpy-env).  
 c. Use the link to the bucket layer.zip.  
 d. Select the env (x86_64, python3.8).  
@@ -220,7 +220,7 @@ e. Click "Create" and the bottom on the page.
   
 Go back to your lambda and add the layer:  
 a. Select the "Add Layer".  
-![add_layer](../../../../../assets/bind_aws/add_layer.png)  
+![add_layer](../../../../assets/bind_aws/add_layer.png)  
 b. Choose "Custom layer" and select the Layer you've added and the version.  
 c. click "Add" at the bottom.  
   
@@ -232,9 +232,9 @@ c. For Event types choose: All object create events, All object delete events
 d. Destination - Lambda function → Choose from your Lambda functions → choose the function you build → SAVE  
 
 
-## Need More Help? 🤔
+## Need More Help?
 
 For detailed AWS cross-account integration setup, check out our [comprehensive documentation](https://docs.dataloop.ai/docs/integrations-overview).
 
-Happy data syncing! 🚀
+Happy data syncing!
 

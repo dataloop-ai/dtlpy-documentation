@@ -1,6 +1,6 @@
-# 📦 Dataloop Package Kit Examples
+# DDOE Package Kit Examples
 
-## 📜 Complete DPK Manifest Example
+## Complete DPK Manifest Example
 
 Here is an example of a complete DPK manifest. 
 
@@ -141,61 +141,61 @@ NOTE: This is not supposed to be a real app, and publishing or installing it wil
 }
 ```
 
-## 🎯 Real-World DPK Examples
+## Real-World DPK Examples
 
 Let's explore some production-ready examples from our public repository! Here are some magical DPKs you can use as inspiration:
 
-### 🤖 AI Model Adapters
+### AI Model Adapters
 
 * [Torch Models](https://github.com/dataloop-ai-apps/torch-models) - Collection of PyTorch model adapters for various tasks
 * [NVIDIA Models](https://github.com/dataloop-ai-apps/nvidia-models) - Integration with NVIDIA's AI model ecosystem
 * [Grounded SAM](https://github.com/dataloop-ai-apps/grounded-sam-adapter) - Adapter for Segment Anything Model with grounding
 
-### 🔄 Pipeline & Data Processing
+### Pipeline & Data Processing
 
 * [Pipeline Templates](https://github.com/dataloop-ai-apps/pipeline-templates) - Ready-to-use pipeline templates for common workflows
 * [Dataset Clustering](https://github.com/dataloop-ai-apps/dataset-clustering) - Automated dataset organization using clustering techniques
 * [Data Split](https://github.com/dataloop-ai-apps/data-split) - Smart dataset splitting for training/validation/testing
 * [DTLPY Converters](https://github.com/dataloop-ai-apps/dtlpy-converters) - Tools for converting between different annotation formats
 
-### 🔌 Integrations & Utilities
+### Integrations & Utilities
 
 * [Export GCS](https://github.com/dataloop-ai-apps/export-gcs) - Export and import annotations to Google Cloud Storage
 * [OpenCV Face Detection](https://github.com/dataloop-ai-apps/opencv-face-detection) - Simple face detection implementation using OpenCV
 
-### 📊 Dataset Management
+### Dataset Management
 
 * [OSDAR23 Datasets](https://github.com/dataloop-ai-apps/osdar23-datasets) - Example datasets and tools for the OSDAR challenge
 
-## 💡 Key Components in Real DPKs
+## Key Components in Real DPKs
 
 Each of these DPKs demonstrates best practices for:
 
-### 📝 Documentation
+### Documentation
 * Clear README files
 * Installation instructions
 * Usage examples
 * API documentation
 
-### 🏗️ Structure
+### Structure
 * Well-organized code
 * Proper manifest setup
 * Clear dependency management
 * Modular components
 
-### ⚙️ Configuration
+### Configuration
 * Environment settings
 * Runtime configurations
 * Service definitions
 * Panel layouts
 
-### 🧪 Testing
+### Testing
 * Test suites
 * Example data
 * Validation scripts
 * Error handling
 
-## 🎯 Example Use Cases
+## Example Use Cases
 
 Here are some specific examples of how these DPKs are used:
 
@@ -258,7 +258,7 @@ Here are some specific examples of how these DPKs are used:
 }
 ```
 
-## 🚀 Getting Started with Examples
+## Getting Started with Examples
 
 To use any of these example DPKs:
 
@@ -284,13 +284,13 @@ dpk = project.dpks.push(src_path='path/to/dpk')
 project.apps.install(dpk=dpk)
 ```
 
-## 💡 Pro Tips
+## Pro Tips
 
-* 📚 Study multiple examples to understand different patterns
-* 🔍 Look at the manifest structure of similar apps
-* 🧪 Test configurations locally before publishing
-* 📝 Document your customizations
-* 🔄 Keep your dependencies up to date
+* Study multiple examples to understand different patterns
+* Look at the manifest structure of similar apps
+* Test configurations locally before publishing
+* Document your customizations
+* Keep your dependencies up to date
 
-Need more inspiration? Visit our [Dataloop Apps Space](https://github.com/dataloop-ai-apps) for the latest examples and updates! ✨
+Need more inspiration? Visit our [Dell Data Orchestration Engine (DDOE) Apps Space](https://github.com/dataloop-ai-apps) for the latest examples and updates!
 

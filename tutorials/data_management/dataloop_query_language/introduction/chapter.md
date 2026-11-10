@@ -1,15 +1,15 @@
-# Introduction to Dataloop Query Language (DQL) 🔍
+# Introduction to DDOE Query Language (DQL)
 
-Welcome to the world of DQL! Whether you're searching through millions of items, filtering annotations, or managing metadata, DQL is your Swiss Army knife for data manipulation in Dataloop.
+Welcome to the world of DQL! Whether you're searching through millions of items, filtering annotations, or managing metadata, DQL is your Swiss Army knife for data manipulation in Dell Data Orchestration Engine (DDOE).
 
-## What is DQL? 🤔
+## What is DQL?
 
-The [Dataloop Query Language](https://docs.dataloop.ai/docs/api-dql) is a powerful tool that lets you:
-- Filter through massive amounts of data 🎯
-- Sort results in any order you need 📊
-- Update metadata across multiple items ✏️
+The [DDOE Query Language](https://docs.dataloop.ai/docs/api-dql) is a powerful tool that lets you:
+- Filter through massive amounts of data
+- Sort results in any order you need
+- Update metadata across multiple items
 
-## Understanding Filters 🎯
+## Understanding Filters
 
 Think of filters as your data sieve - they help you find exactly what you need in your datasets.
 
@@ -19,7 +19,7 @@ Every filter has two main components:
 * **Field**: What you're filtering by (e.g., 'dir' for directory)
 * **Value**: What you're looking for (e.g., '/new_folder')
 
-### Basic Filtering Operations ⚡
+### Basic Filtering Operations
 
 Let's start with a simple example - finding all annotated items in a dataset:
 
@@ -44,7 +44,7 @@ pages = dataset.items.list(filters=filters)
 print(f'Found {pages.items_count} items')
 ```
 
-### Advanced Filtering: Annotations 🎨
+### Advanced Filtering: Annotations
 
 Want to filter items based on their annotations? Here's how:
 
@@ -68,7 +68,7 @@ pages = dataset.items.list(filters=filters)
 print(f'Found {pages.items_count} items')
 ```
 
-## Logical Operators in Filters 🔄
+## Logical Operators in Filters
 
 ### AND Operations
 
@@ -129,7 +129,7 @@ pages = dataset.items.list(filters=filters)
 print(f'Found {pages.items_count} items')
 ```
 
-## Working with Filtered Results 🛠️
+## Working with Filtered Results
 
 ### Updating Metadata
 
@@ -166,13 +166,13 @@ filters.add(field='createdAt', values="2020-08-30T08:17:08.000Z")
 dataset.items.delete(filters=filters)
 ```
 
-## Working with Pages 📄
+## Working with Pages
 
-When dealing with large datasets, Dataloop uses pagination to efficiently manage and process data. Instead of loading everything at once (which could be slow and memory-intensive), data is divided into pages.
+When dealing with large datasets, DDOE uses pagination to efficiently manage and process data. Instead of loading everything at once (which could be slow and memory-intensive), data is divided into pages.
 
-### Understanding Pages 📚
+### Understanding Pages
 
-By default, Dataloop returns pages with up to 1000 items each. You can:
+By default, DDOE returns pages with up to 1000 items each. You can:
 - Navigate through pages one by one
 - Customize the page size
 - Use iterators for easy access
@@ -205,7 +205,7 @@ for i_page, page in enumerate(reversed(pages)):
     print(f'Processing page {i_page} in reverse')
 ```
 
-### Customizing Page Size ✂️
+### Customizing Page Size
 
 Need a different page size? No problem:
 
@@ -220,7 +220,7 @@ pages = dataset.items.list(
 print(f'Items in first page: {len(pages.items)}')
 ```
 
-### Parallel Processing with Pages 🚀
+### Parallel Processing with Pages
 
 For faster processing, you can use multiple threads. Let's compare the runtime difference:
 
@@ -253,7 +253,7 @@ with ThreadPoolExecutor(max_workers=32) as executor:
 print(f'Parallel processing took {time.time() - tic:.2f}[s]')
 ```
 
-## Working with Saved Filters 💾
+## Working with Saved Filters
 
 Need to reuse your filters across different sessions or share them with team members? Saved filters have got you covered!
 
@@ -304,12 +304,12 @@ filters = dl.Filters.load(project=project, filter_name='only label cat')
 filters.print()
 ```
 
-## Understanding Item and Annotation Fields 📝
+## Understanding Item and Annotation Fields
 
 When filtering, you can access any field in the item's JSON structure. 
 Go to the [Item Fields](https://docs.dataloop.ai/docs/item-fields) page for more information.
 
-## Understanding Filter Responses 📊
+## Understanding Filter Responses
 
 When you run a DQL query, here's what you get back:
 
@@ -332,11 +332,11 @@ When you run a DQL query, here's what you get back:
 ```
 
 
-💡 **Pro Tip**: Use dot notation to access nested fields. For example:
+**Pro Tip**: Use dot notation to access nested fields. For example:
 - `metadata.system.originalname` for the original filename
 - `metadata.user.myField` for custom metadata
 
-## Best Practices 💫
+## Best Practices
 
 1. **Be Specific**: The more specific your filters, the faster the query
 2. **Use Indexing**: Common filter fields are indexed for better performance
@@ -344,10 +344,10 @@ When you run a DQL query, here's what you get back:
 4. **Test First**: Always test your filters with a small dataset first
 5. **Check Results**: Verify your filter results before performing updates or deletes
 
-## Need More Help? 🤔
+## Need More Help?
 
 - Check out our [DQL Documentation](https://docs.dataloop.ai/docs/api-dql) for more details
 - Explore the [Filters API](https://sdk-docs.dataloop.ai/en/latest/entities.html#module-dtlpy.entities.filters)
-- For advanced filtering, visit our [Advanced SDK Filters](tutorials/data_management/sort_and_filter/advanced_sdk_filters/chapter.md) guide
+- For advanced filtering, visit our [Advanced SDK Filters](/tutorials/data_management/dataloop_query_language/more_examples/chapter.md) guide
 
-Happy querying! 🚀
+Happy querying!

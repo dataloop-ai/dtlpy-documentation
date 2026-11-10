@@ -1,36 +1,36 @@
-# Your First Steps in Dataloop 🎯
+# Your First Steps in DDOE
 
-## What Can You Do? 🌟
+## What Can You Do?
 
 With our powerful Python SDK, you'll have full control over your entire AI development lifecycle:
 
-### Core Resources 📊
-- 📁 **Projects** - Your high-level workspaces
-- 📊 **Datasets** - Your data collections
-- 🖼️ **Items** - Your individual files
-- ✏️ **Annotations** - Your data labels
-- 📝 **Metadata** - Your custom data attributes
+### Core Resources
+- **Projects** - Your high-level workspaces
+- **Datasets** - Your data collections
+- **Items** - Your individual files
+- **Annotations** - Your data labels
+- **Metadata** - Your custom data attributes
 
-### Advanced Features 🚀
-- 🤖 **Model Management** - Train, deploy, and monitor ML models
-- 🔄 **Pipelines** - Build automated AI workflows
-- ⚡ **FaaS (Function as a Service)** - Deploy serverless functions
-- 📦 **DPKs (Dataloop Package Kit)** - Package and share your solutions
-- 🎯 **Tasks** - Manage annotation and review workflows
+### Advanced Features
+- **Model Management** - Train, deploy, and monitor ML models
+- **Pipelines** - Build automated AI workflows
+- **FaaS (Function as a Service)** - Deploy serverless functions
+- **DPKs (DDOE Package Kit)** - Package and share your solutions
+- **Tasks** - Manage annotation and review workflows
 
-### AI Development Tools 🧠
-- 🔍 **Model Zoo** - Access pre-trained models
-- 🎓 **Transfer Learning** - Fine-tune existing models
-- 📈 **Model Metrics** - Track performance and metrics
-- 🔄 **Data Versioning** - Manage dataset versions
+### AI Development Tools
+- **Model Zoo** - Access pre-trained models
+- **Transfer Learning** - Fine-tune existing models
+- **Model Metrics** - Track performance and metrics
+- **Data Versioning** - Manage dataset versions
 
-### Automation & Integration 🔗
-- 🔄 **Webhooks** - Set up event-driven workflows
-- 🌐 **REST API** - Integrate with external systems
-- 🔌 **Plugins** - Extend platform functionality
-- 🤝 **Team Collaboration** - Manage users and roles
+### Automation & Integration
+- **Webhooks** - Set up event-driven workflows
+- **REST API** - Integrate with external systems
+- **Plugins** - Extend platform functionality
+- **Team Collaboration** - Manage users and roles
 
-## Authentication & Security 🔐
+## Authentication & Security
 
 ### 1. Interactive Login
 
@@ -67,11 +67,11 @@ With our powerful Python SDK, you'll have full control over your entire AI devel
 > # Access your API key securely
 > api_key = os.getenv('DTLPY_API_KEY')
 >
-> # Initialize Dataloop with the API key
+> # Initialize DDOE with the API key
 > dl.login_api_key(api_key=api_key)
 > ```
 
-## Project Management Mastery 🏗️
+## Project Management Mastery
 
 ### 1. Creating Your First Project
 
@@ -112,20 +112,20 @@ With our powerful Python SDK, you'll have full control over your entire AI devel
 
 ### 4. Project Exploration
 
-**open_in_web()** 🌐
+**open_in_web()**
 
-The `open_in_web()` method launches the Dataloop web platform in your default browser, providing direct access to view and manage your project resources from the SDK.
+The `open_in_web()` method launches the DDOE web platform in your default browser, providing direct access to view and manage your project resources from the SDK.
 
 
 > ```python
 > # Print project details
 > project.print()
 >
-> # Open project in Dataloop platform and explore it
+> # Open project in DDOE platform and explore it
 > project.open_in_web()
 > ```
 
-## Dataset Organization 📊
+## Dataset Organization
 
 ### 1. Creating Datasets
 
@@ -159,11 +159,11 @@ The `open_in_web()` method launches the Dataloop web platform in your default br
 > ```
 
 > ```python
-> # Explore dataset in Dataloop platform
+> # Explore dataset in DDOE platform
 > dataset.open_in_web()
 > ```
 
-## Team Collaboration Essentials 👥
+## Team Collaboration Essentials
 
 ### 1. Role Management
 
@@ -193,4 +193,4 @@ The `open_in_web()` method launches the Dataloop web platform in your default br
 > project.remove_member(email='annotator@company.com')
 > ```
 
-Ready to start working with data? Let's move on to data management! 🚀
+Ready to start working with data? Let's move on to data management!

@@ -6,7 +6,7 @@ def func1():
     ## Service Code
     Your code can perform any action you need toe execute as part of pre-annotating items for example:
     - Access a remote server/API to retrieve annotations
-    - Run your algorithm or ML model as a service in Dataloop FaaS
+    - Run your algorithm or ML model as a service in DDOE FaaS
 
     In this example we use a simple face detection algorithm that uses Cv2 and Caffe model
 
@@ -51,7 +51,7 @@ def func4():
 def func5():
     """
     ## Deploy The  Service
-    The package is now ready to be deployed as a service in the Dataloop Platform.
+    The package is now ready to be deployed as a service in the DDOE Platform.
     Whenever executed, your package will run as a service on default instance type. Review the service configuration to configure it to your needs, for example
     - Change instance-type to use stronger instances with more memory, CPU and GPU
     - Increase auto-scaling to handle larger loads

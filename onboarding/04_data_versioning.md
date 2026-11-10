@@ -1,10 +1,10 @@
-# Data Versioning: Managing Your Dataset Evolution 📚
+# Data Versioning: Managing Your Dataset Evolution
 
-Learn how to track, manage, and restore different versions of your datasets in Dataloop - your key to maintaining data lineage and reproducibility.
+Learn how to track, manage, and restore different versions of your datasets in Dell Data Orchestration Engine (DDOE) - your key to maintaining data lineage and reproducibility.
 
-## Project Setup ⚙️
+## Project Setup
 
-### Dataloop Login 🔐
+### DDOE Login
 
 > ```python
 > import dtlpy as dl
@@ -52,7 +52,7 @@ Learn how to track, manage, and restore different versions of your datasets in D
 >     print(f"Dataset has {dataset.items.list().items_count} items")
 > ```
 
-## Getting Started with Versioning 🌟
+## Getting Started with Versioning
 
 This section will use all three dataset types.
  Please review them in the following link:
@@ -65,7 +65,7 @@ This section will use all three dataset types.
 > dataset_id = dataset.id
 > dataset.items.list().print()
 >
-> # Explore the dataset in the Dataloop platform
+> # Explore the dataset in the DDOE platform
 > dataset.open_in_web()
 > ```
 
@@ -101,7 +101,7 @@ This section will use all three dataset types.
 > dataset_filter_cloned.items.list().print()
 > ```
 
-## Dataset Management 📊
+## Dataset Management
 
 ### 1. Listing Datasets
 
@@ -146,8 +146,8 @@ This section will use all three dataset types.
 > ```
 
 > ```python
-> # Explore the dataset in the Dataloop platform
+> # Explore the dataset in the DDOE platform
 > merged_dataset.open_in_web()
 > ```
 
-Ready to explore metadata and filtering? Let's move on to the next chapter! 🚀
+Ready to explore metadata and filtering? Let's move on to the next chapter!

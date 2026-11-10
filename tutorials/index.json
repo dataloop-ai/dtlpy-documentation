@@ -1,7 +1,7 @@
 {
     "name": "dataloop-tutorials",
-    "title": "Dataloop Tutorials",
-    "description": "All of Dataloop's tutorials!",
+    "title": "DDOE Tutorials",
+    "description": "All of DDOE's tutorials!",
     "content": [
         {
             "displayName": "Data Management",
@@ -45,7 +45,7 @@
         },
         {
             "displayName": "Applications",
-            "description": "Developing and working with the Dataloop Applications",
+            "description": "Developing and working with the DDOE Applications",
             "location": "applications/index.json"
         }
     ]

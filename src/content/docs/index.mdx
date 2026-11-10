@@ -1,0 +1,41 @@
+---
+title: DDOE Developer Documentation
+description: Developer documentation for the Dell Data Orchestration Engine (DDOE).
+template: splash
+hero:
+  tagline: End-to-end data management, automation pipelines and a quality-first data labeling platform. Documentation for developers building on the Dell Data Orchestration Engine (DDOE).
+  actions:
+    - text: Get started
+      link: /onboarding/onboarding/
+      icon: right-arrow
+    - text: Browse tutorials
+      link: /tutorials/
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Documentation
+
+<CardGrid>
+  <LinkCard
+    title="Onboarding"
+    description="A guided introduction to the DDOE Python SDK, from first login to a complete workflow."
+    href="/onboarding/onboarding/"
+  />
+  <LinkCard
+    title="Tutorials"
+    description="Task-oriented guides covering data management, annotations, labeling workflows, pipelines, applications and models."
+    href="/tutorials/"
+  />
+  <LinkCard
+    title="Notebooks"
+    description="End-to-end Jupyter notebooks that demonstrate complete DDOE use cases."
+    href="/notebooks/notebooks/"
+  />
+  <LinkCard
+    title="Reference"
+    description="Python SDK, JavaScript SDK and REST API reference."
+    href="/resources/"
+  />
+</CardGrid>

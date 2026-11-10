@@ -2,11 +2,11 @@
 SPA (Panel)
 Q. Why do we need the domain to be local.dataloop.ai to test the app locally?
 
-A: Dataloop AI platform needs to pass cookies to the guest application in order to authenticate the application and provide it accesses to the SDK backend.
+A: Dell Data Orchestration Engine (DDOE) AI platform needs to pass cookies to the guest application in order to authenticate the application and provide it accesses to the SDK backend.
 
 Q. Why do we need HTTPS for running the application locally?
 
-A: Dataloop AI platform runs on HTTPS and it tries to access your dataloop.json file. If the local server is serving over HTTP and not on HTTPS, the Mixed-Content Policy of most browsers won't allow the HTTP request for this dataloop.json file.
+A: DDOE AI platform runs on HTTPS and it tries to access your dataloop.json file. If the local server is serving over HTTP and not on HTTPS, the Mixed-Content Policy of most browsers won't allow the HTTP request for this dataloop.json file.
 
 Q. Why do we need to make sure the `base` in the vue configuration is set to “”?
 

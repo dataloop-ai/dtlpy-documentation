@@ -1,8 +1,8 @@
-# ⚙️ Service Configurations - Mastering FaaS Settings
+# Service Configurations - Mastering FaaS Settings
 
 Welcome to the world of FaaS service configurations! Think of service configurations as the control panel for your serverless functions. Let's explore how to fine-tune your services for optimal performance!
 
-## 🎯 Managing Service Configurations
+## Managing Service Configurations
 
 You can configure your services in two ways: through the DPK manifest file or directly on the deployed service.
 
@@ -67,7 +67,7 @@ service.pause()  # Pause the service
 service.resume()  # Resume the service
 ```
 
-## 🔧 Advanced Runtime Settings
+## Advanced Runtime Settings
 
 ### Custom Resource Allocation
 
@@ -111,7 +111,7 @@ Choose the right compute power for your needs:
 
 ## Autoscaling Configuration
 
-Dataloop supports two autoscaling methods for services. Each method aligns with different service types and workload patterns:
+Dell Data Orchestration Engine (DDOE) supports two autoscaling methods for services. Each method aligns with different service types and workload patterns:
 
 
 1. **Queue Length-Based Autoscaler** – scales services according to the number of pending executions in the service's queue.
@@ -133,7 +133,7 @@ Each time an app service submits an execution—such as for a model run, data pr
 
 Use the queue length-based autoscaler when your service processes executions (e.g., models, pipelines, event-driven logic).
 
-*Note*: By default, Dataloop services use this queue length-based autoscaler to scale dynamically based on the number of pending executions.
+*Note*: By default, DDOE services use this queue length-based autoscaler to scale dynamically based on the number of pending executions.
 
 
 ---
@@ -325,7 +325,7 @@ efficient_autoscaler = dl.KubernetesRPSAutoscaler(
 
 ___
 
-# 🔐 Security and Environment
+# Security and Environment
 
 ### Working with Secrets
 
@@ -382,7 +382,7 @@ def secure_function(item: dl.Item):
     # Your secure code here
 ```
 
-## 📊 Monitoring and Logging
+## Monitoring and Logging
 
 ### Progress Tracking
 
@@ -458,9 +458,9 @@ To use an application from another project:
 - **Service Bot Membership** – The application’s service bot (from the original project) must be added as a member of your current project.
 - **User Access** – You must be a member of the original project where the application is hosted.
 
-Read [Dataloop documentation](https://docs.dataloop.ai/docs/services#share-custom-applications-across-projects) for sharing your custom application.
+Read [DDOE documentation](https://docs.dataloop.ai/docs/services#share-custom-applications-across-projects) for sharing your custom application.
 
-## 💡 Pro Tips & Best Practices
+## Pro Tips & Best Practices
 
 ### Resource Optimization
 
@@ -486,4 +486,4 @@ Read [Dataloop documentation](https://docs.dataloop.ai/docs/services#share-custo
 - Use progress updates for long-running functions
 - Monitor autoscaling behavior
 
-Need help? Check out our other tutorials or reach out to our support team. Happy configuring! ⚡️
+Need help? Check out our other tutorials or reach out to our support team. Happy configuring!

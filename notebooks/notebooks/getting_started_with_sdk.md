@@ -1,11 +1,11 @@
-# Getting Started with the Dataloop Python SDK (dtlpy) Tutorial
+# Getting Started with the DDOE Python SDK (dtlpy) Tutorial
 
-Welcome! This notebook provides a comprehensive introduction to interacting with the Dataloop platform using its Python SDK, `dtlpy`. The Dataloop SDK enables you to programmatically manage your data, annotations, models, and workflows, making it an essential tool for building scalable AI applications.
+Welcome! This notebook provides a comprehensive introduction to interacting with the Dell Data Orchestration Engine (DDOE) platform using its Python SDK, `dtlpy`. The DDOE SDK enables you to programmatically manage your data, annotations, models, and workflows, making it an essential tool for building scalable AI applications.
 
-This tutorial covers the fundamental concepts and operations you'll need to get started with Dataloop, from basic authentication through advanced annotation workflows.
+This tutorial covers the fundamental concepts and operations you'll need to get started with DDOE, from basic authentication through advanced annotation workflows.
 
 ### Prerequisites:
-* **Dataloop Account:** You should have access to a Dataloop platform account.
+* **DDOE Account:** You should have access to a DDOE platform account.
 * **Python Environment:** Ensure you have Python 3.7+ installed with pip.
 * **Basic Python Knowledge:** Familiarity with Python programming concepts.
 
@@ -33,9 +33,9 @@ The following cell uses `pip` to install the `dtlpy` package. The `--quiet` flag
 
 ### Authentication and Connection
 
-To interact with the Dataloop platform, you need to authenticate. The simplest way in an interactive environment like a Jupyter Notebook is using `dl.login()` which will open a browser window for you to log in via your Dataloop account (or uses saved credentials if available and valid).
+To interact with the DDOE platform, you need to authenticate. The simplest way in an interactive environment like a Jupyter Notebook is using `dl.login()` which will open a browser window for you to log in via your DDOE account (or uses saved credentials if available and valid).
 
-Next, we import the `dtlpy` library as `dl` and the `datetime` library. We then check if the current Dataloop authentication token has expired using `dl.token_expired()`. If it has, `dl.login()` is called, which typically opens a web browser for you to log into your Dataloop account. Successful login or an active session will be confirmed with a print message.
+Next, we import the `dtlpy` library as `dl` and the `datetime` library. We then check if the current DDOE authentication token has expired using `dl.token_expired()`. If it has, `dl.login()` is called, which typically opens a web browser for you to log into your DDOE account. Successful login or an active session will be confirmed with a print message.
 
 
 ```python
@@ -51,9 +51,9 @@ else:
 
 ## <a id='projects'></a>2. Projects
 
-Projects are the main containers for your work in Dataloop. They hold datasets, ontologies, models, tasks, pipelines, etc.
+Projects are the main containers for your work in DDOE. They hold datasets, ontologies, models, tasks, pipelines, etc.
 
-This cell defines a unique project name using your Dataloop user email to create a prefix. It then attempts to retrieve an existing project with this name using `dl.projects.get()`. If the project is not found (raising a `dl.exceptions.NotFound` error), it creates a new project with `dl.projects.create()`. This ensures you have a project to work with for this tutorial. The project's name and ID are printed upon successful retrieval or creation.
+This cell defines a unique project name using your DDOE user email to create a prefix. It then attempts to retrieve an existing project with this name using `dl.projects.get()`. If the project is not found (raising a `dl.exceptions.NotFound` error), it creates a new project with `dl.projects.create()`. This ensures you have a project to work with for this tutorial. The project's name and ID are printed upon successful retrieval or creation.
 
 
 ```python
@@ -81,7 +81,7 @@ except dl.exceptions.NotFound:
 # project.open_in_web()
 ```
 
-The following (commented out) code demonstrates how to list all projects accessible to your Dataloop user using `dl.projects.list()` and print their details.
+The following (commented out) code demonstrates how to list all projects accessible to your DDOE user using `dl.projects.list()` and print their details.
 
 
 ```python
@@ -95,7 +95,7 @@ The following (commented out) code demonstrates how to list all projects accessi
 
 Datasets reside within projects and contain your data items (images, videos, text, etc.) and their associated annotations.
 
-Here, we define a name for our dataset. Similar to projects, we use a try-except block to get the dataset if it already exists within the `project` object (`project.datasets.get()`) or create it if it doesn't (`project.datasets.create()`). When a dataset is created, Dataloop automatically sets up a default Recipe and Ontology for it. The dataset's name and ID are printed.
+Here, we define a name for our dataset. Similar to projects, we use a try-except block to get the dataset if it already exists within the `project` object (`project.datasets.get()`) or create it if it doesn't (`project.datasets.create()`). When a dataset is created, DDOE automatically sets up a default Recipe and Ontology for it. The dataset's name and ID are printed.
 
 
 ```python
@@ -103,7 +103,7 @@ Here, we define a name for our dataset. Similar to projects, we use a try-except
 dataset_name = 'my-sdk-dataset'
 
 # Check if the dataset exists within the project
-# if not, create it. Dataloop automatically creates a default Recipe and Ontology.
+# if not, create it. DDOE automatically creates a default Recipe and Ontology.
 try:
     dataset = project.datasets.get(dataset_name=dataset_name)
     print(f"Successfully retrieved dataset: '{dataset.name}' (ID: {dataset.id})")
@@ -129,12 +129,12 @@ This commented-out code shows how to list all datasets within the previously ret
 
 Before annotating, you need to define the *ontology* - the set of labels and their attributes that can be applied to your data.
 
-In Dataloop, the relationship is:
+In DDOE, the relationship is:
 * **Dataset:** Contains your data items.
 * **Recipe:** Links a Dataset to one or more Ontologies. It defines the *schema* for annotation and QA tasks within that dataset. Every dataset must have at least one recipe.
 * **Ontology:** Defines the labels (e.g., 'car', 'person', 'text bounding box') and their attributes (e.g., color, size, type).
 
-When you create a dataset using the SDK (or UI), Dataloop automatically creates a default recipe and a default ontology for it. We will modify this default ontology to add the labels we need.
+When you create a dataset using the SDK (or UI), DDOE automatically creates a default recipe and a default ontology for it. We will modify this default ontology to add the labels we need.
 
 This cell handles the setup of the dataset's ontology, which defines the set of labels for annotation.
 1. It retrieves the default recipe associated with our `dataset`. If, for some reason, a default recipe isn't found (which is unlikely for SDK-created datasets), it creates one and links it.
@@ -142,7 +142,7 @@ This cell handles the setup of the dataset's ontology, which defines the set of 
 3. A dictionary `labels_to_add` is defined with desired label names and their corresponding display colors.
 4. It iterates through these labels, checking if they already exist in the `ontology.labels`. If a label doesn't exist, it's added using `ontology.add_label()`.
 5. An example of adding a label with attributes (`AttributedObject`) is also shown. Attributes allow for more detailed annotation, such as boolean flags (e.g., 'Is Occluded?') or option lists (e.g., 'Object Size').
-6. If any labels were added or modified, `ontology.update()` is called to save these changes to the Dataloop platform.
+6. If any labels were added or modified, `ontology.update()` is called to save these changes to the DDOE platform.
 7. Finally, it prints the current list of labels in the ontology.
 
 
@@ -283,17 +283,17 @@ else:
 if not os.path.exists(text_filepath):
     print(f"Creating dummy text file at: {text_filepath}")
     with open(text_filepath, 'w') as f:
-        f.write("This is a sample text file for the Dataloop SDK getting started guide.")
+        f.write("This is a sample text file for the DDOE SDK getting started guide.")
 else:
     print(f"Text file already exists at: {text_filepath}")
 ```
 
-Now we'll upload the local files prepared in the previous step to our Dataloop dataset.
+Now we'll upload the local files prepared in the previous step to our DDOE dataset.
 1. Filepaths for the local image and text file are constructed.
 2. It checks if these files exist and raises a `FileNotFoundError` if they don't (this is a safeguard, as the previous cell should have created them).
 3. The `dataset.items.upload()` method is used to upload each file:
    - `local_path`: Specifies the path to the file on your local system.
-   - `remote_path`: Defines the directory structure where the item will be stored within the Dataloop dataset (e.g., '/images', '/docs').
+   - `remote_path`: Defines the directory structure where the item will be stored within the DDOE dataset (e.g., '/images', '/docs').
    - `overwrite=True`: If an item with the same name already exists at the remote path, it will be overwritten. This is useful for re-running notebooks.
 4. The returned `dl.Item` object for each uploaded item is stored (e.g., `image_item`, `text_item`), and their filenames and IDs are printed.
 
@@ -314,7 +314,7 @@ if not os.path.exists(text_filepath):
     raise FileNotFoundError(f"Text file not found: {text_filepath}. Please create it.")
 
 # Upload the local files to the dataset
-# 'remote_path' specifies the directory structure within the Dataloop dataset
+# 'remote_path' specifies the directory structure within the DDOE dataset
 print("Uploading items...")
 
 # Use overwrite=True to avoid errors if the item already exists
@@ -405,7 +405,7 @@ This cell demonstrates working with item metadata.
 1. It first checks if `retrieved_image_item` (from the previous step) exists.
 2. It prints the item's system metadata (`retrieved_image_item.system`) and user metadata (`retrieved_image_item.metadata.get('user', {})`) using `json.dumps` for pretty printing.
 3. To update user metadata, it accesses `retrieved_image_item.metadata['user']`. It ensures this key exists and is a dictionary. New key-value pairs are then added, such as `processed_by_script` and a timestamp.
-4. The `retrieved_image_item.update()` method is called to save these metadata changes to the Dataloop platform. The updated item object is reassigned to `retrieved_image_item`.
+4. The `retrieved_image_item.update()` method is called to save these metadata changes to the DDOE platform. The updated item object is reassigned to `retrieved_image_item`.
 5. The user metadata is printed again to show the changes.
 
 
@@ -470,7 +470,7 @@ This cell demonstrates the creation and upload of a `dl.PromptItem`.
 3. A `dl.Prompt` object is created. Each prompt within a `PromptItem` has a unique `key` and a `role` (e.g., "user", "assistant").
 4. Elements are added to this `user_prompt` using `user_prompt.add_element()`:
    - A text element (`dl.PromptType.TEXT`) with the value "Describe this image:".
-   - An image element (`dl.PromptType.IMAGE`) where the `value` is `retrieved_image_item.stream`. This `stream` attribute provides a reference to the image data on the Dataloop platform, allowing the prompt item to link to it without duplicating the image data itself.
+   - An image element (`dl.PromptType.IMAGE`) where the `value` is `retrieved_image_item.stream`. This `stream` attribute provides a reference to the image data on the DDOE platform, allowing the prompt item to link to it without duplicating the image data itself.
 5. The `user_prompt` is appended to the `prompt_item_obj.prompts` list.
 6. Finally, the `prompt_item_obj` is uploaded to the dataset using `dataset.items.upload()`. The `local_path` is the `PromptItem` object itself, `remote_path` specifies a directory in the dataset, and `overwrite=True` is used. The uploaded prompt item's filename and ID are printed.
 
@@ -518,7 +518,7 @@ else:
 
 ## <a id='annotations'></a>7. Annotations
 
-Annotations add semantic meaning to your data items. Dataloop supports various types like bounding boxes, polygons, points, classifications, etc.
+Annotations add semantic meaning to your data items. DDOE supports various types like bounding boxes, polygons, points, classifications, etc.
 
 **Important:** The labels used here (`'Object1'`, `'CornerPoint'`, `'IndoorScene'`) should exist in the dataset's ontology (defined in Section 4).
 
@@ -530,7 +530,7 @@ This cell demonstrates how to add various types of annotations to the `retrieved
    - `dl.Point`: A point annotation defined by `x`, `y` coordinates and a `label` (e.g., "CornerPoint").
    - `dl.Classification`: A classification label (e.g., "IndoorScene") applied to the entire item, which has no geometric definition.
 4. The annotations built are currently in memory. The commented-out line `# item_to_annotate.annotations.delete(filters=None)` shows how you could clear all existing annotations from an item before uploading new ones (use with caution).
-5. `item_to_annotate.annotations.upload(annotations=builder)` uploads the annotations from the builder to the Dataloop platform.
+5. `item_to_annotate.annotations.upload(annotations=builder)` uploads the annotations from the builder to the DDOE platform.
 6. After uploading, `item_to_annotate.annotations.list()` retrieves all annotations on the item for verification, and `.print()` displays them.
 7. An error handling block catches exceptions during upload, reminding the user to ensure labels exist in the ontology.
 
@@ -650,10 +650,10 @@ else:
 
 ## <a id='conclusion'></a>9. Conclusion and Next Steps
 
-Congratulations! You have successfully completed the getting started tutorial for the Dataloop Python SDK.
+Congratulations! You have successfully completed the getting started tutorial for the DDOE Python SDK.
 
 ### Summary of What You've Accomplished:
-- **Authentication and Connection:** Successfully connected to the Dataloop platform and managed authentication
+- **Authentication and Connection:** Successfully connected to the DDOE platform and managed authentication
 - **Project Management:** Created and managed Projects as the main containers for your work
 - **Dataset Operations:** Created Datasets and understood their role in organizing data
 - **Ontology Configuration:** Defined the Dataset's Ontology (Labels) for annotation with attributes and properties
@@ -678,14 +678,14 @@ This is just the beginning! The SDK offers much more functionality for data mana
 - **Active Learning:** Implement intelligent annotation strategies that prioritize the most valuable data
 
 #### Resources for Continued Learning:
-- **[Dataloop Developer Documentation](https://developers.dataloop.ai/):** Comprehensive guides and API reference
+- **[DDOE Developer Documentation](https://developers.dataloop.ai/):** Comprehensive guides and API reference
 - **[Tutorial Collection](https://developers.dataloop.ai/tutorials/):** Step-by-step guides for specific use cases
 - **[GitHub Examples](https://github.com/dataloop-ai-apps):** Code samples and real-world implementations
 
 #### Experiment and Build:
 - Try building automated pipelines that combine data ingestion, annotation, and model training
 - Experiment with different ontology attributes and annotation types for your specific use case
-- Integrate Dataloop workflows into your existing ML/AI development processes
+- Integrate DDOE workflows into your existing ML/AI development processes
 - Explore the platform's collaboration features for team-based annotation projects
 
-The Dataloop SDK provides a powerful foundation for building scalable, production-ready AI applications. You're now equipped with the fundamental knowledge to start building sophisticated data and AI workflows!
+The DDOE SDK provides a powerful foundation for building scalable, production-ready AI applications. You're now equipped with the fundamental knowledge to start building sophisticated data and AI workflows!

@@ -1,8 +1,8 @@
-# 🎵 Audio Annotations - Making Sound Visible!
+# Audio Annotations - Making Sound Visible!
 
 Welcome to the world of audio annotations! While other annotations deal with what you can see, audio annotations help us mark what you can hear. Let's explore how to capture and annotate sound! 
 
-## 🎯 Basic Audio Annotation
+## Basic Audio Annotation
 
 Think of audio annotations like marking timestamps in a song or podcast. Here's how to create one:
 
@@ -25,7 +25,7 @@ builder.add(annotation_definition=dl.Audio(start_time=1.5,    # Start time in se
 item.annotations.upload(builder)
 ```
 
-## 🎼 Advanced Audio Annotations
+## Advanced Audio Annotations
 
 ### Transcription Annotations
 Add text transcriptions to your audio segments:
@@ -63,14 +63,14 @@ for caption in webvtt.read(filepath):
 ```
 
 
-# 💡 Pro Tips for Audio Annotations
+# Pro Tips for Audio Annotations
 
 - Always verify your timestamps match the audio content
 - Use consistent labels for similar sound types
 - Consider using attributes for additional context like speaker ID or sound quality
 - Keep track of overlapping annotations
 
-# 🎓 Best Practices
+# Best Practices
 
 ## Working with Long Audio Files
 When dealing with lengthy recordings:
@@ -92,5 +92,5 @@ For consistent audio annotations:
 - Consider sample rate and bit depth
 - Mark sections with poor audio quality
 
-Need help? Check out our other tutorials or reach out to our support team. Happy audio annotating! 🎧✨
+Need help? Check out our other tutorials or reach out to our support team. Happy audio annotating!
 

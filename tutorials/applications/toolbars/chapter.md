@@ -20,7 +20,7 @@ interface Toolbar {
     conditions?: {  // DQL filter options
         resources: [
             {
-                entityType: string  // Dataloop Entity to run the DQL on - dataset, task, project, etc.
+                entityType: string  // DDOE Entity to run the DQL on - dataset, task, project, etc.
                 filter?: Dictionary  // DQL filter
             }
         ]

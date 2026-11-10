@@ -1,8 +1,8 @@
-# 🎬 Video Annotations - Bringing Motion to Life!
+# Video Annotations - Bringing Motion to Life!
 
 Welcome to the exciting world of video annotations! While image annotations are like taking snapshots, video annotations are like directing a movie - we're working with objects that move and change over time. Let's learn how to capture this motion! 
 
-# 🎯 Getting Started with Video Annotations
+# Getting Started with Video Annotations
 
 ## Project Setup
 First, let's set up our environment:
@@ -42,7 +42,7 @@ builder.add(annotation_definition=dl.Box(top=10,
 item.annotations.upload(builder)
 ```
 
-# 🎭 Advanced Video Annotations
+# Advanced Video Annotations
 
 ## Object Tracking
 Track objects as they move through your video. Think of it like following an actor through different scenes:
@@ -119,7 +119,7 @@ for i_frame in range(100):
 item.annotations.upload(builder)
 ```
 
-# 🎨 Working with Video Frames
+# Working with Video Frames
 
 ## Reading Frame Annotations
 Extract information about annotations in specific frames:
@@ -148,7 +148,7 @@ dl.utilities.Videos.video_snapshots_generator(
 )
 ```
 
-# 🎥 Video Playback and Visualization
+# Video Playback and Visualization
 
 ## Video Player with Annotations
 View your video with annotations:
@@ -182,7 +182,7 @@ plt.axis('off')
 plt.show()
 ```
 
-# 💡 Pro Tips for Video Annotations
+# Pro Tips for Video Annotations
 
 ## Best Practices
 - Use consistent object IDs for tracking the same object
@@ -204,7 +204,7 @@ plt.show()
 - Document frame rate and timing information
 - Test playback with annotations
 
-# 🔧 Troubleshooting Common Issues
+# Troubleshooting Common Issues
 
 ## Frame Synchronization
 - Ensure frame numbers match video timing
@@ -218,4 +218,4 @@ plt.show()
 - Clean up resources after processing
 - Monitor memory usage during batch operations
 
-Need help? Check out our other tutorials or reach out to our support team. Happy video annotating! 🎥✨
+Need help? Check out our other tutorials or reach out to our support team. Happy video annotating!

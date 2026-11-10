@@ -1,35 +1,35 @@
-# Connecting Dataloop with Google Cloud Storage 🌉
+# Connecting DDOE with Google Cloud Storage
 
-Ever wondered how to connect your Google Cloud Storage (GCS) seamlessly with Dataloop? You're in the right place! Let's walk through the process step by step, from setting up your integration to automating your data sync.
+Ever wondered how to connect your Google Cloud Storage (GCS) seamlessly with Dell Data Orchestration Engine (DDOE)? You're in the right place! Let's walk through the process step by step, from setting up your integration to automating your data sync.
 
-## Choose Your Integration Adventure! 🎮
+## Choose Your Integration Adventure!
 
 Before we dive into the technical stuff, let's pick the right integration path for your needs. We've got several exciting options:
 
-### Cross Project Integration: The Team Player 🤝
+### Cross Project Integration: The Team Player
 
 Want to connect across different GCP projects? Here's your game plan:
 
-1. 🪣 Create a Cloud Storage Bucket in your GCP kingdom
-2. 👮‍♂️ Set up an IAM policy (your security badge)
-3. 🔗 Create the integration and get your VIP pass (IAM user) from Dataloop
+1. Create a Cloud Storage Bucket in your GCP kingdom
+2. Set up an IAM policy (your security badge)
+3. Create the integration and get your VIP pass (IAM user) from DDOE
 
 Ready to become a cross-project master? Check out our [detailed guide](https://docs.dataloop.ai/docs/cross-project-integration)!
 
-### Private Key Integration: The Secret Agent 🕵️‍♂️
+### Private Key Integration: The Secret Agent
 
 Need that extra layer of security? Here's your mission, should you choose to accept it:
 
-1. 🪣 Create a Cloud Storage Bucket (your secure vault)
-2. 👑 Create an IAM role (your security clearance)
-3. 🤖 Create a Service Account (your trusted agent)
-4. 🔑 Generate a Private Key (your secret decoder ring)
+1. Create a Cloud Storage Bucket (your secure vault)
+2. Create an IAM role (your security clearance)
+3. Create a Service Account (your trusted agent)
+4. Generate a Private Key (your secret decoder ring)
 
 For the classified details, visit our [secret handbook](https://docs.dataloop.ai/docs/private-key-integration)!
 
-## Step 1: Setting Up GCP Integration 🔗
+## Step 1: Setting Up GCP Integration
 
-Before we can start moving data around, we need to establish a secure connection between Dataloop and Google Cloud Platform. Let's set up the integration:
+Before we can start moving data around, we need to establish a secure connection between DDOE and Google Cloud Platform. Let's set up the integration:
 
 ```python
 import dtlpy as dl
@@ -56,11 +56,11 @@ integration = organization.integrations.create(
 )
 ```
 
-To learn more about setting up integrations and required permissions, check out our [Dataloop documentation](https://docs.dataloop.ai/docs/storage-gcp).
+To learn more about setting up integrations and required permissions, check out our [DDOE documentation](https://docs.dataloop.ai/docs/storage-gcp).
 
-## Step 2: Creating Your Storage Driver 🎯
+## Step 2: Creating Your Storage Driver
 
-Now that we have our integration set up, let's create a storage driver - think of it as your personal data concierge that connects your specific GCS bucket to Dataloop.
+Now that we have our integration set up, let's create a storage driver - think of it as your personal data concierge that connects your specific GCS bucket to DDOE.
 
 ```python
 import dtlpy as dl
@@ -84,9 +84,9 @@ dataset = project.datasets.create(dataset_name=dataset_name, driver=driver)
 dataset.sync()
 ```
 
-## Step 3: Syncing Your Data 🔄
+## Step 3: Syncing Your Data
 
-### Manual Sync ⚡
+### Manual Sync
 
 Need to sync a specific item? You can use the same syntax as with other cloud providers:
 
@@ -101,22 +101,22 @@ dataset = dl.datasets.get(dataset_id='your dataset id')
 dataset.items.upload(local_path=item_path, remote_path=remote_path)
 ```
 
-### Automatic Sync with Cloud Functions ✨
+### Automatic Sync with Cloud Functions
 
-Want your Dataloop dataset to automatically stay in sync with your GCS bucket? Let's set up Google Cloud Functions!
+Want your DDOE dataset to automatically stay in sync with your GCS bucket? Let's set up Google Cloud Functions!
 
-#### Prerequisites 📋
+#### Prerequisites
 
 1. A Google Cloud Platform (GCP) account ([Get started here](https://cloud.google.com/docs/get-started))
 2. A GCS bucket created and ready to use
 3. Basic familiarity with [Google Cloud Functions](https://cloud.google.com/functions) (optional)
 
-#### Setting Up Your Cloud Functions 🛠️
+#### Setting Up Your Cloud Functions
 
 You'll need to create two functions: one for file creation/updates and another for deletions.
 
-![add_layer](../../../../../assets/bind_gcs/create_function.png)  
-![add_layer](../../../../../assets/bind_gcs/settings.png)  
+![add_layer](../../../../assets/bind_gcs/create_function.png)  
+![add_layer](../../../../assets/bind_gcs/settings.png)  
 
 ##### Function for Create/Update Events
 
@@ -227,12 +227,12 @@ import dtlpy as dl
 dl.login()
 project = dl.projects.get(project_name='project name')
 bot = project.bots.create(name='serviceAccount', return_credentials=True)
-print('🤖 Bot username:', bot.id)
-print('🔑 Bot password:', bot.password)
+print('Bot username:', bot.id)
+print('Bot password:', bot.password)
 ```
 
-## Need More Help? 🤔
+## Need More Help?
 
 For detailed GCP integration setup, check out our [comprehensive documentation](https://docs.dataloop.ai/docs/storage-gcp).
 
-Happy data syncing! 🚀
+Happy data syncing!

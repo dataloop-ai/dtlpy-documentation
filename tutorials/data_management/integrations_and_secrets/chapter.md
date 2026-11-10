@@ -1,36 +1,36 @@
-# Managing Integrations and Secrets in Dataloop 🔐
+# Managing Integrations and Secrets in DDOE
 
-Welcome to your guide to managing integrations and secrets in Dataloop! Let's learn how to securely connect your external resources and manage sensitive information.
+Welcome to your guide to managing integrations and secrets in Dell Data Orchestration Engine (DDOE)! Let's learn how to securely connect your external resources and manage sensitive information.
 
-## Understanding Integrations 🔗
+## Understanding Integrations
 
-Think of integrations as secure bridges between Dataloop and your external resources. They're your organization's VIP passes to safely access and manage external services! 🎫
+Think of integrations as secure bridges between DDOE and your external resources. They're your organization's VIP passes to safely access and manage external services!
 
-### What Can You Connect To? 🌐
+### What Can You Connect To?
 
-Integrations allow your Dataloop organization to securely configure and access a variety of external resources:
+Integrations allow your DDOE organization to securely configure and access a variety of external resources:
 
-- Cloud Storage Services ☁️
+- Cloud Storage Services
   - Google Cloud Platform (GCP)
   - Amazon S3
   - Microsoft Azure Blob
-- Container Registries 🐳
+- Container Registries
   - AWS Elastic Container Registry (ECR)
   - Google Artifact Registry (GAR)
   - Azure Container Registry (ACR)
-- Secure Token Service (STS) 🔑
-- And more exciting services! 🚀
+- Secure Token Service (STS)
+- And more exciting services!
 
-### Why Use Integrations? 🎯
+### Why Use Integrations?
 
 When working with cloud services (like storage drivers), setting up an integration is your crucial first step. It's like creating a secure vault where you can:
-- Store access tokens safely 🔒
-- Manage service credentials efficiently 🗝️
-- Enable seamless connections between services 🤝
+- Store access tokens safely
+- Manage service credentials efficiently
+- Enable seamless connections between services
 
-## Setting Up Integrations 🛠️
+## Setting Up Integrations
 
-### Cloud Storage Integration ☁️
+### Cloud Storage Integration
 
 When working with cloud storage, setting up an integration is your first step. It's where you securely store your access credentials:
 
@@ -56,16 +56,16 @@ Want to learn more about cloud storage? Check out our detailed guides:
 - [Microsoft Azure Blob Storage](/tutorials/data_management/external_storage_drivers/azure_blob/chapter.md)
 - [Google Cloud Storage](/tutorials/data_management/external_storage_drivers/gcs/chapter.md)
 
-## Managing Secrets 🗝️
+## Managing Secrets
 
 ### Understanding Secrets Manager
 
 Our secrets manager is your vault for sensitive information. It's designed to:
-- Keep your credentials secure 🔒
-- Make them easily accessible in your code 🎯
-- Integrate smoothly with Pipelines and FaaS 🔄
+- Keep your credentials secure
+- Make them easily accessible in your code
+- Integrate smoothly with Pipelines and FaaS
 
-### Creating Key-Value Secrets ✨
+### Creating Key-Value Secrets
 
 Need to store a simple key-value pair? Here's how:
 
@@ -86,7 +86,7 @@ organization.integrations.create(
 )
 ```
 
-### Using Secrets in Your Code 💻
+### Using Secrets in Your Code
 
 When working with FaaS, you can use secrets to access your external resources. 
 In the cloud environment, the secrets are saved as an environment variable.
@@ -105,7 +105,7 @@ def my_function(item):
 
 For more details on using secrets in functions, check out our [FaaS Security and Environment Chapter](https://developers.dataloop.ai/tutorials/faas_applications/service_configurations/chapter#-security-and-environment).
 
-### Updating Secrets 💻
+### Updating Secrets
 
 You can update an existing Secret’s name, value, or provider using the SDK. This is particularly useful for automating credential rotation, updating expired keys, or adjusting secret metadata to improve service clarity.
 
@@ -119,7 +119,7 @@ integration.update(new_options={}, reload_services=True)
 # If reload_services is not provided, it defaults to False (services will not be reloaded automatically).
 ```
 
-## Best Practices 🌟
+## Best Practices
 
 1. **Naming Convention**: Use clear, descriptive names for your integrations and secrets
 2. **Access Control**: Only share secrets with those who need them
@@ -127,8 +127,8 @@ integration.update(new_options={}, reload_services=True)
 4. **Documentation**: Keep track of what each secret is used for
 5. **Validation**: Always validate your integrations after setting them up
 
-## Need More Help? 🤔
+## Need More Help?
 
 Check out our [comprehensive documentation](https://docs.dataloop.ai/docs/welcome) for more details on managing integrations and secrets.
 
-Happy securing! 🚀
+Happy securing!

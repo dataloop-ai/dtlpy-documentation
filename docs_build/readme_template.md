@@ -4,13 +4,13 @@
 [![versions](https://img.shields.io/pypi/pyversions/dtlpy.svg)](https://github.com/dataloop-ai/dtlpy)
 [![license](https://img.shields.io/github/license/dataloop-ai/dtlpy-documentation.svg)](https://github.com/dataloop-ai/dtlpy-documentation/blob/master/LICENSE)
 
-# SDK Documentations and Tutorials for Dataloop's SDK
+# SDK Documentations and Tutorials for DDOE's SDK
 
-The following repository will gather Dataloop's SDK examples and best practices.
+The following repository will gather DDOE's SDK examples and best practices.
 
 ## Table of Content
 
-- [SDK Documentations and Tutorials for Dataloop's SDK](#sdk-documentations-and-tutorials-for-dataloops-sdk)
+- [SDK Documentations and Tutorials for DDOE's SDK](#sdk-documentations-and-tutorials-for-dataloops-sdk)
   - [Table of Content](#table-of-content)
   - [Installation](#installation)
   - [Tutorials](#tutorials)
@@ -54,7 +54,7 @@ $examples
 
 ## Resources
 
-* [Dataloop Docs](https://docs.dataloop.ai/docs)
+* [Dell Data Orchestration Engine (DDOE) Docs](https://docs.dataloop.ai/docs)
 * [SDK Cheat Sheet](https://docs.dataloop.ai/docs/sdk-cheatsheet?highlight=cheat)
 * [DTLPY source code](https://github.com/dataloop-ai/dtlpy)
 * [Platform](https://console.dataloop.ai/)

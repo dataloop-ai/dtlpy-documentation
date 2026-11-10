@@ -1,7 +1,7 @@
 {
     "name": "labeling-workflows",
     "title": "Labeling Workflows Tutorial",
-    "description": "Learn how to create and manage labeling workflows in Dataloop using the Python SDK",
+    "description": "Learn how to create and manage labeling workflows in DDOE using the Python SDK",
     "content": [
         {
             "displayName": "Tasks and Assignments",

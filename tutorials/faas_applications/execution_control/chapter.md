@@ -1,8 +1,8 @@
-# 🎮 Execution Control - Managing Your FaaS Functions
+# Execution Control - Managing Your FaaS Functions
 
 Welcome to the execution control guide! Learn how to manage, monitor, and control your FaaS function executions like a pro. Let's explore how to handle long-running tasks, implement graceful termination, and monitor execution status.
 
-## 🛑 Execution Termination
+## Execution Termination
 
 ### Graceful Termination with Checkpoints
 Need to safely stop a long-running execution? Use checkpoints to implement graceful termination:
@@ -45,7 +45,7 @@ execution = execution.wait()
 print(f"Execution status: {execution.latest_status['status']}")
 ```
 
-## ⏲️ Execution Timeout Management
+## Execution Timeout Management
 
 ### Setting Timeout Duration
 Control how long your function can run:
@@ -76,7 +76,7 @@ service.on_reset = 'rerun'
 service.update()
 ```
 
-## 📊 Execution Monitoring
+## Execution Monitoring
 
 ### Basic Status Monitoring
 Monitor a single execution:
@@ -105,7 +105,7 @@ for log in execution.logs(follow=True):
     print(f"{log['timestamp']}: {log['message']}")
 ```
 
-## 🔄 Execution Retry Management
+## Execution Retry Management
 
 ### Manual Retry
 Retry failed executions:
@@ -122,7 +122,7 @@ new_execution = new_execution.wait()
 print(f"Retry status: {new_execution.latest_status['status']}")
 ```
 
-## 💡 Pro Tips & Best Practices
+## Pro Tips & Best Practices
 
 ### Resource Management
 - Implement regular checkpoints in long-running tasks
@@ -144,4 +144,4 @@ print(f"Retry status: {new_execution.latest_status['status']}")
 - Monitor resource usage patterns
 - Keep track of execution duration statistics
 
-Need help? Check out our other tutorials or reach out to our support team. Happy coding! ⚡️
+Need help? Check out our other tutorials or reach out to our support team. Happy coding!

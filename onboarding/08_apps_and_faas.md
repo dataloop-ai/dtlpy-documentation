@@ -1,10 +1,10 @@
-# Functions as a Service (FaaS): Your Serverless Toolkit 🚀
+# Functions as a Service (FaaS): Your Serverless Toolkit
 
-Learn how to create, deploy, and manage serverless functions in Dataloop - your key to automating workflows and extending platform capabilities.
+Learn how to create, deploy, and manage serverless functions in Dell Data Orchestration Engine (DDOE) - your key to automating workflows and extending platform capabilities.
 
-## Project Setup ⚙️
+## Project Setup
 
-### Dataloop login
+### DDOE login
 
 > ```python
 > import dtlpy as dl
@@ -41,7 +41,7 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 >     print(f"Created dataset '{dataset_name}'")
 > ```
 
-## Getting Started with FaaS 🌟
+## Getting Started with FaaS
 
 ### Quick deploy from a function
 
@@ -65,7 +65,7 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 > app = project.apps.get(app_name=app_name)
 > app.print()
 >
-> # Open your project in Dataloop platform and navigate to the marketplace and choose the Applications tab
+> # Open your project in DDOE platform and navigate to the marketplace and choose the Applications tab
 > # Look for your new installed app, refresh if you can't find it
 > project.open_in_web()
 > ```
@@ -74,7 +74,7 @@ Learn how to create, deploy, and manage serverless functions in Dataloop - your 
 > # A new service was deployed
 > service.open_in_web()
 > ```
-Congratulations, you just created your first service 🎉
+Congratulations, you just created your first service
 
 For more service info see: [Services Documentation](https://docs.dataloop.ai/docs/services?highlight=services)
 
@@ -107,7 +107,7 @@ For more service info see: [Services Documentation](https://docs.dataloop.ai/doc
 
 ## DPK Manifest
 
-A DPK (Dataloop Package) is a self-contained package that contains all the necessary components for deployment. 
+A DPK (DDOE Package) is a self-contained package that contains all the necessary components for deployment. 
 
 ### 1. Basic Function Creation (DPK manifest)
 
@@ -243,7 +243,7 @@ Install the application:
 > project.services.list().print()
 > ```
 
-## Function Types and Triggers 🎯
+## Function Types and Triggers
 
 ### 1. Item Functions
 
@@ -335,7 +335,7 @@ Add trigger to the DPK manifest file under components (dataloop.json) and bump t
 > }
 > ```
 
-## Function Management 📋
+## Function Management
 
 ### 1. Execution Management
 
@@ -394,4 +394,4 @@ Add trigger to the DPK manifest file under components (dataloop.json) and bump t
 > service.resume()
 > ```
 
-Ready to explore Model Management? Let's move on to the next chapter! 🚀
+Ready to explore Model Management? Let's move on to the next chapter!

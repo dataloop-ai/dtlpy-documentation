@@ -1,33 +1,25 @@
 import os
 import glob
-import re
 import yaml
 import json
 import pathlib
-import random
 
 import logging
 
 logger = logging.getLogger(__name__)
 
 
-def build_redocly():
+def build_sidebars():
     root = "./"
 
     subs_list = ['tutorials']
-    mdx_lines, tut_dict = update_tutorials_redocly(root, subs_list)
+    tut_dict = update_tutorials_sidebar(root, subs_list)
 
     sidebars_yaml = os.path.join(root, "sidebars.yaml")
     update_yaml_file(tut_dict, sidebars_yaml)
 
-    # mdx_file = os.path.join(root, 'tutorials/tutorials.mdx')
-    # update_mdx_file(mdx_lines, mdx_file)
 
-
-def update_tutorials_redocly(root, sub_folders_list):
-    superdict = dict()
-    superdict['contents'] = []
-    mdx_str = []
+def update_tutorials_sidebar(root, sub_folders_list):
     mydict = dict()
     for sub_folder in sub_folders_list:
         mylist = []
@@ -41,14 +33,13 @@ def update_tutorials_redocly(root, sub_folders_list):
 
             myjson = os.path.join(directory, myjson[0])
             mydict.update({'group': 'Tutorials',
-                           'page': sub_folder + "/" + sub_folder + ".md",
+                           'page': sub_folder + "/index.mdx",
                            'expanded': False,
                            'items': []})
-            mdx_str = gen_sub_dict(myjson, mydict, directory, sub_folder, 0, mylist)
-            superdict['contents'].append(mydict)
+            gen_sub_dict(myjson, mydict, directory, sub_folder, 0, mylist)
         else:
             raise ValueError(f"too many json files in directory: {len(myjson)}, {myjson}")
-    return mdx_str, mydict
+    return mydict
 
 
 def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
@@ -58,16 +49,14 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
         except json.JSONDecodeError as e:
             logger.error(f"Failed loading json file: {myjson}")
             raise ValueError(f"Error decoding JSON: {e}")
-    yaml_str_list = []
     for content in data['content']:
         str_for_list = ""
         comp_dict = dict()
         display_name = content['displayName']
         location = content['location']
         page_location = mysubdir + "/" + location
-        logger.info(f'Build redocly page for {location}')
+        logger.info(f'Build sidebar entry for {location}')
         location_filepath = os.path.join(directory, location)
-        md_file = "nofile"
         if not os.path.isfile(location_filepath):
             logger.warning(f"file does not exist: {location_filepath}")
             continue
@@ -94,7 +83,7 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
             colab_url = "https://colab.research.google.com/github/dataloop-ai/dtlpy-documentation/blob/main/" + page_location.replace(
                 ".md", ".ipynb")
             tabs = '&nbsp;' * (level-1) * 8
-            str_for_list += f'| <div>{tabs}[{display_name}]({location})</div> | {content["description"]} | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]({notebook_url}) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)]({colab_url}) |'
+            str_for_list += f'| <div>{tabs}[{display_name}]({location})</div> | {content["description"]} | [GitHub]({notebook_url}), [Colab]({colab_url}) |'
             str_list.append(str_for_list)
         if level == 0:
             table_lines = ['| Name | Description | Notebook |', '| --- | --- | --- |']
@@ -102,40 +91,7 @@ def gen_sub_dict(myjson, mydict, directory, mysubdir, level, str_list):
             md_file = gen_md_file('\n'.join(table_lines), location, directory, content['displayName'])
             comp_dict['page'] = mysubdir + "/" + md_file
             str_list = []
-        # else:
-        #     str_list.append(str_for_list)
-
-        get_mdx_str(header=content['displayName'],
-                    md_file=md_file,
-                    description=content['description'],
-                    str_list=yaml_str_list)
         mydict['items'].append(comp_dict)
-    return yaml_str_list
-
-
-def get_mdx_str(header, md_file, description, str_list):
-    # Map headers to their corresponding icons
-    icon_mapping = {
-        "Data Management": "dataManagementIcon",
-        "Annotations": "annotationsIcon",
-        "Recipe and Ontology": "recipeOntologyIcon",
-        "Labeling Workflows": "labelingWorkflowsIcon",
-        "Analytics": "analyticsIcon",
-        "FaaS Tutorial": "faasIcon",
-        "Pipelines": "pipelinesIcon",
-        "Model Management": "modelManagementIcon",
-        "Applications": "applicationsIcon",
-        "Tutorials": "tutorialsIcon",
-        "Resources": "resourcesIcon",
-        "Onboarding": "onboardingIcon"
-    }
-    
-    # Get the corresponding icon or use a default
-    icon = icon_mapping.get(header, "tutorialsIcon")
-    
-    str_list.append(f'    <WideTile header="{header}" to="{md_file}" icon={{{icon}}}>\n')
-    str_list.append(f'          {description}\n')
-    str_list.append(f'    </WideTile>\n')
 
 
 def gen_md_file(md_str, directory, mydest, h2):
@@ -168,33 +124,9 @@ def update_yaml_file(tut_dict, yaml_filepath):
         yaml.dump(data, file, indent=2)
 
 
-def update_mdx_file(mdx_lines, mdx_file):
-    with open(mdx_file, "r+") as f:
-        newlines = []
-        inside = False
-        for item in f.readlines():
-            if re.search('^\s*<FlexSection', item):
-                inside = True
-                newlines.append(item)
-                continue
-
-            if re.search('^\s*</FlexSection', item):
-                inside = False
-                newlines.extend(mdx_lines)
-                newlines.append(item)
-                continue
-
-            if inside:
-                continue
-
-            newlines.append(item)
-    with open(mdx_file, "w") as f:
-        f.writelines(newlines)
-
-
 if __name__ == "__main__":
     """
-    Building MD files and MDX files
-    and update sidebar.yaml
+    Building tutorial index MD files
+    and update sidebars.yaml
     """
-    build_redocly()
+    build_sidebars()

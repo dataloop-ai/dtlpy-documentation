@@ -1,11 +1,11 @@
 # Annotation Consensus and IoU Metrics Tutorial
 
-This notebook provides a comprehensive guide on calculating consensus metrics and IoU (Intersection over Union) scores for annotations using the Dataloop platform and its Python SDK. It covers various annotation types including classifications, bounding boxes, polygons, and segmentation masks.
+This notebook provides a comprehensive guide on calculating consensus metrics and IoU (Intersection over Union) scores for annotations using the Dell Data Orchestration Engine (DDOE) platform and its Python SDK. It covers various annotation types including classifications, bounding boxes, polygons, and segmentation masks.
 
 Consensus metrics help evaluate the agreement between multiple annotators working on the same data, which is crucial for quality assurance and understanding annotation reliability.
 
 ### Prerequisites:
-* **Dataloop Account:** You should have access to a Dataloop platform account.
+* **DDOE Account:** You should have access to a DDOE platform account.
 * **Python Environment:** Ensure you have Python 3.7+ installed with pip.
 * **Annotated Data:** Access to items with annotations from multiple annotators.
 
@@ -53,7 +53,7 @@ IoU is a metric used to evaluate the accuracy of object detection and segmentati
   <img src="https://storage.googleapis.com/kaggle-media/competitions/rsna/IoU.jpg" width="350" title="IoU">
 </p>
 
-**Consensus** in Dataloop supports the following annotation types:
+**Consensus** in DDOE supports the following annotation types:
 - Classification (Label IoU)
 - Bounding Box (IoU)
 - Polygon (IoU)
@@ -386,7 +386,7 @@ plt.show()
 
 ## <a id='conclusion'></a>7. Conclusion and Next Steps
 
-Congratulations! You have successfully walked through the process of calculating annotation consensus and IoU metrics using the Dataloop platform.
+Congratulations! You have successfully walked through the process of calculating annotation consensus and IoU metrics using the DDOE platform.
 
 ### Summary of What You've Accomplished:
 - Understood IoU metrics and their importance in annotation quality assessment

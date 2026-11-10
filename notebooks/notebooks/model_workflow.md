@@ -1,13 +1,13 @@
 # End-to-End Model Workflow Tutorial
 
-This notebook provides a comprehensive, step-by-step guide for a complete model training workflow on the Dataloop platform. You'll learn how to set up datasets, create annotation tasks, train models, and deploy them for inference - all within a unified MLOps environment.
+This notebook provides a comprehensive, step-by-step guide for a complete model training workflow on the Dell Data Orchestration Engine (DDOE) platform. You'll learn how to set up datasets, create annotation tasks, train models, and deploy them for inference - all within a unified MLOps environment.
 
-This tutorial demonstrates the full machine learning lifecycle from data preparation through model deployment, showcasing how Dataloop integrates data management, annotation workflows, and model training into a seamless experience.
+This tutorial demonstrates the full machine learning lifecycle from data preparation through model deployment, showcasing how DDOE integrates data management, annotation workflows, and model training into a seamless experience.
 
 ### Prerequisites:
-* **Dataloop Account:** You should have access to a Dataloop platform account.
+* **DDOE Account:** You should have access to a DDOE platform account.
 * **Python Environment:** Ensure you have Python 3.7+ installed with pip.
-* **Project Access:** Ability to create projects and install apps from the Dataloop Marketplace.
+* **Project Access:** Ability to create projects and install apps from the DDOE Marketplace.
 * **Basic ML Knowledge:** Understanding of machine learning concepts and model training workflows.
 
 ### Navigate through the following sections:
@@ -21,7 +21,7 @@ This tutorial demonstrates the full machine learning lifecycle from data prepara
 
 ### Install Dependencies
 
-First, let's ensure that the necessary Python libraries are installed. This notebook requires `dtlpy` for interacting with the Dataloop platform. The following cell will install or upgrade the library quietly.
+First, let's ensure that the necessary Python libraries are installed. This notebook requires `dtlpy` for interacting with the DDOE platform. The following cell will install or upgrade the library quietly.
 
 
 ```python
@@ -39,12 +39,12 @@ from tqdm import tqdm
 import pathlib
 import time
 
-print(f"Dataloop SDK Version: {dl.__version__}")
+print(f"DDOE SDK Version: {dl.__version__}")
 ```
 
-### Set Up Dataloop Environment
+### Set Up DDOE Environment
 
-To begin, we need to connect to the Dataloop platform. If you're not already logged in, running the cell below will prompt you to do so. Then, we'll either create a new project or get an existing one to work with.
+To begin, we need to connect to the DDOE platform. If you're not already logged in, running the cell below will prompt you to do so. Then, we'll either create a new project or get an existing one to work with.
 
 
 ```python
@@ -77,7 +77,7 @@ print(f"\n> **Action Required:** Project name is set to '{project_name}'. Modify
 
 ### Install Dataset from Marketplace
 
-For model training (like ResNet), we need a dataset with multiple classes. Here we will install the "Agricultural Seedlings Dataset" from the Dataloop App Marketplace. This Dataloop App (DPK) not only provides the dataset but also pre-installs the ResNet model package, which we will use later.
+For model training (like ResNet), we need a dataset with multiple classes. Here we will install the "Agricultural Seedlings Dataset" from the DDOE App Marketplace. This DDOE App (DPK) not only provides the dataset but also pre-installs the ResNet model package, which we will use later.
 
 The code below will install the app, retrieve the created dataset, and wait for the app's setup services to complete.
 
@@ -111,7 +111,7 @@ print("App services finished")
 
 ### Split Dataset for Training
 
-For effective model training, it's crucial to split your dataset into training, validation, and test subsets. The Dataloop SDK provides a convenient method to do this by automatically tagging items. We will use an 80/10/10 split.
+For effective model training, it's crucial to split your dataset into training, validation, and test subsets. The DDOE SDK provides a convenient method to do this by automatically tagging items. We will use an 80/10/10 split.
 
 
 ```python
@@ -304,12 +304,12 @@ Now we'll initiate the training process and get the execution details.
 print(f"Starting training for model: {finetuned_model.name}")
 execution = finetuned_model.train()
 print(f"Training execution started: [ID: {execution.id}, Status: {execution.status}]")
-print(f"You can monitor training progress in the Dataloop platform at: {finetuned_model.platform_url}")
+print(f"You can monitor training progress in the DDOE platform at: {finetuned_model.platform_url}")
 ```
 
 ### Wait for Training Completion
 
-The cell below will periodically check the status of the training execution and wait for it to complete. You can also monitor the training progress, view logs, and see performance metrics directly in the Dataloop platform by navigating to your model's page.
+The cell below will periodically check the status of the training execution and wait for it to complete. You can also monitor the training progress, view logs, and see performance metrics directly in the DDOE platform by navigating to your model's page.
 
 
 ```python
@@ -331,7 +331,7 @@ if final_status == "success":
     print(f"Training completed successfully! (Total time: {total_time/60:.1f} minutes)")
     print(f"Model ID: {finetuned_model.id}")
 elif final_status == "failed":
-    print(f"Training failed. Execution ID: {execution.id}. Check logs in Dataloop platform for details.")
+    print(f"Training failed. Execution ID: {execution.id}. Check logs in DDOE platform for details.")
 else:
     print(f"Training ended with status: {final_status}. Execution ID: {execution.id}.")
 ```
@@ -362,7 +362,7 @@ if final_status == "success":
     
     print(f"Final model status: {finetuned_model.status}")
     if finetuned_model.status == dl.ModelStatus.DEPLOYED:
-        print(f"🎉 Model successfully deployed and ready for inference!")
+        print(f"Model successfully deployed and ready for inference!")
         print(f"Model URL: {finetuned_model.platform_url}")
 else:
     print("Skipping deployment due to training failure.")
@@ -370,10 +370,10 @@ else:
 
 ## <a id='conclusion'></a>5. Conclusion and Next Steps
 
-Congratulations! You have successfully walked through the entire process of an end-to-end model workflow on Dataloop.
+Congratulations! You have successfully walked through the entire process of an end-to-end model workflow on DDOE.
 
 ### Summary of What You've Accomplished:
-- **Environment Setup:** Connected to Dataloop and configured your project for machine learning workflows
+- **Environment Setup:** Connected to DDOE and configured your project for machine learning workflows
 - **Dataset Preparation:** Installed a dataset from the Marketplace and prepared it for training by creating ML subsets (train/validation/test)
 - **Annotation Workflow:** Created a labeling task for a subset of data and programmatically annotated items with proper task linkage
 - **Model Configuration:** Retrieved and configured a pre-trained ResNet model with appropriate training parameters
@@ -389,12 +389,12 @@ From here, you can explore more advanced concepts:
 - **Model Monitoring:** Set up monitoring and alerting for your deployed models to track performance over time
 - **A/B Testing:** Deploy multiple model versions and compare their performance on real data
 - **Advanced Workflows:** Integrate multiple models, create ensemble methods, or build complex multi-stage pipelines
-- **Custom Models:** Bring your own model architectures using Dataloop's model adapter framework
+- **Custom Models:** Bring your own model architectures using DDOE's model adapter framework
 
 ### Additional Resources:
 - **[Active Learning Pipeline Tutorial](https://docs.dataloop.ai/docs/active-learning-pipeline):** Learn how to create intelligent annotation workflows
 - **[Model Management Documentation](https://developers.dataloop.ai/tutorials/model_management):** Explore advanced model management features
 - **[Pipeline Builder](https://developers.dataloop.ai/tutorials/pipelines):** Create automated ML workflows
-- **[Custom Model Adapters](https://developers.dataloop.ai/tutorials/model_management):** Integrate your own models into Dataloop
+- **[Custom Model Adapters](https://developers.dataloop.ai/tutorials/model_management):** Integrate your own models into DDOE
 
-This tutorial demonstrates the power of having an integrated MLOps platform where data management, annotation, training, and deployment work seamlessly together. You're now ready to build production-ready machine learning workflows on Dataloop!
+This tutorial demonstrates the power of having an integrated MLOps platform where data management, annotation, training, and deployment work seamlessly together. You're now ready to build production-ready machine learning workflows on DDOE!

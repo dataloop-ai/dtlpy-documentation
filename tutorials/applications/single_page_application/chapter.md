@@ -3,7 +3,7 @@
 ## Tl;dr
 ![](../../../assets/apps/platform_studio.png)
 
-1. Create a client-side app using the framework of your choice. Use our JS SDK to work with Dataloop entities.
+1. Create a client-side app using the framework of your choice. Use our JS SDK to work with Dell Data Orchestration Engine (DDOE) entities.
 2. Serve dataloop.json on the root of your application.
 3. Serve this application on your local server on the local.dataloop.ai domain over HTTPS.
 4. Open console.dataloop.ai and go to FaaS/Application Hub. Go to the Developer tab and click on  +Add Debug App  .
@@ -34,10 +34,10 @@ For working on a dev/local environment, you will need to add local.dataloop.ai t
 5. Your app should be up running in the browser.
    1. NOTE: In Windows you need to serve the app at "0.0.0.0" (otherwise it may not work on the local.dataloop.ai host)
 6. Your app should have a manifest file - dataloop.json - it needs to be publicly served under the app's main address (For example: https://local.dataloop.ai:3000/dataloop.json ).
-7. You're going to need a working, functioning Dataloop Platform user with a Developer role.
+7. You're going to need a working, functioning DDOE Platform user with a Developer role.
 8. You're going to need to be familiar with our Javascript SDK
 
-### The Dataloop Package Source Code
+### The DDOE Package Source Code
 Now we will create the app files and directories:
 
 1. Create a new repo and then clone the newly created repo to your local and move to the downloaded folder.
@@ -52,13 +52,13 @@ npm run serve
 4. This should run the server locally using vue tools on https://local.dataloop.ai on 8080 (or any other following available port) port.
 5. Open the url in the browser.
    1. If you're getting the "Not Private" message allow the locally generated https certificate in your browser by clicking the `Proceed to local.dataloop.ai` link or by type `thisisunsafe`
-![](../../assets/apps/connection_not_private.png)
+![](../../../assets/apps/connection_not_private.png)
 
 Here in our code we are creating an Item Viewer, so we need to load an item.
-Remember, this application would be used inside the dataloop platform to view an item, so your iframe would get access to the item using the [Dataloop JS SDK](https://developers-dev.redoc.ly/resources/dtljs/).
+Remember, this application would be used inside the dataloop platform to view an item, so your iframe would get access to the item using the [DDOE JS SDK](https://developers-dev.redoc.ly/resources/dtljs/).
 
-Now we can use Dataloop JS SDK and component library to load an item.
-In the template provided to you, we have already initialized the Dataloop SDK along with its theme variable and Item details.
+Now we can use DDOE JS SDK and component library to load an item.
+In the template provided to you, we have already initialized the DDOE SDK along with its theme variable and Item details.
 So, this template already contains the code that is needed to view an item.
 
 If you check the App.vue file, the item is loaded using:
@@ -86,7 +86,7 @@ So, now the app is running and should be loading an item once it is inside the d
 
 The next step would be running this app on the debug mode and then publishing it.
 
-## Debug App in the Dataloop Platform
+## Debug App in the DDOE Platform
 
 * On the left sidebar menu, go to **Application Hub** under the **Application (FAAS)** section, and open the **
   Developer** tab.
@@ -111,7 +111,7 @@ a `DlMockDriver` and a **Debug Snapshot** shortcut exactly for that!
       effectively overriding its original value.
 
 * In order to get the mock data for the mock driver, you can use the **Debug Snapshot** feature.
-    - [Add a debug app to the Platform](index.md#How to add a debug app in the Dataloop Platform).
+    - [Add a debug app to the Platform](index.md#How to add a debug app in the DDOE Platform).
     - Press the **Debug Snapshot** icon at the top bar (or **Alt+Shift+S**) in order to download the generated
       snapshot file.
     - Place the file in your tests directory.

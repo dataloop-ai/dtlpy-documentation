@@ -1,10 +1,10 @@
-# Data Annotation: Labeling Your Way to Success 🎯
+# Data Annotation: Labeling Your Way to Success
 
-Learn how to create, manage, and organize annotations in Dataloop - your key to building high-quality training data.
+Learn how to create, manage, and organize annotations in Dell Data Orchestration Engine (DDOE) - your key to building high-quality training data.
 
-## Project Setup ⚙️
+## Project Setup
 
-### Dataloop Login 🔐
+### DDOE Login
 
 > ```python
 > import dtlpy as dl
@@ -52,7 +52,7 @@ Learn how to create, manage, and organize annotations in Dataloop - your key to 
 >     print(f"Dataset has {dataset.items.list().items_count} items")
 > ```
 
-## Annotation Basics 🎨
+## Annotation Basics
 
 ### 1. Creating Annotations
 
@@ -153,7 +153,7 @@ Learn how to create, manage, and organize annotations in Dataloop - your key to 
 > )
 > ```
 
-## Managing Annotations 📋
+## Managing Annotations
 
 ### 1. Querying Annotations
 
@@ -217,4 +217,4 @@ Learn how to create, manage, and organize annotations in Dataloop - your key to 
 > target_item.annotations.upload(annotations)
 > ```
 
-Ready to explore task management? Let's move on to the next chapter! 🚀
+Ready to explore task management? Let's move on to the next chapter!

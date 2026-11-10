@@ -1,16 +1,16 @@
-# Working with Items and Annotations in Dataloop 📦
+# Working with Items and Annotations in DDOE
 
-Welcome to your guide to working with items and annotations in Dataloop! Whether you're uploading files, managing metadata, or organizing your data, we've got you covered. Let's dive in!
+Welcome to your guide to working with items and annotations in Dell Data Orchestration Engine (DDOE)! Whether you're uploading files, managing metadata, or organizing your data, we've got you covered. Let's dive in!
 
-## Understanding Items 📚
+## Understanding Items
 
-In Dataloop, an item can be any type of data - images, videos, text files, and more. Think of items as the building blocks of your datasets. Each item can have:
+In DDOE, an item can be any type of data - images, videos, text files, and more. Think of items as the building blocks of your datasets. Each item can have:
 - Metadata
 - Annotations
 - Custom attributes
 - And more!
 
-### Basic Item Operations 🛠️
+### Basic Item Operations
 
 ### Uploading Individual Files
 
@@ -79,35 +79,35 @@ item = dataset.items.upload(local_path=link)
 item.open_in_web()
 ```
 
-### Working with Metadata 📝
+### Working with Metadata
 
 Think of metadata as your data's personal diary - you can attach any information you want to both items and annotations. It's perfect for organizing, filtering, and finding your data later.
 
-> ⚠️ **Note**: When adding new metadata to an item, it might overwrite existing metadata, so be careful to preserve existing data when needed.
+> **Note**: When adding new metadata to an item, it might overwrite existing metadata, so be careful to preserve existing data when needed.
 
 #### Metadata Types
 
 Metadata supports various data types:
 
-1. 📝 **Strings**
+1. **Strings**
 ```python
 item.metadata['user'] = {'message': 'Hello, World!'}
 annotation.metadata['user'] = {'mood': 'Happy'}
 ```
 
-2. 🔢 **Numbers**
+2. **Numbers**
 ```python
 item.metadata['user'] = {'lucky_number': 42}
 annotation.metadata['user'] = {'confidence_score': 0.95}
 ```
 
-3. ✅ **Booleans**
+3. **Booleans**
 ```python
 item.metadata['user'] = {'is_verified': True}
 annotation.metadata['user'] = {'needs_review': False}
 ```
 
-4. 👻 **Null**
+4. **Null**
 ```python
 item.metadata['user'] = {'secret': None}
 ```
@@ -165,7 +165,7 @@ for page in pages:
         print(f"Found item: {item.name} with mood: {item.metadata['user']['mood']}")
 ```
 
-### Working with Arrays 🔢a
+### Working with Arrays a
 
 Need to upload numpy arrays directly? Here's how:
 
@@ -190,9 +190,9 @@ item = dataset.items.upload(
 item.open_in_web()
 ```
 
-### Working with Modalities 🎭
+### Working with Modalities
 
-Modalities are multiple layers representing the same reality or scene. For example, you might have multiple sensors capturing the same object, or different views of the same item. In Dataloop, you can link these related items as modality layers.
+Modalities are multiple layers representing the same reality or scene. For example, you might have multiple sensors capturing the same object, or different views of the same item. In DDOE, you can link these related items as modality layers.
 
 #### Adding a Single Modality
 
@@ -272,20 +272,20 @@ with ThreadPoolExecutor(max_workers=32) as executor:
         )
 ```
 
-## Working with Annotations in Dataloop 🎨
+## Working with Annotations in DDOE
 
-Welcome to your guide to working with annotations in Dataloop! Whether you're creating labels, managing metadata, or organizing your annotations, we've got you covered. Let's dive in!
+Welcome to your guide to working with annotations in DDOE! Whether you're creating labels, managing metadata, or organizing your annotations, we've got you covered. Let's dive in!
 
-### Understanding Annotations 📚
+### Understanding Annotations
 
-In Dataloop, annotations are the building blocks of your labeled data. Each annotation can have:
+In DDOE, annotations are the building blocks of your labeled data. Each annotation can have:
 - Labels
 - Attributes
 - Metadata
 - Task and Recipe context
 - And more!
 
-### Basic Annotation Operations 🛠️
+### Basic Annotation Operations
 
 ### Adding Simple Annotations
 
@@ -321,7 +321,7 @@ annotation.metadata["user"] = True
 annotation.update()
 ```
 
-### Setting Attributes 🏷️
+### Setting Attributes
 
 #### Free Text Attribute
 
@@ -358,7 +358,7 @@ annotation.attributes.update({"<attribute-id>": True})  # or False
 annotation = annotation.update(system_metadata=True)
 ```
 
-### Task and Recipe Context 📋
+### Task and Recipe Context
 
 Want to add task context to your annotations? Here's how:
 
@@ -393,7 +393,7 @@ annotation.metadata["system"].update(context)
 annotation.update(system_metadata=True)
 ```
 
-### Visualizing Annotations 👁️
+### Visualizing Annotations
 
 #### Show Individual Annotations
 
@@ -425,28 +425,28 @@ annotation.show(
 )
 ```
 
-## Best Practices 💡
+## Best Practices
 
-### Data Organization and Structure 📂
+### Data Organization and Structure
 1. **Organize Your Data**: Use clear folder structures with meaningful names
 2. **Organize Your Annotations**: Use clear labels and consistent naming
 3. **Keep Metadata Clean**: Use structured metadata for better organization
 
-### Workflow Optimization 🔄
+### Workflow Optimization
 4. **Use Batch Operations**: Upload multiple items and annotations at once when possible
 5. **Monitor Progress**: Use progress bars for large uploads
 6. **Check File Types**: Ensure your files are in supported formats
 
-### Quality and Context 🎯
+### Quality and Context
 7. **Add Metadata**: Include relevant metadata during upload for better organization
 8. **Add Context**: Include task and recipe context when relevant for annotations
 9. **Use Attributes**: Leverage attributes for additional information in annotations
 10. **Validate Visually**: Always check your annotations visually after upload
 
-## Need More Help? 🤔
+## Need More Help?
 
 - Check out our [Python SDK Documentation](https://sdk-docs.dataloop.ai/en/latest/entities.html)
 - Explore [Advanced Examples](tutorials/data_management/items_and_annotations/more_examples/chapter.md)
 - Visit our [Community Forum](https://dataloop.ai/community) for more tips
 
-Happy working with Dataloop! 🚀
+Happy working with DDOE!
