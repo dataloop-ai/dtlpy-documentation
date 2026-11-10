@@ -26,7 +26,8 @@ export default defineConfig({
       title: 'DDOE Developers',
       description:
         'Developer documentation for the Dell Data Orchestration Engine (DDOE): SDK, REST API, tutorials and notebooks for data management, annotation, automation pipelines and model management.',
-      favicon: '/favicon.png',
+      logo: { src: './assets/site/dell-logo.svg', alt: 'Dell' },
+      favicon: '/favicon.svg',
       social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/dataloop-ai/dtlpy-documentation' }],
       customCss: ['./src/styles/custom.css'],
       sidebar,
